@@ -1,5 +1,7 @@
 # Development team
 
+**GUI input/tint and critter escape scheduling, 21 October (implemented for review):** HTML root pointer handling is disabled, with opt-in controls/canvas/scrolling. GUI retains 55% of its prior blue-grey chroma. Escape searches preempt roaming searches and run consecutive bounded slices, preserving one thinker and the 512-node cap; interrupted animals keep continuous safe positions. Source review identifies planner delays, but no fresh test/browser evidence establishes every reported pause is resolved. Local package rebuilt and local commit requested; no active-player reload or remote push.
+
 **Half-resolution rendering trial, 21 October (implemented for review):** player output uses half the previous pixel width/height with pixelated CSS enlargement; GUI remains full resolution. Renderer option defaults to full resolution outside the player. Static package refreshed; no tests/browser checks or active-player reload. Appearance awaits user review.
 
 **Repository policy, 21 October (latest user instruction):** local commits are allowed for the lead and agents; pushing to any remote repository is **NOT allowed**, including tool/API equivalents. Local packaging remains allowed. This supersedes older local-commit restrictions and does not require a commit for each change.

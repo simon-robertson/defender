@@ -1,5 +1,11 @@
 # Development team
 
+**Half-resolution rendering trial, 21 October (implemented for review):** player output uses half the previous pixel width/height with pixelated CSS enlargement; GUI remains full resolution. Renderer option defaults to full resolution outside the player. Static package refreshed; no tests/browser checks or active-player reload. Appearance awaits user review.
+
+**Repository policy, 21 October (latest user instruction):** local commits are allowed for the lead and agents; pushing to any remote repository is **NOT allowed**, including tool/API equivalents. Local packaging remains allowed. This supersedes older local-commit restrictions and does not require a commit for each change.
+
+**Darker GUI, 21 October (implemented for review):** applied the requested blue-tinted dark grey palette across the player GUI, including formerly pale roster cards and action buttons. Text and selection states remain distinct. Static package refreshed; no tests/browser checks or active-player reload. Appearance awaits user review.
+
 **Title development notice, 21 October (implemented):** title now clearly shows “Development Preview” above NEW GAME with smaller “Saves are disabled for now” below it. Actual 1280×720 layout verified; gameplay and graphics preferences are unchanged.
 
 **Combat, deployment and Drone follow-up, 21 October (implemented for review):** stationary guns immediately yield air locks/bursts to any living ground enemy in horizontal range, retaining real aiming/LOS checks. Powered missiles refresh an acceleration-aware authored-flight/torso lead and compensate lateral momentum; terminal cutoff requires safe velocity alignment. Exact-socket nearby-flyer cases improve from 2/16 to 16/16, with 64/64 expanded contacts. Drone scores projected enemy/participating-defence overlap and offers occasional individually safe low shots while retaining normal high coverage. Deployment selection follows the visible grouped list. The frozen mixed army clears all 64 waves/1,084 enemies with zero escapes, spending 126 with four tokens left. Active player tab is untouched; appearance and provisional balance remain for review. [Implementation, review and checks](../combat-camera-follow-up-2026-10-21/README.md).

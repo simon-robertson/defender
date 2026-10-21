@@ -2,6 +2,10 @@
 
 ## 21 October 2026
 
+- Recorded the user’s repository rule in `AGENTS.md` and team/deployer instructions: local commits are allowed, remote pushes are forbidden for all agents. No commit or push made. Added the requested rendering trial: player output uses 50% of the previous pixel width and height, with CSS pixelated enlargement and full-resolution GUI. Existing scene antialiasing stays inside the reduced-resolution render; the enlargement is unsmoothed. Shared renderer defaults remain full resolution for development viewers. Refreshed the static package; no tests/browser checks or active-game reload. Appearance awaits user review.
+
+- Darkened the player GUI to blue-tinted charcoal at the user’s request so the game viewport stands out. Panels, roster cards, buttons, title controls and dialogs share dark surfaces with cool readable text and distinct selected/hover states; browser theme colour follows the palette. Gameplay, viewport rendering and footer sampling are unchanged. Refreshed the static package; no tests or browser checks run, and the active player tab was not reloaded. Appearance awaits user review.
+
 - Retained the requested FPS/frame/CPU/GPU footer in static deployments by preserving the existing performance module, styles and CPU/asynchronous GPU timing. Other inspector datasets and developer switches remain stripped. Updated current deployment instructions and rebuilt `docs/`; no tests or browser checks run.
 
 - User requests clearing `docs/` and rebuilding it without development/debug files. Moved project documentation and evidence to `project-docs/`, reserved `docs/` for generated static game files, and moved packaging metadata to `build/deployment/`. Updated the packager to clean the output on each deployment, the development documentation reader and current instructions. Rebuilt the package; no tests or browser checks requested or run.

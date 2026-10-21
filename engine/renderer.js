@@ -35,8 +35,10 @@ const vertexBuffers=[{arrayStride:44,attributes:[
  {arrayStride:64,stepMode:'instance',attributes:[5,6,7,8].map((shaderLocation,i)=>({shaderLocation,offset:i*16,format:'float32x4'}))}];
 
 export class WorldRenderer {
- constructor(canvas,onError,{modelLightCapacity=MAX_MODEL_LIGHTS,strictModelLights=false,gpuTiming=false,waterReflections='planar'}={}){
+ constructor(canvas,onError,{modelLightCapacity=MAX_MODEL_LIGHTS,strictModelLights=false,gpuTiming=false,waterReflections='planar',renderScale=1}={}){
   if(!Number.isInteger(modelLightCapacity)||modelLightCapacity<1||modelLightCapacity>MAX_SUPPORTED_MODEL_LIGHTS)throw new Error('Unsupported renderer model-light capacity.');
+  if(!Number.isFinite(renderScale)||renderScale<=0||renderScale>1)throw new Error('Renderer scale must be greater than zero and at most one.');
+  this.renderScale=renderScale;
   this.modelLightCapacity=modelLightCapacity;this.localLightCapacity=MAX_LOCAL_LIGHTS+modelLightCapacity-MAX_MODEL_LIGHTS;this.strictModelLights=strictModelLights;this.gpuTiming=gpuTiming;
   this.waterReflections=waterReflections;this.reflectionsEnabled=true;this.bloomEnabled=true;this.planar=null;this.visibleEmitters=0;this.waterHeight=null;this.waterBounds=null;this.lastDamageSolidRevision=-1;this.deathEffectsPrepared=false;this.deathEffectsPreparation=null;
   this.canvas=canvas;this.onError=onError;this.draws=[];this.drawMap=new Map();this.frameData=new Float32Array(92);this.localLightData=new Float32Array(4+this.localLightCapacity*8);
@@ -469,7 +471,9 @@ export class WorldRenderer {
   if(end)pass.end();return count;}
  draw(inspectFrame=true){
   const start=performance.now(),canvas=this.canvas,dpr=Math.min(devicePixelRatio||1,2),limit=this.device.limits.maxTextureDimension2D;
-  const displayWidth=canvas.clientWidth,displayHeight=canvas.clientHeight,scale=Math.min(dpr,limit/Math.max(1,displayWidth),limit/Math.max(1,displayHeight));
+  // Scale the complete output, including post-processing, before the canvas is
+  // enlarged for display. Keep CSS dimensions intact for input and overlays.
+  const displayWidth=canvas.clientWidth,displayHeight=canvas.clientHeight,scale=Math.min(dpr,limit/Math.max(1,displayWidth),limit/Math.max(1,displayHeight))*this.renderScale;
   const w=Math.max(1,Math.round(displayWidth*scale)),h=Math.max(1,Math.round(displayHeight*scale));
   if(canvas.width!==w||canvas.height!==h||!this.targets||this.waterTargetActive!==!!this.waterDraw){canvas.width=w;canvas.height=h;this.resize(w,h);}
   if(!this.screenGroup){this.vista?.resize(w,h);this.bindScreen();}

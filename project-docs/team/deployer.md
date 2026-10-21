@@ -4,6 +4,8 @@ Established 21 October 2026. **Current policy: keep deployments simple.** The us
 
 ## What “deploy the game” means
 
+**Repository policy (21 October): local commits are allowed; pushing changes to any remote repository is NOT allowed.** Do not push or publish through Git or an equivalent tool/API. This supersedes earlier statements that local commits require a separate request.
+
 Prepare the current game in the repository-root `docs/` directory so it can be served as a static GitHub Pages site. This authorises local packaging only. A commit, push, hosting configuration or online publication needs a separate request.
 
 ## Default procedure

@@ -1,0 +1,1526 @@
+{
+  "schema": "defender.level",
+  "version": 4,
+  "id": "ice-01",
+  "name": "The frostwater pass",
+  "zone": "C",
+  "size": [
+    16,
+    16
+  ],
+  "waves": 5,
+  "placements": [
+    {
+      "id": "scene-1",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        3
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-2",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "box": [
+        4,
+        0,
+        7
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-3",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        11
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-4",
+      "model": "ice-wall",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        6
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-5",
+      "model": "ice-pillar-broken",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        6
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-6",
+      "model": "ice-wall",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        9
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-7",
+      "model": "ice-pillar-broken",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        10
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-8",
+      "model": "ice-pillar",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        3
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-9",
+      "model": "ice-rock",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-10",
+      "model": "ice-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        7
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-11",
+      "model": "ice-pillar-broken",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        8
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-12",
+      "model": "ice-rock",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        14
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-13",
+      "model": "ice-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        14
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-14",
+      "model": "ice-rock",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        12
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-15",
+      "model": "ice-shrub",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        3
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-16",
+      "model": "ice-shrub",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        3
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-17",
+      "model": "ice-shrub",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        1
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-18",
+      "model": "ice-shrub",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        10
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-19",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        11
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-20",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        13
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-21",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        14
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-22",
+      "model": "ice-rock",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        13
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-23",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        11
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-24",
+      "model": "ice-pillar-broken",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        12
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-25",
+      "model": "ice-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        9
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-26",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        12
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-27",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        12
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-28",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        13
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-29",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        13
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-30",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        14
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-31",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        1
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-32",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        1
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-33",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        2
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-34",
+      "model": "ice-pillar-broken",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        2
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-35",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        3
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-36",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        12
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-37",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        12
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-38",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        13
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-39",
+      "model": "ice-pillar-broken",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        13
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-40",
+      "model": "ice-fir-young",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        1
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-41",
+      "model": "ice-fir",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        1
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-42",
+      "model": "ice-shrub",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        2
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-43",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        4
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-44",
+      "model": "ice-pebbles",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-45",
+      "model": "ice-flowers",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        9
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-46",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        11
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-47",
+      "model": "ice-pebbles",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-48",
+      "model": "ice-flowers",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-49",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-50",
+      "model": "ice-pebbles",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        10
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-51",
+      "model": "ice-flowers",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        8
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-52",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        6
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-53",
+      "model": "ice-pebbles",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        2
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-54",
+      "model": "ice-flowers",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        1
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-55",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        2
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-56",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        10
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-57",
+      "model": "ice-pebbles",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        11
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-58",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        14
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-59",
+      "model": "ice-flowers",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        15
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-60",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        11
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-61",
+      "model": "ice-pebbles",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        14
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-62",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        13
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-63",
+      "model": "ice-flowers",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        8
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-64",
+      "model": "ice-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-65",
+      "model": "ice-pebbles",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        4
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "path": [
+    [
+      6,
+      0,
+      0
+    ],
+    [
+      6,
+      0,
+      1
+    ],
+    [
+      6,
+      0,
+      2
+    ],
+    [
+      6,
+      0,
+      3
+    ],
+    [
+      6,
+      0,
+      4
+    ],
+    [
+      5,
+      0,
+      4
+    ],
+    [
+      4,
+      0,
+      4
+    ],
+    [
+      3,
+      0,
+      4
+    ],
+    [
+      3,
+      0,
+      5
+    ],
+    [
+      3,
+      0,
+      6
+    ],
+    [
+      3,
+      0,
+      7
+    ],
+    [
+      3,
+      0,
+      8
+    ],
+    [
+      4,
+      0,
+      8
+    ],
+    [
+      5,
+      0,
+      8
+    ],
+    [
+      6,
+      0,
+      8
+    ],
+    [
+      7,
+      0,
+      8
+    ],
+    [
+      8,
+      0,
+      8
+    ],
+    [
+      9,
+      0,
+      8
+    ],
+    [
+      10,
+      0,
+      8
+    ],
+    [
+      10,
+      0,
+      9
+    ],
+    [
+      10,
+      0,
+      10
+    ],
+    [
+      10,
+      0,
+      11
+    ],
+    [
+      10,
+      0,
+      12
+    ],
+    [
+      9,
+      0,
+      12
+    ],
+    [
+      8,
+      0,
+      12
+    ],
+    [
+      7,
+      0,
+      12
+    ],
+    [
+      6,
+      0,
+      12
+    ],
+    [
+      6,
+      0,
+      13
+    ],
+    [
+      6,
+      0,
+      14
+    ],
+    [
+      6,
+      0,
+      15
+    ]
+  ],
+  "pathHeight": 24,
+  "terrain": {
+    "defaultHeight": 24,
+    "boxes": [
+      {
+        "box": [
+          8,
+          0
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          9,
+          0
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          10,
+          0
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          8,
+          1
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          9,
+          1
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          10,
+          1
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          12,
+          1
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          13,
+          1
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          14,
+          1
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          15,
+          1
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          8,
+          2
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          9,
+          2
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          10,
+          2
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          12,
+          2
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          13,
+          2
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          14,
+          2
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          15,
+          2
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          12,
+          3
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          13,
+          3
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          14,
+          3
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          15,
+          3
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          12,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          13,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          14,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          15,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          12,
+          5
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          13,
+          5
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          14,
+          5
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          15,
+          5
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          13,
+          6
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          14,
+          6
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          15,
+          6
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          0,
+          10
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          10
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          2,
+          10
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          11
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          11
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          2,
+          11
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          12,
+          11
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          13,
+          11
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          14,
+          11
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          12
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          12
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          2,
+          12
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          12,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          13,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          14,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          13
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          13
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          2,
+          13
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          12,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          13,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          14,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          14
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          14
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          2,
+          14
+        ],
+        "ground": 36,
+        "water": 0
+      },
+      {
+        "box": [
+          12,
+          14
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          13,
+          14
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          14,
+          14
+        ],
+        "ground": 28,
+        "water": 0
+      }
+    ]
+  },
+  "environment": {
+    "timeOfDay": 10.5,
+    "weather": {
+      "enabled": false
+    },
+    "sky": {
+      "direction": [
+        -0.65,
+        1,
+        -0.45
+      ],
+      "color": "#FFF8EB",
+      "intensity": 0.88,
+      "ambient": "#C7CFD0",
+      "ambientIntensity": 0.48
+    }
+  },
+  "waterMaterial": {
+    "type": "water",
+    "color": "#52899F",
+    "emission": 0,
+    "reflectiveness": 0.65,
+    "opacity": 0.16,
+    "absorption": 0.035,
+    "refraction": 0.65,
+    "rippleStrength": 0.16,
+    "rippleScale": 0.8,
+    "rippleSpeed": 0.13
+  }
+}

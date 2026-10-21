@@ -1,0 +1,82 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [354.51ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [20.93ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [20.26ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [20.38ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [67.45ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [57.20ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [27.84ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [77.82ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [20.19ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [20.14ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [32.36ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [71.75ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [62.27ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [40.52ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [21.08ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [20.73ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [20.71ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [20.29ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [119.39ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [20.98ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [21.10ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [26.72ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [20.58ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [215.71ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [20.34ms]
+(pass) static contact drops its incoming claim before the impact callback [19.99ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [81.11ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [37.10ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [73.05ms]
+489 |   for(let n=0;n<240&&slot.phase>=PHASE.BOOST;n++){
+490 |    f.advance(1/120);accelerate||=slot.steeringTorque>.3;brake||=slot.steeringTorque<-.3;
+491 |    const a=f.preview.thrust.instanceData,count=f.preview.thrust.instanceCount;
+492 |    for(let i=0;i+1<count;i++){const k=i*16;if(a[k+7]!==3.5||a[k+9]<.9)continue;pulse=true;for(let axis=0;axis<3;axis++)expect(a[k+4+axis]).toBeCloseTo(-a[k+20+axis],5);expect(a[k+8]).toBe(1);expect(a[k+12]).toBe(-1);expect(a[k+10]).toBeCloseTo(.9,5);break;}
+493 |   }
+494 |   expect(accelerate).toBe(true);expect(brake).toBe(true);expect(pulse).toBe(true);expect(f.preview.thrust.instanceCount).toBeLessThanOrEqual(MAX_MISSILES*4);
+                                                                             ^
+error: expect(received).toBe(expected)
+
+Expected: true
+Received: false
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/missile-flight.test.js:494:72)
+(fail) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [30.40ms]
+
+tests/missile-effects.test.js:
+(pass) missile impacts throw a layered fireball, hot fragments and smoke with the original light curve [1.11ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [0.87ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [0.94ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.14ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [0.91ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.18ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [0.84ms]
+(pass) simultaneous missile bursts stay bounded and pause holds all payloads exactly [0.69ms]
+
+tests/play-config.test.js:
+(pass) The campaign retains Zone A and adds forty-eight finite later encounters [1.63ms]
+(pass) family and tier introductions are bounded global encounter numbers [2.31ms]
+(pass) play profiles are immutable and leave all shared preview tuning untouched [1.50ms]
+(pass) capacity budgets every affordable family and species without adding disjoint wave peaks [8.18ms]
+(pass) resolved firing profiles preserve actual family delivery and finite cadence [6.99ms]
+(pass) bad schedules, unknown routes and invalid species override fields fail before scene creation [16.73ms]
+(pass) settling time stays tunable independently of combat tuning [6.78ms]
+(pass) later encounters use only their existing zone species, real branches and stable level profiles [1.04ms]
+
+tests/bridges.test.js:
+(pass) explicit bridges retain water and bed, add walking support, preserve dry land-only placement and protect source edits [0.47ms]
+(pass) offline actual Dog poses retain supported flat soles across both banks and the bridge deck [19.90ms]
+(pass) bridge validation rejects invalid metadata, submerged decks, dry fills, route gaps and missing or turning banks [0.46ms]
+(pass) wooden deck and natural terrain exactly match an independent solid-cell surface oracle without hidden or duplicate faces [36.80ms]
+(pass) weather rebuild preserves the exact water mesh and matte nonemissive wood without stone or soil on the deck [9.69ms]
+(pass) bridge top supports path camera, off-line ground clearance, debris and rain while preserving an open under-deck gap [3.73ms]
+
+1 tests failed:
+(fail) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [30.40ms]
+
+ 51 pass
+ 1 fail
+ 38444 expect() calls
+Ran 52 tests across 4 files. [1.82s]

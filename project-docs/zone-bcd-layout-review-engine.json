@@ -1,0 +1,1633 @@
+{
+  "schema": "defender.zone-bcd-layout-review-engine",
+  "date": "2026-10-17",
+  "scope": "Research-informed B/C/D revisions, Walker B and Spider D; saved assets and authored weather off. CPU resource accounting and actual transformed vertex clip checks, not GPU timing.",
+  "notes": [
+    "Geometry bytes are uploaded vertex/index/matrix payloads. Shared render targets, uniforms, lazy effect pools and source JSON are excluded. Three scene buffers per nonempty opaque draw group, plus three for water.",
+    "Camera probes use the unmodified default framed overview at stated CSS aspect ratios. Geometry is checked at the initial actor pose; the separate gait tests cover animated clearance and bends.",
+    "Shadow depth remains 2048 squared; the projection spans the complete square level. No quality, light, camera or GPU code change was necessary for these placements.",
+    "Optional weather remains off and allocates no fields or GPU seed buffers. Enabled counts are capacity projections under existing constants, not a request to change accepted weather tuning.",
+    "All static visibility cuboids come from occupied source cells and terrain, preserving holes; water, player defences and moving enemies are excluded.",
+    "Static scenery uses quarter-turn placement and one unposed rigid part. Arbitrarily posed scenery would need a different visibility representation.",
+    "Exact path/deployment box clearance below checks every occupied scenery cell, including unit-offset detail props, against reserved boxes. It does not claim an arbitrary-angle tower sweep is safe for every future player placement."
+  ],
+  "zones": {
+    "B": {
+      "level": "ochre-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 35,
+      "routeUnits": 816,
+      "placements": 97,
+      "runtimeActors": 3,
+      "uniqueModelAssets": 12,
+      "opaqueDrawGroups": 22,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 123,
+      "uniqueQuads": 4922,
+      "instancedQuads": 14619,
+      "vertexBytes": 866272,
+      "indexBytes": 118128,
+      "instanceBytes": 7872,
+      "gpuGeometryBytes": 992272,
+      "sceneBufferCount": 69,
+      "retainedRendererTransformBytes": 7808,
+      "actorVisibilityCPUBytes": 1512,
+      "largestGeometryBufferBytes": 348832,
+      "bvh": {
+        "primitiveCount": 1987,
+        "nodeCount": 3973,
+        "bytes": 111244
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          79,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 58476
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.309076
+            ],
+            "maximum": [
+              0.829854,
+              0.789871,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 58476
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.309076
+            ],
+            "maximum": [
+              0.925926,
+              0.513573,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 58476
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.289726
+          ],
+          "maximum": [
+            0.878455,
+            0.675998,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 58476
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 46,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "clear",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 0,
+        "projectedEnabledSeedBytes": 0
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 1982,
+          "instances": 1,
+          "bytes": 396464
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "ochre-mesa:base:body",
+          "quads": 245,
+          "instances": 2,
+          "bytes": 49128
+        },
+        {
+          "key": "ochre-mesa-low:base:body",
+          "quads": 165,
+          "instances": 7,
+          "bytes": 33448
+        },
+        {
+          "key": "ochre-cactus:base:body",
+          "quads": 130,
+          "instances": 3,
+          "bytes": 26192
+        },
+        {
+          "key": "ochre-cactus-young:base:body",
+          "quads": 79,
+          "instances": 9,
+          "bytes": 16376
+        },
+        {
+          "key": "ochre-rock:base:body",
+          "quads": 119,
+          "instances": 18,
+          "bytes": 24952
+        },
+        {
+          "key": "ochre-wall:base:body",
+          "quads": 121,
+          "instances": 4,
+          "bytes": 24456
+        },
+        {
+          "key": "ochre-shrub:base:body",
+          "quads": 156,
+          "instances": 10,
+          "bytes": 31840
+        },
+        {
+          "key": "ochre-tuft:base:body",
+          "quads": 77,
+          "instances": 17,
+          "bytes": 16488
+        },
+        {
+          "key": "ochre-pebbles:base:body",
+          "quads": 44,
+          "instances": 13,
+          "bytes": 9632
+        },
+        {
+          "key": "ochre-flowers:base:body",
+          "quads": 64,
+          "instances": 11,
+          "bytes": 13504
+        },
+        {
+          "key": "walker:base:body",
+          "quads": 108,
+          "instances": 3,
+          "bytes": 21792
+        },
+        {
+          "key": "walker:base:thigh-l",
+          "quads": 54,
+          "instances": 3,
+          "bytes": 10992
+        },
+        {
+          "key": "walker:base:shin-l",
+          "quads": 47,
+          "instances": 3,
+          "bytes": 9592
+        },
+        {
+          "key": "walker:base:foot-l",
+          "quads": 31,
+          "instances": 3,
+          "bytes": 6392
+        },
+        {
+          "key": "walker:base:thigh-r",
+          "quads": 54,
+          "instances": 3,
+          "bytes": 10992
+        },
+        {
+          "key": "walker:base:shin-r",
+          "quads": 47,
+          "instances": 3,
+          "bytes": 9592
+        },
+        {
+          "key": "walker:base:foot-r",
+          "quads": 31,
+          "instances": 3,
+          "bytes": 6392
+        },
+        {
+          "key": "water",
+          "quads": 16,
+          "instances": 1,
+          "bytes": 3264
+        }
+      ],
+      "combat": {
+        "simulationStep": 0.016666666666666666,
+        "allDead": true,
+        "elapsedSeconds": 28.716667,
+        "shots": 78,
+        "deaths": [
+          {
+            "id": "preview-walker-3",
+            "timeSeconds": 11.866667,
+            "hits": 26,
+            "distance": 605.6
+          },
+          {
+            "id": "preview-walker-2",
+            "timeSeconds": 23.683333,
+            "hits": 26,
+            "distance": 658.3
+          },
+          {
+            "id": "preview-walker-1",
+            "timeSeconds": 28.716667,
+            "hits": 26,
+            "distance": 588.9
+          }
+        ],
+        "turrets": [
+          {
+            "id": "scene-1",
+            "variant": "base",
+            "shots": 12,
+            "maxRange": 48,
+            "strength": 10
+          },
+          {
+            "id": "scene-2",
+            "variant": "upgrade1",
+            "shots": 66,
+            "maxRange": 72,
+            "strength": 12
+          },
+          {
+            "id": "scene-3",
+            "variant": "base",
+            "shots": 0,
+            "maxRange": 48,
+            "strength": 10
+          }
+        ]
+      },
+      "candidateValidation": {
+        "routeStepUnits": 1,
+        "recoilSamples": [
+          0,
+          0.625,
+          1.25
+        ],
+        "targetWorldY": 46.5,
+        "candidates": [
+          {
+            "box": [
+              4,
+              7
+            ],
+            "role": "showcase 1",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 166,
+                "pairedMuzzleChecks": 498,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 110.855495
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 280,
+                "pairedMuzzleChecks": 840,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 110.855495
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              9,
+              9
+            ],
+            "role": "showcase 2",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 179,
+                "pairedMuzzleChecks": 537,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 62.958458
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 231,
+                "pairedMuzzleChecks": 693,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 94.300213
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              4,
+              12
+            ],
+            "role": "showcase 3",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 76.186635
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 135,
+                "pairedMuzzleChecks": 405,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 76.186635
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              2,
+              5
+            ],
+            "role": "early-only",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 43.084853
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 116,
+                "pairedMuzzleChecks": 348,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 43.084853
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              5,
+              7
+            ],
+            "role": "early/late",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 166,
+                "pairedMuzzleChecks": 498,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 129.393385
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 280,
+                "pairedMuzzleChecks": 840,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 129.393385
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              9,
+              7
+            ],
+            "role": "split pocket",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 118,
+                "pairedMuzzleChecks": 354,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 50.186635
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 224,
+                "pairedMuzzleChecks": 672,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 59.638607
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              2,
+              12
+            ],
+            "role": "opposite late side",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 28.186635
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 135,
+                "pairedMuzzleChecks": 405,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 28.186635
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "C": {
+      "level": "ice-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 33,
+      "routeUnits": 768,
+      "placements": 98,
+      "runtimeActors": 0,
+      "uniqueModelAssets": 11,
+      "opaqueDrawGroups": 15,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 103,
+      "uniqueQuads": 5275,
+      "instancedQuads": 21460,
+      "vertexBytes": 928400,
+      "indexBytes": 126600,
+      "instanceBytes": 6592,
+      "gpuGeometryBytes": 1061592,
+      "sceneBufferCount": 48,
+      "retainedRendererTransformBytes": 6528,
+      "actorVisibilityCPUBytes": 0,
+      "largestGeometryBufferBytes": 370128,
+      "bvh": {
+        "primitiveCount": 3743,
+        "nodeCount": 7485,
+        "bytes": 209580
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          90,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 85840
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.31637
+            ],
+            "maximum": [
+              0.829854,
+              0.899169,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 85840
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.31637
+            ],
+            "maximum": [
+              0.925926,
+              0.584639,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 85840
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.265726
+          ],
+          "maximum": [
+            0.878455,
+            0.675998,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 85840
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 68,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "snow",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 4096,
+        "projectedEnabledSeedBytes": 196608
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 2103,
+          "instances": 1,
+          "bytes": 420664
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "ice-fir:base:body",
+          "quads": 597,
+          "instances": 11,
+          "bytes": 120104
+        },
+        {
+          "key": "ice-fir-young:base:body",
+          "quads": 385,
+          "instances": 13,
+          "bytes": 77832
+        },
+        {
+          "key": "ice-pillar:base:body",
+          "quads": 143,
+          "instances": 5,
+          "bytes": 28920
+        },
+        {
+          "key": "ice-pillar-broken:base:body",
+          "quads": 143,
+          "instances": 2,
+          "bytes": 28728
+        },
+        {
+          "key": "ice-wall:base:body",
+          "quads": 123,
+          "instances": 2,
+          "bytes": 24728
+        },
+        {
+          "key": "ice-rock:base:body",
+          "quads": 99,
+          "instances": 15,
+          "bytes": 20760
+        },
+        {
+          "key": "ice-shrub:base:body",
+          "quads": 146,
+          "instances": 6,
+          "bytes": 29584
+        },
+        {
+          "key": "ice-tuft:base:body",
+          "quads": 60,
+          "instances": 17,
+          "bytes": 13088
+        },
+        {
+          "key": "ice-pebbles:base:body",
+          "quads": 31,
+          "instances": 12,
+          "bytes": 6968
+        },
+        {
+          "key": "ice-flowers:base:body",
+          "quads": 64,
+          "instances": 12,
+          "bytes": 13568
+        },
+        {
+          "key": "water",
+          "quads": 29,
+          "instances": 1,
+          "bytes": 5864
+        }
+      ],
+      "candidateValidation": {
+        "routeStepUnits": 1,
+        "recoilSamples": [
+          0,
+          0.625,
+          1.25
+        ],
+        "targetWorldY": 34.5,
+        "candidates": [
+          {
+            "box": [
+              4,
+              3
+            ],
+            "role": "showcase 1",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 30.705449
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 135,
+                "pairedMuzzleChecks": 405,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 31.599714
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              6,
+              5
+            ],
+            "role": "showcase 2",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 84,
+                "pairedMuzzleChecks": 252,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 75.630607
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 232,
+                "pairedMuzzleChecks": 696,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 76.38208
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              11,
+              11
+            ],
+            "role": "showcase 3",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 67.421244
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 135,
+                "pairedMuzzleChecks": 405,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 86.607336
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              7,
+              5
+            ],
+            "role": "return-side base",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 84,
+                "pairedMuzzleChecks": 252,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 78.949497
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 242,
+                "pairedMuzzleChecks": 726,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 99.927726
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              6,
+              7
+            ],
+            "role": "later first pass",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 85,
+                "pairedMuzzleChecks": 255,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 75.630607
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 289,
+                "pairedMuzzleChecks": 867,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 76.38208
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              11,
+              7
+            ],
+            "role": "earlier terminal",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 82.573626
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 137,
+                "pairedMuzzleChecks": 411,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 84.371465
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              13,
+              11
+            ],
+            "role": "opposite late side",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 46.412032
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 135,
+                "pairedMuzzleChecks": 405,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 47.123111
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "D": {
+      "level": "plum-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 31,
+      "routeUnits": 720,
+      "placements": 102,
+      "runtimeActors": 3,
+      "uniqueModelAssets": 13,
+      "opaqueDrawGroups": 35,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 164,
+      "uniqueQuads": 5126,
+      "instancedQuads": 19926,
+      "vertexBytes": 902176,
+      "indexBytes": 123024,
+      "instanceBytes": 10496,
+      "gpuGeometryBytes": 1035696,
+      "sceneBufferCount": 108,
+      "retainedRendererTransformBytes": 10432,
+      "actorVisibilityCPUBytes": 4104,
+      "largestGeometryBufferBytes": 252384,
+      "bvh": {
+        "primitiveCount": 3429,
+        "nodeCount": 6857,
+        "bytes": 191996
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          80,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 79704
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.308693
+            ],
+            "maximum": [
+              0.829854,
+              0.789871,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 79704
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.308693
+            ],
+            "maximum": [
+              0.925926,
+              0.513573,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 79704
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.303634
+          ],
+          "maximum": [
+            0.878455,
+            0.68205,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 79704
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 57,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "leaves",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 1024,
+        "projectedEnabledSeedBytes": 65536
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 1434,
+          "instances": 1,
+          "bytes": 286864
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "plum-arch:base:body",
+          "quads": 158,
+          "instances": 2,
+          "bytes": 31728
+        },
+        {
+          "key": "plum-wall:base:body",
+          "quads": 89,
+          "instances": 2,
+          "bytes": 17928
+        },
+        {
+          "key": "plum-arch-broken:base:body",
+          "quads": 97,
+          "instances": 5,
+          "bytes": 19720
+        },
+        {
+          "key": "plum-rock:base:body",
+          "quads": 121,
+          "instances": 15,
+          "bytes": 25160
+        },
+        {
+          "key": "plum-tree-young:base:body",
+          "quads": 255,
+          "instances": 12,
+          "bytes": 51768
+        },
+        {
+          "key": "plum-tree:base:body",
+          "quads": 405,
+          "instances": 9,
+          "bytes": 81576
+        },
+        {
+          "key": "plum-shrub:base:body",
+          "quads": 184,
+          "instances": 12,
+          "bytes": 37568
+        },
+        {
+          "key": "plum-tree-tall:base:body",
+          "quads": 379,
+          "instances": 3,
+          "bytes": 75992
+        },
+        {
+          "key": "plum-tuft:base:body",
+          "quads": 48,
+          "instances": 16,
+          "bytes": 10624
+        },
+        {
+          "key": "plum-pebbles:base:body",
+          "quads": 36,
+          "instances": 12,
+          "bytes": 7968
+        },
+        {
+          "key": "plum-flowers:base:body",
+          "quads": 95,
+          "instances": 11,
+          "bytes": 19704
+        },
+        {
+          "key": "spider:base:body",
+          "quads": 83,
+          "instances": 3,
+          "bytes": 16792
+        },
+        {
+          "key": "spider:base:upper-fl",
+          "quads": 30,
+          "instances": 3,
+          "bytes": 6192
+        },
+        {
+          "key": "spider:base:lower-fl",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "spider:base:foot-fl",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "spider:base:upper-fr",
+          "quads": 30,
+          "instances": 3,
+          "bytes": 6192
+        },
+        {
+          "key": "spider:base:lower-fr",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "spider:base:foot-fr",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "spider:base:upper-ml",
+          "quads": 34,
+          "instances": 3,
+          "bytes": 6992
+        },
+        {
+          "key": "spider:base:lower-ml",
+          "quads": 19,
+          "instances": 3,
+          "bytes": 3992
+        },
+        {
+          "key": "spider:base:foot-ml",
+          "quads": 13,
+          "instances": 3,
+          "bytes": 2792
+        },
+        {
+          "key": "spider:base:upper-mr",
+          "quads": 34,
+          "instances": 3,
+          "bytes": 6992
+        },
+        {
+          "key": "spider:base:lower-mr",
+          "quads": 19,
+          "instances": 3,
+          "bytes": 3992
+        },
+        {
+          "key": "spider:base:foot-mr",
+          "quads": 13,
+          "instances": 3,
+          "bytes": 2792
+        },
+        {
+          "key": "spider:base:upper-rl",
+          "quads": 30,
+          "instances": 3,
+          "bytes": 6192
+        },
+        {
+          "key": "spider:base:lower-rl",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "spider:base:foot-rl",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "spider:base:upper-rr",
+          "quads": 30,
+          "instances": 3,
+          "bytes": 6192
+        },
+        {
+          "key": "spider:base:lower-rr",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "spider:base:foot-rr",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "water",
+          "quads": 2,
+          "instances": 1,
+          "bytes": 464
+        }
+      ],
+      "combat": {
+        "simulationStep": 0.016666666666666666,
+        "allDead": true,
+        "elapsedSeconds": 39.05,
+        "shots": 76,
+        "deaths": [
+          {
+            "id": "preview-spider-1",
+            "timeSeconds": 9.483333,
+            "hits": 26,
+            "distance": 147.866667
+          },
+          {
+            "id": "preview-spider-3",
+            "timeSeconds": 20.683333,
+            "hits": 25,
+            "distance": 557.466667
+          },
+          {
+            "id": "preview-spider-2",
+            "timeSeconds": 39.05,
+            "hits": 25,
+            "distance": 544.4
+          }
+        ],
+        "turrets": [
+          {
+            "id": "scene-1",
+            "variant": "base",
+            "shots": 2,
+            "maxRange": 48,
+            "strength": 10
+          },
+          {
+            "id": "scene-2",
+            "variant": "upgrade1",
+            "shots": 74,
+            "maxRange": 72,
+            "strength": 12
+          },
+          {
+            "id": "scene-3",
+            "variant": "base",
+            "shots": 0,
+            "maxRange": 48,
+            "strength": 10
+          }
+        ]
+      },
+      "candidateValidation": {
+        "routeStepUnits": 1,
+        "recoilSamples": [
+          0,
+          0.625,
+          1.25
+        ],
+        "targetWorldY": 33.5,
+        "candidates": [
+          {
+            "box": [
+              10,
+              2
+            ],
+            "role": "showcase 1",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 95.689999
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 116,
+                "pairedMuzzleChecks": 348,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 101.630239
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              8,
+              4
+            ],
+            "role": "showcase 2",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 166,
+                "pairedMuzzleChecks": 498,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 103.589315
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 270,
+                "pairedMuzzleChecks": 810,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 112.938334
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              3,
+              2
+            ],
+            "role": "showcase 3",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 83,
+                "pairedMuzzleChecks": 249,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 76.885071
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 135,
+                "pairedMuzzleChecks": 405,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 83.951359
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              8,
+              2
+            ],
+            "role": "early/revisit",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 118,
+                "pairedMuzzleChecks": 354,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 128.356674
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 203,
+                "pairedMuzzleChecks": 609,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 136.189925
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              5,
+              8
+            ],
+            "role": "continuous inner corner",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 131,
+                "pairedMuzzleChecks": 393,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 72.713467
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 184,
+                "pairedMuzzleChecks": 552,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 72.713467
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              8,
+              8
+            ],
+            "role": "entry/bottom corner",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 131,
+                "pairedMuzzleChecks": 393,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 72.481596
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 183,
+                "pairedMuzzleChecks": 549,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 72.481596
+                }
+              }
+            }
+          },
+          {
+            "box": [
+              3,
+              4
+            ],
+            "role": "late/inner turn",
+            "variants": {
+              "base": {
+                "range": 48,
+                "inRangeSamples": 118,
+                "pairedMuzzleChecks": 354,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 53.821397
+                }
+              },
+              "upgrade1": {
+                "range": 72,
+                "inRangeSamples": 222,
+                "pairedMuzzleChecks": 666,
+                "blockedPairs": 0,
+                "headSweep": {
+                  "radius": 15.813365,
+                  "staticCuboidEnvelopeIntersections": 0,
+                  "minimumHorizontalGapAtHeadHeight": 56.422361
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "candidateValidationLimits": [
+    "Finite one-unit route samples of both actual muzzle rays, supplemented by real combat checks. C uses a reference torso height because no enemy is assigned.",
+    "Each plot is considered individually; this does not approve overlapping neighbouring turrets.",
+    "The cylinder contains every rotating head vertex and the complete recoil interval. Zero static-cuboid intersections is conservative all-yaw clearance."
+  ],
+  "status": "Intermediate B\u2013D audit before final preview actor spacing, cooperative targeting and cosmetic actors; superseded.",
+  "supersededBy": "zone-preview-review-engine.json"
+}

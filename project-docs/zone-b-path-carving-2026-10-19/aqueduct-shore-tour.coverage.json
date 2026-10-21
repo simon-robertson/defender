@@ -1,0 +1,7980 @@
+{
+  "id": "aqueduct-shore-tour",
+  "sourceHash": "32516e96472e42605fdc53e74046e2b3164d1ad9549e025521e5919f39d4ed3f",
+  "method": "Production actual gun range, mechanical pitch and both pitched muzzle rays at zero/full recoil; Arc closest terminal, centre LOS and facing-side surface contact. One-unit midpoint bins per species/complete route; excluded physical combinations contribute no eligibility. Arc upgrade2 is active; gun upgrade2 remains inactive and has no attack coverage. Silo intervals are72/96/120 centre-range admission only; separate finite production flights establish selected examples. Base-useful means positive measured opportunity against every B species with at least one physically allowed base gun/Arc, not universal weapon fit or guaranteed damage. Adjacent alternatives are not a certified simultaneous arrangement.",
+  "classification": {
+    "main": 29,
+    "upgrade-dependent": 3
+  },
+  "surveyedSites": 32,
+  "baseGunArcUseful": 29,
+  "baseGunUseful": 26,
+  "baseArcUseful": 29,
+  "bothBaseWeaponsUseful": 26,
+  "upgradeDependent": [
+    {
+      "id": "shore-return-10-6",
+      "box": [
+        10,
+        6
+      ],
+      "group": "shoreReturn"
+    },
+    {
+      "id": "shore-return-11-6",
+      "box": [
+        11,
+        6
+      ],
+      "group": "shoreReturn"
+    },
+    {
+      "id": "shore-return-12-6",
+      "box": [
+        12,
+        6
+      ],
+      "group": "shoreReturn"
+    }
+  ],
+  "clearanceReady": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "count": 29
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "count": 29
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "count": 30
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "count": 32
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "count": 32
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "count": 32
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "base",
+      "count": 32
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade1",
+      "count": 32
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade2",
+      "count": 32
+    }
+  ],
+  "excluded": [
+    {
+      "site": "shore-return-10-10",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-11-12",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-12-14",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "shore-return-10-10",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-11-12",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-12-14",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "shore-return-10-10",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-12-14",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    }
+  ],
+  "independentSiteUnion": [
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "walker",
+      "eligible": [
+        [
+          0,
+          231
+        ],
+        [
+          294,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          231,
+          294
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "dune-tread",
+      "eligible": [
+        [
+          0,
+          234
+        ],
+        [
+          294,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          234,
+          294
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "twin-fan",
+      "eligible": [
+        [
+          0,
+          228
+        ],
+        [
+          294,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          228,
+          294
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "walker",
+      "eligible": [
+        [
+          0,
+          236
+        ],
+        [
+          248,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          236,
+          248
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "dune-tread",
+      "eligible": [
+        [
+          0,
+          720
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "twin-fan",
+      "eligible": [
+        [
+          0,
+          236
+        ],
+        [
+          246,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          236,
+          246
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "walker",
+      "eligible": [
+        [
+          0,
+          234
+        ],
+        [
+          294,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          234,
+          294
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "dune-tread",
+      "eligible": [
+        [
+          0,
+          234
+        ],
+        [
+          294,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          234,
+          294
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "twin-fan",
+      "eligible": [
+        [
+          0,
+          234
+        ],
+        [
+          294,
+          720
+        ]
+      ],
+      "uncovered": [
+        [
+          234,
+          294
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "walker",
+      "eligible": [
+        [
+          0,
+          720
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "dune-tread",
+      "eligible": [
+        [
+          0,
+          720
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "twin-fan",
+      "eligible": [
+        [
+          0,
+          720
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade2",
+      "species": "walker",
+      "eligible": [
+        [
+          0,
+          720
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade2",
+      "species": "dune-tread",
+      "eligible": [
+        [
+          0,
+          720
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade2",
+      "species": "twin-fan",
+      "eligible": [
+        [
+          0,
+          720
+        ]
+      ],
+      "uncovered": []
+    }
+  ],
+  "strongestRepeatedExamples": [],
+  "sites": [
+    {
+      "id": "north-entry-14-1",
+      "group": "northEntry",
+      "box": [
+        14,
+        1
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  38,
+                  92
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  0,
+                  117
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  117
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  117
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  38,
+                  92
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                92
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                117
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                168
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 92,
+                "dune-tread": 64,
+                "twin-fan": 92
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 92,
+                "dune-tread": 92,
+                "twin-fan": 92
+              },
+              "upgrade2": {
+                "walker": 117,
+                "dune-tread": 117,
+                "twin-fan": 117
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-entry-14-2",
+      "group": "northEntry",
+      "box": [
+        14,
+        2
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "dune-tread": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "twin-fan": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  34
+                ],
+                [
+                  62,
+                  116
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  116
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "dune-tread": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "twin-fan": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  116
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  0,
+                  159
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  159
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  159
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "dune-tread": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "twin-fan": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  34
+                ],
+                [
+                  62,
+                  116
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  116
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                116
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                159
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                192
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 88,
+                "twin-fan": 116
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 116,
+                "twin-fan": 116
+              },
+              "upgrade2": {
+                "walker": 159,
+                "dune-tread": 159,
+                "twin-fan": 159
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-entry-14-3",
+      "group": "northEntry",
+      "box": [
+        14,
+        3
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "dune-tread": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "twin-fan": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  4,
+                  150
+                ]
+              ],
+              "dune-tread": [
+                [
+                  4,
+                  58
+                ],
+                [
+                  86,
+                  150
+                ]
+              ],
+              "twin-fan": [
+                [
+                  4,
+                  150
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "dune-tread": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "twin-fan": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  4,
+                  150
+                ]
+              ],
+              "dune-tread": [
+                [
+                  4,
+                  150
+                ]
+              ],
+              "twin-fan": [
+                [
+                  4,
+                  150
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  0,
+                  183
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  183
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  183
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "dune-tread": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "twin-fan": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  4,
+                  150
+                ]
+              ],
+              "dune-tread": [
+                [
+                  4,
+                  58
+                ],
+                [
+                  86,
+                  150
+                ]
+              ],
+              "twin-fan": [
+                [
+                  4,
+                  150
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                4,
+                150
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                183
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                216
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 146,
+                "dune-tread": 118,
+                "twin-fan": 146
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 146,
+                "dune-tread": 146,
+                "twin-fan": 146
+              },
+              "upgrade2": {
+                "walker": 183,
+                "dune-tread": 183,
+                "twin-fan": 183
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-entry-14-4",
+      "group": "northEntry",
+      "box": [
+        14,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "dune-tread": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "twin-fan": [
+                [
+                  54,
+                  138
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  28,
+                  164
+                ]
+              ],
+              "dune-tread": [
+                [
+                  28,
+                  82
+                ],
+                [
+                  110,
+                  164
+                ]
+              ],
+              "twin-fan": [
+                [
+                  28,
+                  164
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "dune-tread": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "twin-fan": [
+                [
+                  54,
+                  138
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  28,
+                  164
+                ]
+              ],
+              "dune-tread": [
+                [
+                  28,
+                  164
+                ]
+              ],
+              "twin-fan": [
+                [
+                  28,
+                  164
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  3,
+                  207
+                ]
+              ],
+              "dune-tread": [
+                [
+                  3,
+                  207
+                ]
+              ],
+              "twin-fan": [
+                [
+                  3,
+                  207
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "dune-tread": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "twin-fan": [
+                [
+                  54,
+                  138
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  28,
+                  164
+                ]
+              ],
+              "dune-tread": [
+                [
+                  28,
+                  82
+                ],
+                [
+                  110,
+                  164
+                ]
+              ],
+              "twin-fan": [
+                [
+                  28,
+                  164
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                28,
+                164
+              ]
+            ],
+            "upgrade1": [
+              [
+                3,
+                207
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                384
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 136,
+                "dune-tread": 108,
+                "twin-fan": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 136,
+                "dune-tread": 136,
+                "twin-fan": 136
+              },
+              "upgrade2": {
+                "walker": 204,
+                "dune-tread": 204,
+                "twin-fan": 204
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-entry-16-1",
+      "group": "northEntry",
+      "box": [
+        16,
+        1
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  38,
+                  92
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  0,
+                  117
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  117
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  117
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  38,
+                  92
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                92
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                117
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                190
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 92,
+                "dune-tread": 64,
+                "twin-fan": 92
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 92,
+                "dune-tread": 92,
+                "twin-fan": 92
+              },
+              "upgrade2": {
+                "walker": 117,
+                "dune-tread": 117,
+                "twin-fan": 117
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-entry-16-2",
+      "group": "northEntry",
+      "box": [
+        16,
+        2
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "dune-tread": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "twin-fan": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  34
+                ],
+                [
+                  62,
+                  116
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  116
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "dune-tread": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "twin-fan": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  116
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  0,
+                  189
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  189
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  189
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "dune-tread": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "twin-fan": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  0,
+                  116
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  34
+                ],
+                [
+                  62,
+                  116
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  116
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                116
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                189
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                214
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 88,
+                "twin-fan": 116
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 116,
+                "twin-fan": 116
+              },
+              "upgrade2": {
+                "walker": 189,
+                "dune-tread": 189,
+                "twin-fan": 189
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-entry-16-3",
+      "group": "northEntry",
+      "box": [
+        16,
+        3
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "dune-tread": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "twin-fan": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  4,
+                  188
+                ]
+              ],
+              "dune-tread": [
+                [
+                  4,
+                  58
+                ],
+                [
+                  86,
+                  188
+                ]
+              ],
+              "twin-fan": [
+                [
+                  4,
+                  188
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "dune-tread": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "twin-fan": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  4,
+                  188
+                ]
+              ],
+              "dune-tread": [
+                [
+                  4,
+                  188
+                ]
+              ],
+              "twin-fan": [
+                [
+                  4,
+                  188
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  0,
+                  93
+                ],
+                [
+                  94,
+                  213
+                ]
+              ],
+              "dune-tread": [
+                [
+                  0,
+                  213
+                ]
+              ],
+              "twin-fan": [
+                [
+                  0,
+                  213
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "dune-tread": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "twin-fan": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  4,
+                  188
+                ]
+              ],
+              "dune-tread": [
+                [
+                  4,
+                  58
+                ],
+                [
+                  86,
+                  188
+                ]
+              ],
+              "twin-fan": [
+                [
+                  4,
+                  188
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                4,
+                188
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                213
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                238
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 184,
+                "dune-tread": 156,
+                "twin-fan": 184
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 184,
+                "dune-tread": 184,
+                "twin-fan": 184
+              },
+              "upgrade2": {
+                "walker": 212,
+                "dune-tread": 213,
+                "twin-fan": 213
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-entry-16-4",
+      "group": "northEntry",
+      "box": [
+        16,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  54,
+                  186
+                ]
+              ],
+              "dune-tread": [
+                [
+                  54,
+                  186
+                ]
+              ],
+              "twin-fan": [
+                [
+                  54,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  28,
+                  212
+                ]
+              ],
+              "dune-tread": [
+                [
+                  28,
+                  82
+                ],
+                [
+                  110,
+                  130
+                ],
+                [
+                  158,
+                  212
+                ]
+              ],
+              "twin-fan": [
+                [
+                  28,
+                  212
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  54,
+                  186
+                ]
+              ],
+              "dune-tread": [
+                [
+                  54,
+                  186
+                ]
+              ],
+              "twin-fan": [
+                [
+                  54,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  28,
+                  212
+                ]
+              ],
+              "dune-tread": [
+                [
+                  28,
+                  212
+                ]
+              ],
+              "twin-fan": [
+                [
+                  28,
+                  150
+                ],
+                [
+                  151,
+                  212
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  3,
+                  237
+                ]
+              ],
+              "dune-tread": [
+                [
+                  3,
+                  237
+                ]
+              ],
+              "twin-fan": [
+                [
+                  3,
+                  237
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  54,
+                  186
+                ]
+              ],
+              "dune-tread": [
+                [
+                  54,
+                  186
+                ]
+              ],
+              "twin-fan": [
+                [
+                  54,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  28,
+                  212
+                ]
+              ],
+              "dune-tread": [
+                [
+                  28,
+                  82
+                ],
+                [
+                  110,
+                  130
+                ],
+                [
+                  158,
+                  212
+                ]
+              ],
+              "twin-fan": [
+                [
+                  28,
+                  212
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                28,
+                212
+              ]
+            ],
+            "upgrade1": [
+              [
+                3,
+                237
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                336
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 184,
+                "dune-tread": 128,
+                "twin-fan": 184
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 184,
+                "dune-tread": 184,
+                "twin-fan": 183
+              },
+              "upgrade2": {
+                "walker": 234,
+                "dune-tread": 234,
+                "twin-fan": 234
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "aqueduct-18-4",
+      "group": "aqueduct",
+      "box": [
+        18,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  150,
+                  186
+                ]
+              ],
+              "dune-tread": [
+                [
+                  150,
+                  186
+                ]
+              ],
+              "twin-fan": [
+                [
+                  150,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  124,
+                  212
+                ]
+              ],
+              "dune-tread": [
+                [
+                  124,
+                  212
+                ]
+              ],
+              "twin-fan": [
+                [
+                  124,
+                  212
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  150,
+                  186
+                ]
+              ],
+              "dune-tread": [
+                [
+                  150,
+                  186
+                ]
+              ],
+              "twin-fan": [
+                [
+                  150,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  124,
+                  212
+                ]
+              ],
+              "dune-tread": [
+                [
+                  124,
+                  212
+                ]
+              ],
+              "twin-fan": [
+                [
+                  124,
+                  212
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  33,
+                  237
+                ]
+              ],
+              "dune-tread": [
+                [
+                  33,
+                  237
+                ]
+              ],
+              "twin-fan": [
+                [
+                  33,
+                  237
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  150,
+                  186
+                ]
+              ],
+              "dune-tread": [
+                [
+                  150,
+                  186
+                ]
+              ],
+              "twin-fan": [
+                [
+                  150,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  124,
+                  212
+                ]
+              ],
+              "dune-tread": [
+                [
+                  124,
+                  212
+                ]
+              ],
+              "twin-fan": [
+                [
+                  124,
+                  212
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                124,
+                212
+              ]
+            ],
+            "upgrade1": [
+              [
+                33,
+                237
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                288
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 36,
+                "dune-tread": 36,
+                "twin-fan": 36
+              },
+              "upgrade1": {
+                "walker": 88,
+                "dune-tread": 88,
+                "twin-fan": 88
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 36,
+                "dune-tread": 36,
+                "twin-fan": 36
+              },
+              "upgrade1": {
+                "walker": 88,
+                "dune-tread": 88,
+                "twin-fan": 88
+              },
+              "upgrade2": {
+                "walker": 204,
+                "dune-tread": 204,
+                "twin-fan": 204
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "aqueduct-18-5",
+      "group": "aqueduct",
+      "box": [
+        18,
+        5
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  144,
+                  210
+                ]
+              ],
+              "dune-tread": [
+                [
+                  144,
+                  210
+                ]
+              ],
+              "twin-fan": [
+                [
+                  144,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  120,
+                  236
+                ]
+              ],
+              "dune-tread": [
+                [
+                  120,
+                  164
+                ],
+                [
+                  182,
+                  236
+                ]
+              ],
+              "twin-fan": [
+                [
+                  120,
+                  236
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  144,
+                  210
+                ]
+              ],
+              "dune-tread": [
+                [
+                  144,
+                  210
+                ]
+              ],
+              "twin-fan": [
+                [
+                  144,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  120,
+                  236
+                ]
+              ],
+              "dune-tread": [
+                [
+                  120,
+                  236
+                ]
+              ],
+              "twin-fan": [
+                [
+                  120,
+                  236
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  57,
+                  279
+                ]
+              ],
+              "dune-tread": [
+                [
+                  57,
+                  279
+                ]
+              ],
+              "twin-fan": [
+                [
+                  57,
+                  279
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  144,
+                  210
+                ]
+              ],
+              "dune-tread": [
+                [
+                  144,
+                  210
+                ]
+              ],
+              "twin-fan": [
+                [
+                  144,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  120,
+                  236
+                ]
+              ],
+              "dune-tread": [
+                [
+                  120,
+                  164
+                ],
+                [
+                  182,
+                  236
+                ]
+              ],
+              "twin-fan": [
+                [
+                  120,
+                  236
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                120,
+                236
+              ]
+            ],
+            "upgrade1": [
+              [
+                57,
+                279
+              ]
+            ],
+            "upgrade2": [
+              [
+                24,
+                312
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 98,
+                "twin-fan": 116
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 116,
+                "twin-fan": 116
+              },
+              "upgrade2": {
+                "walker": 222,
+                "dune-tread": 222,
+                "twin-fan": 222
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "aqueduct-18-6",
+      "group": "aqueduct",
+      "box": [
+        18,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  150,
+                  231
+                ]
+              ],
+              "dune-tread": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "twin-fan": [
+                [
+                  150,
+                  228
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  124,
+                  230
+                ],
+                [
+                  248,
+                  270
+                ]
+              ],
+              "dune-tread": [
+                [
+                  124,
+                  178
+                ],
+                [
+                  206,
+                  270
+                ]
+              ],
+              "twin-fan": [
+                [
+                  124,
+                  228
+                ],
+                [
+                  246,
+                  270
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "dune-tread": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "twin-fan": [
+                [
+                  150,
+                  234
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  124,
+                  270
+                ]
+              ],
+              "dune-tread": [
+                [
+                  124,
+                  270
+                ]
+              ],
+              "twin-fan": [
+                [
+                  124,
+                  270
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  81,
+                  299
+                ]
+              ],
+              "dune-tread": [
+                [
+                  81,
+                  299
+                ]
+              ],
+              "twin-fan": [
+                [
+                  81,
+                  299
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  150,
+                  231
+                ]
+              ],
+              "dune-tread": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "twin-fan": [
+                [
+                  150,
+                  228
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  124,
+                  230
+                ],
+                [
+                  248,
+                  270
+                ]
+              ],
+              "dune-tread": [
+                [
+                  124,
+                  178
+                ],
+                [
+                  206,
+                  270
+                ]
+              ],
+              "twin-fan": [
+                [
+                  124,
+                  228
+                ],
+                [
+                  246,
+                  270
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                124,
+                270
+              ]
+            ],
+            "upgrade1": [
+              [
+                81,
+                299
+              ]
+            ],
+            "upgrade2": [
+              [
+                48,
+                326
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 81,
+                "dune-tread": 84,
+                "twin-fan": 78
+              },
+              "upgrade1": {
+                "walker": 128,
+                "dune-tread": 118,
+                "twin-fan": 128
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 146,
+                "dune-tread": 146,
+                "twin-fan": 146
+              },
+              "upgrade2": {
+                "walker": 218,
+                "dune-tread": 218,
+                "twin-fan": 218
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-10-6",
+      "group": "shoreReturn",
+      "box": [
+        10,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  354,
+                  404
+                ]
+              ],
+              "dune-tread": [
+                [
+                  354,
+                  404
+                ]
+              ],
+              "twin-fan": [
+                [
+                  354,
+                  404
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  354,
+                  404
+                ]
+              ],
+              "dune-tread": [
+                [
+                  354,
+                  404
+                ]
+              ],
+              "twin-fan": [
+                [
+                  354,
+                  404
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  325,
+                  429
+                ]
+              ],
+              "dune-tread": [
+                [
+                  325,
+                  429
+                ]
+              ],
+              "twin-fan": [
+                [
+                  325,
+                  429
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  354,
+                  404
+                ]
+              ],
+              "dune-tread": [
+                [
+                  354,
+                  404
+                ]
+              ],
+              "twin-fan": [
+                [
+                  354,
+                  404
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                354,
+                404
+              ]
+            ],
+            "upgrade1": [
+              [
+                325,
+                429
+              ]
+            ],
+            "upgrade2": [
+              [
+                298,
+                454
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 50,
+                "dune-tread": 50,
+                "twin-fan": 50
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 50,
+                "dune-tread": 50,
+                "twin-fan": 50
+              },
+              "upgrade2": {
+                "walker": 104,
+                "dune-tread": 104,
+                "twin-fan": 104
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-10-7",
+      "group": "shoreReturn",
+      "box": [
+        10,
+        7
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  366,
+                  402
+                ]
+              ],
+              "dune-tread": [
+                [
+                  366,
+                  402
+                ]
+              ],
+              "twin-fan": [
+                [
+                  366,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  340,
+                  428
+                ]
+              ],
+              "dune-tread": [
+                [
+                  340,
+                  428
+                ]
+              ],
+              "twin-fan": [
+                [
+                  340,
+                  428
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  366,
+                  402
+                ]
+              ],
+              "dune-tread": [
+                [
+                  366,
+                  402
+                ]
+              ],
+              "twin-fan": [
+                [
+                  366,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  340,
+                  428
+                ]
+              ],
+              "dune-tread": [
+                [
+                  340,
+                  428
+                ]
+              ],
+              "twin-fan": [
+                [
+                  340,
+                  428
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  315,
+                  453
+                ]
+              ],
+              "dune-tread": [
+                [
+                  315,
+                  453
+                ]
+              ],
+              "twin-fan": [
+                [
+                  315,
+                  453
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  366,
+                  402
+                ]
+              ],
+              "dune-tread": [
+                [
+                  366,
+                  402
+                ]
+              ],
+              "twin-fan": [
+                [
+                  366,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  340,
+                  428
+                ]
+              ],
+              "dune-tread": [
+                [
+                  340,
+                  428
+                ]
+              ],
+              "twin-fan": [
+                [
+                  340,
+                  428
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                340,
+                428
+              ]
+            ],
+            "upgrade1": [
+              [
+                315,
+                453
+              ]
+            ],
+            "upgrade2": [
+              [
+                290,
+                504
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 36,
+                "dune-tread": 36,
+                "twin-fan": 36
+              },
+              "upgrade1": {
+                "walker": 88,
+                "dune-tread": 88,
+                "twin-fan": 88
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 36,
+                "dune-tread": 36,
+                "twin-fan": 36
+              },
+              "upgrade1": {
+                "walker": 88,
+                "dune-tread": 88,
+                "twin-fan": 88
+              },
+              "upgrade2": {
+                "walker": 138,
+                "dune-tread": 138,
+                "twin-fan": 138
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-11-6",
+      "group": "shoreReturn",
+      "box": [
+        11,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  330,
+                  408
+                ]
+              ],
+              "dune-tread": [
+                [
+                  330,
+                  408
+                ]
+              ],
+              "twin-fan": [
+                [
+                  330,
+                  408
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  330,
+                  408
+                ]
+              ],
+              "dune-tread": [
+                [
+                  330,
+                  408
+                ]
+              ],
+              "twin-fan": [
+                [
+                  330,
+                  408
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  301,
+                  432
+                ]
+              ],
+              "dune-tread": [
+                [
+                  301,
+                  432
+                ]
+              ],
+              "twin-fan": [
+                [
+                  301,
+                  432
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  330,
+                  408
+                ]
+              ],
+              "dune-tread": [
+                [
+                  330,
+                  408
+                ]
+              ],
+              "twin-fan": [
+                [
+                  330,
+                  408
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                330,
+                408
+              ]
+            ],
+            "upgrade1": [
+              [
+                301,
+                432
+              ]
+            ],
+            "upgrade2": [
+              [
+                72,
+                142
+              ],
+              [
+                274,
+                456
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 78,
+                "dune-tread": 78,
+                "twin-fan": 78
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 78,
+                "dune-tread": 78,
+                "twin-fan": 78
+              },
+              "upgrade2": {
+                "walker": 131,
+                "dune-tread": 131,
+                "twin-fan": 131
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-12-6",
+      "group": "shoreReturn",
+      "box": [
+        12,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  306,
+                  404
+                ]
+              ],
+              "dune-tread": [
+                [
+                  306,
+                  404
+                ]
+              ],
+              "twin-fan": [
+                [
+                  306,
+                  404
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  306,
+                  404
+                ]
+              ],
+              "dune-tread": [
+                [
+                  306,
+                  404
+                ]
+              ],
+              "twin-fan": [
+                [
+                  306,
+                  404
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  81,
+                  141
+                ],
+                [
+                  277,
+                  429
+                ]
+              ],
+              "dune-tread": [
+                [
+                  81,
+                  141
+                ],
+                [
+                  277,
+                  429
+                ]
+              ],
+              "twin-fan": [
+                [
+                  81,
+                  141
+                ],
+                [
+                  277,
+                  429
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  306,
+                  404
+                ]
+              ],
+              "dune-tread": [
+                [
+                  306,
+                  404
+                ]
+              ],
+              "twin-fan": [
+                [
+                  306,
+                  404
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                306,
+                404
+              ]
+            ],
+            "upgrade1": [
+              [
+                81,
+                141
+              ],
+              [
+                277,
+                429
+              ]
+            ],
+            "upgrade2": [
+              [
+                48,
+                166
+              ],
+              [
+                250,
+                454
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 98,
+                "dune-tread": 98,
+                "twin-fan": 98
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 98,
+                "dune-tread": 98,
+                "twin-fan": 98
+              },
+              "upgrade2": {
+                "walker": 212,
+                "dune-tread": 212,
+                "twin-fan": 212
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-12-7",
+      "group": "shoreReturn",
+      "box": [
+        12,
+        7
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "dune-tread": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "twin-fan": [
+                [
+                  318,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  292,
+                  428
+                ]
+              ],
+              "dune-tread": [
+                [
+                  292,
+                  346
+                ],
+                [
+                  374,
+                  428
+                ]
+              ],
+              "twin-fan": [
+                [
+                  292,
+                  428
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "dune-tread": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "twin-fan": [
+                [
+                  318,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  292,
+                  428
+                ]
+              ],
+              "dune-tread": [
+                [
+                  292,
+                  428
+                ]
+              ],
+              "twin-fan": [
+                [
+                  292,
+                  428
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  105,
+                  131
+                ],
+                [
+                  267,
+                  453
+                ]
+              ],
+              "dune-tread": [
+                [
+                  105,
+                  131
+                ],
+                [
+                  267,
+                  453
+                ]
+              ],
+              "twin-fan": [
+                [
+                  105,
+                  131
+                ],
+                [
+                  267,
+                  453
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "dune-tread": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "twin-fan": [
+                [
+                  318,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  292,
+                  428
+                ]
+              ],
+              "dune-tread": [
+                [
+                  292,
+                  346
+                ],
+                [
+                  374,
+                  428
+                ]
+              ],
+              "twin-fan": [
+                [
+                  292,
+                  428
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                292,
+                428
+              ]
+            ],
+            "upgrade1": [
+              [
+                105,
+                131
+              ],
+              [
+                267,
+                453
+              ]
+            ],
+            "upgrade2": [
+              [
+                72,
+                158
+              ],
+              [
+                242,
+                526
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 136,
+                "dune-tread": 108,
+                "twin-fan": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 136,
+                "dune-tread": 136,
+                "twin-fan": 136
+              },
+              "upgrade2": {
+                "walker": 212,
+                "dune-tread": 212,
+                "twin-fan": 212
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-13-7",
+      "group": "shoreReturn",
+      "box": [
+        13,
+        7
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "dune-tread": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "twin-fan": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  414
+                ]
+              ],
+              "dune-tread": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  322
+                ],
+                [
+                  350,
+                  414
+                ]
+              ],
+              "twin-fan": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  414
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "dune-tread": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "twin-fan": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  414
+                ]
+              ],
+              "dune-tread": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  414
+                ]
+              ],
+              "twin-fan": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  414
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  85,
+                  155
+                ],
+                [
+                  243,
+                  443
+                ]
+              ],
+              "dune-tread": [
+                [
+                  85,
+                  155
+                ],
+                [
+                  243,
+                  443
+                ]
+              ],
+              "twin-fan": [
+                [
+                  85,
+                  155
+                ],
+                [
+                  243,
+                  443
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "dune-tread": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "twin-fan": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  414
+                ]
+              ],
+              "dune-tread": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  322
+                ],
+                [
+                  350,
+                  414
+                ]
+              ],
+              "twin-fan": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  414
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                114,
+                126
+              ],
+              [
+                268,
+                414
+              ]
+            ],
+            "upgrade1": [
+              [
+                85,
+                155
+              ],
+              [
+                243,
+                443
+              ]
+            ],
+            "upgrade2": [
+              [
+                58,
+                528
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 158,
+                "dune-tread": 130,
+                "twin-fan": 158
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 158,
+                "dune-tread": 158,
+                "twin-fan": 158
+              },
+              "upgrade2": {
+                "walker": 270,
+                "dune-tread": 270,
+                "twin-fan": 270
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-12-9",
+      "group": "shoreReturn",
+      "box": [
+        12,
+        9
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  318,
+                  450
+                ]
+              ],
+              "dune-tread": [
+                [
+                  318,
+                  450
+                ]
+              ],
+              "twin-fan": [
+                [
+                  318,
+                  450
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  292,
+                  524
+                ]
+              ],
+              "dune-tread": [
+                [
+                  292,
+                  346
+                ],
+                [
+                  374,
+                  394
+                ],
+                [
+                  422,
+                  524
+                ]
+              ],
+              "twin-fan": [
+                [
+                  292,
+                  524
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  318,
+                  450
+                ]
+              ],
+              "dune-tread": [
+                [
+                  318,
+                  450
+                ]
+              ],
+              "twin-fan": [
+                [
+                  318,
+                  450
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  292,
+                  524
+                ]
+              ],
+              "dune-tread": [
+                [
+                  292,
+                  524
+                ]
+              ],
+              "twin-fan": [
+                [
+                  292,
+                  414
+                ],
+                [
+                  415,
+                  524
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  267,
+                  549
+                ]
+              ],
+              "dune-tread": [
+                [
+                  267,
+                  549
+                ]
+              ],
+              "twin-fan": [
+                [
+                  267,
+                  549
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  318,
+                  450
+                ]
+              ],
+              "dune-tread": [
+                [
+                  318,
+                  450
+                ]
+              ],
+              "twin-fan": [
+                [
+                  318,
+                  450
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  292,
+                  524
+                ]
+              ],
+              "dune-tread": [
+                [
+                  292,
+                  346
+                ],
+                [
+                  374,
+                  394
+                ],
+                [
+                  422,
+                  524
+                ]
+              ],
+              "twin-fan": [
+                [
+                  292,
+                  524
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                292,
+                524
+              ]
+            ],
+            "upgrade1": [
+              [
+                267,
+                549
+              ]
+            ],
+            "upgrade2": [
+              [
+                242,
+                574
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 232,
+                "dune-tread": 176,
+                "twin-fan": 232
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 232,
+                "dune-tread": 232,
+                "twin-fan": 231
+              },
+              "upgrade2": {
+                "walker": 282,
+                "dune-tread": 282,
+                "twin-fan": 282
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-12-10",
+      "group": "shoreReturn",
+      "box": [
+        12,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  390,
+                  522
+                ]
+              ],
+              "dune-tread": [
+                [
+                  390,
+                  522
+                ]
+              ],
+              "twin-fan": [
+                [
+                  390,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  306,
+                  548
+                ]
+              ],
+              "dune-tread": [
+                [
+                  306,
+                  418
+                ],
+                [
+                  446,
+                  466
+                ],
+                [
+                  494,
+                  548
+                ]
+              ],
+              "twin-fan": [
+                [
+                  306,
+                  548
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  390,
+                  522
+                ]
+              ],
+              "dune-tread": [
+                [
+                  390,
+                  522
+                ]
+              ],
+              "twin-fan": [
+                [
+                  390,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  306,
+                  548
+                ]
+              ],
+              "dune-tread": [
+                [
+                  306,
+                  548
+                ]
+              ],
+              "twin-fan": [
+                [
+                  306,
+                  439
+                ],
+                [
+                  440,
+                  548
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  277,
+                  573
+                ]
+              ],
+              "dune-tread": [
+                [
+                  277,
+                  573
+                ]
+              ],
+              "twin-fan": [
+                [
+                  277,
+                  573
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  390,
+                  522
+                ]
+              ],
+              "dune-tread": [
+                [
+                  390,
+                  522
+                ]
+              ],
+              "twin-fan": [
+                [
+                  390,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  306,
+                  548
+                ]
+              ],
+              "dune-tread": [
+                [
+                  306,
+                  418
+                ],
+                [
+                  446,
+                  466
+                ],
+                [
+                  494,
+                  548
+                ]
+              ],
+              "twin-fan": [
+                [
+                  306,
+                  548
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                306,
+                548
+              ]
+            ],
+            "upgrade1": [
+              [
+                277,
+                573
+              ]
+            ],
+            "upgrade2": [
+              [
+                250,
+                624
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 242,
+                "dune-tread": 186,
+                "twin-fan": 242
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 242,
+                "dune-tread": 242,
+                "twin-fan": 241
+              },
+              "upgrade2": {
+                "walker": 296,
+                "dune-tread": 296,
+                "twin-fan": 296
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-10-10",
+      "group": "shoreReturn",
+      "box": [
+        10,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "dune-tread": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "twin-fan": [
+                [
+                  390,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  354,
+                  500
+                ]
+              ],
+              "dune-tread": [
+                [
+                  354,
+                  500
+                ]
+              ],
+              "twin-fan": [
+                [
+                  354,
+                  423
+                ],
+                [
+                  424,
+                  500
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  325,
+                  543
+                ]
+              ],
+              "dune-tread": [
+                [
+                  325,
+                  543
+                ]
+              ],
+              "twin-fan": [
+                [
+                  325,
+                  543
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "dune-tread": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "twin-fan": [
+                [
+                  390,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  354,
+                  500
+                ]
+              ],
+              "dune-tread": [
+                [
+                  354,
+                  418
+                ],
+                [
+                  446,
+                  500
+                ]
+              ],
+              "twin-fan": [
+                [
+                  354,
+                  500
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                354,
+                500
+              ]
+            ],
+            "upgrade1": [
+              [
+                325,
+                543
+              ]
+            ],
+            "upgrade2": [
+              [
+                298,
+                576
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 146,
+                "dune-tread": 146,
+                "twin-fan": 145
+              },
+              "upgrade2": {
+                "walker": 218,
+                "dune-tread": 218,
+                "twin-fan": 218
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-return-10-11",
+      "group": "shoreReturn",
+      "box": [
+        10,
+        11
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  414,
+                  480
+                ]
+              ],
+              "dune-tread": [
+                [
+                  414,
+                  480
+                ]
+              ],
+              "twin-fan": [
+                [
+                  414,
+                  480
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  388,
+                  504
+                ]
+              ],
+              "dune-tread": [
+                [
+                  388,
+                  442
+                ],
+                [
+                  460,
+                  504
+                ]
+              ],
+              "twin-fan": [
+                [
+                  388,
+                  504
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  414,
+                  480
+                ]
+              ],
+              "dune-tread": [
+                [
+                  414,
+                  480
+                ]
+              ],
+              "twin-fan": [
+                [
+                  414,
+                  480
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  388,
+                  504
+                ]
+              ],
+              "dune-tread": [
+                [
+                  388,
+                  504
+                ]
+              ],
+              "twin-fan": [
+                [
+                  388,
+                  504
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  345,
+                  567
+                ]
+              ],
+              "dune-tread": [
+                [
+                  345,
+                  567
+                ]
+              ],
+              "twin-fan": [
+                [
+                  345,
+                  567
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  414,
+                  480
+                ]
+              ],
+              "dune-tread": [
+                [
+                  414,
+                  480
+                ]
+              ],
+              "twin-fan": [
+                [
+                  414,
+                  480
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  388,
+                  504
+                ]
+              ],
+              "dune-tread": [
+                [
+                  388,
+                  442
+                ],
+                [
+                  460,
+                  504
+                ]
+              ],
+              "twin-fan": [
+                [
+                  388,
+                  504
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                388,
+                504
+              ]
+            ],
+            "upgrade1": [
+              [
+                345,
+                567
+              ]
+            ],
+            "upgrade2": [
+              [
+                312,
+                600
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 98,
+                "twin-fan": 116
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 116,
+                "twin-fan": 116
+              },
+              "upgrade2": {
+                "walker": 222,
+                "dune-tread": 222,
+                "twin-fan": 222
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lower-court-10-12",
+      "group": "lowerCourt",
+      "box": [
+        10,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  438,
+                  474
+                ]
+              ],
+              "dune-tread": [
+                [
+                  438,
+                  474
+                ]
+              ],
+              "twin-fan": [
+                [
+                  438,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  412,
+                  500
+                ]
+              ],
+              "dune-tread": [
+                [
+                  412,
+                  500
+                ]
+              ],
+              "twin-fan": [
+                [
+                  412,
+                  500
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  438,
+                  474
+                ]
+              ],
+              "dune-tread": [
+                [
+                  438,
+                  474
+                ]
+              ],
+              "twin-fan": [
+                [
+                  438,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  412,
+                  500
+                ]
+              ],
+              "dune-tread": [
+                [
+                  412,
+                  500
+                ]
+              ],
+              "twin-fan": [
+                [
+                  412,
+                  500
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  387,
+                  587
+                ]
+              ],
+              "dune-tread": [
+                [
+                  387,
+                  587
+                ]
+              ],
+              "twin-fan": [
+                [
+                  387,
+                  587
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  438,
+                  474
+                ]
+              ],
+              "dune-tread": [
+                [
+                  438,
+                  474
+                ]
+              ],
+              "twin-fan": [
+                [
+                  438,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  412,
+                  500
+                ]
+              ],
+              "dune-tread": [
+                [
+                  412,
+                  500
+                ]
+              ],
+              "twin-fan": [
+                [
+                  412,
+                  500
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                412,
+                500
+              ]
+            ],
+            "upgrade1": [
+              [
+                387,
+                587
+              ]
+            ],
+            "upgrade2": [
+              [
+                336,
+                614
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 36,
+                "dune-tread": 36,
+                "twin-fan": 36
+              },
+              "upgrade1": {
+                "walker": 88,
+                "dune-tread": 88,
+                "twin-fan": 88
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 36,
+                "dune-tread": 36,
+                "twin-fan": 36
+              },
+              "upgrade1": {
+                "walker": 88,
+                "dune-tread": 88,
+                "twin-fan": 88
+              },
+              "upgrade2": {
+                "walker": 200,
+                "dune-tread": 200,
+                "twin-fan": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lower-court-11-12",
+      "group": "lowerCourt",
+      "box": [
+        11,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  432,
+                  498
+                ]
+              ],
+              "dune-tread": [
+                [
+                  432,
+                  498
+                ]
+              ],
+              "twin-fan": [
+                [
+                  432,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  408,
+                  582
+                ]
+              ],
+              "dune-tread": [
+                [
+                  408,
+                  582
+                ]
+              ],
+              "twin-fan": [
+                [
+                  408,
+                  582
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  384,
+                  611
+                ]
+              ],
+              "dune-tread": [
+                [
+                  384,
+                  611
+                ]
+              ],
+              "twin-fan": [
+                [
+                  384,
+                  611
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  432,
+                  498
+                ]
+              ],
+              "dune-tread": [
+                [
+                  432,
+                  498
+                ]
+              ],
+              "twin-fan": [
+                [
+                  432,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  408,
+                  582
+                ]
+              ],
+              "dune-tread": [
+                [
+                  408,
+                  452
+                ],
+                [
+                  470,
+                  582
+                ]
+              ],
+              "twin-fan": [
+                [
+                  408,
+                  582
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                408,
+                582
+              ]
+            ],
+            "upgrade1": [
+              [
+                384,
+                611
+              ]
+            ],
+            "upgrade2": [
+              [
+                312,
+                638
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 174,
+                "dune-tread": 174,
+                "twin-fan": 174
+              },
+              "upgrade2": {
+                "walker": 227,
+                "dune-tread": 227,
+                "twin-fan": 227
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lower-court-12-12",
+      "group": "lowerCourt",
+      "box": [
+        12,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  438,
+                  570
+                ]
+              ],
+              "dune-tread": [
+                [
+                  438,
+                  570
+                ]
+              ],
+              "twin-fan": [
+                [
+                  438,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  412,
+                  606
+                ]
+              ],
+              "dune-tread": [
+                [
+                  412,
+                  466
+                ],
+                [
+                  494,
+                  514
+                ],
+                [
+                  542,
+                  605
+                ]
+              ],
+              "twin-fan": [
+                [
+                  412,
+                  606
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  438,
+                  570
+                ]
+              ],
+              "dune-tread": [
+                [
+                  438,
+                  570
+                ]
+              ],
+              "twin-fan": [
+                [
+                  438,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  412,
+                  606
+                ]
+              ],
+              "dune-tread": [
+                [
+                  412,
+                  606
+                ]
+              ],
+              "twin-fan": [
+                [
+                  412,
+                  517
+                ],
+                [
+                  518,
+                  606
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  387,
+                  635
+                ]
+              ],
+              "dune-tread": [
+                [
+                  387,
+                  635
+                ]
+              ],
+              "twin-fan": [
+                [
+                  387,
+                  635
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  438,
+                  570
+                ]
+              ],
+              "dune-tread": [
+                [
+                  438,
+                  570
+                ]
+              ],
+              "twin-fan": [
+                [
+                  438,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  412,
+                  606
+                ]
+              ],
+              "dune-tread": [
+                [
+                  412,
+                  466
+                ],
+                [
+                  494,
+                  514
+                ],
+                [
+                  542,
+                  605
+                ]
+              ],
+              "twin-fan": [
+                [
+                  412,
+                  606
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                412,
+                606
+              ]
+            ],
+            "upgrade1": [
+              [
+                387,
+                635
+              ]
+            ],
+            "upgrade2": [
+              [
+                288,
+                662
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 194,
+                "dune-tread": 137,
+                "twin-fan": 194
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 132,
+                "dune-tread": 132,
+                "twin-fan": 132
+              },
+              "upgrade1": {
+                "walker": 194,
+                "dune-tread": 194,
+                "twin-fan": 193
+              },
+              "upgrade2": {
+                "walker": 248,
+                "dune-tread": 248,
+                "twin-fan": 248
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lower-court-12-13",
+      "group": "lowerCourt",
+      "box": [
+        12,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "dune-tread": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "twin-fan": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  436,
+                  620
+                ]
+              ],
+              "dune-tread": [
+                [
+                  436,
+                  538
+                ],
+                [
+                  566,
+                  620
+                ]
+              ],
+              "twin-fan": [
+                [
+                  436,
+                  620
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "dune-tread": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "twin-fan": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  436,
+                  620
+                ]
+              ],
+              "dune-tread": [
+                [
+                  436,
+                  620
+                ]
+              ],
+              "twin-fan": [
+                [
+                  436,
+                  620
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  411,
+                  645
+                ]
+              ],
+              "dune-tread": [
+                [
+                  411,
+                  645
+                ]
+              ],
+              "twin-fan": [
+                [
+                  411,
+                  645
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "dune-tread": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "twin-fan": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  436,
+                  620
+                ]
+              ],
+              "dune-tread": [
+                [
+                  436,
+                  538
+                ],
+                [
+                  566,
+                  620
+                ]
+              ],
+              "twin-fan": [
+                [
+                  436,
+                  620
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                436,
+                620
+              ]
+            ],
+            "upgrade1": [
+              [
+                411,
+                645
+              ]
+            ],
+            "upgrade2": [
+              [
+                386,
+                670
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 184,
+                "dune-tread": 156,
+                "twin-fan": 184
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 184,
+                "dune-tread": 184,
+                "twin-fan": 184
+              },
+              "upgrade2": {
+                "walker": 234,
+                "dune-tread": 234,
+                "twin-fan": 234
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lower-court-12-14",
+      "group": "lowerCourt",
+      "box": [
+        12,
+        14
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            },
+            "upgrade1": {
+              "walker": [],
+              "dune-tread": [],
+              "twin-fan": []
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  534,
+                  600
+                ]
+              ],
+              "dune-tread": [
+                [
+                  534,
+                  600
+                ]
+              ],
+              "twin-fan": [
+                [
+                  534,
+                  600
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  508,
+                  624
+                ]
+              ],
+              "dune-tread": [
+                [
+                  508,
+                  624
+                ]
+              ],
+              "twin-fan": [
+                [
+                  508,
+                  624
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  435,
+                  648
+                ]
+              ],
+              "dune-tread": [
+                [
+                  435,
+                  648
+                ]
+              ],
+              "twin-fan": [
+                [
+                  435,
+                  648
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  534,
+                  600
+                ]
+              ],
+              "dune-tread": [
+                [
+                  534,
+                  600
+                ]
+              ],
+              "twin-fan": [
+                [
+                  534,
+                  600
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  508,
+                  624
+                ]
+              ],
+              "dune-tread": [
+                [
+                  508,
+                  562
+                ],
+                [
+                  580,
+                  624
+                ]
+              ],
+              "twin-fan": [
+                [
+                  508,
+                  624
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                508,
+                624
+              ]
+            ],
+            "upgrade1": [
+              [
+                435,
+                648
+              ]
+            ],
+            "upgrade2": [
+              [
+                410,
+                672
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              },
+              "upgrade1": {
+                "walker": 0,
+                "dune-tread": 0,
+                "twin-fan": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 116,
+                "twin-fan": 116
+              },
+              "upgrade2": {
+                "walker": 213,
+                "dune-tread": 213,
+                "twin-fan": 213
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-14-15",
+      "group": "late",
+      "box": [
+        14,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "dune-tread": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "twin-fan": [
+                [
+                  558,
+                  642
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  532,
+                  668
+                ]
+              ],
+              "dune-tread": [
+                [
+                  532,
+                  586
+                ],
+                [
+                  614,
+                  668
+                ]
+              ],
+              "twin-fan": [
+                [
+                  532,
+                  668
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "dune-tread": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "twin-fan": [
+                [
+                  558,
+                  642
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  532,
+                  668
+                ]
+              ],
+              "dune-tread": [
+                [
+                  532,
+                  668
+                ]
+              ],
+              "twin-fan": [
+                [
+                  532,
+                  668
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  507,
+                  693
+                ]
+              ],
+              "dune-tread": [
+                [
+                  507,
+                  693
+                ]
+              ],
+              "twin-fan": [
+                [
+                  507,
+                  693
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "dune-tread": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "twin-fan": [
+                [
+                  558,
+                  642
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  532,
+                  668
+                ]
+              ],
+              "dune-tread": [
+                [
+                  532,
+                  586
+                ],
+                [
+                  614,
+                  668
+                ]
+              ],
+              "twin-fan": [
+                [
+                  532,
+                  668
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                532,
+                668
+              ]
+            ],
+            "upgrade1": [
+              [
+                507,
+                693
+              ]
+            ],
+            "upgrade2": [
+              [
+                456,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 136,
+                "dune-tread": 108,
+                "twin-fan": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 136,
+                "dune-tread": 136,
+                "twin-fan": 136
+              },
+              "upgrade2": {
+                "walker": 186,
+                "dune-tread": 186,
+                "twin-fan": 186
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-15-15",
+      "group": "late",
+      "box": [
+        15,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  582,
+                  666
+                ]
+              ],
+              "dune-tread": [
+                [
+                  582,
+                  666
+                ]
+              ],
+              "twin-fan": [
+                [
+                  582,
+                  666
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  546,
+                  692
+                ]
+              ],
+              "dune-tread": [
+                [
+                  547,
+                  610
+                ],
+                [
+                  638,
+                  692
+                ]
+              ],
+              "twin-fan": [
+                [
+                  546,
+                  692
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  582,
+                  666
+                ]
+              ],
+              "dune-tread": [
+                [
+                  582,
+                  666
+                ]
+              ],
+              "twin-fan": [
+                [
+                  582,
+                  666
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  546,
+                  692
+                ]
+              ],
+              "dune-tread": [
+                [
+                  546,
+                  692
+                ]
+              ],
+              "twin-fan": [
+                [
+                  546,
+                  615
+                ],
+                [
+                  616,
+                  692
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  517,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  517,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  517,
+                  720
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  582,
+                  666
+                ]
+              ],
+              "dune-tread": [
+                [
+                  582,
+                  666
+                ]
+              ],
+              "twin-fan": [
+                [
+                  582,
+                  666
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  546,
+                  692
+                ]
+              ],
+              "dune-tread": [
+                [
+                  547,
+                  610
+                ],
+                [
+                  638,
+                  692
+                ]
+              ],
+              "twin-fan": [
+                [
+                  546,
+                  692
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                546,
+                692
+              ]
+            ],
+            "upgrade1": [
+              [
+                517,
+                720
+              ]
+            ],
+            "upgrade2": [
+              [
+                480,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 146,
+                "dune-tread": 117,
+                "twin-fan": 146
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 146,
+                "dune-tread": 146,
+                "twin-fan": 145
+              },
+              "upgrade2": {
+                "walker": 203,
+                "dune-tread": 203,
+                "twin-fan": 203
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-16-15",
+      "group": "late",
+      "box": [
+        16,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  606,
+                  690
+                ]
+              ],
+              "dune-tread": [
+                [
+                  606,
+                  690
+                ]
+              ],
+              "twin-fan": [
+                [
+                  606,
+                  690
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  580,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  580,
+                  634
+                ],
+                [
+                  662,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  580,
+                  720
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  606,
+                  690
+                ]
+              ],
+              "dune-tread": [
+                [
+                  606,
+                  690
+                ]
+              ],
+              "twin-fan": [
+                [
+                  606,
+                  690
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  580,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  580,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  580,
+                  720
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  537,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  545,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  537,
+                  720
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  606,
+                  690
+                ]
+              ],
+              "dune-tread": [
+                [
+                  606,
+                  690
+                ]
+              ],
+              "twin-fan": [
+                [
+                  606,
+                  690
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  580,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  580,
+                  634
+                ],
+                [
+                  662,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  580,
+                  720
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                580,
+                720
+              ]
+            ],
+            "upgrade1": [
+              [
+                537,
+                720
+              ]
+            ],
+            "upgrade2": [
+              [
+                504,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 140,
+                "dune-tread": 112,
+                "twin-fan": 140
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 84,
+                "dune-tread": 84,
+                "twin-fan": 84
+              },
+              "upgrade1": {
+                "walker": 140,
+                "dune-tread": 140,
+                "twin-fan": 140
+              },
+              "upgrade2": {
+                "walker": 183,
+                "dune-tread": 175,
+                "twin-fan": 183
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-17-15",
+      "group": "late",
+      "box": [
+        17,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  630,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  630,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  630,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  604,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  604,
+                  658
+                ],
+                [
+                  686,
+                  706
+                ]
+              ],
+              "twin-fan": [
+                [
+                  604,
+                  720
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  630,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  630,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  630,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  604,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  604,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  604,
+                  720
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  579,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  579,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  579,
+                  720
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  630,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  630,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  630,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  604,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  604,
+                  658
+                ],
+                [
+                  686,
+                  706
+                ]
+              ],
+              "twin-fan": [
+                [
+                  604,
+                  720
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                604,
+                720
+              ]
+            ],
+            "upgrade1": [
+              [
+                579,
+                720
+              ]
+            ],
+            "upgrade2": [
+              [
+                528,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 90,
+                "dune-tread": 90,
+                "twin-fan": 90
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 74,
+                "twin-fan": 116
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 90,
+                "dune-tread": 90,
+                "twin-fan": 90
+              },
+              "upgrade1": {
+                "walker": 116,
+                "dune-tread": 116,
+                "twin-fan": 116
+              },
+              "upgrade2": {
+                "walker": 141,
+                "dune-tread": 141,
+                "twin-fan": 141
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-18-13",
+      "group": "late",
+      "box": [
+        18,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  654,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  668,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  654,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  644,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  668,
+                  682
+                ],
+                [
+                  700,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  628,
+                  720
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  654,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  654,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  654,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  628,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  628,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  628,
+                  720
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  603,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  603,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  603,
+                  720
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  654,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  668,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  654,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  644,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  668,
+                  682
+                ],
+                [
+                  700,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  628,
+                  720
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                628,
+                720
+              ]
+            ],
+            "upgrade1": [
+              [
+                603,
+                720
+              ]
+            ],
+            "upgrade2": [
+              [
+                578,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 52,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 76,
+                "dune-tread": 34,
+                "twin-fan": 92
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 66,
+                "dune-tread": 66,
+                "twin-fan": 66
+              },
+              "upgrade1": {
+                "walker": 92,
+                "dune-tread": 92,
+                "twin-fan": 92
+              },
+              "upgrade2": {
+                "walker": 117,
+                "dune-tread": 117,
+                "twin-fan": 117
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-19-14",
+      "group": "late",
+      "box": [
+        19,
+        14
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 720,
+          "gun": {
+            "base": {
+              "walker": [
+                [
+                  672,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  672,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  672,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  648,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  648,
+                  692
+                ],
+                [
+                  710,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  648,
+                  720
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "walker": [
+                [
+                  672,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  672,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  672,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  648,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  648,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  648,
+                  720
+                ]
+              ]
+            },
+            "upgrade2": {
+              "walker": [
+                [
+                  624,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  624,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  624,
+                  720
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "walker": [
+                [
+                  672,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  672,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  672,
+                  720
+                ]
+              ]
+            },
+            "upgrade1": {
+              "walker": [
+                [
+                  648,
+                  720
+                ]
+              ],
+              "dune-tread": [
+                [
+                  648,
+                  692
+                ],
+                [
+                  710,
+                  720
+                ]
+              ],
+              "twin-fan": [
+                [
+                  648,
+                  720
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                648,
+                720
+              ]
+            ],
+            "upgrade1": [
+              [
+                624,
+                720
+              ]
+            ],
+            "upgrade2": [
+              [
+                600,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "walker": 48,
+                "dune-tread": 48,
+                "twin-fan": 48
+              },
+              "upgrade1": {
+                "walker": 72,
+                "dune-tread": 54,
+                "twin-fan": 72
+              }
+            },
+            "arc": {
+              "base": {
+                "walker": 48,
+                "dune-tread": 48,
+                "twin-fan": 48
+              },
+              "upgrade1": {
+                "walker": 72,
+                "dune-tread": 72,
+                "twin-fan": 72
+              },
+              "upgrade2": {
+                "walker": 96,
+                "dune-tread": 96,
+                "twin-fan": 96
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

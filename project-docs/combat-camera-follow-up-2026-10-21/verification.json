@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-21",
+  "runtimeAndReviewHashes": {
+    "engine/target-planner.js": "9fae2cbb4c43cf4426f7d26151e483a4e71312709a3736317139f02dcea40ee4",
+    "game/turret-preview.js": "c013bed9ff5f68df6454a84b8e3ca3215dc56fbc791d46eb1893757424887fc8",
+    "engine/missile-flight.js": "89ba02888cd77fef504c2f7f2c6e41477b3b81e070c3362fd94ff8846ae83b3c",
+    "play/drone-camera.js": "02a0c1d90a6931219b11c700f20ff9730382425124932756e406090c32e98a6e",
+    "play/roster-order.js": "72c9aad52bc42e6a1a9ceb59c53b0b58c5cd8b5d1956eaab3e0312f46ccd7645",
+    "play/roster.js": "c6a558b3eed2d56b0809186c0a3db3cf353471c60cde433c2faff150bcf9f804",
+    "play/session.js": "2b6716f5c867076146de60f2a15d18ffae2cbd605b13cfa79e8857cc4ce128fc",
+    "tools/combat-camera-review.html": "6db67e8e89b964a012ebb5a40aca51f21d98857284af842b56e8758463a947a9",
+    "tools/combat-camera-review.js": "bdcbd758ee50a0e0cc7594c39a0f0a2dfe85d082f282cdea8f0e3aea14eb4e8e"
+  },
+  "core": {
+    "distinctPassing": 160,
+    "files": 16,
+    "initialPass": 159,
+    "initialFail": 1,
+    "floatingPointAssertionCorrection": "tests/enhancer-integration.test.js uses 12-place closeness for unchanged 1-second launch gap; 3 focused tests pass",
+    "legacyFiltered": 3
+  },
+  "camera": {
+    "passing": 53,
+    "files": 4,
+    "assertions": 235793
+  },
+  "distinctPassingTotal": 213,
+  "buildModules": 118,
+  "campaign": {
+    "name": "mixed",
+    "phase": "complete",
+    "completedWaves": 64,
+    "misses": 0,
+    "tokens": 4,
+    "spent": 126,
+    "killed": 1084,
+    "escaped": 0
+  },
+  "auditedCampaignSources": 53,
+  "auditedCampaignSourcesStillMatch": true,
+  "gpuScenes": 3,
+  "capturedGpuErrors": 0,
+  "activePlayerReloaded": false
+}

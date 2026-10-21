@@ -1,0 +1,45 @@
+bun test v1.4.2 (744846f84)
+
+tests/visibility.test.js:
+(pass) exact occupied scenery blocks solid walls while retaining a real doorway and over-wall clearance [0.96ms]
+(pass) closed leaf bounds handle grazing faces, corners, endpoints, interior origins and zero-length segments [0.20ms]
+(pass) cell bounds follow quarter-turns, detail offsets and terrain or absolute placement anchors [0.91ms]
+(pass) ground mounds and carved beds block in 3D while water, defences and enemies remain excluded [0.28ms]
+(pass) merged cuboids and stackless branches agree with original cell geometry over deterministic 3D rays [5.24ms]
+(pass) queries reuse typed storage, retain no source dependency and fail closed after disposal or for invalid rays [0.18ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.17ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.03ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.12ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+
+tests/arc-combat.test.js:
+(pass) Arc studies hit once per pulse and destroy the mixed ground/air rosters [1163.92ms]
+(pass) mixed defences share exactly one thinker and do not promise unverified Arc coverage [69.66ms]
+(pass) actual surface LOS, range exits and death cancel live bursts; a stall never replays hits [28.87ms]
+(pass) a surface-blocked priority target yields to hittable alternatives and retries later [29.81ms]
+(pass) upgrade bursts respect real gaps and cooldowns and stop immediately on obstruction [31.72ms]
+(pass) random contacts use exposed facing sides of current articulated poses and release all matrix references [519.99ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [73.97ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [46.85ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [45.89ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [196.19ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [77.00ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1368.65ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [1105.22ms]
+(pass) real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage [59.15ms]
+
+tests/play-polish.test.js:
+(pass) overview/perspective blend preserves invertible projection, exact endpoints and smooth reversible travel [1.09ms]
+(pass) real Drone coordinator eases into a wave, freezes when paused and returns to preparation without a snap [3.90ms]
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.17ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.47ms]
+
+ 29 pass
+ 0 fail
+ 5331 expect() calls
+Ran 29 tests across 5 files. [4.87s]

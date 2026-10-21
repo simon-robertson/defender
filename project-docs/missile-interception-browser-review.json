@@ -1,0 +1,594 @@
+{
+  "milestone": "Predictive commitment before impact-reaction integration",
+  "active": {
+    "enemies": {
+      "actors": [
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 135.1992000000001,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.16650000000001697,
+              "position": [
+                151.22000000000003,
+                25,
+                126.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.666500000000017,
+              "position": [
+                149.61856214650228,
+                25.63349290299604,
+                137.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.666500000000017,
+              "position": [
+                141.61856214650228,
+                25.63349290299604,
+                126.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.16650000000001697,
+              "position": [
+                143.22000000000003,
+                25,
+                137.5
+              ],
+              "stance": true
+            }
+          ],
+          "health": 180,
+          "hits": 2,
+          "id": "preview-dog-1",
+          "impact": null,
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 12,
+          "velocityZ": 0,
+          "x": 147.1992000000001,
+          "yaw": -1.5707963267948966,
+          "z": 132
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 278.19999999999993,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.9583333333333072,
+              "position": [
+                160.8958360006098,
+                25.098707313152357,
+                185.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.4583333333333073,
+              "position": [
+                163.17999999999995,
+                25,
+                174.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.4583333333333073,
+              "position": [
+                171.17999999999995,
+                25,
+                185.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.9583333333333072,
+              "position": [
+                168.8958360006098,
+                25.098707313152357,
+                174.5
+              ],
+              "stance": false
+            }
+          ],
+          "health": 0,
+          "hits": 4,
+          "id": "preview-dog-2",
+          "impact": null,
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 165.80000000000007,
+          "yaw": 1.5707963267948966,
+          "z": 180
+        },
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 455.19920000000013,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.8331666666666848,
+              "position": [
+                135.32993394958123,
+                26.01275947211382,
+                270.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.3331666666666848,
+              "position": [
+                134.42000000000007,
+                25,
+                281.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.3331666666666848,
+              "position": [
+                126.42000000000009,
+                25,
+                270.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.8331666666666848,
+              "position": [
+                127.32993394958125,
+                26.01275947211382,
+                281.5
+              ],
+              "stance": false
+            }
+          ],
+          "health": 150,
+          "hits": 2,
+          "id": "preview-dog-3",
+          "impact": null,
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 12,
+          "velocityZ": 0,
+          "x": 131.19920000000013,
+          "yaw": -1.5707963267948966,
+          "z": 276
+        }
+      ],
+      "alive": 2,
+      "resets": 0,
+      "time": 5.266600000000009,
+      "updatedParts": 26
+    },
+    "id": "moss-03",
+    "missiles": {
+      "active": 2,
+      "collisions": 0,
+      "completedAtLastPosition": 2,
+      "expired": 0,
+      "flights": [
+        {
+          "age": 2.3832999999999944,
+          "aimPoint": [
+            165.80000000000007,
+            34.5,
+            180
+          ],
+          "committed": true,
+          "dx": -0.4572025448050191,
+          "dy": -0.6220528720823758,
+          "dz": -0.6356225746131753,
+          "id": "preview-missile-11",
+          "orphaned": true,
+          "phase": 4,
+          "targetId": null,
+          "vx": -41.14822903245173,
+          "vy": -55.98475848741382,
+          "vz": -57.20603171518577,
+          "x": 172.10560605068216,
+          "y": 43.079174369468085,
+          "z": 188.76632380543776
+        },
+        {
+          "age": 1.6665999999999968,
+          "aimPoint": [
+            137.48883091233716,
+            34.5,
+            276
+          ],
+          "committed": true,
+          "dx": -0.7697908157073662,
+          "dy": -0.6234172312675581,
+          "dz": 0.13701480143137731,
+          "id": "preview-missile-12",
+          "orphaned": false,
+          "phase": 4,
+          "targetId": "preview-dog-3",
+          "vx": -69.28117341366296,
+          "vy": -56.10755081408023,
+          "vz": 12.331332128823956,
+          "x": 197.4542830528574,
+          "y": 83.06318805362524,
+          "z": 265.326769883288
+        }
+      ],
+      "free": 32,
+      "hits": 8,
+      "launchers": [
+        {
+          "ammo": 2,
+          "capacity": 2,
+          "hits": 2,
+          "id": "scene-1",
+          "lastHitDamage": 60,
+          "lastHitTargetId": "preview-dog-1",
+          "lastShotAt": 0.8,
+          "lastShotDistance": 41.291161281804605,
+          "lastShotTargetId": "preview-dog-1",
+          "maxRange": 72,
+          "poolDeferrals": 0,
+          "reloadRemaining": 0,
+          "reloading": false,
+          "reloads": 1,
+          "shots": 2,
+          "strength": 60,
+          "targetDistance": null,
+          "targetId": null,
+          "thinkCount": 106,
+          "variant": "base"
+        },
+        {
+          "ammo": 0,
+          "capacity": 4,
+          "hits": 3,
+          "id": "scene-2",
+          "lastHitDamage": 75,
+          "lastHitTargetId": "preview-dog-2",
+          "lastShotAt": 2.3333999999999997,
+          "lastShotDistance": 57.27055788657901,
+          "lastShotTargetId": "preview-dog-2",
+          "maxRange": 96,
+          "poolDeferrals": 0,
+          "reloadRemaining": 1.56679999999999,
+          "reloading": true,
+          "reloads": 0,
+          "shots": 4,
+          "strength": 75,
+          "targetDistance": null,
+          "targetId": null,
+          "thinkCount": 105,
+          "variant": "upgrade1"
+        },
+        {
+          "ammo": 0,
+          "capacity": 6,
+          "hits": 3,
+          "id": "scene-3",
+          "lastHitDamage": 45,
+          "lastHitTargetId": "preview-dog-2",
+          "lastShotAt": 3.5999999999999974,
+          "lastShotDistance": 119.24026165687496,
+          "lastShotTargetId": "preview-dog-3",
+          "maxRange": 120,
+          "poolDeferrals": 0,
+          "reloadRemaining": 3.3333999999999886,
+          "reloading": true,
+          "reloads": 0,
+          "shots": 6,
+          "strength": 90,
+          "targetDistance": null,
+          "targetId": null,
+          "thinkCount": 105,
+          "variant": "upgrade2"
+        }
+      ],
+      "lostTargets": 0,
+      "missed": 0,
+      "orphaned": 3,
+      "stallDiscards": 0,
+      "thrustInstances": 4
+    }
+  },
+  "settled": {
+    "enemies": {
+      "actors": [
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 208.39919999999995,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.416499999999985,
+              "position": [
+                209.5,
+                25,
+                151.22000000000003
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.916499999999985,
+              "position": [
+                198.5,
+                25.363634854245543,
+                153.18552840164597
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.916499999999985,
+              "position": [
+                209.5,
+                25.363634854245543,
+                145.18552840164597
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.416499999999985,
+              "position": [
+                198.5,
+                25,
+                143.22000000000003
+              ],
+              "stance": true
+            }
+          ],
+          "health": 0,
+          "hits": 5,
+          "id": "preview-dog-1",
+          "impact": null,
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 204,
+          "yaw": -3.141592653589793,
+          "z": 148.39919999999995
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 278.19999999999993,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.9583333333333072,
+              "position": [
+                160.8958360006098,
+                25.098707313152357,
+                185.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.4583333333333073,
+              "position": [
+                163.17999999999995,
+                25,
+                174.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.4583333333333073,
+              "position": [
+                171.17999999999995,
+                25,
+                185.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.9583333333333072,
+              "position": [
+                168.8958360006098,
+                25.098707313152357,
+                174.5
+              ],
+              "stance": false
+            }
+          ],
+          "health": 0,
+          "hits": 4,
+          "id": "preview-dog-2",
+          "impact": null,
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 165.80000000000007,
+          "yaw": 1.5707963267948966,
+          "z": 180
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 520.5992000000001,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.4581666666666706,
+              "position": [
+                199.22000000000017,
+                25,
+                270.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.9581666666666706,
+              "position": [
+                201.50326618552052,
+                25.09947592908945,
+                281.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.9581666666666706,
+              "position": [
+                193.50326618552052,
+                25.09947592908945,
+                270.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.4581666666666706,
+              "position": [
+                191.22000000000017,
+                25,
+                281.5
+              ],
+              "stance": true
+            }
+          ],
+          "health": 0,
+          "hits": 4,
+          "id": "preview-dog-3",
+          "impact": null,
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 196.5992000000001,
+          "yaw": -1.5707963267948966,
+          "z": 276
+        }
+      ],
+      "alive": 0,
+      "resets": 0,
+      "time": 11.366599999999996,
+      "updatedParts": 0
+    },
+    "id": "moss-03",
+    "missiles": {
+      "active": 0,
+      "collisions": 0,
+      "completedAtLastPosition": 6,
+      "expired": 0,
+      "flights": [],
+      "free": 28,
+      "hits": 13,
+      "launchers": [
+        {
+          "ammo": 2,
+          "capacity": 2,
+          "hits": 2,
+          "id": "scene-1",
+          "lastHitDamage": 60,
+          "lastHitTargetId": "preview-dog-1",
+          "lastShotAt": 0.8,
+          "lastShotDistance": 41.291161281804605,
+          "lastShotTargetId": "preview-dog-1",
+          "maxRange": 72,
+          "poolDeferrals": 0,
+          "reloadRemaining": 0,
+          "reloading": false,
+          "reloads": 1,
+          "shots": 2,
+          "strength": 60,
+          "targetDistance": null,
+          "targetId": null,
+          "thinkCount": 995,
+          "variant": "base"
+        },
+        {
+          "ammo": 4,
+          "capacity": 4,
+          "hits": 6,
+          "id": "scene-2",
+          "lastHitDamage": 30,
+          "lastHitTargetId": "preview-dog-1",
+          "lastShotAt": 9.183300000000015,
+          "lastShotDistance": 66.66926008408988,
+          "lastShotTargetId": "preview-dog-1",
+          "maxRange": 96,
+          "poolDeferrals": 0,
+          "reloadRemaining": 0,
+          "reloading": false,
+          "reloads": 2,
+          "shots": 8,
+          "strength": 75,
+          "targetDistance": null,
+          "targetId": null,
+          "thinkCount": 995,
+          "variant": "upgrade1"
+        },
+        {
+          "ammo": 2,
+          "capacity": 6,
+          "hits": 5,
+          "id": "scene-3",
+          "lastHitDamage": 60,
+          "lastHitTargetId": "preview-dog-3",
+          "lastShotAt": 10.783200000000004,
+          "lastShotDistance": 113.17558889866662,
+          "lastShotTargetId": "preview-dog-1",
+          "maxRange": 120,
+          "poolDeferrals": 0,
+          "reloadRemaining": 0,
+          "reloading": false,
+          "reloads": 1,
+          "shots": 10,
+          "strength": 90,
+          "targetDistance": null,
+          "targetId": null,
+          "thinkCount": 994,
+          "variant": "upgrade2"
+        }
+      ],
+      "lostTargets": 0,
+      "missed": 1,
+      "orphaned": 6,
+      "stallDiscards": 0,
+      "thrustInstances": 0
+    }
+  }
+}

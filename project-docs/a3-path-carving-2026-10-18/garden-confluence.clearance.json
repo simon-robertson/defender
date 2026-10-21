@@ -1,0 +1,73 @@
+{
+  "id": "garden-confluence",
+  "sourceHash": "e7b3b6dd37d4eb7174936ecd3016b9c8d606e4bf74bfec21e6a6370e61b9d909",
+  "method": "Each candidate considered independently. Turret heads use complete yaw cylinders separately for every occupied Y layer; gun envelope encloses full yaw, analytic pitch extrema and zero/full recoil. Arc parts use fixed occupied-vertex bounds. Launcher bounds include the tallest loaded missile tip across the full casing footprint, a conservative static envelope; separate finite flights probe launch/flight behaviour. Test static exact cuboids and production Dog/Roller/Moth occupied-part poses at every1-unit route distance and endpoints. Conservative envelopes may reject a harmless pose; no simultaneous-neighbour compatibility is claimed.",
+  "rows": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "independentSites": 44,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 4254,
+      "checkedParts": 29778
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "independentSites": 44,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 4254,
+      "checkedParts": 29778
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "independentSites": 44,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 4254,
+      "checkedParts": 29778
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "independentSites": 44,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 4254,
+      "checkedParts": 29778
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "base",
+      "independentSites": 44,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 4254,
+      "checkedParts": 29778
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade1",
+      "independentSites": 44,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 4254,
+      "checkedParts": 29778
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade2",
+      "independentSites": 44,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 4254,
+      "checkedParts": 29778
+    }
+  ],
+  "excluded": [],
+  "allProbedCombinationsClear": true,
+  "declaredSuitabilityPassed": true
+}

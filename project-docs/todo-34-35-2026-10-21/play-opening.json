@@ -1,0 +1,272 @@
+{
+  "fish": {
+    "time": 0,
+    "impacts": 0,
+    "planningBytes": 0,
+    "pools": 0,
+    "actors": []
+  },
+  "phase": "wave",
+  "paused": true,
+  "settleRemaining": 0,
+  "tokens": 2,
+  "misses": 0,
+  "missLimit": 10,
+  "zone": "A",
+  "zoneName": "Moss & Porcelain",
+  "levelNumber": 1,
+  "campaignLevelNumber": 1,
+  "totalLevels": 16,
+  "waveNumber": 1,
+  "wavesPerLevel": 4,
+  "completedWaves": 0,
+  "totalWaves": 64,
+  "wavePreview": {
+    "splitApproaches": false,
+    "name": "First contact",
+    "description": "Three Dogs. Cover more than one bend.",
+    "groups": [
+      {
+        "model": "dog",
+        "name": "Dog",
+        "routeId": "main",
+        "count": 3,
+        "maxHealth": 100,
+        "speed": 12,
+        "firstAt": 0,
+        "lastAt": 6
+      }
+    ],
+    "total": 3
+  },
+  "shop": [
+    {
+      "model": "turret-study",
+      "name": "Gun",
+      "cost": 1,
+      "available": true,
+      "availableFromWave": 1,
+      "stats": {
+        "maxRange": 48,
+        "strength": 10,
+        "requiresLineOfSight": true
+      },
+      "firing": {
+        "shotsPerBurst": 1,
+        "shotIntervalSeconds": 0,
+        "cooldownSeconds": 1,
+        "delivery": "hitscan",
+        "projectile": null
+      }
+    },
+    {
+      "model": "arc-spire",
+      "name": "Arc Spire",
+      "cost": 2,
+      "available": false,
+      "availableFromWave": 5,
+      "stats": {
+        "maxRange": 60,
+        "strength": 36,
+        "requiresLineOfSight": true
+      },
+      "firing": {
+        "shotsPerBurst": 1,
+        "shotIntervalSeconds": 0,
+        "cooldownSeconds": 1.2,
+        "delivery": "hitscan",
+        "projectile": null
+      }
+    },
+    {
+      "model": "missile-launcher",
+      "name": "Missile launcher",
+      "cost": 3,
+      "available": false,
+      "availableFromWave": 9,
+      "stats": {
+        "maxRange": 96,
+        "strength": 200,
+        "requiresLineOfSight": false
+      },
+      "firing": {
+        "magazine": 2,
+        "gap": 1,
+        "reload": 4,
+        "cycle": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "projectile",
+          "projectile": {
+            "speedUnitsPerSecond": 120
+          }
+        }
+      }
+    }
+  ],
+  "units": [],
+  "encounterNumber": 1,
+  "costs": {
+    "buy": 1,
+    "upgrade": 1
+  },
+  "screenshotMode": false,
+  "busy": false,
+  "error": "",
+  "notice": "",
+  "selectedId": null,
+  "cameraAutoEnabled": true,
+  "droneCameraEnabled": true,
+  "droneCameraActive": true,
+  "droneCameraTime": 0.06666666666666288,
+  "levelName": "Limestone Orchard",
+  "enemiesRemaining": 1,
+  "spawned": 1,
+  "totalEnemies": 3,
+  "levelId": "moss-01",
+  "engine": {
+    "time": 8.333430666666699,
+    "waveTime": 0.06666666666666667,
+    "running": true,
+    "completed": false,
+    "spawned": 1,
+    "pending": 2,
+    "active": 1,
+    "killed": 0,
+    "escaped": 0,
+    "resolved": 0,
+    "total": 3,
+    "shots": 0,
+    "gunShots": 0,
+    "arcShots": 0,
+    "missileShots": 0,
+    "activeMissiles": 0,
+    "steps": 8,
+    "lastSteps": 7,
+    "backlogSeconds": 0.00003333333333407559,
+    "modelLightCapacity": 424
+  },
+  "placements": [],
+  "damage": {
+    "time": 8.333430666666699,
+    "activeCubes": 0,
+    "hasCritterRemains": false,
+    "bloodDecals": 0,
+    "fadeAt": null
+  },
+  "performance": {
+    "running": false,
+    "fps": null,
+    "frameMs": null,
+    "cpuFrameMs": null,
+    "cpuRenderMs": null,
+    "samples": 0,
+    "gpuMs": null,
+    "gpuStatus": "idle",
+    "gpuSamples": 0
+  },
+  "conditions": {
+    "period": "day",
+    "timeOfDay": 10.5,
+    "night": false,
+    "weather": false
+  },
+  "guns": [],
+  "loads": 2,
+  "unloads": 1,
+  "camera": {
+    "mode": "live",
+    "fov": 63.970000000000006,
+    "roll": 4.0222716547641414e-8,
+    "position": [
+      228.0000891516426,
+      224,
+      228.0029695792438
+    ],
+    "radius": 194.02666556567027,
+    "target": [
+      227.25099182128906,
+      223.34280395507812,
+      227.91973876953125
+    ],
+    "controlsEnabled": false
+  },
+  "actionCamera": {
+    "enabled": true,
+    "owned": false,
+    "returning": false,
+    "hold": 0,
+    "focus": [
+      240,
+      24,
+      192
+    ],
+    "radiusGoal": 78.14341613869624,
+    "points": 0,
+    "time": 8.266764000000036
+  },
+  "droneCamera": {
+    "anticipation": {
+      "active": false,
+      "target": null,
+      "defence": null,
+      "at": null,
+      "point": null,
+      "scans": 1,
+      "pairs": 0,
+      "samples": 0,
+      "revision": 0
+    },
+    "enabled": true,
+    "active": true,
+    "time": 0.06666666666666288,
+    "subject": "a1-wave-1-dog-1",
+    "position": [
+      228.0000891516426,
+      224,
+      228.0029695792438
+    ],
+    "focus": [
+      12.799999237060547,
+      34.5,
+      204
+    ],
+    "speed": 0.09534999911021406,
+    "velocity": [
+      0.002760258857522401,
+      0,
+      0.09531003777859545
+    ],
+    "acceleration": [
+      0.047350431438664596,
+      0,
+      1.8073048591437355
+    ],
+    "drifting": true,
+    "blockedMoves": 0,
+    "yawVelocity": -0.000028436952348201764,
+    "pitchVelocity": 0.000055316454857163345,
+    "fovVelocity": -0.7999999999999546,
+    "travelled": 0.0029709186783265723,
+    "plans": 1,
+    "holding": true,
+    "heldFor": 0.06666666666666288,
+    "relocations": 0,
+    "quality": 1,
+    "visible": true,
+    "fov": 63.970000000000006,
+    "pitch": 0.7171007985979315,
+    "panRoll": 4.0222716547641414e-8,
+    "flinch": 0,
+    "explosions": 0,
+    "routeLength": 0,
+    "routeIndex": 0,
+    "emergency": false,
+    "airborneFloor": null,
+    "cruiseY": 224,
+    "planningBytes": 10090
+  },
+  "eligible": [],
+  "errors": []
+}

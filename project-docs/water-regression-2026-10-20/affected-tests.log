@@ -1,0 +1,116 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-performance.test.js:
+(pass) performance separates wall frame interval from full app CPU time and renderer diagnostic and limits DOM updates [0.56ms]
+(pass) pause/loading/hidden resets measurements and first resumed zero frame cannot count idle time [0.14ms]
+(pass) app callback CPU includes simulation and UI while GPU is a separate sampled asynchronous average [0.10ms]
+
+tests/arc-effects.test.js:
+(pass) strike joins exact endpoints with one thicker unbranched channel, stronger light and six outward flecks [0.82ms]
+(pass) endpoint attachment follows the live bone without retaining caller point scratch or moving its source [0.28ms]
+(pass) fixed pools replace the oldest strike and drop excess sparks without changing their backing storage [0.91ms]
+(pass) expiry and reset remove lights, particles and attachment references without replay after stalls [0.15ms]
+(pass) spark tail may remain after the channel but neither light nor attachments persist [0.04ms]
+(pass) manual enemy reset can clear effects while preserving the shared firing clock [0.04ms]
+(pass) shape is deterministic at equal elapsed time, with finite vertical and coincident inputs [0.40ms]
+(pass) coarse tube segment endpoints follow the same visible trunk and do not encode endpoint point lights [0.06ms]
+(pass) the connected terminal escape rises before the descending main channel [0.05ms]
+(pass) hot metal flecks fall onto actual support, remain still with finite nonzero geometry, then fade away [0.38ms]
+(pass) swept flecks cannot tunnel through elevated ground after fast travel or a frame stall [0.15ms]
+(pass) reset preserves the collider only for the in-place reset and releases every scene reference on unload [0.08ms]
+(pass) secondary chain strikes never evict primary bolts within the unchanged six-slot capacity [0.23ms]
+
+tests/play-ordinary-motion.test.js:
+(pass) all ten species retain identical ordinary route, aim and articulated poses at full, half and 10% health [537.81ms]
+(pass) health alone never creates a queue delay and preexisting physical missile-hit recovery remains active [124.57ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.10ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.03ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.06ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+(pass) real camera switches immediately in both directions at every display rate and restores preparation framing [14.02ms]
+(pass) settling retains Drone, pause freezes its exact displayed pose and resumed flight stays smooth [2.44ms]
+(pass) real Frame, Auto, reset and landscape binding transfer ownership immediately without stale projection state [1.29ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1190.41ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [258.50ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [693.75ms]
+(pass) missile contacts gib ground and perched/flying birds within 72 units despite a full blast pool, retaining the 48 unit fright event [541.95ms]
+
+tests/arc-chain.test.js:
+(pass) stage2 actual hits chain once with20percent configured strength and a second actual-surface bolt [27.22ms]
+(pass) base and stage3 never chain and lethal primary overkill still uses20percent pulse strength [85.86ms]
+(pass) random selection reaches both valid neighbours including the inclusive 96 unit boundary and never self or dead actors [30.89ms]
+(pass) transfer rejects blocked scenery, primary-body traversal and out-of-range3D recipients without inventing a hit [28.79ms]
+(pass) clear nearby airborne recipients use the same physical surface test and release sampler attachments on disposal [32.02ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [8.78ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.19ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.05ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [302.97ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.62ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [264.27ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [653.65ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.88ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [2.35ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [2.37ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [63.65ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [27.35ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [2160.02ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [29.57ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [24.54ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [1.91ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.76ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [24.51ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.93ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.36ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.53ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.38ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [143.25ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.65ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.57ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [47.38ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [13.86ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [48.49ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [167.82ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [98.08ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [173.80ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [29.00ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1178.39ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [192.77ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3492.08ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [14559.25ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [27.69ms]
+
+tests/water.test.js:
+(pass) water material is explicit, bounded and survives level serialization [0.56ms]
+(pass) water and stream bed have separate complete surfaces on the box grid [45.05ms]
+(pass) translucent terrain retains submerged solid faces and culls water interfaces against solids/water [20.93ms]
+(pass) all shipped player defences sit on ground at path height; mounds, floating anchors and extra layers are rejected [14.21ms]
+
+tests/gpu-frame-timer.test.js:
+(pass) timestamp feature is optional, requested only on opt in, with ordinary-device fallback [0.19ms]
+(pass) nanosecond subtraction remains exact before conversion and full-span markers precede resolve/copy [0.70ms]
+(pass) three outstanding readbacks bound the pool and exhaustion skips without allocating or waiting [0.11ms]
+(pass) pause, resume, scene/resize resets and out-of-order completions cannot republish old samples [0.18ms]
+(pass) unsupported, rejected mapping and disposal report accurate states without unhandled errors [0.17ms]
+(pass) timestamps attach only to actual first and last render passes without lingering on shared descriptors [0.05ms]
+
+tests/critter-gibs.test.js:
+(pass) critter blast radii include exact 3D boundaries without a body-radius allowance, for ground and birds [863.44ms]
+(pass) missile physical contacts gib fish at 72 units even if the visual blast pool is full [9.00ms]
+(pass) fragments and persistent solid spray leave in the 3D blast direction and reuse actual model colours [0.80ms]
+(pass) all 18 critters retain all 432 remains alongside full enemy storage until a 2 second run-end fade [8.75ms]
+(pass) wave preparation safely restores dead ground/perched/flying actors without replacing rig or route storage [205.83ms]
+(pass) a critter killed by a late settling missile receives a fresh fade bounded by the existing settlement end [0.37ms]
+
+ 88 pass
+ 0 fail
+ 77626 expect() calls
+Ran 88 tests across 11 files. [28.57s]

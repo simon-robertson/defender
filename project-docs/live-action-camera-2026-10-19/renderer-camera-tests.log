@@ -1,0 +1,46 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-presentation.test.js:
+(pass) title framing covers every viewport corner with landscape across portrait and widescreen [0.85ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [13.56ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.51ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.44ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [351.86ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.01ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [297.03ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [608.23ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.15ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.67ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.59ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [47.19ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [21.81ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1814.78ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [22.30ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [18.52ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.21ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.46ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [17.73ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.13ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.58ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.56ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.50ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [131.57ms]
+(pass) live film is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [1.84ms]
+(pass) live film reuses pipelines through toggles and releases viewport/scene images exactly once [1.48ms]
+
+tests/camera.test.js:
+(pass) player camera can disable development path view without changing preview default [0.22ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.12ms]
+(pass) path view samples every path box and restores the complete overview [0.16ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.06ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.17ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.04ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.33ms]
+
+ 34 pass
+ 0 fail
+ 2402 expect() calls
+Ran 34 tests across 3 files. [3.39s]

@@ -1,0 +1,26 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [4.55ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [3.04ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.28ms]
+(pass) stationary coverage holds its azimuth, visits low and high altitudes and aims above and below the horizon [6.86ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.12ms]
+{"levelIndex":0,"hz":30,"travelled":263.1031512714572,"readable":1,"minY":44,"maxY":144,"bytes":10798}
+{"levelIndex":0,"hz":60,"travelled":262.8281512714572,"readable":1,"minY":44,"maxY":144,"bytes":10798}
+{"levelIndex":0,"hz":120,"travelled":262.83712445347214,"readable":1,"minY":44,"maxY":144,"bytes":10798}
+{"levelIndex":1,"hz":30,"travelled":360.89432230980145,"readable":1,"minY":44.000007762029874,"maxY":144,"bytes":13696}
+{"levelIndex":1,"hz":60,"travelled":393.6913453758048,"readable":1,"minY":44.00000124380304,"maxY":144,"bytes":13696}
+{"levelIndex":1,"hz":120,"travelled":393.57856702523094,"readable":1,"minY":44.0000051629467,"maxY":144,"bytes":13696}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [6146.95ms]
+{"currentLevel":2,"mothFrames":2200,"minY":44.00001198027731,"maxY":144,"minPitch":-0.19114000946891932,"travelled":1191.308268036971,"bytes":12654}
+{"currentLevel":3,"mothFrames":1021,"minY":44.00454225373261,"maxY":144,"minPitch":0.03502387816575218,"travelled":848.5495294657917,"bytes":16888}
+{"currentLevel":4,"mothFrames":3548,"minY":44.01474548285666,"maxY":144,"minPitch":-0.44380538587745905,"travelled":1117.0456602365166,"bytes":15432}
+(pass) current A2/A3/A4 Moth and merged-front flights visit low shots, track real altitude and leave combat unchanged [6435.60ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [905.57ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.45ms]
+
+ 9 pass
+ 0 fail
+ 121109 expect() calls
+Ran 9 tests across 1 file. [13.52s]

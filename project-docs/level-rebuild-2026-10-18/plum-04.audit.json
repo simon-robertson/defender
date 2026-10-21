@@ -1,0 +1,753 @@
+{
+  "id": "plum-04",
+  "sourceHash": "e2c9ba8c3110fcf0dc4a266d99e9c1dbb8bfa9a64f323cfa8efd282ff1451007",
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 1972,
+    "checkedParts": 14790,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "early-1",
+        "group": "early",
+        "box": [
+          9,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 183.5,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "lantern": [
+                  [
+                    30,
+                    114
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    4,
+                    140
+                  ]
+                ],
+                "lantern": [
+                  [
+                    4,
+                    140
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 0,
+              "120": 0
+            },
+            "eligible": {
+              "base": {
+                "spider": [],
+                "lantern": []
+              },
+              "upgrade1": {
+                "spider": [],
+                "lantern": []
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-2",
+        "group": "early",
+        "box": [
+          9,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 235.15
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    52,
+                    188
+                  ]
+                ],
+                "lantern": [
+                  [
+                    52,
+                    188
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 0,
+              "120": 0
+            },
+            "eligible": {
+              "base": {
+                "spider": [],
+                "lantern": []
+              },
+              "upgrade1": {
+                "spider": [],
+                "lantern": []
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-3",
+        "group": "early",
+        "box": [
+          9,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 164.95,
+              "120": 283.15
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    102,
+                    168
+                  ]
+                ],
+                "lantern": [
+                  [
+                    102,
+                    168
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    76,
+                    192
+                  ]
+                ],
+                "lantern": [
+                  [
+                    76,
+                    192
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 0,
+              "120": 69.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [],
+                "lantern": []
+              },
+              "upgrade1": {
+                "spider": [],
+                "lantern": []
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "branch-1",
+        "group": "branch",
+        "box": [
+          17,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 108.45,
+              "120": 165.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [],
+                "lantern": []
+              },
+              "upgrade1": {
+                "spider": [],
+                "lantern": []
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 41.57,
+              "72": 67.88,
+              "96": 111.5,
+              "120": 144
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    0,
+                    42
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    42
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    68
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    68
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "branch-2",
+        "group": "branch",
+        "box": [
+          17,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 108.45,
+              "120": 165.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [],
+                "lantern": []
+              },
+              "upgrade1": {
+                "spider": [],
+                "lantern": []
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 89.57,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 165.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    0,
+                    90
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    90
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "branch-3",
+        "group": "branch",
+        "box": [
+          17,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 87.5,
+              "120": 144
+            },
+            "eligible": {
+              "base": {
+                "spider": [],
+                "lantern": []
+              },
+              "upgrade1": {
+                "spider": [],
+                "lantern": []
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 65.57,
+              "72": 120,
+              "96": 144,
+              "120": 168
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    30,
+                    96
+                  ]
+                ],
+                "lantern": [
+                  [
+                    30,
+                    96
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    120
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    120
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-1",
+        "group": "late",
+        "box": [
+          11,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 252.45,
+              "120": 309.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    438,
+                    522
+                  ]
+                ],
+                "lantern": [
+                  [
+                    438,
+                    522
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    354,
+                    548
+                  ]
+                ],
+                "lantern": [
+                  [
+                    357,
+                    548
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    138,
+                    332
+                  ]
+                ],
+                "lantern": [
+                  [
+                    141,
+                    332
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-2",
+        "group": "late",
+        "box": [
+          11,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 165.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "lantern": [
+                  [
+                    510,
+                    594
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    484,
+                    600
+                  ]
+                ],
+                "lantern": [
+                  [
+                    484,
+                    600
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 165.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    294,
+                    378
+                  ]
+                ],
+                "lantern": [
+                  [
+                    294,
+                    378
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    268,
+                    384
+                  ]
+                ],
+                "lantern": [
+                  [
+                    268,
+                    384
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-3",
+        "group": "late",
+        "box": [
+          9,
+          16
+        ],
+        "routes": {
+          "main": {
+            "length": 600,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    534,
+                    600
+                  ]
+                ],
+                "lantern": [
+                  [
+                    534,
+                    600
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    508,
+                    600
+                  ]
+                ],
+                "lantern": [
+                  [
+                    508,
+                    600
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 384,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    318,
+                    384
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    384
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    292,
+                    384
+                  ]
+                ],
+                "lantern": [
+                  [
+                    292,
+                    384
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "combat": {
+    "seconds": 120,
+    "frames": 7200,
+    "thinkCounts": [
+      2400,
+      2400,
+      2400
+    ],
+    "shots": {
+      "d4-defence-1": 19,
+      "d4-defence-2": 6,
+      "d4-defence-3": 18
+    },
+    "strengths": [
+      10,
+      30,
+      75
+    ],
+    "hits": {
+      "branch/spider/30": 60,
+      "main/lantern/75": 210,
+      "main/spider/10": 140,
+      "branch/lantern/75": 150,
+      "branch/spider/75": 240,
+      "branch/lantern/30": 110,
+      "main/lantern/10": 50,
+      "main/spider/75": 460
+    },
+    "launches": 18,
+    "claimsSeen": true,
+    "missileHits": 17,
+    "remaining": [
+      {
+        "id": "preview-spider-1",
+        "route": "branch",
+        "health": 0
+      },
+      {
+        "id": "preview-spider-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-spider-3",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-lantern-1",
+        "route": "branch",
+        "health": 0
+      },
+      {
+        "id": "preview-lantern-2",
+        "route": "main",
+        "health": 0
+      }
+    ],
+    "enhancers": [
+      {
+        "id": "d4-generator",
+        "active": true,
+        "recipientIds": [
+          "d4-defence-3"
+        ]
+      }
+    ],
+    "failures": []
+  }
+}

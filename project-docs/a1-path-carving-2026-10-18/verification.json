@@ -1,0 +1,684 @@
+{
+  "schema": "defender.a1-carving-final-verification",
+  "version": 1,
+  "recordedAt": "2026-10-18T17:33:50.813Z",
+  "source": {
+    "path": "assets/levels/moss-01.json",
+    "sha256": "2d0ec71f65d3df765f1def357cfbbf1bf56b30951b9ff424c5c042dd5f0b4c91"
+  },
+  "approvedSourceExact": true,
+  "factoryExactAndDeterministic": true,
+  "changedActiveAssets": [
+    "assets/levels/moss-01.json"
+  ],
+  "unchangedOtherProductionLevels": 15,
+  "unchangedModelSources": 51,
+  "frozenAssetsVerified": 67,
+  "frozenChanges": [],
+  "retainedScenery": 229,
+  "removedScenery": 91,
+  "removalPurposes": {
+    "routeTravel": 40,
+    "fullCandidateGround": 34,
+    "overviewVisibility": 17
+  },
+  "terrainEnvironmentWildlifeUnchanged": true,
+  "edges": {
+    "entry": [
+      0,
+      0,
+      8
+    ],
+    "exit": [
+      19,
+      0,
+      10
+    ],
+    "boundaryBoxes": 2,
+    "interiorBoxes": 38,
+    "edgeRunningSegments": 0
+  },
+  "coverage": [
+    {
+      "id": "west-1-7",
+      "box": [
+        1,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 66,
+      "upgradeGunDog": 92,
+      "baseArcDog": 66,
+      "upgradeArcDog": 92
+    },
+    {
+      "id": "west-2-7",
+      "box": [
+        2,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 116,
+      "baseArcDog": 84,
+      "upgradeArcDog": 116
+    },
+    {
+      "id": "west-3-7",
+      "box": [
+        3,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 146,
+      "baseArcDog": 84,
+      "upgradeArcDog": 146
+    },
+    {
+      "id": "west-4-7",
+      "box": [
+        4,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 136,
+      "baseArcDog": 84,
+      "upgradeArcDog": 136
+    },
+    {
+      "id": "west-4-9",
+      "box": [
+        4,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 128,
+      "upgradeGunDog": 154,
+      "baseArcDog": 132,
+      "upgradeArcDog": 184
+    },
+    {
+      "id": "west-4-10",
+      "box": [
+        4,
+        10
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 178,
+      "baseArcDog": 84,
+      "upgradeArcDog": 192
+    },
+    {
+      "id": "west-4-11",
+      "box": [
+        4,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 136,
+      "baseArcDog": 84,
+      "upgradeArcDog": 136
+    },
+    {
+      "id": "south-6-10",
+      "box": [
+        6,
+        10
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 204,
+      "baseArcDog": 84,
+      "upgradeArcDog": 204
+    },
+    {
+      "id": "south-6-11",
+      "box": [
+        6,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 132,
+      "upgradeGunDog": 184,
+      "baseArcDog": 132,
+      "upgradeArcDog": 184
+    },
+    {
+      "id": "south-7-10",
+      "box": [
+        7,
+        10
+      ],
+      "coverageRole": "upgrade-dependent",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 0,
+      "upgradeGunDog": 204,
+      "baseArcDog": 0,
+      "upgradeArcDog": 204
+    },
+    {
+      "id": "south-7-11",
+      "box": [
+        7,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 194,
+      "baseArcDog": 84,
+      "upgradeArcDog": 194
+    },
+    {
+      "id": "south-8-10",
+      "box": [
+        8,
+        10
+      ],
+      "coverageRole": "upgrade-dependent",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 0,
+      "upgradeGunDog": 204,
+      "baseArcDog": 0,
+      "upgradeArcDog": 204
+    },
+    {
+      "id": "south-8-11",
+      "box": [
+        8,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 194,
+      "baseArcDog": 84,
+      "upgradeArcDog": 194
+    },
+    {
+      "id": "south-9-10",
+      "box": [
+        9,
+        10
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 194,
+      "baseArcDog": 84,
+      "upgradeArcDog": 194
+    },
+    {
+      "id": "south-9-11",
+      "box": [
+        9,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 132,
+      "upgradeGunDog": 184,
+      "baseArcDog": 132,
+      "upgradeArcDog": 184
+    },
+    {
+      "id": "south-7-13",
+      "box": [
+        7,
+        13
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 146,
+      "baseArcDog": 84,
+      "upgradeArcDog": 146
+    },
+    {
+      "id": "south-8-13",
+      "box": [
+        8,
+        13
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 146,
+      "baseArcDog": 84,
+      "upgradeArcDog": 146
+    },
+    {
+      "id": "south-9-13",
+      "box": [
+        9,
+        13
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 136,
+      "baseArcDog": 84,
+      "upgradeArcDog": 136
+    },
+    {
+      "id": "north-return-11-6",
+      "box": [
+        11,
+        6
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 132,
+      "upgradeGunDog": 234,
+      "baseArcDog": 132,
+      "upgradeArcDog": 234
+    },
+    {
+      "id": "north-return-12-6",
+      "box": [
+        12,
+        6
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 318,
+      "baseArcDog": 84,
+      "upgradeArcDog": 318
+    },
+    {
+      "id": "north-return-13-6",
+      "box": [
+        13,
+        6
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 132,
+      "upgradeGunDog": 232,
+      "baseArcDog": 132,
+      "upgradeArcDog": 232
+    },
+    {
+      "id": "north-return-11-7",
+      "box": [
+        11,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 120,
+      "upgradeGunDog": 282,
+      "baseArcDog": 120,
+      "upgradeArcDog": 282
+    },
+    {
+      "id": "north-return-12-7",
+      "box": [
+        12,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 66,
+      "upgradeGunDog": 366,
+      "baseArcDog": 66,
+      "upgradeArcDog": 366
+    },
+    {
+      "id": "north-return-13-7",
+      "box": [
+        13,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 132,
+      "upgradeGunDog": 242,
+      "baseArcDog": 132,
+      "upgradeArcDog": 242
+    },
+    {
+      "id": "late-13-9",
+      "box": [
+        13,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 180,
+      "upgradeGunDog": 232,
+      "baseArcDog": 180,
+      "upgradeArcDog": 232
+    },
+    {
+      "id": "late-14-9",
+      "box": [
+        14,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 150,
+      "upgradeGunDog": 260,
+      "baseArcDog": 150,
+      "upgradeArcDog": 260
+    },
+    {
+      "id": "late-15-9",
+      "box": [
+        15,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 120,
+      "upgradeGunDog": 224,
+      "baseArcDog": 120,
+      "upgradeArcDog": 224
+    },
+    {
+      "id": "late-16-9",
+      "box": [
+        16,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 186,
+      "baseArcDog": 84,
+      "upgradeArcDog": 186
+    },
+    {
+      "id": "late-17-9",
+      "box": [
+        17,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 116,
+      "baseArcDog": 84,
+      "upgradeArcDog": 116
+    },
+    {
+      "id": "late-18-9",
+      "box": [
+        18,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 66,
+      "upgradeGunDog": 92,
+      "baseArcDog": 66,
+      "upgradeArcDog": 92
+    },
+    {
+      "id": "late-15-11",
+      "box": [
+        15,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 136,
+      "baseArcDog": 84,
+      "upgradeArcDog": 136
+    },
+    {
+      "id": "late-16-11",
+      "box": [
+        16,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 136,
+      "baseArcDog": 84,
+      "upgradeArcDog": 136
+    },
+    {
+      "id": "late-17-11",
+      "box": [
+        17,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": false,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 84,
+      "upgradeGunDog": 116,
+      "baseArcDog": 84,
+      "upgradeArcDog": 116
+    },
+    {
+      "id": "late-18-11",
+      "box": [
+        18,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      },
+      "baseGunDog": 66,
+      "upgradeGunDog": 92,
+      "baseArcDog": 66,
+      "upgradeArcDog": 92
+    }
+  ],
+  "clearance": {
+    "baseGunReady": 34,
+    "upgrade1GunReady": 33,
+    "baseArcReady": 34,
+    "upgrade1ArcReady": 34,
+    "upgrade1GunExclusions": [
+      "late-17-11"
+    ],
+    "baseUseful": 32,
+    "upgradeDependent": 2,
+    "acceptedSuitabilityPassed": true
+  },
+  "dependencies": {
+    "scripts/a1-path-carving.js": "abe518e8589d60ba2ad711eace9d9f03a553631aa5276c7d52869e7cdc11062e",
+    "scripts/a1-path-carving-audit.js": "4558aed34b2520791512d412e3661bfc9c6aa0b3e536e39c26c1c452b381da73",
+    "scripts/a1-path-carving-clearance.js": "3e75f1ead53430b1542f856589d08ee96fae1db18b39b02060ab5262abda99fd",
+    "scripts/level-layout-audit.js": "df66fc1b23b261434b5b8e4203deaf13bccd6b18fd88691ce6edc975c054a35d",
+    "scripts/verify-zone-a-four-visibility.js": "c9c2a4ed7c75792ba30800485773c524e0b3d250b5b75de6335f8bc123da164f",
+    "engine/path-motion.js": "560c6588336385b2d234ba16d906716b1e4d57641b7d04ee6dec11751264842e",
+    "engine/visibility.js": "a7a6df986dde1d5e0437dff91b15ab708382682b3f59f43c01d2d254bf945e8a",
+    "engine/camera.js": "197a9bd56f8ad613e9cb3ffe69b245d24d227c0185927ffc6f823fd30d6f53cd",
+    "game/turret-preview.js": "89d9a78a322180fc3530956afbcb6b83c15be9d70e089f1bc09f70085d46fe76",
+    "game/arc-spire-preview.js": "19eebd6c84d4bf989a3eb7035f2639faedb09f45fcb3993d52f46360dce5892c",
+    "game/enemy-preview.js": "3875d07d58318ecf326155bd5720f3445e4ebda3fd95e7bad3a77b0ef71339e9",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1"
+  },
+  "failures": [],
+  "passed": true
+}

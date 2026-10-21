@@ -1,0 +1,43 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.36ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.05ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.14ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [5.29ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [3.16ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.31ms]
+(pass) stable coverage drifts gently around its shot while changing height and retaining broad gimbal aiming [8.60ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.52ms]
+{"levelIndex":0,"hz":30,"travelled":155.31583042142572,"readable":1,"minY":144.1148763445814,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":60,"travelled":250.7578749421296,"readable":1,"minY":144.00026969209205,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":120,"travelled":280.17195978498194,"readable":1,"minY":144,"maxY":224,"bytes":11006}
+{"levelIndex":1,"hz":30,"travelled":294.3624793351653,"readable":0.9370892018779343,"minY":145.03330649437027,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":60,"travelled":293.6783599018737,"readable":0.9774542038515736,"minY":144.33659214665948,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":120,"travelled":396.95516161703665,"readable":0.9304837952090184,"minY":144.00200656554856,"maxY":224,"bytes":13904}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5973.33ms]
+{"currentLevel":2,"mothFrames":2807,"minY":173.2828433591373,"maxY":228.46683658808146,"minPitch":0.5617526279483173,"minEnemy3D":126.54413946944229,"minFlyer3D":126.54413946944229,"minVerticalGap":100.2828433591373,"stalledFrames":0,"minStep":0.00011111109786799264,"heldDriftFrames":1346,"meanSpeed":11.538469412839062,"blockedMoves":0,"airborneFloor":173,"travelled":960.989666812368,"bytes":12862}
+{"currentLevel":3,"mothFrames":2127,"minY":173.01592100238466,"maxY":223.9999438263378,"minPitch":0.49217663758208563,"minEnemy3D":152.84219072388555,"minFlyer3D":152.84219072388555,"minVerticalGap":100.01592100238466,"stalledFrames":0,"minStep":0.00011111109785516844,"heldDriftFrames":2789,"meanSpeed":7.303367677751057,"blockedMoves":1,"airborneFloor":173,"travelled":666.0671322111651,"bytes":17096}
+{"currentLevel":4,"mothFrames":1928,"minY":173.43589753781538,"maxY":224,"minPitch":0.4439468889844086,"minEnemy3D":133.18481571008235,"minFlyer3D":133.18481571008235,"minVerticalGap":100.64578641738558,"stalledFrames":0,"minStep":0.00011111109785442916,"heldDriftFrames":3257,"meanSpeed":6.433412591905083,"blockedMoves":1,"airborneFloor":173,"travelled":637.5511878581099,"bytes":15640}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [5554.12ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [849.43ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.45ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.00000000058749,"maxJerk":48.00000010487128,"driftFrames":3305,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [8.13ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [0.71ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.24ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [0.57ms]
+(pass) the Drone camera leaves a held current shot and moves toward an idle defence before its enemy enters range, then freezes with pause [1.08ms]
+(pass) drone focus follows optical-axis subject depth during a limited turn instead of radial distance [0.05ms]
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":6.197717081110318,"totalTravel":114.98895875415494}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [928.63ms]
+
+ 20 pass
+ 0 fail
+ 217986 expect() calls
+Ran 20 tests across 3 files. [13.36s]

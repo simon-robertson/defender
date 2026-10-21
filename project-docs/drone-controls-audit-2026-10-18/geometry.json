@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-18",
+  "method": "Actual occupied-cell corners transformed through production PoseRig for8aircraft headings,16collective/differential fan patterns at20degrees,9gun yaw/pitch endpoint combinations and all3variants. Rotor phases vary across poses. Finite transform audit complements continuous geometry proof; it does not certify arbitrary intermediate compound angles by sampling alone.",
+  "hull": {
+    "radius": 16.5,
+    "below": 9,
+    "above": 6,
+    "variantAbove": {
+      "base": 6,
+      "upgrade1": 7,
+      "upgrade2": 10
+    },
+    "neutralRadius": 11,
+    "neutralBelow": 5,
+    "neutralAbove": 5
+  },
+  "results": [
+    {
+      "variant": "base",
+      "poses": 1152,
+      "corners": 7188480,
+      "maxHorizontalRadius": 15.06830117086965,
+      "lowest": -8.83418869972229,
+      "highest": 5.83546382188797,
+      "violations": 0,
+      "firstViolation": null
+    },
+    {
+      "variant": "upgrade1",
+      "poses": 1152,
+      "corners": 7962624,
+      "maxHorizontalRadius": 15.06830117086965,
+      "lowest": -8.83418869972229,
+      "highest": 7,
+      "violations": 0,
+      "firstViolation": null
+    },
+    {
+      "variant": "upgrade2",
+      "poses": 1152,
+      "corners": 9179136,
+      "maxHorizontalRadius": 15.06830117086965,
+      "lowest": -8.83418869972229,
+      "highest": 10,
+      "violations": 0,
+      "firstViolation": null
+    }
+  ]
+}

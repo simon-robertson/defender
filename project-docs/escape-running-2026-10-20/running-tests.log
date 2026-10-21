@@ -1,0 +1,16 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-run-clearance.test.js:
+(pass) bounding Dog poses keep actual limb cells outside the chassis and soles above the route plane [3766.77ms]
+
+tests/play-escape.test.js:
+(pass) escape certainty admits no false proof from current LOS, targeting reservation or route re-entry [1.27ms]
+(pass) run corner smoothing keeps endpoints and continuous position/tangent inside the authored turn [1.89ms]
+(pass) undefended Dogs genuinely bound with airborne phases, valid leg reach and smooth 2x acceleration [2904.44ms]
+(pass) real A2/A3 ground and air escapes complete through corners and merges, deterministically across host rates [13734.99ms]
+(pass) a surviving missile reaction and zero-delta pause retain valid running poses and clean retry state [2176.33ms]
+
+ 6 pass
+ 0 fail
+ 1166169 expect() calls
+Ran 6 tests across 2 files. [22.62s]

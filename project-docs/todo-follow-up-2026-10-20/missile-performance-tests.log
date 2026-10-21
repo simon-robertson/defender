@@ -1,0 +1,50 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-performance.test.js:
+(pass) performance separates wall frame interval from CPU renderer time and limits DOM updates [0.47ms]
+(pass) pause/loading/hidden resets measurements and first resumed zero frame cannot count idle time [0.13ms]
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [365.35ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [21.71ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [20.28ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [20.60ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [69.53ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [60.76ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [30.50ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [82.55ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [21.14ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [20.98ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [32.61ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [71.59ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [61.86ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [40.07ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [20.48ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [20.69ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [21.12ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [20.09ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [122.17ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [21.67ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [22.33ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [27.55ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [21.73ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [219.85ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [19.35ms]
+(pass) static contact drops its incoming claim before the impact callback [19.38ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [81.52ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [37.09ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [73.37ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [30.82ms]
+(pass) steering light and jets stop at alignment and pulse together within the fixed 36-light budget [22.98ms]
+(pass) real slow and fast turns extinguish attitude jets while residual sub-degree steering settles [104.62ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1146.61ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [226.69ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [577.74ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [546.43ms]
+
+ 38 pass
+ 0 fail
+ 4052 expect() calls
+Ran 38 tests across 3 files. [4.36s]

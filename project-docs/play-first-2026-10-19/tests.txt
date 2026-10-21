@@ -1,0 +1,133 @@
+bun test v1.4.2 (744846f84)
+
+tests/turret-pitch.test.js:
+(pass) pitch servo preserves momentum but never crosses mechanical bounds during reversals, braking or stalls [2.88ms]
+(pass) pitch integration agrees across frame subdivisions within the hard stops [0.18ms]
+(pass) real gun joints aim their shared centreline above and below across every placed root turn [2.96ms]
+(pass) mechanically unreachable and missing heights cannot damage even with LOS disabled; reachable alternatives remain selectable [0.25ms]
+(pass) candidate pitch is separate from actual pose; height changes cancel bursts until both axes align [0.20ms]
+(pass) reset and lethal hits clear pitch lock state while preserving weapon time, rig matrices and bounded braking [0.14ms]
+
+tests/turret.test.js:
+(pass) turret variants are connected rigid solids within one footprint, with full yaw clearance [17.45ms]
+(pass) every turret has exactly two front muzzle rings with real recessed bores [1.11ms]
+(pass) turret exports retain material variation, three parts, and the saved editable source [61.77ms]
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.05ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [0.17ms]
+(pass) eight finite waves reward once, retain same-map positions and return ownership to inventory at level boundary [0.15ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [0.11ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.04ms]
+
+tests/model-lights.test.js:
+(pass) flagged exposed face clusters preserve all zone colours and only the authored turret panels [129.18ms]
+(pass) edge-connected matching faces share an emitter; gaps, point contacts and different materials do not [0.30ms]
+(pass) logical transforms, compacted visibility and unchanged invalidations reuse storage correctly [0.08ms]
+(pass) model light overflow is explicit, bounded and does not allocate one light per quad [0.09ms]
+
+tests/play-config.test.js:
+(pass) approved first player scope has an independent validated eight-wave wallet and roster [0.08ms]
+(pass) isolated play tuning merges resolved values without changing preview constants or defaults [0.13ms]
+(pass) bad schedules, incomplete resolved combat and unsupported capacities fail before scene construction [0.71ms]
+
+tests/clock.test.js:
+(pass) rAF timestamp differences become seconds, including first frame and pauses [0.06ms]
+(pass) a movement rate integrates equally at 30, 60 and 144 Hz with jitter [0.13ms]
+(pass) one owned frame loop can stop, resume and stop from its callback without duplicate requests [0.09ms]
+(pass) held keyboard camera movement uses delta seconds, independent of event repeat rate [0.26ms]
+(pass) preview time scale changes delta and accumulated time once, without jumps or hidden-tab catch-up [0.05ms]
+(pass) all frame consumers receive the same scaled delta and shader time across loop restarts [0.09ms]
+
+tests/server.test.js:
+Defender Workshop: http://127.0.0.1:63496
+(pass) player entry is separately served with local scripts and no write route [2.24ms]
+(pass) design doc renders the current Markdown source on every request and supports canonical/raw/HEAD routes [4.11ms]
+(pass) linked documents and safe images are served with explicit types without exposing HTML or escaped paths [5.02ms]
+(pass) source round-trip, stale revision protection, and same-origin save protection [2.47ms]
+(pass) invalid materials and missing references never reach disk [1.33ms]
+(pass) enemy source and articulated joints survive the authoring API round-trip [7.07ms]
+(pass) legacy library reads upgrade in memory and retain revision protection until saved [6.53ms]
+(pass) model changes cannot silently invalidate saved layouts [4.96ms]
+(pass) terrain, water and path height survive saves; invalid route edits never replace disk [3.29ms]
+(pass) engine entry point and detail/environment metadata round-trip without exposing source files [4.73ms]
+(pass) water settings persist and elevated player defences are rejected before saving [5.92ms]
+(pass) the per-level weather switch round-trips and rejects unsupported zone weather [11.88ms]
+
+tests/dog-preview.test.js:
+(pass) dog target velocity follows the route and stays bounded across entrance resets [254.48ms]
+(pass) three runtime dogs share part meshes without becoming saved scenery or bypassing path clearance [912.55ms]
+(pass) path motion keeps exact box-centre segments while facing turns continuously [1.94ms]
+(pass) uniform path indexing keeps boundary position and travel direction, including clamped endpoints [0.05ms]
+(pass) cached gait contacts preserve poses while avoiding repeated path sampling within a stride [212.77ms]
+(pass) walking keeps paw contacts planted through bends and all animated geometry above and inside the route [340.13ms]
+(pass) root and gait agree across frame rates, uneven frames and multiple preview loops [1071.33ms]
+(pass) dog preview teardown releases actor and path references without adding or retaining slots [189.98ms]
+(pass) turn abduction and folded steps keep moving limb cells clear of the dog chassis [2296.34ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [586.04ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [655.41ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [699.39ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [710.70ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.43ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [1881.63ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [5.25ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [1.15ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [1.03ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [265.58ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [2.97ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [260.98ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [475.97ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.75ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.39ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.20ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [31.17ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [14.24ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1302.93ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [17.31ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [15.84ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.45ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.65ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [17.04ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.54ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [1.84ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [0.85ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [0.84ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [76.26ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [28.75ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [58.93ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [56.60ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [126.51ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [21.48ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [369.83ms]
+(pass) maximum affordable inventory plus current-wave slots retain all72 lights and default shaders/capacity remain unchanged [115.97ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [1414.02ms]
+(pass) real eight-wave witness preserves paid ownership, rewards once, transfers to A2 and completes with14tokens [8393.79ms]
+
+tests/scene-loader.test.js:
+(pass) explicit same-level rebuild releases and activates once; ordinary repeat remains a no-op [0.38ms]
+(pass) scene replacement releases old resources and waits for submitted work before fetching [0.19ms]
+(pass) a stale fetch cannot activate after a newer request, even when it ignores abort [0.20ms]
+(pass) rapid requests during unload coalesce before starting replacement network loads [0.12ms]
+(pass) failed downloads and partial activation release resources and permit retry [0.17ms]
+(pass) disposal cancels a pending load and prevents scene resurrection [0.06ms]
+(pass) scene teardown clears every GPU buffer, camera/CPU reference and live shot without reallocating pools [0.45ms]
+
+tests/camera.test.js:
+(pass) player camera can disable development path view without changing preview default [0.31ms]
+(pass) path view samples every path box and restores the complete overview [0.20ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.07ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.21ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.04ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.09ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.37ms]
+
+ 100 pass
+ 0 fail
+ 30644 expect() calls
+Ran 100 tests across 13 files. [23.30s]

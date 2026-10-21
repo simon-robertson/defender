@@ -1,0 +1,175 @@
+{
+  "schema": "defender.level",
+  "version": 4,
+  "id": "terrain-study",
+  "name": "Terrain study \u00b7 stream & mounds",
+  "zone": "A",
+  "size": [
+    8,
+    6
+  ],
+  "waves": 5,
+  "placements": [
+    {
+      "id": "turret-1",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        1
+      ],
+      "turn": 0
+    },
+    {
+      "id": "turret-2",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "box": [
+        4,
+        0,
+        1
+      ],
+      "turn": 0
+    },
+    {
+      "id": "turret-3",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "box": [
+        6,
+        0,
+        1
+      ],
+      "turn": 0
+    }
+  ],
+  "path": [
+    [
+      0,
+      0,
+      3
+    ],
+    [
+      1,
+      0,
+      3
+    ],
+    [
+      2,
+      0,
+      3
+    ],
+    [
+      3,
+      0,
+      3
+    ],
+    [
+      4,
+      0,
+      3
+    ],
+    [
+      5,
+      0,
+      3
+    ],
+    [
+      6,
+      0,
+      3
+    ],
+    [
+      7,
+      0,
+      3
+    ]
+  ],
+  "pathHeight": 24,
+  "terrain": {
+    "defaultHeight": 24,
+    "boxes": [
+      {
+        "box": [
+          4,
+          0
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          6,
+          0
+        ],
+        "ground": 40,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          1,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          2,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          3,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          4,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          5,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          6,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          7,
+          4
+        ],
+        "ground": 4,
+        "water": 12
+      }
+    ]
+  }
+}

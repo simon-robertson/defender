@@ -1,0 +1,201 @@
+{
+  "schema": "defender.authoring-visibility-review",
+  "version": 1,
+  "recordedAt": "2026-10-18T15:03:42.636Z",
+  "reproduce": "bun scripts/verify-zone-a-four-visibility.js --write",
+  "source": {
+    "path": "assets/levels/moss-04.json",
+    "sha256": "de00431c2891bbee449df11fe6fe392801449848e28363f59458b084edd858f1",
+    "placements": 240,
+    "sceneryPlacements": 236,
+    "models": {
+      "arc-spire": "2080fcc80986b6f4a686ec0dbaacf154a68083f104f1b51d4f7c172c2ec1a5ce",
+      "detail-flowers": "74de3a6f31e9229cc4ceec6a2612d5a6a77381c49a8f84dedf0feeb41c26bdc9",
+      "detail-grass": "ee0e72703939771ebb6dfdc4ab2c5f46f74aa593da6339f54dc2d96a7a7c13cb",
+      "detail-pebbles": "d89c91a2a90da269ad7fcd85439727718ade0a4054c790acebb690d8497930b1",
+      "missile-launcher": "08da848e6ab09c95114fe8af10aa4a11223d0740046f8a7daf20d121f767654a",
+      "power-generator": "9356ddafdabab96dfd2c1c7ef4f61734218e9b3a1bea13c0a700434d314efd79",
+      "scenery-cypress": "3235eb51939e970809179142912521584e621bef08d432ac89cf768af96992ae",
+      "scenery-cypress-short": "c546b3b14aa7549c4ee134248588c06f62e878a4d4ea3387e55d05e4b46396e3",
+      "scenery-oak": "4fdc7fdf527ede8ae28dc27568d1a3a9c60413fd076ec03eef64db4261f5e0e6",
+      "scenery-oak-tall": "4441b5113c4d15d13c766fa734a07971ea2434eab610ab36d6b23230f37b4e2c",
+      "scenery-oak-young": "d54862bfd2d51c08ba849c8252eb9ad9471b5a1d8c975b1069f547474f1b21e1",
+      "scenery-rock": "d48cd00bcfc01bd2ef5b336fd7fbe9952da33a3e225394d989c437b28919da45",
+      "scenery-ruin-pillar": "1831b0c9620f93867be07e1f67df57678110fe0abde9aaa4adda3bc831731506",
+      "scenery-ruin-wall": "806c5b2aecff2d1c662258d853d974f7dcce83c6b81d08a140c4e7b1a7037fca",
+      "scenery-shrub": "55872af02090c65df69b4d607e3cc55eb7868c927d63e90b96ceb44b16a25d01",
+      "turret-study": "2f082540dd14484bf729b52ad40c710992198637d8e0408f7515cd27953b5073"
+    },
+    "dependencies": {
+      "scripts/verify-zone-a-four-visibility.js": "3fbb41e16805941b28879dc6c8346ab57fddbc4117f6d82a2221eda462a303bb",
+      "scripts/zone-a-four.js": "dde95032bfc798d67a7c720ceb9f862143ec843a63e79a33ed35c17486ebe204",
+      "engine/camera.js": "e47a85c4130ba70c259299e49c68192c78947b0208ec365390bbbe50ea3befdf",
+      "engine/visibility.js": "a7a6df986dde1d5e0437dff91b15ab708382682b3f59f43c01d2d254bf945e8a",
+      "shared/terrain.js": "a693419e4c97ccdd060269e4c5c8ed7175999f2b65c22b83fe6b177db32f8fd3"
+    }
+  },
+  "camera": {
+    "mode": "default framed orthographic overview",
+    "yaw": 2.45,
+    "pitch": 0.68,
+    "directionTowardCamera": [
+      0.4959084333621017,
+      0.6287930240184686,
+      -0.5989108102765015
+    ],
+    "aspect": 1.25,
+    "target": [
+      216,
+      22,
+      192
+    ],
+    "radius": 249.54114846301326
+  },
+  "method": {
+    "groundY": 24.01,
+    "clearingSize": [
+      24,
+      24
+    ],
+    "sampleSpacing": 1,
+    "sampleOffsets": [
+      0.5,
+      23.5
+    ],
+    "samplesPerSite": 576,
+    "totalSiteSamples": 5760,
+    "rayLength": 2000,
+    "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+    "continuousCheck": "Project each occupied cuboid onto the clearing plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails.",
+    "areaTolerance": 1e-8
+  },
+  "limitations": [
+    "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+    "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+    "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+    "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+  ],
+  "sites": [
+    {
+      "id": "early-entry",
+      "box": [
+        2,
+        9
+      ],
+      "placement": null,
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "early-turn",
+      "box": [
+        4,
+        9
+      ],
+      "placement": "a4-gun",
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "early-straight",
+      "box": [
+        5,
+        9
+      ],
+      "placement": null,
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "repeat-upper",
+      "box": [
+        11,
+        10
+      ],
+      "placement": "a4-arc",
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "repeat-middle",
+      "box": [
+        11,
+        11
+      ],
+      "placement": null,
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "repeat-turn",
+      "box": [
+        11,
+        12
+      ],
+      "placement": null,
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "late-approach",
+      "box": [
+        14,
+        8
+      ],
+      "placement": null,
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "late-middle",
+      "box": [
+        15,
+        8
+      ],
+      "placement": "a4-silo",
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "late-exit",
+      "box": [
+        16,
+        8
+      ],
+      "placement": null,
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    },
+    {
+      "id": "late-opposite",
+      "box": [
+        16,
+        6
+      ],
+      "placement": null,
+      "raySamples": 576,
+      "terrainBlockedSamples": 0,
+      "clear": true,
+      "obstructions": []
+    }
+  ],
+  "passed": true
+}

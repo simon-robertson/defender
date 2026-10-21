@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="490" viewBox="0 0 1140 490">
+  <title>Defender: route spacing versus base turret range</title>
+  <desc>Three original schematic panels compare parallel path centrelines separated by two, three and four boxes. Base range is two boxes. Useful shared coverage exists in the first panel; the others show tangent-only contact with one or both lines.</desc>
+  <defs>
+    <pattern id="grid" x="26" y="8" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#cfd5cf" stroke-width="1"/></pattern>
+    <style>text{font-family:Arial,sans-serif;fill:#21372e}.title{font-size:25px;font-weight:700}.head{font-size:19px;font-weight:700}.copy{font-size:15px}.small{font-size:13px}.road{fill:#d8cdb4}.line{stroke:#806d4d;stroke-width:2;stroke-dasharray:5 4}.range{fill:#69a98c;fill-opacity:.15;stroke:#377559;stroke-width:2}.hit{stroke:#247e56;stroke-width:5}.dot{fill:#aa503b}.tower{fill:#fffaf0;stroke:#254e3d;stroke-width:3}</style>
+    <pattern id="grid-mid" x="26" y="24" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#cfd5cf" stroke-width="1"/></pattern>
+  </defs>
+  <rect width="1140" height="490" fill="#f5f3ec"/>
+  <text x="30" y="39" class="title">Open space is useful only in relation to the route</text>
+  <text x="30" y="66" class="copy">Original Defender diagram · 1 box = 24 units · base range = 48 units (2 boxes) · box-centred defence</text>
+  <g transform="translate(30 96)">
+    <text x="0" y="20" class="head">2-box separation</text>
+    <rect x="0" y="38" width="340" height="260" fill="#e8ece4"/><rect x="0" y="38" width="340" height="260" fill="url(#grid)"/>
+    <rect x="10" y="104" width="320" height="32" class="road"/><rect x="10" y="168" width="320" height="32" class="road"/>
+    <path d="M10 120H330M10 184H330" class="line"/>
+    <circle cx="170" cy="152" r="64" class="range"/>
+    <path d="M114.57 120H225.43M114.57 184H225.43" class="hit"/>
+    <rect x="159" y="141" width="22" height="22" rx="2" class="tower"/>
+    <text x="0" y="326" class="copy">One empty row between paths.</text><text x="0" y="350" class="copy">Positive coverage on both stretches.</text>
+  </g>
+  <g transform="translate(400 96)">
+    <text x="0" y="20" class="head">3-box separation</text>
+    <rect x="0" y="38" width="340" height="260" fill="#e8ece4"/><rect x="0" y="38" width="340" height="260" fill="url(#grid-mid)"/>
+    <rect x="10" y="88" width="320" height="32" class="road"/><rect x="10" y="184" width="320" height="32" class="road"/>
+    <path d="M10 104H330M10 200H330" class="line"/>
+    <circle cx="170" cy="136" r="64" class="range"/>
+    <path d="M114.57 104H225.43" class="hit"/><circle cx="170" cy="200" r="5" class="dot"/>
+    <rect x="159" y="125" width="22" height="22" rx="2" class="tower"/>
+    <text x="0" y="326" class="copy">Two empty rows between paths.</text><text x="0" y="350" class="copy">Second stretch: tangent only.</text>
+  </g>
+  <g transform="translate(770 96)">
+    <text x="0" y="20" class="head">4-box separation</text>
+    <rect x="0" y="38" width="340" height="260" fill="#e8ece4"/><rect x="0" y="38" width="340" height="260" fill="url(#grid)"/>
+    <rect x="10" y="72" width="320" height="32" class="road"/><rect x="10" y="200" width="320" height="32" class="road"/>
+    <path d="M10 88H330M10 216H330" class="line"/>
+    <circle cx="170" cy="152" r="64" class="range"/>
+    <circle cx="170" cy="88" r="5" class="dot"/><circle cx="170" cy="216" r="5" class="dot"/>
+    <rect x="159" y="141" width="22" height="22" rx="2" class="tower"/>
+    <text x="0" y="326" class="copy">Three empty rows between paths.</text><text x="0" y="350" class="copy">Centre: tangent to both stretches.</text>
+  </g>
+  <text x="30" y="477" class="small">Green line = positive route length in range. Rust dot = zero-length contact. No LOS, endpoints, damage or balance assumed. Not a proposed level.</text>
+</svg>

@@ -1,0 +1,7611 @@
+{
+  "id": "lantern-shore-return",
+  "sourceHash": "f5357ddc18af11831ee0b5e2c8e90324963009f16624a195f726f61c97ef3bde",
+  "method": "Production actual gun range, mechanical pitch and both pitched muzzle rays at zero/full recoil; Arc closest terminal, centre LOS and facing-side surface contact. One-unit midpoint bins per species/complete route; production placement-rule exclusions (including bounds and full launch clearance) contribute no eligibility. Arc upgrade2 is active; gun upgrade2 remains inactive and has no attack coverage. Silo intervals are72/96/120 centre-range admission only; separate finite production flights establish selected examples. Base-useful means positive measured opportunity against every D species with at least one physically allowed base gun/Arc, not universal weapon fit or guaranteed damage. Adjacent alternatives are not a certified simultaneous arrangement.",
+  "classification": {
+    "main": 35
+  },
+  "surveyedSites": 35,
+  "baseGunArcUseful": 35,
+  "baseGunUseful": 35,
+  "baseArcUseful": 35,
+  "bothBaseWeaponsUseful": 35,
+  "upgradeDependent": [],
+  "clearanceReady": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "count": 35
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "count": 33
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "count": 30
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "count": 35
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "count": 35
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "count": 35
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "base",
+      "count": 35
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade1",
+      "count": 35
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade2",
+      "count": 35
+    }
+  ],
+  "excluded": [
+    {
+      "site": "north-6-1",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "The defence would touch the scenery.",
+      "code": "scenery"
+    },
+    {
+      "site": "north-6-2",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "The defence would touch the scenery.",
+      "code": "scenery"
+    },
+    {
+      "site": "north-6-3",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "The defence would touch the scenery.",
+      "code": "scenery"
+    },
+    {
+      "site": "return-7-10",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "The defence would touch the scenery.",
+      "code": "scenery"
+    },
+    {
+      "site": "return-7-10",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "The defence would touch the scenery.",
+      "code": "scenery"
+    },
+    {
+      "site": "return-7-12",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "The defence would touch the scenery.",
+      "code": "scenery"
+    },
+    {
+      "site": "return-7-12",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "The defence would touch the scenery.",
+      "code": "scenery"
+    }
+  ],
+  "independentSiteUnion": [
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "spider",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "lantern",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "spider",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "lantern",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "spider",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "lantern",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "spider",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "lantern",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade2",
+      "species": "spider",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade2",
+      "species": "lantern",
+      "eligible": [
+        [
+          0,
+          768
+        ]
+      ],
+      "uncovered": []
+    }
+  ],
+  "strongestRepeatedExamples": [
+    {
+      "site": "return-5-8",
+      "box": [
+        5,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          270,
+          354
+        ],
+        [
+          414,
+          498
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 60,
+          "seconds": 5
+        }
+      ]
+    },
+    {
+      "site": "return-6-8",
+      "box": [
+        6,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          246,
+          330
+        ],
+        [
+          438,
+          522
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 108,
+          "seconds": 9
+        }
+      ]
+    },
+    {
+      "site": "return-7-8",
+      "box": [
+        7,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          222,
+          306
+        ],
+        [
+          462,
+          546
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 156,
+          "seconds": 13
+        }
+      ]
+    },
+    {
+      "site": "return-5-8",
+      "box": [
+        5,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          270,
+          354
+        ],
+        [
+          414,
+          498
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 60,
+          "seconds": 3.75
+        }
+      ]
+    },
+    {
+      "site": "return-6-8",
+      "box": [
+        6,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          246,
+          330
+        ],
+        [
+          438,
+          522
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 108,
+          "seconds": 6.75
+        }
+      ]
+    },
+    {
+      "site": "return-7-8",
+      "box": [
+        7,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          222,
+          306
+        ],
+        [
+          462,
+          546
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 156,
+          "seconds": 9.75
+        }
+      ]
+    },
+    {
+      "site": "return-5-8",
+      "box": [
+        5,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          270,
+          354
+        ],
+        [
+          414,
+          498
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 60,
+          "seconds": 5
+        }
+      ]
+    },
+    {
+      "site": "return-6-8",
+      "box": [
+        6,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          246,
+          330
+        ],
+        [
+          438,
+          522
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 108,
+          "seconds": 9
+        }
+      ]
+    },
+    {
+      "site": "return-7-8",
+      "box": [
+        7,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          222,
+          306
+        ],
+        [
+          462,
+          546
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 156,
+          "seconds": 13
+        }
+      ]
+    },
+    {
+      "site": "return-5-8",
+      "box": [
+        5,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          270,
+          354
+        ],
+        [
+          414,
+          498
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 60,
+          "seconds": 3.75
+        }
+      ]
+    },
+    {
+      "site": "return-6-8",
+      "box": [
+        6,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          246,
+          330
+        ],
+        [
+          438,
+          522
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 108,
+          "seconds": 6.75
+        }
+      ]
+    },
+    {
+      "site": "return-7-8",
+      "box": [
+        7,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          222,
+          306
+        ],
+        [
+          462,
+          546
+        ]
+      ],
+      "total": 168,
+      "gaps": [
+        {
+          "distance": 156,
+          "seconds": 9.75
+        }
+      ]
+    },
+    {
+      "site": "return-9-8",
+      "box": [
+        9,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          192,
+          258
+        ],
+        [
+          510,
+          546
+        ]
+      ],
+      "total": 102,
+      "gaps": [
+        {
+          "distance": 252,
+          "seconds": 21
+        }
+      ]
+    },
+    {
+      "site": "return-9-8",
+      "box": [
+        9,
+        8
+      ],
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          192,
+          258
+        ],
+        [
+          510,
+          546
+        ]
+      ],
+      "total": 102,
+      "gaps": [
+        {
+          "distance": 252,
+          "seconds": 15.75
+        }
+      ]
+    },
+    {
+      "site": "return-9-8",
+      "box": [
+        9,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "spider",
+      "windows": [
+        [
+          192,
+          258
+        ],
+        [
+          510,
+          546
+        ]
+      ],
+      "total": 102,
+      "gaps": [
+        {
+          "distance": 252,
+          "seconds": 21
+        }
+      ]
+    },
+    {
+      "site": "return-9-8",
+      "box": [
+        9,
+        8
+      ],
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "lantern",
+      "windows": [
+        [
+          192,
+          258
+        ],
+        [
+          510,
+          546
+        ]
+      ],
+      "total": 102,
+      "gaps": [
+        {
+          "distance": 252,
+          "seconds": 15.75
+        }
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "id": "north-6-1",
+      "group": "north",
+      "box": [
+        6,
+        1
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  0,
+                  135
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  135
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                92
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                135
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                168
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 92,
+                "lantern": 92
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 92,
+                "lantern": 92
+              },
+              "upgrade2": {
+                "spider": 135,
+                "lantern": 135
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-8-1",
+      "group": "north",
+      "box": [
+        8,
+        1
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  0,
+                  165
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  165
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  92
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  92
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                92
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                165
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                190
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 92,
+                "lantern": 92
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 92,
+                "lantern": 92
+              },
+              "upgrade2": {
+                "spider": 165,
+                "lantern": 165
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-6-2",
+      "group": "north",
+      "box": [
+        6,
+        2
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "lantern": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  126
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  126
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "lantern": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  126
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  126
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  0,
+                  159
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  159
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "lantern": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  126
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  126
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                126
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                159
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                192
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 126,
+                "lantern": 126
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 126,
+                "lantern": 126
+              },
+              "upgrade2": {
+                "spider": 159,
+                "lantern": 159
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-8-2",
+      "group": "north",
+      "box": [
+        8,
+        2
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "lantern": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  164
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  164
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "lantern": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  164
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  164
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  0,
+                  189
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  189
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  6,
+                  90
+                ]
+              ],
+              "lantern": [
+                [
+                  6,
+                  90
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  0,
+                  164
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  164
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                164
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                189
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                214
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 164,
+                "lantern": 164
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 164,
+                "lantern": 164
+              },
+              "upgrade2": {
+                "spider": 189,
+                "lantern": 189
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-6-3",
+      "group": "north",
+      "box": [
+        6,
+        3
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "lantern": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  4,
+                  140
+                ]
+              ],
+              "lantern": [
+                [
+                  4,
+                  140
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "lantern": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  4,
+                  140
+                ]
+              ],
+              "lantern": [
+                [
+                  4,
+                  140
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  0,
+                  183
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  183
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  30,
+                  114
+                ]
+              ],
+              "lantern": [
+                [
+                  30,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  4,
+                  140
+                ]
+              ],
+              "lantern": [
+                [
+                  4,
+                  140
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                4,
+                140
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                183
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                360
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              },
+              "upgrade2": {
+                "spider": 183,
+                "lantern": 183
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-8-3",
+      "group": "north",
+      "box": [
+        8,
+        3
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  30,
+                  162
+                ]
+              ],
+              "lantern": [
+                [
+                  30,
+                  162
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  4,
+                  188
+                ]
+              ],
+              "lantern": [
+                [
+                  4,
+                  188
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  30,
+                  162
+                ]
+              ],
+              "lantern": [
+                [
+                  30,
+                  162
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  4,
+                  188
+                ]
+              ],
+              "lantern": [
+                [
+                  4,
+                  188
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  0,
+                  213
+                ]
+              ],
+              "lantern": [
+                [
+                  0,
+                  213
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  30,
+                  162
+                ]
+              ],
+              "lantern": [
+                [
+                  30,
+                  162
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  4,
+                  188
+                ]
+              ],
+              "lantern": [
+                [
+                  4,
+                  188
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                4,
+                188
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                213
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                312
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 184,
+                "lantern": 184
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 184,
+                "lantern": 184
+              },
+              "upgrade2": {
+                "spider": 213,
+                "lantern": 213
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-6-4",
+      "group": "north",
+      "box": [
+        6,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  54,
+                  120
+                ]
+              ],
+              "lantern": [
+                [
+                  54,
+                  120
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  28,
+                  144
+                ]
+              ],
+              "lantern": [
+                [
+                  28,
+                  144
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  54,
+                  120
+                ]
+              ],
+              "lantern": [
+                [
+                  54,
+                  120
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  28,
+                  144
+                ]
+              ],
+              "lantern": [
+                [
+                  28,
+                  144
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  3,
+                  207
+                ],
+                [
+                  225,
+                  351
+                ]
+              ],
+              "lantern": [
+                [
+                  3,
+                  207
+                ],
+                [
+                  225,
+                  351
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  54,
+                  120
+                ]
+              ],
+              "lantern": [
+                [
+                  54,
+                  120
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  28,
+                  144
+                ]
+              ],
+              "lantern": [
+                [
+                  28,
+                  144
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                28,
+                144
+              ]
+            ],
+            "upgrade1": [
+              [
+                3,
+                207
+              ],
+              [
+                225,
+                351
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                384
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 116,
+                "lantern": 116
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 116,
+                "lantern": 116
+              },
+              "upgrade2": {
+                "spider": 330,
+                "lantern": 330
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-8-5",
+      "group": "north",
+      "box": [
+        8,
+        5
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  78,
+                  210
+                ]
+              ],
+              "lantern": [
+                [
+                  78,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  52,
+                  294
+                ]
+              ],
+              "lantern": [
+                [
+                  52,
+                  294
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  78,
+                  210
+                ]
+              ],
+              "lantern": [
+                [
+                  78,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  52,
+                  294
+                ]
+              ],
+              "lantern": [
+                [
+                  52,
+                  294
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  27,
+                  323
+                ]
+              ],
+              "lantern": [
+                [
+                  27,
+                  323
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  78,
+                  210
+                ]
+              ],
+              "lantern": [
+                [
+                  78,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  52,
+                  294
+                ]
+              ],
+              "lantern": [
+                [
+                  52,
+                  294
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                52,
+                294
+              ]
+            ],
+            "upgrade1": [
+              [
+                27,
+                323
+              ]
+            ],
+            "upgrade2": [
+              [
+                2,
+                350
+              ],
+              [
+                456,
+                552
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 242,
+                "lantern": 242
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 242,
+                "lantern": 242
+              },
+              "upgrade2": {
+                "spider": 296,
+                "lantern": 296
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-10-4",
+      "group": "shore",
+      "box": [
+        10,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  120,
+                  186
+                ]
+              ],
+              "lantern": [
+                [
+                  120,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  96,
+                  212
+                ]
+              ],
+              "lantern": [
+                [
+                  96,
+                  212
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  120,
+                  186
+                ]
+              ],
+              "lantern": [
+                [
+                  120,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  96,
+                  212
+                ]
+              ],
+              "lantern": [
+                [
+                  96,
+                  212
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  33,
+                  255
+                ]
+              ],
+              "lantern": [
+                [
+                  33,
+                  255
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  120,
+                  186
+                ]
+              ],
+              "lantern": [
+                [
+                  120,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  96,
+                  212
+                ]
+              ],
+              "lantern": [
+                [
+                  96,
+                  212
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                96,
+                212
+              ]
+            ],
+            "upgrade1": [
+              [
+                33,
+                255
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                288
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 116,
+                "lantern": 116
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 116,
+                "lantern": 116
+              },
+              "upgrade2": {
+                "spider": 222,
+                "lantern": 222
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-10-5",
+      "group": "shore",
+      "box": [
+        10,
+        5
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  126,
+                  210
+                ]
+              ],
+              "lantern": [
+                [
+                  126,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  100,
+                  246
+                ]
+              ],
+              "lantern": [
+                [
+                  100,
+                  246
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  126,
+                  210
+                ]
+              ],
+              "lantern": [
+                [
+                  126,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  100,
+                  246
+                ]
+              ],
+              "lantern": [
+                [
+                  100,
+                  246
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  57,
+                  275
+                ]
+              ],
+              "lantern": [
+                [
+                  57,
+                  275
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  126,
+                  210
+                ]
+              ],
+              "lantern": [
+                [
+                  126,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  100,
+                  246
+                ]
+              ],
+              "lantern": [
+                [
+                  100,
+                  246
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                100,
+                246
+              ]
+            ],
+            "upgrade1": [
+              [
+                57,
+                275
+              ]
+            ],
+            "upgrade2": [
+              [
+                24,
+                302
+              ],
+              [
+                504,
+                542
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 146,
+                "lantern": 146
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 146,
+                "lantern": 146
+              },
+              "upgrade2": {
+                "spider": 218,
+                "lantern": 218
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-10-6",
+      "group": "shore",
+      "box": [
+        10,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "lantern": [
+                [
+                  150,
+                  234
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  114,
+                  260
+                ]
+              ],
+              "lantern": [
+                [
+                  114,
+                  260
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "lantern": [
+                [
+                  150,
+                  234
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  114,
+                  260
+                ]
+              ],
+              "lantern": [
+                [
+                  114,
+                  260
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  81,
+                  285
+                ],
+                [
+                  513,
+                  539
+                ]
+              ],
+              "lantern": [
+                [
+                  81,
+                  285
+                ],
+                [
+                  513,
+                  539
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "lantern": [
+                [
+                  150,
+                  234
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  114,
+                  260
+                ]
+              ],
+              "lantern": [
+                [
+                  114,
+                  260
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                114,
+                260
+              ]
+            ],
+            "upgrade1": [
+              [
+                81,
+                285
+              ],
+              [
+                513,
+                539
+              ]
+            ],
+            "upgrade2": [
+              [
+                48,
+                310
+              ],
+              [
+                480,
+                566
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 146,
+                "lantern": 146
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 146,
+                "lantern": 146
+              },
+              "upgrade2": {
+                "spider": 230,
+                "lantern": 230
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-8-6",
+      "group": "shore",
+      "box": [
+        8,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  150,
+                  282
+                ]
+              ],
+              "lantern": [
+                [
+                  150,
+                  282
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  76,
+                  308
+                ]
+              ],
+              "lantern": [
+                [
+                  76,
+                  308
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  150,
+                  282
+                ]
+              ],
+              "lantern": [
+                [
+                  150,
+                  282
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  76,
+                  308
+                ]
+              ],
+              "lantern": [
+                [
+                  76,
+                  308
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  51,
+                  333
+                ],
+                [
+                  465,
+                  552
+                ]
+              ],
+              "lantern": [
+                [
+                  51,
+                  333
+                ],
+                [
+                  465,
+                  552
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  150,
+                  282
+                ]
+              ],
+              "lantern": [
+                [
+                  150,
+                  282
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  76,
+                  308
+                ]
+              ],
+              "lantern": [
+                [
+                  76,
+                  308
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                76,
+                308
+              ]
+            ],
+            "upgrade1": [
+              [
+                51,
+                333
+              ],
+              [
+                465,
+                552
+              ]
+            ],
+            "upgrade2": [
+              [
+                26,
+                358
+              ],
+              [
+                432,
+                576
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 232,
+                "lantern": 232
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 232,
+                "lantern": 232
+              },
+              "upgrade2": {
+                "spider": 369,
+                "lantern": 369
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-7-6",
+      "group": "shore",
+      "box": [
+        7,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "lantern": [
+                [
+                  222,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  72,
+                  332
+                ]
+              ],
+              "lantern": [
+                [
+                  72,
+                  332
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "lantern": [
+                [
+                  222,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  72,
+                  332
+                ]
+              ],
+              "lantern": [
+                [
+                  72,
+                  332
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  48,
+                  357
+                ],
+                [
+                  441,
+                  549
+                ]
+              ],
+              "lantern": [
+                [
+                  48,
+                  357
+                ],
+                [
+                  441,
+                  549
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "lantern": [
+                [
+                  222,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  72,
+                  332
+                ]
+              ],
+              "lantern": [
+                [
+                  72,
+                  332
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                72,
+                332
+              ]
+            ],
+            "upgrade1": [
+              [
+                48,
+                357
+              ],
+              [
+                441,
+                549
+              ]
+            ],
+            "upgrade2": [
+              [
+                24,
+                574
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 260,
+                "lantern": 260
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 260,
+                "lantern": 260
+              },
+              "upgrade2": {
+                "spider": 417,
+                "lantern": 417
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-6-6",
+      "group": "shore",
+      "box": [
+        6,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "lantern": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  76,
+                  126
+                ],
+                [
+                  220,
+                  356
+                ]
+              ],
+              "lantern": [
+                [
+                  76,
+                  126
+                ],
+                [
+                  220,
+                  356
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "lantern": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  76,
+                  126
+                ],
+                [
+                  220,
+                  356
+                ]
+              ],
+              "lantern": [
+                [
+                  76,
+                  126
+                ],
+                [
+                  220,
+                  356
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  51,
+                  399
+                ],
+                [
+                  417,
+                  539
+                ]
+              ],
+              "lantern": [
+                [
+                  51,
+                  399
+                ],
+                [
+                  417,
+                  539
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "lantern": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  76,
+                  126
+                ],
+                [
+                  220,
+                  356
+                ]
+              ],
+              "lantern": [
+                [
+                  76,
+                  126
+                ],
+                [
+                  220,
+                  356
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                76,
+                126
+              ],
+              [
+                220,
+                356
+              ]
+            ],
+            "upgrade1": [
+              [
+                51,
+                399
+              ],
+              [
+                417,
+                539
+              ]
+            ],
+            "upgrade2": [
+              [
+                26,
+                566
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 186,
+                "lantern": 186
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 186,
+                "lantern": 186
+              },
+              "upgrade2": {
+                "spider": 470,
+                "lantern": 470
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-5-6",
+      "group": "shore",
+      "box": [
+        5,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "lantern": [
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  90,
+                  102
+                ],
+                [
+                  244,
+                  390
+                ]
+              ],
+              "lantern": [
+                [
+                  90,
+                  102
+                ],
+                [
+                  244,
+                  390
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "lantern": [
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  90,
+                  102
+                ],
+                [
+                  244,
+                  390
+                ]
+              ],
+              "lantern": [
+                [
+                  90,
+                  102
+                ],
+                [
+                  244,
+                  390
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  61,
+                  131
+                ],
+                [
+                  219,
+                  519
+                ]
+              ],
+              "lantern": [
+                [
+                  61,
+                  131
+                ],
+                [
+                  219,
+                  519
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "lantern": [
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  90,
+                  102
+                ],
+                [
+                  244,
+                  390
+                ]
+              ],
+              "lantern": [
+                [
+                  90,
+                  102
+                ],
+                [
+                  244,
+                  390
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                90,
+                102
+              ],
+              [
+                244,
+                390
+              ]
+            ],
+            "upgrade1": [
+              [
+                61,
+                131
+              ],
+              [
+                219,
+                519
+              ]
+            ],
+            "upgrade2": [
+              [
+                34,
+                552
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 158,
+                "lantern": 158
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 158,
+                "lantern": 158
+              },
+              "upgrade2": {
+                "spider": 370,
+                "lantern": 370
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-4-6",
+      "group": "shore",
+      "box": [
+        4,
+        6
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "lantern": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  268,
+                  404
+                ]
+              ],
+              "lantern": [
+                [
+                  268,
+                  404
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "lantern": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  268,
+                  404
+                ]
+              ],
+              "lantern": [
+                [
+                  268,
+                  404
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  81,
+                  107
+                ],
+                [
+                  243,
+                  495
+                ]
+              ],
+              "lantern": [
+                [
+                  81,
+                  107
+                ],
+                [
+                  243,
+                  495
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "lantern": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  268,
+                  404
+                ]
+              ],
+              "lantern": [
+                [
+                  268,
+                  404
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                268,
+                404
+              ]
+            ],
+            "upgrade1": [
+              [
+                81,
+                107
+              ],
+              [
+                243,
+                495
+              ]
+            ],
+            "upgrade2": [
+              [
+                48,
+                134
+              ],
+              [
+                218,
+                528
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              },
+              "upgrade2": {
+                "spider": 278,
+                "lantern": 278
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-2-7",
+      "group": "return",
+      "box": [
+        2,
+        7
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  336,
+                  402
+                ]
+              ],
+              "lantern": [
+                [
+                  336,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  312,
+                  438
+                ]
+              ],
+              "lantern": [
+                [
+                  312,
+                  438
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  336,
+                  402
+                ]
+              ],
+              "lantern": [
+                [
+                  336,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  312,
+                  438
+                ]
+              ],
+              "lantern": [
+                [
+                  312,
+                  438
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  288,
+                  467
+                ]
+              ],
+              "lantern": [
+                [
+                  288,
+                  467
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  336,
+                  402
+                ]
+              ],
+              "lantern": [
+                [
+                  336,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  312,
+                  438
+                ]
+              ],
+              "lantern": [
+                [
+                  312,
+                  438
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                312,
+                438
+              ]
+            ],
+            "upgrade1": [
+              [
+                288,
+                467
+              ]
+            ],
+            "upgrade2": [
+              [
+                264,
+                494
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 126,
+                "lantern": 126
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 126,
+                "lantern": 126
+              },
+              "upgrade2": {
+                "spider": 179,
+                "lantern": 179
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-2-8",
+      "group": "return",
+      "box": [
+        2,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "lantern": [
+                [
+                  342,
+                  426
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  316,
+                  452
+                ]
+              ],
+              "lantern": [
+                [
+                  316,
+                  452
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "lantern": [
+                [
+                  342,
+                  426
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  316,
+                  452
+                ]
+              ],
+              "lantern": [
+                [
+                  316,
+                  452
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  291,
+                  477
+                ]
+              ],
+              "lantern": [
+                [
+                  291,
+                  477
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "lantern": [
+                [
+                  342,
+                  426
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  316,
+                  452
+                ]
+              ],
+              "lantern": [
+                [
+                  316,
+                  452
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                316,
+                452
+              ]
+            ],
+            "upgrade1": [
+              [
+                291,
+                477
+              ]
+            ],
+            "upgrade2": [
+              [
+                266,
+                502
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              },
+              "upgrade2": {
+                "spider": 186,
+                "lantern": 186
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-4-8",
+      "group": "return",
+      "box": [
+        4,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  294,
+                  474
+                ]
+              ],
+              "lantern": [
+                [
+                  294,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  268,
+                  500
+                ]
+              ],
+              "lantern": [
+                [
+                  268,
+                  500
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  294,
+                  474
+                ]
+              ],
+              "lantern": [
+                [
+                  294,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  268,
+                  500
+                ]
+              ],
+              "lantern": [
+                [
+                  268,
+                  500
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  243,
+                  525
+                ]
+              ],
+              "lantern": [
+                [
+                  243,
+                  525
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  294,
+                  474
+                ]
+              ],
+              "lantern": [
+                [
+                  294,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  268,
+                  500
+                ]
+              ],
+              "lantern": [
+                [
+                  268,
+                  500
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                268,
+                500
+              ]
+            ],
+            "upgrade1": [
+              [
+                243,
+                525
+              ]
+            ],
+            "upgrade2": [
+              [
+                218,
+                576
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 180,
+                "lantern": 180
+              },
+              "upgrade1": {
+                "spider": 232,
+                "lantern": 232
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 180,
+                "lantern": 180
+              },
+              "upgrade1": {
+                "spider": 232,
+                "lantern": 232
+              },
+              "upgrade2": {
+                "spider": 282,
+                "lantern": 282
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-5-8",
+      "group": "return",
+      "box": [
+        5,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ],
+              "lantern": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  244,
+                  524
+                ]
+              ],
+              "lantern": [
+                [
+                  244,
+                  524
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ],
+              "lantern": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  244,
+                  524
+                ]
+              ],
+              "lantern": [
+                [
+                  244,
+                  524
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  219,
+                  567
+                ]
+              ],
+              "lantern": [
+                [
+                  219,
+                  567
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ],
+              "lantern": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  244,
+                  524
+                ]
+              ],
+              "lantern": [
+                [
+                  244,
+                  524
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                244,
+                524
+              ]
+            ],
+            "upgrade1": [
+              [
+                219,
+                567
+              ]
+            ],
+            "upgrade2": [
+              [
+                82,
+                120
+              ],
+              [
+                168,
+                600
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 168,
+                "lantern": 168
+              },
+              "upgrade1": {
+                "spider": 280,
+                "lantern": 280
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 168,
+                "lantern": 168
+              },
+              "upgrade1": {
+                "spider": 280,
+                "lantern": 280
+              },
+              "upgrade2": {
+                "spider": 348,
+                "lantern": 348
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-6-8",
+      "group": "return",
+      "box": [
+        6,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  246,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ],
+              "lantern": [
+                [
+                  246,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  220,
+                  356
+                ],
+                [
+                  412,
+                  558
+                ]
+              ],
+              "lantern": [
+                [
+                  220,
+                  356
+                ],
+                [
+                  412,
+                  558
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  246,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ],
+              "lantern": [
+                [
+                  246,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  220,
+                  356
+                ],
+                [
+                  412,
+                  558
+                ]
+              ],
+              "lantern": [
+                [
+                  220,
+                  356
+                ],
+                [
+                  412,
+                  558
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  177,
+                  587
+                ]
+              ],
+              "lantern": [
+                [
+                  177,
+                  587
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  246,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ],
+              "lantern": [
+                [
+                  246,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  220,
+                  356
+                ],
+                [
+                  412,
+                  558
+                ]
+              ],
+              "lantern": [
+                [
+                  220,
+                  356
+                ],
+                [
+                  412,
+                  558
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                220,
+                356
+              ],
+              [
+                412,
+                558
+              ]
+            ],
+            "upgrade1": [
+              [
+                177,
+                587
+              ]
+            ],
+            "upgrade2": [
+              [
+                74,
+                614
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 168,
+                "lantern": 168
+              },
+              "upgrade1": {
+                "spider": 282,
+                "lantern": 282
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 168,
+                "lantern": 168
+              },
+              "upgrade1": {
+                "spider": 282,
+                "lantern": 282
+              },
+              "upgrade2": {
+                "spider": 410,
+                "lantern": 410
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-7-8",
+      "group": "return",
+      "box": [
+        7,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  222,
+                  306
+                ],
+                [
+                  462,
+                  546
+                ]
+              ],
+              "lantern": [
+                [
+                  222,
+                  306
+                ],
+                [
+                  462,
+                  546
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  186,
+                  332
+                ],
+                [
+                  436,
+                  572
+                ]
+              ],
+              "lantern": [
+                [
+                  186,
+                  332
+                ],
+                [
+                  436,
+                  572
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  222,
+                  306
+                ],
+                [
+                  462,
+                  546
+                ]
+              ],
+              "lantern": [
+                [
+                  222,
+                  306
+                ],
+                [
+                  462,
+                  546
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  186,
+                  332
+                ],
+                [
+                  436,
+                  572
+                ]
+              ],
+              "lantern": [
+                [
+                  186,
+                  332
+                ],
+                [
+                  436,
+                  572
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  157,
+                  357
+                ],
+                [
+                  411,
+                  597
+                ]
+              ],
+              "lantern": [
+                [
+                  157,
+                  357
+                ],
+                [
+                  411,
+                  597
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  222,
+                  306
+                ],
+                [
+                  462,
+                  546
+                ]
+              ],
+              "lantern": [
+                [
+                  222,
+                  306
+                ],
+                [
+                  462,
+                  546
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  186,
+                  332
+                ],
+                [
+                  436,
+                  572
+                ]
+              ],
+              "lantern": [
+                [
+                  186,
+                  332
+                ],
+                [
+                  436,
+                  572
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                186,
+                332
+              ],
+              [
+                436,
+                572
+              ]
+            ],
+            "upgrade1": [
+              [
+                157,
+                357
+              ],
+              [
+                411,
+                597
+              ]
+            ],
+            "upgrade2": [
+              [
+                72,
+                622
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 168,
+                "lantern": 168
+              },
+              "upgrade1": {
+                "spider": 282,
+                "lantern": 282
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 168,
+                "lantern": 168
+              },
+              "upgrade1": {
+                "spider": 282,
+                "lantern": 282
+              },
+              "upgrade2": {
+                "spider": 386,
+                "lantern": 386
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-9-8",
+      "group": "return",
+      "box": [
+        9,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  192,
+                  258
+                ],
+                [
+                  510,
+                  546
+                ]
+              ],
+              "lantern": [
+                [
+                  192,
+                  258
+                ],
+                [
+                  510,
+                  546
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  168,
+                  284
+                ],
+                [
+                  484,
+                  572
+                ]
+              ],
+              "lantern": [
+                [
+                  168,
+                  284
+                ],
+                [
+                  484,
+                  572
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  192,
+                  258
+                ],
+                [
+                  510,
+                  546
+                ]
+              ],
+              "lantern": [
+                [
+                  192,
+                  258
+                ],
+                [
+                  510,
+                  546
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  168,
+                  284
+                ],
+                [
+                  484,
+                  572
+                ]
+              ],
+              "lantern": [
+                [
+                  168,
+                  284
+                ],
+                [
+                  484,
+                  572
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  144,
+                  309
+                ],
+                [
+                  459,
+                  597
+                ]
+              ],
+              "lantern": [
+                [
+                  144,
+                  309
+                ],
+                [
+                  459,
+                  597
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  192,
+                  258
+                ],
+                [
+                  510,
+                  546
+                ]
+              ],
+              "lantern": [
+                [
+                  192,
+                  258
+                ],
+                [
+                  510,
+                  546
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  168,
+                  284
+                ],
+                [
+                  484,
+                  572
+                ]
+              ],
+              "lantern": [
+                [
+                  168,
+                  284
+                ],
+                [
+                  484,
+                  572
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                168,
+                284
+              ],
+              [
+                484,
+                572
+              ]
+            ],
+            "upgrade1": [
+              [
+                144,
+                309
+              ],
+              [
+                459,
+                597
+              ]
+            ],
+            "upgrade2": [
+              [
+                82,
+                334
+              ],
+              [
+                434,
+                622
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 102,
+                "lantern": 102
+              },
+              "upgrade1": {
+                "spider": 204,
+                "lantern": 204
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 102,
+                "lantern": 102
+              },
+              "upgrade1": {
+                "spider": 204,
+                "lantern": 204
+              },
+              "upgrade2": {
+                "spider": 303,
+                "lantern": 303
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-9-9",
+      "group": "return",
+      "box": [
+        9,
+        9
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  504,
+                  570
+                ]
+              ],
+              "lantern": [
+                [
+                  504,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  192,
+                  270
+                ],
+                [
+                  480,
+                  596
+                ]
+              ],
+              "lantern": [
+                [
+                  192,
+                  270
+                ],
+                [
+                  480,
+                  596
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  504,
+                  570
+                ]
+              ],
+              "lantern": [
+                [
+                  504,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  192,
+                  270
+                ],
+                [
+                  480,
+                  596
+                ]
+              ],
+              "lantern": [
+                [
+                  192,
+                  270
+                ],
+                [
+                  480,
+                  596
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  168,
+                  299
+                ],
+                [
+                  456,
+                  621
+                ]
+              ],
+              "lantern": [
+                [
+                  168,
+                  299
+                ],
+                [
+                  456,
+                  621
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  504,
+                  570
+                ]
+              ],
+              "lantern": [
+                [
+                  504,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  192,
+                  270
+                ],
+                [
+                  480,
+                  596
+                ]
+              ],
+              "lantern": [
+                [
+                  192,
+                  270
+                ],
+                [
+                  480,
+                  596
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                192,
+                270
+              ],
+              [
+                480,
+                596
+              ]
+            ],
+            "upgrade1": [
+              [
+                168,
+                299
+              ],
+              [
+                456,
+                621
+              ]
+            ],
+            "upgrade2": [
+              [
+                144,
+                326
+              ],
+              [
+                432,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 194,
+                "lantern": 194
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 194,
+                "lantern": 194
+              },
+              "upgrade2": {
+                "spider": 296,
+                "lantern": 296
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-7-10",
+      "group": "return",
+      "box": [
+        7,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  462,
+                  594
+                ]
+              ],
+              "lantern": [
+                [
+                  470,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [],
+              "lantern": []
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  462,
+                  594
+                ]
+              ],
+              "lantern": [
+                [
+                  462,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  436,
+                  620
+                ]
+              ],
+              "lantern": [
+                [
+                  436,
+                  620
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  205,
+                  327
+                ],
+                [
+                  411,
+                  663
+                ]
+              ],
+              "lantern": [
+                [
+                  205,
+                  327
+                ],
+                [
+                  411,
+                  663
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  462,
+                  594
+                ]
+              ],
+              "lantern": [
+                [
+                  470,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  443,
+                  620
+                ]
+              ],
+              "lantern": [
+                [
+                  472,
+                  620
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                436,
+                620
+              ]
+            ],
+            "upgrade1": [
+              [
+                205,
+                327
+              ],
+              [
+                411,
+                663
+              ]
+            ],
+            "upgrade2": [
+              [
+                178,
+                696
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 132,
+                "lantern": 124
+              },
+              "upgrade1": {
+                "spider": 0,
+                "lantern": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 184,
+                "lantern": 184
+              },
+              "upgrade2": {
+                "spider": 374,
+                "lantern": 374
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-9-10",
+      "group": "return",
+      "box": [
+        9,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "lantern": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  484,
+                  620
+                ]
+              ],
+              "lantern": [
+                [
+                  484,
+                  620
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "lantern": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  484,
+                  620
+                ]
+              ],
+              "lantern": [
+                [
+                  484,
+                  620
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  192,
+                  279
+                ],
+                [
+                  459,
+                  711
+                ]
+              ],
+              "lantern": [
+                [
+                  192,
+                  279
+                ],
+                [
+                  459,
+                  711
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "lantern": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  484,
+                  620
+                ]
+              ],
+              "lantern": [
+                [
+                  484,
+                  620
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                484,
+                620
+              ]
+            ],
+            "upgrade1": [
+              [
+                192,
+                279
+              ],
+              [
+                459,
+                711
+              ]
+            ],
+            "upgrade2": [
+              [
+                168,
+                312
+              ],
+              [
+                434,
+                744
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              },
+              "upgrade2": {
+                "spider": 339,
+                "lantern": 339
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-7-11",
+      "group": "return",
+      "box": [
+        7,
+        11
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "lantern": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  479,
+                  654
+                ]
+              ],
+              "lantern": [
+                [
+                  481,
+                  654
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "lantern": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  483,
+                  654
+                ]
+              ],
+              "lantern": [
+                [
+                  450,
+                  654
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  421,
+                  432
+                ],
+                [
+                  482,
+                  683
+                ]
+              ],
+              "lantern": [
+                [
+                  421,
+                  683
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "lantern": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  479,
+                  654
+                ]
+              ],
+              "lantern": [
+                [
+                  481,
+                  654
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                450,
+                654
+              ]
+            ],
+            "upgrade1": [
+              [
+                421,
+                683
+              ]
+            ],
+            "upgrade2": [
+              [
+                202,
+                336
+              ],
+              [
+                384,
+                710
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 175,
+                "lantern": 173
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 171,
+                "lantern": 204
+              },
+              "upgrade2": {
+                "spider": 212,
+                "lantern": 262
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-9-11",
+      "group": "return",
+      "box": [
+        9,
+        11
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "lantern": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  498,
+                  702
+                ]
+              ],
+              "lantern": [
+                [
+                  498,
+                  702
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "lantern": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  498,
+                  702
+                ]
+              ],
+              "lantern": [
+                [
+                  498,
+                  702
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  469,
+                  735
+                ]
+              ],
+              "lantern": [
+                [
+                  469,
+                  735
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "lantern": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  498,
+                  702
+                ]
+              ],
+              "lantern": [
+                [
+                  498,
+                  702
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                498,
+                702
+              ]
+            ],
+            "upgrade1": [
+              [
+                469,
+                735
+              ]
+            ],
+            "upgrade2": [
+              [
+                192,
+                288
+              ],
+              [
+                442,
+                768
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 204,
+                "lantern": 204
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 204,
+                "lantern": 204
+              },
+              "upgrade2": {
+                "spider": 266,
+                "lantern": 266
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-7-12",
+      "group": "return",
+      "box": [
+        7,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "lantern": [
+                [
+                  558,
+                  642
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [],
+              "lantern": []
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "lantern": [
+                [
+                  558,
+                  642
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  532,
+                  668
+                ]
+              ],
+              "lantern": [
+                [
+                  532,
+                  668
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  441,
+                  447
+                ],
+                [
+                  487,
+                  693
+                ]
+              ],
+              "lantern": [
+                [
+                  441,
+                  693
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  558,
+                  642
+                ]
+              ],
+              "lantern": [
+                [
+                  558,
+                  642
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  532,
+                  668
+                ]
+              ],
+              "lantern": [
+                [
+                  532,
+                  668
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                532,
+                668
+              ]
+            ],
+            "upgrade1": [
+              [
+                441,
+                693
+              ]
+            ],
+            "upgrade2": [
+              [
+                408,
+                718
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 0,
+                "lantern": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              },
+              "upgrade2": {
+                "spider": 212,
+                "lantern": 252
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-9-12",
+      "group": "return",
+      "box": [
+        9,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  558,
+                  690
+                ]
+              ],
+              "lantern": [
+                [
+                  558,
+                  690
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  532,
+                  716
+                ]
+              ],
+              "lantern": [
+                [
+                  532,
+                  716
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  558,
+                  690
+                ]
+              ],
+              "lantern": [
+                [
+                  558,
+                  690
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  532,
+                  716
+                ]
+              ],
+              "lantern": [
+                [
+                  532,
+                  716
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  489,
+                  759
+                ]
+              ],
+              "lantern": [
+                [
+                  489,
+                  759
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  558,
+                  690
+                ]
+              ],
+              "lantern": [
+                [
+                  558,
+                  690
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  532,
+                  716
+                ]
+              ],
+              "lantern": [
+                [
+                  532,
+                  716
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                532,
+                716
+              ]
+            ],
+            "upgrade1": [
+              [
+                489,
+                759
+              ]
+            ],
+            "upgrade2": [
+              [
+                456,
+                768
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 184,
+                "lantern": 184
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 132,
+                "lantern": 132
+              },
+              "upgrade1": {
+                "spider": 184,
+                "lantern": 184
+              },
+              "upgrade2": {
+                "spider": 270,
+                "lantern": 270
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-10-12",
+      "group": "late",
+      "box": [
+        10,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  630,
+                  714
+                ]
+              ],
+              "lantern": [
+                [
+                  630,
+                  714
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  546,
+                  750
+                ]
+              ],
+              "lantern": [
+                [
+                  546,
+                  750
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  630,
+                  714
+                ]
+              ],
+              "lantern": [
+                [
+                  630,
+                  714
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  546,
+                  750
+                ]
+              ],
+              "lantern": [
+                [
+                  546,
+                  750
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  513,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  513,
+                  768
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  630,
+                  714
+                ]
+              ],
+              "lantern": [
+                [
+                  630,
+                  714
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  546,
+                  750
+                ]
+              ],
+              "lantern": [
+                [
+                  546,
+                  750
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                546,
+                750
+              ]
+            ],
+            "upgrade1": [
+              [
+                513,
+                768
+              ]
+            ],
+            "upgrade2": [
+              [
+                480,
+                768
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 204,
+                "lantern": 204
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 204,
+                "lantern": 204
+              },
+              "upgrade2": {
+                "spider": 255,
+                "lantern": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-11-12",
+      "group": "late",
+      "box": [
+        11,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  654,
+                  738
+                ]
+              ],
+              "lantern": [
+                [
+                  654,
+                  738
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  628,
+                  764
+                ]
+              ],
+              "lantern": [
+                [
+                  628,
+                  764
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  654,
+                  738
+                ]
+              ],
+              "lantern": [
+                [
+                  654,
+                  738
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  628,
+                  764
+                ]
+              ],
+              "lantern": [
+                [
+                  628,
+                  764
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  537,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  537,
+                  768
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  654,
+                  738
+                ]
+              ],
+              "lantern": [
+                [
+                  654,
+                  738
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  628,
+                  764
+                ]
+              ],
+              "lantern": [
+                [
+                  628,
+                  764
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                628,
+                764
+              ]
+            ],
+            "upgrade1": [
+              [
+                537,
+                768
+              ]
+            ],
+            "upgrade2": [
+              [
+                504,
+                768
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 136,
+                "lantern": 136
+              },
+              "upgrade2": {
+                "spider": 231,
+                "lantern": 231
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-11-14",
+      "group": "late",
+      "box": [
+        11,
+        14
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  654,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  654,
+                  768
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  628,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  628,
+                  768
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  654,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  654,
+                  768
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  628,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  628,
+                  768
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  585,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  585,
+                  768
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  654,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  654,
+                  768
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  628,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  628,
+                  768
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                628,
+                768
+              ]
+            ],
+            "upgrade1": [
+              [
+                585,
+                768
+              ]
+            ],
+            "upgrade2": [
+              [
+                552,
+                768
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 114,
+                "lantern": 114
+              },
+              "upgrade1": {
+                "spider": 140,
+                "lantern": 140
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 114,
+                "lantern": 114
+              },
+              "upgrade1": {
+                "spider": 140,
+                "lantern": 140
+              },
+              "upgrade2": {
+                "spider": 183,
+                "lantern": 183
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-13-13",
+      "group": "late",
+      "box": [
+        13,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  696,
+                  762
+                ]
+              ],
+              "lantern": [
+                [
+                  696,
+                  762
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  672,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  672,
+                  768
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  696,
+                  762
+                ]
+              ],
+              "lantern": [
+                [
+                  696,
+                  762
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  672,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  672,
+                  768
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  648,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  648,
+                  768
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  696,
+                  762
+                ]
+              ],
+              "lantern": [
+                [
+                  696,
+                  762
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  672,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  672,
+                  768
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                672,
+                768
+              ]
+            ],
+            "upgrade1": [
+              [
+                648,
+                768
+              ]
+            ],
+            "upgrade2": [
+              [
+                624,
+                768
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 96,
+                "lantern": 96
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 66,
+                "lantern": 66
+              },
+              "upgrade1": {
+                "spider": 96,
+                "lantern": 96
+              },
+              "upgrade2": {
+                "spider": 120,
+                "lantern": 120
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-10-14",
+      "group": "late",
+      "box": [
+        10,
+        14
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": true,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 768,
+          "gun": {
+            "base": {
+              "spider": [
+                [
+                  630,
+                  714
+                ]
+              ],
+              "lantern": [
+                [
+                  630,
+                  714
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  594,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  594,
+                  768
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "spider": [
+                [
+                  630,
+                  714
+                ]
+              ],
+              "lantern": [
+                [
+                  630,
+                  714
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  594,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  594,
+                  768
+                ]
+              ]
+            },
+            "upgrade2": {
+              "spider": [
+                [
+                  565,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  565,
+                  768
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "spider": [
+                [
+                  630,
+                  714
+                ]
+              ],
+              "lantern": [
+                [
+                  630,
+                  714
+                ]
+              ]
+            },
+            "upgrade1": {
+              "spider": [
+                [
+                  594,
+                  768
+                ]
+              ],
+              "lantern": [
+                [
+                  594,
+                  768
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                594,
+                768
+              ]
+            ],
+            "upgrade1": [
+              [
+                565,
+                768
+              ]
+            ],
+            "upgrade2": [
+              [
+                538,
+                768
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 174,
+                "lantern": 174
+              }
+            },
+            "arc": {
+              "base": {
+                "spider": 84,
+                "lantern": 84
+              },
+              "upgrade1": {
+                "spider": 174,
+                "lantern": 174
+              },
+              "upgrade2": {
+                "spider": 203,
+                "lantern": 203
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

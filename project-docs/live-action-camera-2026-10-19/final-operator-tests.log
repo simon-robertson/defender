@@ -1,0 +1,12 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [0.44ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [1151.54ms]
+(pass) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [1110.85ms]
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5726.30ms]
+
+ 4 pass
+ 0 fail
+ 37829 expect() calls
+Ran 4 tests across 1 file. [8.01s]

@@ -1,0 +1,123 @@
+bun test v1.4.2 (744846f84)
+
+tests/visibility.test.js:
+(pass) exact occupied scenery blocks solid walls while retaining a real doorway and over-wall clearance [1.83ms]
+(pass) closed leaf bounds handle grazing faces, corners, endpoints, interior origins and zero-length segments [0.19ms]
+(pass) cell bounds follow quarter-turns, detail offsets and terrain or absolute placement anchors [0.85ms]
+(pass) ground mounds and carved beds block in 3D while water, defences and enemies remain excluded [0.26ms]
+(pass) merged cuboids and stackless branches agree with original cell geometry over deterministic 3D rays [4.51ms]
+(pass) queries reuse typed storage, retain no source dependency and fail closed after disposal or for invalid rays [0.63ms]
+
+tests/arc-effects.test.js:
+(pass) strike joins exact endpoints with one thicker unbranched channel, stronger light and six outward flecks [1.52ms]
+(pass) endpoint attachment follows the live bone without retaining caller point scratch or moving its source [0.27ms]
+(pass) fixed pools replace the oldest strike and drop excess sparks without changing their backing storage [0.97ms]
+(pass) expiry and reset remove lights, particles and attachment references without replay after stalls [0.13ms]
+(pass) spark tail may remain after the channel but neither light nor attachments persist [0.04ms]
+(pass) manual enemy reset can clear effects while preserving the shared firing clock [0.04ms]
+(pass) shape is deterministic at equal elapsed time, with finite vertical and coincident inputs [0.61ms]
+(pass) coarse tube segment endpoints follow the same visible trunk and do not encode endpoint point lights [0.09ms]
+(pass) the connected terminal escape rises before the descending main channel [0.06ms]
+(pass) hot metal flecks fall onto actual support, remain still with finite nonzero geometry, then fade away [0.49ms]
+(pass) swept flecks cannot tunnel through elevated ground after fast travel or a frame stall [0.16ms]
+(pass) reset preserves the collider only for the in-place reset and releases every scene reference on unload [0.27ms]
+(pass) reserved secondary bank remains visible under primary saturation and follows both enemies [0.55ms]
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [368.38ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [21.67ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [21.01ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [20.37ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [69.14ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [62.40ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [28.33ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [82.84ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [20.52ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [20.32ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [22.55ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [72.66ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [61.08ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [42.60ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [20.57ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [20.35ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [20.24ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [20.10ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [122.87ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [22.05ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [22.71ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [28.32ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [21.63ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [226.65ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [21.53ms]
+(pass) static contact drops its incoming claim before the impact callback [20.85ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [82.48ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [39.10ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [75.95ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [32.51ms]
+(pass) steering light and jets stop at alignment and pulse together within the fixed 36-light budget [23.85ms]
+(pass) real slow and fast turns extinguish attitude jets while residual sub-degree steering settles [60.03ms]
+(pass) eased real turns use only short spin-up and braking impulses without late correction pulse trains [149.18ms]
+
+tests/arc-chain.test.js:
+19 | }
+20 | 
+21 | test('upgraded actual hits chain once at25percent through exposed departure and arrival surfaces',()=>{
+22 |  const f=fixture();try{
+23 |   const [primary,...others]=f.enemies.states,s=f.state;for(let i=0;i<s.sources.length;i+=3)s.sources.set([primary.x+50,primary.aimY+4,primary.z],i);s.target=primary;s.targetLap=0;
+24 |   f.arcs.advance(.01);expect(s.cycle.shots).toBe(1);expect(s.lastShotDamage).toBe(40);expect(f.arcs.chainHits).toBe(1);
+                                                                                                                    ^
+error: expect(received).toBe(expected)
+
+Expected: 1
+Received: 0
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/arc-chain.test.js:24:112)
+(fail) upgraded actual hits chain once at25percent through exposed departure and arrival surfaces [30.94ms]
+31 | 
+32 | test('base never chains; Upgrade II and lethal primary hits conduct25percent of full strength',()=>{
+33 |  for(const variant of ['base']){
+34 |   const f=fixture({variant});try{const s=f.state;s.target=f.enemies.states[0];s.targetLap=0;f.arcs.advance(.01);expect(f.arcs.chainHits).toBe(0);expect(f.events).toHaveLength(1);expect(f.enemies.states.slice(1).every(t=>t.health.hits===0)).toBe(true);}finally{f.dispose();}
+35 |  }
+36 |  const u2=fixture({variant:'upgrade2'});try{u2.state.target=u2.enemies.states[0];u2.state.targetLap=0;u2.arcs.advance(.01);expect(u2.arcs.chainHits).toBe(1);expect(u2.state.lastChainDamage).toBe(55*.25);}finally{u2.dispose();}
+                                                                                                                                                          ^
+error: expect(received).toBe(expected)
+
+Expected: 1
+Received: 0
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/arc-chain.test.js:36:150)
+(fail) base never chains; Upgrade II and lethal primary hits conduct25percent of full strength [50.67ms]
+39 | 
+40 | test('random selection reaches both valid neighbours including the inclusive half-range boundary and never self or dead actors',()=>{
+41 |  const f=fixture();try{
+42 |   const [primary,a,b]=f.enemies.states;rightSurface(f);expect(ARC_CHAIN_RANGE_SCALE).toBe(.5);expect(ARC_CHAIN_STRENGTH).toBe(.25);expect(b.x-primary.x).toBe(f.state.maxRange*.5);
+43 |   const ids=new Set();
+44 |   for(let i=0;i<80;i++){a.health.reset();b.health.reset();f.arcs.chain(f.state,primary,i);ids.add(f.state.lastChainTargetId);expect(f.state.lastChainDamage).toBe(10);expect(a.health.hits+b.health.hits).toBe(1);}
+                                                                                                                                                                  ^
+error: expect(received).toBe(expected)
+
+Expected: 10
+Received: 0
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/arc-chain.test.js:44:158)
+(fail) random selection reaches both valid neighbours including the inclusive half-range boundary and never self or dead actors [24.94ms]
+(pass) transfer rejects blocked scenery and out-of-range3D recipients but can depart the opposite side of the primary [24.45ms]
+(pass) clear nearby airborne recipients use the same physical surface test and release sampler attachments on disposal [27.75ms]
+
+tests/play-conditions.test.js:
+(pass) each zone advances through stable day, afternoon, evening and night with clear weather and no random draws [0.09ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.90ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [3418.84ms]
+(pass) play time-of-day overrides are cloned and do not rewrite saved lighting [2.04ms]
+(pass) all four late-afternoon levels brighten direct sunlight without compounding or changing its angle/ambient fill [2.94ms]
+(pass) third levels use a low night key light while preserving evening ambient and authored sources [3.48ms]
+
+3 tests failed:
+(fail) upgraded actual hits chain once at25percent through exposed departure and arrival surfaces [30.94ms]
+(fail) base never chains; Upgrade II and lethal primary hits conduct25percent of full strength [50.67ms]
+(fail) random selection reaches both valid neighbours including the inclusive half-range boundary and never self or dead actors [24.94ms]
+
+ 60 pass
+ 3 fail
+ 5106 expect() calls
+Ran 63 tests across 5 files. [5.60s]

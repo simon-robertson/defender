@@ -1,0 +1,42 @@
+// Isolated rendering evidence, using deployments from the persistent production
+// replay. No query overrides, invented inventory or gameplay tuning in /play/.
+import {PLAY_CONFIG,playCapacity} from '../play/config.js';
+import {loadPlayWorld,disposePlayWorld,PlayEngine} from '../play/engine.js';
+import {WorldRenderer} from '../engine/renderer.js';
+import {ShotEffects} from '../engine/shot-effects.js';
+import {DamageEffects} from '../engine/damage-effects.js';
+import {ArcEffects} from '../engine/arc-effects.js';
+import {TURRET_MUZZLES} from '../shared/arsenal.js';
+import {emitMissileImpact} from '../game/missile-impact.js';
+import {DroneCamera} from '../play/drone-camera.js';
+const $=id=>document.getElementById(id),canvas=$('world'),renderer=new WorldRenderer(canvas,fail,{modelLightCapacity:playCapacity(PLAY_CONFIG).modelLights,strictModelLights:true}),shots=new ShotEffects(),damage=new DamageEffects(),arcs=new ArcEffects();
+renderer.inspect=true;
+let engine=null,world=null,record=null,ready=false,paused=true,loading=false,last=0,frame=0,lastReport=0,error='',drawMS=0,maxDrawMS=0,completedAt=Infinity;
+const camera=new DroneCamera(renderer.camera);
+function fail(cause){error=cause?.message??String(cause);paused=true;$('status').textContent=error;report();}
+function report(){
+ const stats=engine?.stats(),r={encounter:engine?.wave.id,paused,errors:error?[error]:[],engine:stats,gpu:{sceneBuffers:renderer.sceneBuffers.size,geometryBytes:renderer.bytes,modelLights:renderer.modelLights?.count,modelLightOverflow:renderer.modelLights?.overflow,arcInstances:arcs.instanceCount,arcLights:arcs.lightCount,missileThrust:engine?.firing.missiles.thrust?.instanceCount??0,drawCalls:renderer.lastDrawCalls,cpuSubmitMS:renderer.lastSubmitMs,maxObservedRenderSubmitMS:maxDrawMS},drone:camera.stats(),resources:{createdSceneBuffers:renderer.createdSceneBuffers,destroyedSceneBuffers:renderer.destroyedSceneBuffers}};
+ canvas.dataset.review=JSON.stringify(r);$('report').textContent=JSON.stringify(r,null,0);
+}
+async function load(){
+ if(loading||!record)return;loading=true;paused=true;ready=false;error='';$('status').textContent='Loading production scene…';
+ try{
+  camera.bind(null);engine?.dispose();engine=null;renderer.setArcEffects(null);renderer.setMissileThrust(null);renderer.clearWorld();await renderer.device.queue.onSubmittedWorkDone();disposePlayWorld(world);world=null;
+  shots.reset();damage.reset();arcs.reset();const index=Number($('encounter').value),wave=PLAY_CONFIG.levels[Math.floor(index/4)].waves[index%4],deployment=record.results.find(result=>result.name==='mixed').waves[index];
+  if(!deployment||deployment.wave!==wave.id)throw new Error('No matching production replay deployment.');
+  world=await loadPlayWorld(PLAY_CONFIG.levels[Math.floor(index/4)].id,{config:PLAY_CONFIG,wave,placements:deployment.placements});renderer.setWorld(world);
+  engine=new PlayEngine(world,{config:PLAY_CONFIG,wave,onPoseChange:renderer.updateInstance.bind(renderer),onVisible:renderer.setActorVisible.bind(renderer),onStep:dt=>{shots.advance(dt);damage.advance(dt);arcs.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},onShot:(variant,matrix,at)=>shots.emit(matrix,TURRET_MUZZLES[variant],at),onArcShot:(...args)=>arcs.emit(...args),missileEffects:{onLaunch:(x,y,z)=>damage.launchSmoke(x,y,z),onImpact:(...args)=>emitMissileImpact(damage,engine.wildlife,...args)},onDeath:(_id,state)=>{damage.explode(state);camera.noteExplosion(state,engine.time);},onWaveComplete:()=>{completedAt=engine.time;$('status').textContent='Wave resolved';}});
+  damage.setWorld(world,engine.enemies.states);arcs.setWorld(world);renderer.setShotEffects(shots);renderer.setDamageEffects(damage);engine.startWave();renderer.setArcEffects(engine.firing.arcs.states.length?arcs:null);renderer.setMissileThrust(engine.firing.missiles.states.length?engine.firing.missiles.thrust:null);camera.bind(world);ready=true;maxDrawMS=0;completedAt=Infinity;
+  $('status').textContent=`${wave.id}: ${deployment.placements.length} recorded defences. Ready.`;renderer.render(0,0);report();
+ }catch(cause){fail(cause);}finally{loading=false;}
+}
+function tick(now){
+ const dt=Math.min(.1,Math.max(0,(now-last)/1000));last=now;frame++;
+ try{if(ready&&!loading){if(!paused){engine.advance(dt,{combat:engine.running});shots.prepare();arcs.prepare();camera.advance(dt,{engine,phase:engine.running?'wave':engine.time-completedAt<PLAY_CONFIG.waveSettleSeconds?'settling':'loadout',paused:false});}
+  const start=performance.now();renderer.render(paused?0:dt,engine.time);drawMS=performance.now()-start;maxDrawMS=Math.max(maxDrawMS,drawMS);
+  if(now-lastReport>500){lastReport=now;report();}
+ }}catch(cause){fail(cause);}requestAnimationFrame(tick);
+}
+$('load').onclick=()=>load();$('run').onclick=()=>{if(ready&&!error){paused=false;last=performance.now();$('status').textContent='Running ordinary real-time simulation';}};$('pause').onclick=()=>{paused=true;report();};$('drone').onclick=()=>{camera.setEnabled(!camera.enabled);report();};
+window.addEventListener('pagehide',()=>{ready=false;camera.dispose();engine?.dispose();renderer.dispose();disposePlayWorld(world);});
+try{await renderer.init();record=await (await fetch('/docs/zone-a-completion-2026-10-20/balance.json')).json();PLAY_CONFIG.levels.flatMap(level=>level.waves).forEach((wave,index)=>{const option=document.createElement('option');option.value=index;option.textContent=wave.id+' · '+wave.name;$('encounter').append(option);});await load();last=performance.now();requestAnimationFrame(tick);}catch(cause){fail(cause);}

@@ -1,0 +1,2156 @@
+{
+  "schema": "defender.zone-d-carving-final-verification",
+  "version": 1,
+  "recordedAt": "2026-10-20T13:32:24.132Z",
+  "scope": "Zone D layouts only. Combat schedules and whole-campaign balance are independently owned by the campaign integration. Human creative/balance acceptance pending.",
+  "reproduce": "bun scripts/d-path-carving-verify.js",
+  "levels": [
+    {
+      "id": "plum-01",
+      "option": "orchard-crescent-tour",
+      "title": "Orchard and Crescent Tour",
+      "sourceHash": "14b361c16b51ea1d57478b2e87e49489c1625985604fe7703247a4ecd6e1ff39",
+      "baseline": {
+        "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z/assets/levels/plum-01.json",
+        "sha256": "177a250ff88ffd564b7d03d0cf9a1d28199a7a882d257251898903ccbce790fa"
+      },
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 50,
+          "length": 1176
+        }
+      ],
+      "sites": 40,
+      "retainedScenery": 200,
+      "removedScenery": 108,
+      "terrainWaterEnvironmentExact": true,
+      "retainedSceneryExact": true,
+      "originalBirdPerchesExact": true,
+      "deterministicFactoryExact": true,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            0,
+            0,
+            6
+          ],
+          "exit": [
+            6,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 48,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [],
+      "sourcePoseSamples": 2354,
+      "sourceMotionFailures": [],
+      "fullGroundVisible": true,
+      "baseGunArcUseful": 40,
+      "upgradeDependent": [],
+      "independentWeaponCombinations": 360,
+      "productionAllowed": 346,
+      "productionRestrictions": [
+        {
+          "site": "south-10-14",
+          "box": [
+            10,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-10-14",
+          "box": [
+            10,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-10-14",
+          "box": [
+            10,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-11-14",
+          "box": [
+            11,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-11-14",
+          "box": [
+            11,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-13-14",
+          "box": [
+            13,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-13-14",
+          "box": [
+            13,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-13-14",
+          "box": [
+            13,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-14-14",
+          "box": [
+            14,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "south-14-14",
+          "box": [
+            14,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "late-5-14",
+          "box": [
+            5,
+            14
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "late-5-15",
+          "box": [
+            5,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-5-15",
+          "box": [
+            5,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-5-15",
+          "box": [
+            5,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        }
+      ],
+      "missiles": {
+        "launches": 18,
+        "representativeLaunches": 18,
+        "representativeHits": 15,
+        "hits": 15,
+        "physicalMisses": 3,
+        "routeExitDiscards": 0,
+        "staticContacts": 3
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "rows": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "start": [
+              154,
+              24,
+              154
+            ],
+            "reachableNodes": 4532,
+            "farthestReach": 355.34771703220497,
+            "maxDisplacement": 262.4195114697056,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 4,
+            "completed": 3,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "start": [
+              226,
+              24,
+              202
+            ],
+            "reachableNodes": 4532,
+            "farthestReach": 268.92378102354576,
+            "maxDisplacement": 211.20606051910536,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 2,
+            "completed": 1,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "start": [
+              394,
+              24,
+              322
+            ],
+            "reachableNodes": 4532,
+            "farthestReach": 426.0516400625633,
+            "maxDisplacement": 386.42981251451084,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 4,
+            "completed": 3,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "start": [
+              56,
+              80,
+              88
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 432.9457240809753,
+            "visitedPerches": [
+              "d1-land-2-3",
+              "d1-land-2-9",
+              "d1-land-4-5",
+              "d1-land-8-0",
+              "d1-land-4-3",
+              "d1-land-3-2",
+              "d1-land-3-5",
+              "d1-land-7-8",
+              "d1-land-7-1",
+              "d1-land-12-14",
+              "d1-land-12-10",
+              "d1-land-12-11",
+              "d1-land-10-15",
+              "d1-land-19-7",
+              "d1-land-17-13",
+              "d1-land-14-10",
+              "d1-land-1-11"
+            ],
+            "flightFrames": 3149,
+            "accepted": 20,
+            "completed": 19,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "start": [
+              328,
+              80,
+              248
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 316.07752213657966,
+            "visitedPerches": [
+              "d1-land-13-10",
+              "d1-land-13-9",
+              "d1-land-4-14",
+              "d1-land-12-10",
+              "d1-land-4-11",
+              "d1-land-12-11",
+              "d1-land-3-11",
+              "d1-land-10-9",
+              "d1-land-3-10",
+              "d1-land-3-2",
+              "d1-land-13-15",
+              "d1-land-2-3",
+              "d1-land-1-10",
+              "d1-land-7-8",
+              "d1-land-11-15"
+            ],
+            "flightFrames": 3417,
+            "accepted": 18,
+            "completed": 17,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "start": [
+              80,
+              76,
+              272
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 291.89895511974686,
+            "visitedPerches": [
+              "d1-land-3-11",
+              "d1-land-1-3",
+              "d1-land-1-10",
+              "d1-land-1-11",
+              "d1-land-2-10",
+              "d1-land-13-11",
+              "d1-land-13-10",
+              "d1-land-14-10",
+              "d1-land-3-5",
+              "d1-land-4-11",
+              "d1-land-2-11",
+              "d1-land-10-1",
+              "d1-land-12-14",
+              "d1-land-4-5",
+              "d1-land-12-15",
+              "d1-land-2-9"
+            ],
+            "flightFrames": 3116,
+            "accepted": 19,
+            "completed": 19,
+            "thinkCount": 900,
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "hulls": [
+        {
+          "species": "spider",
+          "contract": {
+            "radius": 12,
+            "bottom": 0,
+            "top": 14.75,
+            "layers": [
+              {
+                "radius": 12,
+                "bottom": 0,
+                "top": 14.75
+              }
+            ]
+          },
+          "maximumRadius": 11.956925707617057,
+          "bottom": -5.262049640464284e-7,
+          "top": 14.602184936404228,
+          "sampledPoses": 1177,
+          "failures": []
+        },
+        {
+          "species": "lantern",
+          "contract": {
+            "radius": 12.3156326374791,
+            "bottom": 37.423843733642876,
+            "top": 59.75037728777657,
+            "layers": [
+              {
+                "radius": 4.813737031204354,
+                "bottom": 37,
+                "top": 38
+              },
+              {
+                "radius": 4.940667737570701,
+                "bottom": 38,
+                "top": 39
+              },
+              {
+                "radius": 5.06824126148485,
+                "bottom": 39,
+                "top": 40
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 40,
+                "top": 41
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 41,
+                "top": 42
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 42,
+                "top": 43
+              },
+              {
+                "radius": 4.672984865509356,
+                "bottom": 43,
+                "top": 44
+              },
+              {
+                "radius": 4.799136746261402,
+                "bottom": 44,
+                "top": 45
+              },
+              {
+                "radius": 4.925990029366192,
+                "bottom": 45,
+                "top": 46
+              },
+              {
+                "radius": 5.053491895073688,
+                "bottom": 46,
+                "top": 47
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 47,
+                "top": 48
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 48,
+                "top": 49
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 49,
+                "top": 50
+              },
+              {
+                "radius": 4.658478474557525,
+                "bottom": 50,
+                "top": 51
+              },
+              {
+                "radius": 9.489827376797907,
+                "bottom": 51,
+                "top": 52
+              },
+              {
+                "radius": 9.628236793789567,
+                "bottom": 52,
+                "top": 53
+              },
+              {
+                "radius": 11.974464588331495,
+                "bottom": 53,
+                "top": 54
+              },
+              {
+                "radius": 12.087654813949165,
+                "bottom": 54,
+                "top": 55
+              },
+              {
+                "radius": 12.20138245975568,
+                "bottom": 55,
+                "top": 56
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 56,
+                "top": 57
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 57,
+                "top": 58
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 58,
+                "top": 59
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 59,
+                "top": 60
+              }
+            ]
+          },
+          "maximumRadius": 9.899509084695092,
+          "bottom": 38,
+          "top": 59,
+          "sampledPoses": 1177,
+          "failures": []
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "plum-02",
+      "option": "fallen-arch-return",
+      "title": "Fallen Arch Return",
+      "sourceHash": "1e69f9a019101443eb42ed2b67c2056746726521ccd983089e22fa1efb335266",
+      "baseline": {
+        "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z/assets/levels/plum-02.json",
+        "sha256": "024d5c35e15f429d400a2c41f7cfdaae20e50b1c698184d5eb01919d2a5c053a"
+      },
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 49,
+          "length": 1152
+        }
+      ],
+      "sites": 47,
+      "retainedScenery": 189,
+      "removedScenery": 116,
+      "terrainWaterEnvironmentExact": true,
+      "retainedSceneryExact": true,
+      "originalBirdPerchesExact": true,
+      "deterministicFactoryExact": true,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            8,
+            0,
+            0
+          ],
+          "exit": [
+            11,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 47,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [],
+      "sourcePoseSamples": 2306,
+      "sourceMotionFailures": [],
+      "fullGroundVisible": true,
+      "baseGunArcUseful": 47,
+      "upgradeDependent": [],
+      "independentWeaponCombinations": 423,
+      "productionAllowed": 409,
+      "productionRestrictions": [
+        {
+          "site": "central-9-8",
+          "box": [
+            9,
+            8
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "central-9-8",
+          "box": [
+            9,
+            8
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "east-19-9",
+          "box": [
+            19,
+            9
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-9",
+          "box": [
+            19,
+            9
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-9",
+          "box": [
+            19,
+            9
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-10",
+          "box": [
+            19,
+            10
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-10",
+          "box": [
+            19,
+            10
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-10",
+          "box": [
+            19,
+            10
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-11",
+          "box": [
+            19,
+            11
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-11",
+          "box": [
+            19,
+            11
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "east-19-11",
+          "box": [
+            19,
+            11
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "south-10-15",
+          "box": [
+            10,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "south-10-15",
+          "box": [
+            10,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "south-10-15",
+          "box": [
+            10,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        }
+      ],
+      "missiles": {
+        "launches": 18,
+        "representativeLaunches": 18,
+        "representativeHits": 15,
+        "hits": 15,
+        "physicalMisses": 3,
+        "routeExitDiscards": 0,
+        "staticContacts": 3
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "rows": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "start": [
+              202,
+              24,
+              130
+            ],
+            "reachableNodes": 4650,
+            "farthestReach": 354.91970923012997,
+            "maxDisplacement": 196.16319736382536,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 4,
+            "completed": 3,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "start": [
+              250,
+              24,
+              250
+            ],
+            "reachableNodes": 4650,
+            "farthestReach": 270.7027890510181,
+            "maxDisplacement": 208.80613017820815,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 3,
+            "completed": 3,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "start": [
+              442,
+              24,
+              322
+            ],
+            "reachableNodes": 4650,
+            "farthestReach": 455.2449889894451,
+            "maxDisplacement": 407.92156108742245,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 3,
+            "completed": 2,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "start": [
+              80,
+              76,
+              56
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 456.03947197583676,
+            "visitedPerches": [
+              "d2-land-3-2",
+              "d2-land-18-3",
+              "d2-land-5-14",
+              "d2-land-13-4",
+              "d2-land-5-1",
+              "d2-land-12-2",
+              "d2-land-6-14",
+              "d2-land-13-3",
+              "d2-land-19-12",
+              "d2-land-8-8",
+              "d2-land-14-5",
+              "d2-land-12-4"
+            ],
+            "flightFrames": 3615,
+            "accepted": 16,
+            "completed": 15,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "start": [
+              368,
+              84,
+              88
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 437.4528546026417,
+            "visitedPerches": [
+              "d2-land-15-3",
+              "d2-land-3-3",
+              "d2-land-14-5",
+              "d2-land-15-2",
+              "d2-land-6-14",
+              "d2-land-12-15",
+              "d2-land-18-14",
+              "d2-land-3-12",
+              "d2-land-3-11",
+              "d2-land-0-14",
+              "d2-land-4-13",
+              "d2-land-4-1",
+              "d2-land-15-1"
+            ],
+            "flightFrames": 3332,
+            "accepted": 15,
+            "completed": 15,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "start": [
+              112,
+              80,
+              320
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 406.6693988979254,
+            "visitedPerches": [
+              "d2-land-4-13",
+              "d2-land-13-3",
+              "d2-land-3-12",
+              "d2-land-12-15",
+              "d2-land-8-8",
+              "d2-land-18-3",
+              "d2-land-3-13",
+              "d2-land-10-12",
+              "d2-land-6-1",
+              "d2-land-18-14",
+              "d2-land-19-5"
+            ],
+            "flightFrames": 3508,
+            "accepted": 16,
+            "completed": 15,
+            "thinkCount": 900,
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "hulls": [
+        {
+          "species": "spider",
+          "contract": {
+            "radius": 12,
+            "bottom": 0,
+            "top": 14.75,
+            "layers": [
+              {
+                "radius": 12,
+                "bottom": 0,
+                "top": 14.75
+              }
+            ]
+          },
+          "maximumRadius": 11.956953936261833,
+          "bottom": -5.262049640464284e-7,
+          "top": 14.602184936404228,
+          "sampledPoses": 1153,
+          "failures": []
+        },
+        {
+          "species": "lantern",
+          "contract": {
+            "radius": 12.3156326374791,
+            "bottom": 37.423843733642876,
+            "top": 59.75037728777657,
+            "layers": [
+              {
+                "radius": 4.813737031204354,
+                "bottom": 37,
+                "top": 38
+              },
+              {
+                "radius": 4.940667737570701,
+                "bottom": 38,
+                "top": 39
+              },
+              {
+                "radius": 5.06824126148485,
+                "bottom": 39,
+                "top": 40
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 40,
+                "top": 41
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 41,
+                "top": 42
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 42,
+                "top": 43
+              },
+              {
+                "radius": 4.672984865509356,
+                "bottom": 43,
+                "top": 44
+              },
+              {
+                "radius": 4.799136746261402,
+                "bottom": 44,
+                "top": 45
+              },
+              {
+                "radius": 4.925990029366192,
+                "bottom": 45,
+                "top": 46
+              },
+              {
+                "radius": 5.053491895073688,
+                "bottom": 46,
+                "top": 47
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 47,
+                "top": 48
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 48,
+                "top": 49
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 49,
+                "top": 50
+              },
+              {
+                "radius": 4.658478474557525,
+                "bottom": 50,
+                "top": 51
+              },
+              {
+                "radius": 9.489827376797907,
+                "bottom": 51,
+                "top": 52
+              },
+              {
+                "radius": 9.628236793789567,
+                "bottom": 52,
+                "top": 53
+              },
+              {
+                "radius": 11.974464588331495,
+                "bottom": 53,
+                "top": 54
+              },
+              {
+                "radius": 12.087654813949165,
+                "bottom": 54,
+                "top": 55
+              },
+              {
+                "radius": 12.20138245975568,
+                "bottom": 55,
+                "top": 56
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 56,
+                "top": 57
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 57,
+                "top": 58
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 58,
+                "top": 59
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 59,
+                "top": 60
+              }
+            ]
+          },
+          "maximumRadius": 9.899509084695092,
+          "bottom": 38,
+          "top": 59,
+          "sampledPoses": 1153,
+          "failures": []
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "plum-03",
+      "option": "lantern-shore-return",
+      "title": "Lantern Shore Return",
+      "sourceHash": "f5357ddc18af11831ee0b5e2c8e90324963009f16624a195f726f61c97ef3bde",
+      "baseline": {
+        "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z/assets/levels/plum-03.json",
+        "sha256": "20880e8f8932c279d8c7ac233eac0808f35a1fab21254ad5c212d3f37851796d"
+      },
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 33,
+          "length": 768
+        }
+      ],
+      "sites": 35,
+      "retainedScenery": 167,
+      "removedScenery": 82,
+      "terrainWaterEnvironmentExact": true,
+      "retainedSceneryExact": true,
+      "originalBirdPerchesExact": true,
+      "deterministicFactoryExact": true,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            7,
+            0,
+            0
+          ],
+          "exit": [
+            12,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 31,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [],
+      "sourcePoseSamples": 1538,
+      "sourceMotionFailures": [],
+      "fullGroundVisible": true,
+      "baseGunArcUseful": 35,
+      "upgradeDependent": [],
+      "independentWeaponCombinations": 315,
+      "productionAllowed": 308,
+      "productionRestrictions": [
+        {
+          "site": "north-6-1",
+          "box": [
+            6,
+            1
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "north-6-2",
+          "box": [
+            6,
+            2
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "north-6-3",
+          "box": [
+            6,
+            3
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "return-7-10",
+          "box": [
+            7,
+            10
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "return-7-10",
+          "box": [
+            7,
+            10
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "return-7-12",
+          "box": [
+            7,
+            12
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "return-7-12",
+          "box": [
+            7,
+            12
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        }
+      ],
+      "missiles": {
+        "launches": 18,
+        "representativeLaunches": 18,
+        "representativeHits": 18,
+        "hits": 18,
+        "physicalMisses": 0,
+        "routeExitDiscards": 0,
+        "staticContacts": 0
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "rows": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "start": [
+              178,
+              24,
+              106
+            ],
+            "reachableNodes": 3069,
+            "farthestReach": 304.1052449399714,
+            "maxDisplacement": 207.4608396782382,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 3,
+            "completed": 2,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "start": [
+              82,
+              24,
+              178
+            ],
+            "reachableNodes": 3069,
+            "farthestReach": 311.58947350640716,
+            "maxDisplacement": 188.04254837668552,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 4,
+            "completed": 3,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "start": [
+              202,
+              24,
+              322
+            ],
+            "reachableNodes": 3069,
+            "farthestReach": 318.0440221101475,
+            "maxDisplacement": 224.142811617947,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 4,
+            "completed": 3,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "start": [
+              56,
+              84,
+              88
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 447.21918563496354,
+            "visitedPerches": [
+              "d3-land-2-3",
+              "d3-land-2-11",
+              "d3-land-4-13",
+              "d3-land-17-14",
+              "d3-land-4-4",
+              "d3-land-2-2",
+              "d3-land-2-12",
+              "d3-land-0-0",
+              "d3-land-4-2",
+              "d3-land-15-13",
+              "d3-land-2-10",
+              "d3-land-3-1",
+              "d3-land-3-2"
+            ],
+            "flightFrames": 3371,
+            "accepted": 16,
+            "completed": 15,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "start": [
+              104,
+              80,
+              296
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 438.78240621064106,
+            "visitedPerches": [
+              "d3-land-4-12",
+              "d3-land-6-10",
+              "d3-land-5-13",
+              "d3-land-3-4",
+              "d3-land-15-14",
+              "d3-land-2-11",
+              "d3-land-2-3",
+              "d3-land-4-4",
+              "d3-land-0-9",
+              "d3-land-18-0",
+              "d3-land-16-15",
+              "d3-land-14-14",
+              "d3-land-5-1"
+            ],
+            "flightFrames": 3443,
+            "accepted": 17,
+            "completed": 16,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "start": [
+              448,
+              76,
+              320
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 534.5521489995153,
+            "visitedPerches": [
+              "d3-land-18-13",
+              "d3-land-3-3",
+              "d3-land-15-13",
+              "d3-land-14-14",
+              "d3-land-3-1",
+              "d3-land-2-10",
+              "d3-land-3-2",
+              "d3-land-3-13",
+              "d3-land-5-2",
+              "d3-land-5-13",
+              "d3-land-4-13",
+              "d3-land-0-0",
+              "d3-land-14-15"
+            ],
+            "flightFrames": 3630,
+            "accepted": 14,
+            "completed": 13,
+            "thinkCount": 900,
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "hulls": [
+        {
+          "species": "spider",
+          "contract": {
+            "radius": 12,
+            "bottom": 0,
+            "top": 14.75,
+            "layers": [
+              {
+                "radius": 12,
+                "bottom": 0,
+                "top": 14.75
+              }
+            ]
+          },
+          "maximumRadius": 11.996701155114357,
+          "bottom": -5.262049640464284e-7,
+          "top": 14.601995386183262,
+          "sampledPoses": 769,
+          "failures": []
+        },
+        {
+          "species": "lantern",
+          "contract": {
+            "radius": 12.3156326374791,
+            "bottom": 37.423843733642876,
+            "top": 59.75037728777657,
+            "layers": [
+              {
+                "radius": 4.813737031204354,
+                "bottom": 37,
+                "top": 38
+              },
+              {
+                "radius": 4.940667737570701,
+                "bottom": 38,
+                "top": 39
+              },
+              {
+                "radius": 5.06824126148485,
+                "bottom": 39,
+                "top": 40
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 40,
+                "top": 41
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 41,
+                "top": 42
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 42,
+                "top": 43
+              },
+              {
+                "radius": 4.672984865509356,
+                "bottom": 43,
+                "top": 44
+              },
+              {
+                "radius": 4.799136746261402,
+                "bottom": 44,
+                "top": 45
+              },
+              {
+                "radius": 4.925990029366192,
+                "bottom": 45,
+                "top": 46
+              },
+              {
+                "radius": 5.053491895073688,
+                "bottom": 46,
+                "top": 47
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 47,
+                "top": 48
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 48,
+                "top": 49
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 49,
+                "top": 50
+              },
+              {
+                "radius": 4.658478474557525,
+                "bottom": 50,
+                "top": 51
+              },
+              {
+                "radius": 9.489827376797907,
+                "bottom": 51,
+                "top": 52
+              },
+              {
+                "radius": 9.628236793789567,
+                "bottom": 52,
+                "top": 53
+              },
+              {
+                "radius": 11.974464588331495,
+                "bottom": 53,
+                "top": 54
+              },
+              {
+                "radius": 12.087654813949165,
+                "bottom": 54,
+                "top": 55
+              },
+              {
+                "radius": 12.20138245975568,
+                "bottom": 55,
+                "top": 56
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 56,
+                "top": 57
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 57,
+                "top": 58
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 58,
+                "top": 59
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 59,
+                "top": 60
+              }
+            ]
+          },
+          "maximumRadius": 9.899509084695092,
+          "bottom": 38,
+          "top": 59,
+          "sampledPoses": 769,
+          "failures": []
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "plum-04",
+      "option": "crown-river-tour",
+      "title": "Crown River Tour",
+      "sourceHash": "d8af50121168098e9ec3ee5920ffa7d1e512b1d1bcbfc4bffa45e98358e0c35d",
+      "baseline": {
+        "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z/assets/levels/plum-04.json",
+        "sha256": "79cc726f39e066afb9f66b03f176f9b2a43a4e957c5c0e987c6f159fcb5951ee"
+      },
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 52,
+          "length": 1224
+        }
+      ],
+      "sites": 46,
+      "retainedScenery": 166,
+      "removedScenery": 116,
+      "terrainWaterEnvironmentExact": true,
+      "retainedSceneryExact": true,
+      "originalBirdPerchesExact": true,
+      "deterministicFactoryExact": true,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            0,
+            0,
+            7
+          ],
+          "exit": [
+            11,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 50,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [
+        {
+          "id": "crown-river",
+          "box": [
+            4,
+            13
+          ],
+          "walkingHeight": 24,
+          "naturalHeight": null,
+          "originalColumn": {
+            "box": [
+              4,
+              13
+            ],
+            "ground": 19,
+            "water": 21
+          }
+        },
+        {
+          "id": "crown-river",
+          "box": [
+            5,
+            13
+          ],
+          "walkingHeight": 24,
+          "naturalHeight": null,
+          "originalColumn": {
+            "box": [
+              5,
+              13
+            ],
+            "ground": 19,
+            "water": 21
+          }
+        }
+      ],
+      "sourcePoseSamples": 2450,
+      "sourceMotionFailures": [],
+      "fullGroundVisible": true,
+      "baseGunArcUseful": 46,
+      "upgradeDependent": [],
+      "independentWeaponCombinations": 414,
+      "productionAllowed": 399,
+      "productionRestrictions": [
+        {
+          "site": "north-14-6",
+          "box": [
+            14,
+            6
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "north-14-6",
+          "box": [
+            14,
+            6
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "north-14-6",
+          "box": [
+            14,
+            6
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "scenery",
+          "reason": "The defence would touch the scenery."
+        },
+        {
+          "site": "north-19-6",
+          "box": [
+            19,
+            6
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "north-19-6",
+          "box": [
+            19,
+            6
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "north-19-6",
+          "box": [
+            19,
+            6
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "north-19-7",
+          "box": [
+            19,
+            7
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "north-19-7",
+          "box": [
+            19,
+            7
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "north-19-7",
+          "box": [
+            19,
+            7
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-10-15",
+          "box": [
+            10,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-10-15",
+          "box": [
+            10,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-10-15",
+          "box": [
+            10,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-12-15",
+          "box": [
+            12,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "base",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-12-15",
+          "box": [
+            12,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        },
+        {
+          "site": "late-12-15",
+          "box": [
+            12,
+            15
+          ],
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "valid": false,
+          "code": "bounds",
+          "reason": "The defence needs room inside the landscape."
+        }
+      ],
+      "missiles": {
+        "launches": 18,
+        "representativeLaunches": 18,
+        "representativeHits": 17,
+        "hits": 17,
+        "physicalMisses": 1,
+        "routeExitDiscards": 0,
+        "staticContacts": 1
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "rows": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "start": [
+              82,
+              24,
+              178
+            ],
+            "reachableNodes": 1094,
+            "farthestReach": 186.76188047886004,
+            "maxDisplacement": 147.5127113166862,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 6,
+            "completed": 5,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "start": [
+              274,
+              24,
+              130
+            ],
+            "reachableNodes": 3161,
+            "farthestReach": 257.1536505671269,
+            "maxDisplacement": 231.2055362658905,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 4,
+            "completed": 2,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "start": [
+              274,
+              24,
+              322
+            ],
+            "reachableNodes": 3161,
+            "farthestReach": 321.645767887594,
+            "maxDisplacement": 235.59286916203408,
+            "visitedPerches": [],
+            "flightFrames": 0,
+            "accepted": 4,
+            "completed": 2,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "start": [
+              56,
+              84,
+              80
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 425.9600920274105,
+            "visitedPerches": [
+              "d4-land-2-3",
+              "d4-land-15-3",
+              "d4-land-16-3",
+              "d4-land-18-10",
+              "d4-land-16-10",
+              "d4-land-15-1",
+              "d4-land-4-15",
+              "d4-land-1-2",
+              "d4-land-1-3",
+              "d4-land-5-3",
+              "d4-land-16-1",
+              "d4-land-17-11",
+              "d4-land-11-2",
+              "d4-land-15-12",
+              "d4-land-17-3"
+            ],
+            "flightFrames": 3404,
+            "accepted": 16,
+            "completed": 16,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "start": [
+              400,
+              80,
+              56
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 320.50273009757655,
+            "visitedPerches": [
+              "d4-land-16-2",
+              "d4-land-15-1",
+              "d4-land-9-7",
+              "d4-land-14-14",
+              "d4-land-14-2",
+              "d4-land-15-12",
+              "d4-land-17-3",
+              "d4-land-4-2",
+              "d4-land-18-10",
+              "d4-land-19-11",
+              "d4-land-11-1",
+              "d4-land-17-13",
+              "d4-land-16-3",
+              "d4-land-3-3"
+            ],
+            "flightFrames": 3314,
+            "accepted": 15,
+            "completed": 14,
+            "thinkCount": 900,
+            "passed": true
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "start": [
+              416,
+              80,
+              328
+            ],
+            "reachableNodes": 0,
+            "farthestReach": 0,
+            "maxDisplacement": 459.396343041605,
+            "visitedPerches": [
+              "d4-land-17-13",
+              "d4-land-3-2",
+              "d4-land-11-1",
+              "d4-land-9-7",
+              "d4-land-16-12",
+              "d4-land-18-12",
+              "d4-land-14-12",
+              "d4-land-2-1",
+              "d4-land-15-12",
+              "d4-land-14-1",
+              "d4-land-17-12",
+              "d4-land-2-3",
+              "d4-land-15-3"
+            ],
+            "flightFrames": 3470,
+            "accepted": 15,
+            "completed": 14,
+            "thinkCount": 900,
+            "passed": true
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "hulls": [
+        {
+          "species": "spider",
+          "contract": {
+            "radius": 12,
+            "bottom": 0,
+            "top": 14.75,
+            "layers": [
+              {
+                "radius": 12,
+                "bottom": 0,
+                "top": 14.75
+              }
+            ]
+          },
+          "maximumRadius": 11.956947280402973,
+          "bottom": -5.262049640464284e-7,
+          "top": 14.601995386183262,
+          "sampledPoses": 1225,
+          "failures": []
+        },
+        {
+          "species": "lantern",
+          "contract": {
+            "radius": 12.3156326374791,
+            "bottom": 37.423843733642876,
+            "top": 59.75037728777657,
+            "layers": [
+              {
+                "radius": 4.813737031204354,
+                "bottom": 37,
+                "top": 38
+              },
+              {
+                "radius": 4.940667737570701,
+                "bottom": 38,
+                "top": 39
+              },
+              {
+                "radius": 5.06824126148485,
+                "bottom": 39,
+                "top": 40
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 40,
+                "top": 41
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 41,
+                "top": 42
+              },
+              {
+                "radius": 5.196410259036981,
+                "bottom": 42,
+                "top": 43
+              },
+              {
+                "radius": 4.672984865509356,
+                "bottom": 43,
+                "top": 44
+              },
+              {
+                "radius": 4.799136746261402,
+                "bottom": 44,
+                "top": 45
+              },
+              {
+                "radius": 4.925990029366192,
+                "bottom": 45,
+                "top": 46
+              },
+              {
+                "radius": 5.053491895073688,
+                "bottom": 46,
+                "top": 47
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 47,
+                "top": 48
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 48,
+                "top": 49
+              },
+              {
+                "radius": 5.181594465200597,
+                "bottom": 49,
+                "top": 50
+              },
+              {
+                "radius": 4.658478474557525,
+                "bottom": 50,
+                "top": 51
+              },
+              {
+                "radius": 9.489827376797907,
+                "bottom": 51,
+                "top": 52
+              },
+              {
+                "radius": 9.628236793789567,
+                "bottom": 52,
+                "top": 53
+              },
+              {
+                "radius": 11.974464588331495,
+                "bottom": 53,
+                "top": 54
+              },
+              {
+                "radius": 12.087654813949165,
+                "bottom": 54,
+                "top": 55
+              },
+              {
+                "radius": 12.20138245975568,
+                "bottom": 55,
+                "top": 56
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 56,
+                "top": 57
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 57,
+                "top": 58
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 58,
+                "top": 59
+              },
+              {
+                "radius": 12.3156326374791,
+                "bottom": 59,
+                "top": 60
+              }
+            ]
+          },
+          "maximumRadius": 9.899509084695092,
+          "bottom": 38,
+          "top": 59,
+          "sampledPoses": 1225,
+          "failures": []
+        }
+      ],
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "frozenBackup": {
+    "checksummedFiles": 69,
+    "failures": [],
+    "passed": true
+  },
+  "failures": [],
+  "passed": true
+}

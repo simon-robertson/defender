@@ -1,0 +1,26 @@
+// Routes are carved from the frozen ice landscapes, preserving river banks,
+// lake depths and raised ridges. Bridge support remains a future option.
+const sites=groups=>Object.entries(groups).flatMap(([group,boxes])=>boxes.map((box,i)=>({id:`${group}-${i+1}`,group,box})));
+export const ICE_LAYOUTS={
+ 'ice-01':{zone:'C',number:1,landscapeSha256:'0db2731c6f9cd06e224c4549f6ed0045b4e40bfac62bf07a0f48b54fb3495e4d',
+  rationale:'A readable western approach steps around the western bank of the long narrow tarn, then follows its southern shore. The northern gun, central elbow and separate southern exit compare useful exposure while retaining the icy ridges and lake.',
+  corners:{main:[[0,6],[7,6],[7,8],[9,8],[9,13],[15,13]]},positions:[[5,5],[8,10],[13,12]],
+  sites:sites({early:[[4,5],[5,5],[6,5]],repeat:[[8,9],[8,10],[8,11]],late:[[12,12],[13,12],[14,12]]}),habitats:[[4,5],[8,9],[14,12]],
+ },
+ 'ice-02':{zone:'C',number:2,landscapeSha256:'09b87fc8f52bdb97c1d03b47549c0e20a67da89b1202c46ed65cb75e757dfb2c',
+  rationale:'The broad southern river bank carries a stepped return followed by a descent around the southwest face of the eastern ridge. Early, inner-return and southern-shore catches remain separated; the meltwater river is preserved across the full landscape.',
+  corners:{main:[[0,9],[4,9],[4,11],[8,11],[8,9],[11,9],[11,15],[17,15]]},positions:[[3,10],[7,10],[10,14]],
+  sites:sites({early:[[2,10],[3,10],[3,8]],repeat:[[6,10],[7,10],[9,10]],late:[[10,13],[10,14],[10,15]]}),habitats:[[2,10],[6,10],[10,15]],
+ },
+ 'ice-03':{zone:'C',number:3,landscapeSha256:'c0951ecc674c42f6d6d31055355b5ca1eac883edf5755895c5e08aa56de54ca2',
+  rationale:'Two approaches occupy the dry western bank of the shallow stream: the longer northern approach bends through an offset, while a short western entrance joins its southern descent. Dedicated approach sites and a shared late catch contrast with the untouched eastern white ridge.',
+  corners:{main:[[3,0],[3,5],[5,5],[5,8],[2,8],[2,15]],branch:[[0,6],[2,6],[2,8],[2,15]]},
+  actorRoutes:{'preview-tripod-1':'branch','preview-ray-1':'branch'},positions:[[4,3],[1,7],[1,13]],
+  sites:sites({early:[[4,2],[4,3],[4,4]],branch:[[1,5],[1,7],[0,7]],late:[[1,12],[1,13],[1,14]]}),habitats:[[4,2],[0,7],[1,14]],
+ },
+ 'ice-04':{zone:'C',number:4,landscapeSha256:'c28355fa023e62b2eb70092ba3293960fe92f77fb2fd628be4d14f8b8bb17e03',
+  rationale:'A single later route winds beneath the sanctuary ruins before descending the western shore of the deep angular lake. The central return offers continuous corner coverage, with a separate enhanced silo guarding the long southern shoreline exit.',
+  corners:{main:[[0,7],[6,7],[6,5],[11,5],[11,7],[9,7],[9,17]]},positions:[[5,6],[8,6],[8,14]],generator:[8,13],
+  sites:sites({early:[[3,6],[4,6],[5,6]],repeat:[[7,6],[8,6],[10,6]],late:[[8,12],[8,14],[8,16]]}),habitats:[[3,6],[7,6],[8,16]],
+ },
+};

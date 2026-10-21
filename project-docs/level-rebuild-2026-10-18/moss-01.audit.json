@@ -1,0 +1,641 @@
+{
+  "id": "moss-01",
+  "sourceHash": "a4b4aed7d2d32e073f8c001e4d78f2290668e943b5dab0f0e2b61b8376708d3b",
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 1371,
+    "checkedParts": 9597,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "early-1",
+        "group": "early",
+        "box": [
+          3,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 183.5,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "roller": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "moth": [
+                  [
+                    30,
+                    114
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    4,
+                    150
+                  ]
+                ],
+                "roller": [
+                  [
+                    4,
+                    150
+                  ]
+                ],
+                "moth": [
+                  [
+                    4,
+                    150
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-2",
+        "group": "early",
+        "box": [
+          4,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    54,
+                    186
+                  ]
+                ],
+                "roller": [
+                  [
+                    54,
+                    186
+                  ]
+                ],
+                "moth": [
+                  [
+                    54,
+                    186
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    51,
+                    212
+                  ]
+                ],
+                "roller": [
+                  [
+                    51,
+                    212
+                  ]
+                ],
+                "moth": [
+                  [
+                    38,
+                    212
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-3",
+        "group": "early",
+        "box": [
+          4,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 204.45,
+              "120": 240
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "roller": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "moth": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    28,
+                    164
+                  ]
+                ],
+                "roller": [
+                  [
+                    28,
+                    164
+                  ]
+                ],
+                "moth": [
+                  [
+                    28,
+                    164
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-1",
+        "group": "repeat",
+        "box": [
+          7,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 331.15
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    180,
+                    258
+                  ]
+                ],
+                "roller": [
+                  [
+                    181,
+                    258
+                  ]
+                ],
+                "moth": [
+                  [
+                    174,
+                    258
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    182,
+                    284
+                  ]
+                ],
+                "roller": [
+                  [
+                    182,
+                    284
+                  ]
+                ],
+                "moth": [
+                  [
+                    100,
+                    284
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-2",
+        "group": "repeat",
+        "box": [
+          8,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 281.9,
+              "120": 331.15
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "roller": [
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "moth": [
+                  [
+                    198,
+                    282
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    172,
+                    308
+                  ]
+                ],
+                "roller": [
+                  [
+                    172,
+                    308
+                  ]
+                ],
+                "moth": [
+                  [
+                    172,
+                    308
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-3",
+        "group": "repeat",
+        "box": [
+          9,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 331.15
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "roller": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "moth": [
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    196,
+                    380
+                  ]
+                ],
+                "roller": [
+                  [
+                    196,
+                    380
+                  ]
+                ],
+                "moth": [
+                  [
+                    196,
+                    380
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-1",
+        "group": "late",
+        "box": [
+          13,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 163.88,
+              "96": 188.95,
+              "120": 213.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "roller": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "moth": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    292,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    292,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    292,
+                    456
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-2",
+        "group": "late",
+        "box": [
+          13,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 125.67,
+              "96": 159.5,
+              "120": 192
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "roller": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "moth": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    330,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    330,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    330,
+                    456
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-3",
+        "group": "late",
+        "box": [
+          14,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 456,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 164.95,
+              "120": 189.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    390,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    390,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    390,
+                    456
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    364,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    364,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    364,
+                    456
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "combat": {
+    "seconds": 120,
+    "frames": 7200,
+    "thinkCounts": [
+      2400,
+      2400,
+      2400
+    ],
+    "shots": {
+      "a1-defence-1": 51,
+      "a1-defence-2": 87,
+      "a1-defence-3": 31
+    },
+    "strengths": [
+      12.5,
+      12,
+      10
+    ],
+    "hits": {
+      "main/moth/12": 288,
+      "main/roller/12.5": 237.5,
+      "main/dog/10": 260,
+      "main/moth/12.5": 62.5,
+      "main/roller/12": 442.5,
+      "main/dog/12.5": 337.5,
+      "main/dog/12": 302.5,
+      "main/roller/10": 40,
+      "main/moth/10": 9.5
+    },
+    "launches": 0,
+    "claimsSeen": false,
+    "missileHits": 0,
+    "remaining": [
+      {
+        "id": "preview-dog-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-dog-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-dog-3",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-roller-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-roller-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-moth-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-moth-2",
+        "route": "main",
+        "health": 0
+      }
+    ],
+    "enhancers": [
+      {
+        "id": "a1-generator",
+        "active": true,
+        "recipientIds": [
+          "a1-defence-1"
+        ]
+      }
+    ],
+    "failures": []
+  }
+}

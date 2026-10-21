@@ -1,0 +1,183 @@
+{
+  "id": "plum-03",
+  "sourceSha256": "f5357ddc18af11831ee0b5e2c8e90324963009f16624a195f726f61c97ef3bde",
+  "seconds": 180,
+  "hz": 30,
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 33
+    }
+  ],
+  "unionPathBoxes": 33,
+  "bridgeBoxes": 0,
+  "resources": {
+    "modelAssets": 10,
+    "opaqueEntries": 13,
+    "waterQuads": 71,
+    "visibilityPrimitives": 5302,
+    "visibilityBytes": 296884,
+    "planningBytes": 271088,
+    "explosionEventBytes": 320,
+    "groundNodes": 3578,
+    "treePerches": 43
+  },
+  "thinkCount": 5400,
+  "maxThinkWork": 512,
+  "envelopeChecks": 32406,
+  "meshPoseChecks": 1086,
+  "rows": [
+    {
+      "id": "wildlife-ground-1",
+      "kind": "ground",
+      "start": [
+        178,
+        24,
+        106
+      ],
+      "reachableNodes": 3069,
+      "farthestReach": 304.1052449399714,
+      "maxDisplacement": 207.4608396782382,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 3,
+      "completed": 2,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-ground-2",
+      "kind": "ground",
+      "start": [
+        82,
+        24,
+        178
+      ],
+      "reachableNodes": 3069,
+      "farthestReach": 311.58947350640716,
+      "maxDisplacement": 188.04254837668552,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 4,
+      "completed": 3,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-ground-3",
+      "kind": "ground",
+      "start": [
+        202,
+        24,
+        322
+      ],
+      "reachableNodes": 3069,
+      "farthestReach": 318.0440221101475,
+      "maxDisplacement": 224.142811617947,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 4,
+      "completed": 3,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-1",
+      "kind": "bird",
+      "start": [
+        56,
+        84,
+        88
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 447.21918563496354,
+      "visitedPerches": [
+        "d3-land-2-3",
+        "d3-land-2-11",
+        "d3-land-4-13",
+        "d3-land-17-14",
+        "d3-land-4-4",
+        "d3-land-2-2",
+        "d3-land-2-12",
+        "d3-land-0-0",
+        "d3-land-4-2",
+        "d3-land-15-13",
+        "d3-land-2-10",
+        "d3-land-3-1",
+        "d3-land-3-2"
+      ],
+      "flightFrames": 3371,
+      "accepted": 16,
+      "completed": 15,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-2",
+      "kind": "bird",
+      "start": [
+        104,
+        80,
+        296
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 438.78240621064106,
+      "visitedPerches": [
+        "d3-land-4-12",
+        "d3-land-6-10",
+        "d3-land-5-13",
+        "d3-land-3-4",
+        "d3-land-15-14",
+        "d3-land-2-11",
+        "d3-land-2-3",
+        "d3-land-4-4",
+        "d3-land-0-9",
+        "d3-land-18-0",
+        "d3-land-16-15",
+        "d3-land-14-14",
+        "d3-land-5-1"
+      ],
+      "flightFrames": 3443,
+      "accepted": 17,
+      "completed": 16,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-3",
+      "kind": "bird",
+      "start": [
+        448,
+        76,
+        320
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 534.5521489995153,
+      "visitedPerches": [
+        "d3-land-18-13",
+        "d3-land-3-3",
+        "d3-land-15-13",
+        "d3-land-14-14",
+        "d3-land-3-1",
+        "d3-land-2-10",
+        "d3-land-3-2",
+        "d3-land-3-13",
+        "d3-land-5-2",
+        "d3-land-5-13",
+        "d3-land-4-13",
+        "d3-land-0-0",
+        "d3-land-14-15"
+      ],
+      "flightFrames": 3630,
+      "accepted": 14,
+      "completed": 13,
+      "thinkCount": 900,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "released": true
+}

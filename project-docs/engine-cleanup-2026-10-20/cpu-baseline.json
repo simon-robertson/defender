@@ -1,0 +1,304 @@
+{
+  "method": "2400 actual 60Hz scene advances per witness, including current weapon/route/rig/wildlife and live/drone camera; proof includes pause, presentation-only settling and restart; property/trig/iterator counts instrumented separately from optional timings.",
+  "baseline": "/private/tmp/defender-engine-20261020-euzacphu",
+  "current": "/Users/simon/Development/codex/defender",
+  "proof": [
+    {
+      "definition": {
+        "level": 0,
+        "wave": 2,
+        "view": "drone"
+      },
+      "before": {
+        "spawnPhaseReads": 51132,
+        "spawnTimeReads": 21372,
+        "nextPhaseReads": 25560,
+        "nextTimeReads": 10680,
+        "posePhaseReads": 44638,
+        "mothSinCalls": 0,
+        "cameraTypedIteratorRequests": 17452,
+        "poseCallbacks": 142015,
+        "sha256": "a84a4a8a3e21c8ff30cbc6a8958a16cff76b88829f6e7489ee6735e2949867bb",
+        "milliseconds": 203.342042,
+        "events": [
+          [
+            "death",
+            "a1-wave-3-dog-1",
+            7.841666666666758
+          ],
+          [
+            "death",
+            "a1-wave-3-dog-3",
+            14.133333333333042
+          ],
+          [
+            "death",
+            "a1-wave-3-dog-4",
+            17.908333333332827
+          ],
+          [
+            "death",
+            "a1-wave-3-dog-2",
+            19.16666666666609
+          ],
+          [
+            "death",
+            "a1-wave-3-dog-1",
+            37.34166666666497
+          ]
+        ],
+        "final": {
+          "time": 39.49999999999814,
+          "waveTime": 9.999999999999943,
+          "running": true,
+          "completed": false,
+          "spawned": 4,
+          "pending": 2,
+          "active": 3,
+          "killed": 1,
+          "escaped": 0,
+          "resolved": 1,
+          "total": 6,
+          "shots": 12,
+          "gunShots": 12,
+          "arcShots": 0,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 4260,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128
+        }
+      }
+    },
+    {
+      "definition": {
+        "level": 1,
+        "wave": 2,
+        "view": "drone"
+      },
+      "before": {
+        "spawnPhaseReads": 102264,
+        "spawnTimeReads": 49104,
+        "nextPhaseReads": 51120,
+        "nextTimeReads": 24540,
+        "posePhaseReads": 92908,
+        "mothSinCalls": 17284,
+        "cameraTypedIteratorRequests": 17405,
+        "poseCallbacks": 229365,
+        "sha256": "ff2ec4167b79159cf4a5dee38b6c46a7fb35b63ade77992ebb11d0cb7089bc67",
+        "milliseconds": 264.370958,
+        "events": [
+          [
+            "death",
+            "a2-wave-3-moth-8",
+            9.724999999999925
+          ],
+          [
+            "death",
+            "a2-wave-3-moth-9",
+            12.674999999999757
+          ],
+          [
+            "death",
+            "a2-wave-3-moth-10",
+            15.62499999999959
+          ],
+          [
+            "death",
+            "a2-wave-3-moth-11",
+            24.049999999999113
+          ],
+          [
+            "death",
+            "a2-wave-3-dog-1",
+            25.4166666666657
+          ],
+          [
+            "death",
+            "a2-wave-3-moth-12",
+            28.47499999999886
+          ],
+          [
+            "death",
+            "a2-wave-3-moth-8",
+            39.22499999999809
+          ]
+        ],
+        "final": {
+          "time": 39.499999999998074,
+          "waveTime": 9.99999999999991,
+          "running": true,
+          "completed": false,
+          "spawned": 6,
+          "pending": 6,
+          "active": 5,
+          "killed": 1,
+          "escaped": 0,
+          "resolved": 1,
+          "total": 12,
+          "shots": 10,
+          "gunShots": 0,
+          "arcShots": 10,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 4260,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128
+        }
+      }
+    },
+    {
+      "definition": {
+        "level": 2,
+        "wave": 3,
+        "view": "live"
+      },
+      "before": {
+        "spawnPhaseReads": 119364,
+        "spawnTimeReads": 73480,
+        "nextPhaseReads": 59668,
+        "nextTimeReads": 36726,
+        "posePhaseReads": 93622,
+        "mothSinCalls": 21276,
+        "cameraTypedIteratorRequests": 476,
+        "poseCallbacks": 161713,
+        "sha256": "a9751b487726cf0e6503f56e31bd6a6700f913fd50afed247f9a3252f71c121f",
+        "milliseconds": 261.90429099999983,
+        "events": [
+          [
+            "death",
+            "a3-wave-4-roller-1",
+            9.258333333333262
+          ],
+          [
+            "death",
+            "a3-wave-4-moth-11",
+            11.216666666666484
+          ],
+          [
+            "death",
+            "a3-wave-4-moth-12",
+            17.633333333332786
+          ],
+          [
+            "death",
+            "a3-wave-4-moth-13",
+            17.633333333332786
+          ],
+          [
+            "death",
+            "a3-wave-4-moth-14",
+            24.9916666666657
+          ],
+          [
+            "death",
+            "a3-wave-4-roller-1",
+            38.7583333333314
+          ]
+        ],
+        "final": {
+          "time": 39.499999999998025,
+          "waveTime": 9.999999999999886,
+          "running": true,
+          "completed": false,
+          "spawned": 5,
+          "pending": 9,
+          "active": 4,
+          "killed": 1,
+          "escaped": 0,
+          "resolved": 1,
+          "total": 14,
+          "shots": 25,
+          "gunShots": 16,
+          "arcShots": 2,
+          "missileShots": 7,
+          "activeMissiles": 2,
+          "steps": 4260,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128
+        }
+      }
+    },
+    {
+      "definition": {
+        "level": 3,
+        "wave": 3,
+        "view": "drone"
+      },
+      "before": {
+        "spawnPhaseReads": 119308,
+        "spawnTimeReads": 64852,
+        "nextPhaseReads": 59640,
+        "nextTimeReads": 32412,
+        "posePhaseReads": 102248,
+        "mothSinCalls": 28572,
+        "cameraTypedIteratorRequests": 17699,
+        "poseCallbacks": 177079,
+        "sha256": "64cdb05d25d4022909a2c08792acf9b530e4d03a9d3472c074099c55ae55b45f",
+        "milliseconds": 271.8000000000002,
+        "events": [
+          [
+            "death",
+            "a4-wave-4-moth-9",
+            9.683333333333263
+          ],
+          [
+            "death",
+            "a4-wave-4-moth-10",
+            14.641666666666314
+          ],
+          [
+            "death",
+            "a4-wave-4-dog-1",
+            14.691666666666311
+          ],
+          [
+            "death",
+            "a4-wave-4-dog-2",
+            18.399999999999434
+          ],
+          [
+            "death",
+            "a4-wave-4-moth-11",
+            23.6666666666658
+          ],
+          [
+            "death",
+            "a4-wave-4-moth-12",
+            28.508333333332192
+          ],
+          [
+            "death",
+            "a4-wave-4-moth-9",
+            39.183333333331426
+          ]
+        ],
+        "final": {
+          "time": 39.499999999998074,
+          "waveTime": 9.999999999999911,
+          "running": true,
+          "completed": false,
+          "spawned": 6,
+          "pending": 8,
+          "active": 5,
+          "killed": 1,
+          "escaped": 0,
+          "resolved": 1,
+          "total": 14,
+          "shots": 13,
+          "gunShots": 0,
+          "arcShots": 13,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 4260,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128
+        }
+      }
+    }
+  ]
+}

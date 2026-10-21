@@ -1,0 +1,88 @@
+{
+  "passed": 22,
+  "failed": 0,
+  "checks": [
+    "All complete production geometry, display, emitter, blur and particle modules compile",
+    "Original full-resolution particle entrypoints require no bloom binding",
+    "White non-emissive armour produces no bloom",
+    "Zero emission preserves the complete production display byte-for-byte",
+    "Emissive panel produces source-coloured bloom",
+    "Fixed separable blur has a restrained finite halo",
+    "Halo is included in the existing linear-to-display composite",
+    "One-pixel emitter survives non-divisible 65×67 downsampling",
+    "Particle/depth coordinates use exact ceil-resolution ratios",
+    "Water transmission attenuates an emitter behind its surface",
+    "Disappearing opaque emission clears the previous cached halo",
+    "Reduced muzzle core obeys full-resolution opaque depth",
+    "Reduced muzzle core obeys water attenuation",
+    "Production elongated muzzle flame contributes bloom",
+    "Sparks never become bloom emitters",
+    "Explosion hot core blooms only when visible",
+    "Explosion halo source respects water attenuation",
+    "Smoke is excluded and expired blast leaves no residual halo",
+    "Original muzzle shape, opacity and water coverage remain correct",
+    "Original explosion shape still renders and obeys depth",
+    "Original lit smoke remains visible without producing bloom",
+    "No WebGPU validation errors"
+  ],
+  "pixels": {
+    "centre": [
+      54,
+      11,
+      2
+    ],
+    "near": [
+      30,
+      6,
+      1
+    ],
+    "far": [
+      1,
+      0,
+      0
+    ],
+    "originalCore": [
+      255,
+      255,
+      232
+    ],
+    "originalHidden": [
+      0,
+      0,
+      0
+    ],
+    "originalWater": [
+      77,
+      77,
+      70
+    ],
+    "originalBlast": [
+      224,
+      205,
+      183
+    ],
+    "smoke": [
+      20,
+      22,
+      23
+    ]
+  },
+  "energy": {
+    "panel": 486,
+    "dry": 486,
+    "submerged": 240,
+    "core": 10313,
+    "coreHidden": 0,
+    "coreWater": 3077,
+    "flame": 5175,
+    "spark": 0,
+    "blast": 6185,
+    "blastWater": 1848
+  },
+  "resources": {
+    "width": 17,
+    "height": 17,
+    "targetBytes": 4624,
+    "settingsBytes": 16
+  }
+}

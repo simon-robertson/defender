@@ -1,0 +1,1074 @@
+{
+  "schema": "defender.production-engine-report",
+  "date": "2026-10-17",
+  "scope": "Final 16-by-16 preview layouts; saved assets, authored weather off, three posed live dogs in A. CPU resource accounting and actual transformed vertex clip checks, not GPU timing.",
+  "notes": [
+    "Geometry bytes are uploaded vertex/index/matrix payloads. Shared render targets, uniforms, lazy effect pools and source JSON are excluded. Three scene buffers per nonempty opaque draw group, plus three for water.",
+    "Camera probes use the unmodified default framed overview at stated CSS aspect ratios. Geometry is checked at the initial dog pose; the separate gait tests cover animated clearance and bends.",
+    "Shadow depth remains 2048 squared; the projection spans the complete square level. No quality, light, camera or GPU code change was necessary for these placements.",
+    "Optional weather remains off and allocates no fields or GPU seed buffers. Enabled counts are capacity projections under existing constants, not a request to change accepted weather tuning.",
+    "All static visibility cuboids come from occupied source cells and terrain, preserving holes; water, player defences and moving enemies are excluded.",
+    "Static scenery uses quarter-turn placement and one unposed rigid part. Arbitrarily posed scenery would need a different visibility representation.",
+    "Exact path/deployment box clearance below checks every occupied scenery cell, including unit-offset detail props, against reserved boxes. It does not claim an arbitrary-angle tower sweep is safe for every future player placement."
+  ],
+  "zones": {
+    "A": {
+      "level": "moss-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 25,
+      "routeUnits": 576,
+      "placements": 62,
+      "runtimeActors": 3,
+      "uniqueModelAssets": 14,
+      "opaqueDrawGroups": 30,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 106,
+      "uniqueQuads": 6154,
+      "instancedQuads": 16582,
+      "vertexBytes": 1083104,
+      "indexBytes": 147696,
+      "instanceBytes": 6784,
+      "gpuGeometryBytes": 1237584,
+      "sceneBufferCount": 93,
+      "retainedRendererTransformBytes": 6720,
+      "actorVisibilityCPUBytes": 2808,
+      "largestGeometryBufferBytes": 370128,
+      "bvh": {
+        "primitiveCount": 2691,
+        "nodeCount": 5381,
+        "bytes": 150668
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          90,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 66328
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.31294
+            ],
+            "maximum": [
+              0.829854,
+              0.803897,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 66328
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.31294
+            ],
+            "maximum": [
+              0.925926,
+              0.522693,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 66328
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.297362
+          ],
+          "maximum": [
+            0.878455,
+            0.675998,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 66328
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 64,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "rain",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 2560,
+        "projectedEnabledSeedBytes": 81920
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 2103,
+          "instances": 1,
+          "bytes": 420664
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "scenery-ruin-wall:base:body",
+          "quads": 135,
+          "instances": 3,
+          "bytes": 27192
+        },
+        {
+          "key": "scenery-ruin-pillar:base:body",
+          "quads": 112,
+          "instances": 2,
+          "bytes": 22528
+        },
+        {
+          "key": "scenery-rock:base:body",
+          "quads": 127,
+          "instances": 5,
+          "bytes": 25720
+        },
+        {
+          "key": "scenery-shrub:base:body",
+          "quads": 192,
+          "instances": 6,
+          "bytes": 38784
+        },
+        {
+          "key": "scenery-oak-tall:base:body",
+          "quads": 408,
+          "instances": 4,
+          "bytes": 81856
+        },
+        {
+          "key": "scenery-oak:base:body",
+          "quads": 477,
+          "instances": 7,
+          "bytes": 95848
+        },
+        {
+          "key": "scenery-oak-young:base:body",
+          "quads": 263,
+          "instances": 7,
+          "bytes": 53048
+        },
+        {
+          "key": "scenery-cypress:base:body",
+          "quads": 244,
+          "instances": 2,
+          "bytes": 48928
+        },
+        {
+          "key": "scenery-cypress-short:base:body",
+          "quads": 239,
+          "instances": 3,
+          "bytes": 47992
+        },
+        {
+          "key": "detail-grass:base:body",
+          "quads": 48,
+          "instances": 9,
+          "bytes": 10176
+        },
+        {
+          "key": "detail-pebbles:base:body",
+          "quads": 36,
+          "instances": 6,
+          "bytes": 7584
+        },
+        {
+          "key": "detail-flowers:base:body",
+          "quads": 97,
+          "instances": 5,
+          "bytes": 19720
+        },
+        {
+          "key": "dog:base:body",
+          "quads": 128,
+          "instances": 3,
+          "bytes": 25792
+        },
+        {
+          "key": "dog:base:leg-fl",
+          "quads": 22,
+          "instances": 3,
+          "bytes": 4592
+        },
+        {
+          "key": "dog:base:shin-fl",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-fl",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "dog:base:leg-fr",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "dog:base:shin-fr",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-fr",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "dog:base:leg-rl",
+          "quads": 22,
+          "instances": 3,
+          "bytes": 4592
+        },
+        {
+          "key": "dog:base:shin-rl",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-rl",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "dog:base:leg-rr",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "dog:base:shin-rr",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-rr",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "water",
+          "quads": 19,
+          "instances": 1,
+          "bytes": 3864
+        }
+      ],
+      "combat": {
+        "simulationStep": 0.016666666666666666,
+        "allDead": true,
+        "elapsedSeconds": 31.75,
+        "shots": 83,
+        "deaths": [
+          {
+            "id": "preview-dog-1",
+            "timeSeconds": 14.633333,
+            "hits": 27,
+            "distance": 247.6
+          },
+          {
+            "id": "preview-dog-3",
+            "timeSeconds": 28.833333,
+            "hits": 29,
+            "distance": 162
+          },
+          {
+            "id": "preview-dog-2",
+            "timeSeconds": 31.75,
+            "hits": 27,
+            "distance": 37
+          }
+        ],
+        "turrets": [
+          {
+            "id": "scene-1",
+            "variant": "base",
+            "shots": 20,
+            "maxRange": 48,
+            "strength": 10
+          },
+          {
+            "id": "scene-2",
+            "variant": "upgrade1",
+            "shots": 41,
+            "maxRange": 72,
+            "strength": 12
+          },
+          {
+            "id": "scene-3",
+            "variant": "base",
+            "shots": 22,
+            "maxRange": 48,
+            "strength": 10
+          }
+        ]
+      }
+    },
+    "B": {
+      "level": "ochre-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 38,
+      "routeUnits": 888,
+      "placements": 64,
+      "runtimeActors": 0,
+      "uniqueModelAssets": 11,
+      "opaqueDrawGroups": 15,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 69,
+      "uniqueQuads": 4537,
+      "instancedQuads": 10969,
+      "vertexBytes": 798512,
+      "indexBytes": 108888,
+      "instanceBytes": 4416,
+      "gpuGeometryBytes": 911816,
+      "sceneBufferCount": 48,
+      "retainedRendererTransformBytes": 4352,
+      "actorVisibilityCPUBytes": 0,
+      "largestGeometryBufferBytes": 347776,
+      "bvh": {
+        "primitiveCount": 1526,
+        "nodeCount": 3051,
+        "bytes": 85428
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          87,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 43876
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.308367
+            ],
+            "maximum": [
+              0.829854,
+              0.940712,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 43876
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.308367
+            ],
+            "maximum": [
+              0.925926,
+              0.61165,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 43876
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.303634
+          ],
+          "maximum": [
+            0.878455,
+            0.675998,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 43876
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 84,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "clear",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 0,
+        "projectedEnabledSeedBytes": 0
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 1976,
+          "instances": 1,
+          "bytes": 395264
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "ochre-wall:base:body",
+          "quads": 121,
+          "instances": 4,
+          "bytes": 24456
+        },
+        {
+          "key": "ochre-mesa-low:base:body",
+          "quads": 165,
+          "instances": 7,
+          "bytes": 33448
+        },
+        {
+          "key": "ochre-rock:base:body",
+          "quads": 119,
+          "instances": 6,
+          "bytes": 24184
+        },
+        {
+          "key": "ochre-shrub:base:body",
+          "quads": 156,
+          "instances": 6,
+          "bytes": 31584
+        },
+        {
+          "key": "ochre-cactus-young:base:body",
+          "quads": 79,
+          "instances": 5,
+          "bytes": 16120
+        },
+        {
+          "key": "ochre-cactus:base:body",
+          "quads": 130,
+          "instances": 10,
+          "bytes": 26640
+        },
+        {
+          "key": "ochre-mesa:base:body",
+          "quads": 245,
+          "instances": 3,
+          "bytes": 49192
+        },
+        {
+          "key": "ochre-tuft:base:body",
+          "quads": 77,
+          "instances": 9,
+          "bytes": 15976
+        },
+        {
+          "key": "ochre-pebbles:base:body",
+          "quads": 44,
+          "instances": 6,
+          "bytes": 9184
+        },
+        {
+          "key": "ochre-flowers:base:body",
+          "quads": 64,
+          "instances": 5,
+          "bytes": 13120
+        },
+        {
+          "key": "water",
+          "quads": 9,
+          "instances": 1,
+          "bytes": 1864
+        }
+      ]
+    },
+    "C": {
+      "level": "ice-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 30,
+      "routeUnits": 696,
+      "placements": 65,
+      "runtimeActors": 0,
+      "uniqueModelAssets": 11,
+      "opaqueDrawGroups": 15,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 70,
+      "uniqueQuads": 5435,
+      "instancedQuads": 16777,
+      "vertexBytes": 956560,
+      "indexBytes": 130440,
+      "instanceBytes": 4480,
+      "gpuGeometryBytes": 1091480,
+      "sceneBufferCount": 48,
+      "retainedRendererTransformBytes": 4416,
+      "actorVisibilityCPUBytes": 0,
+      "largestGeometryBufferBytes": 398288,
+      "bvh": {
+        "primitiveCount": 2806,
+        "nodeCount": 5611,
+        "bytes": 157108
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          94,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 67108
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.31294
+            ],
+            "maximum": [
+              0.829854,
+              0.888612,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 67108
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.31294
+            ],
+            "maximum": [
+              0.925926,
+              0.577775,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 67108
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.28985
+          ],
+          "maximum": [
+            0.878455,
+            0.675998,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 67108
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 66,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "snow",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 4096,
+        "projectedEnabledSeedBytes": 196608
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 2263,
+          "instances": 1,
+          "bytes": 452664
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "ice-wall:base:body",
+          "quads": 123,
+          "instances": 2,
+          "bytes": 24728
+        },
+        {
+          "key": "ice-pillar-broken:base:body",
+          "quads": 143,
+          "instances": 6,
+          "bytes": 28984
+        },
+        {
+          "key": "ice-pillar:base:body",
+          "quads": 143,
+          "instances": 1,
+          "bytes": 28664
+        },
+        {
+          "key": "ice-rock:base:body",
+          "quads": 99,
+          "instances": 7,
+          "bytes": 20248
+        },
+        {
+          "key": "ice-shrub:base:body",
+          "quads": 146,
+          "instances": 5,
+          "bytes": 29520
+        },
+        {
+          "key": "ice-fir:base:body",
+          "quads": 597,
+          "instances": 8,
+          "bytes": 119912
+        },
+        {
+          "key": "ice-fir-young:base:body",
+          "quads": 385,
+          "instances": 10,
+          "bytes": 77640
+        },
+        {
+          "key": "ice-tuft:base:body",
+          "quads": 60,
+          "instances": 10,
+          "bytes": 12640
+        },
+        {
+          "key": "ice-pebbles:base:body",
+          "quads": 31,
+          "instances": 7,
+          "bytes": 6648
+        },
+        {
+          "key": "ice-flowers:base:body",
+          "quads": 64,
+          "instances": 6,
+          "bytes": 13184
+        },
+        {
+          "key": "water",
+          "quads": 29,
+          "instances": 1,
+          "bytes": 5864
+        }
+      ]
+    },
+    "D": {
+      "level": "plum-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 51,
+      "routeUnits": 1200,
+      "placements": 60,
+      "runtimeActors": 0,
+      "uniqueModelAssets": 12,
+      "opaqueDrawGroups": 16,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 65,
+      "uniqueQuads": 5239,
+      "instancedQuads": 13236,
+      "vertexBytes": 922064,
+      "indexBytes": 125736,
+      "instanceBytes": 4160,
+      "gpuGeometryBytes": 1051960,
+      "sceneBufferCount": 51,
+      "retainedRendererTransformBytes": 4096,
+      "actorVisibilityCPUBytes": 0,
+      "largestGeometryBufferBytes": 354464,
+      "bvh": {
+        "primitiveCount": 2187,
+        "nodeCount": 4373,
+        "bytes": 122444
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          84,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 52944
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.31294
+            ],
+            "maximum": [
+              0.829854,
+              0.789871,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 52944
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.31294
+            ],
+            "maximum": [
+              0.925926,
+              0.513573,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 52944
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.303634
+          ],
+          "maximum": [
+            0.878455,
+            0.675998,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 52944
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 91,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "leaves",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 1024,
+        "projectedEnabledSeedBytes": 65536
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 2014,
+          "instances": 1,
+          "bytes": 402864
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "plum-arch-broken:base:body",
+          "quads": 97,
+          "instances": 3,
+          "bytes": 19592
+        },
+        {
+          "key": "plum-rock:base:body",
+          "quads": 121,
+          "instances": 4,
+          "bytes": 24456
+        },
+        {
+          "key": "plum-wall:base:body",
+          "quads": 89,
+          "instances": 4,
+          "bytes": 18056
+        },
+        {
+          "key": "plum-arch:base:body",
+          "quads": 158,
+          "instances": 2,
+          "bytes": 31728
+        },
+        {
+          "key": "plum-shrub:base:body",
+          "quads": 184,
+          "instances": 5,
+          "bytes": 37120
+        },
+        {
+          "key": "plum-tree-young:base:body",
+          "quads": 255,
+          "instances": 8,
+          "bytes": 51512
+        },
+        {
+          "key": "plum-tree:base:body",
+          "quads": 405,
+          "instances": 6,
+          "bytes": 81384
+        },
+        {
+          "key": "plum-tree-tall:base:body",
+          "quads": 379,
+          "instances": 3,
+          "bytes": 75992
+        },
+        {
+          "key": "plum-tuft:base:body",
+          "quads": 48,
+          "instances": 9,
+          "bytes": 10176
+        },
+        {
+          "key": "plum-pebbles:base:body",
+          "quads": 36,
+          "instances": 7,
+          "bytes": 7648
+        },
+        {
+          "key": "plum-flowers:base:body",
+          "quads": 95,
+          "instances": 6,
+          "bytes": 19384
+        },
+        {
+          "key": "water",
+          "quads": 6,
+          "instances": 1,
+          "bytes": 1264
+        }
+      ]
+    }
+  },
+  "verification": {
+    "tests": 78,
+    "failures": 0,
+    "assertions": 1008879,
+    "fullSuite": false,
+    "files": [
+      "tests/world.test.js",
+      "tests/zones.test.js",
+      "tests/water.test.js",
+      "tests/targeting.test.js",
+      "tests/animation.test.js",
+      "tests/dog-preview.test.js",
+      "tests/combat.test.js",
+      "tests/weather.test.js",
+      "tests/weather-preview.test.js",
+      "tests/renderer.test.js",
+      "tests/production-layouts.test.js"
+    ],
+    "notes": [
+      "Combined affected run performed once against final 62/64/65/60 placement assets.",
+      "Real A targeting covers its complete 48-second route and checks both actual muzzle-to-torso LOS segments at each shot.",
+      "Dog foot contact/ground clearance and moving limb-versus-chassis tests retain their dense 2400-frame sweeps; all turret variants retain recoil/pedestal clearance checks.",
+      "Repeated weather toggles and authored-off rendering preserve buffer lifetimes, camera, lighting, poses and zero inactive weather work."
+    ]
+  }
+}

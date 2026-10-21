@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-21",
+  "review": "Independent read-only A4 moving-bird safety diagnosis and bounded camera-horizon trials",
+  "scenario": {"level": "moss-04", "wave": "a4-wave-4", "config": "unmodified PLAY_CONFIG", "placements": [], "cosmeticRandomSample": 0.35, "aspect": 1.5},
+  "reproducedBeforeCameraHorizonFix": {
+    "predictionSeconds": 1,
+    "hz": 60,
+    "firstActorContactSeconds": 36.24999999999842,
+    "frame": 2175,
+    "cameraPosition": [38.127022887772526, 90.30873797717614, 90.37335801836514],
+    "blocker": "wildlife-bird-3",
+    "blockerCurrentBounds": [37.77735650539398, 88.31554412841797, 79.71324890851974, 44.8056697845459, 94.9008817076683, 87.90299397706985],
+    "diagnosis": "Current-only emergency climb rose from a low hold into the approaching bird's crossing height before gaining safe altitude. Stopping after encroachment could not undo the overlap."
+  },
+  "cameraOnlyThreeSecondTrials": [
+    {"hz": 30, "completed": true, "seconds": 95.10000000002157, "achievedLowShots": 2, "blockedMoves": 0, "actorContacts": 0, "staticContacts": 0, "maximumFrameDisplacement": 1.1333211977294493, "allowedMaximum": 1.1333333333333333},
+    {"hz": 60, "completed": true, "seconds": 95.10000000002157, "achievedLowShots": 2, "blockedMoves": 0, "actorContacts": 0, "staticContacts": 0, "maximumFrameDisplacement": 0.566660752455372, "allowedMaximum": 0.5666666666666667},
+    {"hz": 120, "completed": true, "seconds": 95.10000000002157, "achievedLowShots": 2, "blockedMoves": 0, "actorContacts": 0, "staticContacts": 0, "maximumFrameDisplacement": 0.28333048665125193, "allowedMaximum": 0.2833333333333333}
+  ],
+  "finalProductionReplay": {"hz": 60, "cameraInstanceOverride": false, "completed": true, "seconds": 95.10000000002157, "achievedLowShots": 2, "blockedMoves": 0, "actorContacts": 0, "staticContacts": 0, "maximumFrameDisplacement": 0.566660752455372},
+  "verification": "Every camera frame checks actual actor point clearance, swept static clearance and displacement <=34/hz+1e-7. Trials changed only the isolated DroneCamera obstacle instance predictionSeconds to3; no enemy, combat or production-source mutation. The camera owner then applied the same instance horizon in DroneCamera.enter; shared combat DroneObstacles default remains1.",
+  "limits": "One exact formerly failing native scenario across three frame rates; not a universal dynamic-navigation proof or whole-game performance measurement. Owner's final targeted replay suite is separate."
+}

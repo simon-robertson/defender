@@ -1,0 +1,98 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [426.73ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [24.16ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [22.99ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [23.48ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [76.15ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [66.88ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [31.98ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [91.19ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [22.87ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [22.68ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [36.21ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [80.28ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [69.16ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [44.70ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [24.16ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [22.66ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [23.57ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [22.52ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [133.02ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [24.14ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [24.77ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [30.60ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [22.87ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [241.84ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [22.39ms]
+(pass) static contact drops its incoming claim before the impact callback [22.04ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [88.60ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [36.97ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [79.24ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [33.49ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [73.21ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [42.78ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [37.13ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [177.67ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [66.25ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1321.66ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [992.58ms]
+114 |  }finally{globalThis.fetch=native;lights?.dispose();engine?.dispose();disposePlayWorld(world);}
+115 | },30000);
+116 | 
+117 | test('real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage',()=>{
+118 |  const contacts=[],f=fixture({model:'turret-study',spawns:[{model:'dog'}],overrides:{dog:{maxHealth:40,speed:12}},callbacks:{onBulletImpact:(point,normal,at)=>contacts.push({point:[...point],normal:[...normal],at})}});
+119 |  try{f.engine.startWave();finish(f.engine);expect(contacts.length).toBeGreaterThan(0);for(const c of contacts){expect(c.point.every(Number.isFinite)).toBe(true);expect(Math.hypot(...c.normal)).toBeCloseTo(1,5);expect(c.at).toBeGreaterThanOrEqual(0);}expect(f.engine.enemies.killed).toBe(1);}finally{f.dispose();}
+                                                                         ^
+error: expect(received).toBeGreaterThan(expected)
+
+Expected: > 0
+Received: 0
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/play-mixed-combat.test.js:119:68)
+(fail) real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage [49.64ms]
+
+tests/play-polish.test.js:
+(pass) overview/perspective blend preserves invertible projection, exact endpoints and smooth reversible travel [3.38ms]
+(pass) real Drone coordinator eases into a wave, freezes when paused and returns to preparation without a snap [4.34ms]
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.34ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.52ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [8.02ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [1.67ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [1.66ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [270.32ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [6.67ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [269.42ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [600.05ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.91ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.73ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.55ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [42.20ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [18.77ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1896.76ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [22.60ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.67ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.20ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [2.91ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [17.48ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.67ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.97ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [2.09ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [2.05ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [151.79ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [2.17ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [3.04ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [77.33ms]
+
+1 tests failed:
+(fail) real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage [49.64ms]
+
+ 67 pass
+ 1 fail
+ 5971 expect() calls
+Ran 68 tests across 4 files. [8.15s]

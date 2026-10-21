@@ -1,0 +1,641 @@
+{
+  "zone": "D",
+  "command": "bun scripts/fixed-landscapes/build.js D --check",
+  "checks": [
+    "Existing approved scenery only; all materials matte and nonemissive.",
+    "validateLevel checks actual source cells: no overlaps, world/terrain/water intersections.",
+    "Canonical factory/source hash and independent fresh objects.",
+    "Every dry box populated; sorted Y24 dry-component sizes and dry percentage reported without a connectivity quota.",
+    "Three supported bird perches with a clear6-unit-radius/8-unit-high envelope.",
+    "Three embedded exact dry ground seeds with clear6-unit-radius/11-unit-high envelopes; no clearings carved."
+  ],
+  "levels": [
+    {
+      "id": "plum-01",
+      "sha256": "177a250ff88ffd564b7d03d0cf9a1d28199a7a882d257251898903ccbce790fa",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 308,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 1,
+        "plum-arch-broken": 1,
+        "plum-flowers": 22,
+        "plum-pebbles": 20,
+        "plum-rock": 53,
+        "plum-shrub": 37,
+        "plum-tree": 34,
+        "plum-tree-tall": 5,
+        "plum-tree-young": 42,
+        "plum-tuft": 91,
+        "plum-wall": 2
+      },
+      "terrain": {
+        "flatDry": 290,
+        "raisedDry": 18,
+        "water": 12
+      },
+      "flatDryComponents": [
+        290
+      ],
+      "flatDryPercent": 90.625,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/plum-01.json"
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 3331,
+        "instancedQuads": 48671,
+        "drawGroups": 12
+      },
+      "perches": [
+        {
+          "id": "d1-land-2-3",
+          "model": "plum-tree-tall",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            56,
+            80,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d1-land-13-10",
+          "model": "plum-tree-tall",
+          "box": [
+            13,
+            0,
+            10
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            328,
+            80,
+            248
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d1-land-3-11",
+          "model": "plum-tree-tall",
+          "box": [
+            3,
+            0,
+            11
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            80,
+            76,
+            272
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1779,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            362
+          ],
+          [
+            6,
+            24,
+            6
+          ],
+          [
+            94,
+            24,
+            378
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            15
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            15
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "plum-02",
+      "sha256": "024d5c35e15f429d400a2c41f7cfdaae20e50b1c698184d5eb01919d2a5c053a",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 305,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 2,
+        "plum-arch-broken": 2,
+        "plum-flowers": 14,
+        "plum-pebbles": 20,
+        "plum-rock": 49,
+        "plum-shrub": 37,
+        "plum-tree": 22,
+        "plum-tree-tall": 9,
+        "plum-tree-young": 38,
+        "plum-tuft": 109,
+        "plum-wall": 3
+      },
+      "terrain": {
+        "flatDry": 289,
+        "raisedDry": 16,
+        "water": 15
+      },
+      "flatDryComponents": [
+        257,
+        32
+      ],
+      "flatDryPercent": 90.3125,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/plum-02.json"
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 3455,
+        "instancedQuads": 44395,
+        "drawGroups": 12
+      },
+      "perches": [
+        {
+          "id": "d2-land-3-2",
+          "model": "plum-tree-tall",
+          "box": [
+            3,
+            0,
+            2
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            80,
+            76,
+            56
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d2-land-15-3",
+          "model": "plum-tree-tall",
+          "box": [
+            15,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            368,
+            84,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d2-land-4-13",
+          "model": "plum-tree-tall",
+          "box": [
+            4,
+            0,
+            13
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            112,
+            80,
+            320
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1735,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            338
+          ],
+          [
+            6,
+            24,
+            18
+          ],
+          [
+            98,
+            24,
+            378
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            14
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            15
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "plum-03",
+      "sha256": "20880e8f8932c279d8c7ac233eac0808f35a1fab21254ad5c212d3f37851796d",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 249,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 1,
+        "plum-arch-broken": 2,
+        "plum-flowers": 5,
+        "plum-pebbles": 13,
+        "plum-rock": 42,
+        "plum-shrub": 34,
+        "plum-tree": 20,
+        "plum-tree-tall": 8,
+        "plum-tree-young": 29,
+        "plum-tuft": 93,
+        "plum-wall": 2
+      },
+      "terrain": {
+        "flatDry": 220,
+        "raisedDry": 29,
+        "water": 71
+      },
+      "flatDryComponents": [
+        220
+      ],
+      "flatDryPercent": 68.75,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/plum-03.json",
+        "entireTerrainAndPlacementsUnchanged": true
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 5665,
+        "instancedQuads": 39600,
+        "drawGroups": 12
+      },
+      "perches": [
+        {
+          "id": "d3-land-2-3",
+          "model": "plum-tree-tall",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            56,
+            84,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d3-land-4-12",
+          "model": "plum-tree-tall",
+          "box": [
+            4,
+            0,
+            12
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            104,
+            80,
+            296
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d3-land-18-13",
+          "model": "plum-tree-tall",
+          "box": [
+            18,
+            0,
+            13
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            448,
+            76,
+            320
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1096,
+        "candidateWorldPoints": [
+          [
+            458,
+            24,
+            378
+          ],
+          [
+            22,
+            24,
+            6
+          ],
+          [
+            74,
+            24,
+            378
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            15
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            15
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "plum-04",
+      "sha256": "79cc726f39e066afb9f66b03f176f9b2a43a4e957c5c0e987c6f159fcb5951ee",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 282,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 2,
+        "plum-arch-broken": 2,
+        "plum-flowers": 13,
+        "plum-pebbles": 24,
+        "plum-rock": 37,
+        "plum-shrub": 46,
+        "plum-tree": 17,
+        "plum-tree-tall": 14,
+        "plum-tree-young": 35,
+        "plum-tuft": 89,
+        "plum-wall": 3
+      },
+      "terrain": {
+        "flatDry": 247,
+        "raisedDry": 35,
+        "water": 38
+      },
+      "flatDryComponents": [
+        173,
+        74
+      ],
+      "flatDryPercent": 77.1875,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/plum-04.json"
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 4439,
+        "instancedQuads": 43777,
+        "drawGroups": 12
+      },
+      "perches": [
+        {
+          "id": "d4-land-2-3",
+          "model": "plum-tree-tall",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            56,
+            84,
+            80
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d4-land-16-2",
+          "model": "plum-tree-tall",
+          "box": [
+            16,
+            0,
+            2
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            400,
+            80,
+            56
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d4-land-17-13",
+          "model": "plum-tree-tall",
+          "box": [
+            17,
+            0,
+            13
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            416,
+            80,
+            328
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1227,
+        "candidateWorldPoints": [
+          [
+            462,
+            24,
+            362
+          ],
+          [
+            6,
+            24,
+            6
+          ],
+          [
+            54,
+            24,
+            378
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            15
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            15
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    }
+  ]
+}

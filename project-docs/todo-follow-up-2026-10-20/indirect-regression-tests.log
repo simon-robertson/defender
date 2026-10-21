@@ -1,0 +1,14 @@
+bun test v1.4.2 (744846f84)
+
+tests/indirect-study.test.js:
+(pass) nearest static surface keeps exact hit normal, colour and empty-space visibility [0.80ms]
+(pass) one diffuse bounce transfers red from a lit face; black reflectors and an unlit primary source emit none [6.53ms]
+(pass) visibility rejects light crossing a thin wall and never fills a real opening [0.11ms]
+(pass) effective lighting and geometry invalidate the cache, and the shader contains no recursive source feedback [0.15ms]
+(pass) cached buffers reject stale lighting, malformed dimensions and cyclic visibility jumps before upload [0.55ms]
+(pass) a matte green floor supplies green first-bounce light to a vertical receiver without specular reflectiveness [4.30ms]
+
+ 6 pass
+ 0 fail
+ 31 expect() calls
+Ran 6 tests across 1 file. [24.00ms]

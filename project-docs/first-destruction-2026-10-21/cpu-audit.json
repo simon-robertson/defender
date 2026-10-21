@@ -1,0 +1,286 @@
+{
+  "method": "Bun CPU-only native A1 wave1 with recorded two-base-gun deployment, production enemies/wildlife/damage. Five fresh worlds; no renderer, browser, GPU or camera. Each death callback times explode, gib/spook; actual 1/120 advance frame and first next-two physics work. Timing instrumentation and JS warm-up are included; no FPS claim.",
+  "summary": [
+    {
+      "death": 1,
+      "samples": 5,
+      "callbackMedianMs": 0.04233299999941664,
+      "callbackMaxMs": 0.21225000000004002,
+      "advanceFrameMedianMs": 0.08345900000040274,
+      "nextTwoPhysicsMedianMs": 0.04245900000023539,
+      "bursts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "death": 2,
+      "samples": 5,
+      "callbackMedianMs": 0.04608300000018062,
+      "callbackMaxMs": 0.15783300000020972,
+      "advanceFrameMedianMs": 0.1647090000001299,
+      "nextTwoPhysicsMedianMs": 0.05437499999970896,
+      "bursts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "death": 3,
+      "samples": 5,
+      "callbackMedianMs": 0.033875000000080036,
+      "callbackMaxMs": 0.07549999999991996,
+      "advanceFrameMedianMs": 0.0954159999996591,
+      "bursts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "output": [
+    {
+      "round": 0,
+      "rows": [
+        {
+          "step": 2058,
+          "time": 17.14999999999958,
+          "explodeMs": 0.14716700000008132,
+          "gibMs": 0.047249999999849024,
+          "spookMs": 0.01745800000003328,
+          "callbackMs": 0.21225000000004002,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.36320900000009715,
+          "followingAdvanceMs": 0.9719159999999647,
+          "followingPhysicsMs": 0.8277909999999338
+        },
+        {
+          "step": 7293,
+          "time": 60.7749999999971,
+          "explodeMs": 0.14008300000000418,
+          "gibMs": 0.01262500000007094,
+          "spookMs": 0.0048750000000836735,
+          "callbackMs": 0.15783300000020972,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.24137499999983447,
+          "followingAdvanceMs": 0.24137499999983447,
+          "followingPhysicsMs": 0.17241600000011204
+        },
+        {
+          "step": 8016,
+          "time": 66.79999999999914,
+          "explodeMs": 0.056707999999844105,
+          "gibMs": 0.01720799999998235,
+          "spookMs": 0.0014590000000680448,
+          "callbackMs": 0.07549999999991996,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 10,
+          "advanceFrameMs": 0.19783300000017334,
+          "followingAdvanceMs": 0.19783300000017334
+        }
+      ],
+      "kills": 3
+    },
+    {
+      "round": 1,
+      "rows": [
+        {
+          "step": 2058,
+          "time": 17.14999999999958,
+          "explodeMs": 0.05866700000024139,
+          "gibMs": 0.008916999999655673,
+          "spookMs": 0.0022910000002411834,
+          "callbackMs": 0.07000000000016371,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.12291699999968841,
+          "followingAdvanceMs": 0.12291699999968841,
+          "followingPhysicsMs": 0.03891699999985576
+        },
+        {
+          "step": 7293,
+          "time": 60.7749999999971,
+          "explodeMs": 0.034750000000258296,
+          "gibMs": 0.0071250000000873115,
+          "spookMs": 0.004041999999571999,
+          "callbackMs": 0.04608300000018062,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.1647090000001299,
+          "followingAdvanceMs": 0.1647090000001299,
+          "followingPhysicsMs": 0.04937500000005457
+        },
+        {
+          "step": 8016,
+          "time": 66.79999999999914,
+          "explodeMs": 0.023500000000240107,
+          "gibMs": 0.007040999999844644,
+          "spookMs": 0.003250000000207365,
+          "callbackMs": 0.033875000000080036,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 10,
+          "advanceFrameMs": 0.0954159999996591,
+          "followingAdvanceMs": 0.0954159999996591
+        }
+      ],
+      "kills": 3
+    },
+    {
+      "round": 2,
+      "rows": [
+        {
+          "step": 2058,
+          "time": 17.14999999999958,
+          "explodeMs": 0.02945799999997689,
+          "gibMs": 0.0057500000002619345,
+          "spookMs": 0.0032499999997526174,
+          "callbackMs": 0.03854200000023411,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.08195799999975861,
+          "followingAdvanceMs": 0.10462499999994179,
+          "followingPhysicsMs": 0.04245900000023539
+        },
+        {
+          "step": 7293,
+          "time": 60.7749999999971,
+          "explodeMs": 0.07966699999997218,
+          "gibMs": 0.010833000000275206,
+          "spookMs": 0.006209000000126252,
+          "callbackMs": 0.09691699999984849,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.22749999999996362,
+          "followingAdvanceMs": 0.22749999999996362,
+          "followingPhysicsMs": 0.05437499999970896
+        },
+        {
+          "step": 8016,
+          "time": 66.79999999999914,
+          "explodeMs": 0.019500000000334694,
+          "gibMs": 0.006833999999798834,
+          "spookMs": 0.002290999999786436,
+          "callbackMs": 0.028709000000162632,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 10,
+          "advanceFrameMs": 0.08587500000066939,
+          "followingAdvanceMs": 0.08587500000066939
+        }
+      ],
+      "kills": 3
+    },
+    {
+      "round": 3,
+      "rows": [
+        {
+          "step": 2058,
+          "time": 17.14999999999958,
+          "explodeMs": 0.033707999999933236,
+          "gibMs": 0.005541999999877589,
+          "spookMs": 0.0029580000000350992,
+          "callbackMs": 0.04233299999941664,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.08345900000040274,
+          "followingAdvanceMs": 0.10645799999929295,
+          "followingPhysicsMs": 0.04412499999943975
+        },
+        {
+          "step": 7293,
+          "time": 60.7749999999971,
+          "explodeMs": 0.008624999999483407,
+          "gibMs": 0.0052080000004934845,
+          "spookMs": 0.002749999999650754,
+          "callbackMs": 0.016625000000203727,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.04545799999959854,
+          "followingAdvanceMs": 0.04545799999959854,
+          "followingPhysicsMs": 0.03312499999992724
+        },
+        {
+          "step": 8016,
+          "time": 66.79999999999914,
+          "explodeMs": 0.008374999999432475,
+          "gibMs": 0.004500000000007276,
+          "spookMs": 0.0026250000000800355,
+          "callbackMs": 0.015540999999757332,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 10,
+          "advanceFrameMs": 0.05358299999988958,
+          "followingAdvanceMs": 0.05358299999988958
+        }
+      ],
+      "kills": 3
+    },
+    {
+      "round": 4,
+      "rows": [
+        {
+          "step": 2058,
+          "time": 17.14999999999958,
+          "explodeMs": 0.008667000000059488,
+          "gibMs": 0.006208000000697211,
+          "spookMs": 0.0030839999999443535,
+          "callbackMs": 0.018125000000509317,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.05191699999886623,
+          "followingAdvanceMs": 0.0909590000010212,
+          "followingPhysicsMs": 0.03570899999976973
+        },
+        {
+          "step": 7293,
+          "time": 60.7749999999971,
+          "explodeMs": 0.016083000000435277,
+          "gibMs": 0.01525000000037835,
+          "spookMs": 0.006166999999550171,
+          "callbackMs": 0.03770799999983865,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 9,
+          "advanceFrameMs": 0.14962500000001455,
+          "followingAdvanceMs": 0.14962500000001455,
+          "followingPhysicsMs": 0.08462499999950523
+        },
+        {
+          "step": 8016,
+          "time": 66.79999999999914,
+          "explodeMs": 0.01708400000097754,
+          "gibMs": 0.011082999999416643,
+          "spookMs": 0.005666999999448308,
+          "callbackMs": 0.034084000000802916,
+          "critterBursts": 0,
+          "pieces": 24,
+          "smoke": 10,
+          "advanceFrameMs": 0.12937500000043656,
+          "followingAdvanceMs": 0.12937500000043656
+        }
+      ],
+      "kills": 3
+    }
+  ]
+}

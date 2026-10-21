@@ -1,0 +1,11 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-conditions.test.js:
+(pass) independent condition draws cover four combinations and remain stable until level entry or fresh run [0.09ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.74ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [3466.67ms]
+
+ 3 pass
+ 0 fail
+ 74 expect() calls
+Ran 3 tests across 1 file. [3.48s]

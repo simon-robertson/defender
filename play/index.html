@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#202d29"><title>Defender</title><link rel="stylesheet" href="/play/style.css"></head>
+<body data-phase="title">
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="mark-path" viewBox="0 0 48 48"><path d="M4 8h12v12h16V8h12v24H28v12H16V32H4z" fill="currentColor"/><path d="M20 4h8v20h12v4H24v12h-4V28H8v-4h12z" fill="var(--amber)"/></symbol>
+    <symbol id="icon-token" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z" fill="currentColor"/><path d="m12 6 5 3v6l-5 3-5-3V9z" fill="none" stroke="var(--deep)" stroke-width="2"/></symbol>
+    <symbol id="icon-exit" viewBox="0 0 24 24"><path d="M13 3H4v18h9M9 12h12m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.5"/></symbol>
+    <symbol id="icon-wave" viewBox="0 0 24 24"><path d="m3 16 5-7 5 7 5-7 3 4M3 6h18M3 21h18" fill="none" stroke="currentColor" stroke-width="2.5"/></symbol>
+  </defs></svg>
+  <main id="play-shell">
+    <div id="scene"><canvas id="world" tabindex="0" aria-label="Defence landscape. Camera framing is automatic."></canvas>
+      <div id="drone-camera-viewfinder" hidden aria-hidden="true"><div class="drone-camera-readout"><span class="camera-record-dot"></span> <span id="drone-camera-label">DRONE CAM</span> <span id="drone-camera-time">00:00</span></div><span class="camera-format" id="drone-camera-format">AERIAL / AUTO GIMBAL</span><i></i><i></i><i></i><i></i></div>
+      <svg id="entrance-overlay" hidden style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></svg><svg id="placement-overlay" aria-hidden="true"></svg><svg id="unit-highlight-overlay" aria-hidden="true" hidden></svg>
+    </div>
+    <section id="title-screen" aria-labelledby="title-heading">
+      <div class="title-content">
+        <svg class="title-mark" aria-hidden="true"><use href="#mark-path"/></svg>
+        <h1 id="title-heading">DEFENDER</h1>
+        <div class="title-rule"><i></i><span>ZONES A–D</span><i></i></div>
+        <p class="title-zone">FOUR ZONES · ONE CAMPAIGN</p>
+        <div class="title-route" aria-label="Four zones"><span>A</span><b></b><span>B</span><b></b><span>C</span><b></b><span>D</span></div>
+        <p class="development-preview"><strong>Development Preview</strong><small>Saves are disabled for now</small></p>
+        <button type="button" class="primary title-play" data-action="play"><span class="play-chevron" aria-hidden="true">▶</span> NEW GAME</button>
+        <fieldset class="graphics-options"><legend>GRAPHICS</legend>
+          <label><span>Critters</span><input type="checkbox" role="switch" data-graphics="critters" checked><span class="graphics-state" aria-hidden="true"></span></label>
+          <label><span>Reflections</span><input type="checkbox" role="switch" data-graphics="reflections" checked><span class="graphics-state" aria-hidden="true"></span></label>
+          <label><span>Bloom</span><input type="checkbox" role="switch" data-graphics="bloom" checked><span class="graphics-state" aria-hidden="true"></span></label>
+        </fieldset>
+        <div class="title-spec"><span><strong id="title-areas">16</strong> AREAS</span><span><strong id="title-waves">64</strong> WAVES</span><span><strong id="title-misses">10</strong> MISS LIMIT</span></div>
+      </div>
+      <div class="title-field-note"><span class="signal-dot"></span> TOWER DEFENCE <span class="field-line"></span> ZONES A–D</div>
+    </section>
+    <header id="hud" hidden>
+      <div class="level-identity"><button class="brand-mark" type="button" data-action="title" aria-label="Return to title" title="Return to title"><svg aria-hidden="true"><use href="#mark-path"/></svg></button><div><p class="eyebrow" id="level-label">ZONE A · AREA 1</p><h1 id="level-name">Limestone Orchard</h1></div></div>
+      <div class="run-stats" aria-label="Run progress">
+        <div class="stat token-stat"><svg aria-hidden="true"><use href="#icon-token"/></svg><div><span class="stat-label">Tokens</span><strong id="tokens">2</strong></div></div>
+        <div class="stat miss-stat"><svg aria-hidden="true"><use href="#icon-exit"/></svg><div><span class="stat-label">Misses</span><strong><span id="misses">0</span><span class="stat-limit"> / <span id="miss-limit">10</span></span></strong><div id="miss-pips" class="miss-pips" aria-hidden="true"></div></div></div>
+        <div class="stat wave-stat"><svg aria-hidden="true"><use href="#icon-wave"/></svg><div><span class="stat-label">Wave</span><strong id="wave-label">1 <span class="stat-limit">/ 4</span></strong><div id="wave-pips" class="wave-pips" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div></div>
+      </div>
+      <nav class="hud-actions" aria-label="Game controls"><button type="button" class="quiet" id="pause-button" data-action="pause" aria-keyshortcuts="P" title="Pause (P)" hidden><span aria-hidden="true">Ⅱ</span> <span class="pause-label">Pause</span> <kbd>P</kbd></button></nav>
+    </header>
+    <section id="wave-preview" class="wave-preview field-intel" aria-label="Upcoming wave" hidden></section>
+    <aside id="prepare-panel" class="panel" aria-labelledby="prepare-heading" hidden>
+      <div class="prepare-top"><div class="steps" aria-label="Preparation steps"><span id="step-loadout" class="current"><b>1</b> ARSENAL</span><span id="step-deploy"><b>2</b> DEPLOY</span></div><div class="panel-heading"><h2 id="prepare-heading">ARSENAL</h2><span class="panel-signal" aria-hidden="true"></span></div><p class="muted" id="prepare-description">Buy defences. Upgrade your firepower.</p></div>
+      <div class="prepare-scroll">
+        <div class="section-label catalogue-label"><h3>BUILD</h3><span>NEW DEFENCES</span></div>
+        <div class="shop-list" id="shop"></div>
+        <div class="inventory-label section-label"><h3>ROSTER</h3><span id="unit-count">00</span></div>
+        <div id="unit-list" class="unit-list" aria-label="Owned defences"></div>
+        <div id="empty-inventory" class="empty-inventory"><svg aria-hidden="true"><use href="#mark-path"/></svg><p>No defences owned</p><small>Build a gun to begin.</small></div>
+        <div id="placement-help" hidden><p id="placement-hint" role="status" aria-live="polite">Select a defence, then choose clear ground.</p><button type="button" class="text-button" data-action="cancel" id="cancel-button" hidden>Cancel placement</button></div>
+      </div>
+      <div class="prepare-bottom"><p class="deployment-count" id="deployment-count" hidden></p><button type="button" class="primary wide" id="deploy-button" data-action="deploy">DEPLOY DEFENCES <span aria-hidden="true">▶</span></button><button type="button" class="primary wide" id="start-wave-button" data-action="start-wave" hidden>START WAVE <span aria-hidden="true">▶</span></button><button type="button" class="text-button wide" id="loadout-button" data-action="loadout" hidden>BACK TO ARSENAL</button><p class="preparation-note" id="preparation-note">Unspent tokens carry forward.</p></div>
+    </aside>
+    <div id="wave-status" class="wave-status" role="status" hidden><span class="live-dot" aria-hidden="true"></span><span id="wave-status-text">Wave in progress</span></div>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div><div id="loading" class="loading" role="status" hidden><span class="spinner" aria-hidden="true"></span><span>Loading area…</span></div>
+    <footer id="board-footer" hidden><span id="board-caption">Prepare your defences.</span><span class="camera-help">Automatic camera</span><span id="performance-readout" class="performance-readout" aria-label="Frame performance" title="FPS and frame interval use animation-frame wall time. CPU app measures synchronous simulation, cameras, rendering, overlays and HUD work in the play callback; it excludes later browser layout/paint, separate event handlers and asynchronous GPU/driver work. GPU averages sampled complete production render spans, including vista, bloom and shockwaves; it excludes prior uploads/queue waits, readback and presentation. Values are rolling averages, not percentiles.">— FPS · — ms/frame · — ms CPU app · GPU pending</span></footer>
+    <div id="pause-screen" class="screen-overlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="pause-heading"><p class="eyebrow"><span class="dialog-status" aria-hidden="true"></span> SIMULATION STOPPED</p><h2 id="pause-heading">PAUSED</h2><p><span id="pause-context">Wave paused.</span><br>Press <kbd>P</kbd> to resume.</p><button type="button" class="primary wide" data-action="resume" aria-keyshortcuts="P">RESUME <span aria-hidden="true">▶</span></button><button type="button" class="text-button wide" data-action="title">RETURN TO TITLE</button></section></div>
+    <div id="result-screen" class="screen-overlay" hidden><section class="dialog result-dialog" role="dialog" aria-modal="true" aria-labelledby="result-heading"><span class="result-emblem" id="result-emblem" aria-hidden="true">✓</span><p class="eyebrow" id="result-eyebrow">CAMPAIGN COMPLETE</p><h2 id="result-heading">ALL ZONES SECURED</h2><p id="result-description">All sixteen areas defended.</p><div class="result-summary"><div><span>Waves completed</span><strong id="result-waves">64</strong></div><div><span>Misses</span><strong id="result-misses">0 / 10</strong></div></div><button type="button" class="primary wide" data-action="retry" id="retry-button">NEW GAME</button><button type="button" class="text-button wide" data-action="title">RETURN TO TITLE</button></section></div>
+    <div id="error-screen" class="screen-overlay" hidden><section class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="error-heading" aria-describedby="error-description"><p class="eyebrow">LOAD ERROR</p><h2 id="error-heading">AREA OFFLINE</h2><p id="error-description">The landscape could not be loaded.</p><button type="button" class="primary wide" data-action="retry-load">RETRY LOAD</button><button type="button" class="text-button wide" data-action="title">RETURN TO TITLE</button></section></div>
+  </main><script type="module" src="/play/app.js"></script>
+</body></html>

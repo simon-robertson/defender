@@ -1,0 +1,333 @@
+{
+  "schema": "defender.model",
+  "version": 3,
+  "id": "detail-flowers",
+  "name": "Woodland · small flowering stems",
+  "size": [
+    24,
+    6,
+    24
+  ],
+  "materials": [
+    {
+      "name": "Trunk",
+      "color": "#625B40",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Trunk light",
+      "color": "#857857",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage deep",
+      "color": "#304B35",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage",
+      "color": "#4C693C",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage light",
+      "color": "#75874B",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage cap",
+      "color": "#929E5C",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone",
+      "color": "#C9C3A7",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone shade",
+      "color": "#999E85",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone light",
+      "color": "#E1D6B8",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Flower",
+      "color": "#EEE5CB",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Muted accent",
+      "color": "#B17A56",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Crevice",
+      "color": "#434731",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone middle",
+      "color": "#B8B89A",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage middle",
+      "color": "#5D7543",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Pale mineral",
+      "color": "#D4CBAE",
+      "emission": 0,
+      "reflectiveness": 0
+    }
+  ],
+  "variants": {
+    "base": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": [
+            [
+              8,
+              0,
+              9,
+              3
+            ],
+            [
+              14,
+              0,
+              12,
+              3
+            ],
+            [
+              10,
+              0,
+              16,
+              3
+            ],
+            [
+              7,
+              1,
+              9,
+              13
+            ],
+            [
+              8,
+              1,
+              9,
+              3
+            ],
+            [
+              7,
+              1,
+              10,
+              13
+            ],
+            [
+              13,
+              1,
+              12,
+              13
+            ],
+            [
+              14,
+              1,
+              12,
+              3
+            ],
+            [
+              13,
+              1,
+              13,
+              13
+            ],
+            [
+              9,
+              1,
+              16,
+              13
+            ],
+            [
+              10,
+              1,
+              16,
+              3
+            ],
+            [
+              9,
+              1,
+              17,
+              13
+            ],
+            [
+              8,
+              2,
+              9,
+              3
+            ],
+            [
+              14,
+              2,
+              12,
+              3
+            ],
+            [
+              10,
+              2,
+              15,
+              9
+            ],
+            [
+              9,
+              2,
+              16,
+              9
+            ],
+            [
+              10,
+              2,
+              16,
+              4
+            ],
+            [
+              11,
+              2,
+              16,
+              9
+            ],
+            [
+              10,
+              2,
+              17,
+              9
+            ],
+            [
+              8,
+              3,
+              8,
+              9
+            ],
+            [
+              7,
+              3,
+              9,
+              9
+            ],
+            [
+              8,
+              3,
+              9,
+              4
+            ],
+            [
+              9,
+              3,
+              9,
+              9
+            ],
+            [
+              8,
+              3,
+              10,
+              9
+            ],
+            [
+              14,
+              3,
+              12,
+              3
+            ],
+            [
+              14,
+              4,
+              11,
+              9
+            ],
+            [
+              13,
+              4,
+              12,
+              9
+            ],
+            [
+              14,
+              4,
+              12,
+              4
+            ],
+            [
+              15,
+              4,
+              12,
+              9
+            ],
+            [
+              14,
+              4,
+              13,
+              9
+            ]
+          ]
+        }
+      ]
+    },
+    "upgrade1": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    },
+    "upgrade2": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    }
+  },
+  "colorMode": "authored",
+  "role": "scenery"
+}

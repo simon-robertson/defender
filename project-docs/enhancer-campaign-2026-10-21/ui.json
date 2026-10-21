@@ -1,0 +1,1385 @@
+{
+  "deployed": {
+    "wildlife": {
+      "enabled": true,
+      "actors": 12,
+      "planningBytes": 283672
+    },
+    "fish": {
+      "time": 0,
+      "impacts": 0,
+      "planningBytes": 0,
+      "pools": 0,
+      "actors": []
+    },
+    "phase": "deploy",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 1,
+    "misses": 9,
+    "missLimit": 10,
+    "zone": "A",
+    "zoneName": "Moss & Porcelain",
+    "levelNumber": 1,
+    "campaignLevelNumber": 1,
+    "totalLevels": 16,
+    "waveNumber": 3,
+    "wavesPerLevel": 4,
+    "completedWaves": 2,
+    "totalWaves": 64,
+    "wavePreview": {
+      "splitApproaches": false,
+      "name": "Heavy wheels",
+      "description": "Rollers have more health. Familiar Dogs arrive first.",
+      "groups": [
+        {
+          "model": "dog",
+          "name": "Dog",
+          "routeId": "main",
+          "count": 4,
+          "maxHealth": 100,
+          "speed": 12,
+          "firstAt": 0,
+          "lastAt": 9
+        },
+        {
+          "model": "roller",
+          "name": "Roller",
+          "routeId": "main",
+          "count": 2,
+          "maxHealth": 350,
+          "speed": 12,
+          "firstAt": 15,
+          "lastAt": 18
+        }
+      ],
+      "total": 6
+    },
+    "shop": [
+      {
+        "model": "turret-study",
+        "kind": "defence",
+        "name": "Gun",
+        "cost": 1,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "maxRange": 48,
+          "strength": 10,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "arc-spire",
+        "kind": "defence",
+        "name": "Arc Spire",
+        "cost": 2,
+        "available": false,
+        "availableFromWave": 5,
+        "stats": {
+          "maxRange": 60,
+          "strength": 36,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1.2,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "missile-launcher",
+        "kind": "defence",
+        "name": "Missile launcher",
+        "cost": 3,
+        "available": false,
+        "availableFromWave": 9,
+        "stats": {
+          "maxRange": 96,
+          "strength": 200,
+          "requiresLineOfSight": false
+        },
+        "firing": {
+          "magazine": 2,
+          "gap": 1,
+          "reload": 4,
+          "cycle": {
+            "shotsPerBurst": 1,
+            "shotIntervalSeconds": 0,
+            "cooldownSeconds": 1,
+            "delivery": "projectile",
+            "projectile": {
+              "speedUnitsPerSecond": 180
+            }
+          }
+        }
+      },
+      {
+        "model": "power-generator",
+        "kind": "enhancer",
+        "name": "Power generator",
+        "cost": 4,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "strengthIncrease": 0.25,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "firing": null
+      }
+    ],
+    "units": [
+      {
+        "id": "player-power-generator-1",
+        "model": "power-generator",
+        "variant": "base",
+        "box": [
+          11,
+          0,
+          6
+        ],
+        "kind": "enhancer",
+        "deployed": true,
+        "stats": {
+          "strengthIncrease": 0.25,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "firing": null,
+        "label": "Power generator 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "upgradeAvailableFromWave": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          12,
+          0,
+          6
+        ],
+        "kind": "defence",
+        "deployed": true,
+        "stats": {
+          "maxRange": 48,
+          "strength": 12.5,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 1,
+        "canUpgrade": false,
+        "strengthIncrease": 0.25
+      }
+    ],
+    "encounterNumber": 3,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "graphics": {
+      "critters": true,
+      "reflections": true,
+      "bloom": true
+    },
+    "screenshotMode": false,
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "droneCameraEnabled": true,
+    "droneCameraActive": false,
+    "droneCameraTime": 190.01739999993742,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 6,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 291.4661039999311,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 6,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 6,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 21840,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410
+    },
+    "placements": [
+      {
+        "id": "player-power-generator-1",
+        "model": "power-generator",
+        "variant": "base",
+        "box": [
+          11,
+          0,
+          6
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          12,
+          0,
+          6
+        ],
+        "turn": 0
+      }
+    ],
+    "enhancers": {
+      "generators": [
+        {
+          "id": "player-power-generator-1",
+          "model": "power-generator",
+          "variant": "base",
+          "active": true,
+          "recipientIds": [
+            "player-gun-2"
+          ]
+        }
+      ],
+      "links": 1,
+      "overflow": 0,
+      "connections": [
+        {
+          "source": {
+            "0": 283,
+            "1": 34.5,
+            "2": 155.5
+          },
+          "target": {
+            "0": 296,
+            "1": 35.5,
+            "2": 155.5
+          },
+          "sourceId": "player-power-generator-1",
+          "targetId": "player-gun-2"
+        }
+      ]
+    },
+    "damage": {
+      "time": 291.4661039999311,
+      "activeCubes": 0,
+      "hasCritterRemains": false,
+      "bloodDecals": 0,
+      "fadeAt": 247.1664039999233
+    },
+    "performance": {
+      "running": true,
+      "fps": 59.99999999999989,
+      "frameMs": 16.666666666666696,
+      "cpuFrameMs": 0.8316666682561239,
+      "cpuRenderMs": 0.39166665971279147,
+      "samples": 60,
+      "gpuMs": 4.456448,
+      "gpuStatus": "ready",
+      "gpuSamples": 7
+    },
+    "conditions": {
+      "period": "day",
+      "timeOfDay": 10.5,
+      "night": false,
+      "weather": false
+    },
+    "guns": [
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "x": 300,
+        "z": 156,
+        "target": null,
+        "reservation": null,
+        "shots": 0,
+        "lastShotTarget": null,
+        "secondsSinceShot": null,
+        "cooldownRemaining": 0,
+        "burstRemaining": 0,
+        "lineOfSight": null,
+        "yawError": null,
+        "pitchError": null
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "mode": "overview",
+      "fov": 51.26618196897324,
+      "roll": 0,
+      "position": [
+        261.488377258102,
+        185.46946323754287,
+        312.6722393520595
+      ],
+      "radius": 194.02666556567027,
+      "target": [
+        240,
+        24,
+        216
+      ],
+      "controlsEnabled": false
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 78.14341613869624,
+      "points": 0,
+      "time": 291.4661039999311
+    },
+    "droneCamera": {
+      "anticipation": {
+        "active": false,
+        "target": null,
+        "defence": null,
+        "at": null,
+        "point": null,
+        "scans": 0,
+        "pairs": 0,
+        "samples": 0,
+        "revision": 0
+      },
+      "enabled": true,
+      "active": false,
+      "time": 190.01739999993742,
+      "subject": null,
+      "position": [
+        261.488377258102,
+        185.46946323754287,
+        312.6722393520595
+      ],
+      "focus": [
+        467.8999938964844,
+        34.5,
+        252
+      ],
+      "speed": 0,
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "acceleration": [
+        0,
+        0,
+        0
+      ],
+      "drifting": false,
+      "blockedMoves": 2,
+      "yawVelocity": 0,
+      "pitchVelocity": 0,
+      "fovVelocity": 0,
+      "travelled": 2132.2846755833225,
+      "plans": 232,
+      "holding": false,
+      "heldFor": 0,
+      "relocations": 5,
+      "quality": 1,
+      "visible": true,
+      "fov": 51.26618196897324,
+      "pitch": 0.6098438831012336,
+      "panRoll": 0,
+      "flinch": 0,
+      "explosions": 0,
+      "routeLength": 0,
+      "routeIndex": 0,
+      "emergency": false,
+      "airborneFloor": null,
+      "cruiseY": 224,
+      "planningBytes": 1776
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "renderer": {
+    "frames": 18839,
+    "deltaSeconds": 0.01679999999998836,
+    "elapsedSeconds": 291.5662039999311,
+    "waterPhase": 6.131690979003906,
+    "rainCount": 0,
+    "rainBytes": 0,
+    "rainPhase": 0,
+    "rainTime": 0,
+    "snowCount": 0,
+    "snowBytes": 0,
+    "snowPhase": 0,
+    "snowTime": 0,
+    "snowCycleSeconds": 0,
+    "leafCount": 0,
+    "leafBytes": 0,
+    "leafPhase": 0,
+    "leafTime": 0,
+    "leafCycleSeconds": 0,
+    "drawGroups": 54,
+    "drawCalls": 66,
+    "geometryBytes": 1986976,
+    "transformBytes": 50176,
+    "visibilityBytes": 39888,
+    "transformUploads": 4,
+    "transformUploadBytes": 832,
+    "sceneBuffers": 162,
+    "createdSceneBuffers": 324,
+    "destroyedSceneBuffers": 162,
+    "targetBytes": 137124360,
+    "visibleEmitters": 3,
+    "reflectionsEnabled": true,
+    "bloomEnabled": true,
+    "waterReflections": "planar",
+    "planarActive": false,
+    "planarDraws": 0,
+    "planarBytes": 0,
+    "vistaActive": true,
+    "vistaGeometryBytes": 20698704,
+    "vistaTargetBytes": 9670752,
+    "effectBytes": 23888,
+    "missileThrustBytes": 0,
+    "missileThrustInstances": 0,
+    "missileThrustUploadBytes": 0,
+    "missileLights": 0,
+    "missileLightCPUBytes": 0,
+    "localLightUploadBytes": 0,
+    "plasmaBytes": 239184,
+    "plasmaLinks": 1,
+    "plasmaTime": 291.5662039999311,
+    "plasmaOverflow": 0,
+    "plasmaInstances": 32,
+    "plasmaLights": 1,
+    "plasmaUploadBytes": 1856,
+    "plasmaLightBytes": 42576,
+    "plasmaCPUBytes": 353296,
+    "plasmaMergeBytes": 42576,
+    "arcBytes": 0,
+    "arcLightBytes": 0,
+    "arcBindingBytes": 320,
+    "arcStrikes": 0,
+    "arcSparks": 0,
+    "arcGrounded": 0,
+    "arcInstances": 0,
+    "arcLights": 0,
+    "arcUploads": 0,
+    "arcUploadBytes": 0,
+    "shotLights": 0,
+    "localLights": 7,
+    "bloomActive": true,
+    "bloomPasses": 3,
+    "bloomDraws": 4,
+    "bloomBytes": 2149056,
+    "bloomSettingsBytes": 16,
+    "modelLights": 7,
+    "authoredModelLights": 25,
+    "modelLightOverflow": 0,
+    "modelLightBytes": 13136,
+    "localLightUniformBytes": 14672,
+    "deathEffectsPrepared": true,
+    "damageCubes": 0,
+    "damageDecals": 0,
+    "damageParticles": 0,
+    "damageBytes": 143808,
+    "shockwaveCount": 0,
+    "shockwaveBytes": 144,
+    "shockwaveTargetBytes": 8596224,
+    "shotInstances": 0,
+    "droppedSparks": 0,
+    "replacedFlashes": 0,
+    "cpuSubmitMs": 0.09999996423721313,
+    "gpuFrameTiming": {
+      "status": "ready",
+      "ms": 4.431872,
+      "samples": 8,
+      "pending": 0,
+      "bufferBytes": 64,
+      "queryCount": 2
+    },
+    "cameraUpdated": false,
+    "depthUpdated": true,
+    "shadowUpdated": true,
+    "opaqueUpdated": true,
+    "waterUpdated": false,
+    "mode": "overview",
+    "yaw": 2.45,
+    "pitch": 0.68,
+    "radius": 194.02666556567027,
+    "target": [
+      240,
+      24,
+      216
+    ],
+    "eye": [
+      686.3175659179688,
+      589.9136962890625,
+      -323.01971435546875
+    ],
+    "fov": null,
+    "groundHeight": null
+  },
+  "recalled": {
+    "wildlife": {
+      "enabled": true,
+      "actors": 12,
+      "planningBytes": 283912
+    },
+    "fish": {
+      "time": 0,
+      "impacts": 0,
+      "planningBytes": 0,
+      "pools": 0,
+      "actors": []
+    },
+    "phase": "deploy",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 1,
+    "misses": 9,
+    "missLimit": 10,
+    "zone": "A",
+    "zoneName": "Moss & Porcelain",
+    "levelNumber": 1,
+    "campaignLevelNumber": 1,
+    "totalLevels": 16,
+    "waveNumber": 3,
+    "wavesPerLevel": 4,
+    "completedWaves": 2,
+    "totalWaves": 64,
+    "wavePreview": {
+      "splitApproaches": false,
+      "name": "Heavy wheels",
+      "description": "Rollers have more health. Familiar Dogs arrive first.",
+      "groups": [
+        {
+          "model": "dog",
+          "name": "Dog",
+          "routeId": "main",
+          "count": 4,
+          "maxHealth": 100,
+          "speed": 12,
+          "firstAt": 0,
+          "lastAt": 9
+        },
+        {
+          "model": "roller",
+          "name": "Roller",
+          "routeId": "main",
+          "count": 2,
+          "maxHealth": 350,
+          "speed": 12,
+          "firstAt": 15,
+          "lastAt": 18
+        }
+      ],
+      "total": 6
+    },
+    "shop": [
+      {
+        "model": "turret-study",
+        "kind": "defence",
+        "name": "Gun",
+        "cost": 1,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "maxRange": 48,
+          "strength": 10,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "arc-spire",
+        "kind": "defence",
+        "name": "Arc Spire",
+        "cost": 2,
+        "available": false,
+        "availableFromWave": 5,
+        "stats": {
+          "maxRange": 60,
+          "strength": 36,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1.2,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "missile-launcher",
+        "kind": "defence",
+        "name": "Missile launcher",
+        "cost": 3,
+        "available": false,
+        "availableFromWave": 9,
+        "stats": {
+          "maxRange": 96,
+          "strength": 200,
+          "requiresLineOfSight": false
+        },
+        "firing": {
+          "magazine": 2,
+          "gap": 1,
+          "reload": 4,
+          "cycle": {
+            "shotsPerBurst": 1,
+            "shotIntervalSeconds": 0,
+            "cooldownSeconds": 1,
+            "delivery": "projectile",
+            "projectile": {
+              "speedUnitsPerSecond": 180
+            }
+          }
+        }
+      },
+      {
+        "model": "power-generator",
+        "kind": "enhancer",
+        "name": "Power generator",
+        "cost": 4,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "strengthIncrease": 0.25,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "firing": null
+      }
+    ],
+    "units": [
+      {
+        "id": "player-power-generator-1",
+        "model": "power-generator",
+        "variant": "base",
+        "box": null,
+        "kind": "enhancer",
+        "deployed": false,
+        "stats": {
+          "strengthIncrease": 0.25,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "firing": null,
+        "label": "Power generator 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "upgradeAvailableFromWave": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          12,
+          0,
+          6
+        ],
+        "kind": "defence",
+        "deployed": true,
+        "stats": {
+          "maxRange": 48,
+          "strength": 10,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 1,
+        "canUpgrade": false,
+        "strengthIncrease": 0
+      }
+    ],
+    "encounterNumber": 3,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "graphics": {
+      "critters": true,
+      "reflections": true,
+      "bloom": true
+    },
+    "screenshotMode": false,
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "droneCameraEnabled": true,
+    "droneCameraActive": false,
+    "droneCameraTime": 190.01739999993742,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 6,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 308.6494039999342,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 6,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 6,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 21840,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410
+    },
+    "placements": [
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          12,
+          0,
+          6
+        ],
+        "turn": 0
+      }
+    ],
+    "enhancers": {
+      "generators": [],
+      "links": 0,
+      "overflow": 0,
+      "connections": []
+    },
+    "damage": {
+      "time": 308.6494039999342,
+      "activeCubes": 0,
+      "hasCritterRemains": false,
+      "bloodDecals": 0,
+      "fadeAt": 247.1664039999233
+    },
+    "performance": {
+      "running": true,
+      "fps": 60.00393468424307,
+      "frameMs": 16.66557377049139,
+      "cpuFrameMs": 0.6295082021932132,
+      "cpuRenderMs": 0.3770491773964929,
+      "samples": 61,
+      "gpuMs": 6.6284982857142865,
+      "gpuStatus": "ready",
+      "gpuSamples": 7
+    },
+    "conditions": {
+      "period": "day",
+      "timeOfDay": 10.5,
+      "night": false,
+      "weather": false
+    },
+    "guns": [
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "x": 300,
+        "z": 156,
+        "target": null,
+        "reservation": null,
+        "shots": 0,
+        "lastShotTarget": null,
+        "secondsSinceShot": null,
+        "cooldownRemaining": 0,
+        "burstRemaining": 0,
+        "lineOfSight": null,
+        "yawError": null,
+        "pitchError": null
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "mode": "overview",
+      "fov": 51.26618196897324,
+      "roll": 0,
+      "position": [
+        261.488377258102,
+        185.46946323754287,
+        312.6722393520595
+      ],
+      "radius": 194.02666556567027,
+      "target": [
+        240,
+        24,
+        216
+      ],
+      "controlsEnabled": false
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 78.14341613869624,
+      "points": 0,
+      "time": 308.6494039999342
+    },
+    "droneCamera": {
+      "anticipation": {
+        "active": false,
+        "target": null,
+        "defence": null,
+        "at": null,
+        "point": null,
+        "scans": 0,
+        "pairs": 0,
+        "samples": 0,
+        "revision": 0
+      },
+      "enabled": true,
+      "active": false,
+      "time": 190.01739999993742,
+      "subject": null,
+      "position": [
+        261.488377258102,
+        185.46946323754287,
+        312.6722393520595
+      ],
+      "focus": [
+        467.8999938964844,
+        34.5,
+        252
+      ],
+      "speed": 0,
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "acceleration": [
+        0,
+        0,
+        0
+      ],
+      "drifting": false,
+      "blockedMoves": 2,
+      "yawVelocity": 0,
+      "pitchVelocity": 0,
+      "fovVelocity": 0,
+      "travelled": 2132.2846755833225,
+      "plans": 232,
+      "holding": false,
+      "heldFor": 0,
+      "relocations": 5,
+      "quality": 1,
+      "visible": true,
+      "fov": 51.26618196897324,
+      "pitch": 0.6098438831012336,
+      "panRoll": 0,
+      "flinch": 0,
+      "explosions": 0,
+      "routeLength": 0,
+      "routeIndex": 0,
+      "emergency": false,
+      "airborneFloor": null,
+      "cruiseY": 224,
+      "planningBytes": 1776
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "upgraded": {
+    "wildlife": {
+      "enabled": true,
+      "actors": 12,
+      "planningBytes": 283672
+    },
+    "fish": {
+      "time": 0,
+      "impacts": 0,
+      "planningBytes": 0,
+      "pools": 0,
+      "actors": []
+    },
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 9,
+    "missLimit": 10,
+    "zone": "A",
+    "zoneName": "Moss & Porcelain",
+    "levelNumber": 1,
+    "campaignLevelNumber": 1,
+    "totalLevels": 16,
+    "waveNumber": 3,
+    "wavesPerLevel": 4,
+    "completedWaves": 2,
+    "totalWaves": 64,
+    "wavePreview": {
+      "splitApproaches": false,
+      "name": "Heavy wheels",
+      "description": "Rollers have more health. Familiar Dogs arrive first.",
+      "groups": [
+        {
+          "model": "dog",
+          "name": "Dog",
+          "routeId": "main",
+          "count": 4,
+          "maxHealth": 100,
+          "speed": 12,
+          "firstAt": 0,
+          "lastAt": 9
+        },
+        {
+          "model": "roller",
+          "name": "Roller",
+          "routeId": "main",
+          "count": 2,
+          "maxHealth": 350,
+          "speed": 12,
+          "firstAt": 15,
+          "lastAt": 18
+        }
+      ],
+      "total": 6
+    },
+    "shop": [
+      {
+        "model": "turret-study",
+        "kind": "defence",
+        "name": "Gun",
+        "cost": 1,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "maxRange": 48,
+          "strength": 10,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "arc-spire",
+        "kind": "defence",
+        "name": "Arc Spire",
+        "cost": 2,
+        "available": false,
+        "availableFromWave": 5,
+        "stats": {
+          "maxRange": 60,
+          "strength": 36,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1.2,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "missile-launcher",
+        "kind": "defence",
+        "name": "Missile launcher",
+        "cost": 3,
+        "available": false,
+        "availableFromWave": 9,
+        "stats": {
+          "maxRange": 96,
+          "strength": 200,
+          "requiresLineOfSight": false
+        },
+        "firing": {
+          "magazine": 2,
+          "gap": 1,
+          "reload": 4,
+          "cycle": {
+            "shotsPerBurst": 1,
+            "shotIntervalSeconds": 0,
+            "cooldownSeconds": 1,
+            "delivery": "projectile",
+            "projectile": {
+              "speedUnitsPerSecond": 180
+            }
+          }
+        }
+      },
+      {
+        "model": "power-generator",
+        "kind": "enhancer",
+        "name": "Power generator",
+        "cost": 4,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "strengthIncrease": 0.25,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "firing": null
+      }
+    ],
+    "units": [
+      {
+        "id": "player-power-generator-1",
+        "model": "power-generator",
+        "variant": "base",
+        "box": [
+          11,
+          0,
+          6
+        ],
+        "kind": "enhancer",
+        "deployed": true,
+        "stats": {
+          "strengthIncrease": 0.25,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "firing": null,
+        "label": "Power generator 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "upgradeAvailableFromWave": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          12,
+          0,
+          6
+        ],
+        "kind": "defence",
+        "deployed": true,
+        "stats": {
+          "maxRange": 66,
+          "strength": 15,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 3,
+          "shotIntervalSeconds": 0.12,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 02",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 5,
+        "canUpgrade": false,
+        "strengthIncrease": 0.25
+      }
+    ],
+    "encounterNumber": 3,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "graphics": {
+      "critters": true,
+      "reflections": true,
+      "bloom": true
+    },
+    "screenshotMode": false,
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "droneCameraEnabled": true,
+    "droneCameraActive": false,
+    "droneCameraTime": 190.01739999993742,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 6,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 320.24940399993596,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 6,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 6,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 21840,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410
+    },
+    "placements": [
+      {
+        "id": "player-power-generator-1",
+        "model": "power-generator",
+        "variant": "base",
+        "box": [
+          11,
+          0,
+          6
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          12,
+          0,
+          6
+        ],
+        "turn": 0
+      }
+    ],
+    "enhancers": {
+      "generators": [
+        {
+          "id": "player-power-generator-1",
+          "model": "power-generator",
+          "variant": "base",
+          "active": true,
+          "recipientIds": [
+            "player-gun-2"
+          ]
+        }
+      ],
+      "links": 1,
+      "overflow": 0,
+      "connections": [
+        {
+          "source": {
+            "0": 283,
+            "1": 34.5,
+            "2": 155.5
+          },
+          "target": {
+            "0": 294,
+            "1": 35.5,
+            "2": 155.5
+          },
+          "sourceId": "player-power-generator-1",
+          "targetId": "player-gun-2"
+        }
+      ]
+    },
+    "damage": {
+      "time": 320.24940399993596,
+      "activeCubes": 0,
+      "hasCritterRemains": false,
+      "bloodDecals": 0,
+      "fadeAt": 247.1664039999233
+    },
+    "performance": {
+      "running": true,
+      "fps": 21.174477696217,
+      "frameMs": 47.22666666666628,
+      "cpuFrameMs": 0.8533333301544189,
+      "cpuRenderMs": 0.5433333277702331,
+      "samples": 30,
+      "gpuMs": 5.1642368,
+      "gpuStatus": "ready",
+      "gpuSamples": 5
+    },
+    "conditions": {
+      "period": "day",
+      "timeOfDay": 10.5,
+      "night": false,
+      "weather": false
+    },
+    "guns": [
+      {
+        "id": "player-gun-2",
+        "variant": "upgrade1",
+        "x": 300,
+        "z": 156,
+        "target": null,
+        "reservation": null,
+        "shots": 0,
+        "lastShotTarget": null,
+        "secondsSinceShot": null,
+        "cooldownRemaining": 0,
+        "burstRemaining": 0,
+        "lineOfSight": null,
+        "yawError": null,
+        "pitchError": null
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "mode": "overview",
+      "fov": 51.26618196897324,
+      "roll": 0,
+      "position": [
+        261.488377258102,
+        185.46946323754287,
+        312.6722393520595
+      ],
+      "radius": 194.02666556567027,
+      "target": [
+        240,
+        24,
+        216
+      ],
+      "controlsEnabled": false
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 78.14341613869624,
+      "points": 0,
+      "time": 320.24940399993596
+    },
+    "droneCamera": {
+      "anticipation": {
+        "active": false,
+        "target": null,
+        "defence": null,
+        "at": null,
+        "point": null,
+        "scans": 0,
+        "pairs": 0,
+        "samples": 0,
+        "revision": 0
+      },
+      "enabled": true,
+      "active": false,
+      "time": 190.01739999993742,
+      "subject": null,
+      "position": [
+        261.488377258102,
+        185.46946323754287,
+        312.6722393520595
+      ],
+      "focus": [
+        467.8999938964844,
+        34.5,
+        252
+      ],
+      "speed": 0,
+      "velocity": [
+        0,
+        0,
+        0
+      ],
+      "acceleration": [
+        0,
+        0,
+        0
+      ],
+      "drifting": false,
+      "blockedMoves": 2,
+      "yawVelocity": 0,
+      "pitchVelocity": 0,
+      "fovVelocity": 0,
+      "travelled": 2132.2846755833225,
+      "plans": 232,
+      "holding": false,
+      "heldFor": 0,
+      "relocations": 5,
+      "quality": 1,
+      "visible": true,
+      "fov": 51.26618196897324,
+      "pitch": 0.6098438831012336,
+      "panRoll": 0,
+      "flinch": 0,
+      "explosions": 0,
+      "routeLength": 0,
+      "routeIndex": 0,
+      "emergency": false,
+      "airborneFloor": null,
+      "cruiseY": 224,
+      "planningBytes": 1776
+    },
+    "eligible": [],
+    "errors": []
+  }
+}

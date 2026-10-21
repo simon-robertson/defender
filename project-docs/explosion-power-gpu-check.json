@@ -1,0 +1,192 @@
+{
+  "damage": {
+    "passed": 15,
+    "failed": 0,
+    "checks": [
+      "Lit smoke responds to sky and ambient",
+      "Smoke receives sky shadows with ambient retained",
+      "Smoke follows night light colours",
+      "Twelfth merged local light illuminates smoke",
+      "Smoke has no emissive floor",
+      "Opaque depth fully occludes smoke",
+      "Water attenuates smoke behind its surface",
+      "Compact additive blast produces a warm luminous core",
+      "Blast respects opaque depth",
+      "Opaque cubes preserve model-colour hierarchy under scene lighting",
+      "Cube normal buffer carries physical face normals and zero reflectiveness",
+      "Cube casts into the production shadow-depth pass",
+      "Cube depth prepass rejects scenery-hidden fragments",
+      "Twelfth merged light illuminates opaque debris",
+      "No WebGPU validation errors"
+    ],
+    "pixelValues": {
+      "day": [
+        101,
+        99,
+        96,
+        255
+      ],
+      "shadowed": [
+        28,
+        31,
+        36,
+        255
+      ],
+      "night": [
+        19,
+        23,
+        33,
+        255
+      ],
+      "blastLit": [
+        146,
+        138,
+        98,
+        255
+      ],
+      "unlit": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "hidden": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "underwater": [
+        30,
+        30,
+        29,
+        255
+      ],
+      "blast": [
+        220,
+        198,
+        176,
+        255
+      ],
+      "blastHidden": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "cubeDay": [
+        107,
+        52,
+        24,
+        0
+      ],
+      "cubeNormal": [
+        128,
+        128,
+        255,
+        0
+      ],
+      "shadowDepth": 0.32499998807907104,
+      "cubeOccluded": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cubeLocal": [
+        255,
+        111,
+        24,
+        0
+      ]
+    }
+  },
+  "bloom": {
+    "passed": 22,
+    "failed": 0,
+    "checks": [
+      "All complete production geometry, display, emitter, blur and particle modules compile",
+      "Original full-resolution particle entrypoints require no bloom binding",
+      "White non-emissive armour produces no bloom",
+      "Zero emission preserves the complete production display byte-for-byte",
+      "Emissive panel produces source-coloured bloom",
+      "Fixed separable blur has a restrained finite halo",
+      "Halo is included in the existing linear-to-display composite",
+      "One-pixel emitter survives non-divisible 65×67 downsampling",
+      "Particle/depth coordinates use exact ceil-resolution ratios",
+      "Water transmission attenuates an emitter behind its surface",
+      "Disappearing opaque emission clears the previous cached halo",
+      "Reduced muzzle core obeys full-resolution opaque depth",
+      "Reduced muzzle core obeys water attenuation",
+      "Production elongated muzzle flame contributes bloom",
+      "Sparks never become bloom emitters",
+      "Explosion hot core blooms only when visible",
+      "Explosion halo source respects water attenuation",
+      "Smoke is excluded and expired blast leaves no residual halo",
+      "Original muzzle shape, opacity and water coverage remain correct",
+      "Original explosion shape still renders and obeys depth",
+      "Original lit smoke remains visible without producing bloom",
+      "No WebGPU validation errors"
+    ],
+    "pixels": {
+      "centre": [
+        54,
+        11,
+        2
+      ],
+      "near": [
+        30,
+        6,
+        1
+      ],
+      "far": [
+        1,
+        0,
+        0
+      ],
+      "originalCore": [
+        255,
+        255,
+        232
+      ],
+      "originalHidden": [
+        0,
+        0,
+        0
+      ],
+      "originalWater": [
+        77,
+        77,
+        70
+      ],
+      "originalBlast": [
+        224,
+        205,
+        183
+      ],
+      "smoke": [
+        20,
+        22,
+        23
+      ]
+    },
+    "energy": {
+      "panel": 486,
+      "dry": 486,
+      "submerged": 240,
+      "core": 10313,
+      "coreHidden": 0,
+      "coreWater": 3077,
+      "flame": 5175,
+      "spark": 0,
+      "blast": 6185,
+      "blastWater": 1848
+    },
+    "resources": {
+      "width": 17,
+      "height": 17,
+      "targetBytes": 4624,
+      "settingsBytes": 16
+    }
+  }
+}

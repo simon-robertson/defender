@@ -1,0 +1,45 @@
+bun test v1.4.2 (744846f84)
+
+tests/planar-reflection.test.js:
+(pass) mirrored frame preserves arbitrary projection and reflects camera and water-plane points exactly [0.14ms]
+(pass) horizontal pools share one plane, mixed heights fall back safely, and water culling is conservative [0.09ms]
+
+tests/renderer.test.js:
+(pass) blood decals blend last in the cached opaque pass, never write depth/shadows and allocate no new images [7.50ms]
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [7.63ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.29ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.90ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [340.90ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.12ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [301.16ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [591.34ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.72ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.87ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.37ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [41.84ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [21.12ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1742.28ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [21.84ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.23ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.60ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.68ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [15.57ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.95ms]
+(pass) all plasma links coexist with primary and secondary combat Arcs, and detached plasma cannot resurrect expired arc light [3.21ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.51ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.58ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [114.81ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.66ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.55ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [282.37ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [50.14ms]
+(pass) decal-only fade and removal refresh colour without depth or sky shadow work [1.60ms]
+(pass) hidden emission disables bloom while visible material emission without a model light still enables it [12.80ms]
+(pass) planar capture shares scene buffers and shadows, caches static frames and retires on scene release [1.82ms]
+(pass) dry scenes use tiny inactive water bindings and skip the empty water pass, including wet/dry reloads [2.12ms]
+(pass) actual preparation blood fade keeps renderer depth and shadow caches intact through expiry [2.28ms]
+
+ 35 pass
+ 0 fail
+ 1679 expect() calls
+Ran 35 tests across 2 files. [3.62s]

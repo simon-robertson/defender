@@ -1,0 +1,46 @@
+{
+  "id": "garden-crossing",
+  "sourceHash": "05880b6fe2330d2497b3df52e06fc6648842f8e0453edd9b2d4f33db1f1dd8fb",
+  "method": "Each candidate considered independently. Turret heads use complete yaw cylinders separately for every occupied Y layer; gun envelope encloses full yaw, analytic pitch extrema and zero/full recoil. Arc parts use fixed occupied-vertex bounds. Test static exact cuboids and production Dog/Roller/Moth occupied-part poses at every1-unit route distance and endpoints. Conservative envelopes may reject a harmless pose; no simultaneous-neighbour compatibility is claimed.",
+  "rows": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2955,
+      "checkedParts": 20685
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2955,
+      "checkedParts": 20685
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2955,
+      "checkedParts": 20685
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2955,
+      "checkedParts": 20685
+    }
+  ],
+  "excluded": [],
+  "allProbedCombinationsClear": true,
+  "declaredSuitabilityPassed": true
+}

@@ -1,0 +1,43 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-route-clearance.test.js:
+(pass) height-specific walking envelopes contain complete native articulated voxels throughout all B/C routes [2685.99ms]
+(pass) later campaign courts recover narrow-body clearance while paths and real conflicts stay protected [4947.52ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [12.33ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.65ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.44ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [324.14ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.85ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [276.70ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [591.14ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.24ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.83ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.53ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [42.51ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [20.41ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1672.81ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [21.55ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [18.69ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.59ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.48ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [17.26ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.72ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.29ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.32ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.17ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [116.95ms]
+(pass) camera lens is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [2.26ms]
+(pass) camera lens reuses pipelines through toggles and releases viewport/scene images exactly once [1.19ms]
+(pass) drone depth of field retains its focus and pixel-scaled blur through repeated enabled frames [1.13ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.23ms]
+
+tests/play-entrance-markers.test.js:
+(pass) every campaign approach has an inward entry anchor, including branches and shared-start deduplication [3.52ms]
+(pass) entry badges project with the overview, hide in Drone/title, and clear between areas [0.50ms]
+
+ 31 pass
+ 0 fail
+ 1711 expect() calls
+Ran 31 tests across 3 files. [10.84s]

@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-18",
+  "revision": "Legless twin-barrel family with powered pad hover",
+  "baseTuning": {
+    "base": {
+      "flightSeconds": 20,
+      "flightStartsAt": "launch",
+      "returnConsumesFlightTime": false,
+      "finishBurstBeforeReturn": true,
+      "rechargeSeconds": null,
+      "weapon": {
+        "strength": 10,
+        "shotsPerBurst": 10,
+        "roundsPerSecond": 4,
+        "shotIntervalSeconds": 0.25,
+        "cooldownSeconds": 5
+      }
+    },
+    "upgrade1": null,
+    "upgrade2": null
+  },
+  "rest": {
+    "pose": "Pad hover",
+    "gap": 2,
+    "motorSpeed": 28,
+    "phaseChanges": true,
+    "opposingPhases": {
+      "rotor-front-left": 0.7073286840593085,
+      "rotor-front-right": -0.7073286840593085,
+      "rotor-rear-left": -0.7073286840593085,
+      "rotor-rear-right": 0.7073286840593085
+    },
+    "gunNeutral": true
+  },
+  "flight": {
+    "lift": 12,
+    "padsFixed": true,
+    "aimAnimated": true,
+    "manualYawDegrees": 15,
+    "manualPitchDegrees": -35,
+    "finiteExtreme": true
+  },
+  "palettes": [
+    {
+      "zone": "B",
+      "lights": 27,
+      "overflow": 0,
+      "buffers": 75,
+      "bytes": 239600,
+      "created": 252,
+      "destroyed": 177,
+      "errors": []
+    },
+    {
+      "zone": "C",
+      "lights": 27,
+      "overflow": 0,
+      "buffers": 75,
+      "bytes": 239600,
+      "created": 327,
+      "destroyed": 252,
+      "errors": []
+    },
+    {
+      "zone": "D",
+      "lights": 27,
+      "overflow": 0,
+      "buffers": 75,
+      "bytes": 239600,
+      "created": 402,
+      "destroyed": 327,
+      "errors": []
+    },
+    {
+      "zone": "A",
+      "lights": 27,
+      "overflow": 0,
+      "buffers": 75,
+      "bytes": 239600,
+      "created": 477,
+      "destroyed": 402,
+      "errors": []
+    }
+  ],
+  "lights": 27,
+  "overflow": 0,
+  "geometryBytes": 239600,
+  "sceneBuffers": 75,
+  "rotorOnlyTransformUploads": 12,
+  "gpuErrors": []
+}

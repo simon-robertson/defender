@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-21",
+  "config": "PLAY_CONFIG imported from play/config.js without modification",
+  "nativeStepSeconds": 0.016666666666666666,
+  "canvasAspect": 1.5,
+  "stackComparison": {
+    "level": "moss-02",
+    "levelIndex": 1,
+    "wave": "a2-wave-4",
+    "waveIndex": 3,
+    "elapsedSeconds": 24,
+    "nativeSteps": 1440,
+    "placements": [
+      {
+        "id": "player-gun-0",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          5,
+          0,
+          5
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          8,
+          0,
+          8
+        ],
+        "turn": 0
+      }
+    ],
+    "target": "a2-wave-4-moth-7",
+    "cosmeticRandomSample": 0.35,
+    "focus": [
+      156,
+      73,
+      155
+    ],
+    "fov": 64,
+    "before": {
+      "position": [
+        156,
+        173,
+        360
+      ],
+      "cost": 0.27527333131924403,
+      "stackedCentrePairs": 8,
+      "primaryHorizontalGapNDC": 3.055255505741634e-08
+    },
+    "after": {
+      "position": [
+        328.7256761031513,
+        173,
+        188.79113514975904
+      ],
+      "cost": 0.17613896933567408,
+      "stackedCentrePairs": 6,
+      "primaryHorizontalGapNDC": 0.23355032252055316
+    },
+    "cameraRecipe": "Freeze the native scene after 1440 steps; for each position aim Camera yaw/pitch exactly at focus with roll0 and FOV64. These are settled framing comparisons, not two simultaneous simulation runs.",
+    "plannerRecipe": "After entering DroneCamera, reset anticipation, set subject to the named living target, set position to before, compose(engine), set look to focus, clear route, set heldFor3, then vantage(). No enemy or weapon values change."
+  },
+  "ordinaryLowArrival": {
+    "level": "moss-01",
+    "levelIndex": 0,
+    "wave": "a1-wave-4",
+    "waveIndex": 3,
+    "cosmeticRandomSample": 0.7,
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-3",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          11,
+          0,
+          6
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-4",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          9,
+          0,
+          11
+        ],
+        "turn": 0
+      }
+    ],
+    "elapsedSeconds": 29.59999999999887,
+    "nativeSteps": 1776,
+    "target": "a1-wave-4-roller-6",
+    "position": [
+      219.50118404911225,
+      82.69076657587283,
+      72.13905219493323
+    ],
+    "goal": [
+      219.85245657997925,
+      80,
+      72.22237178805591
+    ],
+    "focus": [
+      129.6,
+      36.68100013732911,
+      245.28001098632814
+    ],
+    "look": [
+      97.37873049334239,
+      37.940897062121344,
+      224.1780616867053
+    ],
+    "yaw": 2.474556708625573,
+    "pitch": 0.28309613374524095,
+    "fov": 51.26618196897324,
+    "roll": 0.002136770114302101,
+    "goalDuration": 11.205564464070896,
+    "highTimeFraction": 0.7795312137386865,
+    "minimumY": 81.78590458055231,
+    "lowHoldSeconds": 3.0833333333333335,
+    "plannedLowStations": 3,
+    "achievedLowStations": 1,
+    "actorPredictionSeconds": 3,
+    "recipe": "Fresh ordinary PLAY_CONFIG production scene with the listed placements. Construct DroneCamera(random:()=>.7), bind, start engine wave, enable/sync Drone, then step both engine.advance(1/60) and drone.advance(1/60,{engine,phase:wave})1776times without changing camera counters, subjects, positions or combat data. Camera owns its3second actor forecast. To render the identical saved frame without rerunning Drone navigation, advance engine for1776steps then use saved position/yaw/pitch/FOV/roll."
+  }
+}

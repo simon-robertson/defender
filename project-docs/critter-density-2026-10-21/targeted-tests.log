@@ -1,0 +1,151 @@
+bun test v1.4.2 (744846f84)
+
+tests/critter-density.test.js:
+{"densitySurvey":[{"id":"moss-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"moss-02","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"moss-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"moss-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ochre-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ice-01","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ice-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ice-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ice-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"plum-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"plum-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"plum-03","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"plum-04","ground":9,"birds":3,"fish":0,"additionalNearRoute":5}]}
+(pass) all sixteen levels double land wildlife with separated supported routeside seeds and safe gib/respawn [3378.53ms]
+
+tests/wildlife-preview.test.js:
+(pass) each zone adds only six cosmetic actors and two shared source models, independently of combat actors [786.38ms]
+(pass) autonomous journeys cross paths while avoiding water, scenery and other ground critters in every zone [948.41ms]
+(pass) only one round-robin thinker runs per frame, using stable bounded state and shared scratch [193.08ms]
+(pass) accepted journeys use elapsed seconds independent of frame subdivision [360.58ms]
+(pass) hares use faster longer low hops and complete short journeys without a final vertical snap [201.99ms]
+(pass) a ground critter blocked mid-hop settles on the ground before retrying [186.03ms]
+(pass) invalid habitats/perches fail closed and unload drops every actor and navigation reference [402.31ms]
+(pass) nearby live enemies cause continuous ground escape, dead enemies do not and safe flee routes persist [205.49ms]
+(pass) explosions use a fixed copied event pool, expire, and only the scheduled actor reacts [152.83ms]
+(pass) doubled explosion fright radii reach ground, perched and flying wildlife in the new 3D annulus [1463.69ms]
+(pass) bird flights are twice as fast, use 3D threat distance and react from both perch and mid-flight [181.40ms]
+(pass) bird clearance encloses all turret variants through pitched recoil and yaw [268.29ms]
+
+tests/landscape-preview-runtime.test.js:
+(pass) landscape mode rejects routes and combat placements while preserving historical actor catalogues [2.79ms]
+(pass) layout mode supports a dry continuous route without restoring catalogue combat or legacy wildlife seeds [14.63ms]
+(pass) exact cosmetic seed points are copied and malformed or out-of-box points are rejected [0.09ms]
+(pass) explicit archived sources keep combat review working and receive identical validation and ID guards [264.82ms]
+124 |      expect(world.level.bridges).toEqual([{id:'river-waist',boxes:[[6,6],[7,6]]}]);
+125 |      for(const x of [6,7]){expect(terrain.flatBox(x,6)).toBeNull();expect(terrain.height(x*24+12,6*24+12)).toBe(17);expect(terrain.height(x*24+12,6*24+12,true)).toBe(20);}
+126 |     }else expect(world.level.bridges).toBeUndefined();
+127 |    }
+128 |    expect(world.level.actorRoutes).toBeUndefined();expect(world.level.environment.weather.enabled).toBe(false);
+129 |    expect(world.level.placements.length).toBeGreaterThan(0);expect(world.actors.size).toBe(12);expect(world.assetIds).toEqual([...new Set([...world.level.placements.map(p=>p.model),...wildlifeActorsForLevel(world.level).map(a=>a.model)])]);
+                                                                                            ^
+error: expect(received).toBe(expected)
+
+Expected: 12
+Received: 15
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/landscape-preview-runtime.test.js:129:87)
+(fail) the fifteen remaining noncombat previews request only scenery and cosmetics, animate safely and release before the next load [242.31ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.48ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.53ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [2.14ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.51ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.28ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.13ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.25ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [11.97ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.23ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [9.67ms]
+(pass) every enemy death light ends thirty percent sooner with the same peak, radius and independent blast/debris lifetime [2.05ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [791.95ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [973.01ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [945.01ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [665.69ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.40ms]
+100 | test('committed player placements reseed blocked wildlife and actual controllers complete connected journeys',async()=>{
+101 |  for(const id of ['moss-01','moss-02']){
+102 |   const {source,models}=await sourceFixture(id),rules=createPlacementRules(source,models),valid=rules.eligibleCells('base').filter(c=>c.valid),first=valid.find(c=>c.box[0]>1&&c.box[0]<18&&c.box[2]>1&&c.box[2]<14),placements=[placement('one',first.box)];
+103 |   const other=valid.find(c=>rules.check(c.box,'base',placements).valid);if(other)placements.push(placement('two',other.box));
+104 |   rules.dispose();source.previewWildlife.habitats[0]=[first.box[0],first.box[2]];source.previewWildlife.habitatPoints[0]=[(first.box[0]+.5)*24,24,(first.box[2]+.5)*24];
+105 |   const before=JSON.stringify(source),committedRules=createPlacementRules(source,models),prepared=committedRules.prepare(placements);expect(prepared.valid).toBe(true);expect(prepared.wildlifePoints).toHaveLength(3);expect(prepared.wildlifePoints[0]).not.toEqual(source.previewWildlife.habitatPoints[0]);
+                                                                                                                                                                                                             ^
+error: expect(received).toHaveLength(expected)
+
+Expected length: 3
+Received length: 9
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/play-placement.test.js:105:200)
+(fail) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [864.71ms]
+
+tests/fish-preview.test.js:
+(pass) fish model is a deterministic matte articulated cosmetic asset [17.00ms]
+(pass) shallow and isolated water are empty; separate usable pools own separate schools [26.38ms]
+(pass) full rotating fish envelopes stay underwater and inside usable pools throughout roaming [31.70ms]
+(pass) actual debris water entries trigger faster outward escapes, then fish return to calm swimming [11.71ms]
+(pass) pause, bounded impact storms, dry contacts, reset and release preserve lifecycle [7.34ms]
+(pass) a bridge hit before water never frightens fish [7.76ms]
+(pass) actual deep pools load fish, retain them through wave preparation, and keep combat outcomes unchanged [5731.77ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [5.14ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [0.96ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [0.91ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [251.82ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.02ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [241.74ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [434.42ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.46ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.12ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.10ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [29.36ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [12.14ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1412.78ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [17.03ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [14.15ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.09ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.02ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [13.52ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.58ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.03ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [0.98ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [0.97ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [85.61ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.11ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.00ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [45.98ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [11.72ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [28.34ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [94.06ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [54.20ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [123.15ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [20.40ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [906.12ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [105.76ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3084.95ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [13270.36ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [23.31ms]
+
+tests/critter-gibs.test.js:
+(pass) critter blast radii include exact 3D boundaries without a body-radius allowance, for ground and birds [676.24ms]
+(pass) missile physical contacts gib fish at 72 units even if the visual blast pool is full [7.21ms]
+(pass) fragments and persistent solid spray leave in the 3D blast direction and reuse actual model colours [0.98ms]
+(pass) all 24 critters retain all 1152 remains alongside full enemy storage until a 2 second run-end fade [20.32ms]
+(pass) wave preparation safely restores dead ground/perched/flying actors without replacing rig or route storage [188.22ms]
+(pass) a critter killed by a late settling missile receives a fresh fade bounded by the existing settlement end [0.39ms]
+(pass) critter gore doubles both burst components and adds a stronger outward impulse without extra blast lights [0.25ms]
+
+tests/world.test.js:
+(pass) repeated rig bind poses retain independent instance matrices [212.84ms]
+(pass) first level preserves the 24-unit grid, all three turrets, clear route and shared geometry [313.88ms]
+(pass) detail props share a box with unit offsets, preserve transforms, and reject real overlap, bounds or path intrusion [0.28ms]
+(pass) ground surfaces include the submerged bed exactly once and path paving has no coplanar overlays [92.59ms]
+(pass) camera inverse reconstructs clip coordinates across orbit, pan and zoom [0.24ms]
+(pass) fixed level environment rejects malformed lighting and unsupported weather [0.80ms]
+(pass) current A1–A4 and B1–B4 sources match their preview generators and historical model bounds stay clean [2332.04ms]
+(pass) fixed time of day controls daylight without a runtime cycle [0.57ms]
+
+2 tests failed:
+(fail) the fifteen remaining noncombat previews request only scenery and cosmetics, animate safely and release before the next load [242.31ms]
+(fail) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [864.71ms]
+
+ 92 pass
+ 2 fail
+ 3266371 expect() calls
+Ran 94 tests across 10 files. [43.65s]

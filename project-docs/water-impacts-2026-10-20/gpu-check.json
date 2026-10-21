@@ -1,0 +1,171 @@
+{
+  "passed": 24,
+  "failed": 0,
+  "checks": [
+    "Lit smoke responds to sky and ambient",
+    "Smoke receives sky shadows with ambient retained",
+    "Smoke follows night light colours",
+    "Twelfth merged local light illuminates smoke",
+    "Final slot77 carries warm missile exhaust light onto smoke",
+    "Last exhaust slot has the same smoke response as the first point-light slot",
+    "Smoke has no emissive floor",
+    "Opaque depth fully occludes smoke",
+    "Water attenuates smoke behind its surface",
+    "Compact additive blast produces a warm luminous core",
+    "Blast respects opaque depth",
+    "Weighted water droplets render in the production translucent pipeline",
+    "Water droplets respect opaque depth",
+    "Water droplets have no emissive floor",
+    "Water crown sheet renders above the impact",
+    "Expanding ripple is visible on its matching water plane",
+    "Ripple clips off dry pixels and unrelated water heights",
+    "Ripple retains an open centre",
+    "Opaque cubes preserve model-colour hierarchy under scene lighting",
+    "Cube normal buffer carries physical face normals and zero reflectiveness",
+    "Cube casts into the production shadow-depth pass",
+    "Cube depth prepass rejects scenery-hidden fragments",
+    "Twelfth merged light illuminates opaque debris",
+    "No WebGPU validation errors"
+  ],
+  "pixelValues": {
+    "day": [
+      101,
+      99,
+      96,
+      255
+    ],
+    "shadowed": [
+      28,
+      31,
+      36,
+      255
+    ],
+    "night": [
+      19,
+      23,
+      33,
+      255
+    ],
+    "blastLit": [
+      146,
+      138,
+      98,
+      255
+    ],
+    "thrustLit": [
+      130,
+      106,
+      77,
+      255
+    ],
+    "firstThrust": [
+      130,
+      106,
+      77,
+      255
+    ],
+    "unlit": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "hidden": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "underwater": [
+      30,
+      30,
+      29,
+      255
+    ],
+    "blast": [
+      220,
+      198,
+      176,
+      255
+    ],
+    "blastHidden": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "dropDay": [
+      166,
+      183,
+      181,
+      255
+    ],
+    "dropHidden": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "dropDark": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "crown": [
+      161,
+      178,
+      176,
+      255
+    ],
+    "ring": [
+      10,
+      23,
+      29,
+      255
+    ],
+    "ringDry": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "ringOtherHeight": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "ringCentre": [
+      0,
+      0,
+      0,
+      255
+    ],
+    "cubeDay": [
+      107,
+      52,
+      24,
+      0
+    ],
+    "cubeNormal": [
+      128,
+      128,
+      255,
+      0
+    ],
+    "shadowDepth": 0.32499998807907104,
+    "cubeOccluded": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "cubeLocal": [
+      255,
+      111,
+      24,
+      0
+    ]
+  }
+}

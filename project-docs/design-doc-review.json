@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-18",
+  "document": "docs/design-doc.md",
+  "browserRoute": "/docs/design-doc",
+  "checks": {
+    "rendererTests": 5,
+    "isolatedServerTests": 11,
+    "uniqueLinkAndImageTargets": 201,
+    "inlineImages": 10,
+    "missingTargetsOrHeadings": 0,
+    "strippedLinks": 0,
+    "browserViewportWidth": 1024,
+    "browserDocumentWidth": 1024,
+    "contentsNavigation": "passed",
+    "approvedConceptGallery": "loaded and visually reviewed",
+    "titleMenuProposal": "loaded and visually reviewed; pending user approval",
+    "rawSourceLink": "passed; same Markdown source",
+    "contentReview": "Artist and Tactician completed; hare-hop wording corrected"
+  },
+  "screenshots": [
+    "screenshots/design-doc-gallery.jpg",
+    "screenshots/design-doc-menu-proposal.jpg"
+  ],
+  "scope": "Documentation, browser reader, contributor workflow and proposed title/menu artwork only. No game runtime, models, levels or stats changed; no full suite run."
+}

@@ -1,0 +1,7132 @@
+{
+  "schema": "defender.d-carving-option-audit",
+  "version": 1,
+  "id": "orchard-crescent-tour",
+  "sourceHash": "14b361c16b51ea1d57478b2e87e49489c1625985604fe7703247a4ecd6e1ff39",
+  "recordedAt": "2026-10-20T13:26:55.952Z",
+  "method": "Synthetic offline copy removes previewMode only to admit production Spider/Lantern and individual weapon probes. Actual level contains scenery and wildlife only. Guns: production actual pitched muzzles at zero/full recoil, per-species 1-unit bins. Arcs: production closest terminal, centre LOS and deterministic production facing-side surface sampling at 1-unit bins. No damage, waves, budget or simultaneous adjacent-defence claim.",
+  "siteFailures": [],
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 2354,
+    "checkedParts": 17655,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "entry-1-7",
+        "group": "entry",
+        "box": [
+          1,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    92
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    92
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-2-7",
+        "group": "entry",
+        "box": [
+          2,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 192
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-4-7",
+        "group": "entry",
+        "box": [
+          4,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 226.73,
+              "120": 315.96
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    28,
+                    174
+                  ]
+                ],
+                "lantern": [
+                  [
+                    28,
+                    174
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-5-7",
+        "group": "entry",
+        "box": [
+          5,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 246.35,
+              "120": 470.3
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    52,
+                    188
+                  ]
+                ],
+                "lantern": [
+                  [
+                    52,
+                    188
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-5-3",
+        "group": "pond",
+        "box": [
+          5,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 252.45,
+              "120": 384
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    174,
+                    258
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    258
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    148,
+                    284
+                  ]
+                ],
+                "lantern": [
+                  [
+                    148,
+                    284
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-5-4",
+        "group": "pond",
+        "box": [
+          5,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 203.33,
+              "96": 262.28,
+              "120": 421.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    89,
+                    270
+                  ]
+                ],
+                "lantern": [
+                  [
+                    66,
+                    270
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-5-5",
+        "group": "pond",
+        "box": [
+          5,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 252.45,
+              "120": 453.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    78,
+                    210
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    73,
+                    236
+                  ]
+                ],
+                "lantern": [
+                  [
+                    52,
+                    236
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-7-3",
+        "group": "pond",
+        "box": [
+          7,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 131.14,
+              "72": 241.55,
+              "96": 314.64,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    174,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    148,
+                    390
+                  ]
+                ],
+                "lantern": [
+                  [
+                    148,
+                    390
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-7-4",
+        "group": "pond",
+        "box": [
+          7,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 299.33,
+              "96": 358.28,
+              "120": 421.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    114,
+                    414
+                  ]
+                ],
+                "lantern": [
+                  [
+                    114,
+                    414
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-7-5",
+        "group": "pond",
+        "box": [
+          7,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 243.1,
+              "96": 396.45,
+              "120": 453.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "lantern": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    100,
+                    236
+                  ],
+                  [
+                    330,
+                    438
+                  ]
+                ],
+                "lantern": [
+                  [
+                    100,
+                    236
+                  ],
+                  [
+                    330,
+                    438
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-8-3",
+        "group": "pond",
+        "box": [
+          8,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 131.14,
+              "72": 241.55,
+              "96": 300.45,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    246,
+                    378
+                  ]
+                ],
+                "lantern": [
+                  [
+                    246,
+                    378
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    162,
+                    404
+                  ]
+                ],
+                "lantern": [
+                  [
+                    162,
+                    404
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-8-4",
+        "group": "pond",
+        "box": [
+          8,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 289.55,
+              "96": 344.09,
+              "120": 421.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    402
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    138,
+                    428
+                  ]
+                ],
+                "lantern": [
+                  [
+                    138,
+                    428
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-8-5",
+        "group": "pond",
+        "box": [
+          8,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 233.31,
+              "96": 396.45,
+              "120": 453.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "lantern": [
+                  [
+                    342,
+                    426
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    124,
+                    222
+                  ],
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "lantern": [
+                  [
+                    124,
+                    222
+                  ],
+                  [
+                    316,
+                    452
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pond-8-6",
+        "group": "pond",
+        "box": [
+          8,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 223.21,
+              "96": 331.23,
+              "120": 555.96
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    120,
+                    198
+                  ],
+                  [
+                    340,
+                    486
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    198
+                  ],
+                  [
+                    340,
+                    486
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-8-7",
+        "group": "garden",
+        "box": [
+          8,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 185.31,
+              "96": 373.13,
+              "120": 524.69
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    124,
+                    174
+                  ],
+                  [
+                    364,
+                    500
+                  ]
+                ],
+                "lantern": [
+                  [
+                    124,
+                    174
+                  ],
+                  [
+                    364,
+                    500
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-10-7",
+        "group": "garden",
+        "box": [
+          10,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 260.54,
+              "120": 438.71
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    390,
+                    522
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    522
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    364,
+                    548
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    548
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-11-7",
+        "group": "garden",
+        "box": [
+          11,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    462,
+                    546
+                  ]
+                ],
+                "lantern": [
+                  [
+                    462,
+                    546
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    572
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-12-7",
+        "group": "garden",
+        "box": [
+          12,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 252.45,
+              "120": 336
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "lantern": [
+                  [
+                    486,
+                    570
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    460,
+                    596
+                  ]
+                ],
+                "lantern": [
+                  [
+                    460,
+                    596
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-14-7",
+        "group": "garden",
+        "box": [
+          14,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    534,
+                    618
+                  ]
+                ],
+                "lantern": [
+                  [
+                    534,
+                    618
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    508,
+                    654
+                  ]
+                ],
+                "lantern": [
+                  [
+                    508,
+                    654
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-15-7",
+        "group": "garden",
+        "box": [
+          15,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 235.15
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-15-9",
+        "group": "garden",
+        "box": [
+          15,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    558,
+                    690
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    690
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    532,
+                    716
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    716
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-17-9",
+        "group": "garden",
+        "box": [
+          17,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "lantern": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    580,
+                    716
+                  ]
+                ],
+                "lantern": [
+                  [
+                    580,
+                    716
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-17-10",
+        "group": "garden",
+        "box": [
+          17,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 218.64,
+              "120": 277.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "lantern": [
+                  [
+                    630,
+                    714
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    594,
+                    740
+                  ]
+                ],
+                "lantern": [
+                  [
+                    594,
+                    740
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-17-11",
+        "group": "garden",
+        "box": [
+          17,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 218.64,
+              "120": 277.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "lantern": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    628,
+                    774
+                  ]
+                ],
+                "lantern": [
+                  [
+                    628,
+                    774
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-17-12",
+        "group": "garden",
+        "box": [
+          17,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    678,
+                    762
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    762
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    652,
+                    788
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    788
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-9-12",
+        "group": "south",
+        "box": [
+          9,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 348.45,
+              "120": 477.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    870,
+                    1002
+                  ]
+                ],
+                "lantern": [
+                  [
+                    870,
+                    1002
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    844,
+                    1038
+                  ]
+                ],
+                "lantern": [
+                  [
+                    844,
+                    1038
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-14-12",
+        "group": "south",
+        "box": [
+          14,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 405.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    750,
+                    834
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    834
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    666,
+                    860
+                  ]
+                ],
+                "lantern": [
+                  [
+                    666,
+                    860
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-15-12",
+        "group": "south",
+        "box": [
+          15,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    678,
+                    810
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    810
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    652,
+                    836
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    836
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-9-14",
+        "group": "south",
+        "box": [
+          9,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 273.4,
+              "120": 381.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    870,
+                    954
+                  ]
+                ],
+                "lantern": [
+                  [
+                    870,
+                    954
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    844,
+                    980
+                  ]
+                ],
+                "lantern": [
+                  [
+                    844,
+                    980
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-10-14",
+        "group": "south",
+        "box": [
+          10,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    846,
+                    930
+                  ]
+                ],
+                "lantern": [
+                  [
+                    846,
+                    930
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    820,
+                    966
+                  ]
+                ],
+                "lantern": [
+                  [
+                    820,
+                    966
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-11-14",
+        "group": "south",
+        "box": [
+          11,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 204.45,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "lantern": [
+                  [
+                    835,
+                    906
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    811,
+                    932
+                  ]
+                ],
+                "lantern": [
+                  [
+                    836,
+                    932
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-13-14",
+        "group": "south",
+        "box": [
+          13,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 204.45,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    774,
+                    858
+                  ]
+                ],
+                "lantern": [
+                  [
+                    774,
+                    850
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    748,
+                    876
+                  ]
+                ],
+                "lantern": [
+                  [
+                    748,
+                    848
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-14-14",
+        "group": "south",
+        "box": [
+          14,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    750,
+                    834
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    834
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    714,
+                    860
+                  ]
+                ],
+                "lantern": [
+                  [
+                    714,
+                    860
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-7-11",
+        "group": "late",
+        "box": [
+          7,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 179.14,
+              "72": 241.55,
+              "96": 322.73,
+              "120": 411.96
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    942,
+                    1122
+                  ]
+                ],
+                "lantern": [
+                  [
+                    942,
+                    1122
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    906,
+                    1148
+                  ]
+                ],
+                "lantern": [
+                  [
+                    906,
+                    1148
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-7-12",
+        "group": "late",
+        "box": [
+          7,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 166.28,
+              "72": 279.76,
+              "96": 308.95,
+              "120": 371.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    918,
+                    1002
+                  ],
+                  [
+                    1062,
+                    1146
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    1002
+                  ],
+                  [
+                    1062,
+                    1146
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    892,
+                    1172
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    1172
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-7-14",
+        "group": "late",
+        "box": [
+          7,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 100.71,
+              "72": 179.65,
+              "96": 254.85,
+              "120": 333.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    918,
+                    954
+                  ],
+                  [
+                    1110,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    954
+                  ],
+                  [
+                    1110,
+                    1176
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    892,
+                    980
+                  ],
+                  [
+                    1084,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    980
+                  ],
+                  [
+                    1084,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-5-12",
+        "group": "late",
+        "box": [
+          5,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 260.95,
+              "120": 285.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1062,
+                    1146
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1062,
+                    1146
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1026,
+                    1172
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1026,
+                    1172
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-5-13",
+        "group": "late",
+        "box": [
+          5,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 247,
+              "120": 288
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1060,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1060,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-5-14",
+        "group": "late",
+        "box": [
+          5,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 177.4,
+              "120": 285.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1110,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1176
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1084,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1084,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-5-15",
+        "group": "late",
+        "box": [
+          5,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 1176,
+            "ideal": {
+              "48": 41.57,
+              "72": 67.88,
+              "96": 119.59,
+              "120": 203.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1134,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1176
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1108,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1108,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "arc": [
+    {
+      "id": "entry-1-7",
+      "box": [
+        1,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    92
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    92
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    92
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    92
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    117
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    117
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    117
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    117
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-2-7",
+      "box": [
+        2,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    141
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    141
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    141
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    141
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-4-7",
+      "box": [
+        4,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    28,
+                    174
+                  ]
+                ],
+                "lantern": [
+                  [
+                    28,
+                    174
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    28,
+                    174
+                  ]
+                ],
+                "lantern": [
+                  [
+                    28,
+                    174
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    3,
+                    203
+                  ],
+                  [
+                    1041,
+                    1067
+                  ]
+                ],
+                "lantern": [
+                  [
+                    3,
+                    203
+                  ],
+                  [
+                    1041,
+                    1067
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    3,
+                    203
+                  ],
+                  [
+                    1041,
+                    1067
+                  ]
+                ],
+                "lantern": [
+                  [
+                    3,
+                    203
+                  ],
+                  [
+                    1041,
+                    1067
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-5-7",
+      "box": [
+        5,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    52,
+                    188
+                  ]
+                ],
+                "lantern": [
+                  [
+                    52,
+                    188
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    52,
+                    188
+                  ]
+                ],
+                "lantern": [
+                  [
+                    52,
+                    188
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    27,
+                    213
+                  ],
+                  [
+                    1017,
+                    1077
+                  ]
+                ],
+                "lantern": [
+                  [
+                    27,
+                    213
+                  ],
+                  [
+                    1017,
+                    1077
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    27,
+                    213
+                  ],
+                  [
+                    1017,
+                    1077
+                  ]
+                ],
+                "lantern": [
+                  [
+                    27,
+                    213
+                  ],
+                  [
+                    1017,
+                    1077
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-5-3",
+      "box": [
+        5,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    174,
+                    258
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    258
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    174,
+                    258
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    258
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    148,
+                    284
+                  ]
+                ],
+                "lantern": [
+                  [
+                    148,
+                    284
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    148,
+                    284
+                  ]
+                ],
+                "lantern": [
+                  [
+                    148,
+                    284
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    65,
+                    78
+                  ],
+                  [
+                    94,
+                    309
+                  ]
+                ],
+                "lantern": [
+                  [
+                    57,
+                    309
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    65,
+                    78
+                  ],
+                  [
+                    94,
+                    309
+                  ]
+                ],
+                "lantern": [
+                  [
+                    57,
+                    309
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-5-4",
+      "box": [
+        5,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    90,
+                    270
+                  ]
+                ],
+                "lantern": [
+                  [
+                    66,
+                    270
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    90,
+                    270
+                  ]
+                ],
+                "lantern": [
+                  [
+                    66,
+                    270
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    37,
+                    42
+                  ],
+                  [
+                    52,
+                    68
+                  ],
+                  [
+                    93,
+                    299
+                  ]
+                ],
+                "lantern": [
+                  [
+                    37,
+                    299
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    37,
+                    42
+                  ],
+                  [
+                    52,
+                    68
+                  ],
+                  [
+                    93,
+                    299
+                  ]
+                ],
+                "lantern": [
+                  [
+                    37,
+                    299
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-5-5",
+      "box": [
+        5,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    78,
+                    210
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    210
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    78,
+                    210
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    210
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    52,
+                    236
+                  ]
+                ],
+                "lantern": [
+                  [
+                    52,
+                    236
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    52,
+                    236
+                  ]
+                ],
+                "lantern": [
+                  [
+                    52,
+                    236
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    27,
+                    279
+                  ]
+                ],
+                "lantern": [
+                  [
+                    27,
+                    279
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    27,
+                    279
+                  ]
+                ],
+                "lantern": [
+                  [
+                    27,
+                    279
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-7-3",
+      "box": [
+        7,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    174,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    306
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    174,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    306
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    148,
+                    390
+                  ]
+                ],
+                "lantern": [
+                  [
+                    148,
+                    390
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    148,
+                    390
+                  ]
+                ],
+                "lantern": [
+                  [
+                    148,
+                    390
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    105,
+                    419
+                  ]
+                ],
+                "lantern": [
+                  [
+                    105,
+                    419
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    105,
+                    419
+                  ]
+                ],
+                "lantern": [
+                  [
+                    105,
+                    419
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-7-4",
+      "box": [
+        7,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    114,
+                    414
+                  ]
+                ],
+                "lantern": [
+                  [
+                    114,
+                    414
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    114,
+                    414
+                  ]
+                ],
+                "lantern": [
+                  [
+                    114,
+                    414
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    85,
+                    443
+                  ]
+                ],
+                "lantern": [
+                  [
+                    85,
+                    443
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    85,
+                    443
+                  ]
+                ],
+                "lantern": [
+                  [
+                    85,
+                    443
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-7-5",
+      "box": [
+        7,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "lantern": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "lantern": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    100,
+                    236
+                  ],
+                  [
+                    330,
+                    438
+                  ]
+                ],
+                "lantern": [
+                  [
+                    100,
+                    236
+                  ],
+                  [
+                    330,
+                    438
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    100,
+                    236
+                  ],
+                  [
+                    330,
+                    438
+                  ]
+                ],
+                "lantern": [
+                  [
+                    100,
+                    236
+                  ],
+                  [
+                    330,
+                    438
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    75,
+                    471
+                  ]
+                ],
+                "lantern": [
+                  [
+                    75,
+                    471
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    75,
+                    471
+                  ]
+                ],
+                "lantern": [
+                  [
+                    75,
+                    471
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-8-3",
+      "box": [
+        8,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    246,
+                    378
+                  ]
+                ],
+                "lantern": [
+                  [
+                    246,
+                    378
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    246,
+                    378
+                  ]
+                ],
+                "lantern": [
+                  [
+                    246,
+                    378
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    162,
+                    404
+                  ]
+                ],
+                "lantern": [
+                  [
+                    162,
+                    404
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    162,
+                    404
+                  ]
+                ],
+                "lantern": [
+                  [
+                    162,
+                    404
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    129,
+                    429
+                  ]
+                ],
+                "lantern": [
+                  [
+                    129,
+                    429
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    129,
+                    429
+                  ]
+                ],
+                "lantern": [
+                  [
+                    129,
+                    429
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-8-4",
+      "box": [
+        8,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    402
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    402
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    138,
+                    428
+                  ]
+                ],
+                "lantern": [
+                  [
+                    138,
+                    428
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    138,
+                    428
+                  ]
+                ],
+                "lantern": [
+                  [
+                    138,
+                    428
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    109,
+                    453
+                  ]
+                ],
+                "lantern": [
+                  [
+                    109,
+                    453
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    109,
+                    453
+                  ]
+                ],
+                "lantern": [
+                  [
+                    109,
+                    453
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-8-5",
+      "box": [
+        8,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "lantern": [
+                  [
+                    342,
+                    426
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "lantern": [
+                  [
+                    342,
+                    426
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    124,
+                    222
+                  ],
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "lantern": [
+                  [
+                    124,
+                    222
+                  ],
+                  [
+                    316,
+                    452
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    124,
+                    222
+                  ],
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "lantern": [
+                  [
+                    124,
+                    222
+                  ],
+                  [
+                    316,
+                    452
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    99,
+                    495
+                  ]
+                ],
+                "lantern": [
+                  [
+                    99,
+                    495
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    99,
+                    495
+                  ]
+                ],
+                "lantern": [
+                  [
+                    99,
+                    495
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pond-8-6",
+      "box": [
+        8,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    120,
+                    198
+                  ],
+                  [
+                    340,
+                    486
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    198
+                  ],
+                  [
+                    340,
+                    486
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    120,
+                    198
+                  ],
+                  [
+                    340,
+                    486
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    198
+                  ],
+                  [
+                    340,
+                    486
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    96,
+                    227
+                  ],
+                  [
+                    315,
+                    515
+                  ]
+                ],
+                "lantern": [
+                  [
+                    96,
+                    227
+                  ],
+                  [
+                    315,
+                    515
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    96,
+                    227
+                  ],
+                  [
+                    315,
+                    515
+                  ]
+                ],
+                "lantern": [
+                  [
+                    96,
+                    227
+                  ],
+                  [
+                    315,
+                    515
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-8-7",
+      "box": [
+        8,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    124,
+                    174
+                  ],
+                  [
+                    364,
+                    500
+                  ]
+                ],
+                "lantern": [
+                  [
+                    124,
+                    174
+                  ],
+                  [
+                    364,
+                    500
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    124,
+                    174
+                  ],
+                  [
+                    364,
+                    500
+                  ]
+                ],
+                "lantern": [
+                  [
+                    124,
+                    174
+                  ],
+                  [
+                    364,
+                    500
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    99,
+                    203
+                  ],
+                  [
+                    339,
+                    525
+                  ],
+                  [
+                    984,
+                    1067
+                  ]
+                ],
+                "lantern": [
+                  [
+                    99,
+                    203
+                  ],
+                  [
+                    339,
+                    525
+                  ],
+                  [
+                    984,
+                    1067
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    99,
+                    203
+                  ],
+                  [
+                    339,
+                    525
+                  ],
+                  [
+                    984,
+                    1067
+                  ]
+                ],
+                "lantern": [
+                  [
+                    99,
+                    203
+                  ],
+                  [
+                    339,
+                    525
+                  ],
+                  [
+                    984,
+                    1067
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-10-7",
+      "box": [
+        10,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    390,
+                    522
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    522
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    390,
+                    522
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    522
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    364,
+                    548
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    548
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    364,
+                    548
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    548
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    339,
+                    573
+                  ],
+                  [
+                    997,
+                    1023
+                  ]
+                ],
+                "lantern": [
+                  [
+                    339,
+                    573
+                  ],
+                  [
+                    997,
+                    1023
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    339,
+                    573
+                  ],
+                  [
+                    997,
+                    1023
+                  ]
+                ],
+                "lantern": [
+                  [
+                    339,
+                    573
+                  ],
+                  [
+                    997,
+                    1023
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-11-7",
+      "box": [
+        11,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    462,
+                    546
+                  ]
+                ],
+                "lantern": [
+                  [
+                    462,
+                    546
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    462,
+                    546
+                  ]
+                ],
+                "lantern": [
+                  [
+                    462,
+                    546
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    572
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    572
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    349,
+                    597
+                  ]
+                ],
+                "lantern": [
+                  [
+                    349,
+                    597
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    349,
+                    597
+                  ]
+                ],
+                "lantern": [
+                  [
+                    349,
+                    597
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-12-7",
+      "box": [
+        12,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "lantern": [
+                  [
+                    486,
+                    570
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "lantern": [
+                  [
+                    486,
+                    570
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    460,
+                    596
+                  ]
+                ],
+                "lantern": [
+                  [
+                    460,
+                    596
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    460,
+                    596
+                  ]
+                ],
+                "lantern": [
+                  [
+                    460,
+                    596
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    369,
+                    621
+                  ]
+                ],
+                "lantern": [
+                  [
+                    369,
+                    621
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    369,
+                    621
+                  ]
+                ],
+                "lantern": [
+                  [
+                    369,
+                    621
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-14-7",
+      "box": [
+        14,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    534,
+                    618
+                  ]
+                ],
+                "lantern": [
+                  [
+                    534,
+                    618
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    534,
+                    618
+                  ]
+                ],
+                "lantern": [
+                  [
+                    534,
+                    618
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    508,
+                    654
+                  ]
+                ],
+                "lantern": [
+                  [
+                    508,
+                    654
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    508,
+                    654
+                  ]
+                ],
+                "lantern": [
+                  [
+                    508,
+                    654
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    483,
+                    683
+                  ]
+                ],
+                "lantern": [
+                  [
+                    483,
+                    683
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    483,
+                    683
+                  ]
+                ],
+                "lantern": [
+                  [
+                    483,
+                    683
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-15-7",
+      "box": [
+        15,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    507,
+                    693
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    693
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    507,
+                    693
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    693
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-15-9",
+      "box": [
+        15,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    558,
+                    690
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    690
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    558,
+                    690
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    690
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    532,
+                    716
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    716
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    532,
+                    716
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    716
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    507,
+                    741
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    741
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    507,
+                    741
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    741
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-17-9",
+      "box": [
+        17,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "lantern": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "lantern": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    580,
+                    716
+                  ]
+                ],
+                "lantern": [
+                  [
+                    580,
+                    716
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    580,
+                    716
+                  ]
+                ],
+                "lantern": [
+                  [
+                    580,
+                    716
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    555,
+                    741
+                  ]
+                ],
+                "lantern": [
+                  [
+                    555,
+                    741
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    555,
+                    741
+                  ]
+                ],
+                "lantern": [
+                  [
+                    555,
+                    741
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-17-10",
+      "box": [
+        17,
+        10
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "lantern": [
+                  [
+                    630,
+                    714
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "lantern": [
+                  [
+                    630,
+                    714
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    594,
+                    740
+                  ]
+                ],
+                "lantern": [
+                  [
+                    594,
+                    740
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    594,
+                    740
+                  ]
+                ],
+                "lantern": [
+                  [
+                    594,
+                    740
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    565,
+                    783
+                  ]
+                ],
+                "lantern": [
+                  [
+                    565,
+                    783
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    565,
+                    783
+                  ]
+                ],
+                "lantern": [
+                  [
+                    565,
+                    783
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-17-11",
+      "box": [
+        17,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "lantern": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "lantern": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    628,
+                    774
+                  ]
+                ],
+                "lantern": [
+                  [
+                    628,
+                    774
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    628,
+                    774
+                  ]
+                ],
+                "lantern": [
+                  [
+                    628,
+                    774
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    585,
+                    803
+                  ]
+                ],
+                "lantern": [
+                  [
+                    585,
+                    803
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    585,
+                    803
+                  ]
+                ],
+                "lantern": [
+                  [
+                    585,
+                    803
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-17-12",
+      "box": [
+        17,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    678,
+                    762
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    762
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    678,
+                    762
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    762
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    652,
+                    788
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    788
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    652,
+                    788
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    788
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    627,
+                    813
+                  ]
+                ],
+                "lantern": [
+                  [
+                    627,
+                    813
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    627,
+                    813
+                  ]
+                ],
+                "lantern": [
+                  [
+                    627,
+                    813
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-9-12",
+      "box": [
+        9,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    870,
+                    1002
+                  ]
+                ],
+                "lantern": [
+                  [
+                    870,
+                    1002
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    870,
+                    1002
+                  ]
+                ],
+                "lantern": [
+                  [
+                    870,
+                    1002
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    844,
+                    1038
+                  ]
+                ],
+                "lantern": [
+                  [
+                    844,
+                    1038
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    844,
+                    1038
+                  ]
+                ],
+                "lantern": [
+                  [
+                    844,
+                    1038
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    819,
+                    1167
+                  ]
+                ],
+                "lantern": [
+                  [
+                    819,
+                    1167
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    819,
+                    1167
+                  ]
+                ],
+                "lantern": [
+                  [
+                    819,
+                    1167
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-14-12",
+      "box": [
+        14,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    750,
+                    834
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    834
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    750,
+                    834
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    834
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    666,
+                    860
+                  ]
+                ],
+                "lantern": [
+                  [
+                    666,
+                    860
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    666,
+                    860
+                  ]
+                ],
+                "lantern": [
+                  [
+                    666,
+                    860
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    637,
+                    885
+                  ]
+                ],
+                "lantern": [
+                  [
+                    637,
+                    885
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    637,
+                    885
+                  ]
+                ],
+                "lantern": [
+                  [
+                    637,
+                    885
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-15-12",
+      "box": [
+        15,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    678,
+                    810
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    810
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    678,
+                    810
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    810
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    652,
+                    836
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    836
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    652,
+                    836
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    836
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    627,
+                    861
+                  ]
+                ],
+                "lantern": [
+                  [
+                    627,
+                    861
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    627,
+                    861
+                  ]
+                ],
+                "lantern": [
+                  [
+                    627,
+                    861
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-9-14",
+      "box": [
+        9,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    870,
+                    954
+                  ]
+                ],
+                "lantern": [
+                  [
+                    870,
+                    954
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    870,
+                    954
+                  ]
+                ],
+                "lantern": [
+                  [
+                    870,
+                    954
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    844,
+                    980
+                  ]
+                ],
+                "lantern": [
+                  [
+                    844,
+                    980
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    844,
+                    980
+                  ]
+                ],
+                "lantern": [
+                  [
+                    844,
+                    980
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    819,
+                    1005
+                  ],
+                  [
+                    1089,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    819,
+                    1005
+                  ],
+                  [
+                    1089,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    819,
+                    1005
+                  ],
+                  [
+                    1089,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    819,
+                    1005
+                  ],
+                  [
+                    1089,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-10-14",
+      "box": [
+        10,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    846,
+                    930
+                  ]
+                ],
+                "lantern": [
+                  [
+                    846,
+                    930
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    846,
+                    930
+                  ]
+                ],
+                "lantern": [
+                  [
+                    846,
+                    930
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    820,
+                    966
+                  ]
+                ],
+                "lantern": [
+                  [
+                    820,
+                    966
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    820,
+                    966
+                  ]
+                ],
+                "lantern": [
+                  [
+                    820,
+                    966
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    795,
+                    995
+                  ]
+                ],
+                "lantern": [
+                  [
+                    795,
+                    995
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    795,
+                    995
+                  ]
+                ],
+                "lantern": [
+                  [
+                    795,
+                    995
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-11-14",
+      "box": [
+        11,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    796,
+                    932
+                  ]
+                ],
+                "lantern": [
+                  [
+                    796,
+                    932
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    796,
+                    932
+                  ]
+                ],
+                "lantern": [
+                  [
+                    796,
+                    932
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    771,
+                    975
+                  ]
+                ],
+                "lantern": [
+                  [
+                    771,
+                    975
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    771,
+                    975
+                  ]
+                ],
+                "lantern": [
+                  [
+                    771,
+                    975
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-13-14",
+      "box": [
+        13,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    774,
+                    858
+                  ]
+                ],
+                "lantern": [
+                  [
+                    774,
+                    858
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    774,
+                    858
+                  ]
+                ],
+                "lantern": [
+                  [
+                    774,
+                    858
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    748,
+                    884
+                  ]
+                ],
+                "lantern": [
+                  [
+                    748,
+                    884
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    748,
+                    884
+                  ]
+                ],
+                "lantern": [
+                  [
+                    748,
+                    884
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    705,
+                    909
+                  ]
+                ],
+                "lantern": [
+                  [
+                    705,
+                    909
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    705,
+                    909
+                  ]
+                ],
+                "lantern": [
+                  [
+                    705,
+                    909
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-14-14",
+      "box": [
+        14,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    750,
+                    834
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    834
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    750,
+                    834
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    834
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    714,
+                    860
+                  ]
+                ],
+                "lantern": [
+                  [
+                    714,
+                    860
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    714,
+                    860
+                  ]
+                ],
+                "lantern": [
+                  [
+                    714,
+                    860
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    685,
+                    885
+                  ]
+                ],
+                "lantern": [
+                  [
+                    685,
+                    885
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    685,
+                    885
+                  ]
+                ],
+                "lantern": [
+                  [
+                    685,
+                    885
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-7-11",
+      "box": [
+        7,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    942,
+                    1122
+                  ]
+                ],
+                "lantern": [
+                  [
+                    942,
+                    1122
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    942,
+                    1122
+                  ]
+                ],
+                "lantern": [
+                  [
+                    942,
+                    1122
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    906,
+                    1148
+                  ]
+                ],
+                "lantern": [
+                  [
+                    906,
+                    1148
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    906,
+                    1148
+                  ]
+                ],
+                "lantern": [
+                  [
+                    906,
+                    1148
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    445,
+                    471
+                  ],
+                  [
+                    877,
+                    1173
+                  ]
+                ],
+                "lantern": [
+                  [
+                    445,
+                    471
+                  ],
+                  [
+                    877,
+                    1173
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    445,
+                    471
+                  ],
+                  [
+                    877,
+                    1173
+                  ]
+                ],
+                "lantern": [
+                  [
+                    445,
+                    471
+                  ],
+                  [
+                    877,
+                    1173
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-7-12",
+      "box": [
+        7,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    918,
+                    1002
+                  ],
+                  [
+                    1062,
+                    1146
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    1002
+                  ],
+                  [
+                    1062,
+                    1146
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    918,
+                    1002
+                  ],
+                  [
+                    1062,
+                    1146
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    1002
+                  ],
+                  [
+                    1062,
+                    1146
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    892,
+                    1172
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    1172
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    892,
+                    1172
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    1172
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    867,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    867,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    867,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    867,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-7-14",
+      "box": [
+        7,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    918,
+                    954
+                  ],
+                  [
+                    1110,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    954
+                  ],
+                  [
+                    1110,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    918,
+                    954
+                  ],
+                  [
+                    1110,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    954
+                  ],
+                  [
+                    1110,
+                    1176
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    892,
+                    980
+                  ],
+                  [
+                    1084,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    980
+                  ],
+                  [
+                    1084,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    892,
+                    980
+                  ],
+                  [
+                    1084,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    980
+                  ],
+                  [
+                    1084,
+                    1176
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    867,
+                    1005
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    867,
+                    1005
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    867,
+                    1005
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    867,
+                    1005
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-5-12",
+      "box": [
+        5,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1062,
+                    1146
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1062,
+                    1146
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1062,
+                    1146
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1062,
+                    1146
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1026,
+                    1172
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1026,
+                    1172
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1026,
+                    1172
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1026,
+                    1172
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    915,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    915,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    915,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    915,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-5-13",
+      "box": [
+        5,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1060,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1060,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1060,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1060,
+                    1176
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    912,
+                    999
+                  ],
+                  [
+                    1017,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    912,
+                    999
+                  ],
+                  [
+                    1017,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    912,
+                    999
+                  ],
+                  [
+                    1017,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    912,
+                    999
+                  ],
+                  [
+                    1017,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-5-14",
+      "box": [
+        5,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1110,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1110,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1176
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1084,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1084,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1084,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1084,
+                    1176
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    915,
+                    975
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    915,
+                    975
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    915,
+                    975
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    915,
+                    975
+                  ],
+                  [
+                    1059,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-5-15",
+      "box": [
+        5,
+        15
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1134,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1134,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1176
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1108,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1108,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1108,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1108,
+                    1176
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    925,
+                    951
+                  ],
+                  [
+                    1083,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    925,
+                    951
+                  ],
+                  [
+                    1083,
+                    1176
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    925,
+                    951
+                  ],
+                  [
+                    1083,
+                    1176
+                  ]
+                ],
+                "lantern": [
+                  [
+                    925,
+                    951
+                  ],
+                  [
+                    1083,
+                    1176
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "visibility": {
+    "sceneryPlacements": 200,
+    "camera": {
+      "mode": "default framed orthographic overview",
+      "yaw": 2.45,
+      "pitch": 0.68,
+      "directionTowardCamera": [
+        0.4959084333621017,
+        0.6287930240184686,
+        -0.5989108102765015
+      ],
+      "aspect": 1.25,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "radius": 265.51266374693824
+    },
+    "method": {
+      "groundY": 24,
+      "rayOriginY": 24.01,
+      "clearingSize": [
+        24,
+        24
+      ],
+      "sampleSpacing": 1,
+      "sampleOffsets": [
+        0.5,
+        23.5
+      ],
+      "samplesPerSite": 576,
+      "totalSiteSamples": 23040,
+      "rayLength": 2000,
+      "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+      "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+      "areaTolerance": 1e-8
+    },
+    "limitations": [
+      "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+      "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+      "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+      "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+    ],
+    "sites": [
+      {
+        "id": "entry-1-7",
+        "box": [
+          1,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-2-7",
+        "box": [
+          2,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-4-7",
+        "box": [
+          4,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-5-7",
+        "box": [
+          5,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-5-3",
+        "box": [
+          5,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-5-4",
+        "box": [
+          5,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-5-5",
+        "box": [
+          5,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-7-3",
+        "box": [
+          7,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-7-4",
+        "box": [
+          7,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-7-5",
+        "box": [
+          7,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-8-3",
+        "box": [
+          8,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-8-4",
+        "box": [
+          8,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-8-5",
+        "box": [
+          8,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "pond-8-6",
+        "box": [
+          8,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-8-7",
+        "box": [
+          8,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-10-7",
+        "box": [
+          10,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-11-7",
+        "box": [
+          11,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-12-7",
+        "box": [
+          12,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-14-7",
+        "box": [
+          14,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-15-7",
+        "box": [
+          15,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-15-9",
+        "box": [
+          15,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-17-9",
+        "box": [
+          17,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-17-10",
+        "box": [
+          17,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-17-11",
+        "box": [
+          17,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-17-12",
+        "box": [
+          17,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-9-12",
+        "box": [
+          9,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-14-12",
+        "box": [
+          14,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-15-12",
+        "box": [
+          15,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-9-14",
+        "box": [
+          9,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-10-14",
+        "box": [
+          10,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-11-14",
+        "box": [
+          11,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-13-14",
+        "box": [
+          13,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-14-14",
+        "box": [
+          14,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-7-11",
+        "box": [
+          7,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-7-12",
+        "box": [
+          7,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-7-14",
+        "box": [
+          7,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-5-12",
+        "box": [
+          5,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-5-13",
+        "box": [
+          5,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-5-14",
+        "box": [
+          5,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-5-15",
+        "box": [
+          5,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      }
+    ],
+    "passed": true
+  },
+  "passed": true
+}

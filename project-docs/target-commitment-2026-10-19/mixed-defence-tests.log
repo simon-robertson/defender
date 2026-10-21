@@ -1,0 +1,70 @@
+bun test v1.4.2 (744846f84)
+
+tests/drone-combat.test.js:
+(pass) base timing is independent and a settled twin-gun burst applies ten single 10HP rounds with five-second cooldown [69.72ms]
+(pass) expiry finishes the current valid burst then begins returning immediately without waiting for weapon cooldown [36.04ms]
+(pass) expiry in cooldown returns without starting a new burst; obstruction or death cancels remaining rounds safely [169.54ms]
+(pass) return, neutral pad hover and ten-second recharge preserve clocks and reset reuses every fleet slot [30.18ms]
+(pass) long frames emit at most one current round and unreachable/occluded targets receive no hits [26.62ms]
+(pass) mobile burst commitments stop before range exit and never promise unknown or banking future poses [26.69ms]
+(pass) head-on returning aircraft hold safely, replan around each other and both reach their own pads [41.69ms]
+(pass) an empty held return plan cannot align, descend or snap the aircraft to a distant home goal [24.66ms]
+(pass) return releases stale attack braking flags and completes after target invalidation [26.65ms]
+(pass) retained head-on intents and a neutral launch share right of way and make useful return progress at30/60/120Hz [240.68ms]
+(pass) a level fuselage uses collective fan tilt for acceleration and differential tilt for yaw and yaw braking [24.56ms]
+(pass) a complete-route intercept remains committed through a target corner and holds a useful firing station [29.65ms]
+(pass) committed firing stations reserve space independently of current aircraft positions [27.67ms]
+(pass) a settled firing aircraft actively evades approaching birds and living flyers without current solid overlap [67.84ms]
+(pass) a target dying during travel releases its station and brakes without splicing a new path into momentum [25.70ms]
+(pass) range exit and a target passing underneath invalidate the station, reposition and resume the same enemy after the real cooldown [58.91ms]
+(pass) actual A1 first sorties launch safely, attack productively and finish returns at30/60/120Hz, including a live-wildlife reset [2154.80ms]
+(pass) the actual A1 fleet navigates, attacks ground and air, returns/recharges and releases without changing the landscape [910.83ms]
+
+tests/arc-combat.test.js:
+(pass) Arc studies hit once per pulse and destroy the mixed ground/air rosters [769.25ms]
+(pass) mixed defences share exactly one thinker and do not promise unverified Arc coverage [51.13ms]
+(pass) actual surface LOS, range exits and death cancel live bursts; a stall never replays hits [26.51ms]
+(pass) a surface-blocked priority target yields to hittable alternatives and retries later [25.63ms]
+(pass) upgrade bursts respect real gaps and cooldowns and stop immediately on obstruction [27.64ms]
+(pass) random contacts use exposed facing sides of current articulated poses and release all matrix references [493.10ms]
+
+tests/missile-integration.test.js:
+30 | test('all third levels isolate missile actors from mixed enemies and cosmetic wildlife',async()=>{
+31 |  for(const zone of ['A','B','C','D']){
+32 |   const f=await fixture(zone);try{
+33 |    expect(missileActorsForLevel(f.world.level.id)).toHaveLength(36);
+34 |    expect(missileActorsForLevel(f.world.level.id.replace('-03','-01'))).toHaveLength(0);
+35 |    expect(f.world.actors.size).toBe(zone==='C'?46:49);
+                                    ^
+error: expect(received).toBe(expected)
+
+Expected: 49
+Received: 47
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/missile-integration.test.js:35:32)
+(fail) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [839.22ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [244.44ms]
+102 |     entry.transforms.forEach((m,i)=>{transforms.set(m,i*16);indexToSlot[i]=i;});
+103 |     return [entry.key,{transforms,indexToSlot}];
+104 |    }));
+105 |    lights=new ModelLights(f.world.entries,draws);lights.prepare();
+106 |    const expected=zone==='A'?19:zone==='C'?7:13;
+107 |    expect(lights.count).toBe(expected);expect(lights.overflow).toBe(0);
+                              ^
+error: expect(received).toBe(expected)
+
+Expected: 13
+Received: 11
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/missile-integration.test.js:107:25)
+(fail) silo lights survive missile visibility changes and stay within the existing enemy-light budget [729.24ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [610.02ms]
+
+2 tests failed:
+(fail) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [839.22ms]
+(fail) silo lights survive missile visibility changes and stay within the existing enemy-light budget [729.24ms]
+
+ 26 pass
+ 2 fail
+ 404599 expect() calls
+Ran 28 tests across 3 files. [7.85s]

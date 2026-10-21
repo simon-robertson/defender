@@ -1,0 +1,26 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-roster.test.js:
+(pass) roster groups all upgrade tiers by defence family while retaining ownership order and identity [0.13ms]
+(pass) group updates preserve row controls/focus and avoid moving unchanged DOM; empty families are removed [0.23ms]
+(pass) deployment advances through the visible grouped rows instead of interleaved purchase order [0.23ms]
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.09ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [2.45ms]
+(pass) consecutive preparation upgrades spend each step and the top tier survives the level boundary [3.30ms]
+(pass) upgrade availability follows progression, enabled tiers, phase and wallet [3.91ms]
+(pass) next undeployed selection advances in visible order, wraps and returns null only when none remain [1.70ms]
+(pass) 64 finite waves reward once, retain positions and transfer ownership across every level and zone boundary [3.88ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [0.80ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.66ms]
+(pass) successful waves settle for four seconds before reward or progression and pause freezes settlement [1.02ms]
+(pass) defeat cannot settle, invalid time is rejected and reset clears a pending settlement [1.02ms]
+(pass) family unlocks and upgrades retain correct model and family prices across levels [1.04ms]
+(pass) wave briefing reports effective species profiles and per-approach counts [1.07ms]
+(pass) Power generator purchase spends four tokens, remains base-only and survives redeployment and level transfer [2.01ms]
+
+ 16 pass
+ 0 fail
+ 669 expect() calls
+Ran 16 tests across 2 files. [37.00ms]

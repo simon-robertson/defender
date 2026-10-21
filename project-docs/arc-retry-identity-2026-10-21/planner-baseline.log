@@ -1,0 +1,33 @@
+bun test v1.4.2 (744846f84)
+
+tests/target-planner.test.js:
+Verified pre-fix Arc SHA-256: 9331c4823b3e85ed94caca21387515749cdf3ca357e1ae6825bc155300fad4ea
+119 |   const random=()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return(seed>>>0)/4294967296;};
+120 |   const preview=new DefencePreview(world,()=>{},random,null,enemies.states,(target,strength,vx,vy,vz)=>enemies.takeHit(target,strength,vx,vy,vz),null,()=>{});
+121 |   try{
+122 |    expect(preview.planner.coverage.map(profile=>profile.size)).toEqual(id==='moss-01'?[3,3,3]:[0,0,0]);
+123 |    for(let frame=0;frame<2400;frame++){enemies.advance(1/60);preview.advance(1/60);}
+124 |    expect(preview.states.map(state=>state.cycle.shots)).toEqual(shots);expect(enemies.states.map(state=>state.health.hits)).toEqual(hits);
+                                                              ^
+error: expect(received).toEqual(expected)
+
+  [
+-   2,
+-   15,
+-   8,
++   0,
++   12,
++   5,
+  ]
+
+- Expected  - 3
++ Received  + 3
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/target-planner.test.js:124:57)
+(fail) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [923.54ms]
+
+ 0 pass
+ 31 filtered out
+ 1 fail
+ 14 expect() calls
+Ran 1 test across 1 file. [964.00ms]

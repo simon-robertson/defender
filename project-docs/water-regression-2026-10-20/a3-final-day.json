@@ -1,0 +1,90 @@
+{
+  "level": "moss-03",
+  "lighting": "day-14:00",
+  "elapsed": 310,
+  "sheen": true,
+  "waterPhase": 1.884955644607544,
+  "sunIntensity": 0.7621023654937744,
+  "sunY": 0.7385489344596863,
+  "waterMaterial": {
+    "type": "water",
+    "color": "#559B91",
+    "emission": 0,
+    "reflectiveness": 0.65,
+    "opacity": 0.16,
+    "absorption": 0.035,
+    "refraction": 0.65,
+    "rippleStrength": 0.16,
+    "rippleScale": 0.8,
+    "rippleSpeed": 0.13
+  },
+  "waterUniform80to91": [
+    0.09084171056747437,
+    0.3277781009674072,
+    0.28314873576164246,
+    0.6499999761581421,
+    0.1599999964237213,
+    0.03500000014901161,
+    0.6499999761581421,
+    0.1599999964237213,
+    0.800000011920929,
+    0.12999999523162842,
+    0,
+    0
+  ],
+  "waterDrawIndices": 126,
+  "waterBox": {
+    "box": [
+      13,
+      7
+    ],
+    "ground": 20,
+    "water": 22
+  },
+  "camera": {
+    "mode": "overview",
+    "target": [
+      324,
+      22,
+      180
+    ],
+    "eye": [
+      809.3811645507812,
+      615.4462280273438,
+      651.4093017578125
+    ],
+    "radius": 62,
+    "yaw": 0.8,
+    "pitch": 0.72
+  },
+  "gpuTimer": "off",
+  "depthProbe": {
+    "grid": [
+      64,
+      48
+    ],
+    "sampledWaterSurfacePixels": 850,
+    "sampledShadedWaterPixels": 638,
+    "shadedRatioOfImage": 0.20768229166666666,
+    "wetCenterPixel": [
+      823,
+      851
+    ],
+    "wetCenterOpaqueDepth": 0.41044753789901733,
+    "wetCenterWaterDepth": 0.40908288955688477,
+    "wetCenterNormalAlpha": 1,
+    "wetCenterShadesWater": true
+  },
+  "comparison": {
+    "sheenOnVsOff": {
+      "changedPixels": 2,
+      "changedFraction": 7.130673877204091e-7,
+      "meanAbsoluteRGBDifference": 2.3768912924013638e-7,
+      "maxChannelDifference": 1
+    },
+    "sunFlatIllumination": 0.5628498899846335,
+    "daylightIdentityExpected": true
+  },
+  "prepassAudit": null,
+  "errors": []
+}

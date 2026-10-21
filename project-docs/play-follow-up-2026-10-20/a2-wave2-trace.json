@@ -1,0 +1,3707 @@
+{
+  "wave": "a2-wave-2",
+  "placements": [
+    {
+      "id": "player-gun-1",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "box": [
+        16,
+        0,
+        9
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-2",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "box": [
+        17,
+        0,
+        7
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-3",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-4",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-5",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        10
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-6",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        8
+      ],
+      "turn": 0
+    }
+  ],
+  "killed": 7,
+  "escaped": 4,
+  "stats": [
+    {
+      "id": "player-gun-1",
+      "variant": "upgrade1",
+      "shots": 77,
+      "bySpecies": {
+        "roller": 48,
+        "moth": 5,
+        "dog": 24
+      },
+      "samples": 787,
+      "inRange": 1410,
+      "pitchReject": 84,
+      "blocked": 0,
+      "eligible": 1326,
+      "idleEligible": 1,
+      "idleNoEligible": 436,
+      "chosenNoShot": 35,
+      "episodes": [
+        {
+          "at": 42.00833333333143,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": true,
+          "wait": -42.00833333333143,
+          "remaining": 0,
+          "yawError": 0.9438177778385092,
+          "pitchError": -0.10199247423258972,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 440,
+              "x": 336.1166666666908,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 64.51366995535305,
+              "pitch": -12.857502355977818,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 43.00833333333137,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.4416666666666984,
+          "remaining": 0,
+          "yawError": -0.000017229853968458997,
+          "pitchError": -0.0000056482823433401386,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 404,
+              "x": 350.1166666666917,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 51.78108030714966,
+              "pitch": -15.71137251040933,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 44.008333333331315,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.700000000000017,
+          "remaining": 0,
+          "yawError": -0.00018168772488802443,
+          "pitchError": -0.00003677907228333277,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 368,
+              "x": 364.1166666666926,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 39.90672805984965,
+              "pitch": -19.755808837586343,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 45.00833333333126,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.9583333333333357,
+          "remaining": 0,
+          "yawError": -0.0009790782574373713,
+          "pitchError": -0.00006937730305228706,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 296,
+              "x": 378.1166666666935,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 29.930145524373103,
+              "pitch": -25.077727522149054,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 610,
+              "x": 338.91666666669096,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 61.92339577608508,
+              "pitch": -13.352441631900229,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 46.0083333333312,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.2066666666666706,
+          "remaining": 2,
+          "yawError": -0.002749716085942683,
+          "pitchError": 0,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 248,
+              "x": 392.1166666666944,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 24.312142599482307,
+              "pitch": -29.432469664511515,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 610,
+              "x": 352.91666666669187,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 49.317072207390204,
+              "pitch": -16.412341009664697,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 47.008333333331144,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 0.2166666666667112,
+          "remaining": 0,
+          "yawError": -0.002007428633238273,
+          "pitchError": 0.000027230635185893082,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 224,
+              "x": 406.1166666666953,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 26.04509444108476,
+              "pitch": -27.948377858117144,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 574,
+              "x": 366.9166666666928,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 37.70729740748147,
+              "pitch": -20.734467153165724,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 48.00833333333109,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 0.47500000000002984,
+          "remaining": 0,
+          "yawError": -0.0005025533515903291,
+          "pitchError": -0.0004330799745065894,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 188,
+              "x": 420,
+              "z": 204.11666666669623,
+              "aimY": 36.09000015258789,
+              "distance": 33.85873020521737,
+              "pitch": -22.68896051074519,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 550,
+              "x": 380.9166666666937,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 28.346198059768604,
+              "pitch": -26.179034910633508,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 341.71666666669205,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 59.35217163486962,
+              "pitch": -13.88216089821044,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 348.1666666666698,
+              "z": 204,
+              "aimY": 73,
+              "distance": 53.51661216648039,
+              "pitch": 21.132451220868656,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 49.00833333333103,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 0.7333333333333485,
+          "remaining": 0,
+          "yawError": -0.002001584777866272,
+          "pitchError": -0.00002573941565536808,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 152,
+              "x": 420,
+              "z": 218.11666666669714,
+              "aimY": 36.09000015258789,
+              "distance": 25.95535162114309,
+              "pitch": -28.021849646929557,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 538,
+              "x": 394.9166666666946,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 24.02443778969761,
+              "pitch": -29.692852719941023,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 355.71666666669296,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 46.8907980785391,
+              "pitch": -17.164591910264065,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 368.16666666666526,
+              "z": 204,
+              "aimY": 73,
+              "distance": 36.75179511866764,
+              "pitch": 28.866915129025397,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 50.008333333330974,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 0.9916666666666671,
+          "remaining": 0,
+          "yawError": -0.002757394159041082,
+          "pitchError": 0,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 116,
+              "x": 420,
+              "z": 232.11666666669805,
+              "aimY": 36.09000015258789,
+              "distance": 24.35050193414302,
+              "pitch": -29.398066226053764,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 502,
+              "x": 408.9166666666955,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 27.255096363405556,
+              "pitch": -26.991370692846136,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 369.71666666669387,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 35.59232517144225,
+              "pitch": -21.766937256946825,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 388.1666666666607,
+              "z": 204,
+              "aimY": 73,
+              "distance": 25.24601178624466,
+              "pitch": 37.56477917403867,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 51.00833333333092,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 1.240000000000002,
+          "remaining": 2,
+          "yawError": -0.0009747809607283386,
+          "pitchError": 0.00006961757447893069,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 104,
+              "x": 420,
+              "z": 246.11666666669896,
+              "aimY": 36.09000015258789,
+              "distance": 30.07014484687896,
+              "pitch": -24.984538132844552,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 466,
+              "x": 420,
+              "z": 206.91666666669641,
+              "aimY": 36.09000015258789,
+              "distance": 31.945374382579868,
+              "pitch": -23.796233971951164,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 383.7166666666948,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 26.960717308281826,
+              "pitch": -27.218580963671474,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 344.5166666666936,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 56.80258454602518,
+              "pitch": -14.449698543106582,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 408.16666666665617,
+              "z": 204,
+              "aimY": 72.99989595077932,
+              "distance": 26.90776426568217,
+              "pitch": 35.317476422457375,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 52.00833333333086,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 0.25000000000004263,
+          "remaining": 0,
+          "yawError": -0.0011977302913979138,
+          "pitchError": -0.00006422754489732174,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 80,
+              "x": 411.88333333330013,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 28.779858890841055,
+              "pitch": -25.86866892254783,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 430,
+              "x": 420,
+              "z": 220.91666666669732,
+              "aimY": 36.09000015258789,
+              "distance": 25.023461213642623,
+              "pitch": -28.806236592126613,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 397.7166666666957,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 24.06131634895614,
+              "pitch": -29.659242357167138,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 358.5166666666945,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 44.50842928901997,
+              "pitch": -17.97116886754572,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 420,
+              "z": 212.16666666665162,
+              "aimY": 72.96005427837372,
+              "distance": 28.75229459443056,
+              "pitch": 34.91941649846682,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 90,
+              "x": 348.1666666666698,
+              "z": 204,
+              "aimY": 73,
+              "distance": 53.51661216648039,
+              "pitch": 21.132451220868656,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 53.0083333333308,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 0.5083333333333613,
+          "remaining": 0,
+          "yawError": -0.002887527946122681,
+          "pitchError": 0,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 44,
+              "x": 397.8833333332992,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 24.073781266022916,
+              "pitch": -29.64789843333495,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 430,
+              "x": 420,
+              "z": 234.91666666669823,
+              "aimY": 36.09000015258789,
+              "distance": 24.976794785925083,
+              "pitch": -28.846570994137775,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 411.7166666666966,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 28.688213801351452,
+              "pitch": -25.93368303498156,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 372.5166666666954,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 33.5777745606092,
+              "pitch": -22.84540226380556,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 118,
+              "x": 420,
+              "z": 232.16666666664707,
+              "aimY": 73,
+              "distance": 24.359004723324553,
+              "pitch": 37.96861580834882,
+              "reason": "pitch"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 90,
+              "x": 368.16666666666526,
+              "z": 204,
+              "aimY": 73,
+              "distance": 36.75179511866764,
+              "pitch": 28.866915129025397,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 54.00833333333075,
+          "target": "a2-wave-2-roller-1",
+          "reservation": "a2-wave-2-roller-1",
+          "ready": false,
+          "wait": 0.7666666666666799,
+          "remaining": 0,
+          "yawError": -0.0017198192289837877,
+          "pitchError": 0.00004264805729309318,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 8,
+              "x": 383.8833333332983,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 26.885193157423284,
+              "pitch": -27.27743984790114,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 430,
+              "x": 420,
+              "z": 248.91666666669914,
+              "aimY": 36.09000015258789,
+              "distance": 31.835623826867334,
+              "pitch": -23.862831839209715,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 420,
+              "z": 209.7166666666975,
+              "aimY": 36.09000015258789,
+              "distance": 30.170851459258653,
+              "pitch": -24.917912719593303,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 386.5166666666963,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 25.80568951046549,
+              "pitch": -28.145165427465336,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 94,
+              "x": 419.8333333333575,
+              "z": 252,
+              "aimY": 72.92403888702393,
+              "distance": 33.823479681708214,
+              "pitch": 30.787299072539966,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 90,
+              "x": 388.1666666666607,
+              "z": 204,
+              "aimY": 73,
+              "distance": 25.24601178624466,
+              "pitch": 37.56477917403867,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 55.00833333333069,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.7750000000000128,
+          "remaining": 0,
+          "yawError": 0.425892716071969,
+          "pitchError": -0.00004976609436851964,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 430,
+              "x": 409.08333333329995,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 27.334476602090582,
+              "pitch": -26.930694535472856,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 420,
+              "z": 223.71666666669842,
+              "aimY": 36.09000015258789,
+              "distance": 24.379231826375754,
+              "pitch": -29.372346744541513,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 400.51666666669723,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 24.421307863790872,
+              "pitch": -29.33475643960748,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 336.11666666669305,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 64.51366995535095,
+              "pitch": -14.133314664604043,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 94,
+              "x": 399.833333333362,
+              "z": 252,
+              "aimY": 73,
+              "distance": 24.304206311761433,
+              "pitch": 38.35847963796481,
+              "reason": "pitch"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 54,
+              "x": 408.16666666665617,
+              "z": 204,
+              "aimY": 72.99989595077932,
+              "distance": 26.90776426568217,
+              "pitch": 35.317476422457375,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 56.00833333333063,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.028333333333336,
+          "remaining": 1,
+          "yawError": -0.002930242116847559,
+          "pitchError": 0,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 406,
+              "x": 395.08333333329904,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 24.01749940726221,
+              "pitch": -29.699184710780926,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 420,
+              "z": 237.71666666669933,
+              "aimY": 36.09000015258789,
+              "distance": 25.892346574069833,
+              "pitch": -28.073644502076124,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 414.51666666669814,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 30.312818154134234,
+              "pitch": -24.824542540528537,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 350.11666666669396,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 51.78108030714764,
+              "pitch": -17.240482131353954,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 94,
+              "x": 379.83333333336657,
+              "z": 252,
+              "aimY": 72.95436263084412,
+              "distance": 28.937192522945907,
+              "pitch": 32.94654265997594,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 54,
+              "x": 420,
+              "z": 212.16666666665162,
+              "aimY": 72.96005427837372,
+              "distance": 28.75229459443056,
+              "pitch": 34.91941649846682,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 57.008333333330576,
+          "target": "a2-wave-2-moth-10",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.03333333333338828,
+          "remaining": 0,
+          "yawError": 0.00036931383656835237,
+          "pitchError": -0.0002029228552543616,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 394,
+              "x": 381.0833333332981,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 28.257865178486053,
+              "pitch": -26.243112891618168,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 420,
+              "z": 251.71666666670023,
+              "aimY": 36.09000015258789,
+              "distance": 33.74137338312372,
+              "pitch": -22.754060634184658,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 420,
+              "z": 212.51666666669905,
+              "aimY": 36.09000015258789,
+              "distance": 28.561050595349396,
+              "pitch": -26.024406621941637,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 364.11666666669487,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 39.90672805984783,
+              "pitch": -21.613880541551744,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 94,
+              "x": 372,
+              "z": 264.1666666666289,
+              "aimY": 73,
+              "distance": 43.40538881031991,
+              "pitch": 24.47041844825244,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 42,
+              "x": 420,
+              "z": 232.16666666664707,
+              "aimY": 73,
+              "distance": 24.359004723324553,
+              "pitch": 37.96861580834882,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 58.00833333333052,
+          "target": "a2-wave-2-moth-10",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.29166666666670693,
+          "remaining": 0,
+          "yawError": 0.000016942127287311592,
+          "pitchError": -0.00004018228402663526,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 394,
+              "x": 372,
+              "z": 256.9166666667028,
+              "aimY": 36.09000015258789,
+              "distance": 37.57889848190337,
+              "pitch": -20.794477914346302,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 406.28333333329886,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 26.11028426585462,
+              "pitch": -27.895233359936253,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 420,
+              "z": 226.51666666669996,
+              "aimY": 36.09000015258789,
+              "distance": 24.045795428258952,
+              "pitch": -29.673379626980132,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 378.1166666666958,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 29.930145524371746,
+              "pitch": -27.304788038360634,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 338.91666666669323,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 61.923395776082984,
+              "pitch": -14.673296955042161,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 58,
+              "x": 372,
+              "z": 284.16666666662434,
+              "aimY": 73,
+              "distance": 61.079410969979804,
+              "pitch": 18.302569833692363,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 18,
+              "x": 419.8333333333575,
+              "z": 252,
+              "aimY": 72.92403888702393,
+              "distance": 33.823479681708214,
+              "pitch": 30.787299072539966,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 59.00833333333046,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.1400000000000077,
+          "remaining": 2,
+          "yawError": 0.00003199479493742885,
+          "pitchError": 0.00043234301965972,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 382,
+              "x": 372,
+              "z": 270.9166666667037,
+              "aimY": 36.09000015258789,
+              "distance": 49.171539306604544,
+              "pitch": -16.455655383436355,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 392.28333333329795,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 24.286078545359565,
+              "pitch": -29.455885838634597,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 644,
+              "x": 420,
+              "z": 240.51666666670087,
+              "aimY": 36.09000015258789,
+              "distance": 27.067821198709378,
+              "pitch": -27.13550551302702,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 392.1166666666967,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 24.312142599481945,
+              "pitch": -31.899529298508615,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 352.91666666669414,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 49.31707220738822,
+              "pitch": -18.001139069490947,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 18,
+              "x": 399.833333333362,
+              "z": 252,
+              "aimY": 73,
+              "distance": 24.304206311761433,
+              "pitch": 38.35847963796481,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 60.008333333330405,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.15000000000004832,
+          "remaining": 0,
+          "yawError": 7.100622312350424e-9,
+          "pitchError": 3.446304916443488e-8,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 358,
+              "x": 372,
+              "z": 284.9166666667046,
+              "aimY": 36.09000015258789,
+              "distance": 61.769789901283964,
+              "pitch": -13.382973574887,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 378.28333333329704,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 29.830861163886368,
+              "pitch": -25.14420409270963,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 644,
+              "x": 417.4833333332982,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 32.21076855819498,
+              "pitch": -23.63659233630513,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 198,
+              "x": 406.1166666666976,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 26.04509444108564,
+              "pitch": -30.34030012852639,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 366.91666666669505,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 37.707297407479714,
+              "pitch": -22.66616948904543,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 18,
+              "x": 379.83333333336657,
+              "z": 252,
+              "aimY": 72.95436263084412,
+              "distance": 28.937192522945907,
+              "pitch": 32.94654265997594,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 61.00833333333035,
+          "target": "a2-wave-2-moth-11",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.28333333333337407,
+          "remaining": 0,
+          "yawError": 0.00036931383656835237,
+          "pitchError": -0.0002029228552543616,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 372,
+              "z": 259.7166666667039,
+              "aimY": 36.09000015258789,
+              "distance": 39.77369664045328,
+              "pitch": -19.812472732180797,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 644,
+              "x": 403.4833333332973,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 25.139615704645102,
+              "pitch": -28.706280906469495,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 162,
+              "x": 420,
+              "z": 204.1166666666985,
+              "aimY": 34.5,
+              "distance": 33.858730205215764,
+              "pitch": -24.760113647047266,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 380.91666666669596,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 28.346198059767396,
+              "pitch": -28.472324146837135,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 341.7166666666934,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 59.35217163486838,
+              "pitch": -15.25072611083228,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 18,
+              "x": 372,
+              "z": 264.1666666666289,
+              "aimY": 73,
+              "distance": 43.40538881031991,
+              "pitch": 24.47041844825244,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 62.00833333333029,
+          "target": "a2-wave-2-roller-3",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.4166666666666998,
+          "remaining": 0,
+          "yawError": 0.0000179911476250183,
+          "pitchError": 0.000005854903569191272,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 372,
+              "z": 273.7166666667048,
+              "aimY": 36.09000015258789,
+              "distance": 51.63345437906122,
+              "pitch": -15.751719581902202,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 644,
+              "x": 389.4833333332964,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 24.868995646083615,
+              "pitch": -28.940146836151953,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 138,
+              "x": 420,
+              "z": 218.11666666669942,
+              "aimY": 34.5,
+              "distance": 25.955351621142228,
+              "pitch": -30.417656472109144,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 394.91666666669687,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 24.024437789697508,
+              "pitch": -32.17236642547185,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 355.7166666666943,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 46.89079807853793,
+              "pitch": -18.816248073887166,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 63.008333333330235,
+          "target": "a2-wave-2-roller-3",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.6750000000000185,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 568,
+              "x": 372,
+              "z": 287.7166666667057,
+              "aimY": 36.09000015258789,
+              "distance": 64.35899531365013,
+              "pitch": -12.886040444401846,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 644,
+              "x": 375.4833333332955,
+              "z": 252,
+              "aimY": 36.09000015258789,
+              "distance": 31.574255511613632,
+              "pitch": -24.022886499913852,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 126,
+              "x": 420,
+              "z": 232.11666666670033,
+              "aimY": 34.5,
+              "distance": 24.350501934143402,
+              "pitch": -31.863463957694414,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 408.9166666666978,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 27.255096363406633,
+              "pitch": -29.331148689809407,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 369.71666666669523,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 35.59232517144124,
+              "pitch": -23.77359502554396,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 64.00833333333019,
+          "target": "a2-wave-2-roller-4",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.9333333333333229,
+          "remaining": 0,
+          "yawError": 0.0001268909005656127,
+          "pitchError": 0.000028539293401574906,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 608,
+              "x": 372,
+              "z": 262.5166666667054,
+              "aimY": 36.09000015258789,
+              "distance": 42.040460009144205,
+              "pitch": -18.887707391817735,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 90,
+              "x": 420,
+              "z": 246.11666666670124,
+              "aimY": 34.5,
+              "distance": 30.07014484688033,
+              "pitch": -27.205827886520744,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 420,
+              "z": 206.9166666666987,
+              "aimY": 34.5,
+              "distance": 31.94537438257837,
+              "pitch": -25.941700100285917,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 383.71666666669614,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 26.960717308281204,
+              "pitch": -29.57099758976621,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 344.5166666666936,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 56.80258454602518,
+              "pitch": -15.868788192425269,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 65.00833333333098,
+          "target": "a2-wave-2-roller-4",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.1733333333332752,
+          "remaining": 2,
+          "yawError": 0.000009001635258520935,
+          "pitchError": 0.0000032218506906267486,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 596,
+              "x": 372,
+              "z": 276.5166666667063,
+              "aimY": 36.09000015258789,
+              "distance": 54.1282453479539,
+              "pitch": -15.095902601154178,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 90,
+              "x": 411.88333333329786,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 28.7798588908398,
+              "pitch": -28.14366388408426,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 44,
+              "x": 420,
+              "z": 220.9166666666996,
+              "aimY": 34.5,
+              "distance": 25.02346121364198,
+              "pitch": -31.24244884129629,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 397.71666666669705,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 24.06131634895624,
+              "pitch": -32.137160820993344,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 358.5166666666945,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 44.50842928901997,
+              "pitch": -19.688794675130698,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 66.00833333333178,
+          "target": "a2-wave-2-dog-5",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.18333333333268342,
+          "remaining": 0,
+          "yawError": 0.3792954052368849,
+          "pitchError": -0.305287373299247,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 90,
+              "x": 397.88333333329695,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 24.07378126602274,
+              "pitch": -32.1252776566529,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 8,
+              "x": 420,
+              "z": 234.9166666667005,
+              "aimY": 34.5,
+              "distance": 24.976794785925712,
+              "pitch": -31.284807980081435,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 411.71666666669796,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 28.688213801352198,
+              "pitch": -28.21253439752615,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 372.5166666666954,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 33.5777745606092,
+              "pitch": -24.927264829075813,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 67.00833333333257,
+          "target": "a2-wave-2-dog-5",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.44166666666622234,
+          "remaining": 0,
+          "yawError": -0.0017198192289837877,
+          "pitchError": 0.00005269880198044419,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 54,
+              "x": 383.88333333329604,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 26.885193157424307,
+              "pitch": -29.6331043589155,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 8,
+              "x": 420,
+              "z": 248.91666666670142,
+              "aimY": 34.5,
+              "distance": 31.835623826868826,
+              "pitch": -26.01265613267379,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 208,
+              "x": 420,
+              "z": 209.71666666669887,
+              "aimY": 34.5,
+              "distance": 30.17085145925783,
+              "pitch": -27.135060897844976,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 386.5166666666963,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 25.80568951046549,
+              "pitch": -30.547453822007157,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 347.3166666666938,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 54.27768366872158,
+              "pitch": -16.53087695312149,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 68.00833333333337,
+          "target": "a2-wave-2-dog-5",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.6916666666664213,
+          "remaining": 0,
+          "yawError": 0.00038898019012600926,
+          "pitchError": 0.00007345730778729465,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 18,
+              "x": 372,
+              "z": 254.11666666670487,
+              "aimY": 34.5,
+              "distance": 35.469427367519955,
+              "pitch": -23.84109097421192,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 8,
+              "x": 409.0833333332977,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 27.334476602089495,
+              "pitch": -29.267070331834372,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 184,
+              "x": 420,
+              "z": 223.71666666669978,
+              "aimY": 34.5,
+              "distance": 24.379231826375513,
+              "pitch": -31.836499568088705,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 400.51666666669723,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 24.421307863790872,
+              "pitch": -31.79708592921795,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 361.3166666666947,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 42.17740640567136,
+              "pitch": -20.62103702610241,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 69.00833333333416,
+          "target": "a2-wave-2-dog-6",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.8166666666665208,
+          "remaining": 0,
+          "yawError": 0.08381520507747142,
+          "pitchError": -0.021897301652279433,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 8,
+              "x": 395.08333333329676,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 24.017499407262296,
+              "pitch": -32.17899854043033,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 148,
+              "x": 420,
+              "z": 237.7166666667007,
+              "aimY": 34.5,
+              "distance": 25.892346574070345,
+              "pitch": -30.47217955521738,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 414.51666666669814,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 30.312818154134234,
+              "pitch": -27.03586452386244,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 375.3166666666956,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 31.682807290020577,
+              "pitch": -26.112085760016118,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 70.00833333333496,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.8166666666665208,
+          "remaining": 0,
+          "yawError": 0.7429836597941217,
+          "pitchError": 0.0000815902401906099,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 124,
+              "x": 420,
+              "z": 251.7166666667016,
+              "aimY": 34.5,
+              "distance": 33.74137338312468,
+              "pitch": -24.82967860162085,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 420,
+              "z": 212.51666666669905,
+              "aimY": 34.5,
+              "distance": 28.561050595349396,
+              "pitch": -28.30861796986507,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 389.3166666666965,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 24.913188162979978,
+              "pitch": -31.342718510525195,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 71.00833333333576,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.0616666666666248,
+          "remaining": 1,
+          "yawError": -0.0019443084780976783,
+          "pitchError": -0.00003628463378047009,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 100,
+              "x": 406.2833333332975,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 26.110284265854084,
+              "pitch": -30.284335201175526,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 24,
+              "x": 420,
+              "z": 226.51666666669996,
+              "aimY": 34.5,
+              "distance": 24.045795428258952,
+              "pitch": -32.1519695311919,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 403.3166666666974,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 25.09050838686935,
+              "pitch": -31.181761545575725,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 72.00833333333655,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.06666666666592391,
+          "remaining": 0,
+          "yawError": -0.0027908390115984893,
+          "pitchError": 0,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 88,
+              "x": 392.2833333332966,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 24.28607854535977,
+              "pitch": -31.924074435208023,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 417.3166666666983,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 32.0998485631806,
+              "pitch": -25.842414015638614,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 73.00833333333735,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.31666666666612286,
+          "remaining": 0,
+          "yawError": -0.001016355207978492,
+          "pitchError": 0.00008521901935121257,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 52,
+              "x": 378.2833333332957,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 29.830861163887178,
+              "pitch": -27.375365409421658,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 108,
+              "x": 420,
+              "z": 215.31666666669923,
+              "aimY": 34.5,
+              "distance": 27.145293228175273,
+              "pitch": -29.420192637903792,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 74.00833333333814,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.5666666666663218,
+          "remaining": 0,
+          "yawError": 0.0001879835175260247,
+          "pitchError": 0.00005053282474992704,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 16,
+              "x": 372,
+              "z": 259.71666666670524,
+              "aimY": 34.5,
+              "distance": 39.77369664045437,
+              "pitch": -21.674874588224597,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 84,
+              "x": 420,
+              "z": 229.31666666670014,
+              "aimY": 34.5,
+              "distance": 24.036089763337117,
+              "pitch": -32.1612361202446,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 74.7083333333387,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.99166666666666,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 48,
+              "x": 420,
+              "z": 239.11666666670078,
+              "aimY": 34.5,
+              "distance": 26.449579916863257,
+              "pitch": -29.996025967611097,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 75.00833333333894,
+          "target": "a2-wave-2-dog-9",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.6916666666664213,
+          "remaining": 0,
+          "yawError": 0.33431919416185396,
+          "pitchError": 0.00007557044118094991,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 48,
+              "x": 420,
+              "z": 243.31666666670105,
+              "aimY": 34.5,
+              "distance": 28.471042794018473,
+              "pitch": -28.3769916494028,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 76.00833333333972,
+          "target": "a2-wave-2-dog-9",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.9416666666666202,
+          "remaining": 0,
+          "yawError": -0.0009003966945861919,
+          "pitchError": -0.00008705836906652831,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 12,
+              "x": 414.68333333329804,
+              "z": 252,
+              "aimY": 34.5,
+              "distance": 30.414913191444843,
+              "pitch": -26.964938684861544,
+              "reason": "eligible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "player-gun-2",
+      "variant": "upgrade1",
+      "shots": 71,
+      "bySpecies": {
+        "roller": 27,
+        "moth": 9,
+        "dog": 35
+      },
+      "samples": 787,
+      "inRange": 755,
+      "pitchReject": 18,
+      "blocked": 0,
+      "eligible": 737,
+      "idleEligible": 8,
+      "idleNoEligible": 472,
+      "chosenNoShot": 24,
+      "episodes": [
+        {
+          "at": 44.008333333331315,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": true,
+          "wait": -44.008333333331315,
+          "remaining": 0,
+          "yawError": 0.08869697500001616,
+          "pitchError": -1.270986171308941e-7,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 368,
+              "x": 364.1166666666926,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 60.81896862362553,
+              "pitch": -13.575033805955496,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 45.00833333333126,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.28333333333337407,
+          "remaining": 0,
+          "yawError": 0.00003855149782294731,
+          "pitchError": -0.000011189084052343201,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 296,
+              "x": 378.1166666666935,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 48.2722861599579,
+              "pitch": -16.728268200684788,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 46.0083333333312,
+          "target": "a2-wave-2-roller-1",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.5416666666666927,
+          "remaining": 0,
+          "yawError": 0.000307267998923777,
+          "pitchError": -0.00005079470123847685,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 248,
+              "x": 392.1166666666944,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 36.78967623907868,
+              "pitch": -21.170708083002513,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 47.008333333331144,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.82500000000001,
+          "remaining": 0,
+          "yawError": 0.000001636144128402961,
+          "pitchError": -7.52224419309222e-7,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 224,
+              "x": 406.1166666666953,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 27.726286163921213,
+              "pitch": -26.634908918005035,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 574,
+              "x": 366.9166666666928,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 58.25667582153144,
+              "pitch": -14.120572106345717,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 48.00833333333109,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.0783333333333331,
+          "remaining": 1,
+          "yawError": 0.00006242392355471083,
+          "pitchError": -0.000016589619827145352,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 188,
+              "x": 420,
+              "z": 204.11666666669623,
+              "aimY": 36.09000015258789,
+              "distance": 24.116666666696233,
+              "pitch": -29.608923311642307,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 550,
+              "x": 380.9166666666937,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 45.86400488882684,
+              "pitch": -17.503450744212387,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 49.00833333333103,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.08333333333338544,
+          "remaining": 0,
+          "yawError": 0.0004345559866387738,
+          "pitchError": -0.00006023377643726846,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 152,
+              "x": 420,
+              "z": 218.11666666669714,
+              "aimY": 36.09000015258789,
+              "distance": 38.11666666669714,
+              "pitch": -20.54535354574259,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 538,
+              "x": 394.9166666666946,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 34.715610481593295,
+              "pitch": -22.22414169126315,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 368.16666666666526,
+              "z": 204,
+              "aimY": 73,
+              "distance": 57.12000038904578,
+              "pitch": 19.955402237283398,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 50.008333333330974,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.3416666666667041,
+          "remaining": 0,
+          "yawError": 0.0018299055512511764,
+          "pitchError": -0.00003522110311032778,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-1",
+              "model": "roller",
+              "health": 116,
+              "x": 420,
+              "z": 232.11666666669805,
+              "aimY": 36.09000015258789,
+              "distance": 52.11666666669805,
+              "pitch": -15.620393629341432,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 502,
+              "x": 408.9166666666955,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 26.43558733558115,
+              "pitch": -27.632771903869138,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 369.71666666669387,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 55.71726492846158,
+              "pitch": -14.705309342614772,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 388.1666666666607,
+              "z": 204,
+              "aimY": 73,
+              "distance": 39.86679208453434,
+              "pitch": 27.067815128926625,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 51.00833333333092,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.6000000000000227,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.0005220194881052076,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 466,
+              "x": 420,
+              "z": 206.91666666669641,
+              "aimY": 36.09000015258789,
+              "distance": 26.916666666696415,
+              "pitch": -27.252884816872857,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 383.7166666666948,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 43.50264679046251,
+              "pitch": -18.334113931696983,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 408.16666666665617,
+              "z": 204,
+              "aimY": 72.99989595077932,
+              "distance": 26.75869536763753,
+              "pitch": 36.21328647622485,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 52.00833333333086,
+          "target": "a2-wave-2-roller-2",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.8583333333333414,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.00007518022596020302,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 430,
+              "x": 420,
+              "z": 220.91666666669732,
+              "aimY": 36.09000015258789,
+              "distance": 40.916666666697324,
+              "pitch": -19.335553533567506,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 397.7166666666957,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 32.749762509721364,
+              "pitch": -23.318548850146843,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 130,
+              "x": 420,
+              "z": 212.16666666665162,
+              "aimY": 72.96005427837372,
+              "distance": 32.16666666665162,
+              "pitch": 30.637651732650756,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 53.0083333333308,
+          "target": "a2-wave-2-moth-10",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.240000000000002,
+          "remaining": 2,
+          "yawError": 0,
+          "pitchError": 0.02359848952723903,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 430,
+              "x": 420,
+              "z": 234.91666666669823,
+              "aimY": 36.09000015258789,
+              "distance": 54.916666666698234,
+              "pitch": -14.899598144411094,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 411.7166666666966,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 25.38924203497645,
+              "pitch": -28.49360970068745,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 372.5166666666954,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 53.204012484414314,
+              "pitch": -15.33254641083745,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-10",
+              "model": "moth",
+              "health": 118,
+              "x": 420,
+              "z": 232.16666666664707,
+              "aimY": 73,
+              "distance": 52.166666666647075,
+              "pitch": 20.946310357805313,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 90,
+              "x": 368.16666666666526,
+              "z": 204,
+              "aimY": 73,
+              "distance": 57.12000038904578,
+              "pitch": 19.955402237283398,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 53.70833333333076,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.5500000000000256,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-2",
+              "model": "roller",
+              "health": 430,
+              "x": 420,
+              "z": 244.71666666669887,
+              "aimY": 36.09000015258789,
+              "distance": 64.71666666669887,
+              "pitch": -12.82023259818299,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 420,
+              "z": 205.51666666669723,
+              "aimY": 36.09000015258789,
+              "distance": 25.516666666697233,
+              "pitch": -28.386151320814577,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 382.31666666669605,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 44.676991965763506,
+              "pitch": -17.911702962576452,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 90,
+              "x": 382.1666666666621,
+              "z": 204,
+              "aimY": 73,
+              "distance": 44.80358368603407,
+              "pitch": 24.598911824182025,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 54.00833333333075,
+          "target": "a2-wave-2-moth-11",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.25000000000004263,
+          "remaining": 0,
+          "yawError": 0.044424412832356985,
+          "pitchError": 0.00027888855839880433,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 420,
+              "z": 209.7166666666975,
+              "aimY": 36.09000015258789,
+              "distance": 29.716666666697506,
+              "pitch": -25.22108387276868,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 386.5166666666963,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 41.19628152041304,
+              "pitch": -19.222224758297692,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 90,
+              "x": 388.1666666666607,
+              "z": 204,
+              "aimY": 73,
+              "distance": 39.86679208453434,
+              "pitch": 27.067815128926625,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 55.00833333333069,
+          "target": "a2-wave-2-roller-3",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.5083333333333613,
+          "remaining": 0,
+          "yawError": 0.10389598565474589,
+          "pitchError": -0.6926503881884487,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 640,
+              "x": 420,
+              "z": 223.71666666669842,
+              "aimY": 36.09000015258789,
+              "distance": 43.716666666698416,
+              "pitch": -18.25570301964407,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 400.51666666669723,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 30.91278502135624,
+              "pitch": -24.437088359629463,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 54,
+              "x": 408.16666666665617,
+              "z": 204,
+              "aimY": 72.99989595077932,
+              "distance": 26.75869536763753,
+              "pitch": 36.21328647622485,
+              "reason": "pitch"
+            }
+          ]
+        },
+        {
+          "at": 56.00833333333063,
+          "target": "a2-wave-2-roller-3",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.7666666666666799,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.000003075254421586182,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-3",
+              "model": "roller",
+              "health": 604,
+              "x": 420,
+              "z": 237.71666666669933,
+              "aimY": 36.09000015258789,
+              "distance": 57.716666666699325,
+              "pitch": -14.241075198461358,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 414.51666666669814,
+              "z": 204,
+              "aimY": 36.09000015258789,
+              "distance": 24.61842692870727,
+              "pitch": -29.159803970356077,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 54,
+              "x": 420,
+              "z": 212.16666666665162,
+              "aimY": 72.96005427837372,
+              "distance": 32.16666666665162,
+              "pitch": 30.637651732650756,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 56.6083333333306,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.16666666666671404,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 420,
+              "z": 206.9166666666987,
+              "aimY": 36.09000015258789,
+              "distance": 26.91666666669869,
+              "pitch": -27.252884816872857,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 54,
+              "x": 420,
+              "z": 224.1666666666489,
+              "aimY": 73,
+              "distance": 44.166666666648894,
+              "pitch": 24.054395176858858,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 57.008333333330576,
+          "target": "a2-wave-2-moth-11",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.123333333333342,
+          "remaining": 2,
+          "yawError": 0,
+          "pitchError": -0.0023976036222155273,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 420,
+              "z": 212.51666666669905,
+              "aimY": 36.09000015258789,
+              "distance": 32.51666666669905,
+              "pitch": -23.455098651126985,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 364.11666666669487,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 60.81896862362344,
+              "pitch": -14.916000954270597,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-moth-11",
+              "model": "moth",
+              "health": 42,
+              "x": 420,
+              "z": 232.16666666664707,
+              "aimY": 73,
+              "distance": 52.166666666647075,
+              "pitch": 20.946310357805313,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 57.708333333330536,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.43333333333336554,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 420,
+              "z": 222.3166666666997,
+              "aimY": 36.09000015258789,
+              "distance": 42.31666666669969,
+              "pitch": -18.780677835402173,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 373.9166666666955,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 51.958383453572274,
+              "pitch": -17.188141065262723,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 58.00833333333052,
+          "target": "a2-wave-2-roller-4",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.1333333333333826,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": -0.011575604703623898,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 680,
+              "x": 420,
+              "z": 226.51666666669996,
+              "aimY": 36.09000015258789,
+              "distance": 46.51666666669996,
+              "pitch": -17.28657898056324,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 378.1166666666958,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 48.272286159955925,
+              "pitch": -18.34361864593823,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 59.00833333333046,
+          "target": "a2-wave-2-roller-4",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.39166666666670125,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.000001133220385862721,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-roller-4",
+              "model": "roller",
+              "health": 644,
+              "x": 420,
+              "z": 240.51666666670087,
+              "aimY": 36.09000015258789,
+              "distance": 60.51666666670087,
+              "pitch": -13.637236195614005,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 392.1166666666967,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 36.78967623907696,
+              "pitch": -23.134427432160127,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 59.40833333333044,
+          "target": null,
+          "reservation": null,
+          "ready": true,
+          "wait": -0.008333333333276016,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 210,
+              "x": 397.71666666669705,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 32.74976250972044,
+              "pitch": -25.43238247645718,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 60.008333333330405,
+          "target": "a2-wave-2-dog-5",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.6083333333333556,
+          "remaining": 0,
+          "yawError": 0.0014455066547776063,
+          "pitchError": -0.00006734668683483491,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 198,
+              "x": 406.1166666666976,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 27.726286163920072,
+              "pitch": -28.954536787044397,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 366.91666666669505,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 58.25667582152936,
+              "pitch": -15.510437365913392,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 61.00833333333035,
+          "target": "a2-wave-2-dog-5",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.8666666666666742,
+          "remaining": 0,
+          "yawError": 0.0002578839285298784,
+          "pitchError": 0.0012151089752223676,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 162,
+              "x": 420,
+              "z": 204.1166666666985,
+              "aimY": 34.5,
+              "distance": 24.116666666698507,
+              "pitch": -32.08444665211504,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 380.91666666669596,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 45.8640048888249,
+              "pitch": -19.183005108903338,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 62.00833333333029,
+          "target": "a2-wave-2-dog-5",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.1199999999999974,
+          "remaining": 1,
+          "yawError": 0,
+          "pitchError": 0.0001410109719603425,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 138,
+              "x": 420,
+              "z": 218.11666666669942,
+              "aimY": 34.5,
+              "distance": 38.116666666699416,
+              "pitch": -22.463020774507182,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 394.91666666669687,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 34.71561048159165,
+              "pitch": -24.26307330485562,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 63.008333333330235,
+          "target": "a2-wave-2-dog-5",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.12500000000004974,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.000018650730635394464,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-5",
+              "model": "dog",
+              "health": 126,
+              "x": 420,
+              "z": 232.11666666670033,
+              "aimY": 34.5,
+              "distance": 52.116666666700326,
+              "pitch": -17.141679418877402,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 408.9166666666978,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 26.4355873355802,
+              "pitch": -30.00781440154735,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 369.71666666669523,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 55.71726492846036,
+              "pitch": -16.146948958985668,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 64.00833333333019,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.3833333333333684,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 80,
+              "x": 420,
+              "z": 206.9166666666987,
+              "aimY": 34.5,
+              "distance": 26.91666666669869,
+              "pitch": -29.607195670362838,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 383.71666666669614,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 43.50264679046137,
+              "pitch": -20.080928505613382,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 65.00833333333098,
+          "target": "a2-wave-2-dog-6",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.6333333333330415,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.0000973904298742223,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 44,
+              "x": 420,
+              "z": 220.9166666666996,
+              "aimY": 34.5,
+              "distance": 40.9166666666996,
+              "pitch": -21.16125758288215,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 397.71666666669705,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 32.74976250972044,
+              "pitch": -25.43238247645718,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 66.00833333333178,
+          "target": "a2-wave-2-dog-6",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.8833333333332405,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.000011264683803580144,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-6",
+              "model": "dog",
+              "health": 8,
+              "x": 420,
+              "z": 234.9166666667005,
+              "aimY": 34.5,
+              "distance": 54.91666666670051,
+              "pitch": -16.358290792181965,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 411.71666666669796,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 25.389242034976007,
+              "pitch": -30.913952289794793,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 372.5166666666954,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 53.204012484414314,
+              "pitch": -16.82896434207201,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 66.80833333333241,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.08333333333260384,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 220,
+              "x": 420,
+              "z": 206.9166666666987,
+              "aimY": 34.5,
+              "distance": 26.91666666669869,
+              "pitch": -29.607195670362838,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 383.71666666669614,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 43.50264679046137,
+              "pitch": -20.080928505613382,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 67.00833333333257,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.198333333333295,
+          "remaining": 2,
+          "yawError": 0,
+          "pitchError": 0.011029272463863982,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 208,
+              "x": 420,
+              "z": 209.71666666669887,
+              "aimY": 34.5,
+              "distance": 29.71666666669887,
+              "pitch": -27.456971339030584,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 386.5166666666963,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 41.19628152041304,
+              "pitch": -21.03912472527305,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 68.00833333333337,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.20833333333270332,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.00006650865044122156,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 184,
+              "x": 420,
+              "z": 223.71666666669978,
+              "aimY": 34.5,
+              "distance": 43.71666666669978,
+              "pitch": -19.996238140706264,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 400.51666666669723,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 30.91278502135624,
+              "pitch": -26.62395913586118,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 361.3166666666947,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 63.401369157990764,
+              "pitch": -14.360351113328703,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 69.00833333333416,
+          "target": "a2-wave-2-dog-7",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.45833333333290227,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.000006297676229227722,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-7",
+              "model": "dog",
+              "health": 148,
+              "x": 420,
+              "z": 237.7166666667007,
+              "aimY": 34.5,
+              "distance": 57.71666666670069,
+              "pitch": -15.641664830879375,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 414.51666666669814,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 24.61842692870727,
+              "pitch": -31.613587407899313,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 375.3166666666956,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 50.720807148301496,
+              "pitch": -17.560028274227243,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 69.60833333333464,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.9833333333333201,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 420,
+              "z": 206.9166666666987,
+              "aimY": 34.5,
+              "distance": 26.91666666669869,
+              "pitch": -29.607195670362838,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 383.71666666669614,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 43.50264679046137,
+              "pitch": -20.080928505613382,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 70.00833333333496,
+          "target": "a2-wave-2-dog-8",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.5833333333330017,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.0002909560572961767,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 60,
+              "x": 420,
+              "z": 212.51666666669905,
+              "aimY": 34.5,
+              "distance": 32.51666666669905,
+              "pitch": -25.57804120566952,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 389.3166666666965,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 38.95467808161958,
+              "pitch": -22.05775482226272,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 71.00833333333576,
+          "target": "a2-wave-2-dog-8",
+          "reservation": "a2-wave-2-dog-8",
+          "ready": false,
+          "wait": 0.8333333333332007,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.00004475406149712091,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-8",
+              "model": "dog",
+              "health": 24,
+              "x": 420,
+              "z": 226.51666666669996,
+              "aimY": 34.5,
+              "distance": 46.51666666669996,
+              "pitch": -18.948308561641053,
+              "reason": "eligible"
+            },
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 403.3166666666974,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 29.228985803651913,
+              "pitch": -27.810554090771785,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 72.00833333333655,
+          "target": null,
+          "reservation": null,
+          "ready": false,
+          "wait": 0.9583333333333002,
+          "remaining": 0,
+          "yawError": null,
+          "pitchError": null,
+          "visible": null,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 120,
+              "x": 417.3166666666983,
+              "z": 204,
+              "aimY": 34.5,
+              "distance": 24.149539908197173,
+              "pitch": -32.05322272404723,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 73.00833333333735,
+          "target": "a2-wave-2-dog-9",
+          "reservation": null,
+          "ready": false,
+          "wait": 1.198333333333295,
+          "remaining": 2,
+          "yawError": 0,
+          "pitchError": 0.00020286144670023099,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 108,
+              "x": 420,
+              "z": 215.31666666669923,
+              "aimY": 34.5,
+              "distance": 35.316666666699234,
+              "pitch": -23.925481248736382,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 74.00833333333814,
+          "target": "a2-wave-2-dog-9",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.20833333333270332,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.00002938525517715007,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 84,
+              "x": 420,
+              "z": 229.31666666670014,
+              "aimY": 34.5,
+              "distance": 49.316666666700144,
+              "pitch": -18.001272793050934,
+              "reason": "eligible"
+            }
+          ]
+        },
+        {
+          "at": 75.00833333333894,
+          "target": "a2-wave-2-dog-9",
+          "reservation": null,
+          "ready": false,
+          "wait": 0.45833333333290227,
+          "remaining": 0,
+          "yawError": 0,
+          "pitchError": 0.0000012237030629913548,
+          "visible": true,
+          "candidates": [
+            {
+              "id": "a2-wave-2-dog-9",
+              "model": "dog",
+              "health": 48,
+              "x": 420,
+              "z": 243.31666666670105,
+              "aimY": 34.5,
+              "distance": 63.31666666670105,
+              "pitch": -14.377930330794015,
+              "reason": "eligible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "player-gun-3",
+      "variant": "base",
+      "shots": 29,
+      "bySpecies": {
+        "roller": 14,
+        "dog": 11,
+        "moth": 4
+      },
+      "samples": 0,
+      "inRange": 0,
+      "pitchReject": 0,
+      "blocked": 0,
+      "eligible": 0,
+      "idleEligible": 0,
+      "idleNoEligible": 0,
+      "chosenNoShot": 0,
+      "episodes": []
+    },
+    {
+      "id": "player-gun-4",
+      "variant": "base",
+      "shots": 38,
+      "bySpecies": {
+        "roller": 21,
+        "moth": 5,
+        "dog": 12
+      },
+      "samples": 0,
+      "inRange": 0,
+      "pitchReject": 0,
+      "blocked": 0,
+      "eligible": 0,
+      "idleEligible": 0,
+      "idleNoEligible": 0,
+      "chosenNoShot": 0,
+      "episodes": []
+    },
+    {
+      "id": "player-gun-5",
+      "variant": "base",
+      "shots": 30,
+      "bySpecies": {
+        "roller": 13,
+        "moth": 3,
+        "dog": 14
+      },
+      "samples": 0,
+      "inRange": 0,
+      "pitchReject": 0,
+      "blocked": 0,
+      "eligible": 0,
+      "idleEligible": 0,
+      "idleNoEligible": 0,
+      "chosenNoShot": 0,
+      "episodes": []
+    },
+    {
+      "id": "player-gun-6",
+      "variant": "base",
+      "shots": 31,
+      "bySpecies": {
+        "roller": 15,
+        "moth": 2,
+        "dog": 14
+      },
+      "samples": 0,
+      "inRange": 0,
+      "pitchReject": 0,
+      "blocked": 0,
+      "eligible": 0,
+      "idleEligible": 0,
+      "idleNoEligible": 0,
+      "chosenNoShot": 0,
+      "episodes": []
+    }
+  ],
+  "events": [
+    {
+      "id": "a2-wave-2-roller-1",
+      "model": "roller",
+      "result": "killed",
+      "at": 54.7833333333307
+    },
+    {
+      "id": "a2-wave-2-moth-11",
+      "model": "moth",
+      "result": "killed",
+      "at": 61.42499999999699
+    },
+    {
+      "id": "a2-wave-2-moth-10",
+      "model": "moth",
+      "result": "escaped",
+      "at": 67.19999999999939
+    },
+    {
+      "id": "a2-wave-2-dog-5",
+      "model": "dog",
+      "result": "killed",
+      "at": 68.82500000000068
+    },
+    {
+      "id": "a2-wave-2-dog-6",
+      "model": "dog",
+      "result": "killed",
+      "at": 69.82500000000148
+    },
+    {
+      "id": "a2-wave-2-dog-8",
+      "model": "dog",
+      "result": "killed",
+      "at": 71.96666666666985
+    },
+    {
+      "id": "a2-wave-2-roller-2",
+      "model": "roller",
+      "result": "escaped",
+      "at": 73.0857142857148
+    },
+    {
+      "id": "a2-wave-2-dog-7",
+      "model": "dog",
+      "result": "killed",
+      "at": 74.70000000000536
+    },
+    {
+      "id": "a2-wave-2-roller-3",
+      "model": "roller",
+      "result": "escaped",
+      "at": 75.88571428571696
+    },
+    {
+      "id": "a2-wave-2-dog-9",
+      "model": "dog",
+      "result": "killed",
+      "at": 76.95000000000714
+    },
+    {
+      "id": "a2-wave-2-roller-4",
+      "model": "roller",
+      "result": "escaped",
+      "at": 78.68571428571909
+    }
+  ]
+}

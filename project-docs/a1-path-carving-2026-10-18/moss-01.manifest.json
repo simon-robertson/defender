@@ -1,0 +1,1997 @@
+{
+  "id": "moss-01",
+  "selectedOption": "southern-hook",
+  "status": "User-approved visual layout; offline technical evidence is separate.",
+  "baseline": {
+    "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z/assets/levels/moss-01.json",
+    "sha256": "1d6301db7b573c33b74ae5f0f041b246a1c843ab10715136836e9d4f7517a347"
+  },
+  "source": {
+    "path": "assets/levels/moss-01.json",
+    "sha256": "2d0ec71f65d3df765f1def357cfbbf1bf56b30951b9ff424c5c042dd5f0b4c91"
+  },
+  "rationale": "The user-approved route bends south from the west entrance through the southwest orchard, crosses a broad southern court, returns north into the limestone and eastern orchard, then curls back to an independent eastern exit. Distinct entry, inner-turn, separated return, upgraded-range and late-catch positions share generous visible ground. The approved wider central meadow replaces the former central six-tree mass; both raised northern knolls, all limestone pieces and the supported wildlife perches remain.",
+  "corners": [
+    [
+      0,
+      8
+    ],
+    [
+      5,
+      8
+    ],
+    [
+      5,
+      12
+    ],
+    [
+      10,
+      12
+    ],
+    [
+      10,
+      5
+    ],
+    [
+      14,
+      5
+    ],
+    [
+      14,
+      8
+    ],
+    [
+      12,
+      8
+    ],
+    [
+      12,
+      10
+    ],
+    [
+      19,
+      10
+    ]
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 40,
+      "length": 936
+    }
+  ],
+  "edges": {
+    "entry": [
+      0,
+      0,
+      8
+    ],
+    "exit": [
+      19,
+      0,
+      10
+    ],
+    "boundaryBoxes": 2,
+    "interiorBoxes": 38,
+    "edgeRunningSegments": 0
+  },
+  "sites": [
+    {
+      "id": "west-1-7",
+      "group": "west",
+      "box": [
+        1,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "west-2-7",
+      "group": "west",
+      "box": [
+        2,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "west-3-7",
+      "group": "west",
+      "box": [
+        3,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "west-4-7",
+      "group": "west",
+      "box": [
+        4,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "west-4-9",
+      "group": "west",
+      "box": [
+        4,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "west-4-10",
+      "group": "west",
+      "box": [
+        4,
+        10
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "west-4-11",
+      "group": "west",
+      "box": [
+        4,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-6-10",
+      "group": "south",
+      "box": [
+        6,
+        10
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-6-11",
+      "group": "south",
+      "box": [
+        6,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-7-10",
+      "group": "south",
+      "box": [
+        7,
+        10
+      ],
+      "coverageRole": "upgrade-dependent",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-7-11",
+      "group": "south",
+      "box": [
+        7,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-8-10",
+      "group": "south",
+      "box": [
+        8,
+        10
+      ],
+      "coverageRole": "upgrade-dependent",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-8-11",
+      "group": "south",
+      "box": [
+        8,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-9-10",
+      "group": "south",
+      "box": [
+        9,
+        10
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-9-11",
+      "group": "south",
+      "box": [
+        9,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-7-13",
+      "group": "south",
+      "box": [
+        7,
+        13
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-8-13",
+      "group": "south",
+      "box": [
+        8,
+        13
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "south-9-13",
+      "group": "south",
+      "box": [
+        9,
+        13
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "north-return-11-6",
+      "group": "north-return",
+      "box": [
+        11,
+        6
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "north-return-12-6",
+      "group": "north-return",
+      "box": [
+        12,
+        6
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "north-return-13-6",
+      "group": "north-return",
+      "box": [
+        13,
+        6
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "north-return-11-7",
+      "group": "north-return",
+      "box": [
+        11,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "north-return-12-7",
+      "group": "north-return",
+      "box": [
+        12,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "north-return-13-7",
+      "group": "north-return",
+      "box": [
+        13,
+        7
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-13-9",
+      "group": "late",
+      "box": [
+        13,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-14-9",
+      "group": "late",
+      "box": [
+        14,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-15-9",
+      "group": "late",
+      "box": [
+        15,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-16-9",
+      "group": "late",
+      "box": [
+        16,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-17-9",
+      "group": "late",
+      "box": [
+        17,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-18-9",
+      "group": "late",
+      "box": [
+        18,
+        9
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-15-11",
+      "group": "late",
+      "box": [
+        15,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-16-11",
+      "group": "late",
+      "box": [
+        16,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-17-11",
+      "group": "late",
+      "box": [
+        17,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": false,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    },
+    {
+      "id": "late-18-11",
+      "group": "late",
+      "box": [
+        18,
+        11
+      ],
+      "coverageRole": "base-useful",
+      "weaponSuitability": {
+        "turretBase": true,
+        "turretUpgrade1": true,
+        "arcBase": true,
+        "arcUpgrade1": true
+      }
+    }
+  ],
+  "baselinePlacements": 320,
+  "retainedPlacements": 229,
+  "removed": [
+    {
+      "id": "a1-land-2-4",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        4
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: west-1-7"
+    },
+    {
+      "id": "a1-land-14-4",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        4
+      ],
+      "turn": 3,
+      "reason": "full placement-ground overview visibility: north-return-12-6, north-return-13-6"
+    },
+    {
+      "id": "a1-land-2-5",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        5
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: west-1-7"
+    },
+    {
+      "id": "a1-land-3-5",
+      "model": "scenery-oak",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        5
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: west-1-7, west-2-7"
+    },
+    {
+      "id": "a1-land-4-5",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        5
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: west-2-7, west-3-7"
+    },
+    {
+      "id": "a1-land-10-5",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        5
+      ],
+      "turn": 1,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-11-5",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        5
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-12-5",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        5
+      ],
+      "turn": 2,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-13-5",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        5
+      ],
+      "turn": 0,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-14-5",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        5
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        1
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-1-6",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        6
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: west-1-7"
+    },
+    {
+      "id": "a1-land-2-6",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        6
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: west-1-7, west-2-7"
+    },
+    {
+      "id": "a1-land-3-6",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        6
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: west-2-7, west-3-7"
+    },
+    {
+      "id": "a1-land-10-6",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        6
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        3
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-11-6",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        6
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: north-return"
+    },
+    {
+      "id": "a1-land-12-6",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        6
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        -3
+      ],
+      "reason": "full defence-ground footprint: north-return"
+    },
+    {
+      "id": "a1-land-13-6",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        6
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: north-return"
+    },
+    {
+      "id": "a1-land-14-6",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        6
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        -2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-1-7",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        7
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        -1
+      ],
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "a1-land-2-7",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        7
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "a1-land-3-7",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        7
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        2
+      ],
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "a1-land-4-7",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        7
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        2
+      ],
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "a1-land-5-7",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        7
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: west-4-7"
+    },
+    {
+      "id": "a1-land-10-7",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        7
+      ],
+      "turn": 3,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-11-7",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        3
+      ],
+      "reason": "full defence-ground footprint: north-return"
+    },
+    {
+      "id": "a1-land-12-7",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        7
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        -3
+      ],
+      "reason": "full defence-ground footprint: north-return"
+    },
+    {
+      "id": "a1-land-13-7",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: north-return"
+    },
+    {
+      "id": "a1-land-14-7",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        3
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-17-7",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        7
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: late-16-9"
+    },
+    {
+      "id": "a1-land-0-8",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        8
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -3
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-1-8",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        8
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        -2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-2-8",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        8
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        3
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-3-8",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        8
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        -1
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-4-8",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        8
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -3
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-5-8",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        8
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-7-8",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        8
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: south-6-10"
+    },
+    {
+      "id": "a1-land-8-8",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        8
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: south-6-10, south-7-10"
+    },
+    {
+      "id": "a1-land-9-8",
+      "model": "scenery-oak",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        8
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: south-7-10, south-8-10"
+    },
+    {
+      "id": "a1-land-10-8",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        8
+      ],
+      "turn": 1,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-12-8",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        8
+      ],
+      "turn": 0,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-13-8",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        8
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-14-8",
+      "model": "scenery-cypress-short",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        8
+      ],
+      "turn": 0,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-4-9",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        9
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "a1-land-5-9",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        9
+      ],
+      "turn": 2,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-6-9",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        9
+      ],
+      "turn": 3,
+      "reason": "full placement-ground overview visibility: south-6-10"
+    },
+    {
+      "id": "a1-land-7-9",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        9
+      ],
+      "turn": 3,
+      "reason": "full placement-ground overview visibility: south-6-10, south-6-11, south-7-10"
+    },
+    {
+      "id": "a1-land-8-9",
+      "model": "scenery-oak",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        9
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: south-6-10, south-6-11, south-7-10, south-7-11, south-8-10"
+    },
+    {
+      "id": "a1-land-9-9",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        9
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: south-7-10, south-7-11, south-8-10, south-8-11, south-9-10"
+    },
+    {
+      "id": "a1-land-10-9",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        9
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        3
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-12-9",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        9
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-13-9",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        9
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-14-9",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        9
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        -1
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-15-9",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        9
+      ],
+      "turn": 3,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-16-9",
+      "model": "detail-flowers",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        9
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        0
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-17-9",
+      "model": "detail-flowers",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        9
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-18-9",
+      "model": "detail-flowers",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        9
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-4-10",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "a1-land-5-10",
+      "model": "scenery-oak-tall",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-6-10",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-7-10",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        10
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        0
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-8-10",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-9-10",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-10-10",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-12-10",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        10
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        -1
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-13-10",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        10
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        0
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-14-10",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        10
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-15-10",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        10
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        -2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-16-10",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        10
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        -1
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-17-10",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        10
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-18-10",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-19-10",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        19,
+        0,
+        10
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-4-11",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        11
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "a1-land-5-11",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        11
+      ],
+      "turn": 2,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-6-11",
+      "model": "scenery-oak",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        11
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-7-11",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        11
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-8-11",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        11
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-9-11",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        11
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        1
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-10-11",
+      "model": "detail-pebbles",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        11
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-15-11",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        11
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-16-11",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        11
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-17-11",
+      "model": "detail-flowers",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        11
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        3
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-18-11",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        11
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "a1-land-5-12",
+      "model": "scenery-oak-young",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        12
+      ],
+      "turn": 1,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-6-12",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        12
+      ],
+      "turn": 1,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-7-12",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        12
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        -2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-8-12",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        12
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        2
+      ],
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-9-12",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        12
+      ],
+      "turn": 1,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-10-12",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        12
+      ],
+      "turn": 0,
+      "reason": "continuous dry route travel"
+    },
+    {
+      "id": "a1-land-7-13",
+      "model": "scenery-rock",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        13
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-8-13",
+      "model": "detail-grass",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        13
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "a1-land-9-13",
+      "model": "scenery-shrub",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        13
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: south"
+    }
+  ],
+  "added": [],
+  "moved": [],
+  "terrainChanged": false,
+  "modelsChanged": false,
+  "previewWildlife": {
+    "habitats": [
+      [
+        19,
+        15
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        16,
+        0
+      ]
+    ],
+    "habitatPoints": [
+      [
+        474,
+        24,
+        362
+      ],
+      [
+        6,
+        24,
+        26
+      ],
+      [
+        406,
+        24,
+        6
+      ]
+    ],
+    "perches": [
+      {
+        "id": "a1-land-1-3",
+        "point": [
+          8,
+          54,
+          8
+        ]
+      },
+      {
+        "id": "a1-land-13-2",
+        "point": [
+          8,
+          54,
+          8
+        ]
+      },
+      {
+        "id": "a1-land-3-11",
+        "point": [
+          8,
+          54,
+          8
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "No enemies or actual defence units are saved; this is a layout preview.",
+    "32 candidate boxes offer base48-range opportunities; [7,10] and [8,10] require upgrade72 range.",
+    "Candidate plots are authoring evidence, not fixed build pads or a player-placement rule.",
+    "[17,11] permits the base gun and Arc probes, but upgrade1 gun yaw intersects a retained canopy; use another site for that upgrade.",
+    "Individual weapon clearance does not certify simultaneous adjacent arrangements.",
+    "No waves, resources, enemy schedules or campaign balance are assigned."
+  ]
+}

@@ -1,0 +1,1076 @@
+{
+  "date": "2026-10-18",
+  "sourceHashes": {
+    "game/drone-preview.js": "346f392ca0a63c0a984c9fa14dc6d53ba042e999e8f89bd9b3b7b618af76b3b6",
+    "engine/drone-motion.js": "e82846eaec86b5d35343c9efcb0e85cdd0033ec29902afb430e49b3ccbc68ff0",
+    "engine/drone-navigation.js": "24a1cf85928932206f6af7fd0addecad2e20e0422919faf8ca6be5c995b2423a",
+    "engine/drone-clearance.js": "34dc023c8985e43ad189aa87eac3a8622288691c9db434d458ee33f0eeebfee7",
+    "engine/drone-obstacles.js": "bf0ea57276e50c2c35c8772e196e08266c2f0f1ea73e4cd870eb86dc8cc3fa78",
+    "shared/drone.js": "4c9f3c5af3e0ee8301ec78011e59f291c87e56602040667a9a4eda437b70ea62"
+  },
+  "method": "Actual production rigs and controllers in a flat scene, with two pre-existing straight return intents intentionally meeting head-on/diagonally, or meeting an independently prioritized neutral launch. Timings/models unchanged; fixtures are in memory only. Measures useful arrival and reciprocal avoidance as well as 3D declared-envelope clearance.",
+  "runs": [
+    {
+      "hz": 30,
+      "scenario": "head-on",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 4,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 36.00365969052467,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 4,
+          "evadeFrames": 0,
+          "distance": 120.00000000000003,
+          "last": [
+            84,
+            33,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 4.533333333333327,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 4,
+          "evadeFrames": 37,
+          "distance": 187.92627436540212,
+          "last": [
+            204,
+            33,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 5.899999999999989,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              204,
+              33,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 1,
+            "action": "pad-hover"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.03333333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.13333333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.48
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.16666666666666666,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132.85333333333332
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.19999999999999998,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            133.33333333333334
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 30,
+      "scenario": "crossing",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 0,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 38.99368287121015,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 0,
+          "evadeFrames": 0,
+          "distance": 177.67498169838845,
+          "last": [
+            84,
+            33,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 4.933333333333326,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 22,
+          "evadeFrames": 0,
+          "distance": 177.6749816983885,
+          "last": [
+            204,
+            33,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 5.799999999999989,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              204,
+              33,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.19999999999999998,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            85.40556385699746,
+            57,
+            226.87554891440203
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.9333333333333332,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            85.9157314791669,
+            57,
+            226.4674148166665
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 30,
+      "scenario": "neutral-launch",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 0,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 24.007618835974075,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 30,
+          "evadeFrames": 0,
+          "distance": 231.35254166413344,
+          "last": [
+            84,
+            33,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 7.233333333333317,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 0,
+          "evadeFrames": 0,
+          "distance": 48,
+          "last": [
+            204,
+            33,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 20.966666666666868,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "recharge",
+            "position": [
+              204,
+              33,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "recharge"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.03333333333333333,
+          "id": "drone-1",
+          "type": "yield",
+          "from": null,
+          "to": "drone-2",
+          "position": [
+            260,
+            57,
+            132
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 1.0333333333333332,
+          "id": "drone-1",
+          "type": "yield",
+          "from": "drone-2",
+          "to": null,
+          "position": [
+            259.9658568320179,
+            57.04097180157853,
+            132
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 60,
+      "scenario": "head-on",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 7,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 36.000555551268924,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 7,
+          "evadeFrames": 0,
+          "distance": 120.00000000000003,
+          "last": [
+            84,
+            33.000000000000014,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 4.516666666666656,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33.000000000000014,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 7,
+          "evadeFrames": 71,
+          "distance": 187.92968746079316,
+          "last": [
+            204,
+            33.000000000000014,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 5.833333333333318,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              204,
+              33.000000000000014,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 1,
+            "action": "pad-hover"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.016666666666666666,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.08333333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.21333333333334
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.09999999999999999,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132.33333333333334
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.11666666666666665,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.48
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.13333333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132.65333333333334
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.15,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.85333333333332
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.16666666666666666,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            133.08
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.18333333333333332,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            133.33333333333334
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 60,
+      "scenario": "crossing",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 0,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 38.516741401913364,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 0,
+          "evadeFrames": 0,
+          "distance": 177.67498169838836,
+          "last": [
+            84,
+            33.000000000000014,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 4.9166666666666545,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33.000000000000014,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 44,
+          "evadeFrames": 0,
+          "distance": 177.67498169838842,
+          "last": [
+            204,
+            33.000000000000014,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 5.7666666666666515,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              204,
+              33.000000000000014,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.16666666666666666,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            85.01773234830742,
+            57,
+            227.18581412135407
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.9000000000000011,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            85.53050286650834,
+            57,
+            226.77559770679332
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 60,
+      "scenario": "neutral-launch",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 0,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 24.007379773227196,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 58,
+          "evadeFrames": 0,
+          "distance": 231.35828840612066,
+          "last": [
+            84,
+            33.000000000000014,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 7.183333333333313,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33.000000000000014,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 0,
+          "evadeFrames": 0,
+          "distance": 47.999999999999964,
+          "last": [
+            204,
+            33.00000000000001,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 20.95000000000009,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "recharge",
+            "position": [
+              204,
+              33.00000000000001,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "recharge"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.016666666666666666,
+          "id": "drone-1",
+          "type": "yield",
+          "from": null,
+          "to": "drone-2",
+          "position": [
+            260,
+            57,
+            132
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.9833333333333347,
+          "id": "drone-1",
+          "type": "yield",
+          "from": "drone-2",
+          "to": null,
+          "position": [
+            259.99146420800446,
+            57.010242950394634,
+            132
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 120,
+      "scenario": "head-on",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 12,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 36.00034089344772,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 12,
+          "evadeFrames": 0,
+          "distance": 120.00000000000006,
+          "last": [
+            84,
+            33.00000000000001,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 4.516666666666681,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33.00000000000001,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 12,
+          "evadeFrames": 141,
+          "distance": 187.9305462573201,
+          "last": [
+            204,
+            33.00000000000001,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 5.825000000000079,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              204,
+              33.00000000000001,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 1,
+            "action": "pad-hover"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.008333333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.06666666666666667,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.16333333333333
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.08333333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132.27
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.09166666666666666,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.33333333333334
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.09999999999999999,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132.40333333333334
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.10833333333333332,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.48
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.12499999999999999,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132.65333333333334
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.13333333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.75
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.14166666666666666,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            132.85333333333332
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.15,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            132.96333333333334
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.15833333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            108,
+            57,
+            133.08
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.16666666666666666,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            108,
+            57,
+            133.20333333333335
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 120,
+      "scenario": "crossing",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 0,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 38.140795317037885,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 0,
+          "evadeFrames": 0,
+          "distance": 177.67498169838848,
+          "last": [
+            84,
+            33.00000000000001,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 4.908333333333367,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33.00000000000001,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 87,
+          "evadeFrames": 0,
+          "distance": 177.67498169838848,
+          "last": [
+            204,
+            33.00000000000001,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 5.7500000000000755,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              204,
+              33.00000000000001,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.15833333333333333,
+          "id": "drone-2",
+          "type": "yield",
+          "from": null,
+          "to": "drone-1",
+          "position": [
+            84.93378895129229,
+            57,
+            227.25296883896615
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.8833333333333326,
+          "id": "drone-2",
+          "type": "yield",
+          "from": "drone-1",
+          "to": null,
+          "position": [
+            85.52139273039818,
+            57,
+            226.78288581568145
+          ],
+          "phase": "return"
+        }
+      ]
+    },
+    {
+      "hz": 120,
+      "scenario": "neutral-launch",
+      "seconds": 30,
+      "overlapFrames": 0,
+      "simultaneousYieldFrames": 0,
+      "simultaneousEvasionFrames": 0,
+      "minCentres": 24.001591429223488,
+      "maxThinks": 1,
+      "aircraft": [
+        {
+          "id": "drone-1",
+          "yieldFrames": 114,
+          "evadeFrames": 0,
+          "distance": 231.3597233901375,
+          "last": [
+            84,
+            33.00000000000001,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 7.166666666666813,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "pad-hover",
+            "position": [
+              84,
+              33.00000000000001,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "pad-hover"
+          }
+        },
+        {
+          "id": "drone-2",
+          "yieldFrames": 0,
+          "evadeFrames": 0,
+          "distance": 47.999999999999986,
+          "last": [
+            204,
+            33,
+            132
+          ],
+          "yieldTo": null,
+          "arrivedAt": 20.958333333332785,
+          "maxBodyUpError": 0,
+          "final": {
+            "phase": "recharge",
+            "position": [
+              204,
+              33,
+              132
+            ],
+            "emergencies": 0,
+            "holds": 0,
+            "evasions": 0,
+            "action": "recharge"
+          }
+        }
+      ],
+      "events": [
+        {
+          "time": 0.008333333333333333,
+          "id": "drone-1",
+          "type": "yield",
+          "from": null,
+          "to": "drone-2",
+          "position": [
+            260,
+            57,
+            132
+          ],
+          "phase": "return"
+        },
+        {
+          "time": 0.9583333333333324,
+          "id": "drone-1",
+          "type": "yield",
+          "from": "drone-2",
+          "to": null,
+          "position": [
+            259.99786605200114,
+            57.00256073759866,
+            132
+          ],
+          "phase": "return"
+        }
+      ]
+    }
+  ]
+}

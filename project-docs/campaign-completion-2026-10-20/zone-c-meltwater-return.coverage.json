@@ -1,0 +1,7125 @@
+{
+  "id": "zone-c-meltwater-return",
+  "sourceHash": "8482b20d063fd6d8ed60aebe2d5d0aa2f16f26fd2fe6be10c4bcd93598b11e75",
+  "method": "Production actual gun range, mechanical pitch and both pitched muzzle rays at zero/full recoil; Arc closest terminal, centre LOS and facing-side surface contact. Gun1-unit and Arc4-unit midpoint bins per species/complete route; Arc interval lengths are quadrature approximations; current player guard and independent sampled restrictions both apply; excluded combinations contribute no eligibility. This shared-preview gun probe covers base/upgrade1 only; active play-only gun tier2 and other play profile differences belong to campaign verification. Silo intervals are72/96/120 centre-range admission only; separate finite production flights establish selected examples. Base-useful means positive measured opportunity against both C species with at least one physically allowed base gun/Arc, not universal weapon fit or guaranteed damage. Adjacent alternatives are not a certified simultaneous arrangement.",
+  "classification": {
+    "main": 34,
+    "upgrade-dependent": 7
+  },
+  "surveyedSites": 41,
+  "baseGunArcUseful": 34,
+  "baseGunUseful": 0,
+  "baseArcUseful": 34,
+  "bothBaseWeaponsUseful": 0,
+  "upgradeDependent": [
+    {
+      "id": "gun-court-12-8",
+      "box": [
+        12,
+        8
+      ],
+      "group": "gunCourt"
+    },
+    {
+      "id": "gun-court-3-10",
+      "box": [
+        3,
+        10
+      ],
+      "group": "gunCourt"
+    },
+    {
+      "id": "gun-court-3-11",
+      "box": [
+        3,
+        11
+      ],
+      "group": "gunCourt"
+    },
+    {
+      "id": "gun-court-7-14",
+      "box": [
+        7,
+        14
+      ],
+      "group": "gunCourt"
+    },
+    {
+      "id": "gun-court-8-14",
+      "box": [
+        8,
+        14
+      ],
+      "group": "gunCourt"
+    },
+    {
+      "id": "gun-court-17-12",
+      "box": [
+        17,
+        12
+      ],
+      "group": "gunCourt"
+    },
+    {
+      "id": "gun-court-18-12",
+      "box": [
+        18,
+        12
+      ],
+      "group": "gunCourt"
+    }
+  ],
+  "clearanceReady": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "count": 40
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "count": 40
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "count": 40
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "count": 41
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "count": 41
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "count": 41
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "base",
+      "count": 41
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade1",
+      "count": 41
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade2",
+      "count": 41
+    }
+  ],
+  "excluded": [
+    {
+      "site": "north-5-1",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "north-5-1",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "north-5-1",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    }
+  ],
+  "independentSiteUnion": [
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "tripod",
+      "eligible": [],
+      "uncovered": [
+        [
+          0,
+          888
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "ray",
+      "eligible": [],
+      "uncovered": [
+        [
+          0,
+          888
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "tripod",
+      "eligible": [
+        [
+          234,
+          332
+        ],
+        [
+          412,
+          696
+        ],
+        [
+          786,
+          888
+        ]
+      ],
+      "uncovered": [
+        [
+          0,
+          234
+        ],
+        [
+          332,
+          412
+        ],
+        [
+          696,
+          786
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "ray",
+      "eligible": [
+        [
+          234,
+          332
+        ],
+        [
+          412,
+          696
+        ],
+        [
+          786,
+          888
+        ]
+      ],
+      "uncovered": [
+        [
+          0,
+          234
+        ],
+        [
+          332,
+          412
+        ],
+        [
+          696,
+          786
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "tripod",
+      "eligible": [
+        [
+          0,
+          64
+        ],
+        [
+          80,
+          888
+        ]
+      ],
+      "uncovered": [
+        [
+          64,
+          80
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "ray",
+      "eligible": [
+        [
+          0,
+          64
+        ],
+        [
+          80,
+          888
+        ]
+      ],
+      "uncovered": [
+        [
+          64,
+          80
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "tripod",
+      "eligible": [
+        [
+          0,
+          888
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "ray",
+      "eligible": [
+        [
+          0,
+          888
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade2",
+      "species": "tripod",
+      "eligible": [
+        [
+          0,
+          888
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade2",
+      "species": "ray",
+      "eligible": [
+        [
+          0,
+          888
+        ]
+      ],
+      "uncovered": []
+    }
+  ],
+  "strongestRepeatedExamples": [],
+  "sites": [
+    {
+      "id": "north-5-1",
+      "group": "north",
+      "box": [
+        5,
+        1
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  0,
+                  64
+                ]
+              ],
+              "ray": [
+                [
+                  0,
+                  64
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  0,
+                  100
+                ]
+              ],
+              "ray": [
+                [
+                  0,
+                  100
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  0,
+                  132
+                ]
+              ],
+              "ray": [
+                [
+                  0,
+                  132
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  0,
+                  58
+                ]
+              ],
+              "ray": [
+                [
+                  0,
+                  60
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  0,
+                  55
+                ],
+                [
+                  88,
+                  102
+                ]
+              ],
+              "ray": [
+                [
+                  0,
+                  102
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                0,
+                102
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                131
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                158
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 64,
+                "ray": 64
+              },
+              "upgrade1": {
+                "tripod": 100,
+                "ray": 100
+              },
+              "upgrade2": {
+                "tripod": 132,
+                "ray": 132
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-9-2",
+      "group": "north",
+      "box": [
+        9,
+        2
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  104,
+                  184
+                ]
+              ],
+              "ray": [
+                [
+                  104,
+                  184
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  76,
+                  212
+                ]
+              ],
+              "ray": [
+                [
+                  76,
+                  212
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  0,
+                  44
+                ],
+                [
+                  52,
+                  236
+                ]
+              ],
+              "ray": [
+                [
+                  0,
+                  44
+                ],
+                [
+                  48,
+                  236
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  102,
+                  186
+                ]
+              ],
+              "ray": [
+                [
+                  102,
+                  186
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  76,
+                  212
+                ]
+              ],
+              "ray": [
+                [
+                  76,
+                  212
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                76,
+                212
+              ]
+            ],
+            "upgrade1": [
+              [
+                0,
+                237
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                262
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 228,
+                "ray": 232
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-11-3",
+      "group": "north",
+      "box": [
+        11,
+        3
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  144,
+                  208
+                ]
+              ],
+              "ray": [
+                [
+                  144,
+                  208
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  120,
+                  236
+                ]
+              ],
+              "ray": [
+                [
+                  120,
+                  236
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  96,
+                  260
+                ]
+              ],
+              "ray": [
+                [
+                  96,
+                  260
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  144,
+                  210
+                ]
+              ],
+              "ray": [
+                [
+                  144,
+                  210
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  120,
+                  236
+                ]
+              ],
+              "ray": [
+                [
+                  120,
+                  236
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                120,
+                236
+              ]
+            ],
+            "upgrade1": [
+              [
+                96,
+                261
+              ]
+            ],
+            "upgrade2": [
+              [
+                72,
+                286
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 64,
+                "ray": 64
+              },
+              "upgrade1": {
+                "tripod": 116,
+                "ray": 116
+              },
+              "upgrade2": {
+                "tripod": 164,
+                "ray": 164
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-11-4",
+      "group": "north",
+      "box": [
+        11,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  152,
+                  232
+                ]
+              ],
+              "ray": [
+                [
+                  152,
+                  232
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  124,
+                  260
+                ]
+              ],
+              "ray": [
+                [
+                  124,
+                  260
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  100,
+                  284
+                ]
+              ],
+              "ray": [
+                [
+                  100,
+                  284
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  150,
+                  234
+                ]
+              ],
+              "ray": [
+                [
+                  150,
+                  234
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  124,
+                  260
+                ]
+              ],
+              "ray": [
+                [
+                  124,
+                  260
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                124,
+                260
+              ]
+            ],
+            "upgrade1": [
+              [
+                99,
+                285
+              ]
+            ],
+            "upgrade2": [
+              [
+                74,
+                310
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 184,
+                "ray": 184
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "banks-9-4",
+      "group": "banks",
+      "box": [
+        9,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  104,
+                  232
+                ]
+              ],
+              "ray": [
+                [
+                  104,
+                  232
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  76,
+                  260
+                ]
+              ],
+              "ray": [
+                [
+                  76,
+                  260
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  36,
+                  284
+                ]
+              ],
+              "ray": [
+                [
+                  32,
+                  284
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  102,
+                  234
+                ]
+              ],
+              "ray": [
+                [
+                  102,
+                  234
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  76,
+                  260
+                ]
+              ],
+              "ray": [
+                [
+                  76,
+                  260
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                76,
+                260
+              ]
+            ],
+            "upgrade1": [
+              [
+                33,
+                285
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                310
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 128,
+                "ray": 128
+              },
+              "upgrade1": {
+                "tripod": 184,
+                "ray": 184
+              },
+              "upgrade2": {
+                "tripod": 248,
+                "ray": 252
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "banks-11-7",
+      "group": "banks",
+      "box": [
+        11,
+        7
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  224,
+                  304
+                ]
+              ],
+              "ray": [
+                [
+                  224,
+                  304
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  196,
+                  340
+                ]
+              ],
+              "ray": [
+                [
+                  196,
+                  340
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  172,
+                  372
+                ]
+              ],
+              "ray": [
+                [
+                  172,
+                  372
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "ray": [
+                [
+                  222,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  196,
+                  342
+                ]
+              ],
+              "ray": [
+                [
+                  196,
+                  342
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                196,
+                342
+              ]
+            ],
+            "upgrade1": [
+              [
+                171,
+                371
+              ]
+            ],
+            "upgrade2": [
+              [
+                120,
+                398
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 144,
+                "ray": 144
+              },
+              "upgrade2": {
+                "tripod": 200,
+                "ray": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "banks-11-8",
+      "group": "banks",
+      "box": [
+        11,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  248,
+                  328
+                ]
+              ],
+              "ray": [
+                [
+                  248,
+                  328
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  220,
+                  356
+                ]
+              ],
+              "ray": [
+                [
+                  220,
+                  356
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  196,
+                  380
+                ]
+              ],
+              "ray": [
+                [
+                  196,
+                  380
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "ray": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  220,
+                  356
+                ]
+              ],
+              "ray": [
+                [
+                  220,
+                  356
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                220,
+                356
+              ]
+            ],
+            "upgrade1": [
+              [
+                195,
+                381
+              ]
+            ],
+            "upgrade2": [
+              [
+                170,
+                406
+              ],
+              [
+                576,
+                646
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 184,
+                "ray": 184
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "banks-9-8",
+      "group": "banks",
+      "box": [
+        9,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  248,
+                  376
+                ]
+              ],
+              "ray": [
+                [
+                  248,
+                  376
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  220,
+                  404
+                ]
+              ],
+              "ray": [
+                [
+                  220,
+                  404
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  196,
+                  428
+                ]
+              ],
+              "ray": [
+                [
+                  196,
+                  428
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  246,
+                  378
+                ]
+              ],
+              "ray": [
+                [
+                  246,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  220,
+                  404
+                ]
+              ],
+              "ray": [
+                [
+                  220,
+                  404
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                220,
+                404
+              ]
+            ],
+            "upgrade1": [
+              [
+                195,
+                429
+              ]
+            ],
+            "upgrade2": [
+              [
+                170,
+                480
+              ],
+              [
+                528,
+                646
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 128,
+                "ray": 128
+              },
+              "upgrade1": {
+                "tripod": 184,
+                "ray": 184
+              },
+              "upgrade2": {
+                "tripod": 232,
+                "ray": 232
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "banks-11-9",
+      "group": "banks",
+      "box": [
+        11,
+        9
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  272,
+                  336
+                ]
+              ],
+              "ray": [
+                [
+                  272,
+                  336
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  244,
+                  360
+                ]
+              ],
+              "ray": [
+                [
+                  244,
+                  360
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  220,
+                  384
+                ],
+                [
+                  584,
+                  644
+                ]
+              ],
+              "ray": [
+                [
+                  220,
+                  384
+                ],
+                [
+                  584,
+                  644
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  270,
+                  336
+                ]
+              ],
+              "ray": [
+                [
+                  270,
+                  336
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  244,
+                  360
+                ]
+              ],
+              "ray": [
+                [
+                  244,
+                  360
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                244,
+                360
+              ]
+            ],
+            "upgrade1": [
+              [
+                219,
+                384
+              ],
+              [
+                585,
+                645
+              ]
+            ],
+            "upgrade2": [
+              [
+                194,
+                408
+              ],
+              [
+                552,
+                670
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 64,
+                "ray": 64
+              },
+              "upgrade1": {
+                "tripod": 116,
+                "ray": 116
+              },
+              "upgrade2": {
+                "tripod": 224,
+                "ray": 224
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-6-8",
+      "group": "westCourt",
+      "box": [
+        6,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  368,
+                  448
+                ]
+              ],
+              "ray": [
+                [
+                  368,
+                  448
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  340,
+                  476
+                ]
+              ],
+              "ray": [
+                [
+                  340,
+                  476
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  316,
+                  500
+                ]
+              ],
+              "ray": [
+                [
+                  316,
+                  500
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  366,
+                  450
+                ]
+              ],
+              "ray": [
+                [
+                  366,
+                  450
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  340,
+                  476
+                ]
+              ],
+              "ray": [
+                [
+                  340,
+                  476
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                340,
+                476
+              ]
+            ],
+            "upgrade1": [
+              [
+                315,
+                501
+              ]
+            ],
+            "upgrade2": [
+              [
+                216,
+                600
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 184,
+                "ray": 184
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-7-8",
+      "group": "westCourt",
+      "box": [
+        7,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  344,
+                  424
+                ]
+              ],
+              "ray": [
+                [
+                  344,
+                  424
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  316,
+                  460
+                ]
+              ],
+              "ray": [
+                [
+                  316,
+                  460
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  224,
+                  492
+                ]
+              ],
+              "ray": [
+                [
+                  224,
+                  492
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "ray": [
+                [
+                  342,
+                  426
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  316,
+                  462
+                ]
+              ],
+              "ray": [
+                [
+                  316,
+                  462
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                316,
+                462
+              ]
+            ],
+            "upgrade1": [
+              [
+                225,
+                491
+              ]
+            ],
+            "upgrade2": [
+              [
+                192,
+                624
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 144,
+                "ray": 144
+              },
+              "upgrade2": {
+                "tripod": 268,
+                "ray": 268
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-8-8",
+      "group": "westCourt",
+      "box": [
+        8,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  320,
+                  400
+                ]
+              ],
+              "ray": [
+                [
+                  320,
+                  400
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  236,
+                  428
+                ]
+              ],
+              "ray": [
+                [
+                  236,
+                  428
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  204,
+                  472
+                ]
+              ],
+              "ray": [
+                [
+                  204,
+                  472
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "ray": [
+                [
+                  318,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  234,
+                  428
+                ]
+              ],
+              "ray": [
+                [
+                  234,
+                  428
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                234,
+                428
+              ]
+            ],
+            "upgrade1": [
+              [
+                205,
+                471
+              ]
+            ],
+            "upgrade2": [
+              [
+                178,
+                638
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 192,
+                "ray": 192
+              },
+              "upgrade2": {
+                "tripod": 268,
+                "ray": 268
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-6-10",
+      "group": "westCourt",
+      "box": [
+        6,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  368,
+                  496
+                ]
+              ],
+              "ray": [
+                [
+                  368,
+                  496
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  340,
+                  580
+                ]
+              ],
+              "ray": [
+                [
+                  340,
+                  580
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  316,
+                  612
+                ]
+              ],
+              "ray": [
+                [
+                  316,
+                  612
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  366,
+                  498
+                ]
+              ],
+              "ray": [
+                [
+                  366,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  340,
+                  582
+                ]
+              ],
+              "ray": [
+                [
+                  340,
+                  582
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                340,
+                582
+              ]
+            ],
+            "upgrade1": [
+              [
+                315,
+                611
+              ]
+            ],
+            "upgrade2": [
+              [
+                264,
+                648
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 128,
+                "ray": 128
+              },
+              "upgrade1": {
+                "tripod": 240,
+                "ray": 240
+              },
+              "upgrade2": {
+                "tripod": 296,
+                "ray": 296
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-7-10",
+      "group": "westCourt",
+      "box": [
+        7,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  344,
+                  424
+                ]
+              ],
+              "ray": [
+                [
+                  344,
+                  424
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  316,
+                  604
+                ]
+              ],
+              "ray": [
+                [
+                  316,
+                  604
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  272,
+                  640
+                ]
+              ],
+              "ray": [
+                [
+                  272,
+                  640
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "ray": [
+                [
+                  342,
+                  426
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  316,
+                  606
+                ]
+              ],
+              "ray": [
+                [
+                  316,
+                  606
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                316,
+                606
+              ]
+            ],
+            "upgrade1": [
+              [
+                273,
+                639
+              ]
+            ],
+            "upgrade2": [
+              [
+                240,
+                672
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 288,
+                "ray": 288
+              },
+              "upgrade2": {
+                "tripod": 368,
+                "ray": 368
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-8-10",
+      "group": "westCourt",
+      "box": [
+        8,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  320,
+                  400
+                ]
+              ],
+              "ray": [
+                [
+                  320,
+                  400
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  284,
+                  428
+                ],
+                [
+                  524,
+                  628
+                ]
+              ],
+              "ray": [
+                [
+                  284,
+                  428
+                ],
+                [
+                  524,
+                  628
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  252,
+                  660
+                ]
+              ],
+              "ray": [
+                [
+                  252,
+                  660
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "ray": [
+                [
+                  318,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  282,
+                  428
+                ],
+                [
+                  522,
+                  630
+                ]
+              ],
+              "ray": [
+                [
+                  282,
+                  428
+                ],
+                [
+                  522,
+                  630
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                282,
+                428
+              ],
+              [
+                522,
+                630
+              ]
+            ],
+            "upgrade1": [
+              [
+                253,
+                659
+              ]
+            ],
+            "upgrade2": [
+              [
+                226,
+                696
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 248,
+                "ray": 248
+              },
+              "upgrade2": {
+                "tripod": 408,
+                "ray": 408
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-9-10",
+      "group": "westCourt",
+      "box": [
+        9,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  296,
+                  376
+                ]
+              ],
+              "ray": [
+                [
+                  296,
+                  376
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  268,
+                  404
+                ],
+                [
+                  548,
+                  644
+                ]
+              ],
+              "ray": [
+                [
+                  268,
+                  404
+                ],
+                [
+                  548,
+                  644
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  244,
+                  428
+                ],
+                [
+                  516,
+                  668
+                ]
+              ],
+              "ray": [
+                [
+                  244,
+                  428
+                ],
+                [
+                  516,
+                  668
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "ray": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  268,
+                  404
+                ],
+                [
+                  546,
+                  644
+                ]
+              ],
+              "ray": [
+                [
+                  268,
+                  404
+                ],
+                [
+                  546,
+                  644
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                268,
+                404
+              ],
+              [
+                546,
+                644
+              ]
+            ],
+            "upgrade1": [
+              [
+                243,
+                429
+              ],
+              [
+                517,
+                669
+              ]
+            ],
+            "upgrade2": [
+              [
+                218,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 232,
+                "ray": 232
+              },
+              "upgrade2": {
+                "tripod": 336,
+                "ray": 336
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-4-10",
+      "group": "westCourt",
+      "box": [
+        4,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  416,
+                  496
+                ]
+              ],
+              "ray": [
+                [
+                  416,
+                  496
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  388,
+                  532
+                ]
+              ],
+              "ray": [
+                [
+                  388,
+                  532
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  364,
+                  564
+                ]
+              ],
+              "ray": [
+                [
+                  364,
+                  564
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  414,
+                  498
+                ]
+              ],
+              "ray": [
+                [
+                  414,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  388,
+                  534
+                ]
+              ],
+              "ray": [
+                [
+                  388,
+                  534
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                388,
+                534
+              ]
+            ],
+            "upgrade1": [
+              [
+                363,
+                563
+              ]
+            ],
+            "upgrade2": [
+              [
+                338,
+                590
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 144,
+                "ray": 144
+              },
+              "upgrade2": {
+                "tripod": 200,
+                "ray": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-4-11",
+      "group": "westCourt",
+      "box": [
+        4,
+        11
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  440,
+                  520
+                ]
+              ],
+              "ray": [
+                [
+                  440,
+                  520
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  404,
+                  548
+                ]
+              ],
+              "ray": [
+                [
+                  404,
+                  548
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  372,
+                  572
+                ]
+              ],
+              "ray": [
+                [
+                  372,
+                  572
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  438,
+                  522
+                ]
+              ],
+              "ray": [
+                [
+                  438,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  402,
+                  548
+                ]
+              ],
+              "ray": [
+                [
+                  402,
+                  548
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                402,
+                548
+              ]
+            ],
+            "upgrade1": [
+              [
+                373,
+                573
+              ]
+            ],
+            "upgrade2": [
+              [
+                346,
+                598
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 144,
+                "ray": 144
+              },
+              "upgrade2": {
+                "tripod": 200,
+                "ray": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-6-11",
+      "group": "westCourt",
+      "box": [
+        6,
+        11
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  440,
+                  568
+                ]
+              ],
+              "ray": [
+                [
+                  440,
+                  568
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  356,
+                  596
+                ]
+              ],
+              "ray": [
+                [
+                  356,
+                  596
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  324,
+                  620
+                ]
+              ],
+              "ray": [
+                [
+                  324,
+                  620
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  438,
+                  570
+                ]
+              ],
+              "ray": [
+                [
+                  438,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  354,
+                  596
+                ]
+              ],
+              "ray": [
+                [
+                  354,
+                  596
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                354,
+                596
+              ]
+            ],
+            "upgrade1": [
+              [
+                325,
+                621
+              ]
+            ],
+            "upgrade2": [
+              [
+                288,
+                672
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 128,
+                "ray": 128
+              },
+              "upgrade1": {
+                "tripod": 240,
+                "ray": 240
+              },
+              "upgrade2": {
+                "tripod": 296,
+                "ray": 296
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-7-11",
+      "group": "westCourt",
+      "box": [
+        7,
+        11
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  512,
+                  592
+                ]
+              ],
+              "ray": [
+                [
+                  512,
+                  592
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  332,
+                  620
+                ]
+              ],
+              "ray": [
+                [
+                  332,
+                  620
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  296,
+                  664
+                ]
+              ],
+              "ray": [
+                [
+                  296,
+                  664
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "ray": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  330,
+                  620
+                ]
+              ],
+              "ray": [
+                [
+                  330,
+                  620
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                330,
+                620
+              ]
+            ],
+            "upgrade1": [
+              [
+                297,
+                663
+              ]
+            ],
+            "upgrade2": [
+              [
+                264,
+                696
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 288,
+                "ray": 288
+              },
+              "upgrade2": {
+                "tripod": 368,
+                "ray": 368
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-6-13",
+      "group": "southernReturn",
+      "box": [
+        6,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  488,
+                  568
+                ]
+              ],
+              "ray": [
+                [
+                  488,
+                  568
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  460,
+                  596
+                ]
+              ],
+              "ray": [
+                [
+                  460,
+                  596
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  436,
+                  620
+                ]
+              ],
+              "ray": [
+                [
+                  436,
+                  620
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  486,
+                  570
+                ]
+              ],
+              "ray": [
+                [
+                  486,
+                  570
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  460,
+                  596
+                ]
+              ],
+              "ray": [
+                [
+                  460,
+                  596
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                460,
+                596
+              ]
+            ],
+            "upgrade1": [
+              [
+                435,
+                621
+              ]
+            ],
+            "upgrade2": [
+              [
+                336,
+                694
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 184,
+                "ray": 184
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-7-13",
+      "group": "southernReturn",
+      "box": [
+        7,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  512,
+                  592
+                ]
+              ],
+              "ray": [
+                [
+                  512,
+                  592
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  476,
+                  620
+                ]
+              ],
+              "ray": [
+                [
+                  476,
+                  620
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  444,
+                  692
+                ]
+              ],
+              "ray": [
+                [
+                  444,
+                  692
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  510,
+                  594
+                ]
+              ],
+              "ray": [
+                [
+                  510,
+                  594
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  474,
+                  620
+                ]
+              ],
+              "ray": [
+                [
+                  474,
+                  620
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                474,
+                620
+              ]
+            ],
+            "upgrade1": [
+              [
+                445,
+                693
+              ]
+            ],
+            "upgrade2": [
+              [
+                312,
+                718
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 144,
+                "ray": 144
+              },
+              "upgrade2": {
+                "tripod": 248,
+                "ray": 248
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-8-13",
+      "group": "southernReturn",
+      "box": [
+        8,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  536,
+                  616
+                ]
+              ],
+              "ray": [
+                [
+                  536,
+                  616
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  508,
+                  692
+                ]
+              ],
+              "ray": [
+                [
+                  508,
+                  692
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  464,
+                  716
+                ]
+              ],
+              "ray": [
+                [
+                  464,
+                  716
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "ray": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  508,
+                  692
+                ]
+              ],
+              "ray": [
+                [
+                  508,
+                  692
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                508,
+                692
+              ]
+            ],
+            "upgrade1": [
+              [
+                465,
+                717
+              ]
+            ],
+            "upgrade2": [
+              [
+                298,
+                742
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 184,
+                "ray": 184
+              },
+              "upgrade2": {
+                "tripod": 252,
+                "ray": 252
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-9-13",
+      "group": "southernReturn",
+      "box": [
+        9,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  560,
+                  688
+                ]
+              ],
+              "ray": [
+                [
+                  560,
+                  688
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  532,
+                  716
+                ]
+              ],
+              "ray": [
+                [
+                  532,
+                  716
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  508,
+                  740
+                ]
+              ],
+              "ray": [
+                [
+                  508,
+                  740
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  558,
+                  690
+                ]
+              ],
+              "ray": [
+                [
+                  558,
+                  690
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  532,
+                  716
+                ]
+              ],
+              "ray": [
+                [
+                  532,
+                  716
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                532,
+                716
+              ]
+            ],
+            "upgrade1": [
+              [
+                507,
+                741
+              ]
+            ],
+            "upgrade2": [
+              [
+                290,
+                408
+              ],
+              [
+                456,
+                766
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 128,
+                "ray": 128
+              },
+              "upgrade1": {
+                "tripod": 184,
+                "ray": 184
+              },
+              "upgrade2": {
+                "tripod": 232,
+                "ray": 232
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-11-15",
+      "group": "southernReturn",
+      "box": [
+        11,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  656,
+                  736
+                ]
+              ],
+              "ray": [
+                [
+                  656,
+                  736
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  628,
+                  764
+                ]
+              ],
+              "ray": [
+                [
+                  628,
+                  764
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  584,
+                  788
+                ]
+              ],
+              "ray": [
+                [
+                  584,
+                  788
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  654,
+                  738
+                ]
+              ],
+              "ray": [
+                [
+                  654,
+                  738
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  628,
+                  764
+                ]
+              ],
+              "ray": [
+                [
+                  628,
+                  764
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                628,
+                764
+              ]
+            ],
+            "upgrade1": [
+              [
+                585,
+                789
+              ]
+            ],
+            "upgrade2": [
+              [
+                552,
+                814
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 204,
+                "ray": 204
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-12-15",
+      "group": "southernReturn",
+      "box": [
+        12,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  680,
+                  760
+                ]
+              ],
+              "ray": [
+                [
+                  680,
+                  760
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  644,
+                  788
+                ]
+              ],
+              "ray": [
+                [
+                  644,
+                  788
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  608,
+                  812
+                ]
+              ],
+              "ray": [
+                [
+                  608,
+                  812
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  678,
+                  762
+                ]
+              ],
+              "ray": [
+                [
+                  678,
+                  762
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  642,
+                  788
+                ]
+              ],
+              "ray": [
+                [
+                  642,
+                  788
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                642,
+                788
+              ]
+            ],
+            "upgrade1": [
+              [
+                609,
+                813
+              ]
+            ],
+            "upgrade2": [
+              [
+                576,
+                838
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 144,
+                "ray": 144
+              },
+              "upgrade2": {
+                "tripod": 204,
+                "ray": 204
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-13-15",
+      "group": "southernReturn",
+      "box": [
+        13,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  704,
+                  784
+                ]
+              ],
+              "ray": [
+                [
+                  704,
+                  784
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  676,
+                  812
+                ]
+              ],
+              "ray": [
+                [
+                  676,
+                  812
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  632,
+                  836
+                ]
+              ],
+              "ray": [
+                [
+                  632,
+                  836
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  702,
+                  786
+                ]
+              ],
+              "ray": [
+                [
+                  702,
+                  786
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  676,
+                  812
+                ]
+              ],
+              "ray": [
+                [
+                  676,
+                  812
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                676,
+                812
+              ]
+            ],
+            "upgrade1": [
+              [
+                633,
+                837
+              ]
+            ],
+            "upgrade2": [
+              [
+                600,
+                862
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 204,
+                "ray": 204
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southern-return-14-15",
+      "group": "southernReturn",
+      "box": [
+        14,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  728,
+                  808
+                ]
+              ],
+              "ray": [
+                [
+                  728,
+                  808
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  700,
+                  836
+                ]
+              ],
+              "ray": [
+                [
+                  700,
+                  836
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  676,
+                  860
+                ]
+              ],
+              "ray": [
+                [
+                  676,
+                  860
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  726,
+                  810
+                ]
+              ],
+              "ray": [
+                [
+                  726,
+                  810
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  700,
+                  836
+                ]
+              ],
+              "ray": [
+                [
+                  700,
+                  836
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                700,
+                836
+              ]
+            ],
+            "upgrade1": [
+              [
+                675,
+                861
+              ]
+            ],
+            "upgrade2": [
+              [
+                624,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 184,
+                "ray": 184
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-15-15",
+      "group": "late",
+      "box": [
+        15,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  752,
+                  832
+                ]
+              ],
+              "ray": [
+                [
+                  752,
+                  832
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  724,
+                  860
+                ]
+              ],
+              "ray": [
+                [
+                  724,
+                  860
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  700,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  700,
+                  888
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  750,
+                  834
+                ]
+              ],
+              "ray": [
+                [
+                  750,
+                  834
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  724,
+                  860
+                ]
+              ],
+              "ray": [
+                [
+                  724,
+                  860
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                724,
+                860
+              ]
+            ],
+            "upgrade1": [
+              [
+                699,
+                888
+              ]
+            ],
+            "upgrade2": [
+              [
+                674,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 136,
+                "ray": 136
+              },
+              "upgrade2": {
+                "tripod": 188,
+                "ray": 188
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-16-15",
+      "group": "late",
+      "box": [
+        16,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  776,
+                  856
+                ]
+              ],
+              "ray": [
+                [
+                  776,
+                  856
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  748,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  748,
+                  888
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  724,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  724,
+                  888
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  774,
+                  858
+                ]
+              ],
+              "ray": [
+                [
+                  774,
+                  858
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  748,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  748,
+                  888
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                748,
+                888
+              ]
+            ],
+            "upgrade1": [
+              [
+                723,
+                888
+              ]
+            ],
+            "upgrade2": [
+              [
+                698,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 140,
+                "ray": 140
+              },
+              "upgrade2": {
+                "tripod": 164,
+                "ray": 164
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-17-15",
+      "group": "late",
+      "box": [
+        17,
+        15
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  800,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  800,
+                  888
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  772,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  772,
+                  888
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  748,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  748,
+                  888
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  798,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  798,
+                  888
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  772,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  772,
+                  888
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                772,
+                888
+              ]
+            ],
+            "upgrade1": [
+              [
+                747,
+                888
+              ]
+            ],
+            "upgrade2": [
+              [
+                722,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 88,
+                "ray": 88
+              },
+              "upgrade1": {
+                "tripod": 116,
+                "ray": 116
+              },
+              "upgrade2": {
+                "tripod": 140,
+                "ray": 140
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-18-13",
+      "group": "late",
+      "box": [
+        18,
+        13
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  824,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  824,
+                  888
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  796,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  796,
+                  888
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  772,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  772,
+                  888
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  822,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  822,
+                  888
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  796,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  796,
+                  888
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                796,
+                888
+              ]
+            ],
+            "upgrade1": [
+              [
+                771,
+                888
+              ]
+            ],
+            "upgrade2": [
+              [
+                746,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 64,
+                "ray": 64
+              },
+              "upgrade1": {
+                "tripod": 92,
+                "ray": 92
+              },
+              "upgrade2": {
+                "tripod": 116,
+                "ray": 116
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-19-14",
+      "group": "late",
+      "box": [
+        19,
+        14
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  840,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  840,
+                  888
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  816,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  816,
+                  888
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  792,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  792,
+                  888
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  840,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  840,
+                  888
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  816,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  816,
+                  888
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                816,
+                888
+              ]
+            ],
+            "upgrade1": [
+              [
+                792,
+                888
+              ]
+            ],
+            "upgrade2": [
+              [
+                768,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 48,
+                "ray": 48
+              },
+              "upgrade1": {
+                "tripod": 72,
+                "ray": 72
+              },
+              "upgrade2": {
+                "tripod": 96,
+                "ray": 96
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-8-4",
+      "group": "gunCourt",
+      "box": [
+        8,
+        4
+      ],
+      "physical": {
+        "turret-study": {
+          "base": false,
+          "upgrade1": false,
+          "upgrade2": false
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": true,
+      "baseGunArcUseful": true,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [],
+              "ray": []
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [
+                [
+                  80,
+                  160
+                ]
+              ],
+              "ray": [
+                [
+                  80,
+                  160
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  44,
+                  244
+                ]
+              ],
+              "ray": [
+                [
+                  44,
+                  244
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  12,
+                  276
+                ]
+              ],
+              "ray": [
+                [
+                  12,
+                  276
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [
+                [
+                  78,
+                  162
+                ]
+              ],
+              "ray": [
+                [
+                  78,
+                  162
+                ]
+              ]
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  42,
+                  246
+                ]
+              ],
+              "ray": [
+                [
+                  42,
+                  246
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                42,
+                246
+              ]
+            ],
+            "upgrade1": [
+              [
+                13,
+                275
+              ]
+            ],
+            "upgrade2": [
+              [
+                0,
+                302
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 0,
+                "ray": 0
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 80,
+                "ray": 80
+              },
+              "upgrade1": {
+                "tripod": 200,
+                "ray": 200
+              },
+              "upgrade2": {
+                "tripod": 264,
+                "ray": 264
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-12-8",
+      "group": "gunCourt",
+      "box": [
+        12,
+        8
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  234,
+                  332
+                ]
+              ],
+              "ray": [
+                [
+                  234,
+                  332
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  236,
+                  332
+                ]
+              ],
+              "ray": [
+                [
+                  236,
+                  332
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  204,
+                  356
+                ]
+              ],
+              "ray": [
+                [
+                  204,
+                  356
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  234,
+                  332
+                ]
+              ],
+              "ray": [
+                [
+                  234,
+                  332
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                234,
+                332
+              ]
+            ],
+            "upgrade1": [
+              [
+                205,
+                357
+              ]
+            ],
+            "upgrade2": [
+              [
+                178,
+                382
+              ],
+              [
+                600,
+                638
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 98,
+                "ray": 98
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 96,
+                "ray": 96
+              },
+              "upgrade2": {
+                "tripod": 152,
+                "ray": 152
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-3-10",
+      "group": "gunCourt",
+      "box": [
+        3,
+        10
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  412,
+                  510
+                ]
+              ],
+              "ray": [
+                [
+                  412,
+                  510
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  412,
+                  508
+                ]
+              ],
+              "ray": [
+                [
+                  412,
+                  508
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  388,
+                  540
+                ]
+              ],
+              "ray": [
+                [
+                  388,
+                  540
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  412,
+                  510
+                ]
+              ],
+              "ray": [
+                [
+                  412,
+                  510
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                412,
+                510
+              ]
+            ],
+            "upgrade1": [
+              [
+                387,
+                539
+              ]
+            ],
+            "upgrade2": [
+              [
+                362,
+                566
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 98,
+                "ray": 98
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 96,
+                "ray": 96
+              },
+              "upgrade2": {
+                "tripod": 152,
+                "ray": 152
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-3-11",
+      "group": "gunCourt",
+      "box": [
+        3,
+        11
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  426,
+                  524
+                ]
+              ],
+              "ray": [
+                [
+                  426,
+                  524
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  428,
+                  524
+                ]
+              ],
+              "ray": [
+                [
+                  428,
+                  524
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  396,
+                  548
+                ]
+              ],
+              "ray": [
+                [
+                  396,
+                  548
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  426,
+                  524
+                ]
+              ],
+              "ray": [
+                [
+                  426,
+                  524
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                426,
+                524
+              ]
+            ],
+            "upgrade1": [
+              [
+                397,
+                549
+              ]
+            ],
+            "upgrade2": [
+              [
+                370,
+                574
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 98,
+                "ray": 98
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 96,
+                "ray": 96
+              },
+              "upgrade2": {
+                "tripod": 152,
+                "ray": 152
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-7-14",
+      "group": "gunCourt",
+      "box": [
+        7,
+        14
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  498,
+                  606
+                ]
+              ],
+              "ray": [
+                [
+                  498,
+                  606
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  500,
+                  604
+                ]
+              ],
+              "ray": [
+                [
+                  500,
+                  604
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  468,
+                  696
+                ]
+              ],
+              "ray": [
+                [
+                  468,
+                  696
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  498,
+                  606
+                ]
+              ],
+              "ray": [
+                [
+                  498,
+                  606
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                498,
+                606
+              ]
+            ],
+            "upgrade1": [
+              [
+                469,
+                696
+              ]
+            ],
+            "upgrade2": [
+              [
+                442,
+                720
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 108,
+                "ray": 108
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 104,
+                "ray": 104
+              },
+              "upgrade2": {
+                "tripod": 228,
+                "ray": 228
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-8-14",
+      "group": "gunCourt",
+      "box": [
+        8,
+        14
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  522,
+                  696
+                ]
+              ],
+              "ray": [
+                [
+                  522,
+                  696
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  524,
+                  696
+                ]
+              ],
+              "ray": [
+                [
+                  524,
+                  696
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  488,
+                  720
+                ]
+              ],
+              "ray": [
+                [
+                  488,
+                  720
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  522,
+                  696
+                ]
+              ],
+              "ray": [
+                [
+                  522,
+                  696
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                522,
+                696
+              ]
+            ],
+            "upgrade1": [
+              [
+                489,
+                720
+              ]
+            ],
+            "upgrade2": [
+              [
+                456,
+                744
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 174,
+                "ray": 174
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 172,
+                "ray": 172
+              },
+              "upgrade2": {
+                "tripod": 232,
+                "ray": 232
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-17-12",
+      "group": "gunCourt",
+      "box": [
+        17,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  786,
+                  884
+                ]
+              ],
+              "ray": [
+                [
+                  786,
+                  884
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  788,
+                  884
+                ]
+              ],
+              "ray": [
+                [
+                  788,
+                  884
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  756,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  756,
+                  888
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  786,
+                  884
+                ]
+              ],
+              "ray": [
+                [
+                  786,
+                  884
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                786,
+                884
+              ]
+            ],
+            "upgrade1": [
+              [
+                757,
+                888
+              ]
+            ],
+            "upgrade2": [
+              [
+                730,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 98,
+                "ray": 98
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 96,
+                "ray": 96
+              },
+              "upgrade2": {
+                "tripod": 132,
+                "ray": 132
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-18-12",
+      "group": "gunCourt",
+      "box": [
+        18,
+        12
+      ],
+      "physical": {
+        "turret-study": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "arc-spire": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        },
+        "missile-launcher": {
+          "base": true,
+          "upgrade1": true,
+          "upgrade2": true
+        }
+      },
+      "baseGunUseful": false,
+      "baseArcUseful": false,
+      "baseGunArcUseful": false,
+      "bothBaseWeaponsUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 888,
+          "gun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  810,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  810,
+                  888
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  812,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  812,
+                  888
+                ]
+              ]
+            },
+            "upgrade2": {
+              "tripod": [
+                [
+                  780,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  780,
+                  888
+                ]
+              ]
+            }
+          },
+          "rawGun": {
+            "base": {
+              "tripod": [],
+              "ray": []
+            },
+            "upgrade1": {
+              "tripod": [
+                [
+                  810,
+                  888
+                ]
+              ],
+              "ray": [
+                [
+                  810,
+                  888
+                ]
+              ]
+            }
+          },
+          "siloRangeOnly": {
+            "base": [
+              [
+                810,
+                888
+              ]
+            ],
+            "upgrade1": [
+              [
+                781,
+                888
+              ]
+            ],
+            "upgrade2": [
+              [
+                754,
+                888
+              ]
+            ]
+          },
+          "totals": {
+            "gun": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 78,
+                "ray": 78
+              }
+            },
+            "arc": {
+              "base": {
+                "tripod": 0,
+                "ray": 0
+              },
+              "upgrade1": {
+                "tripod": 76,
+                "ray": 76
+              },
+              "upgrade2": {
+                "tripod": 108,
+                "ray": 108
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

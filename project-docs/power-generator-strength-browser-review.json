@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-18",
+  "strengthIncrease": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "reviewLabels": [
+    "Strength +25%",
+    "Strength +50%",
+    "Strength +75%"
+  ],
+  "zone": "A",
+  "level": "1",
+  "generators": [
+    {
+      "active": true,
+      "id": "power-generator-1",
+      "model": "power-generator",
+      "recipientIds": [
+        "scene-1"
+      ],
+      "variant": "base"
+    }
+  ],
+  "plasmaLinks": 1,
+  "turrets": [
+    {
+      "id": "scene-1",
+      "baseStrength": 10,
+      "strengthIncrease": 0.25,
+      "strength": 12.5,
+      "lastShotDamage": 12.5
+    },
+    {
+      "id": "scene-2",
+      "baseStrength": 12,
+      "strengthIncrease": 0,
+      "strength": 12,
+      "lastShotDamage": 12
+    },
+    {
+      "id": "scene-3",
+      "baseStrength": 10,
+      "strengthIncrease": 0,
+      "strength": 10,
+      "lastShotDamage": 10
+    }
+  ],
+  "consoleErrorsAndWarnings": []
+}

@@ -1,0 +1,12 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1094.27ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [234.04ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [660.25ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [529.65ms]
+
+ 4 pass
+ 0 fail
+ 1079 expect() calls
+Ran 4 tests across 1 file. [2.53s]

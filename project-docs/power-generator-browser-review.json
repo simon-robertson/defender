@@ -1,0 +1,896 @@
+{
+  "date": "2026-10-18",
+  "url": "http://127.0.0.1:4173/tools/power-generator-review.html",
+  "modelsApprovedByUser": true,
+  "checks": [
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "all",
+      "zone": "A",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 12,
+      "authoredModelLights": 12,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 12,
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 179456,
+      "drawGroups": 4,
+      "frames": 3,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 37.31223665099769
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "all",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 12,
+      "authoredModelLights": 12,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 12,
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 179456,
+      "drawGroups": 4,
+      "frames": 4,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 37.31223665099769
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "base",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 4,
+      "authoredModelLights": 4,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 6,
+      "createdSceneBuffers": 18,
+      "destroyedSceneBuffers": 12,
+      "geometryBytes": 44928,
+      "drawGroups": 2,
+      "frames": 5,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 18.535316269044216
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "upgrade1",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 4,
+      "authoredModelLights": 4,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 6,
+      "createdSceneBuffers": 24,
+      "destroyedSceneBuffers": 18,
+      "geometryBytes": 62528,
+      "drawGroups": 2,
+      "frames": 6,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 20.67217777513091
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "upgrade2",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 4,
+      "authoredModelLights": 4,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 6,
+      "createdSceneBuffers": 30,
+      "destroyedSceneBuffers": 24,
+      "geometryBytes": 72528,
+      "drawGroups": 2,
+      "frames": 7,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 22.8090392812176
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "all",
+      "zone": "B",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 12,
+      "authoredModelLights": 12,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 54,
+      "destroyedSceneBuffers": 42,
+      "geometryBytes": 179456,
+      "drawGroups": 4,
+      "frames": 9,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 37.31223665099769
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "all",
+      "zone": "C",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 12,
+      "authoredModelLights": 12,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 66,
+      "destroyedSceneBuffers": 54,
+      "geometryBytes": 179456,
+      "drawGroups": 4,
+      "frames": 10,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 37.31223665099769
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "all",
+      "zone": "D",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 12,
+      "authoredModelLights": 12,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 78,
+      "destroyedSceneBuffers": 66,
+      "geometryBytes": 179456,
+      "drawGroups": 4,
+      "frames": 11,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 37.31223665099769
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "all",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 12,
+      "authoredModelLights": 12,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 90,
+      "destroyedSceneBuffers": 78,
+      "geometryBytes": 179456,
+      "drawGroups": 4,
+      "frames": 12,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 37.31223665099769
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "power-generator",
+      "selection": "all",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 3790,
+          "quads": 223,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            14,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5074,
+          "quads": 311,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            18,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 6070,
+          "quads": 361,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            22,
+            23
+          ]
+        }
+      },
+      "enhancerStats": {
+        "base": {
+          "strengthIncrease": 0.2,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "upgrade1": {
+          "strengthIncrease": 0.3,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        },
+        "upgrade2": {
+          "strengthIncrease": 0.4,
+          "fireRateIncrease": 0,
+          "cooldownDecrease": 0
+        }
+      },
+      "accentMaterials": [
+        {
+          "name": "Power green",
+          "color": "#5FEA38",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green highlight",
+          "color": "#8BFF61",
+          "emission": 1,
+          "castsLight": true
+        },
+        {
+          "name": "Power green shade",
+          "color": "#37AD28",
+          "emission": 1,
+          "castsLight": true
+        }
+      ],
+      "modelLights": 12,
+      "authoredModelLights": 12,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 12,
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 179456,
+      "drawGroups": 4,
+      "frames": 2,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 37.31223665099769
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    }
+  ],
+  "consoleWarningsAndErrors": [],
+  "visualReview": "Day/night family captures inspected; four distinct green bars per model, real green spill on front housing and floor, crisp ordinary materials. User approved all three models.",
+  "sourceChecks": {
+    "modelTests": 4,
+    "modelAssertions": 17533,
+    "existingPaletteAndLightTests": 2,
+    "existingAssertions": 452,
+    "enhancerDataTests": 3,
+    "enhancerDataAssertions": 109,
+    "selectiveCompilation": true
+  },
+  "existingAssetProof": "power-generator-asset-proof.json"
+}

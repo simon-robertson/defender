@@ -1,0 +1,702 @@
+{
+  "id": "aqueduct-shore-tour",
+  "sourceHash": "32516e96472e42605fdc53e74046e2b3164d1ad9549e025521e5919f39d4ed3f",
+  "method": "Each candidate considered independently. Turret heads use complete yaw cylinders separately for every occupied Y layer. Gun occupied voxels use continuous one-degree pitch-interval extrema, both recoil endpoints and full yaw, retaining horizontal radius separately in one-unit Y layers. Arc parts use fixed occupied-vertex bounds. Launcher bounds include the tallest loaded missile tip across the full casing footprint. Test exact static cuboids and actual production Walker/DuneTread/TwinFan occupied-part poses at every1-unit route distance and endpoints. Conservative envelopes can reject a harmless pose; an overlap is a restriction, not proof of an actual joint collision. Separate finite flights probe actual launches. No simultaneous-neighbour compatibility is claimed; upgrade2 gun is physically surveyed only and remains inactive.",
+  "rows": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "independentSites": 32,
+      "staticFailures": [
+        {
+          "id": "shore-return-10-10",
+          "part": "head",
+          "bounds": [
+            237.85786437626905,
+            42,
+            237.85786437626905,
+            266.14213562373095,
+            43,
+            266.14213562373095
+          ],
+          "obstacle": [
+            236,
+            39,
+            250,
+            238,
+            55,
+            254
+          ]
+        },
+        {
+          "id": "lower-court-11-12",
+          "part": "head",
+          "bounds": [
+            262.3985294912646,
+            41,
+            286.3985294912646,
+            289.6014705087354,
+            42,
+            313.6014705087354
+          ],
+          "obstacle": [
+            274,
+            35,
+            313,
+            277,
+            43,
+            316
+          ]
+        },
+        {
+          "id": "lower-court-12-14",
+          "part": "head",
+          "bounds": [
+            286.54637595292627,
+            48,
+            334.54637595292627,
+            313.45362404707373,
+            49,
+            361.45362404707373
+          ],
+          "obstacle": [
+            285,
+            48,
+            346,
+            287,
+            61,
+            349
+          ]
+        }
+      ],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "independentSites": 32,
+      "staticFailures": [
+        {
+          "id": "shore-return-10-10",
+          "part": "head",
+          "bounds": [
+            237.85786437626905,
+            44,
+            237.85786437626905,
+            266.14213562373095,
+            45,
+            266.14213562373095
+          ],
+          "obstacle": [
+            236,
+            39,
+            250,
+            238,
+            55,
+            254
+          ]
+        },
+        {
+          "id": "lower-court-11-12",
+          "part": "head",
+          "bounds": [
+            261.85786437626905,
+            44,
+            285.85786437626905,
+            290.14213562373095,
+            45,
+            314.14213562373095
+          ],
+          "obstacle": [
+            274,
+            43,
+            314,
+            277,
+            45,
+            317
+          ]
+        },
+        {
+          "id": "lower-court-12-14",
+          "part": "head",
+          "bounds": [
+            285.1339312526815,
+            48,
+            333.1339312526815,
+            314.8660687473185,
+            49,
+            362.8660687473185
+          ],
+          "obstacle": [
+            283,
+            48,
+            345,
+            286,
+            61,
+            346
+          ]
+        },
+        {
+          "id": "lower-court-12-14",
+          "part": "guns",
+          "bounds": [
+            286.424862604986,
+            48,
+            334.424862604986,
+            313.575137395014,
+            49,
+            361.575137395014
+          ],
+          "obstacle": [
+            285,
+            48,
+            346,
+            287,
+            61,
+            349
+          ]
+        }
+      ],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "independentSites": 32,
+      "staticFailures": [
+        {
+          "id": "shore-return-10-10",
+          "part": "head",
+          "bounds": [
+            237.7873295964481,
+            46,
+            237.7873295964481,
+            266.2126704035519,
+            47,
+            266.2126704035519
+          ],
+          "obstacle": [
+            236,
+            39,
+            250,
+            238,
+            55,
+            254
+          ]
+        },
+        {
+          "id": "shore-return-10-10",
+          "part": "guns",
+          "bounds": [
+            237.93657342316993,
+            48,
+            237.93657342316993,
+            266.06342657683007,
+            49,
+            266.06342657683007
+          ],
+          "obstacle": [
+            236,
+            39,
+            250,
+            238,
+            55,
+            254
+          ]
+        },
+        {
+          "id": "lower-court-12-14",
+          "part": "head",
+          "bounds": [
+            284.44365081389594,
+            48,
+            332.44365081389594,
+            315.55634918610406,
+            49,
+            363.55634918610406
+          ],
+          "obstacle": [
+            280,
+            47,
+            346,
+            285,
+            52,
+            351
+          ]
+        },
+        {
+          "id": "lower-court-12-14",
+          "part": "guns",
+          "bounds": [
+            285.93657342316993,
+            48,
+            333.93657342316993,
+            314.06342657683007,
+            49,
+            362.06342657683007
+          ],
+          "obstacle": [
+            285,
+            48,
+            346,
+            287,
+            61,
+            349
+          ]
+        }
+      ],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "base",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade1",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade2",
+      "independentSites": 32,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2163,
+      "checkedParts": 12257
+    }
+  ],
+  "excluded": [
+    {
+      "site": "shore-return-10-10",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-11-12",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-12-14",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "shore-return-10-10",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-11-12",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-12-14",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "shore-return-10-10",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    },
+    {
+      "site": "lower-court-12-14",
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "reason": "Complete weapon movement envelope intersects retained static scenery."
+    }
+  ],
+  "ready": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-11-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-11-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "lower-court-12-14",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-11-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "lower-court-12-14",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-11-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "lower-court-12-14",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "base",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-11-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "lower-court-12-14",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade1",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-11-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "lower-court-12-14",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade2",
+      "sites": [
+        "north-entry-14-1",
+        "north-entry-14-2",
+        "north-entry-14-3",
+        "north-entry-14-4",
+        "north-entry-16-1",
+        "north-entry-16-2",
+        "north-entry-16-3",
+        "north-entry-16-4",
+        "aqueduct-18-4",
+        "aqueduct-18-5",
+        "aqueduct-18-6",
+        "shore-return-10-6",
+        "shore-return-10-7",
+        "shore-return-11-6",
+        "shore-return-12-6",
+        "shore-return-12-7",
+        "shore-return-13-7",
+        "shore-return-12-9",
+        "shore-return-12-10",
+        "shore-return-10-10",
+        "shore-return-10-11",
+        "lower-court-10-12",
+        "lower-court-11-12",
+        "lower-court-12-12",
+        "lower-court-12-13",
+        "lower-court-12-14",
+        "late-14-15",
+        "late-15-15",
+        "late-16-15",
+        "late-17-15",
+        "late-18-13",
+        "late-19-14"
+      ]
+    }
+  ],
+  "allProbedCombinationsClear": false,
+  "zeroRouteMotionOverlaps": true,
+  "testedCombinations": 288,
+  "restrictedCombinations": 8,
+  "readyCombinations": 280
+}

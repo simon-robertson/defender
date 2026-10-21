@@ -1,0 +1,56 @@
+{
+  "passed": 25,
+  "failed": 0,
+  "checks": [
+    "opaque models compiles with expanded light capacity",
+    "water and SSR compiles with expanded light capacity",
+    "muzzle particles compiles with expanded light capacity",
+    "rain compiles with expanded light capacity",
+    "snow compiles with expanded light capacity",
+    "leaves compiles with expanded light capacity",
+    "debris compiles with expanded light capacity",
+    "smoke and blast compiles with expanded light capacity",
+    "A exposes only its three authored panel clusters",
+    "A local spill retains exact linear zone colour and configured strength",
+    "B exposes only its three authored panel clusters",
+    "B local spill retains exact linear zone colour and configured strength",
+    "C exposes only its three authored panel clusters",
+    "C local spill retains exact linear zone colour and configured strength",
+    "D exposes only its three authored panel clusters",
+    "D local spill retains exact linear zone colour and configured strength",
+    "Model light weakens smoothly across its local radius",
+    "No light beyond the finite panel radius",
+    "Back-facing opaque surfaces receive no panel light",
+    "Exact-origin and boundary values remain finite",
+    "The final slot of the 33-light uniform reaches the production shader",
+    "Muzzle, explosion and final model slots combine without overwriting one another",
+    "Moving a panel leaves no light at its old position",
+    "Scene removal leaves no residual local illumination",
+    "No WebGPU validation errors"
+  ],
+  "linearRGB": {
+    "A": [
+      0.3271370828151703,
+      0.05325205996632576,
+      0.02895163930952549
+    ],
+    "B": [
+      0.08654099702835083,
+      0.22757229208946228,
+      0.19555829465389252
+    ],
+    "C": [
+      0.41991761326789856,
+      0.11410658806562424,
+      0.03331396356225014
+    ],
+    "D": [
+      0.4239116609096527,
+      0.11977455765008926,
+      0.08340443670749664
+    ]
+  },
+  "uniformBytes": 1072,
+  "capacity": 33,
+  "errors": []
+}

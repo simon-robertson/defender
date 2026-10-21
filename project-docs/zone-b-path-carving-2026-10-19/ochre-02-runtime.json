@@ -1,0 +1,187 @@
+{
+  "id": "ochre-02",
+  "sourceSha256": "6e437f27aaac3f8b75212039e6bb3a6f966c25b0a20b41d38aed6c40bf5fb129",
+  "seconds": 180,
+  "hz": 30,
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 45
+    }
+  ],
+  "unionPathBoxes": 45,
+  "bridgeBoxes": 2,
+  "resources": {
+    "modelAssets": 12,
+    "opaqueEntries": 15,
+    "waterQuads": 43,
+    "visibilityPrimitives": 3702,
+    "visibilityBytes": 207284,
+    "planningBytes": 274536,
+    "explosionEventBytes": 320,
+    "groundNodes": 4454,
+    "treePerches": 29
+  },
+  "thinkCount": 5400,
+  "maxThinkWork": 512,
+  "envelopeChecks": 32406,
+  "meshPoseChecks": 1086,
+  "rows": [
+    {
+      "id": "wildlife-ground-1",
+      "kind": "ground",
+      "start": [
+        454,
+        24,
+        342
+      ],
+      "reachableNodes": 2849,
+      "farthestReach": 378.31204051681993,
+      "maxDisplacement": 178.88543819998134,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 6,
+      "completed": 5,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-ground-2",
+      "kind": "ground",
+      "start": [
+        26,
+        24,
+        126
+      ],
+      "reachableNodes": 1376,
+      "farthestReach": 253.55078386784766,
+      "maxDisplacement": 229.25967809451328,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 6,
+      "completed": 5,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-ground-3",
+      "kind": "ground",
+      "start": [
+        74,
+        24,
+        358
+      ],
+      "reachableNodes": 1376,
+      "farthestReach": 274.4886154287642,
+      "maxDisplacement": 253.39297543538132,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 7,
+      "completed": 6,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-1",
+      "kind": "bird",
+      "start": [
+        133,
+        69,
+        35
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 355.58402663786796,
+      "visitedPerches": [
+        "b2-land-5-1",
+        "b2-land-11-2",
+        "b2-land-2-14",
+        "b2-land-18-7",
+        "b2-land-3-13",
+        "b2-land-18-6",
+        "b2-land-15-1",
+        "b2-land-1-11",
+        "b2-land-19-6",
+        "b2-land-1-12",
+        "b2-land-1-13",
+        "b2-land-16-0",
+        "b2-land-5-12"
+      ],
+      "flightFrames": 3923,
+      "accepted": 14,
+      "completed": 13,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-2",
+      "kind": "bird",
+      "start": [
+        59,
+        69,
+        299
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 445.24599942054505,
+      "visitedPerches": [
+        "b2-land-2-12",
+        "b2-land-3-12",
+        "b2-land-10-2",
+        "b2-land-1-11",
+        "b2-land-18-6",
+        "b2-land-12-1",
+        "b2-land-11-2",
+        "b2-land-16-1",
+        "b2-land-1-12",
+        "b2-land-5-12",
+        "b2-land-1-9",
+        "b2-land-2-13",
+        "b2-land-2-11",
+        "b2-land-19-6",
+        "b2-land-17-1",
+        "b2-land-18-7"
+      ],
+      "flightFrames": 3318,
+      "accepted": 17,
+      "completed": 17,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-3",
+      "kind": "bird",
+      "start": [
+        397,
+        69,
+        253
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 345.17242068276545,
+      "visitedPerches": [
+        "b2-land-16-10",
+        "b2-land-2-11",
+        "b2-land-2-13",
+        "b2-land-2-12",
+        "b2-land-3-14",
+        "b2-land-10-2",
+        "b2-land-5-1",
+        "b2-land-11-1",
+        "b2-land-19-5",
+        "b2-land-15-1",
+        "b2-land-3-12",
+        "b2-land-16-1",
+        "b2-land-11-2",
+        "b2-land-4-12"
+      ],
+      "flightFrames": 3315,
+      "accepted": 16,
+      "completed": 15,
+      "thinkCount": 900,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "released": true
+}

@@ -1,0 +1,830 @@
+{
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 31
+    },
+    {
+      "id": "lake",
+      "boxes": 41
+    }
+  ],
+  "bridges": [
+    {
+      "id": "basin-crossing",
+      "boxes": [
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ]
+      ]
+    }
+  ],
+  "placement": {
+    "turret-study:base": {
+      "before": 28,
+      "after": 32,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "turret-study:upgrade1": {
+      "before": 28,
+      "after": 32,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "turret-study:upgrade2": {
+      "before": 29,
+      "after": 33,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "arc-spire:base": {
+      "before": 38,
+      "after": 45,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "arc-spire:upgrade1": {
+      "before": 38,
+      "after": 45,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "arc-spire:upgrade2": {
+      "before": 38,
+      "after": 45,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "missile-launcher:base": {
+      "before": 38,
+      "after": 45,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "missile-launcher:upgrade1": {
+      "before": 38,
+      "after": 45,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    },
+    "missile-launcher:upgrade2": {
+      "before": 38,
+      "after": 45,
+      "new": [
+        [
+          6,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          9,
+          0,
+          5
+        ],
+        [
+          12,
+          0,
+          5
+        ],
+        [
+          9,
+          0,
+          6
+        ],
+        [
+          14,
+          0,
+          6
+        ],
+        [
+          15,
+          0,
+          6
+        ],
+        [
+          9,
+          0,
+          7
+        ],
+        [
+          14,
+          0,
+          7
+        ]
+      ]
+    }
+  },
+  "waves": [
+    {
+      "id": "b4-wave-1",
+      "seconds": 132.00000000004428,
+      "stats": {
+        "time": 132.0000000000283,
+        "waveTime": 132.0000000000283,
+        "running": false,
+        "completed": true,
+        "spawned": 16,
+        "pending": 0,
+        "active": 0,
+        "killed": 0,
+        "escaped": 16,
+        "resolved": 16,
+        "total": 16,
+        "shots": 0,
+        "gunShots": 0,
+        "arcShots": 0,
+        "missileShots": 0,
+        "activeMissiles": 0,
+        "steps": 15840,
+        "lastSteps": 1,
+        "backlogSeconds": 0,
+        "modelLightCapacity": 424
+      }
+    },
+    {
+      "id": "b4-wave-2",
+      "seconds": 140.000000000037,
+      "stats": {
+        "time": 140.00000000002106,
+        "waveTime": 140.00000000002106,
+        "running": false,
+        "completed": true,
+        "spawned": 18,
+        "pending": 0,
+        "active": 0,
+        "killed": 0,
+        "escaped": 18,
+        "resolved": 18,
+        "total": 18,
+        "shots": 0,
+        "gunShots": 0,
+        "arcShots": 0,
+        "missileShots": 0,
+        "activeMissiles": 0,
+        "steps": 16800,
+        "lastSteps": 1,
+        "backlogSeconds": 0,
+        "modelLightCapacity": 424
+      }
+    },
+    {
+      "id": "b4-wave-3",
+      "seconds": 140.000000000037,
+      "stats": {
+        "time": 140.00000000002103,
+        "waveTime": 140.00000000002103,
+        "running": false,
+        "completed": true,
+        "spawned": 20,
+        "pending": 0,
+        "active": 0,
+        "killed": 0,
+        "escaped": 20,
+        "resolved": 20,
+        "total": 20,
+        "shots": 0,
+        "gunShots": 0,
+        "arcShots": 0,
+        "missileShots": 0,
+        "activeMissiles": 0,
+        "steps": 16800,
+        "lastSteps": 1,
+        "backlogSeconds": 0,
+        "modelLightCapacity": 424
+      }
+    },
+    {
+      "id": "b4-wave-4",
+      "seconds": 140.000000000037,
+      "stats": {
+        "time": 140.00000000002103,
+        "waveTime": 140.00000000002103,
+        "running": false,
+        "completed": true,
+        "spawned": 20,
+        "pending": 0,
+        "active": 0,
+        "killed": 0,
+        "escaped": 20,
+        "resolved": 20,
+        "total": 20,
+        "shots": 0,
+        "gunShots": 0,
+        "arcShots": 0,
+        "missileShots": 0,
+        "activeMissiles": 0,
+        "steps": 16800,
+        "lastSteps": 1,
+        "backlogSeconds": 0,
+        "modelLightCapacity": 424
+      }
+    }
+  ],
+  "visibleSurveyedPlots": 39,
+  "simultaneous": [
+    {
+      "id": "b4-probe-0",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        4,
+        0,
+        2
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-1",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        9,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-2",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        14,
+        0,
+        6
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-3",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        16,
+        0,
+        3
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-4",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        18,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-5",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        12,
+        0,
+        10
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-6",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        10,
+        0,
+        11
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-7",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        12,
+        0,
+        13
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-8",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        18,
+        0,
+        13
+      ],
+      "turn": 0
+    },
+    {
+      "id": "b4-probe-9",
+      "model": "arc-spire",
+      "variant": "upgrade2",
+      "box": [
+        16,
+        0,
+        15
+      ],
+      "turn": 0
+    }
+  ],
+  "wildlifePoints": [
+    [
+      454,
+      24,
+      358
+    ],
+    [
+      238,
+      24,
+      110
+    ],
+    [
+      70,
+      24,
+      378
+    ]
+  ]
+}

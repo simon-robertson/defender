@@ -1,0 +1,20 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-action-camera.test.js:
+(pass) empty/title preparation never takes camera ownership; bind and release never move a user view [0.86ms]
+(pass) sparse combat closes in smoothly with fixed orientation, finite bounded motion and no long-frame leap [2.17ms]
+(pass) spread fronts and engaged gun envelopes fit wide and portrait views without selecting scheduled enemies or mutating targeting [3.87ms]
+(pass) look-ahead follows actual route through a corner and clamps at exit rather than wrapping [0.19ms]
+(pass) fixed-clock damping agrees at30/60/120Hz and moving-route framing has no material frame-rate drift [2.44ms]
+(pass) death context survives busy gunfire and holds through four-second settling, then returns smoothly only once [1.21ms]
+(pass) recent death interest expires without a settling phase and paused time freezes view, hold and event lifetime [0.79ms]
+(pass) manual drag/key holds, disable/resume and preparation takeover never fight the player or snap on resuming [0.76ms]
+(pass) takeover from extreme manual zoom/pan returns within speed limits instead of clamping to auto bounds [3.24ms]
+(pass) event timestamps follow actual bounded engine time rather than a longer browser-frame delta [0.19ms]
+(pass) zero-hold preparation takeover cancels the return but lets the next wave own the camera immediately [0.79ms]
+(pass) real A1/A2 fights anticipate guns before engagement and keep their animated meshes readable on laptop/desktop frames [2872.10ms]
+
+ 12 pass
+ 0 fail
+ 3075 expect() calls
+Ran 12 tests across 1 file. [2.90s]

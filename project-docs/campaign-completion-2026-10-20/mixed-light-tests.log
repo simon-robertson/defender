@@ -1,0 +1,21 @@
+bun test v1.4.2 (744846f84)
+
+tests/model-lights.test.js:
+(pass) flagged exposed face clusters preserve all zone colours and only the authored turret panels [483.86ms]
+(pass) edge-connected matching faces share an emitter; gaps, point contacts and different materials do not [0.92ms]
+(pass) logical transforms, compacted visibility and unchanged invalidations reuse storage correctly [0.52ms]
+(pass) model light overflow is explicit, bounded and does not allocate one light per quad [0.45ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [560.99ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [819.12ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [835.35ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [1529.12ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [420.89ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [11330.55ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [8746.39ms]
+
+ 11 pass
+ 0 fail
+ 355 expect() calls
+Ran 11 tests across 2 files. [24.84s]

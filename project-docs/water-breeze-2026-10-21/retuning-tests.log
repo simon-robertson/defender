@@ -1,0 +1,22 @@
+bun test v1.4.2 (744846f84)
+
+tests/water.test.js:
+(pass) water material is explicit, bounded and survives level serialization [1.69ms]
+(pass) water and stream bed have separate complete surfaces on the box grid [73.67ms]
+(pass) translucent terrain retains submerged solid faces and culls water interfaces against solids/water [14.81ms]
+(pass) all shipped player defences sit on ground at path height; mounds, floating anchors and extra layers are rejected [14.47ms]
+
+tests/world.test.js:
+(pass) repeated rig bind poses retain independent instance matrices [175.38ms]
+(pass) first level preserves the 24-unit grid, all three turrets, clear route and shared geometry [273.73ms]
+(pass) detail props share a box with unit offsets, preserve transforms, and reject real overlap, bounds or path intrusion [0.25ms]
+(pass) ground surfaces include the submerged bed exactly once and path paving has no coplanar overlays [73.79ms]
+(pass) camera inverse reconstructs clip coordinates across orbit, pan and zoom [0.38ms]
+(pass) fixed level environment rejects malformed lighting and unsupported weather [0.65ms]
+(pass) current A1–A4 and B1–B4 sources match their preview generators and historical model bounds stay clean [32.56ms]
+(pass) fixed time of day controls daylight without a runtime cycle [0.78ms]
+
+ 12 pass
+ 0 fail
+ 365058 expect() calls
+Ran 12 tests across 2 files. [712.00ms]

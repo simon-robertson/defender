@@ -1,0 +1,14 @@
+# A4 route comparison
+
+Tactician uses gpt-6-astra / xhigh for spatial and coverage trade-offs, within the user’s Extra High ceiling. The latest user request authorises A4 carving before the separate A1 drone/enemy test. Both studies preserve the accepted 20×16 terrain, water, environment and all wildlife anchors; no combat actors or defences are authored.
+
+| Study | Journey | Full candidate ground | Scenery retained | Trade-off |
+| --- | --- | --- | --- | --- |
+| [Ruin and Mere Tour](ruin-and-mere-tour.svg) | Single dry route, 1,104 units: southwest ruin court → western return → central masonry → lower mere shore → eastern return → southern catch | 40 boxes; preliminary horizontal range gives 37 base-reachable and 3 upgrade-dependent alternatives | 210/324, including five of seven ruins | Three distinct separated base-range return opportunities; keeps the mere uninterrupted and both raised groves intact. Removes walls [10,6] and [11,8] for passage. |
+| [Northern Crossing](northern-crossing.svg) | Single route, 1,176 units: southwest approach → northern woodland → upper mere bridge → eastern bank → southern return | 43 boxes; preliminary horizontal range gives 41 base-reachable and 2 upgrade-dependent alternatives | 193/324, all seven ruins | Reaches more northern ground and retains all masonry, but makes longer continuous banks/courts with no separated base-range revisits in this site survey. Four-box crossing limits bank coverage and opens more woodland. |
+
+The diagrams share the same scale and show the exact route over the untouched landscape alongside the proposed full 24×24 ground footprints. JSON source and per-removal manifests sit beside each map. These are alternative usable areas, not fixed build pads or simultaneous weapon placements. Counts are measured outcomes, not design quotas.
+
+Lead selected **Ruin and Mere Tour**, agreeing with independent Artist review of production renderer captures. Artist identified an apparent shortcut where nonconsecutive road boxes [13,8]/[13,9] touched. The revised incoming stem [10,8] → [12,8] → [12,7] → [17,7] keeps a full unpaved separating box at [13,8]; the later return [17,9] → [13,9] → [13,13] remains unchanged. The revision preserves route length and candidate count, and retains one additional scenery placement. First renderer captures are therefore comparison references; the final recapture uses the revised neck.
+
+The source-only comparison uses inclusive horizontal range at one-unit midpoint intervals, not attack eligibility. It does not certify pitch, LOS, animated contact, flight success, simultaneous arrangements or final difficulty. Selected-option production audits and the Tactician handoff report those separately. Gun upgrade 2 remains inactive; range96 is used only as an existing reach comparison where relevant. No wave timing, economy, defence stats or model geometry changes are part of the carve.

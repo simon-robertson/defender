@@ -1,0 +1,1423 @@
+{
+  "date": "2026-10-17",
+  "before": {
+    "damage": {
+      "blasts": 0,
+      "cubes": 0,
+      "droppedCubes": 0,
+      "droppedSmoke": 0,
+      "lights": 0,
+      "replacedBlasts": 0,
+      "resting": 0,
+      "smoke": 0,
+      "waves": 0
+    },
+    "enemies": {
+      "actors": [
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 343.99799999999857,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.6662499999996925,
+              "position": [
+                113.5,
+                25.631401573743194,
+                190.41549444444072
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.16624999999969248,
+              "position": [
+                102.5,
+                25,
+                192.0200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.16624999999969248,
+              "position": [
+                113.5,
+                25,
+                184.0200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.6662499999996925,
+              "position": [
+                102.5,
+                25.631401573743194,
+                182.41549444444072
+              ],
+              "stance": false
+            }
+          ],
+          "health": 0,
+          "hits": 26,
+          "id": "preview-dog-1",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 108,
+          "yaw": -3.141592653589793,
+          "z": 187.99799999999857
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 373.79799999999966,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.8745833333332484,
+              "position": [
+                113.5,
+                25.707624751563177,
+                222.30929493217397
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.3745833333332485,
+              "position": [
+                102.5,
+                25,
+                220.8200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.3745833333332485,
+              "position": [
+                113.5,
+                25,
+                212.8200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.8745833333332484,
+              "position": [
+                102.5,
+                25.707624751563177,
+                214.30929493217397
+              ],
+              "stance": false
+            }
+          ],
+          "health": 0,
+          "hits": 25,
+          "id": "preview-dog-2",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 108,
+          "yaw": -3.141592653589793,
+          "z": 217.7979999999997
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 120.39680000000033,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.08266666666673217,
+              "position": [
+                136.82,
+                25,
+                126.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.5826666666667322,
+              "position": [
+                134.4922110722149,
+                25.061337113460603,
+                137.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.5826666666667322,
+              "position": [
+                126.4922110722149,
+                25.061337113460603,
+                126.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.08266666666673217,
+              "position": [
+                128.82,
+                25,
+                137.5
+              ],
+              "stance": true
+            }
+          ],
+          "health": 0,
+          "hits": 27,
+          "id": "preview-dog-3",
+          "lap": 1,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 132.39680000000033,
+          "yaw": -1.5707963267948966,
+          "z": 132
+        }
+      ],
+      "alive": 0,
+      "resets": 0,
+      "time": 35.36640000000003,
+      "updatedParts": 0
+    },
+    "lifecycle": {
+      "actors": 9,
+      "assets": [
+        "turret-study",
+        "scenery-oak-tall",
+        "scenery-oak",
+        "scenery-oak-young",
+        "scenery-cypress",
+        "scenery-cypress-short",
+        "scenery-ruin-wall",
+        "scenery-rock",
+        "scenery-ruin-pillar",
+        "scenery-shrub",
+        "detail-grass",
+        "detail-pebbles",
+        "detail-flowers",
+        "dog",
+        "wildlife-hare-moss",
+        "wildlife-bird-moss"
+      ],
+      "createdSceneBuffers": 105,
+      "current": "moss-01",
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 1277168,
+      "lastUnload": null,
+      "loads": 1,
+      "phase": "ready",
+      "requested": "moss-01",
+      "sceneBuffers": 105,
+      "unloads": 0,
+      "visibilityBytes": 228508,
+      "visibilityPrimitives": 4081
+    },
+    "render": {
+      "authoredModelLights": 9,
+      "cameraUpdated": false,
+      "cpuSubmitMs": 0.09999999403953552,
+      "createdSceneBuffers": 105,
+      "damageBytes": 21696,
+      "damageCubes": 0,
+      "damageParticles": 0,
+      "deltaSeconds": 0.016600000000005822,
+      "depthUpdated": true,
+      "destroyedSceneBuffers": 0,
+      "drawCalls": 64,
+      "drawGroups": 35,
+      "droppedSparks": 0,
+      "effectBytes": 10128,
+      "elapsedSeconds": 38.81640000000023,
+      "eye": [
+        638.3175659179688,
+        587.9136962890625,
+        -347.01971435546875
+      ],
+      "fov": null,
+      "frames": 2329,
+      "geometryBytes": 1277168,
+      "groundHeight": null,
+      "leafBytes": 0,
+      "leafCount": 0,
+      "leafCycleSeconds": 0,
+      "leafPhase": 0,
+      "leafTime": 0,
+      "localLightUniformBytes": 912,
+      "localLights": 9,
+      "mode": "overview",
+      "modelLightBytes": 528,
+      "modelLightOverflow": 0,
+      "modelLights": 9,
+      "opaqueUpdated": true,
+      "pitch": 0.68,
+      "radius": 174.27572044327977,
+      "rainBytes": 0,
+      "rainCount": 0,
+      "rainPhase": 0,
+      "rainTime": 0,
+      "replacedFlashes": 0,
+      "sceneBuffers": 105,
+      "shadowUpdated": true,
+      "shockwaveBytes": 144,
+      "shockwaveCount": 0,
+      "shockwaveTargetBytes": 16007168,
+      "shotInstances": 0,
+      "shotLights": 0,
+      "snowBytes": 0,
+      "snowCount": 0,
+      "snowCycleSeconds": 0,
+      "snowPhase": 0,
+      "snowTime": 0,
+      "target": [
+        192,
+        22,
+        192
+      ],
+      "targetBytes": 272891904,
+      "transformBytes": 10304,
+      "transformUploadBytes": 512,
+      "transformUploads": 4,
+      "visibilityBytes": 3672,
+      "waterPhase": 0.2898558974266052,
+      "waterUpdated": false,
+      "yaw": 2.45
+    },
+    "wildlife": {
+      "actors": [
+        {
+          "destination": null,
+          "destinationX": 6,
+          "destinationY": 24,
+          "destinationZ": 162,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 0,
+          "homeX": 36,
+          "homeZ": 60,
+          "id": "wildlife-ground-1",
+          "journeys": 3,
+          "journeysCompleted": 2,
+          "kind": "ground",
+          "lastSpookKind": null,
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "hop",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 388,
+          "x": 166.33400000000003,
+          "y": 25.179474105931913,
+          "z": 230
+        },
+        {
+          "destination": null,
+          "destinationX": 166,
+          "destinationY": 24,
+          "destinationZ": 14,
+          "fleeJourneys": 3,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 0,
+          "homeX": 228,
+          "homeZ": 60,
+          "id": "wildlife-ground-2",
+          "journeys": 5,
+          "journeysCompleted": 3,
+          "kind": "ground",
+          "lastSpookKind": "enemy",
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "hop",
+          "spooks": 2,
+          "targetPerch": null,
+          "thinkCount": 388,
+          "x": 166,
+          "y": 25.117732618983595,
+          "z": 216.6679999999997
+        },
+        {
+          "destination": null,
+          "destinationX": 246,
+          "destinationY": 24,
+          "destinationZ": 362,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 17,
+          "homeX": 276,
+          "homeZ": 372,
+          "id": "wildlife-ground-3",
+          "journeys": 8,
+          "journeysCompleted": 8,
+          "kind": "ground",
+          "lastSpookKind": null,
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "idle",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 388,
+          "x": 246,
+          "y": 24,
+          "z": 362
+        },
+        {
+          "destination": "scene-6",
+          "destinationX": 327,
+          "destinationY": 76,
+          "destinationZ": 65,
+          "fleeJourneys": 0,
+          "flight": true,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 60.5,
+          "homeZ": 12.500000000000002,
+          "id": "wildlife-bird-1",
+          "journeys": 5,
+          "journeysCompleted": 4,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-43",
+          "phase": "flying",
+          "spooks": 0,
+          "targetPerch": "scene-6",
+          "thinkCount": 388,
+          "x": 11.12111740410951,
+          "y": 61.231933791075065,
+          "z": 38.09548949498725
+        },
+        {
+          "destination": "scene-52",
+          "destinationX": 255,
+          "destinationY": 68,
+          "destinationZ": 17,
+          "fleeJourneys": 0,
+          "flight": true,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 299.5,
+          "homeZ": 179.5,
+          "id": "wildlife-bird-2",
+          "journeys": 5,
+          "journeysCompleted": 4,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-37",
+          "phase": "flying",
+          "spooks": 0,
+          "targetPerch": "scene-52",
+          "thinkCount": 388,
+          "x": 65.65083152065426,
+          "y": 74.98123328000004,
+          "z": 17
+        },
+        {
+          "destination": null,
+          "destinationX": 373,
+          "destinationY": 60,
+          "destinationZ": 202,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 251.5,
+          "homeZ": 372.5,
+          "id": "wildlife-bird-3",
+          "journeys": 4,
+          "journeysCompleted": 4,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-15",
+          "phase": "perched",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 388,
+          "x": 373,
+          "y": 60,
+          "z": 202
+        }
+      ],
+      "explosionEvents": 3,
+      "lastThinkId": "wildlife-bird-3",
+      "lastThinkWork": 0,
+      "planningBytes": 226972,
+      "thinkCount": 2328,
+      "time": 38.81640000000023,
+      "treePerches": 30,
+      "updatedParts": 8
+    },
+    "zone": "A"
+  },
+  "after": {
+    "damage": {
+      "blasts": 0,
+      "cubes": 0,
+      "droppedCubes": 0,
+      "droppedSmoke": 0,
+      "lights": 0,
+      "replacedBlasts": 0,
+      "resting": 0,
+      "smoke": 0,
+      "waves": 0
+    },
+    "enemies": {
+      "actors": [
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 72.60119999999998,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.1252499999999923,
+              "position": [
+                88.82000000000001,
+                25,
+                126.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.6252499999999923,
+              "position": [
+                86.7777807390946,
+                25.301815623383412,
+                137.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.6252499999999923,
+              "position": [
+                78.7777807390946,
+                25.301815623383412,
+                126.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.1252499999999923,
+              "position": [
+                80.82000000000001,
+                25,
+                137.5
+              ],
+              "stance": true
+            }
+          ],
+          "health": 300,
+          "hits": 0,
+          "id": "preview-dog-1",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 12,
+          "velocityZ": 0,
+          "x": 84.60119999999998,
+          "yaw": -1.5707963267948966,
+          "z": 132
+        },
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 232.6012,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.4585833333333227,
+              "position": [
+                209.5,
+                25,
+                175.22000000000003
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.9585833333333228,
+              "position": [
+                198.49840132733328,
+                25.097559480623698,
+                177.5029911851017
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.9585833333333228,
+              "position": [
+                209.50205560434105,
+                25.097559480623698,
+                169.50801828907305
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.4585833333333227,
+              "position": [
+                198.5,
+                25,
+                167.22000000000003
+              ],
+              "stance": true
+            }
+          ],
+          "health": 300,
+          "hits": 0,
+          "id": "preview-dog-2",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 12,
+          "x": 204,
+          "yaw": -3.141592653589793,
+          "z": 172.60119999999998
+        },
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 392.6012,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.7919166666666513,
+              "position": [
+                113.5,
+                26.183340365705178,
+                240.2901566573996
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.2919166666666513,
+              "position": [
+                102.5,
+                25,
+                240.0200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.2919166666666513,
+              "position": [
+                113.5,
+                25,
+                232.0200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.7919166666666513,
+              "position": [
+                102.5,
+                26.183340365705178,
+                232.2901566573996
+              ],
+              "stance": false
+            }
+          ],
+          "health": 300,
+          "hits": 0,
+          "id": "preview-dog-3",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 12,
+          "x": 108,
+          "yaw": -3.141592653589793,
+          "z": 236.6012
+        }
+      ],
+      "alive": 3,
+      "resets": 1,
+      "time": 0.05009999999999855,
+      "updatedParts": 39
+    },
+    "lifecycle": {
+      "actors": 9,
+      "assets": [
+        "turret-study",
+        "scenery-oak-tall",
+        "scenery-oak",
+        "scenery-oak-young",
+        "scenery-cypress",
+        "scenery-cypress-short",
+        "scenery-ruin-wall",
+        "scenery-rock",
+        "scenery-ruin-pillar",
+        "scenery-shrub",
+        "detail-grass",
+        "detail-pebbles",
+        "detail-flowers",
+        "dog",
+        "wildlife-hare-moss",
+        "wildlife-bird-moss"
+      ],
+      "createdSceneBuffers": 105,
+      "current": "moss-01",
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 1277168,
+      "lastUnload": null,
+      "loads": 1,
+      "phase": "enemies-reset",
+      "requested": "moss-01",
+      "sceneBuffers": 105,
+      "unloads": 0,
+      "visibilityBytes": 228508,
+      "visibilityPrimitives": 4081
+    },
+    "render": {
+      "authoredModelLights": 9,
+      "cameraUpdated": false,
+      "cpuSubmitMs": 0.19999998807907104,
+      "createdSceneBuffers": 105,
+      "damageBytes": 21696,
+      "damageCubes": 0,
+      "damageParticles": 0,
+      "deltaSeconds": 0.01669999999999709,
+      "depthUpdated": true,
+      "destroyedSceneBuffers": 0,
+      "drawCalls": 103,
+      "drawGroups": 35,
+      "droppedSparks": 0,
+      "effectBytes": 10128,
+      "elapsedSeconds": 38.88320000000023,
+      "eye": [
+        638.3175659179688,
+        587.9136962890625,
+        -347.01971435546875
+      ],
+      "fov": null,
+      "frames": 2333,
+      "geometryBytes": 1277168,
+      "groundHeight": null,
+      "leafBytes": 0,
+      "leafCount": 0,
+      "leafCycleSeconds": 0,
+      "leafPhase": 0,
+      "leafTime": 0,
+      "localLightUniformBytes": 912,
+      "localLights": 9,
+      "mode": "overview",
+      "modelLightBytes": 528,
+      "modelLightOverflow": 0,
+      "modelLights": 9,
+      "opaqueUpdated": true,
+      "pitch": 0.68,
+      "radius": 174.27572044327977,
+      "rainBytes": 0,
+      "rainCount": 0,
+      "rainPhase": 0,
+      "rainTime": 0,
+      "replacedFlashes": 0,
+      "sceneBuffers": 105,
+      "shadowUpdated": true,
+      "shockwaveBytes": 144,
+      "shockwaveCount": 0,
+      "shockwaveTargetBytes": 16007168,
+      "shotInstances": 0,
+      "shotLights": 0,
+      "snowBytes": 0,
+      "snowCount": 0,
+      "snowCycleSeconds": 0,
+      "snowPhase": 0,
+      "snowTime": 0,
+      "target": [
+        192,
+        22,
+        192
+      ],
+      "targetBytes": 272891904,
+      "transformBytes": 10304,
+      "transformUploadBytes": 3136,
+      "transformUploads": 19,
+      "visibilityBytes": 3672,
+      "waterPhase": 0.34441909193992615,
+      "waterUpdated": false,
+      "yaw": 2.45
+    },
+    "wildlife": {
+      "actors": [
+        {
+          "destination": null,
+          "destinationX": 6,
+          "destinationY": 24,
+          "destinationZ": 162,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 0,
+          "homeX": 36,
+          "homeZ": 60,
+          "id": "wildlife-ground-1",
+          "journeys": 3,
+          "journeysCompleted": 2,
+          "kind": "ground",
+          "lastSpookKind": null,
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "hop",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 389,
+          "x": 164.9980000000001,
+          "y": 25.02359711313047,
+          "z": 230
+        },
+        {
+          "destination": null,
+          "destinationX": 166,
+          "destinationY": 24,
+          "destinationZ": 14,
+          "fleeJourneys": 3,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 0,
+          "homeX": 228,
+          "homeZ": 60,
+          "id": "wildlife-ground-2",
+          "journeys": 5,
+          "journeysCompleted": 3,
+          "kind": "ground",
+          "lastSpookKind": "enemy",
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "hop",
+          "spooks": 2,
+          "targetPerch": null,
+          "thinkCount": 389,
+          "x": 166,
+          "y": 25.117732618983545,
+          "z": 215.33199999999977
+        },
+        {
+          "destination": null,
+          "destinationX": 246,
+          "destinationY": 24,
+          "destinationZ": 362,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 17,
+          "homeX": 276,
+          "homeZ": 372,
+          "id": "wildlife-ground-3",
+          "journeys": 8,
+          "journeysCompleted": 8,
+          "kind": "ground",
+          "lastSpookKind": null,
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "idle",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 389,
+          "x": 246,
+          "y": 24,
+          "z": 362
+        },
+        {
+          "destination": "scene-6",
+          "destinationX": 327,
+          "destinationY": 76,
+          "destinationZ": 65,
+          "fleeJourneys": 0,
+          "flight": true,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 60.5,
+          "homeZ": 12.500000000000002,
+          "id": "wildlife-bird-1",
+          "journeys": 5,
+          "journeysCompleted": 4,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-43",
+          "phase": "flying",
+          "spooks": 0,
+          "targetPerch": "scene-6",
+          "thinkCount": 389,
+          "x": 11.607862886310212,
+          "y": 62.23566752349146,
+          "z": 38.1369473120832
+        },
+        {
+          "destination": "scene-52",
+          "destinationX": 255,
+          "destinationY": 68,
+          "destinationZ": 17,
+          "fleeJourneys": 0,
+          "flight": true,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 299.5,
+          "homeZ": 179.5,
+          "id": "wildlife-bird-2",
+          "journeys": 5,
+          "journeysCompleted": 4,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-37",
+          "phase": "flying",
+          "spooks": 0,
+          "targetPerch": "scene-52",
+          "thinkCount": 388,
+          "x": 66.54083841945598,
+          "y": 76.00319311999998,
+          "z": 17
+        },
+        {
+          "destination": null,
+          "destinationX": 373,
+          "destinationY": 60,
+          "destinationZ": 202,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 251.5,
+          "homeZ": 372.5,
+          "id": "wildlife-bird-3",
+          "journeys": 4,
+          "journeysCompleted": 4,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-15",
+          "phase": "perched",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 388,
+          "x": 373,
+          "y": 60,
+          "z": 202
+        }
+      ],
+      "explosionEvents": 3,
+      "lastThinkId": "wildlife-bird-1",
+      "lastThinkWork": 0,
+      "planningBytes": 226972,
+      "thinkCount": 2332,
+      "time": 38.88320000000023,
+      "treePerches": 30,
+      "updatedParts": 8
+    },
+    "zone": "A"
+  },
+  "resumed": {
+    "damage": {
+      "blasts": 0,
+      "cubes": 0,
+      "droppedCubes": 0,
+      "droppedSmoke": 0,
+      "lights": 0,
+      "replacedBlasts": 0,
+      "resting": 0,
+      "smoke": 10,
+      "waves": 0
+    },
+    "enemies": {
+      "actors": [
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 332.1887999999958,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.205999999999122,
+              "position": [
+                109.01349589158752,
+                25,
+                186.03459671255544
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.705999999999122,
+              "position": [
+                108.3739177288324,
+                25.94242814060462,
+                175.27504554859723
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.705999999999122,
+              "position": [
+                117.68019281155009,
+                25.94242814060462,
+                184.57371289949623
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.205999999999122,
+              "position": [
+                114.93057578602402,
+                25,
+                173.78763114867573
+              ],
+              "stance": true
+            }
+          ],
+          "health": 28,
+          "hits": 23,
+          "id": "preview-dog-1",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": -12,
+          "velocityZ": 0,
+          "x": 111.8112000000042,
+          "yaw": 1.708511923069317,
+          "z": 180
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 373.39959999999985,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.7915833333332927,
+              "position": [
+                113.5,
+                26.183987527353203,
+                221.08485288224296
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.29158333333329267,
+              "position": [
+                102.5,
+                25,
+                220.8200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.29158333333329267,
+              "position": [
+                113.5,
+                25,
+                212.8200000000001
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.7915833333332927,
+              "position": [
+                102.5,
+                26.183987527353203,
+                213.08485288224296
+              ],
+              "stance": false
+            }
+          ],
+          "health": 0,
+          "hits": 25,
+          "id": "preview-dog-2",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 108,
+          "yaw": -3.141592653589793,
+          "z": 217.39959999999985
+        },
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 652.1887999999958,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.872666666665765,
+              "position": [
+                332.68452062501507,
+                25.723380926255835,
+                270.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.372666666665765,
+              "position": [
+                331.22000000000014,
+                25,
+                281.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.372666666665765,
+              "position": [
+                323.22000000000014,
+                25,
+                270.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.872666666665765,
+              "position": [
+                324.68452062501507,
+                25.723380926255835,
+                281.5
+              ],
+              "stance": false
+            }
+          ],
+          "health": 250,
+          "hits": 5,
+          "id": "preview-dog-3",
+          "lap": 0,
+          "maxHealth": 300,
+          "model": "dog",
+          "threat": 1,
+          "velocityX": 12,
+          "velocityZ": 0,
+          "x": 328.1887999999958,
+          "yaw": -1.5707963267948966,
+          "z": 276
+        }
+      ],
+      "alive": 2,
+      "resets": 1,
+      "time": 21.682399999999653,
+      "updatedParts": 26
+    },
+    "lifecycle": {
+      "actors": 9,
+      "assets": [
+        "turret-study",
+        "scenery-oak-tall",
+        "scenery-oak",
+        "scenery-oak-young",
+        "scenery-cypress",
+        "scenery-cypress-short",
+        "scenery-ruin-wall",
+        "scenery-rock",
+        "scenery-ruin-pillar",
+        "scenery-shrub",
+        "detail-grass",
+        "detail-pebbles",
+        "detail-flowers",
+        "dog",
+        "wildlife-hare-moss",
+        "wildlife-bird-moss"
+      ],
+      "createdSceneBuffers": 105,
+      "current": "moss-01",
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 1277168,
+      "lastUnload": null,
+      "loads": 1,
+      "phase": "enemies-reset",
+      "requested": "moss-01",
+      "sceneBuffers": 105,
+      "unloads": 0,
+      "visibilityBytes": 228508,
+      "visibilityPrimitives": 4081
+    },
+    "render": {
+      "authoredModelLights": 9,
+      "cameraUpdated": false,
+      "cpuSubmitMs": 0.10000000894069672,
+      "createdSceneBuffers": 105,
+      "damageBytes": 21696,
+      "damageCubes": 0,
+      "damageParticles": 10,
+      "deltaSeconds": 0.015800000000002912,
+      "depthUpdated": true,
+      "destroyedSceneBuffers": 0,
+      "drawCalls": 104,
+      "drawGroups": 35,
+      "droppedSparks": 0,
+      "effectBytes": 10128,
+      "elapsedSeconds": 60.51550000000152,
+      "eye": [
+        638.3175659179688,
+        587.9136962890625,
+        -347.01971435546875
+      ],
+      "fov": null,
+      "frames": 3631,
+      "geometryBytes": 1277168,
+      "groundHeight": null,
+      "leafBytes": 0,
+      "leafCount": 0,
+      "leafCycleSeconds": 0,
+      "leafPhase": 0,
+      "leafTime": 0,
+      "localLightUniformBytes": 912,
+      "localLights": 9,
+      "mode": "overview",
+      "modelLightBytes": 528,
+      "modelLightOverflow": 0,
+      "modelLights": 9,
+      "opaqueUpdated": true,
+      "pitch": 0.68,
+      "radius": 174.27572044327977,
+      "rainBytes": 0,
+      "rainCount": 0,
+      "rainPhase": 0,
+      "rainTime": 0,
+      "replacedFlashes": 0,
+      "sceneBuffers": 105,
+      "shadowUpdated": true,
+      "shockwaveBytes": 144,
+      "shockwaveCount": 0,
+      "shockwaveTargetBytes": 16007168,
+      "shotInstances": 0,
+      "shotLights": 0,
+      "snowBytes": 0,
+      "snowCount": 0,
+      "snowCycleSeconds": 0,
+      "snowPhase": 0,
+      "snowTime": 0,
+      "target": [
+        192,
+        22,
+        192
+      ],
+      "targetBytes": 272891904,
+      "transformBytes": 10304,
+      "transformUploadBytes": 2240,
+      "transformUploads": 18,
+      "visibilityBytes": 3672,
+      "waterPhase": 5.447616100311279,
+      "waterUpdated": false,
+      "yaw": 2.45
+    },
+    "wildlife": {
+      "actors": [
+        {
+          "destination": null,
+          "destinationX": 70,
+          "destinationY": 24,
+          "destinationZ": 178,
+          "fleeJourneys": 1,
+          "flight": false,
+          "frightened": true,
+          "groundComponent": 0,
+          "homeX": 36,
+          "homeZ": 60,
+          "id": "wildlife-ground-1",
+          "journeys": 5,
+          "journeysCompleted": 3,
+          "kind": "ground",
+          "lastSpookKind": "enemy",
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "hop",
+          "spooks": 1,
+          "targetPerch": null,
+          "thinkCount": 605,
+          "x": 72.52499999999978,
+          "y": 25.05858943232751,
+          "z": 178
+        },
+        {
+          "destination": null,
+          "destinationX": 78,
+          "destinationY": 24,
+          "destinationZ": 234,
+          "fleeJourneys": 7,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 0,
+          "homeX": 228,
+          "homeZ": 60,
+          "id": "wildlife-ground-2",
+          "journeys": 12,
+          "journeysCompleted": 7,
+          "kind": "ground",
+          "lastSpookKind": "enemy",
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "hop",
+          "spooks": 6,
+          "targetPerch": null,
+          "thinkCount": 605,
+          "x": 110.68399999999993,
+          "y": 24.084516851235417,
+          "z": 234
+        },
+        {
+          "destination": null,
+          "destinationX": 274,
+          "destinationY": 24,
+          "destinationZ": 378,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": 17,
+          "homeX": 276,
+          "homeZ": 372,
+          "id": "wildlife-ground-3",
+          "journeys": 13,
+          "journeysCompleted": 13,
+          "kind": "ground",
+          "lastSpookKind": null,
+          "model": "wildlife-hare-moss",
+          "perch": null,
+          "phase": "idle",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 605,
+          "x": 274,
+          "y": 24,
+          "z": 378
+        },
+        {
+          "destination": "scene-55",
+          "destinationX": 319,
+          "destinationY": 68,
+          "destinationZ": 16,
+          "fleeJourneys": 0,
+          "flight": true,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 60.5,
+          "homeZ": 12.500000000000002,
+          "id": "wildlife-bird-1",
+          "journeys": 7,
+          "journeysCompleted": 6,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-13",
+          "phase": "flying",
+          "spooks": 0,
+          "targetPerch": "scene-55",
+          "thinkCount": 605,
+          "x": 325.99932893584446,
+          "y": 60.788417008963904,
+          "z": 181.98408619288256
+        },
+        {
+          "destination": "scene-56",
+          "destinationX": 348,
+          "destinationY": 61,
+          "destinationZ": 11,
+          "fleeJourneys": 0,
+          "flight": true,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 299.5,
+          "homeZ": 179.5,
+          "id": "wildlife-bird-2",
+          "journeys": 7,
+          "journeysCompleted": 6,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-44",
+          "phase": "flying",
+          "spooks": 0,
+          "targetPerch": "scene-56",
+          "thinkCount": 605,
+          "x": 80.26779078782857,
+          "y": 84.06367808746215,
+          "z": 30.800131227909784
+        },
+        {
+          "destination": null,
+          "destinationX": 301,
+          "destinationY": 65,
+          "destinationZ": 156,
+          "fleeJourneys": 0,
+          "flight": false,
+          "frightened": false,
+          "groundComponent": -1,
+          "homeX": 251.5,
+          "homeZ": 372.5,
+          "id": "wildlife-bird-3",
+          "journeys": 6,
+          "journeysCompleted": 6,
+          "kind": "bird",
+          "lastSpookKind": null,
+          "model": "wildlife-bird-moss",
+          "perch": "scene-12",
+          "phase": "perched",
+          "spooks": 0,
+          "targetPerch": null,
+          "thinkCount": 605,
+          "x": 301,
+          "y": 65,
+          "z": 156
+        }
+      ],
+      "explosionEvents": 4,
+      "lastThinkId": "wildlife-bird-3",
+      "lastThinkWork": 0,
+      "planningBytes": 226972,
+      "thinkCount": 3630,
+      "time": 60.51550000000152,
+      "treePerches": 30,
+      "updatedParts": 8
+    },
+    "zone": "A"
+  },
+  "checks": {
+    "restoredRoster": true,
+    "sameLoads": true,
+    "sameBuffers": true,
+    "sameGeometry": true,
+    "cameraPreserved": true,
+    "wildlifeContinued": true,
+    "damageCleared": true,
+    "combatResumed": true
+  }
+}

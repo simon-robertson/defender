@@ -1,0 +1,157 @@
+{
+  "schema": "defender.a3-carving-final-verification",
+  "version": 1,
+  "recordedAt": "2026-10-18T18:09:13.156Z",
+  "source": {
+    "path": "assets/levels/moss-03.json",
+    "sha256": "e7b3b6dd37d4eb7174936ecd3016b9c8d606e4bf74bfec21e6a6370e61b9d909"
+  },
+  "selectedSourceExact": true,
+  "factoryExactAndDeterministic": true,
+  "changedActiveAssets": [
+    "assets/levels/moss-03.json"
+  ],
+  "unchangedOtherProductionLevels": 15,
+  "unchangedModelSources": 66,
+  "frozenAssetsVerified": 67,
+  "frozenChanges": [],
+  "retainedScenery": 194,
+  "removedScenery": 107,
+  "removalPurposes": {
+    "routeTravel": 48,
+    "fullCandidateGround": 44,
+    "overviewVisibility": 15
+  },
+  "terrainEnvironmentWildlifeUnchanged": true,
+  "edges": [
+    {
+      "id": "main",
+      "entry": [
+        0,
+        0,
+        11
+      ],
+      "exit": [
+        12,
+        0,
+        15
+      ],
+      "boundaryBoxes": 2,
+      "interiorBoxes": 31,
+      "edgeRunningSegments": 0
+    },
+    {
+      "id": "eastern",
+      "entry": [
+        19,
+        0,
+        3
+      ],
+      "exit": [
+        12,
+        0,
+        15
+      ],
+      "boundaryBoxes": 2,
+      "interiorBoxes": 26,
+      "edgeRunningSegments": 0
+    }
+  ],
+  "bridgeSupport": [
+    {
+      "box": [
+        14,
+        8
+      ],
+      "naturalFlatHeight": null,
+      "walkingHeight": 24,
+      "originalColumn": {
+        "box": [
+          14,
+          8
+        ],
+        "ground": 20,
+        "water": 22
+      }
+    }
+  ],
+  "candidates": {
+    "count": 44,
+    "fullGroundVisible": true,
+    "baseUseful": 44,
+    "upgradeDependent": 0,
+    "baseGunReady": 44,
+    "upgrade1GunReady": 44,
+    "baseArcReady": 44,
+    "upgrade1ArcReady": 44,
+    "siloReady": {
+      "base": 44,
+      "upgrade1": 44,
+      "upgrade2": 44
+    },
+    "coverageClassification": {
+      "main": 18,
+      "eastern": 14,
+      "main+eastern": 12
+    },
+    "excluded": []
+  },
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 33,
+      "length": 768
+    },
+    {
+      "id": "eastern",
+      "boxes": 28,
+      "length": 648
+    }
+  ],
+  "merge": {
+    "box": [
+      12,
+      8
+    ],
+    "routeDistances": {
+      "main": 504,
+      "eastern": 384
+    },
+    "sharedTailBoxes": 12,
+    "sharedTailLength": 264
+  },
+  "unionPathBoxes": 49,
+  "missileFeasibility": {
+    "launches": 63,
+    "hits": 60,
+    "misses": 3,
+    "staticContacts": 3
+  },
+  "dependencies": {
+    "scripts/a3-path-carving.js": "db04807c67cc3b5733949315187560a2c4a7712fa5b6f5eb035cdf978e1be223",
+    "scripts/a3-path-carving-audit.js": "0d71c906d75689acd1259b46e38d1b1dcfc6b8eb7824001078022ad9f4c84fb4",
+    "scripts/a3-path-carving-clearance.js": "577efc678f453c5c95bd253296714faf8ee2f9a2fd1c1e366ce2e7ab348d47b0",
+    "scripts/a3-path-carving-coverage.js": "f148761e5595d11f0ed19f37a5af3dba265ec89f77467f12d64f3f3974ce5cc8",
+    "scripts/a3-path-carving-missiles.js": "84040bd0c29655c35b9bfb4c634166482802ee02f5cad8ad3eec753409a360cc",
+    "scripts/level-layout-audit.js": "df66fc1b23b261434b5b8e4203deaf13bccd6b18fd88691ce6edc975c054a35d",
+    "scripts/verify-zone-a-four-visibility.js": "c9c2a4ed7c75792ba30800485773c524e0b3d250b5b75de6335f8bc123da164f",
+    "engine/path-motion.js": "560c6588336385b2d234ba16d906716b1e4d57641b7d04ee6dec11751264842e",
+    "engine/visibility.js": "88f37a5b67eed1d182aaeab7dc7a621ab22d77886eac1567f83fa809802d107a",
+    "engine/camera.js": "f2e759bcf5d334bd7f123c5729f948d52e38543b321b03a12aae4291c23f2467",
+    "engine/world.js": "c58671fba6b7360f6c1373ef0e617c1f235c5e50a1272e823f2fdd18996e5f55",
+    "game/turret-preview.js": "89d9a78a322180fc3530956afbcb6b83c15be9d70e089f1bc09f70085d46fe76",
+    "game/arc-spire-preview.js": "19eebd6c84d4bf989a3eb7035f2639faedb09f45fcb3993d52f46360dce5892c",
+    "game/enemy-preview.js": "3875d07d58318ecf326155bd5720f3445e4ebda3fd95e7bad3a77b0ef71339e9",
+    "game/missile-preview.js": "7e55d9f72ad5fb562c7b93ac14594b738dc6d578e29e3b46140706693b98d85f",
+    "engine/missile-flight.js": "602cdc30602872ff93f2f848bbb4af8d91084a86788cf6ed0ff0eb021229b28d",
+    "shared/missile-flight.js": "00a829a978553d69c8909a270ccd128710fed9c628f8c59c5712d2d80ebc9cec",
+    "shared/missile-model.js": "0f2ef60562878314d72c652f82c40202c2d2e93211fd052fbc81122390a9b3e2",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1",
+    "shared/bridges.js": "cc3cad36438b7be04321cf3094fecfd3d3be4393f98982d621b50d1329e4d9ac",
+    "shared/terrain.js": "387cdc046e673352c42c7f4adb49664151eb635e4cf3a12a146ecd8bf642dbb0",
+    "shared/level.js": "35b19cfac1e8b210bb5b9979e3483b678b41617b37ad75ed2a601506d2da60dd"
+  },
+  "failures": [],
+  "passed": true
+}

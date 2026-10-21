@@ -1,0 +1,5696 @@
+{
+  "schema": "defender.a2-carving-option-audit",
+  "version": 1,
+  "id": "garden-crossing",
+  "sourceHash": "05880b6fe2330d2497b3df52e06fc6648842f8e0453edd9b2d4f33db1f1dd8fb",
+  "recordedAt": "2026-10-18T17:45:57.197Z",
+  "method": "Synthetic offline copy removes previewMode only to admit production Dog/Roller/Moth and individual weapon probes. Actual level contains scenery and wildlife only. Guns: production actual pitched muzzles at zero/full recoil, per-species 1-unit bins. Arcs: production closest terminal, centre LOS and deterministic production facing-side surface sampling at 1-unit bins. No damage, waves, budget or simultaneous adjacent-defence claim.",
+  "siteFailures": [],
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 2955,
+    "checkedParts": 20685,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "entry-1-6",
+        "group": "entry",
+        "box": [
+          1,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 183.5,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "roller": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "moth": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    0,
+                    92
+                  ]
+                ],
+                "roller": [
+                  [
+                    0,
+                    92
+                  ]
+                ],
+                "moth": [
+                  [
+                    0,
+                    92
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-2-6",
+        "group": "entry",
+        "box": [
+          2,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 173.67,
+              "96": 207.5,
+              "120": 384
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "roller": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "moth": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    0,
+                    174
+                  ]
+                ],
+                "roller": [
+                  [
+                    0,
+                    174
+                  ]
+                ],
+                "moth": [
+                  [
+                    0,
+                    174
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-3-6",
+        "group": "entry",
+        "box": [
+          3,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 358.49,
+              "120": 408
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    30,
+                    162
+                  ]
+                ],
+                "roller": [
+                  [
+                    30,
+                    162
+                  ]
+                ],
+                "moth": [
+                  [
+                    30,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    4,
+                    188
+                  ]
+                ],
+                "roller": [
+                  [
+                    4,
+                    188
+                  ]
+                ],
+                "moth": [
+                  [
+                    4,
+                    188
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-3-5",
+        "group": "entry",
+        "box": [
+          3,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 203.33,
+              "96": 351.5,
+              "120": 384
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    102,
+                    186
+                  ]
+                ],
+                "roller": [
+                  [
+                    102,
+                    186
+                  ]
+                ],
+                "moth": [
+                  [
+                    102,
+                    186
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    18,
+                    222
+                  ]
+                ],
+                "roller": [
+                  [
+                    18,
+                    222
+                  ]
+                ],
+                "moth": [
+                  [
+                    18,
+                    222
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-3-4",
+        "group": "entry",
+        "box": [
+          3,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 319,
+              "120": 360
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "roller": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "moth": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    100,
+                    236
+                  ]
+                ],
+                "roller": [
+                  [
+                    100,
+                    236
+                  ]
+                ],
+                "moth": [
+                  [
+                    100,
+                    236
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-return-5-4",
+        "group": "westReturn",
+        "box": [
+          5,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 179.14,
+              "72": 231.76,
+              "96": 300.45,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    126,
+                    306
+                  ]
+                ],
+                "roller": [
+                  [
+                    126,
+                    306
+                  ]
+                ],
+                "moth": [
+                  [
+                    126,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    100,
+                    332
+                  ]
+                ],
+                "roller": [
+                  [
+                    100,
+                    332
+                  ]
+                ],
+                "moth": [
+                  [
+                    100,
+                    332
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-return-5-5",
+        "group": "westReturn",
+        "box": [
+          5,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 166.28,
+              "72": 289.55,
+              "96": 344.09,
+              "120": 421.98
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    102,
+                    186
+                  ],
+                  [
+                    246,
+                    330
+                  ]
+                ],
+                "roller": [
+                  [
+                    102,
+                    186
+                  ],
+                  [
+                    246,
+                    330
+                  ]
+                ],
+                "moth": [
+                  [
+                    102,
+                    186
+                  ],
+                  [
+                    246,
+                    330
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    66,
+                    356
+                  ]
+                ],
+                "roller": [
+                  [
+                    66,
+                    356
+                  ]
+                ],
+                "moth": [
+                  [
+                    66,
+                    356
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-return-5-6",
+        "group": "westReturn",
+        "box": [
+          5,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 166.28,
+              "72": 271.53,
+              "96": 396.45,
+              "120": 491.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    78,
+                    162
+                  ],
+                  [
+                    270,
+                    354
+                  ]
+                ],
+                "roller": [
+                  [
+                    78,
+                    162
+                  ],
+                  [
+                    270,
+                    354
+                  ]
+                ],
+                "moth": [
+                  [
+                    78,
+                    162
+                  ],
+                  [
+                    270,
+                    354
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    52,
+                    188
+                  ],
+                  [
+                    244,
+                    380
+                  ]
+                ],
+                "roller": [
+                  [
+                    52,
+                    188
+                  ],
+                  [
+                    244,
+                    380
+                  ]
+                ],
+                "moth": [
+                  [
+                    52,
+                    188
+                  ],
+                  [
+                    244,
+                    380
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-return-5-7",
+        "group": "westReturn",
+        "box": [
+          5,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 148.71,
+              "72": 261.43,
+              "96": 365.04,
+              "120": 501.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    72,
+                    138
+                  ],
+                  [
+                    294,
+                    378
+                  ]
+                ],
+                "roller": [
+                  [
+                    72,
+                    138
+                  ],
+                  [
+                    294,
+                    378
+                  ]
+                ],
+                "moth": [
+                  [
+                    72,
+                    138
+                  ],
+                  [
+                    294,
+                    378
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    48,
+                    164
+                  ],
+                  [
+                    268,
+                    414
+                  ]
+                ],
+                "roller": [
+                  [
+                    48,
+                    164
+                  ],
+                  [
+                    268,
+                    414
+                  ]
+                ],
+                "moth": [
+                  [
+                    48,
+                    164
+                  ],
+                  [
+                    268,
+                    414
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-return-5-8",
+        "group": "westReturn",
+        "box": [
+          5,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 118.28,
+              "72": 223.53,
+              "96": 323.81,
+              "120": 448.73
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    78,
+                    114
+                  ],
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "roller": [
+                  [
+                    78,
+                    114
+                  ],
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "moth": [
+                  [
+                    78,
+                    114
+                  ],
+                  [
+                    318,
+                    402
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    52,
+                    140
+                  ],
+                  [
+                    292,
+                    428
+                  ]
+                ],
+                "roller": [
+                  [
+                    52,
+                    140
+                  ],
+                  [
+                    292,
+                    428
+                  ]
+                ],
+                "moth": [
+                  [
+                    52,
+                    140
+                  ],
+                  [
+                    292,
+                    428
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-7-4",
+        "group": "garden",
+        "box": [
+          7,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 252.45,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "roller": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "moth": [
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "roller": [
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "moth": [
+                  [
+                    196,
+                    332
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-7-5",
+        "group": "garden",
+        "box": [
+          7,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 322.73,
+              "120": 469.98
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    246,
+                    330
+                  ]
+                ],
+                "roller": [
+                  [
+                    246,
+                    330
+                  ]
+                ],
+                "moth": [
+                  [
+                    246,
+                    330
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    210,
+                    343
+                  ]
+                ],
+                "roller": [
+                  [
+                    210,
+                    343
+                  ]
+                ],
+                "moth": [
+                  [
+                    210,
+                    334
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-7-8",
+        "group": "garden",
+        "box": [
+          7,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 131.14,
+              "72": 211.88,
+              "96": 321.4,
+              "120": 427.15
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    318,
+                    450
+                  ]
+                ],
+                "roller": [
+                  [
+                    318,
+                    450
+                  ]
+                ],
+                "moth": [
+                  [
+                    318,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    292,
+                    504
+                  ]
+                ],
+                "roller": [
+                  [
+                    292,
+                    504
+                  ]
+                ],
+                "moth": [
+                  [
+                    292,
+                    504
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-8-8",
+        "group": "garden",
+        "box": [
+          8,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 113.57,
+              "72": 221.67,
+              "96": 275.14,
+              "120": 395.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    390,
+                    504
+                  ]
+                ],
+                "roller": [
+                  [
+                    390,
+                    504
+                  ]
+                ],
+                "moth": [
+                  [
+                    390,
+                    504
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    306,
+                    528
+                  ]
+                ],
+                "roller": [
+                  [
+                    306,
+                    528
+                  ]
+                ],
+                "moth": [
+                  [
+                    306,
+                    528
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-7-10",
+        "group": "garden",
+        "box": [
+          7,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "roller": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "moth": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    340,
+                    486
+                  ]
+                ],
+                "roller": [
+                  [
+                    340,
+                    486
+                  ]
+                ],
+                "moth": [
+                  [
+                    340,
+                    486
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-8-10",
+        "group": "garden",
+        "box": [
+          8,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 155.33,
+              "96": 214.28,
+              "120": 315.96
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "roller": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "moth": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    354,
+                    510
+                  ]
+                ],
+                "roller": [
+                  [
+                    354,
+                    510
+                  ]
+                ],
+                "moth": [
+                  [
+                    354,
+                    510
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-9-10",
+        "group": "garden",
+        "box": [
+          9,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 65.57,
+              "72": 145.55,
+              "96": 245.27,
+              "120": 363.96
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    414,
+                    480
+                  ]
+                ],
+                "roller": [
+                  [
+                    414,
+                    480
+                  ]
+                ],
+                "moth": [
+                  [
+                    414,
+                    480
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    388,
+                    534
+                  ]
+                ],
+                "roller": [
+                  [
+                    388,
+                    534
+                  ]
+                ],
+                "moth": [
+                  [
+                    388,
+                    534
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garden-9-7",
+        "group": "garden",
+        "box": [
+          9,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 65.57,
+              "72": 145.55,
+              "96": 300.45,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    456,
+                    522
+                  ]
+                ],
+                "roller": [
+                  [
+                    456,
+                    522
+                  ]
+                ],
+                "moth": [
+                  [
+                    456,
+                    522
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    402,
+                    548
+                  ]
+                ],
+                "roller": [
+                  [
+                    402,
+                    548
+                  ]
+                ],
+                "moth": [
+                  [
+                    402,
+                    548
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-landing-17-7",
+        "group": "eastLanding",
+        "box": [
+          17,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 200.09,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    630,
+                    696
+                  ]
+                ],
+                "roller": [
+                  [
+                    630,
+                    696
+                  ]
+                ],
+                "moth": [
+                  [
+                    630,
+                    696
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    604,
+                    720
+                  ]
+                ],
+                "roller": [
+                  [
+                    604,
+                    720
+                  ]
+                ],
+                "moth": [
+                  [
+                    604,
+                    720
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-landing-18-7",
+        "group": "eastLanding",
+        "box": [
+          18,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 35.14,
+              "72": 87.76,
+              "96": 156.45,
+              "120": 213.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    654,
+                    690
+                  ]
+                ],
+                "roller": [
+                  [
+                    654,
+                    690
+                  ]
+                ],
+                "moth": [
+                  [
+                    654,
+                    690
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    628,
+                    716
+                  ]
+                ],
+                "roller": [
+                  [
+                    628,
+                    716
+                  ]
+                ],
+                "moth": [
+                  [
+                    628,
+                    716
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-landing-18-8",
+        "group": "eastLanding",
+        "box": [
+          18,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 65.57,
+              "72": 125.67,
+              "96": 183.5,
+              "120": 240
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    648,
+                    714
+                  ]
+                ],
+                "roller": [
+                  [
+                    648,
+                    714
+                  ]
+                ],
+                "moth": [
+                  [
+                    648,
+                    714
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    624,
+                    750
+                  ]
+                ],
+                "roller": [
+                  [
+                    624,
+                    750
+                  ]
+                ],
+                "moth": [
+                  [
+                    624,
+                    750
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-landing-18-9",
+        "group": "eastLanding",
+        "box": [
+          18,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 204.45,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "roller": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "moth": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    628,
+                    764
+                  ]
+                ],
+                "roller": [
+                  [
+                    628,
+                    764
+                  ]
+                ],
+                "moth": [
+                  [
+                    628,
+                    764
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-landing-16-9",
+        "group": "eastLanding",
+        "box": [
+          16,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 179.14,
+              "72": 231.76,
+              "96": 281.9,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    606,
+                    786
+                  ]
+                ],
+                "roller": [
+                  [
+                    606,
+                    786
+                  ]
+                ],
+                "moth": [
+                  [
+                    606,
+                    786
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    580,
+                    812
+                  ]
+                ],
+                "roller": [
+                  [
+                    580,
+                    812
+                  ]
+                ],
+                "moth": [
+                  [
+                    580,
+                    812
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-court-16-11",
+        "group": "southCourt",
+        "box": [
+          16,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 314.64,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    702,
+                    834
+                  ]
+                ],
+                "roller": [
+                  [
+                    702,
+                    834
+                  ]
+                ],
+                "moth": [
+                  [
+                    702,
+                    834
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    676,
+                    870
+                  ]
+                ],
+                "roller": [
+                  [
+                    676,
+                    870
+                  ]
+                ],
+                "moth": [
+                  [
+                    676,
+                    870
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-court-16-12",
+        "group": "southCourt",
+        "box": [
+          16,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    774,
+                    858
+                  ]
+                ],
+                "roller": [
+                  [
+                    774,
+                    858
+                  ]
+                ],
+                "moth": [
+                  [
+                    774,
+                    858
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    700,
+                    884
+                  ]
+                ],
+                "roller": [
+                  [
+                    700,
+                    884
+                  ]
+                ],
+                "moth": [
+                  [
+                    700,
+                    884
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-court-14-12",
+        "group": "southCourt",
+        "box": [
+          14,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 271,
+              "120": 456
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    774,
+                    906
+                  ]
+                ],
+                "roller": [
+                  [
+                    774,
+                    906
+                  ]
+                ],
+                "moth": [
+                  [
+                    774,
+                    906
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    738,
+                    932
+                  ]
+                ],
+                "roller": [
+                  [
+                    738,
+                    932
+                  ]
+                ],
+                "moth": [
+                  [
+                    738,
+                    932
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-court-14-14",
+        "group": "southCourt",
+        "box": [
+          14,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 212.95,
+              "120": 264
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "roller": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "moth": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    796,
+                    932
+                  ]
+                ],
+                "roller": [
+                  [
+                    796,
+                    932
+                  ]
+                ],
+                "moth": [
+                  [
+                    796,
+                    932
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-court-13-14",
+        "group": "southCourt",
+        "box": [
+          13,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 83.14,
+              "72": 173.67,
+              "96": 203.14,
+              "120": 240
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    846,
+                    930
+                  ]
+                ],
+                "roller": [
+                  [
+                    846,
+                    930
+                  ]
+                ],
+                "moth": [
+                  [
+                    846,
+                    930
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    810,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    810,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    810,
+                    984
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-court-12-14",
+        "group": "southCourt",
+        "box": [
+          12,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 113.57,
+              "72": 139.88,
+              "96": 183.5,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    870,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    870,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    870,
+                    984
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    844,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    844,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    844,
+                    984
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-10-14",
+        "group": "late",
+        "box": [
+          10,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    918,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    918,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    918,
+                    984
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    892,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    892,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    892,
+                    984
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-10-15",
+        "group": "late",
+        "box": [
+          10,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 41.57,
+              "72": 77.67,
+              "96": 107.14,
+              "120": 133.98
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    942,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    942,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    942,
+                    984
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    906,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    906,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    906,
+                    984
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-12-15",
+        "group": "late",
+        "box": [
+          12,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 984,
+            "ideal": {
+              "48": 41.57,
+              "72": 125.67,
+              "96": 159.5,
+              "120": 192
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    942,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    942,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    942,
+                    984
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    858,
+                    984
+                  ]
+                ],
+                "roller": [
+                  [
+                    858,
+                    984
+                  ]
+                ],
+                "moth": [
+                  [
+                    858,
+                    984
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "arc": [
+    {
+      "id": "entry-1-6",
+      "box": [
+        1,
+        6
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                0,
+                66
+              ]
+            ],
+            "roller": [
+              [
+                0,
+                66
+              ]
+            ],
+            "moth": [
+              [
+                0,
+                66
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                0,
+                66
+              ]
+            ],
+            "roller": [
+              [
+                0,
+                66
+              ]
+            ],
+            "moth": [
+              [
+                0,
+                66
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                0,
+                92
+              ]
+            ],
+            "roller": [
+              [
+                0,
+                92
+              ]
+            ],
+            "moth": [
+              [
+                0,
+                92
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                0,
+                92
+              ]
+            ],
+            "roller": [
+              [
+                0,
+                92
+              ]
+            ],
+            "moth": [
+              [
+                0,
+                92
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-2-6",
+      "box": [
+        2,
+        6
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                6,
+                90
+              ]
+            ],
+            "roller": [
+              [
+                6,
+                90
+              ]
+            ],
+            "moth": [
+              [
+                6,
+                90
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                6,
+                90
+              ]
+            ],
+            "roller": [
+              [
+                6,
+                90
+              ]
+            ],
+            "moth": [
+              [
+                6,
+                90
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                0,
+                174
+              ]
+            ],
+            "roller": [
+              [
+                0,
+                174
+              ]
+            ],
+            "moth": [
+              [
+                0,
+                174
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                0,
+                174
+              ]
+            ],
+            "roller": [
+              [
+                0,
+                174
+              ]
+            ],
+            "moth": [
+              [
+                0,
+                174
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-3-6",
+      "box": [
+        3,
+        6
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                30,
+                162
+              ]
+            ],
+            "roller": [
+              [
+                30,
+                162
+              ]
+            ],
+            "moth": [
+              [
+                30,
+                162
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                30,
+                162
+              ]
+            ],
+            "roller": [
+              [
+                30,
+                162
+              ]
+            ],
+            "moth": [
+              [
+                30,
+                162
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                4,
+                188
+              ]
+            ],
+            "roller": [
+              [
+                4,
+                188
+              ]
+            ],
+            "moth": [
+              [
+                4,
+                188
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                4,
+                188
+              ]
+            ],
+            "roller": [
+              [
+                4,
+                188
+              ]
+            ],
+            "moth": [
+              [
+                4,
+                188
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-3-5",
+      "box": [
+        3,
+        5
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                102,
+                186
+              ]
+            ],
+            "roller": [
+              [
+                102,
+                186
+              ]
+            ],
+            "moth": [
+              [
+                102,
+                186
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                102,
+                186
+              ]
+            ],
+            "roller": [
+              [
+                102,
+                186
+              ]
+            ],
+            "moth": [
+              [
+                102,
+                186
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                18,
+                222
+              ]
+            ],
+            "roller": [
+              [
+                18,
+                222
+              ]
+            ],
+            "moth": [
+              [
+                18,
+                222
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                18,
+                222
+              ]
+            ],
+            "roller": [
+              [
+                18,
+                222
+              ]
+            ],
+            "moth": [
+              [
+                18,
+                222
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-3-4",
+      "box": [
+        3,
+        4
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                126,
+                210
+              ]
+            ],
+            "roller": [
+              [
+                126,
+                210
+              ]
+            ],
+            "moth": [
+              [
+                126,
+                210
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                126,
+                210
+              ]
+            ],
+            "roller": [
+              [
+                126,
+                210
+              ]
+            ],
+            "moth": [
+              [
+                126,
+                210
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                100,
+                236
+              ]
+            ],
+            "roller": [
+              [
+                100,
+                236
+              ]
+            ],
+            "moth": [
+              [
+                100,
+                236
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                100,
+                236
+              ]
+            ],
+            "roller": [
+              [
+                100,
+                236
+              ]
+            ],
+            "moth": [
+              [
+                100,
+                236
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-5-4",
+      "box": [
+        5,
+        4
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                126,
+                306
+              ]
+            ],
+            "roller": [
+              [
+                126,
+                306
+              ]
+            ],
+            "moth": [
+              [
+                126,
+                306
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                126,
+                306
+              ]
+            ],
+            "roller": [
+              [
+                126,
+                306
+              ]
+            ],
+            "moth": [
+              [
+                126,
+                306
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                100,
+                332
+              ]
+            ],
+            "roller": [
+              [
+                100,
+                332
+              ]
+            ],
+            "moth": [
+              [
+                100,
+                332
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                100,
+                332
+              ]
+            ],
+            "roller": [
+              [
+                100,
+                332
+              ]
+            ],
+            "moth": [
+              [
+                100,
+                332
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-5-5",
+      "box": [
+        5,
+        5
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                102,
+                186
+              ],
+              [
+                246,
+                330
+              ]
+            ],
+            "roller": [
+              [
+                102,
+                186
+              ],
+              [
+                246,
+                330
+              ]
+            ],
+            "moth": [
+              [
+                102,
+                186
+              ],
+              [
+                246,
+                330
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                102,
+                186
+              ],
+              [
+                246,
+                330
+              ]
+            ],
+            "roller": [
+              [
+                102,
+                186
+              ],
+              [
+                246,
+                330
+              ]
+            ],
+            "moth": [
+              [
+                102,
+                186
+              ],
+              [
+                246,
+                330
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                66,
+                356
+              ]
+            ],
+            "roller": [
+              [
+                66,
+                356
+              ]
+            ],
+            "moth": [
+              [
+                66,
+                356
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                66,
+                356
+              ]
+            ],
+            "roller": [
+              [
+                66,
+                356
+              ]
+            ],
+            "moth": [
+              [
+                66,
+                356
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-5-6",
+      "box": [
+        5,
+        6
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                78,
+                162
+              ],
+              [
+                270,
+                354
+              ]
+            ],
+            "roller": [
+              [
+                78,
+                162
+              ],
+              [
+                270,
+                354
+              ]
+            ],
+            "moth": [
+              [
+                78,
+                162
+              ],
+              [
+                270,
+                354
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                78,
+                162
+              ],
+              [
+                270,
+                354
+              ]
+            ],
+            "roller": [
+              [
+                78,
+                162
+              ],
+              [
+                270,
+                354
+              ]
+            ],
+            "moth": [
+              [
+                78,
+                162
+              ],
+              [
+                270,
+                354
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                52,
+                188
+              ],
+              [
+                244,
+                380
+              ]
+            ],
+            "roller": [
+              [
+                52,
+                188
+              ],
+              [
+                244,
+                380
+              ]
+            ],
+            "moth": [
+              [
+                52,
+                188
+              ],
+              [
+                244,
+                380
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                52,
+                188
+              ],
+              [
+                244,
+                380
+              ]
+            ],
+            "roller": [
+              [
+                52,
+                188
+              ],
+              [
+                244,
+                380
+              ]
+            ],
+            "moth": [
+              [
+                52,
+                188
+              ],
+              [
+                244,
+                380
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-5-7",
+      "box": [
+        5,
+        7
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                72,
+                138
+              ],
+              [
+                294,
+                378
+              ]
+            ],
+            "roller": [
+              [
+                72,
+                138
+              ],
+              [
+                294,
+                378
+              ]
+            ],
+            "moth": [
+              [
+                72,
+                138
+              ],
+              [
+                294,
+                378
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                72,
+                138
+              ],
+              [
+                294,
+                378
+              ]
+            ],
+            "roller": [
+              [
+                72,
+                138
+              ],
+              [
+                294,
+                378
+              ]
+            ],
+            "moth": [
+              [
+                72,
+                138
+              ],
+              [
+                294,
+                378
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                48,
+                164
+              ],
+              [
+                268,
+                414
+              ]
+            ],
+            "roller": [
+              [
+                48,
+                164
+              ],
+              [
+                268,
+                414
+              ]
+            ],
+            "moth": [
+              [
+                48,
+                164
+              ],
+              [
+                268,
+                414
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                48,
+                164
+              ],
+              [
+                268,
+                414
+              ]
+            ],
+            "roller": [
+              [
+                48,
+                164
+              ],
+              [
+                268,
+                414
+              ]
+            ],
+            "moth": [
+              [
+                48,
+                164
+              ],
+              [
+                268,
+                414
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-5-8",
+      "box": [
+        5,
+        8
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                78,
+                114
+              ],
+              [
+                318,
+                402
+              ]
+            ],
+            "roller": [
+              [
+                78,
+                114
+              ],
+              [
+                318,
+                402
+              ]
+            ],
+            "moth": [
+              [
+                78,
+                114
+              ],
+              [
+                318,
+                402
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                78,
+                114
+              ],
+              [
+                318,
+                402
+              ]
+            ],
+            "roller": [
+              [
+                78,
+                114
+              ],
+              [
+                318,
+                402
+              ]
+            ],
+            "moth": [
+              [
+                78,
+                114
+              ],
+              [
+                318,
+                402
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                52,
+                140
+              ],
+              [
+                292,
+                428
+              ]
+            ],
+            "roller": [
+              [
+                52,
+                140
+              ],
+              [
+                292,
+                428
+              ]
+            ],
+            "moth": [
+              [
+                52,
+                140
+              ],
+              [
+                292,
+                428
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                52,
+                140
+              ],
+              [
+                292,
+                428
+              ]
+            ],
+            "roller": [
+              [
+                52,
+                140
+              ],
+              [
+                292,
+                428
+              ]
+            ],
+            "moth": [
+              [
+                52,
+                140
+              ],
+              [
+                292,
+                428
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-7-4",
+      "box": [
+        7,
+        4
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                222,
+                306
+              ]
+            ],
+            "roller": [
+              [
+                222,
+                306
+              ]
+            ],
+            "moth": [
+              [
+                222,
+                306
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                222,
+                306
+              ]
+            ],
+            "roller": [
+              [
+                222,
+                306
+              ]
+            ],
+            "moth": [
+              [
+                222,
+                306
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                196,
+                332
+              ]
+            ],
+            "roller": [
+              [
+                196,
+                332
+              ]
+            ],
+            "moth": [
+              [
+                196,
+                332
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                196,
+                332
+              ]
+            ],
+            "roller": [
+              [
+                196,
+                332
+              ]
+            ],
+            "moth": [
+              [
+                196,
+                332
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-7-5",
+      "box": [
+        7,
+        5
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                246,
+                330
+              ]
+            ],
+            "roller": [
+              [
+                246,
+                330
+              ]
+            ],
+            "moth": [
+              [
+                246,
+                330
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                246,
+                330
+              ]
+            ],
+            "roller": [
+              [
+                246,
+                330
+              ]
+            ],
+            "moth": [
+              [
+                246,
+                330
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                210,
+                356
+              ]
+            ],
+            "roller": [
+              [
+                210,
+                356
+              ]
+            ],
+            "moth": [
+              [
+                210,
+                356
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                210,
+                356
+              ]
+            ],
+            "roller": [
+              [
+                210,
+                356
+              ]
+            ],
+            "moth": [
+              [
+                210,
+                356
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-7-8",
+      "box": [
+        7,
+        8
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                318,
+                450
+              ]
+            ],
+            "roller": [
+              [
+                318,
+                450
+              ]
+            ],
+            "moth": [
+              [
+                318,
+                450
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                318,
+                450
+              ]
+            ],
+            "roller": [
+              [
+                318,
+                450
+              ]
+            ],
+            "moth": [
+              [
+                318,
+                450
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                292,
+                504
+              ]
+            ],
+            "roller": [
+              [
+                292,
+                504
+              ]
+            ],
+            "moth": [
+              [
+                292,
+                504
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                292,
+                504
+              ]
+            ],
+            "roller": [
+              [
+                292,
+                504
+              ]
+            ],
+            "moth": [
+              [
+                292,
+                504
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-8-8",
+      "box": [
+        8,
+        8
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                390,
+                504
+              ]
+            ],
+            "roller": [
+              [
+                390,
+                504
+              ]
+            ],
+            "moth": [
+              [
+                390,
+                504
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                390,
+                504
+              ]
+            ],
+            "roller": [
+              [
+                390,
+                504
+              ]
+            ],
+            "moth": [
+              [
+                390,
+                504
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                306,
+                528
+              ]
+            ],
+            "roller": [
+              [
+                306,
+                528
+              ]
+            ],
+            "moth": [
+              [
+                306,
+                528
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                306,
+                528
+              ]
+            ],
+            "roller": [
+              [
+                306,
+                528
+              ]
+            ],
+            "moth": [
+              [
+                306,
+                528
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-7-10",
+      "box": [
+        7,
+        10
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                366,
+                450
+              ]
+            ],
+            "roller": [
+              [
+                366,
+                450
+              ]
+            ],
+            "moth": [
+              [
+                366,
+                450
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                366,
+                450
+              ]
+            ],
+            "roller": [
+              [
+                366,
+                450
+              ]
+            ],
+            "moth": [
+              [
+                366,
+                450
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                340,
+                486
+              ]
+            ],
+            "roller": [
+              [
+                340,
+                486
+              ]
+            ],
+            "moth": [
+              [
+                340,
+                486
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                340,
+                486
+              ]
+            ],
+            "roller": [
+              [
+                340,
+                486
+              ]
+            ],
+            "moth": [
+              [
+                340,
+                486
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-8-10",
+      "box": [
+        8,
+        10
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                390,
+                474
+              ]
+            ],
+            "roller": [
+              [
+                390,
+                474
+              ]
+            ],
+            "moth": [
+              [
+                390,
+                474
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                390,
+                474
+              ]
+            ],
+            "roller": [
+              [
+                390,
+                474
+              ]
+            ],
+            "moth": [
+              [
+                390,
+                474
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                354,
+                510
+              ]
+            ],
+            "roller": [
+              [
+                354,
+                510
+              ]
+            ],
+            "moth": [
+              [
+                354,
+                510
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                354,
+                510
+              ]
+            ],
+            "roller": [
+              [
+                354,
+                510
+              ]
+            ],
+            "moth": [
+              [
+                354,
+                510
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-9-10",
+      "box": [
+        9,
+        10
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                414,
+                480
+              ]
+            ],
+            "roller": [
+              [
+                414,
+                480
+              ]
+            ],
+            "moth": [
+              [
+                414,
+                480
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                414,
+                480
+              ]
+            ],
+            "roller": [
+              [
+                414,
+                480
+              ]
+            ],
+            "moth": [
+              [
+                414,
+                480
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                388,
+                534
+              ]
+            ],
+            "roller": [
+              [
+                388,
+                534
+              ]
+            ],
+            "moth": [
+              [
+                388,
+                534
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                388,
+                534
+              ]
+            ],
+            "roller": [
+              [
+                388,
+                534
+              ]
+            ],
+            "moth": [
+              [
+                388,
+                534
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "garden-9-7",
+      "box": [
+        9,
+        7
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                456,
+                522
+              ]
+            ],
+            "roller": [
+              [
+                456,
+                522
+              ]
+            ],
+            "moth": [
+              [
+                456,
+                522
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                456,
+                522
+              ]
+            ],
+            "roller": [
+              [
+                456,
+                522
+              ]
+            ],
+            "moth": [
+              [
+                456,
+                522
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                402,
+                548
+              ]
+            ],
+            "roller": [
+              [
+                402,
+                548
+              ]
+            ],
+            "moth": [
+              [
+                402,
+                548
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                402,
+                548
+              ]
+            ],
+            "roller": [
+              [
+                402,
+                548
+              ]
+            ],
+            "moth": [
+              [
+                402,
+                548
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "east-landing-17-7",
+      "box": [
+        17,
+        7
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                630,
+                696
+              ]
+            ],
+            "roller": [
+              [
+                630,
+                696
+              ]
+            ],
+            "moth": [
+              [
+                630,
+                696
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                630,
+                696
+              ]
+            ],
+            "roller": [
+              [
+                630,
+                696
+              ]
+            ],
+            "moth": [
+              [
+                630,
+                696
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                604,
+                720
+              ]
+            ],
+            "roller": [
+              [
+                604,
+                720
+              ]
+            ],
+            "moth": [
+              [
+                604,
+                720
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                604,
+                720
+              ]
+            ],
+            "roller": [
+              [
+                604,
+                720
+              ]
+            ],
+            "moth": [
+              [
+                604,
+                720
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "east-landing-18-7",
+      "box": [
+        18,
+        7
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                654,
+                690
+              ]
+            ],
+            "roller": [
+              [
+                654,
+                690
+              ]
+            ],
+            "moth": [
+              [
+                654,
+                690
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                654,
+                690
+              ]
+            ],
+            "roller": [
+              [
+                654,
+                690
+              ]
+            ],
+            "moth": [
+              [
+                654,
+                690
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                628,
+                716
+              ]
+            ],
+            "roller": [
+              [
+                628,
+                716
+              ]
+            ],
+            "moth": [
+              [
+                628,
+                716
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                628,
+                716
+              ]
+            ],
+            "roller": [
+              [
+                628,
+                716
+              ]
+            ],
+            "moth": [
+              [
+                628,
+                716
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "east-landing-18-8",
+      "box": [
+        18,
+        8
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                648,
+                714
+              ]
+            ],
+            "roller": [
+              [
+                648,
+                714
+              ]
+            ],
+            "moth": [
+              [
+                648,
+                714
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                648,
+                714
+              ]
+            ],
+            "roller": [
+              [
+                648,
+                714
+              ]
+            ],
+            "moth": [
+              [
+                648,
+                714
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                624,
+                750
+              ]
+            ],
+            "roller": [
+              [
+                624,
+                750
+              ]
+            ],
+            "moth": [
+              [
+                624,
+                750
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                624,
+                750
+              ]
+            ],
+            "roller": [
+              [
+                624,
+                750
+              ]
+            ],
+            "moth": [
+              [
+                624,
+                750
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "east-landing-18-9",
+      "box": [
+        18,
+        9
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                654,
+                738
+              ]
+            ],
+            "roller": [
+              [
+                654,
+                738
+              ]
+            ],
+            "moth": [
+              [
+                654,
+                738
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                654,
+                738
+              ]
+            ],
+            "roller": [
+              [
+                654,
+                738
+              ]
+            ],
+            "moth": [
+              [
+                654,
+                738
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                628,
+                764
+              ]
+            ],
+            "roller": [
+              [
+                628,
+                764
+              ]
+            ],
+            "moth": [
+              [
+                628,
+                764
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                628,
+                764
+              ]
+            ],
+            "roller": [
+              [
+                628,
+                764
+              ]
+            ],
+            "moth": [
+              [
+                628,
+                764
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "east-landing-16-9",
+      "box": [
+        16,
+        9
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                606,
+                786
+              ]
+            ],
+            "roller": [
+              [
+                606,
+                786
+              ]
+            ],
+            "moth": [
+              [
+                606,
+                786
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                606,
+                786
+              ]
+            ],
+            "roller": [
+              [
+                606,
+                786
+              ]
+            ],
+            "moth": [
+              [
+                606,
+                786
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                580,
+                812
+              ]
+            ],
+            "roller": [
+              [
+                580,
+                812
+              ]
+            ],
+            "moth": [
+              [
+                580,
+                812
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                580,
+                812
+              ]
+            ],
+            "roller": [
+              [
+                580,
+                812
+              ]
+            ],
+            "moth": [
+              [
+                580,
+                812
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "south-court-16-11",
+      "box": [
+        16,
+        11
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                702,
+                834
+              ]
+            ],
+            "roller": [
+              [
+                702,
+                834
+              ]
+            ],
+            "moth": [
+              [
+                702,
+                834
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                702,
+                834
+              ]
+            ],
+            "roller": [
+              [
+                702,
+                834
+              ]
+            ],
+            "moth": [
+              [
+                702,
+                834
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                676,
+                870
+              ]
+            ],
+            "roller": [
+              [
+                676,
+                870
+              ]
+            ],
+            "moth": [
+              [
+                676,
+                870
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                676,
+                870
+              ]
+            ],
+            "roller": [
+              [
+                676,
+                870
+              ]
+            ],
+            "moth": [
+              [
+                676,
+                870
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "south-court-16-12",
+      "box": [
+        16,
+        12
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                774,
+                858
+              ]
+            ],
+            "roller": [
+              [
+                774,
+                858
+              ]
+            ],
+            "moth": [
+              [
+                774,
+                858
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                774,
+                858
+              ]
+            ],
+            "roller": [
+              [
+                774,
+                858
+              ]
+            ],
+            "moth": [
+              [
+                774,
+                858
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                700,
+                884
+              ]
+            ],
+            "roller": [
+              [
+                700,
+                884
+              ]
+            ],
+            "moth": [
+              [
+                700,
+                884
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                700,
+                884
+              ]
+            ],
+            "roller": [
+              [
+                700,
+                884
+              ]
+            ],
+            "moth": [
+              [
+                700,
+                884
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "south-court-14-12",
+      "box": [
+        14,
+        12
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                774,
+                906
+              ]
+            ],
+            "roller": [
+              [
+                774,
+                906
+              ]
+            ],
+            "moth": [
+              [
+                774,
+                906
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                774,
+                906
+              ]
+            ],
+            "roller": [
+              [
+                774,
+                906
+              ]
+            ],
+            "moth": [
+              [
+                774,
+                906
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                738,
+                932
+              ]
+            ],
+            "roller": [
+              [
+                738,
+                932
+              ]
+            ],
+            "moth": [
+              [
+                738,
+                932
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                738,
+                932
+              ]
+            ],
+            "roller": [
+              [
+                738,
+                932
+              ]
+            ],
+            "moth": [
+              [
+                738,
+                932
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "south-court-14-14",
+      "box": [
+        14,
+        14
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                822,
+                906
+              ]
+            ],
+            "roller": [
+              [
+                822,
+                906
+              ]
+            ],
+            "moth": [
+              [
+                822,
+                906
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                822,
+                906
+              ]
+            ],
+            "roller": [
+              [
+                822,
+                906
+              ]
+            ],
+            "moth": [
+              [
+                822,
+                906
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                796,
+                932
+              ]
+            ],
+            "roller": [
+              [
+                796,
+                932
+              ]
+            ],
+            "moth": [
+              [
+                796,
+                932
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                796,
+                932
+              ]
+            ],
+            "roller": [
+              [
+                796,
+                932
+              ]
+            ],
+            "moth": [
+              [
+                796,
+                932
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "south-court-13-14",
+      "box": [
+        13,
+        14
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                846,
+                930
+              ]
+            ],
+            "roller": [
+              [
+                846,
+                930
+              ]
+            ],
+            "moth": [
+              [
+                846,
+                930
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                846,
+                930
+              ]
+            ],
+            "roller": [
+              [
+                846,
+                930
+              ]
+            ],
+            "moth": [
+              [
+                846,
+                930
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                810,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                810,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                810,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                810,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                810,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                810,
+                984
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "south-court-12-14",
+      "box": [
+        12,
+        14
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                870,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                870,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                870,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                870,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                870,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                870,
+                984
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                844,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                844,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                844,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                844,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                844,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                844,
+                984
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "late-10-14",
+      "box": [
+        10,
+        14
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                918,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                918,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                918,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                918,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                918,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                918,
+                984
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                892,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                892,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                892,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                892,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                892,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                892,
+                984
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "late-10-15",
+      "box": [
+        10,
+        15
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                942,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                942,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                942,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                942,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                942,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                942,
+                984
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                906,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                906,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                906,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                906,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                906,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                906,
+                984
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "late-12-15",
+      "box": [
+        12,
+        15
+      ],
+      "variants": {
+        "base": {
+          "range": 48,
+          "centreEligible": {
+            "dog": [
+              [
+                942,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                942,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                942,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                942,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                942,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                942,
+                984
+              ]
+            ]
+          }
+        },
+        "upgrade1": {
+          "range": 72,
+          "centreEligible": {
+            "dog": [
+              [
+                858,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                858,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                858,
+                984
+              ]
+            ]
+          },
+          "surfaceContact": {
+            "dog": [
+              [
+                858,
+                984
+              ]
+            ],
+            "roller": [
+              [
+                858,
+                984
+              ]
+            ],
+            "moth": [
+              [
+                858,
+                984
+              ]
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "visibility": {
+    "sceneryPlacements": 171,
+    "camera": {
+      "mode": "default framed orthographic overview",
+      "yaw": 2.45,
+      "pitch": 0.68,
+      "directionTowardCamera": [
+        0.4959084333621017,
+        0.6287930240184686,
+        -0.5989108102765015
+      ],
+      "aspect": 1.25,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "radius": 265.51266374693824
+    },
+    "method": {
+      "groundY": 24,
+      "rayOriginY": 24.01,
+      "clearingSize": [
+        24,
+        24
+      ],
+      "sampleSpacing": 1,
+      "sampleOffsets": [
+        0.5,
+        23.5
+      ],
+      "samplesPerSite": 576,
+      "totalSiteSamples": 18432,
+      "rayLength": 2000,
+      "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+      "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+      "areaTolerance": 1e-8
+    },
+    "limitations": [
+      "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+      "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+      "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+      "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+    ],
+    "sites": [
+      {
+        "id": "entry-1-6",
+        "box": [
+          1,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-2-6",
+        "box": [
+          2,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-3-6",
+        "box": [
+          3,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-3-5",
+        "box": [
+          3,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-3-4",
+        "box": [
+          3,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-return-5-4",
+        "box": [
+          5,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-return-5-5",
+        "box": [
+          5,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-return-5-6",
+        "box": [
+          5,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-return-5-7",
+        "box": [
+          5,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-return-5-8",
+        "box": [
+          5,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-7-4",
+        "box": [
+          7,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-7-5",
+        "box": [
+          7,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-7-8",
+        "box": [
+          7,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-8-8",
+        "box": [
+          8,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-7-10",
+        "box": [
+          7,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-8-10",
+        "box": [
+          8,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-9-10",
+        "box": [
+          9,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "garden-9-7",
+        "box": [
+          9,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-landing-17-7",
+        "box": [
+          17,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-landing-18-7",
+        "box": [
+          18,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-landing-18-8",
+        "box": [
+          18,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-landing-18-9",
+        "box": [
+          18,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-landing-16-9",
+        "box": [
+          16,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-court-16-11",
+        "box": [
+          16,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-court-16-12",
+        "box": [
+          16,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-court-14-12",
+        "box": [
+          14,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-court-14-14",
+        "box": [
+          14,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-court-13-14",
+        "box": [
+          13,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-court-12-14",
+        "box": [
+          12,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-10-14",
+        "box": [
+          10,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-10-15",
+        "box": [
+          10,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-12-15",
+        "box": [
+          12,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      }
+    ],
+    "passed": true
+  },
+  "passed": true
+}

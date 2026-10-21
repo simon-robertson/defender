@@ -1,0 +1,2212 @@
+{
+  "recordedAt": "2026-10-20T09:27:16.257Z",
+  "method": "Production PlaySession/PlayEngine/loadPlayWorld at120Hz,30Hz outer updates, actual finite schedules, aiming/LOS/impact/missile flights and connected wildlife deployment; inventory and wallet persist through all entered levels. No source assets or shared preview profiles are changed.",
+  "capacity": {
+    "maxOwnedUnits": 32,
+    "maxWaveEnemies": 14,
+    "maxOwnedByFamily": {
+      "turret-study": 32,
+      "arc-spire": 16,
+      "missile-launcher": 10
+    },
+    "maxWaveEnemiesBySpecies": {
+      "dog": 6,
+      "roller": 6,
+      "moth": 6
+    },
+    "pooledEnemyCount": 18,
+    "modelLights": 128
+  },
+  "sourceHashes": {
+    "play/config.js": "7d6bceeb53d8ce20f06df108df100396e2cfe8807356fb4462bec92e7c8d2410",
+    "play/session.js": "e6be69ef7a1a5184642db171352ce5698ba8c9413e759667fb689502518dd1a6",
+    "play/engine.js": "ca7e3225bb882efdf636270d751a11ae8c9e4010c203a134f21bfde926d76900",
+    "play/enemies.js": "c813be8033ad47b4dbb242248ac03b7f3dcf6009d1c346263375180918f4c20d",
+    "play/placement.js": "e92d581f73eaa17508437616826f185954ab1a60c9fa6b3851ded218fc1cb6b4",
+    "game/turret-preview.js": "b061f26e6f1382a0bf1c31c8af2c7b187bd07c6d0db8054dfdafcb1886b12c1b",
+    "game/arc-spire-preview.js": "a2f6750b86c20784283be757c1f18ed3915c85110be1c703b450194a9eafb385",
+    "game/missile-preview.js": "dc9019a64b5a057211297e997265e8c096572baa5b5716c4df0154dcf6f2e85c",
+    "engine/target-planner.js": "edb1dd2f3acaad9512db1e177d5078bc34d49c5fdb54d231ab236ca10398f60c",
+    "engine/missile-flight.js": "602cdc30602872ff93f2f848bbb4af8d91084a86788cf6ed0ff0eb021229b28d",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "shared/missile-flight.js": "00a829a978553d69c8909a270ccd128710fed9c628f8c59c5712d2d80ebc9cec",
+    "assets/levels/moss-01.json": "70807bb01eaeff105aeffacfa8616866c1a3b6e0fa75810732c9000c86b56003",
+    "assets/levels/moss-02.json": "05880b6fe2330d2497b3df52e06fc6648842f8e0453edd9b2d4f33db1f1dd8fb",
+    "assets/levels/moss-03.json": "e7b3b6dd37d4eb7174936ecd3016b9c8d606e4bf74bfec21e6a6370e61b9d909",
+    "assets/levels/moss-04.json": "b3fc84cc2f893dcdf82604758fcb92dd01a34f51a8d63191ddfe5aa7f1f2fe6f"
+  },
+  "results": [
+    {
+      "name": "mixed",
+      "phase": "complete",
+      "completedWaves": 16,
+      "misses": 0,
+      "tokens": 3,
+      "spent": 31,
+      "killed": 168,
+      "escaped": 0,
+      "waves": [
+        {
+          "damageByFamily": {
+            "turret-study": 300,
+            "arc-spire": 0,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "turret-study:dog": 300
+          },
+          "missileResults": null,
+          "wave": "a1-wave-1",
+          "name": "First contact",
+          "actions": [
+            {
+              "buy": "turret-study",
+              "id": "player-gun-1"
+            },
+            {
+              "buy": "turret-study",
+              "id": "player-gun-2"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "turret-study",
+              "base"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 2,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 66.79999999999914,
+          "waveTime": 66.79999999999914,
+          "running": false,
+          "completed": true,
+          "spawned": 3,
+          "pending": 0,
+          "active": 0,
+          "killed": 3,
+          "escaped": 0,
+          "resolved": 3,
+          "total": 3,
+          "shots": 30,
+          "gunShots": 30,
+          "arcShots": 0,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 8016,
+          "lastSteps": 4,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 600,
+            "arc-spire": 0,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "turret-study:dog": 600
+          },
+          "missileResults": null,
+          "wave": "a1-wave-2",
+          "name": "Second patrol",
+          "actions": [
+            {
+              "upgrade": "player-gun-1",
+              "tier": "upgrade1"
+            },
+            {
+              "upgrade": "player-gun-2",
+              "tier": "upgrade1"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 4,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 96.68333333335616,
+          "waveTime": 29.88333333333219,
+          "running": false,
+          "completed": true,
+          "spawned": 6,
+          "pending": 0,
+          "active": 0,
+          "killed": 6,
+          "escaped": 0,
+          "resolved": 6,
+          "total": 6,
+          "shots": 54,
+          "gunShots": 54,
+          "arcShots": 0,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 11602,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 1100,
+            "arc-spire": 0,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "turret-study:dog": 400,
+            "turret-study:roller": 700
+          },
+          "missileResults": null,
+          "wave": "a1-wave-3",
+          "name": "Heavy wheels",
+          "actions": [],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 4,
+          "spent": 4,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 173.72500000000602,
+          "waveTime": 77.04166666667392,
+          "running": false,
+          "completed": true,
+          "spawned": 6,
+          "pending": 0,
+          "active": 0,
+          "killed": 6,
+          "escaped": 0,
+          "resolved": 6,
+          "total": 6,
+          "shots": 96,
+          "gunShots": 96,
+          "arcShots": 0,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 20847,
+          "lastSteps": 1,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 1650,
+            "arc-spire": 0,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "turret-study:dog": 600,
+            "turret-study:roller": 1050
+          },
+          "missileResults": null,
+          "wave": "a1-wave-4",
+          "name": "The Southern Hook",
+          "actions": [
+            {
+              "buy": "turret-study",
+              "id": "player-gun-3"
+            },
+            {
+              "buy": "turret-study",
+              "id": "player-gun-4"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                11,
+                0,
+                6
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                9,
+                0,
+                11
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "turret-study",
+              "base"
+            ]
+          ],
+          "tokens": 4,
+          "spent": 6,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 245.53333333327396,
+          "waveTime": 71.80833333333646,
+          "running": false,
+          "completed": true,
+          "spawned": 9,
+          "pending": 0,
+          "active": 0,
+          "killed": 9,
+          "escaped": 0,
+          "resolved": 9,
+          "total": 9,
+          "shots": 149,
+          "gunShots": 149,
+          "arcShots": 0,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 29464,
+          "lastSteps": 1,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 96,
+            "arc-spire": 1404,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "arc-spire:dog": 864,
+            "arc-spire:moth": 540,
+            "turret-study:dog": 96
+          },
+          "missileResults": null,
+          "wave": "a2-wave-1",
+          "name": "Above the garden",
+          "actions": [
+            {
+              "buy": "arc-spire",
+              "id": "player-arc-spire-5"
+            },
+            {
+              "upgrade": "player-arc-spire-5",
+              "tier": "upgrade1"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade1",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                9,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                13,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "arc-spire",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 10,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 26.88333333333231,
+          "waveTime": 26.88333333333231,
+          "running": false,
+          "completed": true,
+          "spawned": 7,
+          "pending": 0,
+          "active": 0,
+          "killed": 7,
+          "escaped": 0,
+          "resolved": 7,
+          "total": 7,
+          "shots": 38,
+          "gunShots": 8,
+          "arcShots": 30,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 3226,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 1734,
+            "arc-spire": 2826,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "arc-spire:roller": 1884,
+            "turret-study:roller": 1116,
+            "arc-spire:moth": 318,
+            "turret-study:moth": 42,
+            "turret-study:dog": 576,
+            "arc-spire:dog": 624
+          },
+          "missileResults": null,
+          "wave": "a2-wave-2",
+          "name": "Crossing convoy",
+          "actions": [
+            {
+              "upgrade": "player-gun-1",
+              "tier": "upgrade2"
+            },
+            {
+              "upgrade": "player-gun-2",
+              "tier": "upgrade2"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade1",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                9,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                13,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "arc-spire",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 12,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 79.71666666667588,
+          "waveTime": 52.83333333333081,
+          "running": false,
+          "completed": true,
+          "spawned": 11,
+          "pending": 0,
+          "active": 0,
+          "killed": 11,
+          "escaped": 0,
+          "resolved": 11,
+          "total": 11,
+          "shots": 190,
+          "gunShots": 130,
+          "arcShots": 60,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 9566,
+          "lastSteps": 4,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 1482,
+            "arc-spire": 2628,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "arc-spire:dog": 288,
+            "arc-spire:moth": 900,
+            "arc-spire:roller": 1440,
+            "turret-study:dog": 672,
+            "turret-study:roller": 810
+          },
+          "missileResults": null,
+          "wave": "a2-wave-3",
+          "name": "Shared attention",
+          "actions": [],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade1",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                9,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                13,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "turret-study",
+              "base"
+            ],
+            [
+              "arc-spire",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 4,
+          "spent": 12,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 134.24166666670843,
+          "waveTime": 54.524999999997384,
+          "running": false,
+          "completed": true,
+          "spawned": 12,
+          "pending": 0,
+          "active": 0,
+          "killed": 12,
+          "escaped": 0,
+          "resolved": 12,
+          "total": 12,
+          "shots": 169,
+          "gunShots": 113,
+          "arcShots": 56,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 16109,
+          "lastSteps": 3,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 1840,
+            "arc-spire": 3320,
+            "missile-launcher": 0
+          },
+          "damageBySpecies": {
+            "arc-spire:dog": 384,
+            "arc-spire:moth": 720,
+            "arc-spire:roller": 2216,
+            "turret-study:dog": 1056,
+            "turret-study:roller": 784
+          },
+          "missileResults": null,
+          "wave": "a2-wave-4",
+          "name": "Garden crossing",
+          "actions": [
+            {
+              "upgrade": "player-gun-3",
+              "tier": "upgrade1"
+            },
+            {
+              "upgrade": "player-gun-4",
+              "tier": "upgrade1"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade1",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                9,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                13,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 4,
+          "spent": 14,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 194.02499999998724,
+          "waveTime": 59.78333333333042,
+          "running": false,
+          "completed": true,
+          "spawned": 14,
+          "pending": 0,
+          "active": 0,
+          "killed": 14,
+          "escaped": 0,
+          "resolved": 14,
+          "total": 14,
+          "shots": 213,
+          "gunShots": 142,
+          "arcShots": 71,
+          "missileShots": 0,
+          "activeMissiles": 0,
+          "steps": 23283,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 3712,
+            "arc-spire": 1728,
+            "missile-launcher": 1400
+          },
+          "damageBySpecies": {
+            "turret-study:roller": 2664,
+            "turret-study:moth": 444,
+            "turret-study:dog": 604,
+            "missile-launcher:dog": 836,
+            "missile-launcher:moth": 564,
+            "arc-spire:roller": 1536,
+            "arc-spire:moth": 192
+          },
+          "missileResults": {
+            "hits": 9,
+            "collisions": 2,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 2,
+            "orphaned": 0,
+            "completedAtLastPosition": 0
+          },
+          "wave": "a3-wave-1",
+          "name": "Two approaches",
+          "actions": [
+            {
+              "buy": "missile-launcher",
+              "id": "player-missile-launcher-6"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "base",
+              "box": [
+                6,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                17,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                13
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade1"
+            ],
+            [
+              "missile-launcher",
+              "base"
+            ]
+          ],
+          "tokens": 3,
+          "spent": 17,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 48.22499999999771,
+          "waveTime": 48.22499999999771,
+          "running": false,
+          "completed": true,
+          "spawned": 10,
+          "pending": 0,
+          "active": 0,
+          "killed": 10,
+          "escaped": 0,
+          "resolved": 10,
+          "total": 10,
+          "shots": 332,
+          "gunShots": 285,
+          "arcShots": 36,
+          "missileShots": 11,
+          "activeMissiles": 0,
+          "steps": 5787,
+          "lastSteps": 3,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 3347,
+            "arc-spire": 2103,
+            "missile-launcher": 3270
+          },
+          "damageBySpecies": {
+            "turret-study:dog": 1423,
+            "turret-study:roller": 1044,
+            "turret-study:moth": 880,
+            "missile-launcher:roller": 3270,
+            "arc-spire:moth": 320,
+            "arc-spire:dog": 497,
+            "arc-spire:roller": 1286
+          },
+          "missileResults": {
+            "hits": 17,
+            "collisions": 2,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 3,
+            "orphaned": 0,
+            "completedAtLastPosition": 0
+          },
+          "wave": "a3-wave-2",
+          "name": "Changing weight",
+          "actions": [
+            {
+              "upgrade": "player-arc-spire-5",
+              "tier": "upgrade2"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "base",
+              "box": [
+                6,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                17,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                13
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ],
+            [
+              "missile-launcher",
+              "base"
+            ]
+          ],
+          "tokens": 3,
+          "spent": 19,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 104.90833333336252,
+          "waveTime": 56.683333333330566,
+          "running": false,
+          "completed": true,
+          "spawned": 12,
+          "pending": 0,
+          "active": 0,
+          "killed": 12,
+          "escaped": 0,
+          "resolved": 12,
+          "total": 12,
+          "shots": 316,
+          "gunShots": 263,
+          "arcShots": 34,
+          "missileShots": 19,
+          "activeMissiles": 0,
+          "steps": 12589,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 3512,
+            "arc-spire": 3245,
+            "missile-launcher": 2563
+          },
+          "damageBySpecies": {
+            "turret-study:roller": 2824,
+            "missile-launcher:moth": 784,
+            "turret-study:moth": 436,
+            "missile-launcher:dog": 1668,
+            "turret-study:dog": 252,
+            "arc-spire:roller": 2665,
+            "arc-spire:moth": 580,
+            "missile-launcher:roller": 111
+          },
+          "missileResults": {
+            "hits": 12,
+            "collisions": 2,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 0,
+            "orphaned": 2,
+            "completedAtLastPosition": 2
+          },
+          "wave": "a3-wave-3",
+          "name": "At the confluence",
+          "actions": [
+            {
+              "upgrade": "player-missile-launcher-6",
+              "tier": "upgrade1"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "upgrade1",
+              "box": [
+                6,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                17,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                13
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ],
+            [
+              "missile-launcher",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 22,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 157.0750000000209,
+          "waveTime": 52.166666666664156,
+          "running": false,
+          "completed": true,
+          "spawned": 14,
+          "pending": 0,
+          "active": 0,
+          "killed": 14,
+          "escaped": 0,
+          "resolved": 14,
+          "total": 14,
+          "shots": 332,
+          "gunShots": 266,
+          "arcShots": 52,
+          "missileShots": 14,
+          "activeMissiles": 0,
+          "steps": 18849,
+          "lastSteps": 4,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 3632,
+            "arc-spire": 3004,
+            "missile-launcher": 4884
+          },
+          "damageBySpecies": {
+            "missile-launcher:roller": 3360,
+            "turret-study:moth": 384,
+            "arc-spire:moth": 216,
+            "turret-study:dog": 600,
+            "arc-spire:dog": 396,
+            "missile-launcher:moth": 600,
+            "turret-study:roller": 2648,
+            "arc-spire:roller": 2392,
+            "missile-launcher:dog": 924
+          },
+          "missileResults": {
+            "hits": 20,
+            "collisions": 1,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 3,
+            "orphaned": 0,
+            "completedAtLastPosition": 0
+          },
+          "wave": "a3-wave-4",
+          "name": "Both fronts",
+          "actions": [
+            {
+              "buy": "arc-spire",
+              "id": "player-arc-spire-7"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-arc-spire-7",
+              "model": "arc-spire",
+              "variant": "base",
+              "box": [
+                6,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "upgrade1",
+              "box": [
+                17,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                13
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                16,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                9,
+                0,
+                7
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ],
+            [
+              "missile-launcher",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "base"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 24,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 220.54166666662968,
+          "waveTime": 63.466666666663514,
+          "running": false,
+          "completed": true,
+          "spawned": 14,
+          "pending": 0,
+          "active": 0,
+          "killed": 14,
+          "escaped": 0,
+          "resolved": 14,
+          "total": 14,
+          "shots": 366,
+          "gunShots": 276,
+          "arcShots": 68,
+          "missileShots": 22,
+          "activeMissiles": 0,
+          "steps": 26465,
+          "lastSteps": 4,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 2869,
+            "arc-spire": 4861,
+            "missile-launcher": 4670
+          },
+          "damageBySpecies": {
+            "arc-spire:dog": 605,
+            "arc-spire:moth": 1740,
+            "turret-study:dog": 695,
+            "missile-launcher:dog": 1300,
+            "turret-study:moth": 60,
+            "arc-spire:roller": 2516,
+            "turret-study:roller": 2114,
+            "missile-launcher:roller": 3370
+          },
+          "missileResults": {
+            "hits": 18,
+            "collisions": 3,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 1,
+            "orphaned": 3,
+            "completedAtLastPosition": 2
+          },
+          "wave": "a4-wave-1",
+          "name": "Ruin and mere",
+          "actions": [
+            {
+              "upgrade": "player-arc-spire-7",
+              "tier": "upgrade1"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-arc-spire-7",
+              "model": "arc-spire",
+              "variant": "upgrade1",
+              "box": [
+                15,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                11
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                12,
+                0,
+                12
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ],
+            [
+              "missile-launcher",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade1"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 26,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 60.149999999997064,
+          "waveTime": 60.149999999997064,
+          "running": false,
+          "completed": true,
+          "spawned": 12,
+          "pending": 0,
+          "active": 0,
+          "killed": 12,
+          "escaped": 0,
+          "resolved": 12,
+          "total": 12,
+          "shots": 305,
+          "gunShots": 206,
+          "arcShots": 77,
+          "missileShots": 22,
+          "activeMissiles": 1,
+          "steps": 7218,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 3536,
+            "arc-spire": 6034,
+            "missile-launcher": 5930
+          },
+          "damageBySpecies": {
+            "arc-spire:roller": 4933,
+            "turret-study:roller": 2872,
+            "missile-launcher:roller": 4195,
+            "arc-spire:moth": 830,
+            "turret-study:moth": 70,
+            "turret-study:dog": 594,
+            "missile-launcher:dog": 1735,
+            "arc-spire:dog": 271
+          },
+          "missileResults": {
+            "hits": 23,
+            "collisions": 1,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 1,
+            "orphaned": 0,
+            "completedAtLastPosition": 0
+          },
+          "wave": "a4-wave-2",
+          "name": "Heavy procession",
+          "actions": [
+            {
+              "upgrade": "player-arc-spire-7",
+              "tier": "upgrade2"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-arc-spire-7",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                15,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                11
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                12,
+                0,
+                12
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ],
+            [
+              "missile-launcher",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ]
+          ],
+          "tokens": 2,
+          "spent": 28,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 126.45833333337981,
+          "waveTime": 66.3083333333321,
+          "running": false,
+          "completed": true,
+          "spawned": 12,
+          "pending": 0,
+          "active": 0,
+          "killed": 12,
+          "escaped": 0,
+          "resolved": 12,
+          "total": 12,
+          "shots": 373,
+          "gunShots": 255,
+          "arcShots": 94,
+          "missileShots": 24,
+          "activeMissiles": 0,
+          "steps": 15175,
+          "lastSteps": 1,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 2267,
+            "arc-spire": 3945,
+            "missile-launcher": 3088
+          },
+          "damageBySpecies": {
+            "arc-spire:dog": 390,
+            "arc-spire:moth": 2580,
+            "turret-study:dog": 860,
+            "missile-launcher:dog": 1350,
+            "turret-study:moth": 120,
+            "missile-launcher:roller": 1738,
+            "turret-study:roller": 1287,
+            "arc-spire:roller": 975
+          },
+          "missileResults": {
+            "hits": 13,
+            "collisions": 3,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 1,
+            "orphaned": 3,
+            "completedAtLastPosition": 3
+          },
+          "wave": "a4-wave-3",
+          "name": "Wings over stone",
+          "actions": [],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-arc-spire-7",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                15,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                11
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                12,
+                0,
+                12
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ],
+            [
+              "missile-launcher",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ]
+          ],
+          "tokens": 4,
+          "spent": 28,
+          "misses": 0,
+          "phase": "loadout",
+          "time": 177.57500000000246,
+          "waveTime": 51.116666666664244,
+          "running": false,
+          "completed": true,
+          "spawned": 12,
+          "pending": 0,
+          "active": 0,
+          "killed": 12,
+          "escaped": 0,
+          "resolved": 12,
+          "total": 12,
+          "shots": 241,
+          "gunShots": 164,
+          "arcShots": 61,
+          "missileShots": 16,
+          "activeMissiles": 0,
+          "steps": 21309,
+          "lastSteps": 2,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        },
+        {
+          "damageByFamily": {
+            "turret-study": 2898,
+            "arc-spire": 5371,
+            "missile-launcher": 7731
+          },
+          "damageBySpecies": {
+            "arc-spire:dog": 390,
+            "arc-spire:moth": 2385,
+            "turret-study:dog": 210,
+            "missile-launcher:dog": 700,
+            "turret-study:moth": 60,
+            "turret-study:roller": 2628,
+            "missile-launcher:roller": 6776,
+            "missile-launcher:moth": 255,
+            "arc-spire:roller": 2596
+          },
+          "missileResults": {
+            "hits": 24,
+            "collisions": 3,
+            "expired": 0,
+            "lostTargets": 0,
+            "missed": 1,
+            "orphaned": 3,
+            "completedAtLastPosition": 2
+          },
+          "wave": "a4-wave-4",
+          "name": "The final tour",
+          "actions": [
+            {
+              "upgrade": "player-missile-launcher-6",
+              "tier": "upgrade2"
+            }
+          ],
+          "placements": [
+            {
+              "id": "player-arc-spire-5",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-arc-spire-7",
+              "model": "arc-spire",
+              "variant": "upgrade2",
+              "box": [
+                15,
+                0,
+                8
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-missile-launcher-6",
+              "model": "missile-launcher",
+              "variant": "upgrade2",
+              "box": [
+                11,
+                0,
+                11
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                10
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                6,
+                0,
+                7
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-3",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                12,
+                0,
+                12
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-4",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                11,
+                0,
+                14
+              ],
+              "turn": 0
+            }
+          ],
+          "tiers": [
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade2"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "turret-study",
+              "upgrade1"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ],
+            [
+              "missile-launcher",
+              "upgrade2"
+            ],
+            [
+              "arc-spire",
+              "upgrade2"
+            ]
+          ],
+          "tokens": 3,
+          "spent": 31,
+          "misses": 0,
+          "phase": "complete",
+          "time": 238.01666666661401,
+          "waveTime": 60.441666666663714,
+          "running": false,
+          "completed": true,
+          "spawned": 14,
+          "pending": 0,
+          "active": 0,
+          "killed": 14,
+          "escaped": 0,
+          "resolved": 14,
+          "total": 14,
+          "shots": 320,
+          "gunShots": 208,
+          "arcShots": 84,
+          "missileShots": 28,
+          "activeMissiles": 1,
+          "steps": 28562,
+          "lastSteps": 1,
+          "backlogSeconds": 0,
+          "modelLightCapacity": 128,
+          "escapedHealth": []
+        }
+      ]
+    }
+  ]
+}

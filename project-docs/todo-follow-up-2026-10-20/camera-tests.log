@@ -1,0 +1,17 @@
+20 October 2026, camera rollback verification (Bun 1.4.2).
+
+bun test tests/camera.test.js tests/play-camera-views.test.js tests/play-polish.test.js tests/play-drone-camera.test.js tests/play-action-camera.test.js tests/zone-vista.test.js
+48 pass; 0 fail; 4,940,015 expect calls; 15.96 seconds.
+Includes immediate real camera endpoints across 30/60/120 Hz and .8/1.5/2.4 aspect; exact pause; settling; Frame/Auto/reset/bind; existing real combat/Drone trajectory and framing regressions.
+
+bun scripts/verify-todo-camera.js
+PASS: 18 actual production A1/B4 CPU replays, 30/60/120 Hz, .8/1.5/2.4 aspect. Immediate perspective/orthographic entry/return, pause exactness, settling retained, Auto, Frame, reset, completion and unbind. See camera-endpoints.json.
+
+bun test tests/renderer.test.js tests/play-presentation.test.js
+First run: 25 pass; 2 fail. New marker assertion needed renderer.requestDraw() after direct test camera mutation; fixed. Other failure: tests/renderer.test.js damageBytes expected 50112 vs 55104, concurrent effects pool change owned by root; reported for integration. Title framing passed.
+
+bun test tests/renderer.test.js --test-name-pattern 'Drone perspective|Zone A vista'
+2 pass; 24 filtered; 0 fail; 55 expect calls; 97 ms.
+Confirms immediate 0/1 shader projection marker endpoints and existing sharp Drone/vista resource lifecycle.
+
+Browser verification is owned by root to avoid shared browser control conflicts. CPU checks do not claim live application transfer/completion UI verification or actual GPU shader compilation.

@@ -1,0 +1,231 @@
+{
+  "date": "2026-10-18",
+  "measurement": "Measured JavaScript math-call counts, numerical equivalence and isolated local CPU timing; no GPU timing or FPS claim.",
+  "baselineRoot": "/private/tmp/defender-perf-20261018-jl1q_hdw",
+  "currentRoot": "/Users/simon/Development/codex/defender",
+  "runtime": "1.4.2",
+  "method": "Instrument Math.sin/cos/hypot only during 600 advance/prepare calls. Pool construction, endpoint setup, shared-table initialization and comparisons are outside the call-count window. Geometry equivalence is measured in a separate uninstrumented replay.",
+  "fixture": {
+    "level": "moss-01",
+    "source": [
+      77,
+      34.5,
+      155.5
+    ],
+    "target": [
+      65,
+      35.5,
+      155.5
+    ],
+    "frames": 600,
+    "deltaSeconds": 0.016666666666666666
+  },
+  "cases": [
+    {
+      "name": "Actual A1 connection",
+      "before": {
+        "links": 1,
+        "frames": 600,
+        "deltaSeconds": 0.016666666666666666,
+        "calls": {
+          "sin": 79800,
+          "cos": 0,
+          "hypot": 1200
+        },
+        "poolCPUBytes": 42640
+      },
+      "after": {
+        "links": 1,
+        "frames": 600,
+        "deltaSeconds": 0.016666666666666666,
+        "calls": {
+          "sin": 2400,
+          "cos": 1800,
+          "hypot": 600
+        },
+        "poolCPUBytes": 44176
+      },
+      "equivalence": {
+        "links": 1,
+        "frames": 600,
+        "maximumPointError": 2.842170943040401e-14,
+        "maximumPackedInstanceError": 0,
+        "maximumPackedLightError": 0,
+        "changedInstanceFloats": 0,
+        "changedLightFloats": 0
+      }
+    },
+    {
+      "name": "Full bounded plasma pool using the same short span",
+      "before": {
+        "links": 16,
+        "frames": 600,
+        "deltaSeconds": 0.016666666666666666,
+        "calls": {
+          "sin": 1276800,
+          "cos": 0,
+          "hypot": 19200
+        },
+        "poolCPUBytes": 42640
+      },
+      "after": {
+        "links": 16,
+        "frames": 600,
+        "deltaSeconds": 0.016666666666666666,
+        "calls": {
+          "sin": 38400,
+          "cos": 28800,
+          "hypot": 9600
+        },
+        "poolCPUBytes": 44176
+      },
+      "equivalence": {
+        "links": 16,
+        "frames": 600,
+        "maximumPointError": 2.842170943040401e-14,
+        "maximumPackedInstanceError": 0,
+        "maximumPackedLightError": 0,
+        "changedInstanceFloats": 0,
+        "changedLightFloats": 0
+      }
+    }
+  ],
+  "timing": {
+    "method": "Local Bun CPU only: two warmup rounds then seven measured rounds per link count, alternating baseline/current order. Time only advance+prepare (including bound packing). Reset phase before each sample; exclude construction, endpoint setup, imports, instrumentation, comparisons, GPU upload/draw and browser work. No FPS or GPU timing claim.",
+    "environment": {
+      "runtime": "1.4.2",
+      "platform": "darwin",
+      "architecture": "arm64",
+      "cpu": "Apple M3",
+      "logicalCpuCount": 8,
+      "osRelease": "25.6.0"
+    },
+    "cases": [
+      {
+        "links": 1,
+        "framesPerSample": 30000,
+        "warmupRounds": 2,
+        "measuredRounds": 7,
+        "order": [
+          "before,after",
+          "after,before",
+          "before,after",
+          "after,before",
+          "before,after",
+          "after,before",
+          "before,after"
+        ],
+        "beforeMs": [
+          55.26675,
+          55.67062500000003,
+          55.168542,
+          55.31379100000004,
+          55.197915999999964,
+          55.262459000000035,
+          55.60983399999998
+        ],
+        "afterMs": [
+          27.485625000000027,
+          27.69120799999996,
+          27.721250000000055,
+          27.896959000000038,
+          27.76237500000002,
+          27.66633300000001,
+          27.513958000000002
+        ],
+        "beforeMedianMs": 55.26675,
+        "afterMedianMs": 27.69120799999996
+      },
+      {
+        "links": 16,
+        "framesPerSample": 30000,
+        "warmupRounds": 2,
+        "measuredRounds": 7,
+        "order": [
+          "before,after",
+          "after,before",
+          "before,after",
+          "after,before",
+          "before,after",
+          "after,before",
+          "before,after"
+        ],
+        "beforeMs": [
+          892.1403750000004,
+          895.3421250000001,
+          889.0164999999997,
+          892.449916999999,
+          890.2845419999994,
+          892.8018329999995,
+          892.746459
+        ],
+        "afterMs": [
+          441.6235829999996,
+          440.40145799999937,
+          439.56695899999977,
+          441.36183399999936,
+          441.3814590000002,
+          440.79383400000006,
+          441.0115420000002
+        ],
+        "beforeMedianMs": 892.449916999999,
+        "afterMedianMs": 441.0115420000002
+      }
+    ]
+  },
+  "resources": {
+    "tubeRecordBytes": {
+      "before": 288,
+      "after": 304
+    },
+    "inactiveTubeBindingBytes": {
+      "before": 304,
+      "after": 320
+    },
+    "arcGPUBytes": {
+      "before": 15568,
+      "after": 15664
+    },
+    "plasmaGPUBytes": {
+      "before": 30928,
+      "after": 31280
+    },
+    "plasmaMergeCPUBytes": {
+      "before": 6352,
+      "after": 6704
+    },
+    "a1ActiveUploadBytes": {
+      "before": 1840,
+      "after": 1856
+    },
+    "sharedWaveCacheCPUBytes": 1848,
+    "allocationPolicy": "One module wave table and one fixed geometry array per PlasmaLinks pool. No added recurring allocations. Bounds append four floats per tube source; active-prefix upload and lazy scene ownership are preserved."
+  },
+  "sourceHashes": {
+    "engine/plasma-links.js": {
+      "after": "8e44bd8ce9f4c176fe6c3007b62e455e44216d3434dc377675ff7a9d02ccaa99",
+      "before": "c8602772268cad45c72998b3942c4f3a988e6ea75fa3f0fffd603333b99a9feb"
+    },
+    "engine/tube-light-bounds.js": {
+      "after": "8cd1389df5b3d73b658c43fbfb605791f78d31045347caaa8efc6ff67231e597",
+      "before": null
+    },
+    "engine/arc-effects.js": {
+      "after": "78514d82d04d4e9ddac540b3465af2d85395872ca7c0ec42e91e7bd88b125c3d",
+      "before": "42fe363ec06d32d759106a2584a933c04386db1dcdc1640a3be4c2153989c2c6"
+    },
+    "engine/arc-lighting.js": {
+      "after": "bed5bea672301e8457b8e9caa02c5a3dc80335246b2c3e25189b079b79954e29",
+      "before": "37910e1204017d80172b849f705fa56d6b06a671943c6fb1e7ddfcefe8446205"
+    },
+    "engine/shaders.js": {
+      "after": "aa6108e6c28e6d93388ce5df8eb3d4f21320c440befd66c6250c32f9c4f88a29",
+      "before": "90dae17aa5cfec1d05e5ce9b724921edeaa67e378b440cb9def20d7d6acbd6a7"
+    },
+    "shared/arc-effects.js": {
+      "after": "1491950d0295b683f7b1e93384462d0ff2ef561516320610ed0add0b35f35b90",
+      "before": "b74a5989ef7f6634e4dc655b345b2b674165304d2ebc327302c2f5d328f8b281"
+    }
+  },
+  "gpuEvidence": "Lead separately runs tools/plasma-check.html for exact production lighting equality and instrumented GPU segment-loop counts on 256 ground-box centres from each of moss-01 and moss-02; specular-check.html compares the exact production branch with the old expression. Those counts are not GPU timing."
+}

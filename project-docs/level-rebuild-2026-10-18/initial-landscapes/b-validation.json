@@ -1,0 +1,526 @@
+{
+  "zone": "B",
+  "command": "bun scripts/landscapes/build.js B --check",
+  "checks": [
+    "Existing approved scenery only; all materials matte and nonemissive.",
+    "validateLevel checks actual source cells: no overlaps, world/terrain/water intersections.",
+    "Canonical factory/source hash and independent fresh objects.",
+    "Every dry box populated; all Y24 ground connected and at least65% of total boxes.",
+    "Three supported bird perches with a clear6-unit-radius/8-unit-high envelope.",
+    "Dry ground habitat samples with a clear6-unit-radius/11-unit-high envelope."
+  ],
+  "levels": [
+    {
+      "id": "ochre-01",
+      "sha256": "d23356e3d453f396b0c97be20c36aace164dd27a349301795b87e981896ee113",
+      "size": [
+        16,
+        14
+      ],
+      "placements": 215,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ochre-cactus": 27,
+        "ochre-cactus-young": 15,
+        "ochre-flowers": 13,
+        "ochre-mesa": 8,
+        "ochre-mesa-low": 11,
+        "ochre-pebbles": 13,
+        "ochre-rock": 36,
+        "ochre-shrub": 19,
+        "ochre-tuft": 69,
+        "ochre-wall": 4
+      },
+      "terrain": {
+        "flatDry": 193,
+        "raisedDry": 22,
+        "water": 9
+      },
+      "connectedFlatDry": 193,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "b1-land-7-1",
+          "model": "ochre-cactus",
+          "box": [
+            7,
+            0,
+            1
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            179,
+            69,
+            35
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b1-land-13-3",
+          "model": "ochre-cactus",
+          "box": [
+            13,
+            0,
+            3
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            325,
+            69,
+            85
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b1-land-6-11",
+          "model": "ochre-cactus",
+          "box": [
+            6,
+            0,
+            11
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            157,
+            69,
+            275
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1181,
+        "candidateWorldPoints": [
+          [
+            366,
+            24,
+            330
+          ],
+          [
+            22,
+            24,
+            6
+          ],
+          [
+            6,
+            24,
+            330
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "ochre-02",
+      "sha256": "ab8e206fa919a8b1eb87357c0e69037ab0f071ccfbb7336d825b525608ab773c",
+      "size": [
+        18,
+        16
+      ],
+      "placements": 276,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ochre-cactus": 31,
+        "ochre-cactus-young": 23,
+        "ochre-flowers": 17,
+        "ochre-mesa": 7,
+        "ochre-mesa-low": 9,
+        "ochre-pebbles": 15,
+        "ochre-rock": 50,
+        "ochre-shrub": 36,
+        "ochre-tuft": 82,
+        "ochre-wall": 6
+      },
+      "terrain": {
+        "flatDry": 254,
+        "raisedDry": 22,
+        "water": 12
+      },
+      "connectedFlatDry": 254,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "b2-land-8-1",
+          "model": "ochre-cactus",
+          "box": [
+            8,
+            0,
+            1
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            205,
+            69,
+            35
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b2-land-2-12",
+          "model": "ochre-cactus",
+          "box": [
+            2,
+            0,
+            12
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            59,
+            69,
+            299
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b2-land-16-10",
+          "model": "ochre-cactus",
+          "box": [
+            16,
+            0,
+            10
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            397,
+            69,
+            253
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1540,
+        "candidateWorldPoints": [
+          [
+            426,
+            24,
+            362
+          ],
+          [
+            26,
+            24,
+            22
+          ],
+          [
+            386,
+            24,
+            6
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "ochre-03",
+      "sha256": "40fef25a4aef42f8708357dd64427cfa26a3064772d3c80e6a435951ffb921f9",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 311,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ochre-cactus": 21,
+        "ochre-cactus-young": 21,
+        "ochre-flowers": 6,
+        "ochre-mesa": 11,
+        "ochre-mesa-low": 21,
+        "ochre-pebbles": 18,
+        "ochre-rock": 61,
+        "ochre-shrub": 46,
+        "ochre-tuft": 103,
+        "ochre-wall": 3
+      },
+      "terrain": {
+        "flatDry": 274,
+        "raisedDry": 37,
+        "water": 9
+      },
+      "connectedFlatDry": 274,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "b3-land-7-2",
+          "model": "ochre-cactus",
+          "box": [
+            7,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            179,
+            69,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b3-land-18-10",
+          "model": "ochre-cactus",
+          "box": [
+            18,
+            0,
+            10
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            445,
+            69,
+            251
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b3-land-6-13",
+          "model": "ochre-cactus",
+          "box": [
+            6,
+            0,
+            13
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            155,
+            69,
+            325
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1345,
+        "candidateWorldPoints": [
+          [
+            462,
+            24,
+            378
+          ],
+          [
+            18,
+            24,
+            6
+          ],
+          [
+            430,
+            24,
+            6
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "ochre-04",
+      "sha256": "81849a342ec98ff1ca0ddc8518ec3973c846371e7d85b69a9b6004da25862c8e",
+      "size": [
+        18,
+        18
+      ],
+      "placements": 302,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ochre-cactus": 31,
+        "ochre-cactus-young": 24,
+        "ochre-flowers": 13,
+        "ochre-mesa": 8,
+        "ochre-mesa-low": 19,
+        "ochre-pebbles": 21,
+        "ochre-rock": 54,
+        "ochre-shrub": 36,
+        "ochre-tuft": 92,
+        "ochre-wall": 4
+      },
+      "terrain": {
+        "flatDry": 268,
+        "raisedDry": 34,
+        "water": 22
+      },
+      "connectedFlatDry": 268,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "b4-land-3-2",
+          "model": "ochre-cactus",
+          "box": [
+            3,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            83,
+            69,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b4-land-16-7",
+          "model": "ochre-cactus",
+          "box": [
+            16,
+            0,
+            7
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            397,
+            69,
+            181
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "b4-land-7-15",
+          "model": "ochre-cactus",
+          "box": [
+            7,
+            0,
+            15
+          ],
+          "point": [
+            11,
+            45,
+            11
+          ],
+          "worldPoint": [
+            181,
+            69,
+            371
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1593,
+        "candidateWorldPoints": [
+          [
+            426,
+            24,
+            426
+          ],
+          [
+            6,
+            24,
+            6
+          ],
+          [
+            6,
+            24,
+            426
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    }
+  ]
+}

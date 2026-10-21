@@ -1,0 +1,690 @@
+{
+  "id": "ochre-01",
+  "sourceHash": "5dc89668241546b6cc5376863ac824de0630be1d24abce679435377e8111c2d5",
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 1443,
+    "checkedParts": 8177,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "early-1",
+        "group": "early",
+        "box": [
+          3,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 164.95,
+              "120": 237.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    30,
+                    114
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    4,
+                    140
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    4,
+                    58
+                  ],
+                  [
+                    86,
+                    140
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    4,
+                    140
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-2",
+        "group": "early",
+        "box": [
+          4,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 233.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    28,
+                    164
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    28,
+                    82
+                  ],
+                  [
+                    110,
+                    164
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    28,
+                    164
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-3",
+        "group": "early",
+        "box": [
+          5,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 83.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    52,
+                    236
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    52,
+                    106
+                  ],
+                  [
+                    134,
+                    236
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    52,
+                    236
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-1",
+        "group": "repeat",
+        "box": [
+          8,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 148.71,
+              "72": 259.88,
+              "96": 308.95,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    144,
+                    210
+                  ],
+                  [
+                    270,
+                    354
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    144,
+                    210
+                  ],
+                  [
+                    270,
+                    354
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    144,
+                    210
+                  ],
+                  [
+                    270,
+                    354
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    120,
+                    380
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    120,
+                    164
+                  ],
+                  [
+                    182,
+                    298
+                  ],
+                  [
+                    326,
+                    380
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    120,
+                    380
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-2",
+        "group": "repeat",
+        "box": [
+          8,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 179.14,
+              "72": 241.55,
+              "96": 296.09,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    150,
+                    330
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    150,
+                    330
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    150,
+                    330
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    124,
+                    366
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    124,
+                    178
+                  ],
+                  [
+                    206,
+                    226
+                  ],
+                  [
+                    254,
+                    274
+                  ],
+                  [
+                    302,
+                    366
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    124,
+                    366
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-3",
+        "group": "repeat",
+        "box": [
+          8,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 204.45,
+              "120": 288
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    198,
+                    282
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    172,
+                    308
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    172,
+                    226
+                  ],
+                  [
+                    254,
+                    308
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    172,
+                    308
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-1",
+        "group": "late",
+        "box": [
+          12,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 227.14,
+              "120": 253.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    340,
+                    476
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    340,
+                    394
+                  ],
+                  [
+                    422,
+                    476
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    340,
+                    476
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-2",
+        "group": "late",
+        "box": [
+          13,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 229.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    364,
+                    480
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    364,
+                    418
+                  ],
+                  [
+                    446,
+                    480
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    364,
+                    480
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-3",
+        "group": "late",
+        "box": [
+          14,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 480,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    414,
+                    480
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    414,
+                    480
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    414,
+                    480
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    388,
+                    480
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    388,
+                    442
+                  ],
+                  [
+                    470,
+                    480
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    388,
+                    480
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "combat": {
+    "seconds": 120,
+    "frames": 7200,
+    "thinkCounts": [
+      2400,
+      2400,
+      2400
+    ],
+    "shots": {
+      "b1-defence-1": 33,
+      "b1-defence-2": 123,
+      "b1-defence-3": 44
+    },
+    "strengths": [
+      10,
+      12,
+      10
+    ],
+    "hits": {
+      "main/walker/10": 248,
+      "main/dune-tread/12": 552,
+      "main/dune-tread/10": 288,
+      "main/walker/12": 652,
+      "main/twin-fan/10": 226,
+      "main/twin-fan/12": 254
+    },
+    "launches": 0,
+    "claimsSeen": false,
+    "missileHits": 0,
+    "remaining": [
+      {
+        "id": "preview-walker-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-walker-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-walker-3",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-dune-tread-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-dune-tread-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-twin-fan-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-twin-fan-2",
+        "route": "main",
+        "health": 0
+      }
+    ],
+    "enhancers": [],
+    "failures": []
+  }
+}

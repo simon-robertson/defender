@@ -1,0 +1,869 @@
+{
+  "afterWaveAndUpgrades": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4,
+    "completedWaves": 1,
+    "totalWaves": 16,
+    "wavePreview": {
+      "splitApproaches": false,
+      "name": "Second patrol",
+      "description": "Two separated Dog groups test repeat coverage.",
+      "groups": [
+        {
+          "model": "dog",
+          "name": "Dog",
+          "routeId": "main",
+          "count": 6,
+          "maxHealth": 100,
+          "speed": 12,
+          "firstAt": 0,
+          "lastAt": 20
+        }
+      ],
+      "total": 6
+    },
+    "shop": [
+      {
+        "model": "turret-study",
+        "name": "Gun",
+        "cost": 1,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "maxRange": 48,
+          "strength": 10,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "arc-spire",
+        "name": "Arc Spire",
+        "cost": 2,
+        "available": false,
+        "availableFromWave": 5,
+        "stats": {
+          "maxRange": 60,
+          "strength": 36,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1.2,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "missile-launcher",
+        "name": "Missile launcher",
+        "cost": 3,
+        "available": false,
+        "availableFromWave": 9,
+        "stats": {
+          "maxRange": 96,
+          "strength": 200,
+          "requiresLineOfSight": false
+        },
+        "firing": {
+          "magazine": 2,
+          "gap": 1,
+          "reload": 4,
+          "cycle": {
+            "shotsPerBurst": 1,
+            "shotIntervalSeconds": 0,
+            "cooldownSeconds": 1,
+            "delivery": "projectile",
+            "projectile": {
+              "speedUnitsPerSecond": 120
+            }
+          }
+        }
+      }
+    ],
+    "units": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "deployed": true,
+        "stats": {
+          "maxRange": 66,
+          "strength": 12,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 3,
+          "shotIntervalSeconds": 0.12,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 01",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 5,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "deployed": true,
+        "stats": {
+          "maxRange": 66,
+          "strength": 12,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 3,
+          "shotIntervalSeconds": 0.12,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 02",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 5,
+        "canUpgrade": false
+      }
+    ],
+    "encounterNumber": 2,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "liveCameraEnabled": false,
+    "liveCameraActive": false,
+    "liveCameraTime": 0,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 6,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 559.3401513332685,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 6,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 6,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 8017,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 128
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "mode": "overview",
+      "fov": 73,
+      "roll": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "radius": 237.94590230053745,
+      "target": [
+        240.00070190429688,
+        22.000091552734375,
+        192.000244140625
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 3,
+      "time": 559.3401513332685
+    },
+    "liveCamera": {
+      "enabled": false,
+      "active": false,
+      "time": 0,
+      "subject": null,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "focus": [
+        0,
+        0,
+        0
+      ],
+      "speed": 0,
+      "flinch": 0,
+      "explosions": 0,
+      "plans": 0,
+      "travelled": 0,
+      "reachable": 0,
+      "visible": false,
+      "quality": 0,
+      "holding": false,
+      "panRoll": 0,
+      "fov": 70,
+      "focusDistance": 120,
+      "safety": null
+    },
+    "film": {
+      "active": false,
+      "bytes": 0
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "warningsAndErrors": [],
+  "paused": {
+    "phase": "wave",
+    "paused": true,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4,
+    "completedWaves": 1,
+    "totalWaves": 16,
+    "wavePreview": {
+      "splitApproaches": false,
+      "name": "Second patrol",
+      "description": "Two separated Dog groups test repeat coverage.",
+      "groups": [
+        {
+          "model": "dog",
+          "name": "Dog",
+          "routeId": "main",
+          "count": 6,
+          "maxHealth": 100,
+          "speed": 12,
+          "firstAt": 0,
+          "lastAt": 20
+        }
+      ],
+      "total": 6
+    },
+    "shop": [
+      {
+        "model": "turret-study",
+        "name": "Gun",
+        "cost": 1,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "maxRange": 48,
+          "strength": 10,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "arc-spire",
+        "name": "Arc Spire",
+        "cost": 2,
+        "available": false,
+        "availableFromWave": 5,
+        "stats": {
+          "maxRange": 60,
+          "strength": 36,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1.2,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "missile-launcher",
+        "name": "Missile launcher",
+        "cost": 3,
+        "available": false,
+        "availableFromWave": 9,
+        "stats": {
+          "maxRange": 96,
+          "strength": 200,
+          "requiresLineOfSight": false
+        },
+        "firing": {
+          "magazine": 2,
+          "gap": 1,
+          "reload": 4,
+          "cycle": {
+            "shotsPerBurst": 1,
+            "shotIntervalSeconds": 0,
+            "cooldownSeconds": 1,
+            "delivery": "projectile",
+            "projectile": {
+              "speedUnitsPerSecond": 120
+            }
+          }
+        }
+      }
+    ],
+    "units": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "deployed": true,
+        "stats": {
+          "maxRange": 66,
+          "strength": 12,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 3,
+          "shotIntervalSeconds": 0.12,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 01",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 5,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "deployed": true,
+        "stats": {
+          "maxRange": 66,
+          "strength": 12,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 3,
+          "shotIntervalSeconds": 0.12,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 02",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 5,
+        "canUpgrade": false
+      }
+    ],
+    "encounterNumber": 2,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "liveCameraEnabled": false,
+    "liveCameraActive": false,
+    "liveCameraTime": 0,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 1,
+    "spawned": 1,
+    "totalEnemies": 6,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 560.248551333267,
+      "waveTime": 0.275,
+      "running": true,
+      "completed": false,
+      "spawned": 1,
+      "pending": 5,
+      "active": 1,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 6,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 8050,
+      "lastSteps": 2,
+      "backlogSeconds": 0.00740000000002331,
+      "modelLightCapacity": 128
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "mode": "overview",
+      "fov": 73,
+      "roll": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "radius": 233.40840230053746,
+      "target": [
+        234.32882690429688,
+        23.235586166381836,
+        194.37928771972656
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": true,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        68.34725569969,
+        32,
+        211.2558139534883
+      ],
+      "radiusGoal": 116,
+      "points": 3,
+      "time": 560.248551333267
+    },
+    "liveCamera": {
+      "enabled": false,
+      "active": false,
+      "time": 0,
+      "subject": null,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "focus": [
+        0,
+        0,
+        0
+      ],
+      "speed": 0,
+      "flinch": 0,
+      "explosions": 0,
+      "plans": 0,
+      "travelled": 0,
+      "reachable": 0,
+      "visible": false,
+      "quality": 0,
+      "holding": false,
+      "panRoll": 0,
+      "fov": 70,
+      "focusDistance": 120,
+      "safety": null
+    },
+    "film": {
+      "active": false,
+      "bytes": 0
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "modalFocus": [
+    "RETURN TO TITLE"
+  ],
+  "pausedAfter": {
+    "phase": "wave",
+    "paused": true,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4,
+    "completedWaves": 1,
+    "totalWaves": 16,
+    "wavePreview": {
+      "splitApproaches": false,
+      "name": "Second patrol",
+      "description": "Two separated Dog groups test repeat coverage.",
+      "groups": [
+        {
+          "model": "dog",
+          "name": "Dog",
+          "routeId": "main",
+          "count": 6,
+          "maxHealth": 100,
+          "speed": 12,
+          "firstAt": 0,
+          "lastAt": 20
+        }
+      ],
+      "total": 6
+    },
+    "shop": [
+      {
+        "model": "turret-study",
+        "name": "Gun",
+        "cost": 1,
+        "available": true,
+        "availableFromWave": 1,
+        "stats": {
+          "maxRange": 48,
+          "strength": 10,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "arc-spire",
+        "name": "Arc Spire",
+        "cost": 2,
+        "available": false,
+        "availableFromWave": 5,
+        "stats": {
+          "maxRange": 60,
+          "strength": 36,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 1,
+          "shotIntervalSeconds": 0,
+          "cooldownSeconds": 1.2,
+          "delivery": "hitscan",
+          "projectile": null
+        }
+      },
+      {
+        "model": "missile-launcher",
+        "name": "Missile launcher",
+        "cost": 3,
+        "available": false,
+        "availableFromWave": 9,
+        "stats": {
+          "maxRange": 96,
+          "strength": 200,
+          "requiresLineOfSight": false
+        },
+        "firing": {
+          "magazine": 2,
+          "gap": 1,
+          "reload": 4,
+          "cycle": {
+            "shotsPerBurst": 1,
+            "shotIntervalSeconds": 0,
+            "cooldownSeconds": 1,
+            "delivery": "projectile",
+            "projectile": {
+              "speedUnitsPerSecond": 120
+            }
+          }
+        }
+      }
+    ],
+    "units": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "deployed": true,
+        "stats": {
+          "maxRange": 66,
+          "strength": 12,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 3,
+          "shotIntervalSeconds": 0.12,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 01",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 5,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "deployed": true,
+        "stats": {
+          "maxRange": 66,
+          "strength": 12,
+          "requiresLineOfSight": true
+        },
+        "firing": {
+          "shotsPerBurst": 3,
+          "shotIntervalSeconds": 0.12,
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null
+        },
+        "label": "Gun 02",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "upgradeAvailableFromWave": 5,
+        "canUpgrade": false
+      }
+    ],
+    "encounterNumber": 2,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "liveCameraEnabled": false,
+    "liveCameraActive": false,
+    "liveCameraTime": 0,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 1,
+    "spawned": 1,
+    "totalEnemies": 6,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 560.248551333267,
+      "waveTime": 0.275,
+      "running": true,
+      "completed": false,
+      "spawned": 1,
+      "pending": 5,
+      "active": 1,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 6,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 8050,
+      "lastSteps": 2,
+      "backlogSeconds": 0.00740000000002331,
+      "modelLightCapacity": 128
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "mode": "overview",
+      "fov": 73,
+      "roll": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "radius": 233.40840230053746,
+      "target": [
+        234.32882690429688,
+        23.235586166381836,
+        194.37928771972656
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": true,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        68.34725569969,
+        32,
+        211.2558139534883
+      ],
+      "radiusGoal": 116,
+      "points": 3,
+      "time": 560.248551333267
+    },
+    "liveCamera": {
+      "enabled": false,
+      "active": false,
+      "time": 0,
+      "subject": null,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "focus": [
+        0,
+        0,
+        0
+      ],
+      "speed": 0,
+      "flinch": 0,
+      "explosions": 0,
+      "plans": 0,
+      "travelled": 0,
+      "reachable": 0,
+      "visible": false,
+      "quality": 0,
+      "holding": false,
+      "panRoll": 0,
+      "fov": 70,
+      "focusDistance": 120,
+      "safety": null
+    },
+    "film": {
+      "active": false,
+      "bytes": 0
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "pauseClockFrozen": true,
+  "keyboardResumed": true
+}

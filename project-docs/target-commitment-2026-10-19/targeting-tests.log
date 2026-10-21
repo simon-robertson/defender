@@ -1,0 +1,69 @@
+bun test v1.4.2 (744846f84)
+
+tests/turret-pitch.test.js:
+(pass) pitch servo preserves momentum but never crosses mechanical bounds during reversals, braking or stalls [2.65ms]
+(pass) pitch integration agrees across frame subdivisions within the hard stops [0.17ms]
+(pass) real gun joints aim their shared centreline above and below across every placed root turn [2.97ms]
+(pass) mechanically unreachable and missing heights cannot damage even with LOS disabled; reachable alternatives remain selectable [0.29ms]
+(pass) candidate pitch is separate from actual pose; height changes cancel bursts until both axes align [0.21ms]
+(pass) reset and lethal hits clear pitch lock state while preserving weapon time, rig matrices and bounded braking [0.13ms]
+
+tests/lead-targeting.test.js:
+(pass) the current hitscan turret still aims exactly at the present target, without requiring velocity [0.05ms]
+(pass) projectile aim leads crossing motion according to speed and keeps the intercept inside maximum travel range [0.12ms]
+(pass) unreachable, out-of-range and unknown-motion targets cannot fall back to an unled projectile shot [0.06ms]
+(pass) projectile speed is explicit, finite and positive; unknown delivery cannot silently become hitscan [0.04ms]
+(pass) route motion reports true travel direction instead of the eased facing through a bend [0.10ms]
+
+tests/targeting.test.js:
+(pass) continuous yaw retains momentum through retargets while respecting speed and acceleration caps [1.34ms]
+(pass) static target tracking is independent of frame subdivisions with initial motion and angle wrapping [0.28ms]
+(pass) live targeting retains valid targets, uses stable-ID ties and includes the exact range boundary [0.45ms]
+(pass) aiming accounts for the placed root rotation and cannot fire before live alignment [0.69ms]
+(pass) candidate scans retain the selected projectile solution and reject unreachable locks [0.16ms]
+(pass) obstruction drops a lock, selects a visible in-range dog and cancels the old burst [0.11ms]
+(pass) both muzzle lines are required, while LOS is an explicit per-defence policy [0.17ms]
+(pass) LOS acquires from candidate-facing muzzles but checks actual yaw and recoil before a pulse [0.14ms]
+(pass) live burst pulses revalidate alignment and cancel after target departure, removal or replacement [0.16ms]
+(pass) live weapon stalls emit at most one currently validated shot and never compress pending burst gaps [0.13ms]
+(pass) the real dog loop is tracked with bounded errors and valid shot snapshots while reusing rig state [339.68ms]
+(pass) occupied scenery blocks a target at the exact range boundary and a clear dog replaces that lock [26.37ms]
+(pass) A showcase and alternative plots retain actual muzzle sightlines and complete yaw/pitch/recoil sweep clearance [233.51ms]
+(pass) articulated torso aim and velocity are distinct from the shared root range contract [0.17ms]
+
+tests/target-planner.test.js:
+(pass) equal threat follows time to exit, explicit threat can outweigh progress, and health breaks close urgency ties [0.38ms]
+(pass) unknown route metadata still ranks threat but never invents downstream capacity [0.08ms]
+(pass) explicitly disabled forecasts skip all route probes while default coverage and live eligibility remain intact [0.28ms]
+(pass) uncertified route aim offsets and banking skip probes and credit without excluding live gun hits [0.50ms]
+(pass) revoking route forecast eligibility clears an existing reservation without rejecting its live target [0.18ms]
+(pass) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [777.05ms]
+(pass) future projectile aiming does not borrow the hitscan damage forecast [0.11ms]
+(pass) impact recovery suspends route promises while keeping actual live shots eligible [0.13ms]
+(pass) an idle downstream owner accepts one explicit assignment when the upstream gun switches [0.07ms]
+(pass) delegation requires the full margin and respects cooldown, visibility and weapon strength [0.26ms]
+(pass) incoming missile damage is credited once and only residual health needs the gun forecast margin [0.20ms]
+(pass) fully claimed missile damage releases old gun reservations and never recruits unnecessary owners [0.08ms]
+(pass) unknown health and invalid incoming values cannot manufacture a lethal damage claim [0.29ms]
+(pass) mixed families share actual incoming credit while only one thinker forecasts gun damage [0.22ms]
+(pass) capacity uses only the next continuous window and never counts a later preview lap [0.04ms]
+(pass) one downstream promise cannot be reused to delegate a different actor [0.11ms]
+(pass) an owner cannot abandon its reserved actor for a more urgent challenger [0.06ms]
+(pass) covered targets remain fireable when there is no uncovered alternative [0.07ms]
+(pass) near-equal urgency and a short hold preserve locks; a valid burst finishes before a discretionary switch [0.04ms]
+(pass) forecast counts single attack pulses, partial bursts and real cooldowns [0.02ms]
+(pass) one roster scan per frame rotates fairly and releases all planner references on disposal [0.11ms]
+(pass) death, departure and lap changes invalidate reservations instead of preserving spent promises [0.18ms]
+(pass) a stale current-target lock cannot recreate downstream confidence after its reservation lapses [0.05ms]
+(pass) an unreserved lock in a coverage gap cannot promise a disconnected later window [0.04ms]
+(pass) current turret capacity never covers itself and spent weapon time reduces a promise [0.04ms]
+(pass) roster growth reuses spare slots and gives unprofiled actors no speculative capacity [0.10ms]
+(pass) continuing burst forecasts require pitch alignment as well as yaw [0.04ms]
+(pass) non-thinking turrets still reject invalid shots and cancel bursts every frame [0.19ms]
+(pass) gun acquisition survives priority changes through cooldown and its first valid burst [0.07ms]
+(pass) gun acquisition hold is bounded and cannot retain dead, blocked, removed or out-of-range targets [0.12ms]
+
+ 55 pass
+ 0 fail
+ 20658 expect() calls
+Ran 55 tests across 4 files. [1427.00ms]

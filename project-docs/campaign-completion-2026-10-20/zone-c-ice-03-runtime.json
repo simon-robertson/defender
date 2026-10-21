@@ -1,0 +1,185 @@
+{
+  "id": "ice-03",
+  "sourceSha256": "07514a00a314ce23b94f0ddd060230966a8748685dbb0d612115fca5323ab546",
+  "seconds": 180,
+  "hz": 30,
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 36
+    },
+    {
+      "id": "northern",
+      "boxes": 22
+    }
+  ],
+  "unionPathBoxes": 48,
+  "bridgeBoxes": 1,
+  "resources": {
+    "modelAssets": 10,
+    "opaqueEntries": 13,
+    "waterQuads": 24,
+    "visibilityPrimitives": 7014,
+    "visibilityBytes": 392756,
+    "planningBytes": 277172,
+    "explosionEventBytes": 320,
+    "groundNodes": 5115,
+    "treePerches": 39
+  },
+  "thinkCount": 5400,
+  "maxThinkWork": 512,
+  "envelopeChecks": 32406,
+  "meshPoseChecks": 1086,
+  "rows": [
+    {
+      "id": "wildlife-ground-1",
+      "kind": "ground",
+      "start": [
+        454,
+        24,
+        314
+      ],
+      "reachableNodes": 81,
+      "farthestReach": 74.72616676907762,
+      "maxDisplacement": 74.72616676907762,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 33,
+      "completed": 32,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-ground-2",
+      "kind": "ground",
+      "start": [
+        22,
+        24,
+        50
+      ],
+      "reachableNodes": 2139,
+      "farthestReach": 250.7269431074371,
+      "maxDisplacement": 230.78994778802604,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 21,
+      "completed": 20,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-ground-3",
+      "kind": "ground",
+      "start": [
+        82,
+        24,
+        378
+      ],
+      "reachableNodes": 196,
+      "farthestReach": 106.50821564555478,
+      "maxDisplacement": 104.30723848324236,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 21,
+      "completed": 21,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-1",
+      "kind": "bird",
+      "start": [
+        421,
+        59,
+        83
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 325.7115288103877,
+      "visitedPerches": [
+        "c3-land-17-3",
+        "c3-land-7-12",
+        "c3-land-10-1",
+        "c3-land-9-3",
+        "c3-land-10-2",
+        "c3-land-5-6",
+        "c3-land-18-9",
+        "c3-land-16-15",
+        "c3-land-16-6",
+        "c3-land-18-14",
+        "c3-land-18-4"
+      ],
+      "flightFrames": 3497,
+      "accepted": 16,
+      "completed": 15,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-2",
+      "kind": "bird",
+      "start": [
+        107,
+        55,
+        299
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 413.38601814768725,
+      "visitedPerches": [
+        "c3-land-4-12",
+        "c3-land-16-3",
+        "c3-land-18-5",
+        "c3-land-18-9",
+        "c3-land-17-8",
+        "c3-land-15-10",
+        "c3-land-17-3",
+        "c3-land-15-11",
+        "c3-land-10-1",
+        "c3-land-16-11",
+        "c3-land-14-3",
+        "c3-land-16-1",
+        "c3-land-3-12",
+        "c3-land-4-15",
+        "c3-land-18-2"
+      ],
+      "flightFrames": 3461,
+      "accepted": 17,
+      "completed": 16,
+      "thinkCount": 900,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-3",
+      "kind": "bird",
+      "start": [
+        251,
+        55,
+        37
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 310.1548000595831,
+      "visitedPerches": [
+        "c3-land-10-1",
+        "c3-land-15-6",
+        "c3-land-15-9",
+        "c3-land-4-11",
+        "c3-land-4-12",
+        "c3-land-9-3",
+        "c3-land-16-1",
+        "c3-land-17-9",
+        "c3-land-16-3",
+        "c3-land-15-2",
+        "c3-land-5-13"
+      ],
+      "flightFrames": 3429,
+      "accepted": 16,
+      "completed": 15,
+      "thinkCount": 900,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "released": true
+}

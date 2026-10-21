@@ -1,0 +1,112 @@
+{
+  "runs": [
+    {
+      "prepared": false,
+      "setupMs": 0,
+      "viewport": [
+        1792,
+        1008
+      ],
+      "deaths": [
+        {
+          "death": 1,
+          "effectMs": 1.100000023841858,
+          "cpuRenderMs": 1.699999988079071,
+          "completionMs": 16.30000001192093,
+          "nextRafGapMs": 16.699999999999818,
+          "created": {
+            "pipelines": [
+              {
+                "label": "Debris camera depth",
+                "size": null
+              },
+              {
+                "label": "Debris sky shadows",
+                "size": null
+              },
+              {
+                "label": "Lit opaque debris",
+                "size": null
+              },
+              {
+                "label": "Mirrored solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit local smoke",
+                "size": null
+              },
+              {
+                "label": "Brief death blast",
+                "size": null
+              }
+            ],
+            "buffers": [
+              {
+                "label": "",
+                "size": 107520
+              },
+              {
+                "label": "",
+                "size": 36288
+              }
+            ],
+            "textures": [],
+            "modules": [
+              {
+                "label": "Lit solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit smoke and brief blast",
+                "size": null
+              }
+            ]
+          },
+          "activeCubes": 24,
+          "decals": 0,
+          "shockwaves": 0
+        },
+        {
+          "death": 2,
+          "effectMs": 0.09999996423721313,
+          "cpuRenderMs": 0.30000001192092896,
+          "completionMs": 9.300000011920929,
+          "nextRafGapMs": 16.699999999999818,
+          "created": {
+            "pipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0,
+          "shockwaves": 0
+        },
+        {
+          "death": 3,
+          "effectMs": 0,
+          "cpuRenderMs": 0.10000002384185791,
+          "completionMs": 8.800000011920929,
+          "nextRafGapMs": 16.699999999999818,
+          "created": {
+            "pipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0,
+          "shockwaves": 0
+        }
+      ],
+      "resources": {
+        "damageBytes": 143808,
+        "shockwaveBytes": 0,
+        "shockwaveTargetBytes": 0
+      },
+      "note": "Fresh renderer/device; actual A1 enemy takeHit/death callback and production effects, no defences/camera director. Wall completion includes queued GPU work; driver caches may persist across devices. No browser-wide/FPS guarantee."
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,69 @@
+{
+  "assetCount": 85,
+  "changedAssets": [],
+  "changedSources": [
+    "engine/renderer.js",
+    "engine/enemy-expansion-gait.js",
+    "engine/bloom.js",
+    "engine/water-impact.js",
+    "engine/camera.js",
+    "play/enemies.js",
+    "play/camera-anticipation.js",
+    "play/drone-camera.js",
+    "game/enemy-preview.js"
+  ],
+  "sourceHashes": {
+    "engine/renderer.js": "098db1f9b2bfd4c582ab46af46a91070749ca99bcbe72da428a716a2cc295066",
+    "engine/enemy-expansion-gait.js": "149bf40847ba50483efbc4078ca1d9de3dca073293ff055d02c961086460428a",
+    "engine/bloom.js": "e2703584413ff734a0f7196b148f2a8d799d7d3ad081b409f62fac6a40e56c84",
+    "engine/water-impact.js": "192a2efb016a9221c958b225423d4e9495c7bc1e30bff5c86611cd25e37d5e1b",
+    "engine/camera.js": "34be355982c614ecd79442daf916c9f45402ca1157cce32a4ee5fb58347ddaa7",
+    "play/enemies.js": "7bd78845893a9ad16c205b1765fe4865b4cd64a459f286971ac09ced70a9bbf2",
+    "play/camera-anticipation.js": "96aedc3f2ffe4b858e6f84e4391478f9091167e558d7c28d52a2115241983270",
+    "play/drone-camera.js": "4ca6aa4df86372d5ff8db351be07fd1511f79669ea279521eee06ddd1ca49f62",
+    "game/enemy-preview.js": "9c7b9f8d19dd515b01899919b66fa3b40fca34768bf0482e43f1e547e59f109a"
+  },
+  "tests": {
+    "pass": 150,
+    "fail": 0,
+    "assertions": 2239025,
+    "files": 17,
+    "fullSuite": false
+  },
+  "gpu": {
+    "pass": 25,
+    "fail": 0
+  },
+  "builds": {
+    "play": "pass",
+    "preview": "pass (served-root imports resolved to project paths)"
+  },
+  "followup": {
+    "source": "play/conditions.js",
+    "sourceHash": "b776fb5cd0be635b8ffa3748720a1601c4646829c4db565c3255c78ccc236e45",
+    "tests": {
+      "pass": 3,
+      "fail": 0,
+      "assertions": 69,
+      "files": 1
+    },
+    "browserConditions": {
+      "night": false,
+      "weather": false
+    },
+    "review": "REVIEW.md addendum",
+    "build": "pass"
+  },
+  "finalChangedSources": [
+    "engine/renderer.js",
+    "engine/enemy-expansion-gait.js",
+    "engine/bloom.js",
+    "engine/water-impact.js",
+    "engine/camera.js",
+    "play/enemies.js",
+    "play/camera-anticipation.js",
+    "play/conditions.js",
+    "play/drone-camera.js",
+    "game/enemy-preview.js"
+  ]
+}

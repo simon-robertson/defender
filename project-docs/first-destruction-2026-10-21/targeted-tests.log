@@ -1,0 +1,73 @@
+bun test v1.4.2 (744846f84)
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.28ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [1.53ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [3.15ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [1.02ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.46ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.18ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.87ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [13.75ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [1.44ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [10.38ms]
+(pass) decal fade, quick-start removal and scene rebinding preserve solid depth/shadow revision [0.83ms]
+(pass) moving, fading, converting and removing solids advance their own revision while decal expiry does not [0.62ms]
+(pass) every enemy death light ends thirty percent sooner with the same peak, radius and independent blast/debris lifetime [2.88ms]
+
+tests/blood-decals.test.js:
+(pass) packing separates solids from a stable decal suffix without replacing shared storage [0.54ms]
+(pass) actual spray collisions convert to larger flat marks on every solid face, never floating past its bounds [1.55ms]
+(pass) blood marks survive next-wave effect rebinding, begin fading in preparation and release old slots before a quick start [0.86ms]
+
+tests/renderer.test.js:
+(pass) blood decals blend last in the cached opaque pass, never write depth/shadows and allocate no new images [9.46ms]
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [7.84ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.32ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.95ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [503.88ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.90ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [360.18ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [716.62ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.03ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.64ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.62ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [43.82ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [20.36ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [2071.94ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [22.75ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.30ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.27ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.73ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [16.33ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.06ms]
+(pass) all plasma links coexist with primary and secondary combat Arcs, and detached plasma cannot resurrect expired arc light [2.71ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.61ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.56ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [120.06ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [2.53ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [2.52ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [264.16ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [55.94ms]
+(pass) decal-only fade and removal refresh colour without depth or sky shadow work [2.66ms]
+(pass) hidden emission disables bloom while visible material emission without a model light still enables it [14.15ms]
+(pass) planar capture shares scene buffers and shadows, caches static frames and retires on scene release [2.81ms]
+(pass) dry scenes use tiny inactive water bindings and skip the empty water pass, including wet/dry reloads [4.03ms]
+(pass) actual preparation blood fade keeps renderer depth and shadow caches intact through expiry [2.89ms]
+(pass) play effect preparation awaits asynchronous pipelines once and leaves first destruction and decals allocation-free [2.68ms]
+(pass) failed asynchronous effect compilation rejects loading instead of declaring combat effects ready [1.93ms]
+(pass) disposing during effect preparation prevents a late ready state and releases every allocated pool [0.26ms]
+
+tests/scene-loader.test.js:
+(pass) explicit same-level rebuild releases and activates once; ordinary repeat remains a no-op [0.25ms]
+(pass) scene replacement releases old resources and waits for submitted work before fetching [0.09ms]
+(pass) a stale fetch cannot activate after a newer request, even when it ignores abort [0.11ms]
+(pass) rapid requests during unload coalesce before starting replacement network loads [0.07ms]
+(pass) failed downloads and partial activation release resources and permit retry [0.12ms]
+(pass) disposal cancels a pending load and prevents scene resurrection [0.05ms]
+(pass) scene teardown clears every GPU buffer, camera/CPU reference and live shot without reallocating pools [0.27ms]
+
+ 59 pass
+ 0 fail
+ 24095 expect() calls
+Ran 59 tests across 4 files. [4.36s]

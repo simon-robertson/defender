@@ -1,0 +1,105 @@
+{
+  "level": "moss-03",
+  "lighting": "natural",
+  "elapsed": 310,
+  "stage": "Breeze refraction + water SSR · 60% base transparency",
+  "ssr": true,
+  "waterPhase": 2.5132741928100586,
+  "sunIntensity": 0.6499999761581421,
+  "sunY": 0.2079116851091385,
+  "waterMaterial": {
+    "type": "water",
+    "color": "#8FBBD4",
+    "emission": 0,
+    "reflectiveness": 0.65,
+    "opacity": 0.4,
+    "absorption": 0,
+    "refraction": 1,
+    "rippleStrength": 0.18,
+    "rippleScale": 2.5,
+    "rippleSpeed": 0.24
+  },
+  "waterUniform80to91": [
+    0.2746773064136505,
+    0.4969329833984375,
+    0.6583748459815979,
+    0.6499999761581421,
+    0.4000000059604645,
+    0,
+    1,
+    0.18000000715255737,
+    2.5,
+    0.23999999463558197,
+    0,
+    0
+  ],
+  "waterDrawIndices": 126,
+  "waterBox": {
+    "box": [
+      13,
+      7
+    ],
+    "ground": 20,
+    "water": 22
+  },
+  "camera": {
+    "mode": "overview",
+    "target": [
+      324,
+      22,
+      180
+    ],
+    "eye": [
+      809.3811645507812,
+      615.4462280273438,
+      651.4093017578125
+    ],
+    "radius": 62,
+    "yaw": 0.8,
+    "pitch": 0.72
+  },
+  "gpuTimer": "off",
+  "depthProbe": {
+    "grid": [
+      64,
+      48
+    ],
+    "sampledWaterSurfacePixels": 602,
+    "sampledShadedWaterPixels": 453,
+    "shadedRatioOfImage": 0.1474609375,
+    "wetCenterPixel": [
+      890,
+      594
+    ],
+    "wetCenterOpaqueDepth": 0.4104495048522949,
+    "wetCenterWaterDepth": 0.409091055393219,
+    "wetCenterNormalAlpha": 1,
+    "wetCenterShadesWater": true
+  },
+  "comparison": {
+    "reflections": {
+      "enabledVsDisabled": {
+        "changedPixels": 13724,
+        "changedFraction": 0.006479086016429043,
+        "meanAbsoluteRGBDifference": 0.004234098133635476,
+        "maxChannelDifference": 3
+      },
+      "disabledReplay": {
+        "changedPixels": 0,
+        "changedFraction": 0,
+        "meanAbsoluteRGBDifference": 0,
+        "maxChannelDifference": 0
+      },
+      "zeroStrengthVsDisabled": {
+        "changedPixels": 0,
+        "changedFraction": 0,
+        "meanAbsoluteRGBDifference": 0,
+        "maxChannelDifference": 0
+      },
+      "reflectiveness": 0.6499999761581421,
+      "pass": true
+    }
+  },
+  "prepassAudit": null,
+  "errors": []
+}

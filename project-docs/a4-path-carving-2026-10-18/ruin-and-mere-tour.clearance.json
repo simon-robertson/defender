@@ -1,0 +1,220 @@
+{
+  "id": "ruin-and-mere-tour",
+  "sourceHash": "1e2970b40e61d6a5dd7be857114ce25f8b28d40b08518af5c8816dcc291ca33c",
+  "method": "Each candidate considered independently. Turret heads use complete yaw cylinders separately for every occupied Y layer; gun envelope encloses full yaw, analytic pitch extrema and zero/full recoil. Arc parts use fixed occupied-vertex bounds. Launcher bounds include the tallest loaded missile tip across the full casing footprint, a conservative static envelope; separate finite flights probe launch/flight behaviour. Test static exact cuboids and production Dog/Roller/Moth occupied-part poses at every1-unit route distance and endpoints. Conservative envelopes may reject a harmless pose; no simultaneous-neighbour compatibility is claimed.",
+  "rows": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "independentSites": 40,
+      "staticFailures": [
+        {
+          "id": "southwest-5-10",
+          "part": "head",
+          "bounds": [
+            117.85786437626905,
+            42,
+            237.85786437626905,
+            146.14213562373095,
+            43,
+            266.14213562373095
+          ],
+          "obstacle": [
+            130,
+            38,
+            266,
+            133,
+            45,
+            271
+          ]
+        }
+      ],
+      "routeMotionFailures": [],
+      "sampledPoses": 3315,
+      "checkedParts": 23205
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "independentSites": 40,
+      "staticFailures": [
+        {
+          "id": "southwest-2-11",
+          "part": "head",
+          "bounds": [
+            46.54637595292629,
+            54,
+            262.54637595292627,
+            73.4536240470737,
+            55,
+            289.45362404707373
+          ],
+          "obstacle": [
+            53,
+            54,
+            289,
+            63,
+            61,
+            290
+          ]
+        },
+        {
+          "id": "southwest-2-11",
+          "part": "guns",
+          "bounds": [
+            46.36839018197932,
+            41.17647417242493,
+            262.36839018197935,
+            73.63160981802068,
+            61.82352582757507,
+            289.63160981802065
+          ],
+          "obstacle": [
+            53,
+            54,
+            289,
+            63,
+            61,
+            290
+          ]
+        },
+        {
+          "id": "southwest-5-10",
+          "part": "head",
+          "bounds": [
+            117.85786437626905,
+            44,
+            237.85786437626905,
+            146.14213562373095,
+            45,
+            266.14213562373095
+          ],
+          "obstacle": [
+            130,
+            38,
+            266,
+            133,
+            45,
+            271
+          ]
+        },
+        {
+          "id": "shore-court-18-10",
+          "part": "head",
+          "bounds": [
+            430.54637595292627,
+            54,
+            238.5463759529263,
+            457.45362404707373,
+            55,
+            265.45362404707373
+          ],
+          "obstacle": [
+            437,
+            54,
+            265,
+            447,
+            61,
+            266
+          ]
+        },
+        {
+          "id": "shore-court-18-10",
+          "part": "guns",
+          "bounds": [
+            430.36839018197935,
+            41.17647417242493,
+            238.36839018197932,
+            457.63160981802065,
+            61.82352582757507,
+            265.63160981802065
+          ],
+          "obstacle": [
+            437,
+            54,
+            265,
+            447,
+            61,
+            266
+          ]
+        }
+      ],
+      "routeMotionFailures": [],
+      "sampledPoses": 3315,
+      "checkedParts": 23205
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "independentSites": 40,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 3315,
+      "checkedParts": 23205
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "independentSites": 40,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 3315,
+      "checkedParts": 23205
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "base",
+      "independentSites": 40,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 3315,
+      "checkedParts": 23205
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade1",
+      "independentSites": 40,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 3315,
+      "checkedParts": 23205
+    },
+    {
+      "model": "missile-launcher",
+      "variant": "upgrade2",
+      "independentSites": 40,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 3315,
+      "checkedParts": 23205
+    }
+  ],
+  "excluded": [
+    {
+      "site": "southwest-5-10",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Full-yaw head envelope reaches the retained southwest ruin wall at [5,11]; Arc and silo alternatives remain clear."
+    },
+    {
+      "site": "southwest-5-10",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Full-yaw head envelope reaches the retained southwest ruin wall at [5,11]; Arc and silo alternatives remain clear."
+    },
+    {
+      "site": "southwest-2-11",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Full-yaw head/gun envelope reaches the retained adjacent oak crown; base gun, Arc and silo alternatives remain clear."
+    },
+    {
+      "site": "shore-court-18-10",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Full-yaw head/gun envelope reaches the retained adjacent oak crown; base gun, Arc and silo alternatives remain clear."
+    }
+  ],
+  "allProbedCombinationsClear": false,
+  "declaredSuitabilityPassed": true
+}

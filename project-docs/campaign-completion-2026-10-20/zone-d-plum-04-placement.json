@@ -1,0 +1,1157 @@
+{
+  "id": "plum-04",
+  "sourceHash": "d8af50121168098e9ec3ee5920ffa7d1e512b1d1bcbfc4bffa45e98358e0c35d",
+  "method": "Production createPlacementRules.check for every declared plot and three weapon stages independently. Actual Spider/Lantern occupied vertices sampled at each1-unit journey distance and endpoints against current production enemyRouteEnvelope; upright locomotion only, directional impact uses its separate production safety gate.",
+  "combinations": 414,
+  "valid": 399,
+  "restricted": [
+    {
+      "site": "north-14-6",
+      "box": [
+        14,
+        6
+      ],
+      "model": "turret-study",
+      "variant": "base",
+      "valid": false,
+      "code": "scenery",
+      "reason": "The defence would touch the scenery."
+    },
+    {
+      "site": "north-14-6",
+      "box": [
+        14,
+        6
+      ],
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "valid": false,
+      "code": "scenery",
+      "reason": "The defence would touch the scenery."
+    },
+    {
+      "site": "north-14-6",
+      "box": [
+        14,
+        6
+      ],
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "valid": false,
+      "code": "scenery",
+      "reason": "The defence would touch the scenery."
+    },
+    {
+      "site": "north-19-6",
+      "box": [
+        19,
+        6
+      ],
+      "model": "turret-study",
+      "variant": "base",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "north-19-6",
+      "box": [
+        19,
+        6
+      ],
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "north-19-6",
+      "box": [
+        19,
+        6
+      ],
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "north-19-7",
+      "box": [
+        19,
+        7
+      ],
+      "model": "turret-study",
+      "variant": "base",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "north-19-7",
+      "box": [
+        19,
+        7
+      ],
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "north-19-7",
+      "box": [
+        19,
+        7
+      ],
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "late-10-15",
+      "box": [
+        10,
+        15
+      ],
+      "model": "turret-study",
+      "variant": "base",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "late-10-15",
+      "box": [
+        10,
+        15
+      ],
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "late-10-15",
+      "box": [
+        10,
+        15
+      ],
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "late-12-15",
+      "box": [
+        12,
+        15
+      ],
+      "model": "turret-study",
+      "variant": "base",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "late-12-15",
+      "box": [
+        12,
+        15
+      ],
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    },
+    {
+      "site": "late-12-15",
+      "box": [
+        12,
+        15
+      ],
+      "model": "turret-study",
+      "variant": "upgrade2",
+      "valid": false,
+      "code": "bounds",
+      "reason": "The defence needs room inside the landscape."
+    }
+  ],
+  "perSite": [
+    {
+      "id": "west-1-6",
+      "box": [
+        1,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-2-6",
+      "box": [
+        2,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-2-8",
+      "box": [
+        2,
+        8
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-2-9",
+      "box": [
+        2,
+        9
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-4-7",
+      "box": [
+        4,
+        7
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-4-8",
+      "box": [
+        4,
+        8
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-4-9",
+      "box": [
+        4,
+        9
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-1-11",
+      "box": [
+        1,
+        11
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-3-11",
+      "box": [
+        3,
+        11
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-1-12",
+      "box": [
+        1,
+        12
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "west-3-12",
+      "box": [
+        3,
+        12
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bridge-3-14",
+      "box": [
+        3,
+        14
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bridge-6-12",
+      "box": [
+        6,
+        12
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bridge-7-12",
+      "box": [
+        7,
+        12
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bridge-7-14",
+      "box": [
+        7,
+        14
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bridge-9-13",
+      "box": [
+        9,
+        13
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-9-9",
+      "box": [
+        9,
+        9
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-9-10",
+      "box": [
+        9,
+        10
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-9-11",
+      "box": [
+        9,
+        11
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-9-12",
+      "box": [
+        9,
+        12
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-10-7",
+      "box": [
+        10,
+        7
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-10-6",
+      "box": [
+        10,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-12-6",
+      "box": [
+        12,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-12-7",
+      "box": [
+        12,
+        7
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "bank-12-8",
+      "box": [
+        12,
+        8
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-13-6",
+      "box": [
+        13,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-14-6",
+      "box": [
+        14,
+        6
+      ],
+      "choices": [
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-15-6",
+      "box": [
+        15,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-16-6",
+      "box": [
+        16,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-17-6",
+      "box": [
+        17,
+        6
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-17-7",
+      "box": [
+        17,
+        7
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-19-6",
+      "box": [
+        19,
+        6
+      ],
+      "choices": [
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "north-19-7",
+      "box": [
+        19,
+        7
+      ],
+      "choices": [
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-15-9",
+      "box": [
+        15,
+        9
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-13-9",
+      "box": [
+        13,
+        9
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-12-9",
+      "box": [
+        12,
+        9
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-12-11",
+      "box": [
+        12,
+        11
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-10-11",
+      "box": [
+        10,
+        11
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-10-12",
+      "box": [
+        10,
+        12
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-10-13",
+      "box": [
+        10,
+        13
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-12-12",
+      "box": [
+        12,
+        12
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "return-12-13",
+      "box": [
+        12,
+        13
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "late-10-14",
+      "box": [
+        10,
+        14
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "late-10-15",
+      "box": [
+        10,
+        15
+      ],
+      "choices": [
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "late-12-14",
+      "box": [
+        12,
+        14
+      ],
+      "choices": [
+        "turret-study/base",
+        "turret-study/upgrade1",
+        "turret-study/upgrade2",
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    },
+    {
+      "id": "late-12-15",
+      "box": [
+        12,
+        15
+      ],
+      "choices": [
+        "arc-spire/base",
+        "arc-spire/upgrade1",
+        "arc-spire/upgrade2",
+        "missile-launcher/base",
+        "missile-launcher/upgrade1",
+        "missile-launcher/upgrade2"
+      ]
+    }
+  ],
+  "hulls": [
+    {
+      "species": "spider",
+      "contract": {
+        "radius": 12,
+        "bottom": 0,
+        "top": 14.75,
+        "layers": [
+          {
+            "radius": 12,
+            "bottom": 0,
+            "top": 14.75
+          }
+        ]
+      },
+      "maximumRadius": 11.956947280402973,
+      "bottom": -5.262049640464284e-7,
+      "top": 14.601995386183262,
+      "sampledPoses": 1225,
+      "failures": []
+    },
+    {
+      "species": "lantern",
+      "contract": {
+        "radius": 12.3156326374791,
+        "bottom": 37.423843733642876,
+        "top": 59.75037728777657,
+        "layers": [
+          {
+            "radius": 4.813737031204354,
+            "bottom": 37,
+            "top": 38
+          },
+          {
+            "radius": 4.940667737570701,
+            "bottom": 38,
+            "top": 39
+          },
+          {
+            "radius": 5.06824126148485,
+            "bottom": 39,
+            "top": 40
+          },
+          {
+            "radius": 5.196410259036981,
+            "bottom": 40,
+            "top": 41
+          },
+          {
+            "radius": 5.196410259036981,
+            "bottom": 41,
+            "top": 42
+          },
+          {
+            "radius": 5.196410259036981,
+            "bottom": 42,
+            "top": 43
+          },
+          {
+            "radius": 4.672984865509356,
+            "bottom": 43,
+            "top": 44
+          },
+          {
+            "radius": 4.799136746261402,
+            "bottom": 44,
+            "top": 45
+          },
+          {
+            "radius": 4.925990029366192,
+            "bottom": 45,
+            "top": 46
+          },
+          {
+            "radius": 5.053491895073688,
+            "bottom": 46,
+            "top": 47
+          },
+          {
+            "radius": 5.181594465200597,
+            "bottom": 47,
+            "top": 48
+          },
+          {
+            "radius": 5.181594465200597,
+            "bottom": 48,
+            "top": 49
+          },
+          {
+            "radius": 5.181594465200597,
+            "bottom": 49,
+            "top": 50
+          },
+          {
+            "radius": 4.658478474557525,
+            "bottom": 50,
+            "top": 51
+          },
+          {
+            "radius": 9.489827376797907,
+            "bottom": 51,
+            "top": 52
+          },
+          {
+            "radius": 9.628236793789567,
+            "bottom": 52,
+            "top": 53
+          },
+          {
+            "radius": 11.974464588331495,
+            "bottom": 53,
+            "top": 54
+          },
+          {
+            "radius": 12.087654813949165,
+            "bottom": 54,
+            "top": 55
+          },
+          {
+            "radius": 12.20138245975568,
+            "bottom": 55,
+            "top": 56
+          },
+          {
+            "radius": 12.3156326374791,
+            "bottom": 56,
+            "top": 57
+          },
+          {
+            "radius": 12.3156326374791,
+            "bottom": 57,
+            "top": 58
+          },
+          {
+            "radius": 12.3156326374791,
+            "bottom": 58,
+            "top": 59
+          },
+          {
+            "radius": 12.3156326374791,
+            "bottom": 59,
+            "top": 60
+          }
+        ]
+      },
+      "maximumRadius": 9.899509084695092,
+      "bottom": 38,
+      "top": 59,
+      "sampledPoses": 1225,
+      "failures": []
+    }
+  ],
+  "passed": true
+}

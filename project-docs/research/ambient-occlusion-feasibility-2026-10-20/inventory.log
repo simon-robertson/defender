@@ -1,0 +1,203 @@
+{
+  "scope": "Read-only code facts plus arithmetic for a proposed four-half-resolution-pass AO path; no AO implementation, rendering or timing measurement.",
+  "formulas": {
+    "half": "ceil(W/2) * ceil(H/2)",
+    "coreBytes": "halfPixels * (4-byte R32 depth + two 1-byte R8 AO textures)",
+    "passes": "depth preparation, AO evaluation, horizontal edge-aware filter, vertical edge-aware filter; depth-aware upsampling in existing opaque shading",
+    "exclusions": "GPU allocation padding/compression, uniforms/bind groups, optional normals/history/mips/diagnostic targets, implementation-specific bandwidth and time"
+  },
+  "sources": {
+    "engine/renderer.js": {
+      "sha256": "dc4689b331a16106ec235cfbfefcab5023ac6f61cd1ba2c9e4dad28d746b1e02",
+      "anchors": [
+        {
+          "line": 50,
+          "anchor": "colorAttachments:[]"
+        },
+        {
+          "line": 80,
+          "anchor": "depth32float"
+        },
+        {
+          "line": 405,
+          "anchor": "resolvedNormal"
+        },
+        {
+          "line": 69,
+          "anchor": "multisampled:true"
+        },
+        {
+          "line": 441,
+          "anchor": "depthUpdated=this.depthDirty"
+        },
+        {
+          "line": 423,
+          "anchor": "dpr=Math.min(devicePixelRatio||1,2)"
+        }
+      ]
+    },
+    "engine/shaders.js": {
+      "sha256": "1c4dc37f4e3f86537b2c6db71b1ff368f0c6756566abbda27be39bc235764923",
+      "anchors": [
+        {
+          "line": 5,
+          "anchor": "inverseVP:mat4x4<f32>"
+        },
+        {
+          "line": 79,
+          "anchor": "texture_depth_multisampled_2d"
+        },
+        {
+          "line": 89,
+          "anchor": "fn worldAt"
+        },
+        {
+          "line": 91,
+          "anchor": "fn opaqueDepth"
+        },
+        {
+          "line": 94,
+          "anchor": "fn linearDepth"
+        },
+        {
+          "line": 66,
+          "anchor": "let ambient=frame.ambient.rgb"
+        },
+        {
+          "line": 73,
+          "anchor": "o.normal=vec4<f32>(n*.5+.5,i.reflectiveness)"
+        }
+      ]
+    },
+    "engine/camera.js": {
+      "sha256": "4d47780d3cc0362535d94d84997b28f68df184ea4c617917ef29bf521e604df6",
+      "anchors": [
+        {
+          "line": 89,
+          "anchor": "perspectiveMode=this.mode==='path'||this.mode==='live'"
+        },
+        {
+          "line": 9,
+          "anchor": "this.inverse=new Float32Array(16)"
+        },
+        {
+          "line": 95,
+          "anchor": "ortho(this.projection"
+        }
+      ]
+    },
+    "shared/mesher.js": {
+      "sha256": "eab54b9c142637e8c36da1d8f2215439a2ce00e71e8d7dcc9238550f7dc1633e",
+      "anchors": [
+        {
+          "line": 41,
+          "anchor": "quads.length*4*11"
+        },
+        {
+          "line": 57,
+          "anchor": "stride:11"
+        }
+      ]
+    },
+    "engine/zone-vista.js": {
+      "sha256": "b1104d17ae985bb5b4a5a176d38ddc4eb7bea6dcd382e8fb3bef203244423d2f",
+      "anchors": [
+        {
+          "line": 53,
+          "anchor": "this.depth=texture"
+        },
+        {
+          "line": 51,
+          "anchor": "this.targetBytes=w*h*8"
+        }
+      ]
+    }
+  },
+  "resources": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "context": "representative HD render target",
+      "halfWidth": 960,
+      "halfHeight": 540,
+      "halfPixels": 518400,
+      "depthR32Bytes": 2073600,
+      "aoR8PingPongBytes": 1036800,
+      "totalProposedBytes": 3110400,
+      "totalProposedMiB": 2.96630859375,
+      "ifAOR16PingPongBytes": 4147200,
+      "existingMainAndShadowNominalBytes": 149487616,
+      "existingNormalMSAAAndResolveFootprintBytes": 41472000,
+      "aoNeighborLocationsAt16PerHalfPixel": 8294400,
+      "depthPrepareLoadsAt16PerHalfPixel": 8294400
+    },
+    {
+      "width": 2560,
+      "height": 1236,
+      "context": "documented prior framebuffer, not a measurement of the current player canvas",
+      "halfWidth": 1280,
+      "halfHeight": 618,
+      "halfPixels": 791040,
+      "depthR32Bytes": 3164160,
+      "aoR8PingPongBytes": 1582080,
+      "totalProposedBytes": 4746240,
+      "totalProposedMiB": 4.5263671875,
+      "ifAOR16PingPongBytes": 6328320,
+      "existingMainAndShadowNominalBytes": 219283456,
+      "existingNormalMSAAAndResolveFootprintBytes": 63283200,
+      "aoNeighborLocationsAt16PerHalfPixel": 12656640,
+      "depthPrepareLoadsAt16PerHalfPixel": 12656640
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "context": "representative QHD render target",
+      "halfWidth": 1280,
+      "halfHeight": 720,
+      "halfPixels": 921600,
+      "depthR32Bytes": 3686400,
+      "aoR8PingPongBytes": 1843200,
+      "totalProposedBytes": 5529600,
+      "totalProposedMiB": 5.2734375,
+      "ifAOR16PingPongBytes": 7372800,
+      "existingMainAndShadowNominalBytes": 252706816,
+      "existingNormalMSAAAndResolveFootprintBytes": 73728000,
+      "aoNeighborLocationsAt16PerHalfPixel": 14745600,
+      "depthPrepareLoadsAt16PerHalfPixel": 14745600
+    },
+    {
+      "width": 2559,
+      "height": 1235,
+      "context": "odd-dimension rounding case",
+      "halfWidth": 1280,
+      "halfHeight": 618,
+      "halfPixels": 791040,
+      "depthR32Bytes": 3164160,
+      "aoR8PingPongBytes": 1582080,
+      "totalProposedBytes": 4746240,
+      "totalProposedMiB": 4.5263671875,
+      "ifAOR16PingPongBytes": 6328320,
+      "existingMainAndShadowNominalBytes": 219040576,
+      "existingNormalMSAAAndResolveFootprintBytes": 63207300,
+      "aoNeighborLocationsAt16PerHalfPixel": 12656640,
+      "depthPrepareLoadsAt16PerHalfPixel": 12656640
+    },
+    {
+      "width": 3840,
+      "height": 2160,
+      "context": "representative UHD render target",
+      "halfWidth": 1920,
+      "halfHeight": 1080,
+      "halfPixels": 2073600,
+      "depthR32Bytes": 8294400,
+      "aoR8PingPongBytes": 4147200,
+      "totalProposedBytes": 12441600,
+      "totalProposedMiB": 11.865234375,
+      "ifAOR16PingPongBytes": 16588800,
+      "existingMainAndShadowNominalBytes": 547618816,
+      "existingNormalMSAAAndResolveFootprintBytes": 165888000,
+      "aoNeighborLocationsAt16PerHalfPixel": 33177600,
+      "depthPrepareLoadsAt16PerHalfPixel": 33177600
+    }
+  ]
+}

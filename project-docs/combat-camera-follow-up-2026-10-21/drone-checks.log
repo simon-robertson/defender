@@ -1,0 +1,81 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.17ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.10ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+(pass) real camera switches immediately in both directions at every display rate and restores preparation framing [13.53ms]
+(pass) settling retains Drone, pause freezes its exact displayed pose and resumed flight stays smooth [0.67ms]
+(pass) real Frame, Auto, reset and landscape binding transfer ownership immediately without stale projection state [1.62ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [2.06ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [4.01ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.37ms]
+(pass) stable subjects retain mostly high flight with occasional safe low shots and broad gimbal aiming [9.20ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.33ms]
+{"levelIndex":0,"hz":30,"travelled":335.5359014335983,"readable":1,"highFraction":1,"minY":144.10490805105445,"maxY":223.99946306266395,"bytes":14018}
+{"levelIndex":0,"hz":60,"travelled":275.0175038091656,"readable":1,"highFraction":1,"minY":144.04870640915723,"maxY":223.99989265302543,"bytes":14018}
+{"levelIndex":0,"hz":120,"travelled":356.89125819774637,"readable":1,"highFraction":1,"minY":144.03432632380253,"maxY":223.9999731683474,"bytes":14018}
+{"levelIndex":1,"hz":30,"travelled":626.9668883000364,"readable":0.8723004694835681,"highFraction":0.9427230046948357,"minY":95.68857758803281,"maxY":244.13433901473553,"bytes":16916}
+{"levelIndex":1,"hz":60,"travelled":496.23525614147036,"readable":0.8675434476279944,"highFraction":0.7454203851573509,"minY":66.44395976640719,"maxY":223.99988913267666,"bytes":16916}
+{"levelIndex":1,"hz":120,"travelled":674.6812522816597,"readable":0.828088304368248,"highFraction":0.8907937999060592,"minY":59.23401154066866,"maxY":236.17683331682835,"bytes":16916}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [6534.35ms]
+{"currentLevel":2,"mothFrames":2808,"highFraction":0.744640605296343,"minY":66.3703030392687,"maxY":236.0680507604589,"minPitch":-0.03429561412063028,"minEnemy3D":86.74365607886038,"minFlyer3D":86.74365607886038,"minVerticalGap":-6.6296969607312946,"stalledFrames":0,"minStep":0.00011111111110077233,"heldDriftFrames":1022,"meanSpeed":14.365818700936353,"blockedMoves":0,"airborneFloor":173,"travelled":1196.4674718068059,"bytes":15874}
+{"currentLevel":3,"mothFrames":981,"highFraction":0.8256880733944955,"minY":66.41019095781319,"maxY":236.47785683746898,"minPitch":-0.061593596642857025,"minEnemy3D":41.261937663176774,"minFlyer3D":41.261937663176774,"minVerticalGap":-6.589759151236493,"stalledFrames":0,"minStep":0.00011111109786862621,"heldDriftFrames":1080,"meanSpeed":18.306336129050443,"blockedMoves":0,"airborneFloor":173,"travelled":1669.537854970074,"bytes":20108}
+{"currentLevel":4,"mothFrames":3038,"highFraction":0.744304241149667,"minY":66.44603641407193,"maxY":229.49240900783346,"minPitch":-0.020745670468196115,"minEnemy3D":151.91460502428433,"minFlyer3D":151.91460502428433,"minVerticalGap":-6.553963585928074,"stalledFrames":0,"minStep":0.00011111111111583855,"heldDriftFrames":1869,"meanSpeed":13.253205212925085,"blockedMoves":0,"airborneFloor":173,"travelled":1313.3926366015273,"bytes":18652}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [6559.81ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [870.24ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.56ms]
+(pass) interrupting a low approach with either high retreat never records a low success or consumes its pending window [0.94ms]
+(pass) low holding drift keeps its escape column outside an overhanging canopy while open drift continues [0.97ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.00000000058749,"maxJerk":48.00000010487128,"driftFrames":3305,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [10.79ms]
+(pass) opening stations vary across cosmetic seeds and repeated entries while staying clear [2.68ms]
+(pass) every campaign opening stays in the central half across seeds and repeated wave entries [14066.54ms]
+(pass) a blocked centre uses a safe outer opening; a completely blocked scene never activates [1.21ms]
+(pass) composition projects live model bounds with the actual Camera perspective at wide, tall and narrow aspects [0.67ms]
+{"stackedComposition":{"before":0.44959568657177795,"after":0.23289722104419125,"position":[240,144,368],"focus":[240,33,156.8],"goal":[320.82488900627857,144,313.1436513489523],"subjects":4}}
+(pass) stacked enemy and participating-defence silhouettes trigger one committed, materially clearer camera angle [0.49ms]
+(pass) composition collection remains finite after subject death, with no subject, and at its bounded crowded-scene capacity [0.42ms]
+(pass) occasional clock windows offer safe low stations, with full sky-column, water and future-air-lane rejection [1.84ms]
+{"actualComposition":{"encounter":"a2-wave-4","at":23.99999999999912,"position":[156,173,360],"focus":[156,73,155],"goal":[328.7256761031513,173,188.79113514975904],"before":{"cost":0.27527333131924403,"stacks":8,"primaryGap":3.055255505741634e-8},"after":{"cost":0.17613896933567408,"stacks":6,"primaryGap":0.23355032252055316},"subjects":9,"maxCandidates":120,"maxProjectedCorners":11520,"maxSubjectPairs":7920,"addedTypedBytes":960,"timing":[{"composition":false,"medianMS":0.2116249999999127,"p95MS":0.23008300000219606,"samples":100},{"composition":true,"medianMS":0.25733300000138115,"p95MS":0.2686250000006112,"samples":100}]}}
+(pass) actual A2 posed enemies and participating guns gain projected separation; planner work and storage stay bounded [964.92ms]
+{"ordinaryLow":{"encounter":"a1-wave-4","cosmeticRandomSample":0.7,"arrival":{"elapsedSeconds":29.59999999999887,"nativeSteps":1776,"target":"a1-wave-4-roller-6","position":[219.50118404911225,82.69076657587283,72.13905219493323],"goal":[219.85245657997925,80,72.22237178805591],"focus":[129.6,36.68100013732911,245.28001098632814],"look":[97.37873049334239,37.940897062121344,224.1780616867053],"yaw":2.474556708625573,"pitch":0.28309613374524095,"fov":51.26618196897324,"roll":0.002136770114302101,"goalDuration":11.205564464070896},"minY":81.78590458055231,"highFraction":0.7795312137386865,"lowHoldSeconds":3.0833333333333335,"lowPlans":3,"achievedLowShots":1,"elapsedSeconds":71.80833333333646,"frames":4309,"placements":[{"id":"player-gun-1","model":"turret-study","variant":"upgrade1","box":[13,0,9],"turn":0},{"id":"player-gun-2","model":"turret-study","variant":"upgrade1","box":[4,0,9],"turn":0},{"id":"player-gun-3","model":"turret-study","variant":"base","box":[11,0,6],"turn":0},{"id":"player-gun-4","model":"turret-study","variant":"base","box":[9,0,11],"turn":0}]}}
+(pass) an ordinary unprimed production wave achieves and holds a safe low shot while spending most time high [1107.43ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [1.00ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.21ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [0.35ms]
+(pass) the Drone camera leaves a held current shot and moves toward an idle defence before its enemy enters range, then freezes with pause [1.01ms]
+(pass) drone keeps its gradual gimbal turn without restoring removed depth-of-field state [0.06ms]
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":85.0122486495998,"totalTravel":235.657457531547}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [850.54ms]
+
+tests/drone-obstacles.test.js:
+(pass) current articulated parts obstruct aircraft sweeps while a low ground animal permits overhead flight [0.31ms]
+(pass) a living airborne crossing is anticipated before contact and death removes it immediately [0.14ms]
+(pass) posed wings and leg chains enclose every transformed occupied cell, including root rotation [0.23ms]
+(pass) route prediction includes an intervening corner and stops at exit instead of wrapping across the board [0.07ms]
+(pass) preview wrap predicts a separate entrance region without a false teleport corridor [0.08ms]
+(pass) flying bird prediction covers its full wing envelope and the cubic flight peak [0.07ms]
+(pass) time-matched bird sweeps catch ascent crossings and allow escape after the bird has vacated the origin [0.34ms]
+(pass) time-matched route sweeps retain separate wrap regions and include intervening corners [0.13ms]
+(pass) time-matched queries preserve neutral half-height and discard observed velocity on reset [0.05ms]
+(pass) explicit asymmetric queries reject real above/below contact while preserving cube defaults [0.04ms]
+(pass) ground prediction respects supplied fixed-defence exclusions without hiding protruding or current contact [0.14ms]
+(pass) source-derived Dog Y envelope contains legal extreme impact, brace, gait and recovery poses [110.48ms]
+(pass) articulated defence prediction covers later yaw/pitch/recoil and excludes every drone part and pad [0.14ms]
+(pass) launcher wells reserve seated round tips while launched missile actor matrices are excluded [0.04ms]
+(pass) reset and lap discontinuity discard old velocity, storage is reused, and teardown releases source references [0.20ms]
+(pass) curved route predictions include the intervening extremum between opposing bends [0.07ms]
+(pass) actual A1 enemy and wildlife poses remain enclosed throughout moving flight, turns and hops [422.95ms]
+(pass) gibbed cosmetic wildlife releases current and predicted drone clearance immediately and on update [0.14ms]
+
+ 53 pass
+ 0 fail
+ 235793 expect() calls
+Ran 53 tests across 4 files. [31.59s]

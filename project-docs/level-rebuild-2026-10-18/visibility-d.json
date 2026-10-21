@@ -1,0 +1,801 @@
+{
+  "schema": "defender.landscape-carve-visibility-review",
+  "version": 1,
+  "recordedAt": "2026-10-18T15:46:38.216Z",
+  "zone": "D",
+  "reproduce": "bun scripts/verify-level-rebuild-visibility.js D --write",
+  "dependencies": {
+    "scripts/verify-level-rebuild-visibility.js": "a34e4a582d76bcf18ed926298c6909e8dd47eab17fabd516da47f49dd76f6348",
+    "scripts/verify-zone-a-four-visibility.js": "c9c2a4ed7c75792ba30800485773c524e0b3d250b5b75de6335f8bc123da164f",
+    "scripts/rebuild-level-layouts.js": "1458baf05b0951e053f2b8dded9236d188c0ebe44fd557e2a37ed88bda5e07d3",
+    "scripts/level-rebuild-layouts.js": "73d5158358624633c12aba1d26f88c072f8148f95d5b37d57dacff67d694d4ff",
+    "scripts/landscapes/index.js": "cd699706c84a19a48cc822b9b7de42ded7ee6563548d891b1fd56ebcb75476d3",
+    "scripts/landscapes/core.js": "493b23a258e222d20e1b94d8e9ecbfb4738c257e507a2184cdff5d4f86b86402",
+    "scripts/landscapes/d.js": "d5908fa23e1a979454bd3d726fba3dacb63f7229e605c3d1dfada61d77b143a7",
+    "engine/visibility.js": "a7a6df986dde1d5e0437dff91b15ab708382682b3f59f43c01d2d254bf945e8a",
+    "engine/camera.js": "197a9bd56f8ad613e9cb3ffe69b245d24d227c0185927ffc6f823fd30d6f53cd",
+    "shared/terrain.js": "566de19373da9dbb17c378bef3580fa06367d77992b509798cbe653ab0c0b8cc"
+  },
+  "levels": [
+    {
+      "id": "plum-01",
+      "source": {
+        "path": "assets/levels/plum-01.json",
+        "sha256": "e8811c48ced0522dc36437952a43e6ad6c3b615ed6612d8a1d0844073d34a241",
+        "placements": 185,
+        "models": {
+          "plum-arch": "756917b17cc9000e36a5efed7d6b6739da9420405544b6d8a7da8242f6c60dc6",
+          "plum-arch-broken": "3715d6663a288f0f79eb06686b6b42d030d178e9b957cdf7c747cf040e826377",
+          "plum-flowers": "873558eee637959d7cefe063fc6f2881a2dfa6f3b49eda3454aa495862300cb8",
+          "plum-pebbles": "0668ae751724fbc019962ef9dd0d2684faa3944f66212d0519786b838464b3d3",
+          "plum-rock": "eda3b34fc4766c987cc715a82ac4baf82121d3da7238253261e0db84a0099aec",
+          "plum-shrub": "4420332ccb9c787baf9d57dab557e84d84f9d00d3804e3487de71f738d066510",
+          "plum-tree": "2d82bf7f944407b73f84ba69ec96ddae74453bfe037c125741d7c1445f5f2eb4",
+          "plum-tree-tall": "27e2cba49835418383276a7d281344c9b83e4d1a272002a3dff2ddefa6a27884",
+          "plum-tree-young": "3257d12942918e8f1622968f215ba276c6f81844c5bfe8b65d6f91d945b22183",
+          "plum-tuft": "a93d1db5437abc9f94dfa17378fbd82540d19730b0e86f39bf168e24708d22f5",
+          "plum-wall": "bf8ef128bcd684d6972f508e76755cda4f8e1db2d30ad55c6ce5206c51d71b5a",
+          "turret-study": "2f082540dd14484bf729b52ad40c710992198637d8e0408f7515cd27953b5073"
+        }
+      },
+      "baseline": {
+        "path": "docs/landscapes/plum-01.json",
+        "sha256": "14875c8ca434721c2f0e902344f9105d3ad4908a01dfdca369f35977e565b5b2",
+        "placements": 212
+      },
+      "factoryAgrees": true,
+      "terrainUnchanged": true,
+      "retainedSceneryUnchanged": true,
+      "retainedScenery": 182,
+      "removedScenery": 30,
+      "retainedPerches": [
+        "d1-land-2-3",
+        "d1-land-13-10",
+        "d1-land-3-11"
+      ],
+      "sceneryPlacements": 182,
+      "camera": {
+        "mode": "default framed orthographic overview",
+        "yaw": 2.45,
+        "pitch": 0.68,
+        "directionTowardCamera": [
+          0.4959084333621017,
+          0.6287930240184686,
+          -0.5989108102765015
+        ],
+        "aspect": 1.25,
+        "target": [
+          192,
+          22,
+          168
+        ],
+        "radius": 220.3449443156272
+      },
+      "method": {
+        "groundY": 24,
+        "rayOriginY": 24.01,
+        "clearingSize": [
+          24,
+          24
+        ],
+        "sampleSpacing": 1,
+        "sampleOffsets": [
+          0.5,
+          23.5
+        ],
+        "samplesPerSite": 576,
+        "totalSiteSamples": 5184,
+        "rayLength": 2000,
+        "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+        "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+        "areaTolerance": 1e-8
+      },
+      "limitations": [
+        "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+        "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+        "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+        "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+      ],
+      "sites": [
+        {
+          "id": "early-1",
+          "box": [
+            3,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-2",
+          "box": [
+            4,
+            7
+          ],
+          "placement": "d1-defence-1",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-3",
+          "box": [
+            5,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-1",
+          "box": [
+            7,
+            7
+          ],
+          "placement": "d1-defence-2",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-2",
+          "box": [
+            8,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-3",
+          "box": [
+            8,
+            9
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-1",
+          "box": [
+            12,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-2",
+          "box": [
+            13,
+            7
+          ],
+          "placement": "d1-defence-3",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-3",
+          "box": [
+            14,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "plum-02",
+      "source": {
+        "path": "assets/levels/plum-02.json",
+        "sha256": "8e85c5e83fe0d7eec241c3e9ebc4b3f5386175901205c25abbcc8e05db87f383",
+        "placements": 236,
+        "models": {
+          "arc-spire": "2080fcc80986b6f4a686ec0dbaacf154a68083f104f1b51d4f7c172c2ec1a5ce",
+          "plum-arch": "756917b17cc9000e36a5efed7d6b6739da9420405544b6d8a7da8242f6c60dc6",
+          "plum-arch-broken": "3715d6663a288f0f79eb06686b6b42d030d178e9b957cdf7c747cf040e826377",
+          "plum-flowers": "873558eee637959d7cefe063fc6f2881a2dfa6f3b49eda3454aa495862300cb8",
+          "plum-pebbles": "0668ae751724fbc019962ef9dd0d2684faa3944f66212d0519786b838464b3d3",
+          "plum-rock": "eda3b34fc4766c987cc715a82ac4baf82121d3da7238253261e0db84a0099aec",
+          "plum-shrub": "4420332ccb9c787baf9d57dab557e84d84f9d00d3804e3487de71f738d066510",
+          "plum-tree": "2d82bf7f944407b73f84ba69ec96ddae74453bfe037c125741d7c1445f5f2eb4",
+          "plum-tree-tall": "27e2cba49835418383276a7d281344c9b83e4d1a272002a3dff2ddefa6a27884",
+          "plum-tree-young": "3257d12942918e8f1622968f215ba276c6f81844c5bfe8b65d6f91d945b22183",
+          "plum-tuft": "a93d1db5437abc9f94dfa17378fbd82540d19730b0e86f39bf168e24708d22f5",
+          "plum-wall": "bf8ef128bcd684d6972f508e76755cda4f8e1db2d30ad55c6ce5206c51d71b5a"
+        }
+      },
+      "baseline": {
+        "path": "docs/landscapes/plum-02.json",
+        "sha256": "c6426b653d4c15bb1b5df36fcdf4f070f6f28123b1ca48f6e8629a75e1f2a423",
+        "placements": 273
+      },
+      "factoryAgrees": true,
+      "terrainUnchanged": true,
+      "retainedSceneryUnchanged": true,
+      "retainedScenery": 233,
+      "removedScenery": 40,
+      "retainedPerches": [
+        "d2-land-3-2",
+        "d2-land-15-3",
+        "d2-land-4-13"
+      ],
+      "sceneryPlacements": 233,
+      "camera": {
+        "mode": "default framed orthographic overview",
+        "yaw": 2.45,
+        "pitch": 0.68,
+        "directionTowardCamera": [
+          0.4959084333621017,
+          0.6287930240184686,
+          -0.5989108102765015
+        ],
+        "aspect": 1.25,
+        "target": [
+          216,
+          22,
+          192
+        ],
+        "radius": 249.54114846301326
+      },
+      "method": {
+        "groundY": 24,
+        "rayOriginY": 24.01,
+        "clearingSize": [
+          24,
+          24
+        ],
+        "sampleSpacing": 1,
+        "sampleOffsets": [
+          0.5,
+          23.5
+        ],
+        "samplesPerSite": 576,
+        "totalSiteSamples": 5184,
+        "rayLength": 2000,
+        "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+        "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+        "areaTolerance": 1e-8
+      },
+      "limitations": [
+        "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+        "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+        "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+        "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+      ],
+      "sites": [
+        {
+          "id": "early-1",
+          "box": [
+            4,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-2",
+          "box": [
+            5,
+            7
+          ],
+          "placement": "d2-defence-1",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-3",
+          "box": [
+            7,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-1",
+          "box": [
+            9,
+            9
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-2",
+          "box": [
+            9,
+            10
+          ],
+          "placement": "d2-defence-2",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-3",
+          "box": [
+            9,
+            11
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-1",
+          "box": [
+            11,
+            14
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-2",
+          "box": [
+            12,
+            14
+          ],
+          "placement": "d2-defence-3",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-3",
+          "box": [
+            14,
+            14
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "plum-03",
+      "source": {
+        "path": "assets/levels/plum-03.json",
+        "sha256": "0b5b3aa179a84fe31f7be09bb606d616194075277bfa93716bb09b82d71713e5",
+        "placements": 219,
+        "models": {
+          "missile-launcher": "08da848e6ab09c95114fe8af10aa4a11223d0740046f8a7daf20d121f767654a",
+          "plum-arch": "756917b17cc9000e36a5efed7d6b6739da9420405544b6d8a7da8242f6c60dc6",
+          "plum-arch-broken": "3715d6663a288f0f79eb06686b6b42d030d178e9b957cdf7c747cf040e826377",
+          "plum-flowers": "873558eee637959d7cefe063fc6f2881a2dfa6f3b49eda3454aa495862300cb8",
+          "plum-pebbles": "0668ae751724fbc019962ef9dd0d2684faa3944f66212d0519786b838464b3d3",
+          "plum-rock": "eda3b34fc4766c987cc715a82ac4baf82121d3da7238253261e0db84a0099aec",
+          "plum-shrub": "4420332ccb9c787baf9d57dab557e84d84f9d00d3804e3487de71f738d066510",
+          "plum-tree": "2d82bf7f944407b73f84ba69ec96ddae74453bfe037c125741d7c1445f5f2eb4",
+          "plum-tree-tall": "27e2cba49835418383276a7d281344c9b83e4d1a272002a3dff2ddefa6a27884",
+          "plum-tree-young": "3257d12942918e8f1622968f215ba276c6f81844c5bfe8b65d6f91d945b22183",
+          "plum-tuft": "a93d1db5437abc9f94dfa17378fbd82540d19730b0e86f39bf168e24708d22f5",
+          "plum-wall": "bf8ef128bcd684d6972f508e76755cda4f8e1db2d30ad55c6ce5206c51d71b5a"
+        }
+      },
+      "baseline": {
+        "path": "docs/landscapes/plum-03.json",
+        "sha256": "56ecd004821bd5696eec9d9b587d0a7c90f639aed220eafb9c4534ed7d208284",
+        "placements": 249
+      },
+      "factoryAgrees": true,
+      "terrainUnchanged": true,
+      "retainedSceneryUnchanged": true,
+      "retainedScenery": 216,
+      "removedScenery": 33,
+      "retainedPerches": [
+        "d3-land-2-3",
+        "d3-land-4-12",
+        "d3-land-18-13"
+      ],
+      "sceneryPlacements": 216,
+      "camera": {
+        "mode": "default framed orthographic overview",
+        "yaw": 2.45,
+        "pitch": 0.68,
+        "directionTowardCamera": [
+          0.4959084333621017,
+          0.6287930240184686,
+          -0.5989108102765015
+        ],
+        "aspect": 1.25,
+        "target": [
+          240,
+          22,
+          192
+        ],
+        "radius": 265.51266374693824
+      },
+      "method": {
+        "groundY": 24,
+        "rayOriginY": 24.01,
+        "clearingSize": [
+          24,
+          24
+        ],
+        "sampleSpacing": 1,
+        "sampleOffsets": [
+          0.5,
+          23.5
+        ],
+        "samplesPerSite": 576,
+        "totalSiteSamples": 5184,
+        "rayLength": 2000,
+        "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+        "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+        "areaTolerance": 1e-8
+      },
+      "limitations": [
+        "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+        "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+        "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+        "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+      ],
+      "sites": [
+        {
+          "id": "early-1",
+          "box": [
+            4,
+            8
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-2",
+          "box": [
+            5,
+            8
+          ],
+          "placement": "d3-defence-1",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-3",
+          "box": [
+            7,
+            8
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-1",
+          "box": [
+            8,
+            10
+          ],
+          "placement": "d3-defence-2",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-2",
+          "box": [
+            8,
+            11
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "repeat-3",
+          "box": [
+            10,
+            12
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-1",
+          "box": [
+            10,
+            14
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-2",
+          "box": [
+            11,
+            14
+          ],
+          "placement": "d3-defence-3",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-3",
+          "box": [
+            11,
+            15
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "plum-04",
+      "source": {
+        "path": "assets/levels/plum-04.json",
+        "sha256": "e2c9ba8c3110fcf0dc4a266d99e9c1dbb8bfa9a64f323cfa8efd282ff1451007",
+        "placements": 238,
+        "models": {
+          "arc-spire": "2080fcc80986b6f4a686ec0dbaacf154a68083f104f1b51d4f7c172c2ec1a5ce",
+          "missile-launcher": "08da848e6ab09c95114fe8af10aa4a11223d0740046f8a7daf20d121f767654a",
+          "plum-arch": "756917b17cc9000e36a5efed7d6b6739da9420405544b6d8a7da8242f6c60dc6",
+          "plum-arch-broken": "3715d6663a288f0f79eb06686b6b42d030d178e9b957cdf7c747cf040e826377",
+          "plum-flowers": "873558eee637959d7cefe063fc6f2881a2dfa6f3b49eda3454aa495862300cb8",
+          "plum-pebbles": "0668ae751724fbc019962ef9dd0d2684faa3944f66212d0519786b838464b3d3",
+          "plum-rock": "eda3b34fc4766c987cc715a82ac4baf82121d3da7238253261e0db84a0099aec",
+          "plum-shrub": "4420332ccb9c787baf9d57dab557e84d84f9d00d3804e3487de71f738d066510",
+          "plum-tree": "2d82bf7f944407b73f84ba69ec96ddae74453bfe037c125741d7c1445f5f2eb4",
+          "plum-tree-tall": "27e2cba49835418383276a7d281344c9b83e4d1a272002a3dff2ddefa6a27884",
+          "plum-tree-young": "3257d12942918e8f1622968f215ba276c6f81844c5bfe8b65d6f91d945b22183",
+          "plum-tuft": "a93d1db5437abc9f94dfa17378fbd82540d19730b0e86f39bf168e24708d22f5",
+          "plum-wall": "bf8ef128bcd684d6972f508e76755cda4f8e1db2d30ad55c6ce5206c51d71b5a",
+          "power-generator": "9356ddafdabab96dfd2c1c7ef4f61734218e9b3a1bea13c0a700434d314efd79",
+          "turret-study": "2f082540dd14484bf729b52ad40c710992198637d8e0408f7515cd27953b5073"
+        }
+      },
+      "baseline": {
+        "path": "docs/landscapes/plum-04.json",
+        "sha256": "d5d0fe5c83dba9244a23fe443fa3391312283a1b9a3c9e6737931f3ad49a7624",
+        "placements": 282
+      },
+      "factoryAgrees": true,
+      "terrainUnchanged": true,
+      "retainedSceneryUnchanged": true,
+      "retainedScenery": 234,
+      "removedScenery": 48,
+      "retainedPerches": [
+        "d4-land-2-3",
+        "d4-land-14-2",
+        "d4-land-15-14"
+      ],
+      "sceneryPlacements": 234,
+      "camera": {
+        "mode": "default framed orthographic overview",
+        "yaw": 2.45,
+        "pitch": 0.68,
+        "directionTowardCamera": [
+          0.4959084333621017,
+          0.6287930240184686,
+          -0.5989108102765015
+        ],
+        "aspect": 1.25,
+        "target": [
+          216,
+          22,
+          216
+        ],
+        "radius": 262.76583732647435
+      },
+      "method": {
+        "groundY": 24,
+        "rayOriginY": 24.01,
+        "clearingSize": [
+          24,
+          24
+        ],
+        "sampleSpacing": 1,
+        "sampleOffsets": [
+          0.5,
+          23.5
+        ],
+        "samplesPerSite": 576,
+        "totalSiteSamples": 5760,
+        "rayLength": 2000,
+        "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+        "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+        "areaTolerance": 1e-8
+      },
+      "limitations": [
+        "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+        "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+        "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+        "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+      ],
+      "sites": [
+        {
+          "id": "early-1",
+          "box": [
+            9,
+            3
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-2",
+          "box": [
+            9,
+            5
+          ],
+          "placement": "d4-defence-1",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "early-3",
+          "box": [
+            9,
+            6
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "branch-1",
+          "box": [
+            17,
+            7
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "branch-2",
+          "box": [
+            17,
+            9
+          ],
+          "placement": "d4-defence-2",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "branch-3",
+          "box": [
+            17,
+            10
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-1",
+          "box": [
+            11,
+            12
+          ],
+          "placement": "d4-defence-3",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-2",
+          "box": [
+            11,
+            15
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "late-3",
+          "box": [
+            9,
+            16
+          ],
+          "placement": null,
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        },
+        {
+          "id": "d4-generator-support",
+          "box": [
+            11,
+            11
+          ],
+          "placement": "d4-generator",
+          "raySamples": 576,
+          "terrainBlockedSamples": 0,
+          "clear": true,
+          "obstructions": []
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,307 @@
+{
+  "schema": "defender.a2-carving-final-verification",
+  "version": 1,
+  "recordedAt": "2026-10-18T17:50:44.452Z",
+  "source": {
+    "path": "assets/levels/moss-02.json",
+    "sha256": "05880b6fe2330d2497b3df52e06fc6648842f8e0453edd9b2d4f33db1f1dd8fb"
+  },
+  "selectedSourceExact": true,
+  "factoryExactAndDeterministic": true,
+  "changedActiveAssets": [
+    "assets/levels/moss-02.json"
+  ],
+  "unchangedOtherProductionLevels": 15,
+  "unchangedModelSources": 66,
+  "frozenAssetsVerified": 67,
+  "frozenChanges": [],
+  "retainedScenery": 171,
+  "removedScenery": 87,
+  "removalPurposes": {
+    "routeTravel": 36,
+    "fullCandidateGround": 32,
+    "overviewVisibility": 19
+  },
+  "terrainEnvironmentWildlifeUnchanged": true,
+  "edges": {
+    "entry": [
+      0,
+      0,
+      7
+    ],
+    "exit": [
+      11,
+      0,
+      15
+    ],
+    "boundaryBoxes": 2,
+    "interiorBoxes": 40,
+    "edgeRunningSegments": 0
+  },
+  "bridgeSupport": [
+    {
+      "box": [
+        11,
+        8
+      ],
+      "naturalFlatHeight": null,
+      "walkingHeight": 24,
+      "originalColumn": {
+        "box": [
+          11,
+          8
+        ],
+        "ground": 17,
+        "water": 20
+      }
+    },
+    {
+      "box": [
+        12,
+        8
+      ],
+      "naturalFlatHeight": null,
+      "walkingHeight": 24,
+      "originalColumn": {
+        "box": [
+          12,
+          8
+        ],
+        "ground": 10,
+        "water": 20
+      }
+    },
+    {
+      "box": [
+        13,
+        8
+      ],
+      "naturalFlatHeight": null,
+      "walkingHeight": 24,
+      "originalColumn": {
+        "box": [
+          13,
+          8
+        ],
+        "ground": 10,
+        "water": 20
+      }
+    },
+    {
+      "box": [
+        14,
+        8
+      ],
+      "naturalFlatHeight": null,
+      "walkingHeight": 24,
+      "originalColumn": {
+        "box": [
+          14,
+          8
+        ],
+        "ground": 10,
+        "water": 20
+      }
+    },
+    {
+      "box": [
+        15,
+        8
+      ],
+      "naturalFlatHeight": null,
+      "walkingHeight": 24,
+      "originalColumn": {
+        "box": [
+          15,
+          8
+        ],
+        "ground": 10,
+        "water": 20
+      }
+    },
+    {
+      "box": [
+        16,
+        8
+      ],
+      "naturalFlatHeight": null,
+      "walkingHeight": 24,
+      "originalColumn": {
+        "box": [
+          16,
+          8
+        ],
+        "ground": 17,
+        "water": 20
+      }
+    }
+  ],
+  "candidates": {
+    "count": 32,
+    "fullGroundVisible": true,
+    "baseUseful": 32,
+    "upgradeDependent": 0,
+    "baseGunReady": 32,
+    "upgrade1GunReady": 32,
+    "baseArcReady": 32,
+    "upgrade1ArcReady": 32,
+    "excluded": []
+  },
+  "actualBridgeGaps": [
+    {
+      "weapon": "gun",
+      "variant": "base",
+      "species": "dog",
+      "bridgeUncovered": [
+        [
+          522,
+          606
+        ]
+      ]
+    },
+    {
+      "weapon": "gun",
+      "variant": "base",
+      "species": "roller",
+      "bridgeUncovered": [
+        [
+          522,
+          606
+        ]
+      ]
+    },
+    {
+      "weapon": "gun",
+      "variant": "base",
+      "species": "moth",
+      "bridgeUncovered": [
+        [
+          522,
+          606
+        ]
+      ]
+    },
+    {
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "dog",
+      "bridgeUncovered": [
+        [
+          548,
+          580
+        ]
+      ]
+    },
+    {
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "roller",
+      "bridgeUncovered": [
+        [
+          548,
+          580
+        ]
+      ]
+    },
+    {
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "moth",
+      "bridgeUncovered": [
+        [
+          548,
+          580
+        ]
+      ]
+    },
+    {
+      "weapon": "arc",
+      "variant": "base",
+      "species": "dog",
+      "bridgeUncovered": [
+        [
+          522,
+          606
+        ]
+      ]
+    },
+    {
+      "weapon": "arc",
+      "variant": "base",
+      "species": "roller",
+      "bridgeUncovered": [
+        [
+          522,
+          606
+        ]
+      ]
+    },
+    {
+      "weapon": "arc",
+      "variant": "base",
+      "species": "moth",
+      "bridgeUncovered": [
+        [
+          522,
+          606
+        ]
+      ]
+    },
+    {
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "dog",
+      "bridgeUncovered": [
+        [
+          548,
+          580
+        ]
+      ]
+    },
+    {
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "roller",
+      "bridgeUncovered": [
+        [
+          548,
+          580
+        ]
+      ]
+    },
+    {
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "moth",
+      "bridgeUncovered": [
+        [
+          548,
+          580
+        ]
+      ]
+    }
+  ],
+  "dependencies": {
+    "scripts/a2-path-carving.js": "f583e5f6fb6d92aafae212ec913b0874cb0a750972b03746b68769ee9896fa2e",
+    "scripts/a2-path-carving-audit.js": "7e5d673526366f4f7c387d6b20449b100c248616c2734dabfe1d347f74bd0c36",
+    "scripts/a2-path-carving-clearance.js": "de31cce8f7aa0b4a71c0334d88887e30cd2dcf194a07bba7c2bbd15b59737fcb",
+    "scripts/a2-path-carving-coverage.js": "66d364737e6247a6a72eec1a486d223282a8f677d4e5cbee81ebacb28d199328",
+    "scripts/a1-path-carving-audit.js": "4558aed34b2520791512d412e3661bfc9c6aa0b3e536e39c26c1c452b381da73",
+    "scripts/level-layout-audit.js": "df66fc1b23b261434b5b8e4203deaf13bccd6b18fd88691ce6edc975c054a35d",
+    "scripts/verify-zone-a-four-visibility.js": "c9c2a4ed7c75792ba30800485773c524e0b3d250b5b75de6335f8bc123da164f",
+    "engine/path-motion.js": "560c6588336385b2d234ba16d906716b1e4d57641b7d04ee6dec11751264842e",
+    "engine/visibility.js": "88f37a5b67eed1d182aaeab7dc7a621ab22d77886eac1567f83fa809802d107a",
+    "engine/camera.js": "f2e759bcf5d334bd7f123c5729f948d52e38543b321b03a12aae4291c23f2467",
+    "engine/world.js": "c58671fba6b7360f6c1373ef0e617c1f235c5e50a1272e823f2fdd18996e5f55",
+    "game/turret-preview.js": "89d9a78a322180fc3530956afbcb6b83c15be9d70e089f1bc09f70085d46fe76",
+    "game/arc-spire-preview.js": "19eebd6c84d4bf989a3eb7035f2639faedb09f45fcb3993d52f46360dce5892c",
+    "game/enemy-preview.js": "3875d07d58318ecf326155bd5720f3445e4ebda3fd95e7bad3a77b0ef71339e9",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1",
+    "shared/bridges.js": "cc3cad36438b7be04321cf3094fecfd3d3be4393f98982d621b50d1329e4d9ac",
+    "shared/terrain.js": "387cdc046e673352c42c7f4adb49664151eb635e4cf3a12a146ecd8bf642dbb0",
+    "shared/level.js": "35b19cfac1e8b210bb5b9979e3483b678b41617b37ad75ed2a601506d2da60dd"
+  },
+  "failures": [],
+  "passed": true
+}

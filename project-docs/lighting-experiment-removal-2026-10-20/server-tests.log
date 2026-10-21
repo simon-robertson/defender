@@ -1,0 +1,21 @@
+bun test v1.4.2 (744846f84)
+
+tests/server.test.js:
+Defender Workshop: http://127.0.0.1:65088
+(pass) player entry is separately served with local scripts and no write route [2.85ms]
+(pass) design doc renders the current Markdown source on every request and supports canonical/raw/HEAD routes [9.68ms]
+(pass) linked documents and safe images are served with explicit types without exposing HTML or escaped paths [6.77ms]
+(pass) source round-trip, stale revision protection, and same-origin save protection [3.38ms]
+(pass) invalid materials and missing references never reach disk [1.56ms]
+(pass) enemy source and articulated joints survive the authoring API round-trip [9.70ms]
+(pass) legacy library reads upgrade in memory and retain revision protection until saved [6.37ms]
+(pass) model changes cannot silently invalidate saved layouts [5.86ms]
+(pass) terrain, water and path height survive saves; invalid route edits never replace disk [3.30ms]
+(pass) engine entry point and detail/environment metadata round-trip without exposing source files [4.28ms]
+(pass) water settings persist and elevated player defences are rejected before saving [5.37ms]
+(pass) the per-level weather switch round-trips and rejects unsupported zone weather [15.09ms]
+
+ 12 pass
+ 0 fail
+ 107 expect() calls
+Ran 12 tests across 1 file. [91.00ms]

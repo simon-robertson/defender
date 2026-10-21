@@ -1,0 +1,369 @@
+{
+  "schema": "defender.model",
+  "version": 3,
+  "id": "plum-tuft",
+  "name": "Plum · low shoots",
+  "size": [
+    24,
+    8,
+    24
+  ],
+  "materials": [
+    {
+      "name": "Trunk",
+      "color": "#504343",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Trunk light",
+      "color": "#74605B",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage deep",
+      "color": "#413246",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage",
+      "color": "#654760",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage light",
+      "color": "#875D7C",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage cap",
+      "color": "#A07894",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone",
+      "color": "#87858A",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone shade",
+      "color": "#5F5E69",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone light",
+      "color": "#ABA6A4",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Flower",
+      "color": "#BECBBB",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Muted accent",
+      "color": "#986952",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Crevice",
+      "color": "#38303D",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone middle",
+      "color": "#959197",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage middle",
+      "color": "#79536E",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Pale mineral",
+      "color": "#C4BAB0",
+      "emission": 0,
+      "reflectiveness": 0
+    }
+  ],
+  "variants": {
+    "base": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": [
+            [
+              12,
+              0,
+              8,
+              2
+            ],
+            [
+              8,
+              0,
+              11,
+              2
+            ],
+            [
+              15,
+              0,
+              12,
+              2
+            ],
+            [
+              10,
+              0,
+              16,
+              2
+            ],
+            [
+              12,
+              1,
+              8,
+              2
+            ],
+            [
+              8,
+              1,
+              11,
+              2
+            ],
+            [
+              15,
+              1,
+              12,
+              2
+            ],
+            [
+              10,
+              1,
+              16,
+              2
+            ],
+            [
+              12,
+              2,
+              8,
+              2
+            ],
+            [
+              8,
+              2,
+              11,
+              2
+            ],
+            [
+              15,
+              2,
+              11,
+              4
+            ],
+            [
+              16,
+              2,
+              11,
+              4
+            ],
+            [
+              15,
+              2,
+              12,
+              2
+            ],
+            [
+              10,
+              2,
+              16,
+              2
+            ],
+            [
+              12,
+              3,
+              8,
+              2
+            ],
+            [
+              8,
+              3,
+              10,
+              4
+            ],
+            [
+              9,
+              3,
+              10,
+              4
+            ],
+            [
+              8,
+              3,
+              11,
+              2
+            ],
+            [
+              15,
+              3,
+              11,
+              4
+            ],
+            [
+              16,
+              3,
+              11,
+              4
+            ],
+            [
+              15,
+              3,
+              12,
+              2
+            ],
+            [
+              10,
+              3,
+              15,
+              4
+            ],
+            [
+              11,
+              3,
+              15,
+              4
+            ],
+            [
+              10,
+              3,
+              16,
+              2
+            ],
+            [
+              12,
+              4,
+              7,
+              4
+            ],
+            [
+              13,
+              4,
+              7,
+              4
+            ],
+            [
+              12,
+              4,
+              8,
+              2
+            ],
+            [
+              8,
+              4,
+              10,
+              4
+            ],
+            [
+              9,
+              4,
+              10,
+              4
+            ],
+            [
+              8,
+              4,
+              11,
+              2
+            ],
+            [
+              10,
+              4,
+              15,
+              4
+            ],
+            [
+              11,
+              4,
+              15,
+              4
+            ],
+            [
+              10,
+              4,
+              16,
+              2
+            ],
+            [
+              12,
+              5,
+              7,
+              4
+            ],
+            [
+              13,
+              5,
+              7,
+              4
+            ],
+            [
+              12,
+              5,
+              8,
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    "upgrade1": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    },
+    "upgrade2": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    }
+  },
+  "colorMode": "authored",
+  "role": "scenery"
+}

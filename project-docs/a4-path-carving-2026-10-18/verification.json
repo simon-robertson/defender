@@ -1,0 +1,131 @@
+{
+  "schema": "defender.a4-carving-final-verification",
+  "version": 1,
+  "recordedAt": "2026-10-18T18:45:40.010Z",
+  "source": {
+    "path": "assets/levels/moss-04.json",
+    "sha256": "1e2970b40e61d6a5dd7be857114ce25f8b28d40b08518af5c8816dcc291ca33c"
+  },
+  "selectedSourceExact": true,
+  "factoryExactAndDeterministic": true,
+  "changedActiveAssets": [
+    "assets/levels/moss-04.json"
+  ],
+  "unchangedOtherProductionLevels": 15,
+  "unchangedModelSources": 67,
+  "frozenAssetsVerified": 67,
+  "frozenChanges": [],
+  "retainedScenery": 210,
+  "removedScenery": 114,
+  "removalPurposes": {
+    "routeTravel": 51,
+    "fullCandidateGround": 44,
+    "overviewVisibility": 19
+  },
+  "terrainEnvironmentWildlifeUnchanged": true,
+  "edges": [
+    {
+      "id": "main",
+      "entry": [
+        0,
+        0,
+        9
+      ],
+      "exit": [
+        10,
+        0,
+        15
+      ],
+      "boundaryBoxes": 2,
+      "interiorBoxes": 45,
+      "edgeRunningSegments": 0
+    }
+  ],
+  "bridgeSupport": [],
+  "candidates": {
+    "count": 40,
+    "fullGroundVisible": true,
+    "baseUseful": 37,
+    "upgradeDependent": 3,
+    "baseGunReady": 39,
+    "upgrade1GunReady": 37,
+    "baseArcReady": 40,
+    "upgrade1ArcReady": 40,
+    "siloReady": {
+      "base": 40,
+      "upgrade1": 40,
+      "upgrade2": 40
+    },
+    "coverageClassification": {
+      "main": 37,
+      "upgrade-dependent": 3
+    },
+    "excluded": [
+      {
+        "site": "southwest-5-10",
+        "model": "turret-study",
+        "variant": "base",
+        "reason": "Full-yaw head envelope reaches the retained southwest ruin wall at [5,11]; Arc and silo alternatives remain clear."
+      },
+      {
+        "site": "southwest-5-10",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "reason": "Full-yaw head envelope reaches the retained southwest ruin wall at [5,11]; Arc and silo alternatives remain clear."
+      },
+      {
+        "site": "southwest-2-11",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "reason": "Full-yaw head/gun envelope reaches the retained adjacent oak crown; base gun, Arc and silo alternatives remain clear."
+      },
+      {
+        "site": "shore-court-18-10",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "reason": "Full-yaw head/gun envelope reaches the retained adjacent oak crown; base gun, Arc and silo alternatives remain clear."
+      }
+    ]
+  },
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 47,
+      "length": 1104
+    }
+  ],
+  "unionPathBoxes": 47,
+  "missileFeasibility": {
+    "launches": 45,
+    "hits": 45,
+    "misses": 0,
+    "staticContacts": 0
+  },
+  "dependencies": {
+    "scripts/a4-path-carving.js": "289f38b517473e9cbb723fd9aff49bbed72216fd8d84df781c87b88462a418ac",
+    "scripts/a4-path-carving-audit.js": "ee6a4b0020b74051c631af9d53e17b7ba84c98eb2ba3e41c6785d34788b3529a",
+    "scripts/a4-path-carving-clearance.js": "f549d74c7daf9f8c88ae947363081f1e6144dbf8cc606103cae13f41d47c8b83",
+    "scripts/a4-path-carving-coverage.js": "aa03b1477c49e9c8ac23bef8581891527196a2e904f27a746329704eb554490c",
+    "scripts/a4-path-carving-missiles.js": "877dd007a5ff6ef8b05d1e487752992d6068b802910eb7abaf2644742d5b1b83",
+    "scripts/level-layout-audit.js": "df66fc1b23b261434b5b8e4203deaf13bccd6b18fd88691ce6edc975c054a35d",
+    "scripts/verify-zone-a-four-visibility.js": "c9c2a4ed7c75792ba30800485773c524e0b3d250b5b75de6335f8bc123da164f",
+    "engine/path-motion.js": "560c6588336385b2d234ba16d906716b1e4d57641b7d04ee6dec11751264842e",
+    "engine/visibility.js": "88f37a5b67eed1d182aaeab7dc7a621ab22d77886eac1567f83fa809802d107a",
+    "engine/camera.js": "f2e759bcf5d334bd7f123c5729f948d52e38543b321b03a12aae4291c23f2467",
+    "engine/world.js": "c58671fba6b7360f6c1373ef0e617c1f235c5e50a1272e823f2fdd18996e5f55",
+    "game/turret-preview.js": "89d9a78a322180fc3530956afbcb6b83c15be9d70e089f1bc09f70085d46fe76",
+    "game/arc-spire-preview.js": "19eebd6c84d4bf989a3eb7035f2639faedb09f45fcb3993d52f46360dce5892c",
+    "game/enemy-preview.js": "3875d07d58318ecf326155bd5720f3445e4ebda3fd95e7bad3a77b0ef71339e9",
+    "game/missile-preview.js": "7e55d9f72ad5fb562c7b93ac14594b738dc6d578e29e3b46140706693b98d85f",
+    "engine/missile-flight.js": "602cdc30602872ff93f2f848bbb4af8d91084a86788cf6ed0ff0eb021229b28d",
+    "shared/missile-flight.js": "00a829a978553d69c8909a270ccd128710fed9c628f8c59c5712d2d80ebc9cec",
+    "shared/missile-model.js": "0f2ef60562878314d72c652f82c40202c2d2e93211fd052fbc81122390a9b3e2",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1",
+    "shared/bridges.js": "cc3cad36438b7be04321cf3094fecfd3d3be4393f98982d621b50d1329e4d9ac",
+    "shared/terrain.js": "387cdc046e673352c42c7f4adb49664151eb635e4cf3a12a146ecd8bf642dbb0",
+    "shared/level.js": "35b19cfac1e8b210bb5b9979e3483b678b41617b37ad75ed2a601506d2da60dd"
+  },
+  "failures": [],
+  "passed": true
+}

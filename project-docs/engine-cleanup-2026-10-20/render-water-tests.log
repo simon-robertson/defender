@@ -1,0 +1,55 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.33ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [3.03ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [1.05ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.20ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [1.52ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.13ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [0.49ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [14.01ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.38ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [4.32ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [367.92ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.02ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [292.64ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [565.51ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.72ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.28ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.48ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [40.41ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [18.58ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1614.97ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [20.02ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [16.10ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.94ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.64ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [15.22ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.99ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.35ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.48ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.36ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [116.16ms]
+(pass) live film is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [1.66ms]
+(pass) live film reuses pipelines through toggles and releases viewport/scene images exactly once [1.34ms]
+(pass) clean drone depth of field reuses the camera pass without handheld grading or target churn [1.33ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.41ms]
+
+tests/camera.test.js:
+(pass) player camera can disable development path view without changing preview default [1.00ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.13ms]
+(pass) path view samples every path box and restores the complete overview [0.14ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.06ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.18ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.05ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.31ms]
+(pass) camera disposal removes canvas and document handlers before a renderer retry [1.57ms]
+
+ 43 pass
+ 0 fail
+ 2418 expect() calls
+Ran 43 tests across 3 files. [3.14s]

@@ -1,0 +1,46 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [400.07ms]
+(pass) boost, unpowered moving turn and reignition are distinct and keep their exact phase timing [23.74ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [22.37ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [21.91ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [72.49ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [47.45ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [23.46ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [87.56ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [22.80ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [22.78ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [37.20ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [69.42ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [67.72ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [44.58ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [23.43ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [22.38ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [22.02ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [22.29ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [132.29ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [22.57ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [23.61ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [29.97ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [22.52ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [266.46ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [23.14ms]
+(pass) static contact drops its incoming claim before the impact callback [22.20ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [87.65ms]
+(pass) escape safety counts passed-aim rounds until physical retirement, independently of planner claims [30.43ms]
+
+tests/play-run-clearance.test.js:
+(pass) bounding Dog poses keep actual limb cells outside the chassis and soles above the route plane [1334.46ms]
+
+tests/play-escape.test.js:
+(pass) escape certainty admits no false proof from current LOS, targeting reservation or route re-entry [0.62ms]
+(pass) run corner smoothing keeps endpoints and continuous position/tangent inside the authored turn [0.33ms]
+(pass) undefended Dogs genuinely bound with airborne phases, valid leg reach and smooth 2x acceleration [1010.30ms]
+(pass) real A2/A3 ground and air escapes complete through corners and merges, deterministically across host rates [5353.16ms]
+(pass) a surviving missile reaction and zero-delta pause retain valid running poses and clean retry state [934.75ms]
+
+ 34 pass
+ 0 fail
+ 1168862 expect() calls
+Ran 34 tests across 3 files. [10.39s]

@@ -1,0 +1,28 @@
+// Summarise measured opportunities after applying explicit physical weapon
+// restrictions. Independent-site union never means simultaneous team damage.
+import {B_OUT} from './b-path-carving-options.js';
+const IDS=['cistern-mesa-circuit','riverfold-crossing','mesa-confluence','aqueduct-shore-tour'],TYPES=['walker','dune-tread','twin-fan'];
+const span=runs=>runs.reduce((sum,[a,b])=>sum+b-a,0);
+function intervals(flags){const result=[];let start=-1;for(let i=0;i<=flags.length;i++){if(flags[i]&&start<0)start=i;if(!flags[i]&&start>=0){result.push([start,i]);start=-1;}}return result;}
+export async function summarizeBCoverage(id){
+ const audit=await Bun.file(new URL(id+'.audit.json',B_OUT)).json(),clearance=await Bun.file(new URL(id+'.clearance.json',B_OUT)).json(),manifest=await Bun.file(new URL(id+'.manifest.json',B_OUT)).json(),comparison=await Bun.file(new URL('comparison.json',B_OUT)).json(),ideal=comparison.options.find(o=>o.id===id),sites=[],classification={};
+ for(const row of audit.geometry.coverage){
+  const arc=audit.arc.find(a=>a.id===row.id).routes,routes={},physical={};
+  for(const model of ['turret-study','arc-spire','missile-launcher'])physical[model]=Object.fromEntries(['base','upgrade1','upgrade2'].map(variant=>[variant,!clearance.excluded.some(e=>e.site===row.id&&e.model===model&&e.variant===variant)]));
+  for(const [routeId,data]of Object.entries(row.routes)){
+   const gun=Object.fromEntries(['base','upgrade1'].map(v=>[v,Object.fromEntries(TYPES.map(type=>[type,physical['turret-study'][v]?data.eligible[v][type]:[]]))]));
+   const arcWindows=Object.fromEntries(['base','upgrade1','upgrade2'].map(v=>[v,Object.fromEntries(TYPES.map(type=>[type,physical['arc-spire'][v]?arc[routeId].variants[v].surfaceContact[type]:[]]))]));
+   routes[routeId]={length:data.length,gun,arc:arcWindows,rawGun:data.eligible,siloRangeOnly:Object.fromEntries(['base','upgrade1','upgrade2'].map((v,i)=>[v,ideal.sites.find(s=>s.id===row.id).coverage[routeId][[72,96,120][i]]])),totals:{gun:Object.fromEntries(['base','upgrade1'].map(v=>[v,Object.fromEntries(TYPES.map(type=>[type,span(gun[v][type])]))])),arc:Object.fromEntries(['base','upgrade1','upgrade2'].map(v=>[v,Object.fromEntries(TYPES.map(type=>[type,span(arcWindows[v][type])]))]))}};
+  }
+  const useful=(weapon,variant,routeId)=>TYPES.every(type=>span(routes[routeId][weapon][variant][type])>0),baseGunRoutes=Object.keys(routes).filter(r=>useful('gun','base',r)),baseArcRoutes=Object.keys(routes).filter(r=>useful('arc','base',r)),baseRoutes=Object.keys(routes).filter(r=>baseGunRoutes.includes(r)||baseArcRoutes.includes(r)),role=baseRoutes.join('+')||'upgrade-dependent';classification[role]=(classification[role]??0)+1;
+  sites.push({id:row.id,group:row.group,box:row.box,physical,baseGunUseful:baseGunRoutes.length>0,baseArcUseful:baseArcRoutes.length>0,baseGunArcUseful:baseRoutes.length>0,bothBaseWeaponsUseful:baseGunRoutes.length>0&&baseArcRoutes.length>0,coverageRole:role,routes});
+ }
+ const independentSiteUnion=[],returns=[];
+ for(const route of Object.keys(sites[0].routes))for(const weapon of ['gun','arc'])for(const variant of weapon==='gun'?['base','upgrade1']:['base','upgrade1','upgrade2'])for(const species of TYPES){
+  const flags=new Uint8Array(sites[0].routes[route].length);for(const site of sites){const windows=site.routes[route][weapon][variant][species];for(const [a,b]of windows)flags.fill(1,a,b);if(windows.length>1)returns.push({site:site.id,box:site.box,route,weapon,variant,species,windows,total:span(windows),gaps:windows.slice(1).map((r,i)=>({distance:r[0]-windows[i][1],seconds:(r[0]-windows[i][1])/(species==='dune-tread'?10:18)}))});}
+  independentSiteUnion.push({route,weapon,variant,species,eligible:intervals(flags),uncovered:intervals(Uint8Array.from(flags,v=>Number(!v)))});
+ }
+ returns.sort((a,b)=>b.total-a.total);
+ return {id,sourceHash:audit.sourceHash,method:'Production actual gun range, mechanical pitch and both pitched muzzle rays at zero/full recoil; Arc closest terminal, centre LOS and facing-side surface contact. One-unit midpoint bins per species/complete route; excluded physical combinations contribute no eligibility. Arc upgrade2 is active; gun upgrade2 remains inactive and has no attack coverage. Silo intervals are72/96/120 centre-range admission only; separate finite production flights establish selected examples. Base-useful means positive measured opportunity against every B species with at least one physically allowed base gun/Arc, not universal weapon fit or guaranteed damage. Adjacent alternatives are not a certified simultaneous arrangement.',classification,surveyedSites:sites.length,baseGunArcUseful:sites.filter(s=>s.baseGunArcUseful).length,baseGunUseful:sites.filter(s=>s.baseGunUseful).length,baseArcUseful:sites.filter(s=>s.baseArcUseful).length,bothBaseWeaponsUseful:sites.filter(s=>s.bothBaseWeaponsUseful).length,upgradeDependent:sites.filter(s=>!s.baseGunArcUseful).map(s=>({id:s.id,box:s.box,group:s.group})),clearanceReady:clearance.ready?.map(r=>({model:r.model,variant:r.variant,count:r.sites.length})),excluded:clearance.excluded,independentSiteUnion,strongestRepeatedExamples:returns.filter(r=>r.variant==='base').slice(0,20),sites};
+}
+if(import.meta.main)for(const id of process.argv.slice(2).length?process.argv.slice(2):IDS){const report=await summarizeBCoverage(id);await Bun.write(new URL(id+'.coverage.json',B_OUT),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({id,sites:report.surveyedSites,baseGunArcUseful:report.baseGunArcUseful,baseGunUseful:report.baseGunUseful,baseArcUseful:report.baseArcUseful,upgradeDependent:report.upgradeDependent,classification:report.classification}));}

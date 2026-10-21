@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-18",
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "status": "No outstanding actionable correctness blocker in final reviewed source and finite behavior/geometry fixtures. Lead owns browser appearance and user acceptance.",
+  "sourceHashes": {
+    "game/drone-preview.js": "8c3b72c84070c584cef33a30cac8915da9011a004cd6ded5d450cfd5e438253b",
+    "engine/drone-navigation.js": "24a1cf85928932206f6af7fd0addecad2e20e0422919faf8ca6be5c995b2423a",
+    "engine/drone-motion.js": "e82846eaec86b5d35343c9efcb0e85cdd0033ec29902afb430e49b3ccbc68ff0",
+    "engine/drone-obstacles.js": "bf0ea57276e50c2c35c8772e196e08266c2f0f1ea73e4cd870eb86dc8cc3fa78",
+    "engine/drone-clearance.js": "34dc023c8985e43ad189aa87eac3a8622288691c9db434d458ee33f0eeebfee7",
+    "game/app.js": "d0b1ee6f9023cda185654baf114c4538a8502fd0a71ab0159d70f51bad54e377",
+    "shared/drone.js": "4c9f3c5af3e0ee8301ec78011e59f291c87e56602040667a9a4eda437b70ea62",
+    "shared/drone-model.js": "e217d6e8427169adee87e038a1c68e4c81904c4104a14f76a78460d898c7158b",
+    "assets/levels/moss-01.json": "70807bb01eaeff105aeffacfa8616866c1a3b6e0fa75810732c9000c86b56003"
+  },
+  "changedSinceFinalRun": {},
+  "commands": [
+    "bun docs/drone-controls-audit-2026-10-18/probe.js final",
+    "bun docs/drone-controls-audit-2026-10-18/probe.js reset-final",
+    "bun docs/drone-controls-audit-2026-10-18/fleet-probe.js fleet-final",
+    "bun docs/drone-controls-audit-2026-10-18/warning-probe.js",
+    "bun docs/drone-controls-audit-2026-10-18/geometry-probe.js"
+  ],
+  "focusedTests": {
+    "command": "bun test tests/drone-combat.test.js tests/drone-motion.test.js tests/drone-obstacles.test.js tests/drone-hull.test.js tests/drone-clearance.test.js",
+    "passed": 45,
+    "failed": 0,
+    "assertions": 436834
+  },
+  "runs": [
+    {
+      "hz": 30,
+      "allDeadAt": 56.299999999999365,
+      "settledAt": 80.73333333333132,
+      "firstSortieRounds": [
+        20,
+        26
+      ],
+      "firstSortieEvadingSeconds": [
+        0.7999999999999999,
+        1.0333333333333332
+      ],
+      "currentActorOverlapFrames": 0,
+      "staticOverlapFrames": 0,
+      "fleetOverlapFrames": 0,
+      "poseCornerSamples": 22694880,
+      "poseHullViolations": 0,
+      "emergencies": 0,
+      "escapesAfterAllDead": 0,
+      "maxThinks": 1
+    },
+    {
+      "hz": 60,
+      "allDeadAt": 53.966666666664885,
+      "settledAt": 79.64999999999677,
+      "firstSortieRounds": [
+        21,
+        27
+      ],
+      "firstSortieEvadingSeconds": [
+        0.733333333333334,
+        1.0500000000000012
+      ],
+      "currentActorOverlapFrames": 0,
+      "staticOverlapFrames": 0,
+      "fleetOverlapFrames": 0,
+      "poseCornerSamples": 22713600,
+      "poseHullViolations": 0,
+      "emergencies": 0,
+      "escapesAfterAllDead": 0,
+      "maxThinks": 1
+    },
+    {
+      "hz": 120,
+      "allDeadAt": 51.108333333331075,
+      "settledAt": 80.23333333334325,
+      "firstSortieRounds": [
+        21,
+        27
+      ],
+      "firstSortieEvadingSeconds": [
+        0.6833333333333333,
+        0
+      ],
+      "currentActorOverlapFrames": 0,
+      "staticOverlapFrames": 0,
+      "fleetOverlapFrames": 0,
+      "poseCornerSamples": 22713600,
+      "poseHullViolations": 0,
+      "emergencies": 0,
+      "escapesAfterAllDead": 0,
+      "maxThinks": 1
+    }
+  ],
+  "reset": {
+    "hz": 60,
+    "resetsAtSeconds": [
+      45,
+      90
+    ],
+    "order": "defence reset before enemy reset; wildlife and scene clocks retained",
+    "allDeadAt": 143.93333333334002,
+    "settledAt": 169.65000000002715
+  },
+  "fleet": {
+    "scenarios": 9,
+    "overlapFrames": 0,
+    "emergencies": 0,
+    "reciprocalEvasionFrames": 0,
+    "latestHeadOnArrival": 5.899999999999989,
+    "latestCrossingArrival": 5.799999999999989,
+    "neutralReturnArrival": 7.233333333333317
+  },
+  "clearedWarnings": [
+    {
+      "hz": 30,
+      "currentClear": true,
+      "futureClear": true,
+      "wantEvade": false,
+      "evasions": 0,
+      "launches": 1,
+      "firstShot": 1.166666666666667,
+      "shots": 7,
+      "phase": "attack",
+      "flightElapsed": 2.999999999999999
+    },
+    {
+      "hz": 60,
+      "currentClear": true,
+      "futureClear": true,
+      "wantEvade": false,
+      "evasions": 0,
+      "launches": 1,
+      "firstShot": 1.1500000000000008,
+      "shots": 7,
+      "phase": "attack",
+      "flightElapsed": 2.9999999999999942
+    },
+    {
+      "hz": 120,
+      "currentClear": true,
+      "futureClear": true,
+      "wantEvade": false,
+      "evasions": 0,
+      "launches": 1,
+      "firstShot": 1.1499999999999984,
+      "shots": 8,
+      "phase": "attack",
+      "flightElapsed": 2.999999999999992
+    }
+  ],
+  "finiteLimits": "Fixed A1 scene/deterministic actor seeds/three rates/one reset schedule plus deliberately conflicting in-memory fleet commands; conservative actor envelopes and continuous aircraft hull proof, not universal crowd-physics, balance, renderer, or FPS certification."
+}

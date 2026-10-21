@@ -1,0 +1,66 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [386.77ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [23.36ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [21.86ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [21.85ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [73.55ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [63.03ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [30.43ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [87.74ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [21.88ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [22.41ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [34.95ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [77.67ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [65.02ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [43.64ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [22.07ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [22.16ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [21.77ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [21.54ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [129.60ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [23.68ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [23.41ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [29.42ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [22.32ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [233.94ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [21.65ms]
+(pass) static contact drops its incoming claim before the impact callback [21.39ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [87.88ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [40.78ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [77.69ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [32.25ms]
+(pass) steering light and jets stop at alignment and pulse together within the fixed 36-light budget [24.73ms]
+(pass) real slow and fast turns extinguish attitude jets while residual sub-degree steering settles [108.06ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.21ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.05ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.08ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+
+tests/play-polish.test.js:
+(pass) overview/perspective blend preserves invertible projection, exact endpoints and smooth reversible travel [1.37ms]
+(pass) real Drone coordinator eases into a wave, freezes when paused and returns to preparation without a snap [4.78ms]
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.39ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.48ms]
+(pass) Drone destination stays perspective while intermediate framing progresses, including reversals and pause [19.27ms]
+
+tests/camera.test.js:
+(pass) overview fits full path tiles and all approaches while retaining landscape movement bounds [0.80ms]
+(pass) player camera can disable development path view without changing preview default [0.16ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.15ms]
+(pass) path view samples every path box and restores the complete overview [0.09ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.07ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.30ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.06ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.29ms]
+(pass) camera disposal removes canvas and document handlers before a renderer retry [0.17ms]
+
+ 52 pass
+ 0 fail
+ 17757 expect() calls
+Ran 52 tests across 4 files. [2.00s]

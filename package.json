@@ -1,0 +1,31 @@
+{
+  "name": "defender-workshop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun server.js",
+    "test": "bun test",
+    "seed": "bun scripts/seed.js",
+    "compile": "bun scripts/compile.js",
+    "seed:level": "bun scripts/first-level.js",
+    "seed:zones": "bun scripts/zone-previews.js",
+    "rebuild:previews": "bun scripts/current-preview-levels.js --write",
+    "check:previews": "bun scripts/current-preview-levels.js --check",
+    "check:landscapes": "bun scripts/fixed-landscapes/build.js --check --snapshots-only",
+    "seed:dog": "bun scripts/dog.js",
+    "seed:enemies": "bun scripts/enemy-models.js",
+    "seed:wildlife": "bun scripts/wildlife-models.js",
+    "seed:arc-spire": "bun scripts/arc-spire.js",
+    "seed:arc-levels": "bun scripts/arc-spire-levels.js",
+    "seed:missile-launcher": "bun scripts/missile-launcher.js",
+    "seed:missile-levels": "bun scripts/missile-launcher-levels.js",
+    "seed:power-generator": "bun scripts/power-generator.js",
+    "seed:drone": "bun scripts/drone-defence.js",
+    "seed:enemy-expansion": "bun scripts/enemy-expansion.js",
+    "seed:zone-a-four": "bun scripts/zone-a-four.js",
+    "seed:previews": "bun scripts/current-preview-levels.js",
+    "deploy:local": "bun scripts/deployment/build.js",
+    "preview:deployment": "bun scripts/deployment/serve.js",
+    "check:deployment": "bun scripts/deployment/validate.js"
+  }
+}

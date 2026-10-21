@@ -1,0 +1,646 @@
+{
+  "schema": "defender.model",
+  "version": 3,
+  "id": "guided-missile",
+  "name": "Guided missile · Moss & Porcelain",
+  "size": [
+    24,
+    10,
+    24
+  ],
+  "materials": [
+    {
+      "name": "Porcelain",
+      "color": "#F1E8D5",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Forest mechanism",
+      "color": "#243E35",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Moss panels",
+      "color": "#738B55",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone pad",
+      "color": "#D9CCAA",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Vermilion",
+      "color": "#D65D45",
+      "emission": 1,
+      "reflectiveness": 0,
+      "castsLight": false
+    },
+    {
+      "name": "Porcelain highlight",
+      "color": "#FAF2E2",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Porcelain shade",
+      "color": "#D2C6AE",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Porcelain recess",
+      "color": "#B4A88F",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Forest edge",
+      "color": "#435D4F",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Forest recess",
+      "color": "#192C26",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Moss highlight",
+      "color": "#8D9E6E",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Moss shade",
+      "color": "#526640",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone highlight",
+      "color": "#E8DAB9",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone edge",
+      "color": "#B8A47F",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Vermilion highlight",
+      "color": "#E67C60",
+      "emission": 1,
+      "reflectiveness": 0,
+      "castsLight": false
+    },
+    {
+      "name": "Vermilion shade",
+      "color": "#A94B39",
+      "emission": 1,
+      "reflectiveness": 0,
+      "castsLight": false
+    },
+    {
+      "name": "Deep mechanism recess",
+      "color": "#101C18",
+      "emission": 0,
+      "reflectiveness": 0
+    }
+  ],
+  "variants": {
+    "base": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "Missile body, square nose and four tail fins",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": [
+            [
+              11,
+              0,
+              10,
+              2
+            ],
+            [
+              12,
+              0,
+              10,
+              2
+            ],
+            [
+              10,
+              0,
+              11,
+              2
+            ],
+            [
+              11,
+              0,
+              11,
+              9
+            ],
+            [
+              12,
+              0,
+              11,
+              9
+            ],
+            [
+              13,
+              0,
+              11,
+              2
+            ],
+            [
+              10,
+              0,
+              12,
+              2
+            ],
+            [
+              11,
+              0,
+              12,
+              9
+            ],
+            [
+              12,
+              0,
+              12,
+              9
+            ],
+            [
+              13,
+              0,
+              12,
+              2
+            ],
+            [
+              11,
+              0,
+              13,
+              2
+            ],
+            [
+              12,
+              0,
+              13,
+              2
+            ],
+            [
+              11,
+              1,
+              10,
+              2
+            ],
+            [
+              12,
+              1,
+              10,
+              2
+            ],
+            [
+              10,
+              1,
+              11,
+              2
+            ],
+            [
+              11,
+              1,
+              11,
+              0
+            ],
+            [
+              12,
+              1,
+              11,
+              0
+            ],
+            [
+              13,
+              1,
+              11,
+              2
+            ],
+            [
+              10,
+              1,
+              12,
+              2
+            ],
+            [
+              11,
+              1,
+              12,
+              0
+            ],
+            [
+              12,
+              1,
+              12,
+              0
+            ],
+            [
+              13,
+              1,
+              12,
+              2
+            ],
+            [
+              11,
+              1,
+              13,
+              2
+            ],
+            [
+              12,
+              1,
+              13,
+              2
+            ],
+            [
+              11,
+              2,
+              10,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              12,
+              2,
+              10,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              10,
+              2,
+              11,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              11,
+              2,
+              11,
+              0
+            ],
+            [
+              12,
+              2,
+              11,
+              0
+            ],
+            [
+              13,
+              2,
+              11,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              10,
+              2,
+              12,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              11,
+              2,
+              12,
+              0
+            ],
+            [
+              12,
+              2,
+              12,
+              0
+            ],
+            [
+              13,
+              2,
+              12,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              11,
+              2,
+              13,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              12,
+              2,
+              13,
+              2,
+              [
+                -1,
+                -1,
+                10,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              11,
+              3,
+              11,
+              0
+            ],
+            [
+              12,
+              3,
+              11,
+              0
+            ],
+            [
+              11,
+              3,
+              12,
+              0
+            ],
+            [
+              12,
+              3,
+              12,
+              0
+            ],
+            [
+              11,
+              4,
+              11,
+              0
+            ],
+            [
+              12,
+              4,
+              11,
+              0
+            ],
+            [
+              11,
+              4,
+              12,
+              0
+            ],
+            [
+              12,
+              4,
+              12,
+              0
+            ],
+            [
+              11,
+              5,
+              11,
+              0
+            ],
+            [
+              12,
+              5,
+              11,
+              0
+            ],
+            [
+              11,
+              5,
+              12,
+              0
+            ],
+            [
+              12,
+              5,
+              12,
+              0
+            ],
+            [
+              11,
+              6,
+              11,
+              0
+            ],
+            [
+              12,
+              6,
+              11,
+              0
+            ],
+            [
+              11,
+              6,
+              12,
+              0
+            ],
+            [
+              12,
+              6,
+              12,
+              0
+            ],
+            [
+              11,
+              7,
+              11,
+              4
+            ],
+            [
+              12,
+              7,
+              11,
+              4
+            ],
+            [
+              11,
+              7,
+              12,
+              4
+            ],
+            [
+              12,
+              7,
+              12,
+              4
+            ],
+            [
+              11,
+              8,
+              11,
+              1
+            ],
+            [
+              12,
+              8,
+              11,
+              1
+            ],
+            [
+              11,
+              8,
+              12,
+              1
+            ],
+            [
+              12,
+              8,
+              12,
+              1
+            ],
+            [
+              11,
+              9,
+              11,
+              1,
+              [
+                -1,
+                -1,
+                8,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              12,
+              9,
+              11,
+              1,
+              [
+                -1,
+                -1,
+                8,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              11,
+              9,
+              12,
+              1,
+              [
+                -1,
+                -1,
+                8,
+                -1,
+                -1,
+                -1
+              ]
+            ],
+            [
+              12,
+              9,
+              12,
+              1,
+              [
+                -1,
+                -1,
+                8,
+                -1,
+                -1,
+                -1
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    "upgrade1": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    },
+    "upgrade2": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    }
+  }
+}

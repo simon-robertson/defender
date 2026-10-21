@@ -1,0 +1,267 @@
+{
+  "schema": "defender.model",
+  "version": 3,
+  "id": "ice-flowers",
+  "name": "Alpine · small flowering stems",
+  "size": [
+    24,
+    6,
+    24
+  ],
+  "materials": [
+    {
+      "name": "Trunk",
+      "color": "#575348",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Trunk light",
+      "color": "#786E5D",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage deep",
+      "color": "#263C35",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage",
+      "color": "#3B5548",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage light",
+      "color": "#D2DCD7",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage cap",
+      "color": "#EFF0E8",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone",
+      "color": "#85939A",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone shade",
+      "color": "#5B6973",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone light",
+      "color": "#AFBBBC",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Flower",
+      "color": "#DFDFCF",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Muted accent",
+      "color": "#92785A",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Crevice",
+      "color": "#39443F",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone middle",
+      "color": "#9AA8AB",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage middle",
+      "color": "#597064",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Pale mineral",
+      "color": "#E2E7DE",
+      "emission": 0,
+      "reflectiveness": 0
+    }
+  ],
+  "variants": {
+    "base": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": [
+            [
+              9,
+              0,
+              9,
+              3
+            ],
+            [
+              14,
+              0,
+              14,
+              3
+            ],
+            [
+              8,
+              1,
+              9,
+              13
+            ],
+            [
+              9,
+              1,
+              9,
+              3
+            ],
+            [
+              8,
+              1,
+              10,
+              13
+            ],
+            [
+              13,
+              1,
+              14,
+              13
+            ],
+            [
+              14,
+              1,
+              14,
+              3
+            ],
+            [
+              13,
+              1,
+              15,
+              13
+            ],
+            [
+              9,
+              2,
+              8,
+              9
+            ],
+            [
+              8,
+              2,
+              9,
+              9
+            ],
+            [
+              9,
+              2,
+              9,
+              12
+            ],
+            [
+              10,
+              2,
+              9,
+              9
+            ],
+            [
+              9,
+              2,
+              10,
+              9
+            ],
+            [
+              14,
+              2,
+              14,
+              3
+            ],
+            [
+              14,
+              3,
+              13,
+              9
+            ],
+            [
+              13,
+              3,
+              14,
+              9
+            ],
+            [
+              14,
+              3,
+              14,
+              12
+            ],
+            [
+              15,
+              3,
+              14,
+              9
+            ],
+            [
+              14,
+              3,
+              15,
+              9
+            ]
+          ]
+        }
+      ]
+    },
+    "upgrade1": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    },
+    "upgrade2": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    }
+  },
+  "colorMode": "authored",
+  "role": "scenery"
+}

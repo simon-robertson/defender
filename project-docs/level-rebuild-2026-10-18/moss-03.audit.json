@@ -1,0 +1,914 @@
+{
+  "id": "moss-03",
+  "sourceHash": "1178f7c9ba06bfc8236571af3d239b3d1a266235780def619fbac99414d068db",
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 3462,
+    "checkedParts": 24234,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "early-1",
+        "group": "early",
+        "box": [
+          5,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "roller": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "moth": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    52,
+                    188
+                  ]
+                ],
+                "roller": [
+                  [
+                    52,
+                    188
+                  ]
+                ],
+                "moth": [
+                  [
+                    52,
+                    188
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 0,
+              "120": 72
+            },
+            "eligible": {
+              "base": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              },
+              "upgrade1": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-2",
+        "group": "early",
+        "box": [
+          5,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    78,
+                    210
+                  ]
+                ],
+                "roller": [
+                  [
+                    78,
+                    210
+                  ]
+                ],
+                "moth": [
+                  [
+                    78,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    67,
+                    246
+                  ]
+                ],
+                "roller": [
+                  [
+                    67,
+                    246
+                  ]
+                ],
+                "moth": [
+                  [
+                    52,
+                    246
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 0,
+              "120": 0
+            },
+            "eligible": {
+              "base": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              },
+              "upgrade1": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-3",
+        "group": "early",
+        "box": [
+          7,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 231.5,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    120,
+                    186
+                  ]
+                ],
+                "roller": [
+                  [
+                    120,
+                    186
+                  ]
+                ],
+                "moth": [
+                  [
+                    120,
+                    186
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    96,
+                    212
+                  ]
+                ],
+                "roller": [
+                  [
+                    96,
+                    212
+                  ]
+                ],
+                "moth": [
+                  [
+                    96,
+                    212
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 26.64,
+              "120": 85.98
+            },
+            "eligible": {
+              "base": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              },
+              "upgrade1": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "branch-1",
+        "group": "branch",
+        "box": [
+          8,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 0,
+              "120": 133.98
+            },
+            "eligible": {
+              "base": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              },
+              "upgrade1": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 227.14,
+              "120": 312
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "roller": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "moth": [
+                  [
+                    30,
+                    114
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    4,
+                    198
+                  ]
+                ],
+                "roller": [
+                  [
+                    4,
+                    198
+                  ]
+                ],
+                "moth": [
+                  [
+                    4,
+                    198
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "branch-2",
+        "group": "branch",
+        "box": [
+          9,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 108.45,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              },
+              "upgrade1": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 296.09,
+              "120": 333.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "roller": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "moth": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    42,
+                    236
+                  ]
+                ],
+                "roller": [
+                  [
+                    42,
+                    236
+                  ]
+                ],
+                "moth": [
+                  [
+                    42,
+                    236
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "branch-3",
+        "group": "branch",
+        "box": [
+          9,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 0,
+              "72": 0,
+              "96": 87.5,
+              "120": 144
+            },
+            "eligible": {
+              "base": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              },
+              "upgrade1": {
+                "dog": [],
+                "roller": [],
+                "moth": []
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 308.95,
+              "120": 336
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    54,
+                    186
+                  ]
+                ],
+                "roller": [
+                  [
+                    54,
+                    186
+                  ]
+                ],
+                "moth": [
+                  [
+                    54,
+                    186
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    28,
+                    222
+                  ]
+                ],
+                "roller": [
+                  [
+                    28,
+                    222
+                  ]
+                ],
+                "moth": [
+                  [
+                    28,
+                    222
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-1",
+        "group": "late",
+        "box": [
+          13,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 235.15
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "roller": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "moth": [
+                  [
+                    510,
+                    594
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    484,
+                    620
+                  ]
+                ],
+                "roller": [
+                  [
+                    484,
+                    620
+                  ]
+                ],
+                "moth": [
+                  [
+                    484,
+                    620
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 291.95,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    270,
+                    354
+                  ]
+                ],
+                "roller": [
+                  [
+                    270,
+                    354
+                  ]
+                ],
+                "moth": [
+                  [
+                    270,
+                    354
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    244,
+                    380
+                  ]
+                ],
+                "roller": [
+                  [
+                    244,
+                    380
+                  ]
+                ],
+                "moth": [
+                  [
+                    244,
+                    380
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-2",
+        "group": "late",
+        "box": [
+          18,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    630,
+                    696
+                  ]
+                ],
+                "roller": [
+                  [
+                    630,
+                    696
+                  ]
+                ],
+                "moth": [
+                  [
+                    630,
+                    696
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    604,
+                    696
+                  ]
+                ],
+                "roller": [
+                  [
+                    604,
+                    696
+                  ]
+                ],
+                "moth": [
+                  [
+                    604,
+                    696
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    390,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    390,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    390,
+                    456
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    364,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    364,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    364,
+                    456
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-3",
+        "group": "late",
+        "box": [
+          19,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 696,
+            "ideal": {
+              "48": 41.57,
+              "72": 67.88,
+              "96": 92.95,
+              "120": 117.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    654,
+                    696
+                  ]
+                ],
+                "roller": [
+                  [
+                    654,
+                    696
+                  ]
+                ],
+                "moth": [
+                  [
+                    654,
+                    696
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    651,
+                    696
+                  ]
+                ],
+                "roller": [
+                  [
+                    651,
+                    696
+                  ]
+                ],
+                "moth": [
+                  [
+                    638,
+                    696
+                  ]
+                ]
+              }
+            }
+          },
+          "branch": {
+            "length": 456,
+            "ideal": {
+              "48": 41.57,
+              "72": 67.88,
+              "96": 92.95,
+              "120": 117.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    414,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    414,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    414,
+                    456
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    411,
+                    456
+                  ]
+                ],
+                "roller": [
+                  [
+                    411,
+                    456
+                  ]
+                ],
+                "moth": [
+                  [
+                    398,
+                    456
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "combat": {
+    "seconds": 120,
+    "frames": 7200,
+    "thinkCounts": [
+      2400,
+      2400,
+      2400
+    ],
+    "shots": {
+      "a3-defence-1": 9,
+      "a3-defence-2": 19,
+      "a3-defence-3": 18
+    },
+    "strengths": [
+      60,
+      75,
+      90
+    ],
+    "hits": {
+      "main/moth/75": 180,
+      "branch/moth/75": 75,
+      "branch/moth/90": 105,
+      "branch/roller/75": 75,
+      "branch/roller/90": 285,
+      "main/roller/90": 90,
+      "main/dog/90": 540,
+      "main/roller/60": 270,
+      "branch/dog/90": 90,
+      "branch/dog/75": 210,
+      "main/dog/60": 60
+    },
+    "launches": 46,
+    "claimsSeen": true,
+    "missileHits": 29,
+    "remaining": [
+      {
+        "id": "preview-dog-1",
+        "route": "branch",
+        "health": 0
+      },
+      {
+        "id": "preview-dog-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-dog-3",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-roller-1",
+        "route": "branch",
+        "health": 0
+      },
+      {
+        "id": "preview-roller-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-moth-1",
+        "route": "branch",
+        "health": 0
+      },
+      {
+        "id": "preview-moth-2",
+        "route": "main",
+        "health": 0
+      }
+    ],
+    "enhancers": [],
+    "failures": []
+  }
+}

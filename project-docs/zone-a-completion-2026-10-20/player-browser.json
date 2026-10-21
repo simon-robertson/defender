@@ -1,0 +1,95 @@
+{
+  "state": {
+    "errors": [],
+    "levelId": "moss-01",
+    "misses": 0,
+    "phase": "loadout",
+    "shop": [
+      {
+        "available": true,
+        "availableFromWave": 1,
+        "cost": 1,
+        "firing": {
+          "cooldownSeconds": 1,
+          "delivery": "hitscan",
+          "projectile": null,
+          "shotIntervalSeconds": 0,
+          "shotsPerBurst": 1
+        },
+        "model": "turret-study",
+        "name": "Gun",
+        "stats": {
+          "maxRange": 48,
+          "requiresLineOfSight": true,
+          "strength": 10
+        }
+      },
+      {
+        "available": false,
+        "availableFromWave": 5,
+        "cost": 2,
+        "firing": {
+          "cooldownSeconds": 1.2,
+          "delivery": "hitscan",
+          "projectile": null,
+          "shotIntervalSeconds": 0,
+          "shotsPerBurst": 1
+        },
+        "model": "arc-spire",
+        "name": "Arc Spire",
+        "stats": {
+          "maxRange": 60,
+          "requiresLineOfSight": true,
+          "strength": 36
+        }
+      },
+      {
+        "available": false,
+        "availableFromWave": 9,
+        "cost": 3,
+        "firing": {
+          "cycle": {
+            "cooldownSeconds": 1,
+            "delivery": "projectile",
+            "projectile": {
+              "speedUnitsPerSecond": 120
+            },
+            "shotIntervalSeconds": 0,
+            "shotsPerBurst": 1
+          },
+          "gap": 1,
+          "magazine": 2,
+          "reload": 4
+        },
+        "model": "missile-launcher",
+        "name": "Missile launcher",
+        "stats": {
+          "maxRange": 96,
+          "requiresLineOfSight": false,
+          "strength": 200
+        }
+      }
+    ],
+    "tokens": 2,
+    "totalWaves": 16,
+    "wavePreview": {
+      "description": "Three Dogs. Cover more than one bend.",
+      "groups": [
+        {
+          "count": 3,
+          "firstAt": 0,
+          "lastAt": 6,
+          "maxHealth": 100,
+          "model": "dog",
+          "name": "Dog",
+          "routeId": "main",
+          "speed": 12
+        }
+      ],
+      "name": "First contact",
+      "splitApproaches": false,
+      "total": 3
+    }
+  },
+  "logs": []
+}

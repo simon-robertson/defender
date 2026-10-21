@@ -1,0 +1,124 @@
+{
+  "id": "southern-hook",
+  "method": "Each candidate considered independently. Turret heads use complete yaw cylinders separately for every occupied Y layer; gun envelope encloses full yaw, analytic pitch extrema and zero/full recoil. Arc parts use fixed occupied-vertex bounds. Test static exact cuboids and production Dog/Roller/Moth occupied-part poses at every1-unit route distance and endpoints. Conservative envelopes may reject a harmless pose; no simultaneous-neighbour compatibility is claimed.",
+  "rows": [
+    {
+      "model": "turret-study",
+      "variant": "base",
+      "independentSites": 34,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2811,
+      "checkedParts": 19677
+    },
+    {
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "independentSites": 34,
+      "staticFailures": [
+        {
+          "id": "late-17-11",
+          "part": "head",
+          "bounds": [
+            405.85786437626905,
+            49,
+            261.85786437626905,
+            434.14213562373095,
+            50,
+            290.14213562373095
+          ],
+          "obstacle": [
+            413,
+            49,
+            290,
+            422,
+            61,
+            291
+          ]
+        },
+        {
+          "id": "late-17-11",
+          "part": "guns",
+          "bounds": [
+            406.36839018197935,
+            41.17647417242493,
+            262.36839018197935,
+            433.63160981802065,
+            61.82352582757507,
+            289.63160981802065
+          ],
+          "obstacle": [
+            413,
+            51,
+            289,
+            422,
+            59,
+            290
+          ]
+        }
+      ],
+      "routeMotionFailures": [],
+      "sampledPoses": 2811,
+      "checkedParts": 19677
+    },
+    {
+      "model": "arc-spire",
+      "variant": "base",
+      "independentSites": 34,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2811,
+      "checkedParts": 19677
+    },
+    {
+      "model": "arc-spire",
+      "variant": "upgrade1",
+      "independentSites": 34,
+      "staticFailures": [],
+      "routeMotionFailures": [],
+      "sampledPoses": 2811,
+      "checkedParts": 19677
+    }
+  ],
+  "excluded": [
+    {
+      "site": "late-17-11",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Retained southern oak canopy intersects the rotating upper head. Base gun and both tested Arc stages pass; preserve the user-approved landscape and use another position for an upgraded gun."
+    }
+  ],
+  "witness": {
+    "site": "late-17-11",
+    "model": "turret-study",
+    "variant": "upgrade1",
+    "part": "head",
+    "occupiedCell": [
+      2,
+      28,
+      20
+    ],
+    "interiorLocalPoint": [
+      2.05,
+      28.5,
+      20.95
+    ],
+    "yawRadians": 0.838258925639963,
+    "interiorWorldPoint": [
+      420,
+      52.5,
+      289.3830116192134
+    ],
+    "retainedObstacle": [
+      413,
+      51,
+      289,
+      422,
+      59,
+      290
+    ],
+    "interpretation": "An interior point of an occupied rotating-head voxel lies strictly inside the retained canopy cuboid: this upgrade restriction is a real intersection, not merely a coarse-cylinder rejection."
+  },
+  "allProbedCombinationsClear": false,
+  "declaredSuitabilityPassed": true
+}

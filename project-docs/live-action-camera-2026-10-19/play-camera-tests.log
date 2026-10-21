@@ -1,0 +1,37 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-action-camera.test.js:
+(pass) empty/title preparation never takes camera ownership; bind and release never move a user view [1.04ms]
+(pass) sparse combat closes in smoothly with fixed orientation, finite bounded motion and no long-frame leap [2.23ms]
+(pass) spread fronts and engaged gun envelopes fit wide and portrait views without selecting scheduled enemies or mutating targeting [4.68ms]
+(pass) look-ahead follows actual route through a corner and clamps at exit rather than wrapping [0.20ms]
+(pass) fixed-clock damping agrees at30/60/120Hz and moving-route framing has no material frame-rate drift [2.51ms]
+(pass) death context survives busy gunfire and holds through four-second settling, then returns smoothly only once [1.18ms]
+(pass) recent death interest expires without a settling phase and paused time freezes view, hold and event lifetime [0.77ms]
+(pass) manual drag/key holds, disable/resume and preparation takeover never fight the player or snap on resuming [0.73ms]
+(pass) takeover from extreme manual zoom/pan returns within speed limits instead of clamping to auto bounds [2.83ms]
+(pass) event timestamps follow actual bounded engine time rather than a longer browser-frame delta [0.15ms]
+(pass) zero-hold preparation takeover cancels the return but lets the next wave own the camera immediately [0.77ms]
+(pass) real A1/A2 fights anticipate guns before engagement and keep their animated meshes readable on laptop/desktop frames [4535.89ms]
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [0.28ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [941.88ms]
+(pass) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [923.30ms]
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5352.40ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [28.76ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [99.71ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [60.92ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [135.91ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [23.16ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [935.10ms]
+(pass) maximum affordable inventory plus current-wave slots retain all84 lights and default shaders/capacity remain unchanged [93.84ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3149.08ms]
+(pass) real eight-wave witness upgrades to tier2, preserves paid ownership and completes48kills with12tokens [14188.74ms]
+
+ 25 pass
+ 0 fail
+ 41278 expect() calls
+Ran 25 tests across 3 files. [30.50s]

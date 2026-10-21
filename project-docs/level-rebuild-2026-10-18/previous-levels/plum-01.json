@@ -1,0 +1,1770 @@
+{
+  "schema": "defender.level",
+  "version": 4,
+  "id": "plum-01",
+  "name": "The violet cloister",
+  "zone": "D",
+  "size": [
+    16,
+    16
+  ],
+  "waves": 5,
+  "placements": [
+    {
+      "id": "scene-1",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        2
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-2",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "box": [
+        8,
+        0,
+        4
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-3",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        2
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-4",
+      "model": "plum-arch",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        13
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-5",
+      "model": "plum-wall",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        12
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-6",
+      "model": "plum-arch-broken",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        12
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-7",
+      "model": "plum-wall",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        13
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-8",
+      "model": "plum-arch",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        14
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-9",
+      "model": "plum-arch-broken",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        12
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-10",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        12
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-11",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        14
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-12",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        14
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-13",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        14
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-14",
+      "model": "plum-tree-tall",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        11
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-15",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        13
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-16",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        12
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-17",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        9
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-18",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        14
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-19",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        11
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-20",
+      "model": "plum-arch-broken",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        12
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-21",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        13
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-22",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        14
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-23",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        14
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-24",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        2
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-25",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        4
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-26",
+      "model": "plum-arch-broken",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        6
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-27",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        10
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-28",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        12
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-29",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        1
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-30",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        0
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-31",
+      "model": "plum-arch-broken",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        5
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-32",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        0
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-33",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        0
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-34",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        1
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-35",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        1
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-36",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        3
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-37",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        4
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-38",
+      "model": "plum-tree-tall",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-39",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        5
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-40",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        6
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-41",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        6
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-42",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        7
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-43",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        7
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-44",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        8
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-45",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        9
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-46",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        8
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-47",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        9
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-48",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        9
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-49",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        10
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-50",
+      "model": "plum-tree-tall",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        11
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-51",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        11
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-52",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        12
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-53",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        13
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-54",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        14
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-55",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        15
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-56",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        15
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-57",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        14
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-58",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        15
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-59",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        13
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-60",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        15
+      ],
+      "turn": 1
+    },
+    {
+      "id": "scene-61",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        7
+      ],
+      "turn": 2
+    },
+    {
+      "id": "scene-62",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        8
+      ],
+      "turn": 0
+    },
+    {
+      "id": "scene-63",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        7
+      ],
+      "turn": 3
+    },
+    {
+      "id": "scene-64",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        10
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-65",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        12
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-66",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-67",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-68",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        12
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-69",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-70",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-71",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-72",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-73",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-74",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-75",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-76",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-77",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        10
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-78",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        5
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-79",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        1
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-80",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        0
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-81",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        0
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-82",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        0
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-83",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        4
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-84",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        6
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-85",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        8
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-86",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        11
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-87",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        0
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-88",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        0
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-89",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        1
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-90",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        2
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-91",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        3
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-92",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        3
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-93",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        4
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-94",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        5
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-95",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-96",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        8
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-97",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        9
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-98",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        10
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-99",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        11
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-100",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        12
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-101",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        13
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "scene-102",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        15
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "path": [
+    [
+      9,
+      0,
+      0
+    ],
+    [
+      9,
+      0,
+      1
+    ],
+    [
+      9,
+      0,
+      2
+    ],
+    [
+      9,
+      0,
+      3
+    ],
+    [
+      9,
+      0,
+      4
+    ],
+    [
+      9,
+      0,
+      5
+    ],
+    [
+      9,
+      0,
+      6
+    ],
+    [
+      9,
+      0,
+      7
+    ],
+    [
+      9,
+      0,
+      8
+    ],
+    [
+      9,
+      0,
+      9
+    ],
+    [
+      8,
+      0,
+      9
+    ],
+    [
+      7,
+      0,
+      9
+    ],
+    [
+      6,
+      0,
+      9
+    ],
+    [
+      5,
+      0,
+      9
+    ],
+    [
+      4,
+      0,
+      9
+    ],
+    [
+      4,
+      0,
+      8
+    ],
+    [
+      4,
+      0,
+      7
+    ],
+    [
+      4,
+      0,
+      6
+    ],
+    [
+      4,
+      0,
+      5
+    ],
+    [
+      5,
+      0,
+      5
+    ],
+    [
+      6,
+      0,
+      5
+    ],
+    [
+      7,
+      0,
+      5
+    ],
+    [
+      7,
+      0,
+      4
+    ],
+    [
+      7,
+      0,
+      3
+    ],
+    [
+      6,
+      0,
+      3
+    ],
+    [
+      5,
+      0,
+      3
+    ],
+    [
+      4,
+      0,
+      3
+    ],
+    [
+      3,
+      0,
+      3
+    ],
+    [
+      2,
+      0,
+      3
+    ],
+    [
+      1,
+      0,
+      3
+    ],
+    [
+      0,
+      0,
+      3
+    ]
+  ],
+  "pathHeight": 24,
+  "terrain": {
+    "defaultHeight": 24,
+    "boxes": [
+      {
+        "box": [
+          6,
+          7
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          6,
+          8
+        ],
+        "ground": 4,
+        "water": 12
+      },
+      {
+        "box": [
+          0,
+          10
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          10
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          11
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          11
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          5,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          6,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          7,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          8,
+          12
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          0,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          1,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          5,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          6,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          7,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          8,
+          13
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          9,
+          13
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          10,
+          13
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          5,
+          14
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          6,
+          14
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          7,
+          14
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          8,
+          14
+        ],
+        "ground": 28,
+        "water": 0
+      },
+      {
+        "box": [
+          9,
+          14
+        ],
+        "ground": 32,
+        "water": 0
+      },
+      {
+        "box": [
+          10,
+          14
+        ],
+        "ground": 32,
+        "water": 0
+      }
+    ]
+  },
+  "environment": {
+    "timeOfDay": 10.5,
+    "weather": {
+      "enabled": false
+    },
+    "sky": {
+      "direction": [
+        -0.65,
+        1,
+        -0.45
+      ],
+      "color": "#FFF8EB",
+      "intensity": 0.88,
+      "ambient": "#CBCBC5",
+      "ambientIntensity": 0.48
+    }
+  },
+  "waterMaterial": {
+    "type": "water",
+    "color": "#5E839B",
+    "emission": 0,
+    "reflectiveness": 0.65,
+    "opacity": 0.16,
+    "absorption": 0.035,
+    "refraction": 0.65,
+    "rippleStrength": 0.16,
+    "rippleScale": 0.8,
+    "rippleSpeed": 0.13
+  }
+}

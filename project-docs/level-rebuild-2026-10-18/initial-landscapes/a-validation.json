@@ -1,0 +1,533 @@
+{
+  "zone": "A",
+  "command": "bun scripts/landscapes/build.js A --check",
+  "checks": [
+    "Existing approved scenery only; all materials matte and nonemissive.",
+    "validateLevel checks actual source cells: no overlaps, world/terrain/water intersections.",
+    "Canonical factory/source hash and independent fresh objects.",
+    "Every dry box populated; all Y24 ground connected and at least65% of total boxes.",
+    "Three supported bird perches with a clear6-unit-radius/8-unit-high envelope.",
+    "Dry ground habitat samples with a clear6-unit-radius/11-unit-high envelope."
+  ],
+  "levels": [
+    {
+      "id": "moss-01",
+      "sha256": "ac6f2b6b002182fbfedd88e34da751a2d7d85bc26630020f09bd67fd7e5d0d52",
+      "size": [
+        16,
+        14
+      ],
+      "placements": 215,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "detail-flowers": 4,
+        "detail-grass": 63,
+        "detail-pebbles": 14,
+        "scenery-cypress-short": 5,
+        "scenery-oak": 19,
+        "scenery-oak-tall": 19,
+        "scenery-oak-young": 26,
+        "scenery-rock": 35,
+        "scenery-ruin-pillar": 1,
+        "scenery-ruin-wall": 3,
+        "scenery-shrub": 26
+      },
+      "terrain": {
+        "flatDry": 189,
+        "raisedDry": 26,
+        "water": 9
+      },
+      "connectedFlatDry": 189,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "a1-land-1-3",
+          "model": "scenery-oak-tall",
+          "box": [
+            1,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            40,
+            86,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a1-land-13-2",
+          "model": "scenery-oak-tall",
+          "box": [
+            13,
+            0,
+            2
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            328,
+            82,
+            56
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a1-land-3-11",
+          "model": "scenery-oak-tall",
+          "box": [
+            3,
+            0,
+            11
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            80,
+            78,
+            272
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1022,
+        "candidateWorldPoints": [
+          [
+            354,
+            24,
+            330
+          ],
+          [
+            6,
+            24,
+            26
+          ],
+          [
+            330,
+            24,
+            6
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "moss-02",
+      "sha256": "5752343c25503d8262556f6b393bc0b085998e59550a71da72f686ddec0d1633",
+      "size": [
+        18,
+        16
+      ],
+      "placements": 264,
+      "pathBoxes": 0,
+      "models": 12,
+      "modelCounts": {
+        "detail-flowers": 18,
+        "detail-grass": 78,
+        "detail-pebbles": 20,
+        "scenery-cypress": 1,
+        "scenery-cypress-short": 14,
+        "scenery-oak": 24,
+        "scenery-oak-tall": 9,
+        "scenery-oak-young": 25,
+        "scenery-rock": 45,
+        "scenery-ruin-pillar": 1,
+        "scenery-ruin-wall": 3,
+        "scenery-shrub": 26
+      },
+      "terrain": {
+        "flatDry": 238,
+        "raisedDry": 26,
+        "water": 24
+      },
+      "connectedFlatDry": 238,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "a2-land-7-1",
+          "model": "scenery-oak-tall",
+          "box": [
+            7,
+            0,
+            1
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            176,
+            78,
+            32
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a2-land-15-3",
+          "model": "scenery-oak-tall",
+          "box": [
+            15,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            376,
+            82,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a2-land-2-13",
+          "model": "scenery-oak-tall",
+          "box": [
+            2,
+            0,
+            13
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            64,
+            84,
+            320
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1353,
+        "candidateWorldPoints": [
+          [
+            426,
+            24,
+            362
+          ],
+          [
+            6,
+            24,
+            42
+          ],
+          [
+            410,
+            24,
+            18
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "moss-03",
+      "sha256": "fc3403e3a2a88b1c416387e9befaa9a993107bf52266ed62f442ffeed46f8dad",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 301,
+      "pathBoxes": 0,
+      "models": 12,
+      "modelCounts": {
+        "detail-flowers": 15,
+        "detail-grass": 87,
+        "detail-pebbles": 30,
+        "scenery-cypress": 5,
+        "scenery-cypress-short": 19,
+        "scenery-oak": 10,
+        "scenery-oak-tall": 9,
+        "scenery-oak-young": 32,
+        "scenery-rock": 57,
+        "scenery-ruin-pillar": 2,
+        "scenery-ruin-wall": 3,
+        "scenery-shrub": 32
+      },
+      "terrain": {
+        "flatDry": 268,
+        "raisedDry": 33,
+        "water": 19
+      },
+      "connectedFlatDry": 268,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "a3-land-8-1",
+          "model": "scenery-oak-tall",
+          "box": [
+            8,
+            0,
+            1
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            208,
+            78,
+            32
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a3-land-17-12",
+          "model": "scenery-oak-tall",
+          "box": [
+            17,
+            0,
+            12
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            416,
+            86,
+            296
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a3-land-7-13",
+          "model": "scenery-oak-tall",
+          "box": [
+            7,
+            0,
+            13
+          ],
+          "point": [
+            8,
+            54,
+            8
+          ],
+          "worldPoint": [
+            184,
+            78,
+            328
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1471,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            366
+          ],
+          [
+            6,
+            24,
+            18
+          ],
+          [
+            382,
+            24,
+            6
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "moss-04",
+      "sha256": "6a2a373612c98805bc0ebb2609f835ff0f6fb6c33fc30baf3b5a1815d1aaeab9",
+      "size": [
+        18,
+        16
+      ],
+      "placements": 292,
+      "pathBoxes": 0,
+      "models": 12,
+      "modelCounts": {
+        "detail-flowers": 9,
+        "detail-grass": 88,
+        "detail-pebbles": 10,
+        "scenery-cypress": 4,
+        "scenery-cypress-short": 14,
+        "scenery-oak": 32,
+        "scenery-oak-tall": 12,
+        "scenery-oak-young": 37,
+        "scenery-rock": 50,
+        "scenery-ruin-pillar": 3,
+        "scenery-ruin-wall": 4,
+        "scenery-shrub": 29
+      },
+      "terrain": {
+        "flatDry": 243,
+        "raisedDry": 21,
+        "water": 24
+      },
+      "connectedFlatDry": 243,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "a4-land-1-2",
+          "model": "scenery-oak-tall",
+          "box": [
+            1,
+            0,
+            2
+          ],
+          "point": [
+            11.5,
+            54,
+            11.5
+          ],
+          "worldPoint": [
+            36.5,
+            82,
+            60.5
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a4-land-16-12",
+          "model": "scenery-oak-tall",
+          "box": [
+            16,
+            0,
+            12
+          ],
+          "point": [
+            11.5,
+            54,
+            11.5
+          ],
+          "worldPoint": [
+            396.5,
+            82,
+            299.5
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "a4-land-3-14",
+          "model": "scenery-oak",
+          "box": [
+            3,
+            0,
+            14
+          ],
+          "point": [
+            11.5,
+            44,
+            11.5
+          ],
+          "worldPoint": [
+            83.5,
+            68,
+            348.5
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1095,
+        "candidateWorldPoints": [
+          [
+            406,
+            24,
+            362
+          ],
+          [
+            6,
+            24,
+            22
+          ],
+          [
+            378,
+            24,
+            6
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "date": "2026-10-17",
+  "scope": "Actual zone actors, staged wildlife decisions and live combat/death events at 60Hz for 60 seconds per zone; no GPU timing claim.",
+  "zones": {
+    "A": {
+      "deaths": 3,
+      "shots": 78,
+      "thinkCount": 3600,
+      "maxThinkWork": 512,
+      "explosionEvents": 3,
+      "eventPoolBytes": 320,
+      "planningBytes": 226972,
+      "groundSafeNodes": 5261,
+      "treeDestinations": 30,
+      "actors": [
+        {
+          "id": "wildlife-ground-1",
+          "pathVisits": 349,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 311.24267059643347,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 2,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-2",
+          "pathVisits": 372,
+          "fearEnemyFrames": 151,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 293.4620929523945,
+          "spooks": 1,
+          "lastSpookKind": "enemy",
+          "fleeJourneys": 0,
+          "journeysCompleted": 2,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-3",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 31.62277660168374,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 13,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-1",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 314.99285706187055,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 6,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-2",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 300.1274729177587,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 6,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-3",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 374.15838892105575,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 5,
+          "thinkCount": 600
+        }
+      ]
+    },
+    "B": {
+      "deaths": 3,
+      "shots": 79,
+      "thinkCount": 3600,
+      "maxThinkWork": 512,
+      "explosionEvents": 3,
+      "eventPoolBytes": 320,
+      "planningBytes": 225948,
+      "groundSafeNodes": 4984,
+      "treeDestinations": 12,
+      "actors": [
+        {
+          "id": "wildlife-ground-1",
+          "pathVisits": 1062,
+          "fearEnemyFrames": 121,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 191.26737829540514,
+          "spooks": 1,
+          "lastSpookKind": "enemy",
+          "fleeJourneys": 1,
+          "journeysCompleted": 2,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-2",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 22.80350850198276,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 7,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-3",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 38.05259518088019,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 6,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-1",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 357.6988957209681,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 4,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-2",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 430.0331382579719,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 4,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-3",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 368.40806180104147,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 5,
+          "thinkCount": 600
+        }
+      ]
+    },
+    "C": {
+      "deaths": 0,
+      "shots": 129,
+      "thinkCount": 3600,
+      "maxThinkWork": 512,
+      "explosionEvents": 0,
+      "eventPoolBytes": 320,
+      "planningBytes": 226728,
+      "groundSafeNodes": 5181,
+      "treeDestinations": 13,
+      "actors": [
+        {
+          "id": "wildlife-ground-1",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 8.48528137423857,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 16,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-2",
+          "pathVisits": 444,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 277.3157045679166,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 3,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-3",
+          "pathVisits": 726,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 346.88326566728466,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 3,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-1",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 215.5052203544035,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 5,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-2",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 286.5004362998423,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 7,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-3",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 374.4175476657044,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 4,
+          "thinkCount": 600
+        }
+      ]
+    },
+    "D": {
+      "deaths": 3,
+      "shots": 79,
+      "thinkCount": 3600,
+      "maxThinkWork": 512,
+      "explosionEvents": 3,
+      "eventPoolBytes": 320,
+      "planningBytes": 226788,
+      "groundSafeNodes": 5215,
+      "treeDestinations": 24,
+      "actors": [
+        {
+          "id": "wildlife-ground-1",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 74.46129494203225,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 1,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-2",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 138.24615727028322,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 0,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-ground-3",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 38.47076812334269,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 5,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-1",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 444.8061375475838,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 5,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-2",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 369.4624473474943,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 6,
+          "thinkCount": 600
+        },
+        {
+          "id": "wildlife-bird-3",
+          "pathVisits": 0,
+          "fearEnemyFrames": 0,
+          "fearExplosionFrames": 0,
+          "maxDistanceFromSpawn": 291.9118017484048,
+          "spooks": 0,
+          "lastSpookKind": null,
+          "fleeJourneys": 0,
+          "journeysCompleted": 6,
+          "thinkCount": 600
+        }
+      ]
+    }
+  }
+}

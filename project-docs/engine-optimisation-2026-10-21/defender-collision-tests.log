@@ -1,0 +1,75 @@
+bun test v1.4.2 (744846f84)
+
+tests/collision-query-cache.test.js:
+(pass) forecast query batches match live posed LOS and swept contacts, then release their pose snapshot [2.99ms]
+(pass) Arc part rejection preserves rotated faces, grazing tolerances, endpoint exclusions and zero-length rays [4.27ms]
+
+tests/visibility.test.js:
+(pass) exact occupied scenery blocks solid walls while retaining a real doorway and over-wall clearance [0.34ms]
+(pass) closed leaf bounds handle grazing faces, corners, endpoints, interior origins and zero-length segments [0.15ms]
+(pass) cell bounds follow quarter-turns, detail offsets and terrain or absolute placement anchors [1.34ms]
+(pass) ground mounds and carved beds block in 3D while water, defences and enemies remain excluded [0.19ms]
+(pass) merged cuboids and stackless branches agree with original cell geometry over deterministic 3D rays [4.91ms]
+(pass) queries reuse typed storage, retain no source dependency and fail closed after disposal or for invalid rays [0.16ms]
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [396.51ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [23.83ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [23.50ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [22.24ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [73.62ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [103.06ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [33.54ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [94.83ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [22.94ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [23.00ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [23.44ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [80.69ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [68.77ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [51.44ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [24.09ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [22.73ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [22.14ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [22.11ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [129.39ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [23.31ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [23.65ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [28.43ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [23.29ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [240.73ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [22.18ms]
+(pass) static contact drops its incoming claim before the impact callback [22.57ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [88.44ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [29.32ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [73.33ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [30.03ms]
+(pass) steering light and jets stop at alignment and pulse together within the fixed 36-light budget [22.52ms]
+(pass) real slow and fast turns extinguish attitude jets while residual sub-degree steering settles [149.03ms]
+(pass) eased real turns use only short spin-up and braking impulses without late correction pulse trains [460.66ms]
+(pass) missiles collide with actual Arc tower geometry in terminal flight at30/60/120Hz [257.19ms]
+(pass) missile admission sees a live defence blocker and releases the result after deployment removal [30.98ms]
+(pass) a failed missile forecast always releases cached defence poses before later live queries [23.01ms]
+
+tests/arc-combat.test.js:
+(pass) Arc studies hit once per pulse and destroy the mixed ground/air rosters [637.90ms]
+(pass) mixed defences share exactly one thinker and do not promise unverified Arc coverage [46.34ms]
+(pass) actual surface LOS, range exits and death cancel live bursts; a stall never replays hits [26.36ms]
+(pass) a surface-blocked priority target yields to hittable alternatives and retries later [23.58ms]
+(pass) upgrade bursts respect real gaps and cooldowns and stop immediately on obstruction [24.19ms]
+(pass) random contacts use exposed facing sides of current articulated poses and release all matrix references [409.37ms]
+
+tests/play-polish.test.js:
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.23ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.53ms]
+
+tests/arc-chain.test.js:
+(pass) upgraded actual hits chain once at25percent through exposed departure and arrival surfaces [25.00ms]
+(pass) base never chains; Upgrade II and lethal primary hits conduct25percent of full strength [73.29ms]
+(pass) random selection reaches both valid neighbours including the inclusive half-range boundary and never self or dead actors [29.81ms]
+(pass) transfer rejects blocked scenery and out-of-range3D recipients but can depart the opposite side of the primary [24.35ms]
+(pass) clear nearby airborne recipients use the same physical surface test and release sampler attachments on disposal [27.30ms]
+
+ 57 pass
+ 0 fail
+ 9586 expect() calls
+Ran 57 tests across 6 files. [4.21s]

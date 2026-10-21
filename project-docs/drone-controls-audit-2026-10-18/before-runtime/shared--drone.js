@@ -1,0 +1,40 @@
+import {DEFENCE_STATS} from './defence.js';
+
+// User-approved base timing/damage. Navigation/aim values below are provisional
+// A1 test tuning, kept separate from both the model and unassigned upgrades.
+const roundsPerSecond=4;
+export const DRONE_TUNING=Object.freeze({
+ base:Object.freeze({
+  flightSeconds:20,
+  flightStartsAt:'launch',
+  returnConsumesFlightTime:false,
+  finishBurstBeforeReturn:true,
+  rechargeSeconds:10,
+  weapon:Object.freeze({
+   strength:DEFENCE_STATS['turret-study'].base.strength,
+   shotsPerBurst:10,
+   roundsPerSecond,
+   shotIntervalSeconds:1/roundsPerSecond,
+   // Starts after the last actual round. Flight expiry never requires waiting
+   // out this cooldown: finish an active valid burst, then begin returning.
+   cooldownSeconds:5,
+   delivery:'hitscan',projectile:null,
+  }),
+ }),
+ upgrade1:null,
+ upgrade2:null,
+});
+export const DRONE_PREVIEW=Object.freeze({
+ maxRange:72,speed:72,lift:24,verticalSpeed:48,step:12,
+ // A cube enclosing the aircraft's rotation-invariant sphere also encloses
+ // every tilted fan and gun pose while the fuselage stays level.
+ hullRadius:16.5,transitLayers:Object.freeze([24,48,72,96]),
+ rotorSpeed:28,replanSeconds:.4,
+ acceleration:96,braking:120,turnAcceleration:84,cornerRadius:18,
+ stationGain:24,stationMargin:4,fanResponse:10.5,fanYawShare:.3,
+ stationShortlist:12,minimumUsefulPulses:3,urgentSwitchRatio:2,
+ bodyTurn:Object.freeze({maxSpeed:.825*Math.PI,acceleration:2.25*Math.PI}),
+ fineYaw:Object.freeze({min:-15*Math.PI/180,max:15*Math.PI/180,maxSpeed:2*Math.PI,acceleration:12*Math.PI}),
+ pitch:Object.freeze({min:-35*Math.PI/180,max:10*Math.PI/180,maxSpeed:Math.PI,acceleration:8*Math.PI}),
+ aimTolerance:2*Math.PI/180,finishHealth:100,finishPriority:2,
+});

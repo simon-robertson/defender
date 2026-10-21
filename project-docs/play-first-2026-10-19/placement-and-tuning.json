@@ -1,0 +1,257 @@
+{
+  "recordedAt": "2026-10-19T08:02:05.903Z",
+  "scope": "Play-only config/placement. Assets and previews are unchanged.",
+  "sourceHashes": {
+    "play/config.js": "6ee9b1da6bb32e0ba8505f6188cf7195fd63f5598beeb53a358fda7a0d5ec8d4",
+    "play/placement.js": "8443c16974fcaac9d40ca1ac4ae76caa9d1144e47a0e68f69ea67f538b4b0874",
+    "tests/play-config.test.js": "7730fb4e4b784c4df3ee6185a776c095bdea9a70760b33e73d9654504928320a",
+    "tests/play-placement.test.js": "5c78c803cef829944346eb756d0d9e6e8b372efd2130c5549aef4d1791ab833b"
+  },
+  "configuration": {
+    "version": 1,
+    "startTokens": 2,
+    "waveReward": 2,
+    "missLimit": 10,
+    "dog": {
+      "maxHealth": 80,
+      "speed": 12,
+      "missValue": 1,
+      "threat": 1
+    },
+    "waveCounts": [
+      [
+        3,
+        4,
+        5,
+        6
+      ],
+      [
+        3,
+        4,
+        5,
+        6
+      ]
+    ],
+    "waveGaps": [
+      3,
+      2.75,
+      2.5,
+      2
+    ],
+    "capacity": {
+      "maxOwnedUnits": 16,
+      "maxWaveEnemies": 6,
+      "modelLights": 72
+    },
+    "support": {
+      "dogSpeed": 15,
+      "minimumCadence": 0.008333333333333333,
+      "maxModelLights": 128
+    }
+  },
+  "placement": {
+    "method": "All grid cells; continuous full-ground occupied-cuboid projection in default overview; actual static collision cuboids; complete height-coupled yaw/pitch/recoil gun envelopes and pairwise simultaneous unions; continuous12-radius/14-height upright Dog route capsules with retained live impact clearance. Preparation uses actual wildlife navigation, supported bird perches and virtual completed bird flights; final seeds must have connected reach>=48 and substantial usable nodes.",
+    "conservativeLimits": "Some physical envelope overlaps can reject harmless joint combinations. Ground seed components require64nodes as a preparation authoring guard, not animal confinement. Independent posed-vertex tests verify gun profiles and Dog capsule contracts; no new runtime model/flight mechanics.",
+    "levels": [
+      {
+        "id": "moss-01",
+        "clearCells": {
+          "base": 36,
+          "upgrade1": 35
+        },
+        "witness": [
+          {
+            "id": "player-gun-1",
+            "model": "turret-study",
+            "variant": "upgrade1",
+            "box": [
+              2,
+              0,
+              7
+            ],
+            "turn": 0
+          },
+          {
+            "id": "player-gun-2",
+            "model": "turret-study",
+            "variant": "upgrade1",
+            "box": [
+              9,
+              0,
+              10
+            ],
+            "turn": 0
+          }
+        ],
+        "prepared": {
+          "valid": true,
+          "code": null,
+          "reason": "",
+          "wildlifePoints": [
+            [
+              474,
+              24,
+              362
+            ],
+            [
+              106,
+              24,
+              250
+            ],
+            [
+              406,
+              24,
+              6
+            ]
+          ]
+        }
+      },
+      {
+        "id": "moss-02",
+        "clearCells": {
+          "base": 30,
+          "upgrade1": 30
+        },
+        "witness": [
+          {
+            "id": "player-gun-1",
+            "model": "turret-study",
+            "variant": "upgrade1",
+            "box": [
+              5,
+              0,
+              5
+            ],
+            "turn": 0
+          },
+          {
+            "id": "player-gun-2",
+            "model": "turret-study",
+            "variant": "upgrade1",
+            "box": [
+              8,
+              0,
+              8
+            ],
+            "turn": 0
+          }
+        ],
+        "prepared": {
+          "valid": true,
+          "code": null,
+          "reason": "",
+          "wildlifePoints": [
+            [
+              462,
+              24,
+              334
+            ],
+            [
+              6,
+              24,
+              42
+            ],
+            [
+              434,
+              24,
+              26
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "measurements": {
+    "a1Wave1TwoBase": {
+      "boxes": [
+        [
+          2,
+          0,
+          7
+        ],
+        [
+          9,
+          0,
+          10
+        ]
+      ],
+      "killed": 3,
+      "escaped": 0,
+      "shots": 24,
+      "seconds": 39.13333333333166
+    },
+    "a1Wave1OneUpgrade1": {
+      "boxes": [
+        [
+          8,
+          0,
+          10
+        ]
+      ],
+      "killed": 3,
+      "escaped": 0,
+      "shots": 21,
+      "seconds": 29.583333333332206
+    },
+    "a2Wave4TwoUpgrade1": {
+      "boxes": [
+        [
+          5,
+          0,
+          5
+        ],
+        [
+          8,
+          0,
+          8
+        ]
+      ],
+      "killed": 6,
+      "escaped": 0,
+      "shots": 42,
+      "seconds": 25.758333333332324
+    },
+    "poorEarlyAlternative": {
+      "boxes": [
+        [
+          2,
+          0,
+          7
+        ],
+        [
+          8,
+          0,
+          10
+        ]
+      ],
+      "variants": [
+        "base",
+        "base"
+      ],
+      "killed": 0,
+      "escaped": 3,
+      "reason": "The second plot is physically clear but its48-unit base range only touches this route; upgrade1atthisplot is useful. No placement is restricted for lack of tactical range."
+    },
+    "fullRun": {
+      "provenance": "Engineer independent actual PlaySession + PlayEngine integration, tests/play-engine.test.js",
+      "test": "real eight-wave witness preserves paid ownership, rewards once, transfers to A2 and completes with14tokens",
+      "waveCount": 8,
+      "killed": 36,
+      "escaped": 0,
+      "rewards": 8,
+      "finalTokens": 14,
+      "strategy": "Buy2bases and useA1witness onwave1; spend firstreward upgradingboth, keep same-map positions. Transfer same owned IDs/upgrade1tiers toA2witness, no further purchases."
+    }
+  },
+  "targetedTests": {
+    "command": "bun test tests/play-placement.test.js tests/play-config.test.js",
+    "passed": 9,
+    "failed": 0,
+    "expectations": 508,
+    "coverage": [
+      "immutable accepted sources; all-grid legality; unsupported ground/units; simultaneous gun conflicts and own-ID exclusion",
+      "real hierarchical gun poses at interval interiors; complete Dog journeys at6/12/15speed",
+      "tiny wildlife cage rejection; blocked-seed relocation; actual60-second completed ground and bird journeys on both maps"
+    ]
+  }
+}

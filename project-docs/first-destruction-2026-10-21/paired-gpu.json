@@ -1,0 +1,2018 @@
+{
+  "runs": [
+    {
+      "prepared": false,
+      "setupMs": 0,
+      "viewport": [
+        1792,
+        1008
+      ],
+      "deaths": [
+        {
+          "death": 1,
+          "effectMs": 0.6000000238418579,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 1.800000011920929,
+              "completionMs": 7.400000035762787,
+              "nextRafGapMs": 16.700000000000045,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [
+                  {
+                    "label": "Debris camera depth",
+                    "size": null
+                  },
+                  {
+                    "label": "Debris sky shadows",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit opaque debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Mirrored solid debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit local smoke",
+                    "size": null
+                  },
+                  {
+                    "label": "Brief death blast",
+                    "size": null
+                  }
+                ],
+                "asyncPipelines": [],
+                "buffers": [
+                  {
+                    "label": "",
+                    "size": 107520
+                  },
+                  {
+                    "label": "",
+                    "size": 36288
+                  }
+                ],
+                "textures": [],
+                "modules": [
+                  {
+                    "label": "Lit solid debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit smoke and brief blast",
+                    "size": null
+                  }
+                ]
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.40000003576278687,
+              "completionMs": 6.200000047683716,
+              "nextRafGapMs": 16.700000000000045,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [
+                  {
+                    "label": "Post-composite shockwave",
+                    "size": null
+                  }
+                ],
+                "asyncPipelines": [],
+                "buffers": [
+                  {
+                    "label": "",
+                    "size": 144
+                  }
+                ],
+                "textures": [
+                  {
+                    "label": "Complete display before refraction",
+                    "size": [
+                      1792,
+                      1008
+                    ]
+                  }
+                ],
+                "modules": [
+                  {
+                    "label": "Spherical explosion refraction",
+                    "size": null
+                  }
+                ]
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 6.100000023841858,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 7.599999964237213,
+              "nextRafGapMs": 16.700000000000045,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8.300000011920929,
+              "nextRafGapMs": 16.600000000000136,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [
+              {
+                "label": "Debris camera depth",
+                "size": null
+              },
+              {
+                "label": "Debris sky shadows",
+                "size": null
+              },
+              {
+                "label": "Lit opaque debris",
+                "size": null
+              },
+              {
+                "label": "Mirrored solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit local smoke",
+                "size": null
+              },
+              {
+                "label": "Brief death blast",
+                "size": null
+              },
+              {
+                "label": "Post-composite shockwave",
+                "size": null
+              }
+            ],
+            "asyncPipelines": [],
+            "buffers": [
+              {
+                "label": "",
+                "size": 107520
+              },
+              {
+                "label": "",
+                "size": 36288
+              },
+              {
+                "label": "",
+                "size": 144
+              }
+            ],
+            "textures": [
+              {
+                "label": "Complete display before refraction",
+                "size": [
+                  1792,
+                  1008
+                ]
+              }
+            ],
+            "modules": [
+              {
+                "label": "Lit solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit smoke and brief blast",
+                "size": null
+              },
+              {
+                "label": "Spherical explosion refraction",
+                "size": null
+              }
+            ]
+          },
+          "activeCubes": 24,
+          "decals": 0
+        },
+        {
+          "death": 2,
+          "effectMs": 0.19999998807907104,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8,
+              "nextRafGapMs": 16.700000000000045,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 7.300000011920929,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 8.600000023841858,
+              "nextRafGapMs": 16.600000000000136,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 8.399999976158142,
+              "nextRafGapMs": 16.700000000000045,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.5,
+              "completionMs": 9.599999964237213,
+              "nextRafGapMs": 16.59999999999991,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        },
+        {
+          "death": 3,
+          "effectMs": 0.19999998807907104,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.40000003576278687,
+              "completionMs": 10.5,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 16.69999998807907,
+              "nextRafGapMs": 16.700000000000045,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 1,
+              "completionMs": 13.699999988079071,
+              "nextRafGapMs": 16.600000000000136,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.40000003576278687,
+              "completionMs": 12.600000023841858,
+              "nextRafGapMs": 16,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.5999999642372131,
+              "completionMs": 14.5,
+              "nextRafGapMs": 17.600000000000136,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        }
+      ],
+      "resources": {
+        "damageBytes": 143808,
+        "shockwaveBytes": 144,
+        "shockwaveTargetBytes": 7225344
+      },
+      "note": "Fresh renderer/device; actual A1 enemy takeHit/death callback and production effects, no defences/camera director. Wall completion includes queued GPU work; driver caches may persist across devices. No browser-wide/FPS guarantee."
+    },
+    {
+      "prepared": true,
+      "setupMs": 7,
+      "viewport": [
+        1792,
+        1008
+      ],
+      "deaths": [
+        {
+          "death": 1,
+          "effectMs": 0.20000004768371582,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 10.5,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 9.800000011920929,
+              "nextRafGapMs": 16.59999999999991,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.20000004768371582,
+              "completionMs": 8.800000011920929,
+              "nextRafGapMs": 16.59999999999991,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8.5,
+              "nextRafGapMs": 16.800000000000182,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.20000004768371582,
+              "completionMs": 8.5,
+              "nextRafGapMs": 16.59999999999991,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 24,
+          "decals": 0
+        },
+        {
+          "death": 2,
+          "effectMs": 0.10000002384185791,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.09999996423721313,
+              "completionMs": 9.199999988079071,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.2999999523162842,
+              "completionMs": 10.899999976158142,
+              "nextRafGapMs": 16.59999999999991,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.10000002384185791,
+              "completionMs": 11.099999964237213,
+              "nextRafGapMs": 16.700000000000273,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 13.5,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.5,
+              "completionMs": 12.699999988079071,
+              "nextRafGapMs": 16.59999999999991,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        },
+        {
+          "death": 3,
+          "effectMs": 0.20000004768371582,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 10.900000035762787,
+              "nextRafGapMs": 16.59999999999991,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.5,
+              "completionMs": 13.400000035762787,
+              "nextRafGapMs": 16.200000000000273,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.5999999642372131,
+              "completionMs": 14,
+              "nextRafGapMs": 16.5,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.5,
+              "completionMs": 14.399999976158142,
+              "nextRafGapMs": 16.700000000000273,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.5,
+              "completionMs": 12.599999964237213,
+              "nextRafGapMs": 17.09999999999991,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        }
+      ],
+      "resources": {
+        "damageBytes": 143808,
+        "shockwaveBytes": 144,
+        "shockwaveTargetBytes": 7225344
+      },
+      "note": "Fresh renderer/device; actual A1 enemy takeHit/death callback and production effects, no defences/camera director. Wall completion includes queued GPU work; driver caches may persist across devices. No browser-wide/FPS guarantee."
+    },
+    {
+      "prepared": true,
+      "setupMs": 2.399999976158142,
+      "viewport": [
+        1792,
+        1008
+      ],
+      "deaths": [
+        {
+          "death": 1,
+          "effectMs": 0,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.10000002384185791,
+              "completionMs": 7.699999988079071,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8.5,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.10000002384185791,
+              "completionMs": 8.5,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.10000002384185791,
+              "completionMs": 8.699999988079071,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 9.900000035762787,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 24,
+          "decals": 0
+        },
+        {
+          "death": 2,
+          "effectMs": 0.19999998807907104,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8.799999952316284,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 12.599999964237213,
+              "nextRafGapMs": 16.599999999999454,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.5999999642372131,
+              "completionMs": 13.600000023841858,
+              "nextRafGapMs": 16.599999999999454,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 1.100000023841858,
+              "completionMs": 17.399999976158142,
+              "nextRafGapMs": 16.100000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.6000000238418579,
+              "completionMs": 11.5,
+              "nextRafGapMs": 16.599999999999454,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        },
+        {
+          "death": 3,
+          "effectMs": 0.10000002384185791,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 8.600000023841858,
+              "nextRafGapMs": 16.800000000000182,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 10.300000011920929,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 9.199999988079071,
+              "nextRafGapMs": 16.400000000000546,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 10.199999988079071,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.40000003576278687,
+              "completionMs": 11.299999952316284,
+              "nextRafGapMs": 16.900000000000546,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        }
+      ],
+      "resources": {
+        "damageBytes": 143808,
+        "shockwaveBytes": 144,
+        "shockwaveTargetBytes": 7225344
+      },
+      "note": "Fresh renderer/device; actual A1 enemy takeHit/death callback and production effects, no defences/camera director. Wall completion includes queued GPU work; driver caches may persist across devices. No browser-wide/FPS guarantee."
+    },
+    {
+      "prepared": false,
+      "setupMs": 0,
+      "viewport": [
+        1792,
+        1008
+      ],
+      "deaths": [
+        {
+          "death": 1,
+          "effectMs": 0,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.40000003576278687,
+              "completionMs": 5.400000035762787,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [
+                  {
+                    "label": "Debris camera depth",
+                    "size": null
+                  },
+                  {
+                    "label": "Debris sky shadows",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit opaque debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Mirrored solid debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit local smoke",
+                    "size": null
+                  },
+                  {
+                    "label": "Brief death blast",
+                    "size": null
+                  }
+                ],
+                "asyncPipelines": [],
+                "buffers": [
+                  {
+                    "label": "",
+                    "size": 107520
+                  },
+                  {
+                    "label": "",
+                    "size": 36288
+                  }
+                ],
+                "textures": [],
+                "modules": [
+                  {
+                    "label": "Lit solid debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit smoke and brief blast",
+                    "size": null
+                  }
+                ]
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 5.800000011920929,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [
+                  {
+                    "label": "Post-composite shockwave",
+                    "size": null
+                  }
+                ],
+                "asyncPipelines": [],
+                "buffers": [
+                  {
+                    "label": "",
+                    "size": 144
+                  }
+                ],
+                "textures": [
+                  {
+                    "label": "Complete display before refraction",
+                    "size": [
+                      1792,
+                      1008
+                    ]
+                  }
+                ],
+                "modules": [
+                  {
+                    "label": "Spherical explosion refraction",
+                    "size": null
+                  }
+                ]
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 6,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 6.400000035762787,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.2999999523162842,
+              "completionMs": 6.800000011920929,
+              "nextRafGapMs": 16.599999999999454,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [
+              {
+                "label": "Debris camera depth",
+                "size": null
+              },
+              {
+                "label": "Debris sky shadows",
+                "size": null
+              },
+              {
+                "label": "Lit opaque debris",
+                "size": null
+              },
+              {
+                "label": "Mirrored solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit local smoke",
+                "size": null
+              },
+              {
+                "label": "Brief death blast",
+                "size": null
+              },
+              {
+                "label": "Post-composite shockwave",
+                "size": null
+              }
+            ],
+            "asyncPipelines": [],
+            "buffers": [
+              {
+                "label": "",
+                "size": 107520
+              },
+              {
+                "label": "",
+                "size": 36288
+              },
+              {
+                "label": "",
+                "size": 144
+              }
+            ],
+            "textures": [
+              {
+                "label": "Complete display before refraction",
+                "size": [
+                  1792,
+                  1008
+                ]
+              }
+            ],
+            "modules": [
+              {
+                "label": "Lit solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit smoke and brief blast",
+                "size": null
+              },
+              {
+                "label": "Spherical explosion refraction",
+                "size": null
+              }
+            ]
+          },
+          "activeCubes": 24,
+          "decals": 0
+        },
+        {
+          "death": 2,
+          "effectMs": 0.09999996423721313,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.20000004768371582,
+              "completionMs": 6.5,
+              "nextRafGapMs": 16.599999999999454,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.5,
+              "completionMs": 8.5,
+              "nextRafGapMs": 16.900000000000546,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 8.400000035762787,
+              "nextRafGapMs": 16.599999999999454,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.5,
+              "completionMs": 9.599999964237213,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.6000000238418579,
+              "completionMs": 10,
+              "nextRafGapMs": 17.399999999999636,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        },
+        {
+          "death": 3,
+          "effectMs": 0.10000002384185791,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8.600000023841858,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.5999999642372131,
+              "completionMs": 11.5,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 13,
+              "nextRafGapMs": 16.599999999999454,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.5,
+              "completionMs": 12.599999964237213,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.5999999642372131,
+              "completionMs": 13.799999952316284,
+              "nextRafGapMs": 16.699999999999818,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        }
+      ],
+      "resources": {
+        "damageBytes": 143808,
+        "shockwaveBytes": 144,
+        "shockwaveTargetBytes": 7225344
+      },
+      "note": "Fresh renderer/device; actual A1 enemy takeHit/death callback and production effects, no defences/camera director. Wall completion includes queued GPU work; driver caches may persist across devices. No browser-wide/FPS guarantee."
+    },
+    {
+      "prepared": false,
+      "setupMs": 0,
+      "viewport": [
+        1792,
+        1008
+      ],
+      "deaths": [
+        {
+          "death": 1,
+          "effectMs": 0,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 8.199999988079071,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [
+                  {
+                    "label": "Debris camera depth",
+                    "size": null
+                  },
+                  {
+                    "label": "Debris sky shadows",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit opaque debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Mirrored solid debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit local smoke",
+                    "size": null
+                  },
+                  {
+                    "label": "Brief death blast",
+                    "size": null
+                  }
+                ],
+                "asyncPipelines": [],
+                "buffers": [
+                  {
+                    "label": "",
+                    "size": 107520
+                  },
+                  {
+                    "label": "",
+                    "size": 36288
+                  }
+                ],
+                "textures": [],
+                "modules": [
+                  {
+                    "label": "Lit solid debris",
+                    "size": null
+                  },
+                  {
+                    "label": "Lit smoke and brief blast",
+                    "size": null
+                  }
+                ]
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.2999999523162842,
+              "completionMs": 10.100000023841858,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [
+                  {
+                    "label": "Post-composite shockwave",
+                    "size": null
+                  }
+                ],
+                "asyncPipelines": [],
+                "buffers": [
+                  {
+                    "label": "",
+                    "size": 144
+                  }
+                ],
+                "textures": [
+                  {
+                    "label": "Complete display before refraction",
+                    "size": [
+                      1792,
+                      1008
+                    ]
+                  }
+                ],
+                "modules": [
+                  {
+                    "label": "Spherical explosion refraction",
+                    "size": null
+                  }
+                ]
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 9.799999952316284,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8.899999976158142,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 11.399999976158142,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [
+              {
+                "label": "Debris camera depth",
+                "size": null
+              },
+              {
+                "label": "Debris sky shadows",
+                "size": null
+              },
+              {
+                "label": "Lit opaque debris",
+                "size": null
+              },
+              {
+                "label": "Mirrored solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit local smoke",
+                "size": null
+              },
+              {
+                "label": "Brief death blast",
+                "size": null
+              },
+              {
+                "label": "Post-composite shockwave",
+                "size": null
+              }
+            ],
+            "asyncPipelines": [],
+            "buffers": [
+              {
+                "label": "",
+                "size": 107520
+              },
+              {
+                "label": "",
+                "size": 36288
+              },
+              {
+                "label": "",
+                "size": 144
+              }
+            ],
+            "textures": [
+              {
+                "label": "Complete display before refraction",
+                "size": [
+                  1792,
+                  1008
+                ]
+              }
+            ],
+            "modules": [
+              {
+                "label": "Lit solid debris",
+                "size": null
+              },
+              {
+                "label": "Lit smoke and brief blast",
+                "size": null
+              },
+              {
+                "label": "Spherical explosion refraction",
+                "size": null
+              }
+            ]
+          },
+          "activeCubes": 24,
+          "decals": 0
+        },
+        {
+          "death": 2,
+          "effectMs": 0,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 12.399999976158142,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 12.899999976158142,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 9.300000011920929,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 9.199999988079071,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 10.099999964237213,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        },
+        {
+          "death": 3,
+          "effectMs": 0.09999996423721313,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.10000002384185791,
+              "completionMs": 8.099999964237213,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 10.5,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.5,
+              "completionMs": 11.300000011920929,
+              "nextRafGapMs": 16.099999999998545,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.40000003576278687,
+              "completionMs": 12.100000023841858,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.5999999642372131,
+              "completionMs": 12.899999976158142,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        }
+      ],
+      "resources": {
+        "damageBytes": 143808,
+        "shockwaveBytes": 144,
+        "shockwaveTargetBytes": 7225344
+      },
+      "note": "Fresh renderer/device; actual A1 enemy takeHit/death callback and production effects, no defences/camera director. Wall completion includes queued GPU work; driver caches may persist across devices. No browser-wide/FPS guarantee."
+    },
+    {
+      "prepared": true,
+      "setupMs": 2.200000047683716,
+      "viewport": [
+        1792,
+        1008
+      ],
+      "deaths": [
+        {
+          "death": 1,
+          "effectMs": 0.10000002384185791,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 7.400000035762787,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 8.800000011920929,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.2999999523162842,
+              "completionMs": 8.800000011920929,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 9.300000011920929,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 9.299999952316284,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 24,
+          "decals": 0
+        },
+        {
+          "death": 2,
+          "effectMs": 0,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 8.899999976158142,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 9.199999988079071,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.19999998807907104,
+              "completionMs": 13.300000011920929,
+              "nextRafGapMs": 16.600000000000364,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 9.199999988079071,
+              "nextRafGapMs": 16.5,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.5,
+              "completionMs": 10.099999964237213,
+              "nextRafGapMs": 16.700000000000728,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        },
+        {
+          "death": 3,
+          "effectMs": 0.19999998807907104,
+          "frames": [
+            {
+              "offset": 0,
+              "cpuRenderMs": 0.20000004768371582,
+              "completionMs": 8.800000011920929,
+              "nextRafGapMs": 17.100000000000364,
+              "shockwaves": 0,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 1,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 10.800000011920929,
+              "nextRafGapMs": 16.69999999999891,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 2,
+              "cpuRenderMs": 0.3999999761581421,
+              "completionMs": 10.100000023841858,
+              "nextRafGapMs": 17.19999999999891,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 3,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 8.100000023841858,
+              "nextRafGapMs": 17,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            },
+            {
+              "offset": 4,
+              "cpuRenderMs": 0.30000001192092896,
+              "completionMs": 11.5,
+              "nextRafGapMs": 16.099999999998545,
+              "shockwaves": 1,
+              "created": {
+                "pipelines": [],
+                "asyncPipelines": [],
+                "buffers": [],
+                "textures": [],
+                "modules": []
+              }
+            }
+          ],
+          "created": {
+            "pipelines": [],
+            "asyncPipelines": [],
+            "buffers": [],
+            "textures": [],
+            "modules": []
+          },
+          "activeCubes": 35,
+          "decals": 0
+        }
+      ],
+      "resources": {
+        "damageBytes": 143808,
+        "shockwaveBytes": 144,
+        "shockwaveTargetBytes": 7225344
+      },
+      "note": "Fresh renderer/device; actual A1 enemy takeHit/death callback and production effects, no defences/camera director. Wall completion includes queued GPU work; driver caches may persist across devices. No browser-wide/FPS guarantee."
+    }
+  ],
+  "errors": []
+}

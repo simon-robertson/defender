@@ -1,0 +1,797 @@
+{
+  "schema": "defender.zone-b-carving-final-verification",
+  "version": 1,
+  "recordedAt": "2026-10-19T06:57:32.637Z",
+  "status": "Lead-selected and technically verified for user review; user creative acceptance pending.",
+  "changedActiveAssets": [
+    "assets/levels/ochre-01.json",
+    "assets/levels/ochre-02.json",
+    "assets/levels/ochre-03.json",
+    "assets/levels/ochre-04.json"
+  ],
+  "unchangedOtherProductionLevels": 12,
+  "unchangedModelSources": 67,
+  "frozenChecksummedFiles": 69,
+  "frozenChanges": [],
+  "frozenArchive": {
+    "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z.tar.gz",
+    "sha256": "d3d8ae77ce5e70b0a0bac22183ecc4712aee4830871afc9955cceb8976d2098b",
+    "expectedSha256": "d3d8ae77ce5e70b0a0bac22183ecc4712aee4830871afc9955cceb8976d2098b",
+    "verified": true
+  },
+  "levels": [
+    {
+      "id": "ochre-01",
+      "selectedOption": "cistern-mesa-circuit",
+      "sourceHash": "0f733a25a14d886049ef71716e368316d5496b680682763ddcc562c498ef669e",
+      "exactFactoryAndDeterministic": true,
+      "exactSelectedProposal": true,
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 44,
+          "length": 1032
+        }
+      ],
+      "unionPathBoxes": 44,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            0,
+            0,
+            5
+          ],
+          "exit": [
+            7,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 42,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [],
+      "retainedScenery": 201,
+      "removedScenery": 118,
+      "removalPurposes": {
+        "routeTravel": 44,
+        "fullCandidateGround": 39,
+        "overviewVisibility": 35
+      },
+      "retainedSceneryExact": true,
+      "terrainWaterEnvironmentUnchanged": true,
+      "originalBirdPerchesUnchanged": true,
+      "groundSeedsChanged": true,
+      "surveyedPlots": 39,
+      "fullGroundVisibility": true,
+      "baseGunArcUseful": 39,
+      "baseGunUseful": 38,
+      "baseArcUseful": 39,
+      "upgradeDependent": [],
+      "clearanceReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 38
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 38
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 39
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 39
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 39
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 39
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 39
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 39
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 39
+        }
+      ],
+      "restrictions": [
+        {
+          "site": "south-return-10-13",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "south-return-10-13",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        }
+      ],
+      "sampledRoutePoses": 3099,
+      "sourceRouteFailures": [],
+      "weaponRouteFailures": [],
+      "missiles": {
+        "launches": 54,
+        "representativeLaunches": 45,
+        "representativeHits": 45,
+        "hits": 48,
+        "physicalMisses": 0,
+        "routeExitDiscards": 6,
+        "staticContacts": 0
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "passed": true,
+        "groundCompleted": [
+          3,
+          3,
+          2
+        ],
+        "birdCompleted": [
+          16,
+          16,
+          17
+        ]
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "ochre-02",
+      "selectedOption": "riverfold-crossing",
+      "sourceHash": "6e437f27aaac3f8b75212039e6bb3a6f966c25b0a20b41d38aed6c40bf5fb129",
+      "exactFactoryAndDeterministic": true,
+      "exactSelectedProposal": true,
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 45,
+          "length": 1056
+        }
+      ],
+      "unionPathBoxes": 45,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            0,
+            0,
+            7
+          ],
+          "exit": [
+            14,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 43,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [
+        {
+          "id": "river-waist",
+          "box": [
+            6,
+            6
+          ],
+          "walkingHeight": 24,
+          "naturalFlatHeight": null,
+          "originalColumn": {
+            "box": [
+              6,
+              6
+            ],
+            "ground": 17,
+            "water": 20
+          }
+        },
+        {
+          "id": "river-waist",
+          "box": [
+            7,
+            6
+          ],
+          "walkingHeight": 24,
+          "naturalFlatHeight": null,
+          "originalColumn": {
+            "box": [
+              7,
+              6
+            ],
+            "ground": 17,
+            "water": 20
+          }
+        }
+      ],
+      "retainedScenery": 178,
+      "removedScenery": 103,
+      "removalPurposes": {
+        "routeTravel": 43,
+        "fullCandidateGround": 37,
+        "overviewVisibility": 23
+      },
+      "retainedSceneryExact": true,
+      "terrainWaterEnvironmentUnchanged": true,
+      "originalBirdPerchesUnchanged": true,
+      "groundSeedsChanged": true,
+      "surveyedPlots": 37,
+      "fullGroundVisibility": true,
+      "baseGunArcUseful": 37,
+      "baseGunUseful": 34,
+      "baseArcUseful": 37,
+      "upgradeDependent": [],
+      "clearanceReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 34
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 34
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 36
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 37
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 37
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 37
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 37
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 37
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 37
+        }
+      ],
+      "restrictions": [
+        {
+          "site": "west-court-2-9",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "west-court-5-11",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "east-return-17-10",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "west-court-2-9",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "west-court-5-11",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "east-return-17-10",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "east-return-17-10",
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        }
+      ],
+      "sampledRoutePoses": 3171,
+      "sourceRouteFailures": [],
+      "weaponRouteFailures": [],
+      "missiles": {
+        "launches": 54,
+        "representativeLaunches": 45,
+        "representativeHits": 45,
+        "hits": 48,
+        "physicalMisses": 0,
+        "routeExitDiscards": 6,
+        "staticContacts": 0
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "passed": true,
+        "groundCompleted": [
+          5,
+          5,
+          6
+        ],
+        "birdCompleted": [
+          13,
+          17,
+          15
+        ]
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "ochre-03",
+      "selectedOption": "mesa-confluence",
+      "sourceHash": "01a498d7720489c3837023f6f4183ba4688da1fde814907a5370a8815d874ad8",
+      "exactFactoryAndDeterministic": true,
+      "exactSelectedProposal": true,
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 45,
+          "length": 1056
+        },
+        {
+          "id": "eastern",
+          "boxes": 31,
+          "length": 720
+        }
+      ],
+      "unionPathBoxes": 52,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            0,
+            0,
+            8
+          ],
+          "exit": [
+            5,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 43,
+          "edgeRunningSegments": 0
+        },
+        {
+          "id": "eastern",
+          "entry": [
+            19,
+            0,
+            5
+          ],
+          "exit": [
+            5,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 29,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [],
+      "retainedScenery": 193,
+      "removedScenery": 117,
+      "removalPurposes": {
+        "routeTravel": 52,
+        "fullCandidateGround": 38,
+        "overviewVisibility": 27
+      },
+      "retainedSceneryExact": true,
+      "terrainWaterEnvironmentUnchanged": true,
+      "originalBirdPerchesUnchanged": true,
+      "groundSeedsChanged": true,
+      "surveyedPlots": 38,
+      "fullGroundVisibility": true,
+      "baseGunArcUseful": 37,
+      "baseGunUseful": 35,
+      "baseArcUseful": 37,
+      "upgradeDependent": [
+        {
+          "id": "east-return-14-7",
+          "box": [
+            14,
+            7
+          ],
+          "group": "eastReturn"
+        }
+      ],
+      "clearanceReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 36
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 37
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 36
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 38
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 38
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 38
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 38
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 38
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 38
+        }
+      ],
+      "restrictions": [
+        {
+          "site": "shared-15-11",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "late-6-12",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "late-6-12",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "shared-15-12",
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "late-6-12",
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        }
+      ],
+      "sampledRoutePoses": 5334,
+      "sourceRouteFailures": [],
+      "weaponRouteFailures": [],
+      "missiles": {
+        "launches": 54,
+        "representativeLaunches": 45,
+        "representativeHits": 45,
+        "hits": 48,
+        "physicalMisses": 0,
+        "routeExitDiscards": 6,
+        "staticContacts": 0
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "passed": true,
+        "groundCompleted": [
+          6,
+          3,
+          3
+        ],
+        "birdCompleted": [
+          18,
+          14,
+          16
+        ]
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "ochre-04",
+      "selectedOption": "aqueduct-shore-tour",
+      "sourceHash": "32516e96472e42605fdc53e74046e2b3164d1ad9549e025521e5919f39d4ed3f",
+      "exactFactoryAndDeterministic": true,
+      "exactSelectedProposal": true,
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 31,
+          "length": 720
+        }
+      ],
+      "unionPathBoxes": 31,
+      "edges": [
+        {
+          "id": "main",
+          "entry": [
+            15,
+            0,
+            0
+          ],
+          "exit": [
+            18,
+            0,
+            15
+          ],
+          "boundaryBoxes": 2,
+          "interiorBoxes": 29,
+          "edgeRunningSegments": 0
+        }
+      ],
+      "extraPavedJoins": [],
+      "bridgeSupport": [],
+      "retainedScenery": 161,
+      "removedScenery": 79,
+      "removalPurposes": {
+        "routeTravel": 31,
+        "fullCandidateGround": 32,
+        "overviewVisibility": 16
+      },
+      "retainedSceneryExact": true,
+      "terrainWaterEnvironmentUnchanged": true,
+      "originalBirdPerchesUnchanged": true,
+      "groundSeedsChanged": true,
+      "surveyedPlots": 32,
+      "fullGroundVisibility": true,
+      "baseGunArcUseful": 29,
+      "baseGunUseful": 26,
+      "baseArcUseful": 29,
+      "upgradeDependent": [
+        {
+          "id": "shore-return-10-6",
+          "box": [
+            10,
+            6
+          ],
+          "group": "shoreReturn"
+        },
+        {
+          "id": "shore-return-11-6",
+          "box": [
+            11,
+            6
+          ],
+          "group": "shoreReturn"
+        },
+        {
+          "id": "shore-return-12-6",
+          "box": [
+            12,
+            6
+          ],
+          "group": "shoreReturn"
+        }
+      ],
+      "clearanceReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 29
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 29
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 30
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 32
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 32
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 32
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 32
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 32
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 32
+        }
+      ],
+      "restrictions": [
+        {
+          "site": "shore-return-10-10",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "lower-court-11-12",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "lower-court-12-14",
+          "model": "turret-study",
+          "variant": "base",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "shore-return-10-10",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "lower-court-11-12",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "lower-court-12-14",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "shore-return-10-10",
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        },
+        {
+          "site": "lower-court-12-14",
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "reason": "Complete weapon movement envelope intersects retained static scenery."
+        }
+      ],
+      "sampledRoutePoses": 2163,
+      "sourceRouteFailures": [],
+      "weaponRouteFailures": [],
+      "missiles": {
+        "launches": 45,
+        "representativeLaunches": 45,
+        "representativeHits": 45,
+        "hits": 45,
+        "physicalMisses": 0,
+        "routeExitDiscards": 0,
+        "staticContacts": 0
+      },
+      "wildlife": {
+        "seconds": 180,
+        "hz": 30,
+        "passed": true,
+        "groundCompleted": [
+          3,
+          2,
+          11
+        ],
+        "birdCompleted": [
+          20,
+          15,
+          17
+        ]
+      },
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "dependencies": {
+    "scripts/b-path-carving.js": "44cd0d3eae9437b67e56d22ee4f4920828cb1f687748bd56699b947b728d5783",
+    "scripts/b-path-carving-data.js": "e5de15b0fa2095dcdba83d69e0bf62c4e7ad761d76f467392c2e462fe791a9cb",
+    "scripts/b-path-carving-options.js": "ff46f9e33b834c95fdce0556f7e4864184853652fbf922ea2491689f60c8ec9d",
+    "scripts/b-path-carving-comparison.js": "2c1f280c2799f3c7d4c239a6f893eca672ca15638e26abd939dc5da11de5abdf",
+    "scripts/b-path-carving-audit.js": "fe673a344cb96ccaee7c07d848e180ab881e33a79ff91050a4fe624c9e5ebf28",
+    "scripts/b-path-carving-clearance.js": "cb7bd7892dcc015de1b083a4ed73897eb51e3a78c0223efeef465572498d07d5",
+    "scripts/b-path-carving-coverage.js": "afce1153bd31ad51635c54e5f1cee5d44ff0447a480cb82e52de20f1a220a203",
+    "scripts/b-path-carving-missiles.js": "835347f83af2d0141edd0c2f153e3a329ffaeddf7671c7fdf7c33266deba7bbe",
+    "scripts/b-path-runtime-audit.js": "3d801dde8e519939590054d1629cef0399a4743c3acd5a9282c6de04ca8dd929",
+    "scripts/current-preview-levels.js": "a431114dae8a718c912c7234713fa8d50bebbf1f89e3e6c04f8e33dcefa4bd3c",
+    "scripts/level-layout-audit.js": "df66fc1b23b261434b5b8e4203deaf13bccd6b18fd88691ce6edc975c054a35d",
+    "scripts/verify-zone-a-four-visibility.js": "c9c2a4ed7c75792ba30800485773c524e0b3d250b5b75de6335f8bc123da164f",
+    "shared/preview-levels.js": "6ca1bef5b06f46a907df687c447860967b9e45331454150d4ee45ca2e76d8291",
+    "shared/level.js": "3ddcf9aa957a0f2fa338e17e7d548cfce8ef6a3eaec5c1633630fb3c01c4f187",
+    "shared/terrain.js": "387cdc046e673352c42c7f4adb49664151eb635e4cf3a12a146ecd8bf642dbb0",
+    "shared/routes.js": "446cc805af8aaa4004b6ac030dd5e0e8c8c88067a18e128a3c79a1a41e770516",
+    "shared/bridges.js": "cc3cad36438b7be04321cf3094fecfd3d3be4393f98982d621b50d1329e4d9ac",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "engine/world.js": "c58671fba6b7360f6c1373ef0e617c1f235c5e50a1272e823f2fdd18996e5f55",
+    "engine/camera.js": "f2e759bcf5d334bd7f123c5729f948d52e38543b321b03a12aae4291c23f2467",
+    "engine/visibility.js": "88f37a5b67eed1d182aaeab7dc7a621ab22d77886eac1567f83fa809802d107a",
+    "game/enemy-preview.js": "3875d07d58318ecf326155bd5720f3445e4ebda3fd95e7bad3a77b0ef71339e9",
+    "game/turret-preview.js": "89d9a78a322180fc3530956afbcb6b83c15be9d70e089f1bc09f70085d46fe76",
+    "game/arc-spire-preview.js": "19eebd6c84d4bf989a3eb7035f2639faedb09f45fcb3993d52f46360dce5892c",
+    "game/missile-preview.js": "7e55d9f72ad5fb562c7b93ac14594b738dc6d578e29e3b46140706693b98d85f",
+    "game/wildlife-preview.js": "c7c44ab211dc1c948be624dcb404b0ef56f01e3989da9450a811d55c570bf2e1"
+  },
+  "failures": [],
+  "passed": true
+}

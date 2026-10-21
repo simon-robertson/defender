@@ -1,0 +1,46 @@
+{
+  "passed": 14,
+  "failed": 0,
+  "checks": [
+    "Spherical rim displaces the completed image",
+    "Sphere interior remains clear without a filled bubble",
+    "Distant pixels remain unchanged",
+    "Zero strength is an exact passthrough",
+    "Opaque foreground is not refracted",
+    "Foreground water is not refracted",
+    "Water and image content behind the wave are refracted",
+    "Displaced-source guard does not pull foreground across its edge",
+    "A sphere behind the camera has no effect",
+    "Expired waves leave no residual distortion",
+    "All four fixed wave slots contribute without serial image copies",
+    "Perspective camera rays produce visible sphere refraction",
+    "Perspective foreground remains undistorted",
+    "No WebGPU validation errors"
+  ],
+  "pixels": {
+    "baseRim": [
+      176,
+      128,
+      26,
+      255
+    ],
+    "bentRim": [
+      181,
+      128,
+      26,
+      255
+    ],
+    "guarded": [
+      176,
+      128,
+      26,
+      255
+    ],
+    "perspective": [
+      181,
+      128,
+      26,
+      255
+    ]
+  }
+}

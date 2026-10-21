@@ -1,0 +1,637 @@
+{
+  "zone": "C",
+  "command": "bun scripts/fixed-landscapes/build.js C --check",
+  "checks": [
+    "Existing approved scenery only; all materials matte and nonemissive.",
+    "validateLevel checks actual source cells: no overlaps, world/terrain/water intersections.",
+    "Canonical factory/source hash and independent fresh objects.",
+    "Every dry box populated; sorted Y24 dry-component sizes and dry percentage reported without a connectivity quota.",
+    "Three supported bird perches with a clear6-unit-radius/8-unit-high envelope.",
+    "Three embedded exact dry ground seeds with clear6-unit-radius/11-unit-high envelopes; no clearings carved."
+  ],
+  "levels": [
+    {
+      "id": "ice-01",
+      "sha256": "55bec68b06aa0edd28d9cbfc270edb5a45d895484960ea86f1201ed14f70b20b",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 300,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 37,
+        "ice-fir-young": 43,
+        "ice-flowers": 21,
+        "ice-pebbles": 22,
+        "ice-pillar": 1,
+        "ice-pillar-broken": 1,
+        "ice-rock": 35,
+        "ice-shrub": 47,
+        "ice-tuft": 91,
+        "ice-wall": 2
+      },
+      "terrain": {
+        "flatDry": 280,
+        "raisedDry": 20,
+        "water": 20
+      },
+      "flatDryComponents": [
+        280
+      ],
+      "flatDryPercent": 87.5,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/ice-01.json"
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 3611,
+        "instancedQuads": 58809,
+        "drawGroups": 11
+      },
+      "perches": [
+        {
+          "id": "c1-land-2-2",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            63,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c1-land-13-2",
+          "model": "ice-fir-young",
+          "box": [
+            13,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            323,
+            55,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c1-land-2-11",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            11
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            55,
+            277
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1154,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            378
+          ],
+          [
+            6,
+            24,
+            22
+          ],
+          [
+            414,
+            24,
+            6
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            15
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            17,
+            0
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "ice-02",
+      "sha256": "09b890be825a3344bad3ea27cbf999299bb7a51cc145dff2a3bd5df420ae4969",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 275,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 30,
+        "ice-fir-young": 44,
+        "ice-flowers": 14,
+        "ice-pebbles": 16,
+        "ice-pillar": 1,
+        "ice-pillar-broken": 1,
+        "ice-rock": 45,
+        "ice-shrub": 37,
+        "ice-tuft": 85,
+        "ice-wall": 2
+      },
+      "terrain": {
+        "flatDry": 253,
+        "raisedDry": 22,
+        "water": 45
+      },
+      "flatDryComponents": [
+        170,
+        83
+      ],
+      "flatDryPercent": 79.0625,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/ice-02.json"
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 4555,
+        "instancedQuads": 54495,
+        "drawGroups": 11
+      },
+      "perches": [
+        {
+          "id": "c2-land-2-3",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            59,
+            85
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c2-land-15-12",
+          "model": "ice-fir-young",
+          "box": [
+            15,
+            0,
+            12
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            373,
+            61,
+            299
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c2-land-8-1",
+          "model": "ice-fir-young",
+          "box": [
+            8,
+            0,
+            1
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            203,
+            55,
+            35
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1015,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            310
+          ],
+          [
+            18,
+            24,
+            6
+          ],
+          [
+            94,
+            24,
+            378
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            12
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            15
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "ice-03",
+      "sha256": "505f41770d30b843917c8cdf6050bbd071aa21bd88267f6a610fc310a99a1b68",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 298,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 34,
+        "ice-fir-young": 51,
+        "ice-flowers": 5,
+        "ice-pebbles": 15,
+        "ice-pillar": 1,
+        "ice-pillar-broken": 2,
+        "ice-rock": 39,
+        "ice-shrub": 35,
+        "ice-tuft": 113,
+        "ice-wall": 3
+      },
+      "terrain": {
+        "flatDry": 268,
+        "raisedDry": 30,
+        "water": 22
+      },
+      "flatDryComponents": [
+        143,
+        125
+      ],
+      "flatDryPercent": 83.75,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/ice-03.json",
+        "entireTerrainAndPlacementsUnchanged": true
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 3713,
+        "instancedQuads": 59189,
+        "drawGroups": 11
+      },
+      "perches": [
+        {
+          "id": "c3-land-17-3",
+          "model": "ice-fir-young",
+          "box": [
+            17,
+            0,
+            3
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            421,
+            59,
+            83
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c3-land-4-12",
+          "model": "ice-fir-young",
+          "box": [
+            4,
+            0,
+            12
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            107,
+            55,
+            299
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c3-land-10-1",
+          "model": "ice-fir-young",
+          "box": [
+            10,
+            0,
+            1
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            251,
+            55,
+            37
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1170,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            358
+          ],
+          [
+            22,
+            24,
+            6
+          ],
+          [
+            82,
+            24,
+            378
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            14
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            15
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "ice-04",
+      "sha256": "db21de6d66c330c36bc5ba1cd4f81d09566fc00a64c9cdde2fc4b6b72c1bedc0",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 274,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 23,
+        "ice-fir-young": 43,
+        "ice-flowers": 4,
+        "ice-pebbles": 15,
+        "ice-pillar": 2,
+        "ice-pillar-broken": 2,
+        "ice-rock": 52,
+        "ice-shrub": 33,
+        "ice-tuft": 97,
+        "ice-wall": 3
+      },
+      "terrain": {
+        "flatDry": 241,
+        "raisedDry": 33,
+        "water": 46
+      },
+      "flatDryComponents": [
+        241
+      ],
+      "flatDryPercent": 75.3125,
+      "allDryBoxesPopulated": true,
+      "preservation": {
+        "historicalSource": "docs/landscapes/ice-04.json"
+      },
+      "geometry": {
+        "width": 480,
+        "length": 384,
+        "uniqueQuads": 4657,
+        "instancedQuads": 50600,
+        "drawGroups": 11
+      },
+      "perches": [
+        {
+          "id": "c4-land-2-3",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            59,
+            63,
+            83
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c4-land-2-13",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            13
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            59,
+            325
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c4-land-17-2",
+          "model": "ice-fir-young",
+          "box": [
+            17,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            421,
+            55,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 906,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            358
+          ],
+          [
+            6,
+            24,
+            22
+          ],
+          [
+            378,
+            24,
+            6
+          ]
+        ],
+        "candidateBoxes": [
+          [
+            19,
+            14
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            15,
+            0
+          ]
+        ],
+        "limitation": "Seeds use existing clear ground; no habitat or tactical clearing is carved. Water may intentionally separate dry components."
+      }
+    }
+  ]
+}

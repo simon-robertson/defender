@@ -1,0 +1,68 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.33ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [5.88ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [1.44ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.15ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [0.85ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.34ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [1.66ms]
+
+tests/arc-effects.test.js:
+(pass) strike joins exact endpoints with one thicker unbranched channel, stronger light and six outward flecks [0.76ms]
+(pass) endpoint attachment follows the live bone without retaining caller point scratch or moving its source [0.27ms]
+(pass) fixed pools replace the oldest strike and drop excess sparks without changing their backing storage [1.00ms]
+(pass) expiry and reset remove lights, particles and attachment references without replay after stalls [0.16ms]
+(pass) spark tail may remain after the channel but neither light nor attachments persist [0.05ms]
+(pass) manual enemy reset can clear effects while preserving the shared firing clock [0.04ms]
+(pass) shape is deterministic at equal elapsed time, with finite vertical and coincident inputs [0.43ms]
+(pass) coarse tube segment endpoints follow the same visible trunk and do not encode endpoint point lights [0.07ms]
+(pass) the connected terminal escape rises before the descending main channel [0.05ms]
+(pass) hot metal flecks fall onto actual support, remain still with finite nonzero geometry, then fade away [0.31ms]
+(pass) swept flecks cannot tunnel through elevated ground after fast travel or a frame stall [0.12ms]
+(pass) reset preserves the collider only for the in-place reset and releases every scene reference on unload [0.07ms]
+(pass) reserved secondary bank remains visible under primary saturation and follows both enemies [0.63ms]
+
+tests/model-lights.test.js:
+(pass) flagged exposed face clusters preserve all zone colours and only the authored turret panels [111.57ms]
+(pass) edge-connected matching faces share an emitter; gaps, point contacts and different materials do not [0.26ms]
+(pass) logical transforms, compacted visibility and unchanged invalidations reuse storage correctly [0.07ms]
+(pass) model light overflow is explicit, bounded and does not allocate one light per quad [0.08ms]
+
+tests/snow.test.js:
+(pass) precomputed snow trajectories stop before scenery, ground and water for the complete flake radius [5.68ms]
+(pass) snow falls without net sideways drift and keeps bounded continuous flutter [1.01ms]
+(pass) symmetric flutter padding reaches all level edges at low altitude with a bounded field [0.87ms]
+(pass) snow phase uses shared seconds and wraps whole trajectories without changing seed storage [1.31ms]
+(pass) snow is deterministic, capped, and absent in rain, clear or disabled weather [5.35ms]
+(pass) scene cleanup destroys snow storage and releases all CPU data before a replacement world [0.87ms]
+
+tests/leaves.test.js:
+(pass) leaf flights stop before scenery, ground and water for every tumble orientation [3.73ms]
+(pass) actual roof openings let leaves pass instead of treating a model as one solid bound [0.67ms]
+(pass) individual leaf sway is bounded and returns to its source while gentle falling and tumble use seconds [0.67ms]
+(pass) purple and muted-rust leaf palettes share deterministic 80/20 weights without duplicate material slots [0.35ms]
+(pass) leaf seeds stay bounded and unchanged across frame subdivisions, wraps, disabled weather and teardown [2.95ms]
+
+tests/blood-decals.test.js:
+(pass) packing separates solids from a stable decal suffix without replacing shared storage [0.43ms]
+(pass) actual spray collisions convert to larger flat marks on every solid face, never floating past its bounds [2.17ms]
+(pass) blood marks survive next-wave effect rebinding, begin fading in preparation and release old slots before a quick start [1.01ms]
+
+tests/water.test.js:
+(pass) water material is explicit, bounded and survives level serialization [1.29ms]
+(pass) water and stream bed have separate complete surfaces on the box grid [71.50ms]
+(pass) translucent terrain retains submerged solid faces and culls water interfaces against solids/water [14.40ms]
+(pass) all shipped player defences sit on ground at path height; mounds, floating anchors and extra layers are rejected [12.70ms]
+
+tests/rain.test.js:
+(pass) rain columns terminate at exact roof, ground and water heights while preserving real sky openings [0.59ms]
+(pass) rain is authored, bounded and deterministic; disabled and clear levels allocate no particle data [1.27ms]
+(pass) shared delta seconds drive seamless bounded phase independently of frame subdivisions without changing seeds [0.37ms]
+(pass) scene cleanup destroys the rain GPU buffer and releases CPU seeds before a replacement world [0.14ms]
+
+ 46 pass
+ 0 fail
+ 104358 expect() calls
+Ran 46 tests across 8 files. [283.00ms]

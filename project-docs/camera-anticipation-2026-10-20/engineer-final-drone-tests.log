@@ -1,0 +1,36 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [6.33ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [3.33ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.40ms]
+(pass) stationary coverage holds its azimuth across the higher altitude profile and retains broad gimbal aiming [6.78ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [2.33ms]
+{"levelIndex":0,"hz":30,"travelled":298.6952333656603,"readable":1,"minY":84,"maxY":151.99792002446216,"bytes":10910}
+{"levelIndex":0,"hz":60,"travelled":278.9211906147652,"readable":1,"minY":84,"maxY":152,"bytes":10910}
+{"levelIndex":0,"hz":120,"travelled":242.14035025183458,"readable":1,"minY":84.00000000132077,"maxY":143.99889694608592,"bytes":10910}
+{"levelIndex":1,"hz":30,"travelled":316.97357985235027,"readable":0.9117370892018779,"minY":84.00000000002046,"maxY":151.9999958952621,"bytes":13808}
+{"levelIndex":1,"hz":60,"travelled":298.1743153286932,"readable":0.954908407703147,"minY":84.00001157084152,"maxY":151.99999990039066,"bytes":13808}
+{"levelIndex":1,"hz":120,"travelled":363.4725115766937,"readable":0.8844527947393143,"minY":84.00000661470547,"maxY":152,"bytes":13808}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5906.46ms]
+{"currentLevel":2,"mothFrames":2898,"minY":133.00000000001256,"maxY":180.99999999995634,"minPitch":0.3126808712295325,"minEnemy3D":86.27138296961994,"minFlyer3D":86.27138296961994,"minVerticalGap":60.00000000001256,"airborneFloor":133,"travelled":798.7961019100902,"bytes":12766}
+{"currentLevel":3,"mothFrames":2049,"minY":133.00000000118388,"maxY":180.99999948194716,"minPitch":0.40252034401136527,"minEnemy3D":98.72835309957077,"minFlyer3D":110.00954520765761,"minVerticalGap":60.00000011026731,"airborneFloor":133,"travelled":703.1786975007203,"bytes":17000}
+{"currentLevel":4,"mothFrames":3662,"minY":133.00000048732517,"maxY":180.99999999999997,"minPitch":0.3248772113478969,"minEnemy3D":92.28214239833478,"minFlyer3D":92.28214239833478,"minVerticalGap":60.00000048732517,"airborneFloor":133,"travelled":683.9684758954494,"bytes":15544}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [6224.93ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [932.38ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.46ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [0.86ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.27ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [0.60ms]
+(pass) both cameras leave a held current shot and move toward an idle defence before its enemy enters range, then freeze with pause [13.92ms]
+(pass) drone focus follows optical-axis subject depth during a limited turn instead of radial distance [0.12ms]
+{"actualCamera":"LiveCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":0,"totalTravel":126.62490060552312}
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":0,"totalTravel":205.27296839476415}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [1914.56ms]
+
+ 15 pass
+ 0 fail
+ 189805 expect() calls
+Ran 15 tests across 2 files. [15.03s]

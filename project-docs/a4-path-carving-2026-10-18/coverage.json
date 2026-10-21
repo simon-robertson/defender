@@ -1,0 +1,5669 @@
+{
+  "sourceHash": "1e2970b40e61d6a5dd7be857114ce25f8b28d40b08518af5c8816dcc291ca33c",
+  "excluded": [
+    {
+      "site": "southwest-5-10",
+      "model": "turret-study",
+      "variant": "base",
+      "reason": "Full-yaw head envelope reaches the retained southwest ruin wall at [5,11]; Arc and silo alternatives remain clear."
+    },
+    {
+      "site": "southwest-5-10",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Full-yaw head envelope reaches the retained southwest ruin wall at [5,11]; Arc and silo alternatives remain clear."
+    },
+    {
+      "site": "southwest-2-11",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Full-yaw head/gun envelope reaches the retained adjacent oak crown; base gun, Arc and silo alternatives remain clear."
+    },
+    {
+      "site": "shore-court-18-10",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "reason": "Full-yaw head/gun envelope reaches the retained adjacent oak crown; base gun, Arc and silo alternatives remain clear."
+    }
+  ],
+  "method": "Independent-site unions omit declared weapon/variant exclusions. Actual production gun eligibility and Arc surface contact at one-unit midpoint bins, per species and complete approach. Base classification requires positive opportunity with both weapons against all three species. Intervals are journey distances on the single route; do not add overlapping coverage as unique damage.",
+  "classification": {
+    "main": 37,
+    "upgrade-dependent": 3
+  },
+  "baseUsefulCount": 37,
+  "independentSiteUnion": [
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "dog",
+      "eligible": [
+        [
+          0,
+          162
+        ],
+        [
+          178,
+          522
+        ],
+        [
+          534,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          162,
+          178
+        ],
+        [
+          522,
+          534
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "roller",
+      "eligible": [
+        [
+          0,
+          162
+        ],
+        [
+          178,
+          522
+        ],
+        [
+          534,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          162,
+          178
+        ],
+        [
+          522,
+          534
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "base",
+      "species": "moth",
+      "eligible": [
+        [
+          0,
+          162
+        ],
+        [
+          174,
+          522
+        ],
+        [
+          534,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          162,
+          174
+        ],
+        [
+          522,
+          534
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "dog",
+      "eligible": [
+        [
+          0,
+          174
+        ],
+        [
+          178,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          174,
+          178
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "roller",
+      "eligible": [
+        [
+          0,
+          174
+        ],
+        [
+          178,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          174,
+          178
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "gun",
+      "variant": "upgrade1",
+      "species": "moth",
+      "eligible": [
+        [
+          0,
+          1104
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "dog",
+      "eligible": [
+        [
+          0,
+          162
+        ],
+        [
+          174,
+          522
+        ],
+        [
+          534,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          162,
+          174
+        ],
+        [
+          522,
+          534
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "roller",
+      "eligible": [
+        [
+          0,
+          162
+        ],
+        [
+          174,
+          522
+        ],
+        [
+          534,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          162,
+          174
+        ],
+        [
+          522,
+          534
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "base",
+      "species": "moth",
+      "eligible": [
+        [
+          0,
+          162
+        ],
+        [
+          174,
+          522
+        ],
+        [
+          534,
+          1104
+        ]
+      ],
+      "uncovered": [
+        [
+          162,
+          174
+        ],
+        [
+          522,
+          534
+        ]
+      ]
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "dog",
+      "eligible": [
+        [
+          0,
+          1104
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "roller",
+      "eligible": [
+        [
+          0,
+          1104
+        ]
+      ],
+      "uncovered": []
+    },
+    {
+      "route": "main",
+      "weapon": "arc",
+      "variant": "upgrade1",
+      "species": "moth",
+      "eligible": [
+        [
+          0,
+          1104
+        ]
+      ],
+      "uncovered": []
+    }
+  ],
+  "sites": [
+    {
+      "id": "southwest-1-10",
+      "box": [
+        1,
+        10
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  0,
+                  150
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  150
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  150
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  66
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  66
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  0,
+                  150
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  150
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  150
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 150,
+                "roller": 150,
+                "moth": 150
+              },
+              "arc": {
+                "dog": 150,
+                "roller": 150,
+                "moth": 150
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-2-10",
+      "box": [
+        2,
+        10
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  6,
+                  138
+                ]
+              ],
+              "roller": [
+                [
+                  6,
+                  138
+                ]
+              ],
+              "moth": [
+                [
+                  6,
+                  138
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  0,
+                  174
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  174
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  174
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  6,
+                  138
+                ]
+              ],
+              "roller": [
+                [
+                  6,
+                  138
+                ]
+              ],
+              "moth": [
+                [
+                  6,
+                  138
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  0,
+                  174
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  174
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  174
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 132,
+                "roller": 132,
+                "moth": 132
+              },
+              "arc": {
+                "dog": 132,
+                "roller": 132,
+                "moth": 132
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 174,
+                "roller": 174,
+                "moth": 174
+              },
+              "arc": {
+                "dog": 174,
+                "roller": 174,
+                "moth": 174
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-2-11",
+      "box": [
+        2,
+        11
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  78,
+                  162
+                ]
+              ],
+              "roller": [
+                [
+                  78,
+                  162
+                ]
+              ],
+              "moth": [
+                [
+                  78,
+                  162
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  0,
+                  188
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  188
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  188
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  78,
+                  162
+                ]
+              ],
+              "roller": [
+                [
+                  78,
+                  162
+                ]
+              ],
+              "moth": [
+                [
+                  78,
+                  162
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  0,
+                  188
+                ]
+              ],
+              "roller": [
+                [
+                  0,
+                  188
+                ]
+              ],
+              "moth": [
+                [
+                  0,
+                  188
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 188,
+                "roller": 188,
+                "moth": 188
+              },
+              "arc": {
+                "dog": 188,
+                "roller": 188,
+                "moth": 188
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-4-9",
+      "box": [
+        4,
+        9
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  48,
+                  114
+                ]
+              ],
+              "roller": [
+                [
+                  48,
+                  114
+                ]
+              ],
+              "moth": [
+                [
+                  48,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  24,
+                  140
+                ]
+              ],
+              "roller": [
+                [
+                  24,
+                  140
+                ]
+              ],
+              "moth": [
+                [
+                  24,
+                  140
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  48,
+                  114
+                ]
+              ],
+              "roller": [
+                [
+                  48,
+                  114
+                ]
+              ],
+              "moth": [
+                [
+                  48,
+                  114
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  24,
+                  140
+                ]
+              ],
+              "roller": [
+                [
+                  24,
+                  140
+                ]
+              ],
+              "moth": [
+                [
+                  24,
+                  140
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 116,
+                "roller": 116,
+                "moth": 116
+              },
+              "arc": {
+                "dog": 116,
+                "roller": 116,
+                "moth": 116
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-4-10",
+      "box": [
+        4,
+        10
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "roller": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "moth": [
+                [
+                  54,
+                  138
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  28,
+                  148
+                ],
+                [
+                  188,
+                  196
+                ]
+              ],
+              "roller": [
+                [
+                  28,
+                  148
+                ],
+                [
+                  188,
+                  195
+                ]
+              ],
+              "moth": [
+                [
+                  28,
+                  149
+                ],
+                [
+                  192,
+                  222
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "roller": [
+                [
+                  54,
+                  138
+                ]
+              ],
+              "moth": [
+                [
+                  54,
+                  138
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  28,
+                  163
+                ],
+                [
+                  173,
+                  222
+                ]
+              ],
+              "roller": [
+                [
+                  28,
+                  163
+                ],
+                [
+                  173,
+                  222
+                ]
+              ],
+              "moth": [
+                [
+                  28,
+                  222
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 128,
+                "roller": 127,
+                "moth": 151
+              },
+              "arc": {
+                "dog": 184,
+                "roller": 184,
+                "moth": 194
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-5-9",
+      "box": [
+        5,
+        9
+      ],
+      "group": "southwest",
+      "baseUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [],
+              "roller": [],
+              "moth": []
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  48,
+                  126
+                ],
+                [
+                  258,
+                  366
+                ]
+              ],
+              "roller": [
+                [
+                  48,
+                  126
+                ],
+                [
+                  258,
+                  366
+                ]
+              ],
+              "moth": [
+                [
+                  48,
+                  126
+                ],
+                [
+                  258,
+                  366
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [],
+              "roller": [],
+              "moth": []
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  48,
+                  126
+                ],
+                [
+                  258,
+                  366
+                ]
+              ],
+              "roller": [
+                [
+                  48,
+                  126
+                ],
+                [
+                  258,
+                  366
+                ]
+              ],
+              "moth": [
+                [
+                  48,
+                  126
+                ],
+                [
+                  258,
+                  366
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 0,
+                "roller": 0,
+                "moth": 0
+              },
+              "arc": {
+                "dog": 0,
+                "roller": 0,
+                "moth": 0
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 186,
+                "roller": 186,
+                "moth": 186
+              },
+              "arc": {
+                "dog": 186,
+                "roller": 186,
+                "moth": 186
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-5-10",
+      "box": [
+        5,
+        10
+      ],
+      "group": "southwest",
+      "baseUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [],
+              "roller": [],
+              "moth": []
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  52,
+                  125
+                ],
+                [
+                  163,
+                  164
+                ],
+                [
+                  216,
+                  342
+                ]
+              ],
+              "roller": [
+                [
+                  52,
+                  125
+                ],
+                [
+                  163,
+                  164
+                ],
+                [
+                  216,
+                  342
+                ]
+              ],
+              "moth": [
+                [
+                  52,
+                  126
+                ],
+                [
+                  159,
+                  342
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [],
+              "roller": [],
+              "moth": []
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  52,
+                  125
+                ],
+                [
+                  163,
+                  342
+                ]
+              ],
+              "roller": [
+                [
+                  52,
+                  124
+                ],
+                [
+                  164,
+                  342
+                ]
+              ],
+              "moth": [
+                [
+                  52,
+                  342
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 0,
+                "roller": 0,
+                "moth": 0
+              },
+              "arc": {
+                "dog": 0,
+                "roller": 0,
+                "moth": 0
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 200,
+                "roller": 200,
+                "moth": 257
+              },
+              "arc": {
+                "dog": 252,
+                "roller": 250,
+                "moth": 290
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-6-9",
+      "box": [
+        6,
+        9
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "roller": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "moth": [
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  244,
+                  380
+                ]
+              ],
+              "roller": [
+                [
+                  244,
+                  380
+                ]
+              ],
+              "moth": [
+                [
+                  244,
+                  380
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "roller": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "moth": [
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  244,
+                  380
+                ]
+              ],
+              "roller": [
+                [
+                  244,
+                  380
+                ]
+              ],
+              "moth": [
+                [
+                  244,
+                  380
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              },
+              "arc": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-6-10",
+      "box": [
+        6,
+        10
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "roller": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "moth": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  187,
+                  356
+                ]
+              ],
+              "roller": [
+                [
+                  188,
+                  356
+                ]
+              ],
+              "moth": [
+                [
+                  162,
+                  356
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "roller": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "moth": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  162,
+                  356
+                ]
+              ],
+              "roller": [
+                [
+                  162,
+                  356
+                ]
+              ],
+              "moth": [
+                [
+                  162,
+                  356
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 169,
+                "roller": 168,
+                "moth": 194
+              },
+              "arc": {
+                "dog": 194,
+                "roller": 194,
+                "moth": 194
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "southwest-6-11",
+      "box": [
+        6,
+        11
+      ],
+      "group": "southwest",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  178,
+                  306
+                ]
+              ],
+              "roller": [
+                [
+                  178,
+                  306
+                ]
+              ],
+              "moth": [
+                [
+                  174,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  178,
+                  332
+                ]
+              ],
+              "roller": [
+                [
+                  148,
+                  151
+                ],
+                [
+                  178,
+                  332
+                ]
+              ],
+              "moth": [
+                [
+                  148,
+                  332
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  174,
+                  306
+                ]
+              ],
+              "roller": [
+                [
+                  174,
+                  306
+                ]
+              ],
+              "moth": [
+                [
+                  174,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  148,
+                  332
+                ]
+              ],
+              "roller": [
+                [
+                  148,
+                  332
+                ]
+              ],
+              "moth": [
+                [
+                  148,
+                  332
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 128,
+                "roller": 128,
+                "moth": 132
+              },
+              "arc": {
+                "dog": 132,
+                "roller": 132,
+                "moth": 132
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 154,
+                "roller": 157,
+                "moth": 184
+              },
+              "arc": {
+                "dog": 184,
+                "roller": 184,
+                "moth": 184
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-6-6",
+      "box": [
+        6,
+        6
+      ],
+      "group": "westReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "roller": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "moth": [
+                [
+                  342,
+                  426
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  316,
+                  452
+                ]
+              ],
+              "roller": [
+                [
+                  316,
+                  452
+                ]
+              ],
+              "moth": [
+                [
+                  316,
+                  452
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "roller": [
+                [
+                  342,
+                  426
+                ]
+              ],
+              "moth": [
+                [
+                  342,
+                  426
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  316,
+                  452
+                ]
+              ],
+              "roller": [
+                [
+                  316,
+                  452
+                ]
+              ],
+              "moth": [
+                [
+                  316,
+                  452
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              },
+              "arc": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-6-7",
+      "box": [
+        6,
+        7
+      ],
+      "group": "westReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "roller": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "moth": [
+                [
+                  318,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  292,
+                  438
+                ]
+              ],
+              "roller": [
+                [
+                  292,
+                  438
+                ]
+              ],
+              "moth": [
+                [
+                  292,
+                  438
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "roller": [
+                [
+                  318,
+                  402
+                ]
+              ],
+              "moth": [
+                [
+                  318,
+                  402
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  292,
+                  438
+                ]
+              ],
+              "roller": [
+                [
+                  292,
+                  438
+                ]
+              ],
+              "moth": [
+                [
+                  292,
+                  438
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 146
+              },
+              "arc": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 146
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-6-8",
+      "box": [
+        6,
+        8
+      ],
+      "group": "westReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "roller": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "moth": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  268,
+                  404
+                ]
+              ],
+              "roller": [
+                [
+                  268,
+                  404
+                ]
+              ],
+              "moth": [
+                [
+                  268,
+                  404
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "roller": [
+                [
+                  294,
+                  378
+                ]
+              ],
+              "moth": [
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  268,
+                  404
+                ]
+              ],
+              "roller": [
+                [
+                  268,
+                  404
+                ]
+              ],
+              "moth": [
+                [
+                  268,
+                  404
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              },
+              "arc": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-8-9",
+      "box": [
+        8,
+        9
+      ],
+      "group": "westReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "roller": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "moth": [
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  244,
+                  380
+                ],
+                [
+                  522,
+                  572
+                ]
+              ],
+              "roller": [
+                [
+                  244,
+                  380
+                ],
+                [
+                  522,
+                  572
+                ]
+              ],
+              "moth": [
+                [
+                  244,
+                  380
+                ],
+                [
+                  522,
+                  572
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "roller": [
+                [
+                  270,
+                  354
+                ]
+              ],
+              "moth": [
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  244,
+                  380
+                ],
+                [
+                  522,
+                  572
+                ]
+              ],
+              "roller": [
+                [
+                  244,
+                  380
+                ],
+                [
+                  522,
+                  572
+                ]
+              ],
+              "moth": [
+                [
+                  244,
+                  380
+                ],
+                [
+                  522,
+                  572
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 186,
+                "roller": 186,
+                "moth": 186
+              },
+              "arc": {
+                "dog": 186,
+                "roller": 186,
+                "moth": 186
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-8-10",
+      "box": [
+        8,
+        10
+      ],
+      "group": "westReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "roller": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "moth": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  210,
+                  356
+                ],
+                [
+                  546,
+                  558
+                ]
+              ],
+              "roller": [
+                [
+                  210,
+                  356
+                ],
+                [
+                  546,
+                  558
+                ]
+              ],
+              "moth": [
+                [
+                  210,
+                  356
+                ],
+                [
+                  546,
+                  558
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "roller": [
+                [
+                  246,
+                  330
+                ]
+              ],
+              "moth": [
+                [
+                  246,
+                  330
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  210,
+                  356
+                ],
+                [
+                  546,
+                  558
+                ]
+              ],
+              "roller": [
+                [
+                  210,
+                  356
+                ],
+                [
+                  546,
+                  558
+                ]
+              ],
+              "moth": [
+                [
+                  210,
+                  356
+                ],
+                [
+                  546,
+                  558
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 158,
+                "roller": 158,
+                "moth": 158
+              },
+              "arc": {
+                "dog": 158,
+                "roller": 158,
+                "moth": 158
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-8-11",
+      "box": [
+        8,
+        11
+      ],
+      "group": "westReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "roller": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "moth": [
+                [
+                  222,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  196,
+                  332
+                ],
+                [
+                  1050,
+                  1062
+                ]
+              ],
+              "roller": [
+                [
+                  196,
+                  332
+                ],
+                [
+                  1050,
+                  1062
+                ]
+              ],
+              "moth": [
+                [
+                  196,
+                  332
+                ],
+                [
+                  1050,
+                  1062
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "roller": [
+                [
+                  222,
+                  306
+                ]
+              ],
+              "moth": [
+                [
+                  222,
+                  306
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  196,
+                  332
+                ],
+                [
+                  1050,
+                  1062
+                ]
+              ],
+              "roller": [
+                [
+                  196,
+                  332
+                ],
+                [
+                  1050,
+                  1062
+                ]
+              ],
+              "moth": [
+                [
+                  196,
+                  332
+                ],
+                [
+                  1050,
+                  1062
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 148,
+                "roller": 148,
+                "moth": 148
+              },
+              "arc": {
+                "dog": 148,
+                "roller": 148,
+                "moth": 148
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-return-8-12",
+      "box": [
+        8,
+        12
+      ],
+      "group": "westReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  216,
+                  282
+                ]
+              ],
+              "roller": [
+                [
+                  216,
+                  282
+                ]
+              ],
+              "moth": [
+                [
+                  216,
+                  282
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  192,
+                  308
+                ],
+                [
+                  1036,
+                  1086
+                ]
+              ],
+              "roller": [
+                [
+                  192,
+                  308
+                ],
+                [
+                  1036,
+                  1086
+                ]
+              ],
+              "moth": [
+                [
+                  192,
+                  308
+                ],
+                [
+                  1036,
+                  1086
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  216,
+                  282
+                ]
+              ],
+              "roller": [
+                [
+                  216,
+                  282
+                ]
+              ],
+              "moth": [
+                [
+                  216,
+                  282
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  192,
+                  308
+                ],
+                [
+                  1036,
+                  1086
+                ]
+              ],
+              "roller": [
+                [
+                  192,
+                  308
+                ],
+                [
+                  1036,
+                  1086
+                ]
+              ],
+              "moth": [
+                [
+                  192,
+                  308
+                ],
+                [
+                  1036,
+                  1086
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 166,
+                "roller": 166,
+                "moth": 166
+              },
+              "arc": {
+                "dog": 166,
+                "roller": 166,
+                "moth": 166
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "masonry-8-4",
+      "box": [
+        8,
+        4
+      ],
+      "group": "masonry",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "roller": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "moth": [
+                [
+                  390,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  364,
+                  510
+                ]
+              ],
+              "roller": [
+                [
+                  364,
+                  510
+                ]
+              ],
+              "moth": [
+                [
+                  364,
+                  510
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "roller": [
+                [
+                  390,
+                  474
+                ]
+              ],
+              "moth": [
+                [
+                  390,
+                  474
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  364,
+                  510
+                ]
+              ],
+              "roller": [
+                [
+                  364,
+                  510
+                ]
+              ],
+              "moth": [
+                [
+                  364,
+                  510
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 146
+              },
+              "arc": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 146
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "masonry-9-4",
+      "box": [
+        9,
+        4
+      ],
+      "group": "masonry",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  414,
+                  498
+                ]
+              ],
+              "roller": [
+                [
+                  414,
+                  498
+                ]
+              ],
+              "moth": [
+                [
+                  414,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  378,
+                  524
+                ]
+              ],
+              "roller": [
+                [
+                  378,
+                  524
+                ]
+              ],
+              "moth": [
+                [
+                  378,
+                  524
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  414,
+                  498
+                ]
+              ],
+              "roller": [
+                [
+                  414,
+                  498
+                ]
+              ],
+              "moth": [
+                [
+                  414,
+                  498
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  378,
+                  524
+                ]
+              ],
+              "roller": [
+                [
+                  378,
+                  524
+                ]
+              ],
+              "moth": [
+                [
+                  378,
+                  524
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 146
+              },
+              "arc": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 146
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "masonry-10-4",
+      "box": [
+        10,
+        4
+      ],
+      "group": "masonry",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  438,
+                  504
+                ]
+              ],
+              "roller": [
+                [
+                  438,
+                  504
+                ]
+              ],
+              "moth": [
+                [
+                  438,
+                  504
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  412,
+                  528
+                ]
+              ],
+              "roller": [
+                [
+                  412,
+                  528
+                ]
+              ],
+              "moth": [
+                [
+                  412,
+                  528
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  438,
+                  504
+                ]
+              ],
+              "roller": [
+                [
+                  438,
+                  504
+                ]
+              ],
+              "moth": [
+                [
+                  438,
+                  504
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  412,
+                  528
+                ]
+              ],
+              "roller": [
+                [
+                  412,
+                  528
+                ]
+              ],
+              "moth": [
+                [
+                  412,
+                  528
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 116,
+                "roller": 116,
+                "moth": 116
+              },
+              "arc": {
+                "dog": 116,
+                "roller": 116,
+                "moth": 116
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "masonry-11-5",
+      "box": [
+        11,
+        5
+      ],
+      "group": "masonry",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  456,
+                  522
+                ]
+              ],
+              "roller": [
+                [
+                  456,
+                  522
+                ]
+              ],
+              "moth": [
+                [
+                  456,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  432,
+                  548
+                ],
+                [
+                  604,
+                  654
+                ]
+              ],
+              "roller": [
+                [
+                  432,
+                  548
+                ],
+                [
+                  604,
+                  654
+                ]
+              ],
+              "moth": [
+                [
+                  432,
+                  548
+                ],
+                [
+                  604,
+                  654
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  456,
+                  522
+                ]
+              ],
+              "roller": [
+                [
+                  456,
+                  522
+                ]
+              ],
+              "moth": [
+                [
+                  456,
+                  522
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  432,
+                  548
+                ],
+                [
+                  604,
+                  654
+                ]
+              ],
+              "roller": [
+                [
+                  432,
+                  548
+                ],
+                [
+                  604,
+                  654
+                ]
+              ],
+              "moth": [
+                [
+                  432,
+                  548
+                ],
+                [
+                  604,
+                  654
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 166,
+                "roller": 166,
+                "moth": 166
+              },
+              "arc": {
+                "dog": 166,
+                "roller": 166,
+                "moth": 166
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-court-13-8",
+      "box": [
+        13,
+        8
+      ],
+      "group": "shoreCourt",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  576,
+                  690
+                ],
+                [
+                  846,
+                  912
+                ]
+              ],
+              "roller": [
+                [
+                  576,
+                  690
+                ],
+                [
+                  846,
+                  912
+                ]
+              ],
+              "moth": [
+                [
+                  576,
+                  690
+                ],
+                [
+                  846,
+                  912
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  552,
+                  716
+                ],
+                [
+                  820,
+                  936
+                ]
+              ],
+              "roller": [
+                [
+                  552,
+                  716
+                ],
+                [
+                  820,
+                  936
+                ]
+              ],
+              "moth": [
+                [
+                  552,
+                  716
+                ],
+                [
+                  820,
+                  936
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  576,
+                  690
+                ],
+                [
+                  846,
+                  912
+                ]
+              ],
+              "roller": [
+                [
+                  576,
+                  690
+                ],
+                [
+                  846,
+                  912
+                ]
+              ],
+              "moth": [
+                [
+                  576,
+                  690
+                ],
+                [
+                  846,
+                  912
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  552,
+                  716
+                ],
+                [
+                  820,
+                  936
+                ]
+              ],
+              "roller": [
+                [
+                  552,
+                  716
+                ],
+                [
+                  820,
+                  936
+                ]
+              ],
+              "moth": [
+                [
+                  552,
+                  716
+                ],
+                [
+                  820,
+                  936
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 180,
+                "roller": 180,
+                "moth": 180
+              },
+              "arc": {
+                "dog": 180,
+                "roller": 180,
+                "moth": 180
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 280,
+                "roller": 280,
+                "moth": 280
+              },
+              "arc": {
+                "dog": 280,
+                "roller": 280,
+                "moth": 280
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-court-14-8",
+      "box": [
+        14,
+        8
+      ],
+      "group": "shoreCourt",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  630,
+                  714
+                ],
+                [
+                  822,
+                  906
+                ]
+              ],
+              "roller": [
+                [
+                  630,
+                  714
+                ],
+                [
+                  822,
+                  906
+                ]
+              ],
+              "moth": [
+                [
+                  630,
+                  714
+                ],
+                [
+                  822,
+                  906
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  576,
+                  740
+                ],
+                [
+                  796,
+                  932
+                ]
+              ],
+              "roller": [
+                [
+                  576,
+                  740
+                ],
+                [
+                  796,
+                  932
+                ]
+              ],
+              "moth": [
+                [
+                  576,
+                  740
+                ],
+                [
+                  796,
+                  932
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  630,
+                  714
+                ],
+                [
+                  822,
+                  906
+                ]
+              ],
+              "roller": [
+                [
+                  630,
+                  714
+                ],
+                [
+                  822,
+                  906
+                ]
+              ],
+              "moth": [
+                [
+                  630,
+                  714
+                ],
+                [
+                  822,
+                  906
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  576,
+                  740
+                ],
+                [
+                  796,
+                  932
+                ]
+              ],
+              "roller": [
+                [
+                  576,
+                  740
+                ],
+                [
+                  796,
+                  932
+                ]
+              ],
+              "moth": [
+                [
+                  576,
+                  740
+                ],
+                [
+                  796,
+                  932
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 168,
+                "roller": 168,
+                "moth": 168
+              },
+              "arc": {
+                "dog": 168,
+                "roller": 168,
+                "moth": 168
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 300,
+                "roller": 300,
+                "moth": 300
+              },
+              "arc": {
+                "dog": 300,
+                "roller": 300,
+                "moth": 300
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-court-15-8",
+      "box": [
+        15,
+        8
+      ],
+      "group": "shoreCourt",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  654,
+                  738
+                ],
+                [
+                  798,
+                  882
+                ]
+              ],
+              "roller": [
+                [
+                  654,
+                  738
+                ],
+                [
+                  798,
+                  882
+                ]
+              ],
+              "moth": [
+                [
+                  654,
+                  738
+                ],
+                [
+                  798,
+                  882
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  628,
+                  918
+                ]
+              ],
+              "roller": [
+                [
+                  628,
+                  918
+                ]
+              ],
+              "moth": [
+                [
+                  628,
+                  918
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  654,
+                  738
+                ],
+                [
+                  798,
+                  882
+                ]
+              ],
+              "roller": [
+                [
+                  654,
+                  738
+                ],
+                [
+                  798,
+                  882
+                ]
+              ],
+              "moth": [
+                [
+                  654,
+                  738
+                ],
+                [
+                  798,
+                  882
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  628,
+                  918
+                ]
+              ],
+              "roller": [
+                [
+                  628,
+                  918
+                ]
+              ],
+              "moth": [
+                [
+                  628,
+                  918
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 168,
+                "roller": 168,
+                "moth": 168
+              },
+              "arc": {
+                "dog": 168,
+                "roller": 168,
+                "moth": 168
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 290,
+                "roller": 290,
+                "moth": 290
+              },
+              "arc": {
+                "dog": 290,
+                "roller": 290,
+                "moth": 290
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-court-16-8",
+      "box": [
+        16,
+        8
+      ],
+      "group": "shoreCourt",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  678,
+                  858
+                ]
+              ],
+              "roller": [
+                [
+                  678,
+                  858
+                ]
+              ],
+              "moth": [
+                [
+                  678,
+                  858
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  652,
+                  884
+                ]
+              ],
+              "roller": [
+                [
+                  652,
+                  884
+                ]
+              ],
+              "moth": [
+                [
+                  652,
+                  884
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  678,
+                  858
+                ]
+              ],
+              "roller": [
+                [
+                  678,
+                  858
+                ]
+              ],
+              "moth": [
+                [
+                  678,
+                  858
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  652,
+                  884
+                ]
+              ],
+              "roller": [
+                [
+                  652,
+                  884
+                ]
+              ],
+              "moth": [
+                [
+                  652,
+                  884
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 180,
+                "roller": 180,
+                "moth": 180
+              },
+              "arc": {
+                "dog": 180,
+                "roller": 180,
+                "moth": 180
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 232,
+                "roller": 232,
+                "moth": 232
+              },
+              "arc": {
+                "dog": 232,
+                "roller": 232,
+                "moth": 232
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-court-18-8",
+      "box": [
+        18,
+        8
+      ],
+      "group": "shoreCourt",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  726,
+                  810
+                ]
+              ],
+              "roller": [
+                [
+                  726,
+                  810
+                ]
+              ],
+              "moth": [
+                [
+                  726,
+                  810
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  700,
+                  836
+                ]
+              ],
+              "roller": [
+                [
+                  700,
+                  836
+                ]
+              ],
+              "moth": [
+                [
+                  700,
+                  836
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  726,
+                  810
+                ]
+              ],
+              "roller": [
+                [
+                  726,
+                  810
+                ]
+              ],
+              "moth": [
+                [
+                  726,
+                  810
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  700,
+                  836
+                ]
+              ],
+              "roller": [
+                [
+                  700,
+                  836
+                ]
+              ],
+              "moth": [
+                [
+                  700,
+                  836
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              },
+              "arc": {
+                "dog": 136,
+                "roller": 136,
+                "moth": 136
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-court-18-9",
+      "box": [
+        18,
+        9
+      ],
+      "group": "shoreCourt",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  750,
+                  816
+                ]
+              ],
+              "roller": [
+                [
+                  750,
+                  816
+                ]
+              ],
+              "moth": [
+                [
+                  750,
+                  816
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  714,
+                  840
+                ]
+              ],
+              "roller": [
+                [
+                  714,
+                  840
+                ]
+              ],
+              "moth": [
+                [
+                  714,
+                  840
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  750,
+                  816
+                ]
+              ],
+              "roller": [
+                [
+                  750,
+                  816
+                ]
+              ],
+              "moth": [
+                [
+                  750,
+                  816
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  714,
+                  840
+                ]
+              ],
+              "roller": [
+                [
+                  714,
+                  840
+                ]
+              ],
+              "moth": [
+                [
+                  714,
+                  840
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 126,
+                "roller": 126,
+                "moth": 126
+              },
+              "arc": {
+                "dog": 126,
+                "roller": 126,
+                "moth": 126
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shore-court-18-10",
+      "box": [
+        18,
+        10
+      ],
+      "group": "shoreCourt",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  774,
+                  810
+                ]
+              ],
+              "roller": [
+                [
+                  774,
+                  810
+                ]
+              ],
+              "moth": [
+                [
+                  774,
+                  810
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  748,
+                  836
+                ]
+              ],
+              "roller": [
+                [
+                  748,
+                  836
+                ]
+              ],
+              "moth": [
+                [
+                  748,
+                  836
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  774,
+                  810
+                ]
+              ],
+              "roller": [
+                [
+                  774,
+                  810
+                ]
+              ],
+              "moth": [
+                [
+                  774,
+                  810
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  748,
+                  836
+                ]
+              ],
+              "roller": [
+                [
+                  748,
+                  836
+                ]
+              ],
+              "moth": [
+                [
+                  748,
+                  836
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 36,
+                "roller": 36,
+                "moth": 36
+              },
+              "arc": {
+                "dog": 36,
+                "roller": 36,
+                "moth": 36
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 88,
+                "roller": 88,
+                "moth": 88
+              },
+              "arc": {
+                "dog": 88,
+                "roller": 88,
+                "moth": 88
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-11-9",
+      "box": [
+        11,
+        9
+      ],
+      "group": "southReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "roller": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "moth": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  508,
+                  654
+                ],
+                [
+                  864,
+                  942
+                ]
+              ],
+              "roller": [
+                [
+                  508,
+                  654
+                ],
+                [
+                  864,
+                  942
+                ]
+              ],
+              "moth": [
+                [
+                  508,
+                  654
+                ],
+                [
+                  864,
+                  942
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "roller": [
+                [
+                  534,
+                  618
+                ]
+              ],
+              "moth": [
+                [
+                  534,
+                  618
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  508,
+                  654
+                ],
+                [
+                  864,
+                  942
+                ]
+              ],
+              "roller": [
+                [
+                  508,
+                  654
+                ],
+                [
+                  864,
+                  942
+                ]
+              ],
+              "moth": [
+                [
+                  508,
+                  654
+                ],
+                [
+                  864,
+                  942
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 224,
+                "roller": 224,
+                "moth": 224
+              },
+              "arc": {
+                "dog": 224,
+                "roller": 224,
+                "moth": 224
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-12-9",
+      "box": [
+        12,
+        9
+      ],
+      "group": "southReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  558,
+                  624
+                ],
+                [
+                  864,
+                  930
+                ]
+              ],
+              "roller": [
+                [
+                  558,
+                  624
+                ],
+                [
+                  864,
+                  930
+                ]
+              ],
+              "moth": [
+                [
+                  558,
+                  624
+                ],
+                [
+                  864,
+                  930
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  522,
+                  678
+                ],
+                [
+                  840,
+                  956
+                ]
+              ],
+              "roller": [
+                [
+                  522,
+                  678
+                ],
+                [
+                  840,
+                  956
+                ]
+              ],
+              "moth": [
+                [
+                  522,
+                  678
+                ],
+                [
+                  840,
+                  956
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  558,
+                  624
+                ],
+                [
+                  864,
+                  930
+                ]
+              ],
+              "roller": [
+                [
+                  558,
+                  624
+                ],
+                [
+                  864,
+                  930
+                ]
+              ],
+              "moth": [
+                [
+                  558,
+                  624
+                ],
+                [
+                  864,
+                  930
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  522,
+                  678
+                ],
+                [
+                  840,
+                  956
+                ]
+              ],
+              "roller": [
+                [
+                  522,
+                  678
+                ],
+                [
+                  840,
+                  956
+                ]
+              ],
+              "moth": [
+                [
+                  522,
+                  678
+                ],
+                [
+                  840,
+                  956
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 132,
+                "roller": 132,
+                "moth": 132
+              },
+              "arc": {
+                "dog": 132,
+                "roller": 132,
+                "moth": 132
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 272,
+                "roller": 272,
+                "moth": 272
+              },
+              "arc": {
+                "dog": 272,
+                "roller": 272,
+                "moth": 272
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-12-10",
+      "box": [
+        12,
+        10
+      ],
+      "group": "southReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  870,
+                  954
+                ]
+              ],
+              "roller": [
+                [
+                  870,
+                  954
+                ]
+              ],
+              "moth": [
+                [
+                  870,
+                  954
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  546,
+                  624
+                ],
+                [
+                  844,
+                  980
+                ]
+              ],
+              "roller": [
+                [
+                  546,
+                  624
+                ],
+                [
+                  844,
+                  980
+                ]
+              ],
+              "moth": [
+                [
+                  546,
+                  624
+                ],
+                [
+                  844,
+                  980
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  870,
+                  954
+                ]
+              ],
+              "roller": [
+                [
+                  870,
+                  954
+                ]
+              ],
+              "moth": [
+                [
+                  870,
+                  954
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  546,
+                  624
+                ],
+                [
+                  844,
+                  980
+                ]
+              ],
+              "roller": [
+                [
+                  546,
+                  624
+                ],
+                [
+                  844,
+                  980
+                ]
+              ],
+              "moth": [
+                [
+                  546,
+                  624
+                ],
+                [
+                  844,
+                  980
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 214,
+                "roller": 214,
+                "moth": 214
+              },
+              "arc": {
+                "dog": 214,
+                "roller": 214,
+                "moth": 214
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-11-11",
+      "box": [
+        11,
+        11
+      ],
+      "group": "southReturn",
+      "baseUseful": false,
+      "coverageRole": "upgrade-dependent",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [],
+              "roller": [],
+              "moth": []
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  882,
+                  1076
+                ]
+              ],
+              "roller": [
+                [
+                  882,
+                  1076
+                ]
+              ],
+              "moth": [
+                [
+                  882,
+                  1076
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [],
+              "roller": [],
+              "moth": []
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  882,
+                  1076
+                ]
+              ],
+              "roller": [
+                [
+                  882,
+                  1076
+                ]
+              ],
+              "moth": [
+                [
+                  882,
+                  1076
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 0,
+                "roller": 0,
+                "moth": 0
+              },
+              "arc": {
+                "dog": 0,
+                "roller": 0,
+                "moth": 0
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 194,
+                "roller": 194,
+                "moth": 194
+              },
+              "arc": {
+                "dog": 194,
+                "roller": 194,
+                "moth": 194
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-12-11",
+      "box": [
+        12,
+        11
+      ],
+      "group": "southReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  894,
+                  978
+                ]
+              ],
+              "roller": [
+                [
+                  894,
+                  978
+                ]
+              ],
+              "moth": [
+                [
+                  894,
+                  978
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  858,
+                  1062
+                ]
+              ],
+              "roller": [
+                [
+                  858,
+                  1062
+                ]
+              ],
+              "moth": [
+                [
+                  858,
+                  1062
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  894,
+                  978
+                ]
+              ],
+              "roller": [
+                [
+                  894,
+                  978
+                ]
+              ],
+              "moth": [
+                [
+                  894,
+                  978
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  858,
+                  1062
+                ]
+              ],
+              "roller": [
+                [
+                  858,
+                  1062
+                ]
+              ],
+              "moth": [
+                [
+                  858,
+                  1062
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 204,
+                "roller": 204,
+                "moth": 204
+              },
+              "arc": {
+                "dog": 204,
+                "roller": 204,
+                "moth": 204
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-11-12",
+      "box": [
+        11,
+        12
+      ],
+      "group": "southReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  990,
+                  1074
+                ]
+              ],
+              "roller": [
+                [
+                  990,
+                  1074
+                ]
+              ],
+              "moth": [
+                [
+                  990,
+                  1074
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  906,
+                  1100
+                ]
+              ],
+              "roller": [
+                [
+                  906,
+                  1100
+                ]
+              ],
+              "moth": [
+                [
+                  906,
+                  1100
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  990,
+                  1074
+                ]
+              ],
+              "roller": [
+                [
+                  990,
+                  1074
+                ]
+              ],
+              "moth": [
+                [
+                  990,
+                  1074
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  906,
+                  1100
+                ]
+              ],
+              "roller": [
+                [
+                  906,
+                  1100
+                ]
+              ],
+              "moth": [
+                [
+                  906,
+                  1100
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              },
+              "arc": {
+                "dog": 84,
+                "roller": 84,
+                "moth": 84
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 194,
+                "roller": 194,
+                "moth": 194
+              },
+              "arc": {
+                "dog": 194,
+                "roller": 194,
+                "moth": 194
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-12-12",
+      "box": [
+        12,
+        12
+      ],
+      "group": "southReturn",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  918,
+                  1050
+                ]
+              ],
+              "roller": [
+                [
+                  918,
+                  1050
+                ]
+              ],
+              "moth": [
+                [
+                  918,
+                  1050
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  892,
+                  1086
+                ]
+              ],
+              "roller": [
+                [
+                  892,
+                  1086
+                ]
+              ],
+              "moth": [
+                [
+                  892,
+                  1086
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  918,
+                  1050
+                ]
+              ],
+              "roller": [
+                [
+                  918,
+                  1050
+                ]
+              ],
+              "moth": [
+                [
+                  918,
+                  1050
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  892,
+                  1086
+                ]
+              ],
+              "roller": [
+                [
+                  892,
+                  1086
+                ]
+              ],
+              "moth": [
+                [
+                  892,
+                  1086
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 132,
+                "roller": 132,
+                "moth": 132
+              },
+              "arc": {
+                "dog": 132,
+                "roller": 132,
+                "moth": 132
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 194,
+                "roller": 194,
+                "moth": 194
+              },
+              "arc": {
+                "dog": 194,
+                "roller": 194,
+                "moth": 194
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-9-13",
+      "box": [
+        9,
+        13
+      ],
+      "group": "late",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  1032,
+                  1098
+                ]
+              ],
+              "roller": [
+                [
+                  1032,
+                  1098
+                ]
+              ],
+              "moth": [
+                [
+                  1032,
+                  1098
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  220,
+                  270
+                ],
+                [
+                  1008,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  220,
+                  270
+                ],
+                [
+                  1008,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  255,
+                  270
+                ],
+                [
+                  1008,
+                  1104
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  1032,
+                  1098
+                ]
+              ],
+              "roller": [
+                [
+                  1032,
+                  1098
+                ]
+              ],
+              "moth": [
+                [
+                  1032,
+                  1098
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  220,
+                  270
+                ],
+                [
+                  1008,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  220,
+                  270
+                ],
+                [
+                  1008,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  220,
+                  270
+                ],
+                [
+                  1008,
+                  1104
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 111
+              },
+              "arc": {
+                "dog": 146,
+                "roller": 146,
+                "moth": 146
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-9-14",
+      "box": [
+        9,
+        14
+      ],
+      "group": "late",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  1038,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  1038,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  1038,
+                  1104
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  239,
+                  241
+                ],
+                [
+                  1012,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  239,
+                  241
+                ],
+                [
+                  1012,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  1012,
+                  1104
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  1038,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  1038,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  1038,
+                  1104
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  1012,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  1012,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  1012,
+                  1104
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 94,
+                "roller": 94,
+                "moth": 92
+              },
+              "arc": {
+                "dog": 92,
+                "roller": 92,
+                "moth": 92
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-10-12",
+      "box": [
+        10,
+        12
+      ],
+      "group": "late",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  1014,
+                  1080
+                ]
+              ],
+              "roller": [
+                [
+                  1014,
+                  1080
+                ]
+              ],
+              "moth": [
+                [
+                  1014,
+                  1080
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  988,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  988,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  988,
+                  1104
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  1014,
+                  1080
+                ]
+              ],
+              "roller": [
+                [
+                  1014,
+                  1080
+                ]
+              ],
+              "moth": [
+                [
+                  1014,
+                  1080
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  988,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  988,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  988,
+                  1104
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              },
+              "arc": {
+                "dog": 66,
+                "roller": 66,
+                "moth": 66
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 116,
+                "roller": 116,
+                "moth": 116
+              },
+              "arc": {
+                "dog": 116,
+                "roller": 116,
+                "moth": 116
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-11-14",
+      "box": [
+        11,
+        14
+      ],
+      "group": "late",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  990,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  990,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  990,
+                  1104
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  954,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  954,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  954,
+                  1104
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  990,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  990,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  990,
+                  1104
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  954,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  954,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  954,
+                  1104
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 114,
+                "roller": 114,
+                "moth": 114
+              },
+              "arc": {
+                "dog": 114,
+                "roller": 114,
+                "moth": 114
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 150,
+                "roller": 150,
+                "moth": 150
+              },
+              "arc": {
+                "dog": 150,
+                "roller": 150,
+                "moth": 150
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-11-15",
+      "box": [
+        11,
+        15
+      ],
+      "group": "late",
+      "baseUseful": true,
+      "coverageRole": "main",
+      "routes": {
+        "main": {
+          "length": 1104,
+          "gun": {
+            "base": {
+              "dog": [
+                [
+                  1062,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  1062,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  1062,
+                  1104
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  978,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  978,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  978,
+                  1104
+                ]
+              ]
+            }
+          },
+          "arc": {
+            "base": {
+              "dog": [
+                [
+                  1062,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  1062,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  1062,
+                  1104
+                ]
+              ]
+            },
+            "upgrade1": {
+              "dog": [
+                [
+                  978,
+                  1104
+                ]
+              ],
+              "roller": [
+                [
+                  978,
+                  1104
+                ]
+              ],
+              "moth": [
+                [
+                  978,
+                  1104
+                ]
+              ]
+            }
+          },
+          "totals": {
+            "base": {
+              "gun": {
+                "dog": 42,
+                "roller": 42,
+                "moth": 42
+              },
+              "arc": {
+                "dog": 42,
+                "roller": 42,
+                "moth": 42
+              }
+            },
+            "upgrade1": {
+              "gun": {
+                "dog": 126,
+                "roller": 126,
+                "moth": 126
+              },
+              "arc": {
+                "dog": 126,
+                "roller": 126,
+                "moth": 126
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

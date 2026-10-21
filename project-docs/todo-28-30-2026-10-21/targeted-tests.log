@@ -1,0 +1,133 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.35ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [5.83ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [1.38ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.15ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [0.88ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.30ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [2.02ms]
+
+tests/critter-density.test.js:
+{"densitySurvey":[{"id":"moss-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"moss-02","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"moss-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"moss-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ochre-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ice-01","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ice-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ice-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ice-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"plum-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"plum-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"plum-03","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"plum-04","ground":9,"birds":3,"fish":0,"additionalNearRoute":5}]}
+(pass) all sixteen levels double land wildlife with separated supported routeside seeds and safe gib/respawn [3691.25ms]
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.08ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [2.27ms]
+(pass) consecutive preparation upgrades spend each step and the top tier survives the level boundary [3.15ms]
+(pass) upgrade availability follows progression, enabled tiers, phase and wallet [2.84ms]
+(pass) next undeployed selection advances in inventory order, wraps and returns null only when none remain [0.79ms]
+(pass) 64 finite waves reward once, retain positions and transfer ownership across every level and zone boundary [2.62ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [0.85ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.61ms]
+(pass) successful waves settle for four seconds before reward or progression and pause freezes settlement [0.67ms]
+(pass) defeat cannot settle, invalid time is rejected and reset clears a pending settlement [0.67ms]
+(pass) family unlocks and upgrades retain correct model and family prices across levels [0.69ms]
+(pass) wave briefing reports effective species profiles and per-approach counts [0.64ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.11ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.03ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.05ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+(pass) real camera switches immediately in both directions at every display rate and restores preparation framing [13.71ms]
+(pass) settling retains Drone, pause freezes its exact displayed pose and resumed flight stays smooth [0.67ms]
+(pass) real Frame, Auto, reset and landscape binding transfer ownership immediately without stale projection state [1.17ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.25ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.41ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [1.83ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.59ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.30ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.15ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.28ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [16.18ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.22ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [10.18ms]
+(pass) every enemy death light ends thirty percent sooner with the same peak, radius and independent blast/debris lifetime [3.24ms]
+
+tests/blood-decals.test.js:
+(pass) actual spray collisions convert to larger flat marks on every solid face, never floating past its bounds [1.30ms]
+(pass) blood marks survive next-wave effect rebinding, begin fading in preparation and release old slots before a quick start [0.86ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [8.20ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [1.80ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [1.75ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [361.02ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [5.09ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [310.74ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [551.24ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.40ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.93ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [2.69ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [37.64ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [15.63ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1816.84ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [24.63ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.82ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.10ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [2.13ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [17.15ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.51ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.91ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.87ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.85ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [139.11ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [2.01ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [2.04ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [268.17ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [73.23ms]
+
+tests/critter-lifecycle.test.js:
+(pass) actual session wave end and late settling impacts retain all remains until build/deploy returns [2.27ms]
+(pass) defeat and final completion do not trigger an early critter fade [2.02ms]
+(pass) level-boundary preparation retains the outgoing board effects until their two-second fade finishes [0.97ms]
+
+tests/screenshot-camera.test.js:
+(pass) screenshot camera restores the exact paused projection/pose after free flight and dragging [0.46ms]
+(pass) free flight follows pitch, strafes, normalizes diagonal speed and is independent of frame rate [0.29ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [42.70ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [125.99ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [77.07ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [167.57ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [26.96ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1090.18ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [118.59ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3203.01ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [13581.29ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [28.30ms]
+
+tests/critter-gibs.test.js:
+(pass) critter blast radii include exact 3D boundaries without a body-radius allowance, for ground and birds [764.07ms]
+(pass) missile physical contacts gib fish at 72 units even if the visual blast pool is full [8.24ms]
+(pass) fragments and persistent solid spray leave in the 3D blast direction and reuse actual model colours [0.67ms]
+(pass) all 24 critters retain all 1152 remains alongside full enemy storage until a 2 second run-end fade [15.54ms]
+(pass) wave preparation safely restores dead ground/perched/flying actors without replacing rig or route storage [206.72ms]
+(pass) late settling gibs stay fully opaque until preparation explicitly begins the fade [0.32ms]
+(pass) critter gore doubles both burst components and adds a stronger outward impulse without extra blast lights [0.24ms]
+(pass) shockwave launch is bounded at the core, strongest nearby and weaker at the inclusive lethal radius [0.73ms]
+(pass) the actual blast radius reaches the impulse model and vertical blasts push away in 3D [193.44ms]
+
+tests/camera.test.js:
+(pass) overview fits full path tiles and all approaches while retaining landscape movement bounds [1.04ms]
+(pass) player camera can disable development path view without changing preview default [0.14ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.09ms]
+(pass) path view samples every path box and restores the complete overview [0.11ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.07ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.21ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.04ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.07ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.30ms]
+(pass) camera disposal removes canvas and document handlers before a renderer retry [0.19ms]
+
+ 102 pass
+ 0 fail
+ 34839 expect() calls
+Ran 102 tests across 12 files. [27.18s]

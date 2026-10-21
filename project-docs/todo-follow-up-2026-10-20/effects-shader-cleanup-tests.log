@@ -1,0 +1,12 @@
+bun test v1.4.2 (744846f84)
+
+tests/renderer.test.js:
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [10.03ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [33.02ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [2.34ms]
+
+ 3 pass
+ 23 filtered out
+ 0 fail
+ 73 expect() calls
+Ran 3 tests across 1 file. [60.00ms]

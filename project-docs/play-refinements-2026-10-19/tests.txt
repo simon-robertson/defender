@@ -1,0 +1,23 @@
+Recorded targeted execution results — 19 October 2026
+
+bun test tests/play-session.test.js tests/play-config.test.js tests/play-presentation.test.js tests/camera.test.js
+20 pass, 0 fail; 977 expect() calls; 14ms.
+
+bun test tests/play-deployment.test.js tests/play-engine.test.js tests/renderer.test.js tests/model-lights.test.js tests/wildlife-preview.test.js tests/world.test.js
+60 pass, 0 fail; 3,128,009 assertions; 72.48s.
+
+One additional affected-route recovery check was added after that run:
+bun test tests/play-deployment.test.js -t 'future'
+1 pass, 0 fail; 92 assertions; 1.50s.
+
+After final interrupted-journey cleanup:
+bun test tests/wildlife-preview.test.js
+12 pass, 0 fail; 2,823,217 assertions; 6.45s.
+These 12 are repeat verification, not additional unique tests.
+
+Total: 81 unique affected checks. No full-suite run.
+
+bun build play/app.js --outdir /tmp/defender-play-refinement-bundle --target browser
+77 modules bundled successfully; browser entry approximately0.49MB.
+
+Renderer buffer tests use a fake device to measure ownership/identity; actual WebGPU rendering and console checks were performed separately in the built-in browser.

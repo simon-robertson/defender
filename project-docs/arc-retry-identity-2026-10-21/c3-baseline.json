@@ -1,0 +1,868 @@
+{
+  "mode": "pre-fix",
+  "recordedAt": "2026-10-21T17:57:58.193Z",
+  "effectiveArcHash": "9331c4823b3e85ed94caca21387515749cdf3ca357e1ae6825bc155300fad4ea",
+  "method": "Independent C3 wave snapshots; frozen earned-token Arc placements; current native physical combat at120Hz/30Hz outer; no campaign spending search, browser or rendering. Non-Arc audited sources and HP conservation verified.",
+  "sourceHashes": {
+    "docs/balance-review-2026-10-21/audit.js": "fd9e9449407b57fdbe38354009cba6b85c517ed01bc833001a8e1a07d099f224",
+    "scripts/campaign-balance-audit.js": "4e5f689de0656dd6a732bb21157a2731b10a7bc7d64568e4f90f1fc3c92a299e",
+    "shared/enhancer.js": "a9e01abfa11f2a1d15f84ebbebacef38aece4b9aa466410fda8245d87d19aa90",
+    "game/enhancer-preview.js": "cf7db33b746c4fd096a8f513ca7e3e451319272f7cbf4fcb08bad012677795ed",
+    "shared/arc-effects.js": "a761dc8e27879e7a1f3d83d86ce25c67a17743fe3fd482afc9e1f7d414a85157",
+    "play/config.js": "cbc2e0e6d6d9cbaaaf6d5211c79f4d023d0e4648445bc1a7efb185b08b9fab27",
+    "play/session.js": "9fb087d462e8e01a33171091d589dbcf1ff1f3be3581734f9f0e705a4abc0de0",
+    "play/engine.js": "a20ce5c8c7cc60f8ab572e3082a00448090ed90f86028a6e37bff6b0d300d694",
+    "play/enemies.js": "b4b1aa4ed82c5d9a5dd5eecb6e59d97caf213257bc3410190477e1e054435137",
+    "play/placement.js": "2df422dff9c0e17f889ef8283cac8f97e542a19f02a9b0c4aab02c1c77b64ffd",
+    "game/turret-preview.js": "6071459608c3e7e26bc02ee1424af6c3e7fd75e214a310d696e1c0880a800f34",
+    "game/arc-spire-preview.js": "a829eafe249f3764e4357184224ffb73dd0f42f7725e6094aed291d2250aabc4",
+    "game/missile-preview.js": "36fe38574d9591387580b04d985a004d18fffcf2d6d68acecacf46086684593d",
+    "engine/target-planner.js": "edb1dd2f3acaad9512db1e177d5078bc34d49c5fdb54d231ab236ca10398f60c",
+    "engine/missile-flight.js": "1fe21755abccacc8611fac876b1304f69cfc4a34a8a402e256da46798264783a",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "shared/missile-flight.js": "0822e1da77f9d5f657115006a0487a00deb82d720649d35f12ce643ed802400b",
+    "shared/enemy.js": "915023d134274b8fab00f7aa55f01079724040824d382141d425e4e815153087",
+    "shared/enemy-roster.js": "fc51b8dfb81a181f9fa805f8fc1b1bbe41f7be0da271868e2ed8028f10efc252",
+    "shared/model-lights.js": "ab0a9a923e8cd9e717667cbec6d8843e6221fff9d0a019e756dbdc3c2d3843ef",
+    "game/enemy-preview.js": "9c7b9f8d19dd515b01899919b66fa3b40fca34768bf0482e43f1e547e59f109a",
+    "engine/path-motion.js": "560c6588336385b2d234ba16d906716b1e4d57641b7d04ee6dec11751264842e",
+    "engine/articulated-gait.js": "c762200ea54c40a37c9d229ebca3d12b7406a96ae8ce9d8e45d185f28db8f48a",
+    "engine/enemy-expansion-gait.js": "149bf40847ba50483efbc4078ca1d9de3dca073293ff055d02c961086460428a",
+    "engine/enemy-impact.js": "b87adabb139fdd0be904a31482b8246d4e780fbecfbefe409bbd39505dff2710",
+    "engine/arc-impact.js": "35d60fcf2ddf2257286f9c1ef134c919180ab0bb9d05acff5cfc748cbdd9aa22",
+    "assets/models/dog.json": "69997c3e6695f7e1f9ffe693ea9ba7bdc05f65ff4a3565a551775c69f72b6f2e",
+    "assets/models/roller.json": "9670fe64ee3209bbd619993bd557aa05cd08d7a03c39855e25809cbab48a0089",
+    "assets/models/moth.json": "17ad882980b3f688203ef7868e4b09fce941ca6f3dfa01804633aa9ce2f02642",
+    "assets/models/walker.json": "2ae016d8764eaf431d798be35f73d891dd23306f35d41c3c4cf05c3bff48ca4d",
+    "assets/models/dune-tread.json": "b28074b20003017e16941933ec0360e6ed203dc4c1e6635c3e825494e3ac2cf5",
+    "assets/models/twin-fan.json": "578e48104e8f91aee2447ec9489805814f79b0ae63a266235ec45dc291ccbd39",
+    "assets/models/tripod.json": "c3d98c894776bda5415887dcf3446dda2e0e4b36f819ad3fd0c8eeadc8df8361",
+    "assets/models/ray.json": "701c38c8b3fbd5d2c8a7b9a04c002e64b5f64c8b1ca424869b87662f8e23e6ea",
+    "assets/models/spider.json": "dea563d6d5e086a4bdf43fb989c9db6f249af81c5a6a124ff803445910b38415",
+    "assets/models/lantern.json": "1d839062e47a03a2b52fe7a14835ae75ecb1ab0b057490050d69ba65331e989d",
+    "assets/levels/moss-01.json": "0527f5389d6b9ac9c3353e868ae345a568a25e45f8c4200a794421547ac48d44",
+    "assets/levels/moss-02.json": "354dadcc7c59b8479a06787e8c85c780d0f19cff8304daad1ec56bfd67435902",
+    "assets/levels/moss-03.json": "858af4bf39d8bbbce11a579d172dc74586d929542831ddcb1178374456977d1a",
+    "assets/levels/moss-04.json": "d5b00b57df7d5e76283073111ba151b578016dd62976069ecc97402dc5854566",
+    "assets/levels/ochre-01.json": "e67595c3cf9af8c2bde964177ece23553dee44440f13167ba48f48ba6cd1ee9f",
+    "assets/levels/ochre-02.json": "c27f12e156529c2dcca6663496d87c4852f2a8cea53318a4ae2b7abc20e118fc",
+    "assets/levels/ochre-03.json": "2199aed826cee2987cbf978a3ec4d700a9107a3b49297e0e85573e2be6cc63d2",
+    "assets/levels/ochre-04.json": "1797b5a37faff9765d1f259d9196a6b2568245ed0b330076e3782736f419e2b1",
+    "assets/levels/ice-01.json": "bbd272bef07991c52b6241a1a22ae9745e44ecce8a3d84155b839b54bf48f9fb",
+    "assets/levels/ice-02.json": "0b80e6398d1ebd6495a79a4baccc8ebaa7b8b291ec4df2118aadd433cb822688",
+    "assets/levels/ice-03.json": "621baa08e93ceeb0b0c9c47036434181f50884ef9b24c3dfadc51f90412399eb",
+    "assets/levels/ice-04.json": "894a38705daa0835ad35d4536a6160e6e3a3529eebb9ebe6e5f5162474d335c4",
+    "assets/levels/plum-01.json": "dd44954ca6ec6de3a2b89287a4aa30fd0c8b820ae315a9273a29dcbf05056d60",
+    "assets/levels/plum-02.json": "6a5fd03ca1144683343ee8e7a50b5672c52f0abd0eadf1aa64b3573f507a1766",
+    "assets/levels/plum-03.json": "d5b05f9fdeca74cb3993fd922c1652d068597da9a69e03a04ee376fe607d01f8",
+    "assets/levels/plum-04.json": "2db24cd2e29e192530d9e39006cc6d2a25b0b4179a74fda00bb15b2193eaba29"
+  },
+  "waves": [
+    {
+      "wave": "c3-wave-1",
+      "time": 79.28333333334231,
+      "waveTime": 79.28333333334231,
+      "running": false,
+      "completed": true,
+      "spawned": 14,
+      "pending": 0,
+      "active": 0,
+      "killed": 14,
+      "escaped": 0,
+      "resolved": 14,
+      "total": 14,
+      "shots": 938,
+      "gunShots": 200,
+      "arcShots": 738,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 9514,
+      "lastSteps": 2,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410,
+      "surfaceRejects": 2,
+      "usefulDamage": 54300,
+      "healthBudget": 54300,
+      "placements": [
+        {
+          "id": "player-gun-1",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            3,
+            0,
+            8
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-gun-2",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            11,
+            0,
+            4
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-3",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-4",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            3,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-5",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-6",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            15
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-7",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            5
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-8",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            6,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-9",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            9,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-10",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-11",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-12",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-13",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-14",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            12
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-15",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            7
+          ],
+          "turn": 0
+        }
+      ]
+    },
+    {
+      "wave": "c3-wave-2",
+      "time": 85.87500000001423,
+      "waveTime": 85.87500000001423,
+      "running": false,
+      "completed": true,
+      "spawned": 17,
+      "pending": 0,
+      "active": 0,
+      "killed": 17,
+      "escaped": 0,
+      "resolved": 17,
+      "total": 17,
+      "shots": 1142,
+      "gunShots": 233,
+      "arcShots": 909,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 10305,
+      "lastSteps": 1,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410,
+      "surfaceRejects": 0,
+      "usefulDamage": 66750,
+      "healthBudget": 66750,
+      "placements": [
+        {
+          "id": "player-gun-1",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            3,
+            0,
+            8
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-gun-2",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            11,
+            0,
+            4
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-3",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-4",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            3,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-5",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-6",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            15
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-7",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            5
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-8",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            6,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-9",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            9,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-10",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-11",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-12",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-13",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-14",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            12
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-15",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            7
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-16",
+          "model": "arc-spire",
+          "variant": "base",
+          "box": [
+            11,
+            0,
+            12
+          ],
+          "turn": 0
+        }
+      ]
+    },
+    {
+      "wave": "c3-wave-3",
+      "time": 80.83333333334355,
+      "waveTime": 80.83333333334355,
+      "running": false,
+      "completed": true,
+      "spawned": 19,
+      "pending": 0,
+      "active": 0,
+      "killed": 19,
+      "escaped": 0,
+      "resolved": 19,
+      "total": 19,
+      "shots": 1152,
+      "gunShots": 220,
+      "arcShots": 932,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 9700,
+      "lastSteps": 4,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410,
+      "surfaceRejects": 6,
+      "usefulDamage": 68400,
+      "healthBudget": 68400,
+      "placements": [
+        {
+          "id": "player-gun-1",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            3,
+            0,
+            8
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-gun-2",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            11,
+            0,
+            4
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-3",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-4",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            3,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-5",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-6",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            15
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-7",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            5
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-8",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            6,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-9",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            9,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-10",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-11",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-12",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-13",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-14",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            12
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-15",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            7
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-16",
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "box": [
+            11,
+            0,
+            12
+          ],
+          "turn": 0
+        }
+      ]
+    },
+    {
+      "wave": "c3-wave-4",
+      "time": 87.266666666682,
+      "waveTime": 87.266666666682,
+      "running": false,
+      "completed": true,
+      "spawned": 22,
+      "pending": 0,
+      "active": 0,
+      "killed": 22,
+      "escaped": 0,
+      "resolved": 22,
+      "total": 22,
+      "shots": 1327,
+      "gunShots": 252,
+      "arcShots": 1075,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 10472,
+      "lastSteps": 4,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410,
+      "surfaceRejects": 2,
+      "usefulDamage": 80850,
+      "healthBudget": 80850,
+      "placements": [
+        {
+          "id": "player-gun-1",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            3,
+            0,
+            8
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-gun-2",
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "box": [
+            11,
+            0,
+            4
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-3",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-4",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            3,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-5",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-6",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            15
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-7",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            5
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-8",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            6,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-9",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            9,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-10",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            10
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-11",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-12",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            9
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-13",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            11
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-14",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            12
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-15",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            10,
+            0,
+            7
+          ],
+          "turn": 0
+        },
+        {
+          "id": "player-arc-spire-16",
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "box": [
+            11,
+            0,
+            12
+          ],
+          "turn": 0
+        }
+      ]
+    }
+  ]
+}

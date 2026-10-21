@@ -1,0 +1,50 @@
+bun test v1.4.2 (744846f84)
+
+tests/landscape-preview-runtime.test.js:
+(pass) landscape mode rejects routes and combat placements while preserving historical actor catalogues [4.74ms]
+(pass) layout mode supports a dry continuous route without restoring catalogue combat or legacy wildlife seeds [35.42ms]
+(pass) exact cosmetic seed points are copied and malformed or out-of-box points are rejected [0.21ms]
+(pass) explicit archived sources keep combat review working and receive identical validation and ID guards [273.77ms]
+124 |      expect(world.level.bridges).toEqual([{id:'river-waist',boxes:[[6,6],[7,6]]}]);
+125 |      for(const x of [6,7]){expect(terrain.flatBox(x,6)).toBeNull();expect(terrain.height(x*24+12,6*24+12)).toBe(17);expect(terrain.height(x*24+12,6*24+12,true)).toBe(20);}
+126 |     }else expect(world.level.bridges).toBeUndefined();
+127 |    }
+128 |    expect(world.level.actorRoutes).toBeUndefined();expect(world.level.environment.weather.enabled).toBe(false);
+129 |    expect(world.level.placements.length).toBeGreaterThan(0);expect(world.actors.size).toBe(12+world.fishActors.length);expect(world.assetIds).toEqual([...new Set([...world.level.placements.map(p=>p.model),...wildlifeActorsForLevel(world.level).map(a=>a.model),...(world.fishActors.length?['wildlife-fish']:[])])]);
+                                                                                                                                                    ^
+error: expect(received).toEqual(expected)
+
+  [
+    "ochre-rock",
+    "ochre-shrub",
+    "ochre-pebbles",
+    "ochre-tuft",
+    "ochre-cactus",
+    "ochre-flowers",
+    "ochre-cactus-young",
+    "ochre-mesa",
+    "ochre-wall",
+    "ochre-mesa-low",
+    "wildlife-lizard-ochre",
+    "wildlife-bird-ochre",
++   "wildlife-fish",
+  ]
+
+- Expected  - 0
++ Received  + 1
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/landscape-preview-runtime.test.js:129:143)
+(fail) the fifteen remaining noncombat previews request only scenery and cosmetics, animate safely and release before the next load [1164.58ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [783.55ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [974.41ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [940.11ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [660.33ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.34ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2248.83ms]
+
+ 10 pass
+ 1 fail
+ 4941 expect() calls
+Ran 11 tests across 2 files. [7.11s]

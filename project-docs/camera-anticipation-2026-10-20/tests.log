@@ -1,0 +1,113 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-camera-views.test.js:
+(pass) switching live views releases the old perspective before capturing a new overview [0.26ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.05ms]
+(pass) Auto can exit a live view and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.17ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [5.82ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [4.47ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.55ms]
+(pass) stable coverage drifts gently around its shot while changing height and retaining broad gimbal aiming [9.83ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.45ms]
+{"levelIndex":0,"hz":30,"travelled":220.30986272677467,"readable":1,"minY":84.00086221515832,"maxY":143.9996320084631,"bytes":11006}
+{"levelIndex":0,"hz":60,"travelled":289.87615194427644,"readable":1,"minY":84,"maxY":153.49781734948064,"bytes":11006}
+{"levelIndex":0,"hz":120,"travelled":334.89592628059347,"readable":1,"minY":84,"maxY":146.86993258105912,"bytes":11006}
+{"levelIndex":1,"hz":30,"travelled":377.95157325930575,"readable":0.9258215962441314,"minY":84.08875954306534,"maxY":152.26465835100979,"bytes":13904}
+{"levelIndex":1,"hz":60,"travelled":285.77530938271093,"readable":0.9577266322217003,"minY":84.37454301488889,"maxY":157.2138682143683,"bytes":13904}
+{"levelIndex":1,"hz":120,"travelled":296.57779412131856,"readable":0.9436355096289337,"minY":84.3786007189928,"maxY":151.68518679498652,"bytes":13904}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5919.91ms]
+{"currentLevel":2,"mothFrames":2811,"minY":133.26210639258713,"maxY":180.99937222856957,"minPitch":0.3253415992239958,"minEnemy3D":100.333354615515,"minFlyer3D":100.333354615515,"minVerticalGap":60.26210639258713,"stalledFrames":0,"minStep":0.00011111111111980693,"heldDriftFrames":1751,"meanSpeed":9.145353245806637,"blockedMoves":0,"airborneFloor":133,"travelled":761.6772774723402,"bytes":12862}
+{"currentLevel":3,"mothFrames":2053,"minY":133.18364033491054,"maxY":180.88619004859632,"minPitch":0.4165476623921236,"minEnemy3D":99.05102087630328,"minFlyer3D":108.6233813067995,"minVerticalGap":60.183640334910535,"stalledFrames":0,"minStep":0.00011111111109724188,"heldDriftFrames":2669,"meanSpeed":7.836859028172429,"blockedMoves":0,"airborneFloor":133,"travelled":714.7215433696139,"bytes":17096}
+{"currentLevel":4,"mothFrames":3258,"minY":133.22533247961306,"maxY":180.9997438042189,"minPitch":0.32503416466238305,"minEnemy3D":89.29134564099292,"minFlyer3D":89.29134564099292,"minVerticalGap":60.22533247961306,"stalledFrames":0,"minStep":0.00011111111110240346,"heldDriftFrames":2762,"meanSpeed":8.496464188106003,"blockedMoves":0,"airborneFloor":133,"travelled":841.9996010417226,"bytes":15640}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [6336.45ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [955.75ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.53ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.000000000491237,"maxJerk":48.000000085938446,"driftFrames":3349,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [10.12ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [0.77ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.26ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [0.58ms]
+(pass) both cameras leave a held current shot and move toward an idle defence before its enemy enters range, then freeze with pause [13.86ms]
+(pass) drone focus follows optical-axis subject depth during a limited turn instead of radial distance [0.07ms]
+{"actualCamera":"LiveCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":0,"totalTravel":126.62490060552312}
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":102.21500359037927,"totalTravel":291.98362942715704}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [2005.87ms]
+
+tests/play-action-camera.test.js:
+(pass) empty/title preparation never takes camera ownership; bind and release never move a user view [0.69ms]
+(pass) sparse combat closes in smoothly with fixed orientation, finite bounded motion and no long-frame leap [2.32ms]
+(pass) spread fronts and engaged gun envelopes fit wide and portrait views without selecting scheduled enemies or mutating targeting [3.34ms]
+(pass) look-ahead follows actual route through a corner and clamps at exit rather than wrapping [0.07ms]
+(pass) fixed-clock damping agrees at30/60/120Hz and moving-route framing has no material frame-rate drift [3.04ms]
+(pass) death context survives busy gunfire and holds through four-second settling, then returns smoothly only once [1.11ms]
+(pass) recent death interest expires without a settling phase and paused time freezes view, hold and event lifetime [0.79ms]
+(pass) manual drag/key holds, disable/resume and preparation takeover never fight the player or snap on resuming [1.00ms]
+(pass) takeover from extreme manual zoom/pan returns within speed limits instead of clamping to auto bounds [2.86ms]
+(pass) event timestamps follow actual bounded engine time rather than a longer browser-frame delta [0.12ms]
+(pass) zero-hold preparation takeover cancels the return but lets the next wave own the camera immediately [0.82ms]
+(pass) real A1/A2 fights anticipate guns before engagement and keep their animated meshes readable on laptop/desktop frames [4085.65ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [5.34ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [0.99ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [0.95ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [266.47ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.41ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [269.09ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [449.37ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.74ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.43ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.39ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [32.71ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [15.20ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1474.28ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [21.04ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.43ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.20ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.23ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [18.25ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.91ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.04ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.05ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.19ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [97.57ms]
+(pass) live film is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [1.54ms]
+(pass) live film reuses pipelines through toggles and releases viewport/scene images exactly once [1.07ms]
+(pass) clean drone depth of field reuses the camera pass without handheld grading or target churn [0.94ms]
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [0.21ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [985.10ms]
+(pass) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [969.04ms]
+{"levelIndex":0,"hz":30,"travelled":164.5855548371087,"minFov":40.393241672896835,"maxFov":69.66666666666669,"minGunGap":65.87463214693366,"minEnemyGap":81.00022545312322,"visible":0.8663282571912013,"held":0.4653130287648054,"readable":0.49746192893401014}
+{"levelIndex":0,"hz":60,"travelled":61.260030065521875,"minFov":42.901372380889235,"maxFov":69.83333333333334,"minGunGap":65.86683569478986,"minEnemyGap":81.0000154320973,"visible":1,"held":0.8128704487722269,"readable":0.9381879762912786}
+{"levelIndex":0,"hz":120,"travelled":72.31301091320937,"minFov":40.759425038379405,"maxFov":69.91666666666667,"minGunGap":65.86460864231213,"minEnemyGap":81.0000659121817,"visible":1,"held":0.7534942820838628,"readable":0.9080897924608217}
+{"levelIndex":1,"hz":30,"travelled":557.9622222221824,"minFov":40.011593106777056,"maxFov":74.66111168812898,"minGunGap":45.912966510857906,"minEnemyGap":73.05648499620457,"visible":0.9436619718309859,"held":0.11737089201877934,"readable":0.7605633802816901}
+{"levelIndex":1,"hz":60,"travelled":552.8237474605709,"minFov":40.00310028377972,"maxFov":73.1862188751599,"minGunGap":45.89771284546153,"minEnemyGap":76.48138662446384,"visible":0.8835133865664632,"held":0.10145608266791921,"readable":0.669798027242837}
+{"levelIndex":1,"hz":120,"travelled":555.7481449057282,"minFov":40.00011962994112,"maxFov":69.91666666666667,"minGunGap":45.893354692572565,"minEnemyGap":103.8195549980831,"visible":0.8024894316580554,"held":0.11390324095819633,"readable":0.6254109910756224}
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5625.06ms]
+(pass) standoff routing avoids close approaches and permits retreat when action moves towards the operator [964.01ms]
+(pass) a useful stationary shot stays planted instead of orbiting on a timer, and framing rejects foreground canopy [0.26ms]
+(pass) fast pans lean in opposite directions, settle smoothly and freeze with pause [964.87ms]
+{"scenario":"reported-opening","travelled":314.27276980795347,"held":0.7263888888888889,"readable":0.9571428571428572}
+(pass) the reported two-base-gun A1 opening holds shots and stays near the battle without constant running [1050.37ms]
+
+tests/camera.test.js:
+(pass) player camera can disable development path view without changing preview default [0.59ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.15ms]
+(pass) path view samples every path box and restores the complete overview [0.13ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.07ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.20ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.04ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.34ms]
+
+ 74 pass
+ 0 fail
+ 290099 expect() calls
+Ran 74 tests across 7 files. [32.68s]

@@ -1,0 +1,738 @@
+{
+  "id": "moss-04",
+  "sourceHash": "b96b8706e863dae506618861cf623b364a3e2b3f029af72ee85305c01abe5de4",
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 2019,
+    "checkedParts": 14133,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "early-entry",
+        "group": "early",
+        "box": [
+          2,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 131.14,
+              "72": 163.88,
+              "96": 188.95,
+              "120": 213.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "roller": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "moth": [
+                  [
+                    6,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    0,
+                    164
+                  ]
+                ],
+                "roller": [
+                  [
+                    0,
+                    164
+                  ]
+                ],
+                "moth": [
+                  [
+                    0,
+                    164
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-turn",
+        "group": "early",
+        "box": [
+          4,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    54,
+                    186
+                  ]
+                ],
+                "roller": [
+                  [
+                    54,
+                    186
+                  ]
+                ],
+                "moth": [
+                  [
+                    54,
+                    186
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    28,
+                    212
+                  ]
+                ],
+                "roller": [
+                  [
+                    28,
+                    212
+                  ]
+                ],
+                "moth": [
+                  [
+                    28,
+                    212
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-straight",
+        "group": "early",
+        "box": [
+          5,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 83.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 283.15
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "roller": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "moth": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    52,
+                    236
+                  ]
+                ],
+                "roller": [
+                  [
+                    52,
+                    236
+                  ]
+                ],
+                "moth": [
+                  [
+                    52,
+                    236
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-upper",
+        "group": "repeat",
+        "box": [
+          11,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 148.71,
+              "72": 251.65,
+              "96": 375.5,
+              "120": 432
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    264,
+                    330
+                  ],
+                  [
+                    438,
+                    522
+                  ]
+                ],
+                "roller": [
+                  [
+                    264,
+                    330
+                  ],
+                  [
+                    438,
+                    522
+                  ]
+                ],
+                "moth": [
+                  [
+                    264,
+                    330
+                  ],
+                  [
+                    438,
+                    522
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    240,
+                    356
+                  ],
+                  [
+                    412,
+                    548
+                  ]
+                ],
+                "roller": [
+                  [
+                    240,
+                    356
+                  ],
+                  [
+                    412,
+                    548
+                  ]
+                ],
+                "moth": [
+                  [
+                    240,
+                    356
+                  ],
+                  [
+                    412,
+                    548
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-middle",
+        "group": "repeat",
+        "box": [
+          11,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 166.28,
+              "72": 279.76,
+              "96": 329.9,
+              "120": 405.58
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    270,
+                    354
+                  ],
+                  [
+                    414,
+                    498
+                  ]
+                ],
+                "roller": [
+                  [
+                    270,
+                    354
+                  ],
+                  [
+                    414,
+                    498
+                  ]
+                ],
+                "moth": [
+                  [
+                    270,
+                    354
+                  ],
+                  [
+                    414,
+                    498
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    244,
+                    524
+                  ]
+                ],
+                "roller": [
+                  [
+                    244,
+                    524
+                  ]
+                ],
+                "moth": [
+                  [
+                    244,
+                    524
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-turn",
+        "group": "repeat",
+        "box": [
+          11,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 179.14,
+              "72": 241.55,
+              "96": 296.09,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    294,
+                    474
+                  ]
+                ],
+                "roller": [
+                  [
+                    294,
+                    474
+                  ]
+                ],
+                "moth": [
+                  [
+                    294,
+                    474
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    258,
+                    500
+                  ]
+                ],
+                "roller": [
+                  [
+                    258,
+                    500
+                  ]
+                ],
+                "moth": [
+                  [
+                    258,
+                    500
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-approach",
+        "group": "late",
+        "box": [
+          14,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 227.14,
+              "120": 291.96
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "roller": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "moth": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    560,
+                    668
+                  ]
+                ],
+                "roller": [
+                  [
+                    563,
+                    668
+                  ]
+                ],
+                "moth": [
+                  [
+                    474,
+                    668
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-middle",
+        "group": "late",
+        "box": [
+          15,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 207.5,
+              "120": 240
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "roller": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "moth": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    556,
+                    672
+                  ]
+                ],
+                "roller": [
+                  [
+                    556,
+                    672
+                  ]
+                ],
+                "moth": [
+                  [
+                    556,
+                    672
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-exit",
+        "group": "late",
+        "box": [
+          16,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    606,
+                    672
+                  ]
+                ],
+                "roller": [
+                  [
+                    606,
+                    672
+                  ]
+                ],
+                "moth": [
+                  [
+                    606,
+                    672
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    580,
+                    672
+                  ]
+                ],
+                "roller": [
+                  [
+                    580,
+                    672
+                  ]
+                ],
+                "moth": [
+                  [
+                    580,
+                    672
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-opposite",
+        "group": "late",
+        "box": [
+          16,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 672,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 168
+            },
+            "eligible": {
+              "base": {
+                "dog": [
+                  [
+                    606,
+                    672
+                  ]
+                ],
+                "roller": [
+                  [
+                    606,
+                    672
+                  ]
+                ],
+                "moth": [
+                  [
+                    606,
+                    672
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "dog": [
+                  [
+                    580,
+                    672
+                  ]
+                ],
+                "roller": [
+                  [
+                    580,
+                    672
+                  ]
+                ],
+                "moth": [
+                  [
+                    580,
+                    672
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "combat": {
+    "seconds": 120,
+    "frames": 7200,
+    "thinkCounts": [
+      2400,
+      2400,
+      2400
+    ],
+    "shots": {
+      "a4-gun": 33,
+      "a4-arc": 32,
+      "a4-silo": 14
+    },
+    "strengths": [
+      12.5,
+      30,
+      60
+    ],
+    "hits": {
+      "main/moth/30": 165,
+      "main/roller/12.5": 60,
+      "main/dog/30": 520,
+      "main/dog/12.5": 275,
+      "main/moth/60": 120,
+      "main/roller/30": 240,
+      "main/roller/60": 420,
+      "main/dog/60": 105,
+      "main/moth/12.5": 75
+    },
+    "launches": 14,
+    "claimsSeen": true,
+    "missileHits": 11,
+    "remaining": [
+      {
+        "id": "preview-dog-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-dog-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-dog-3",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-roller-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-roller-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-moth-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-moth-2",
+        "route": "main",
+        "health": 0
+      }
+    ],
+    "enhancers": [
+      {
+        "id": "a4-generator",
+        "active": true,
+        "recipientIds": [
+          "a4-gun"
+        ]
+      }
+    ],
+    "failures": []
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    "Complete production lens shader compiles",
+    "Camera lens preserves colour, framing and edge pixels when blur is disabled",
+    "Objects at the focus plane remain sharp",
+    "Foreground outside the focus plane becomes softer",
+    "Background outside the focus plane becomes softer",
+    "Drone reuses its target, settings buffer and pipeline between frames",
+    "Repeated paused footage is pixel-identical",
+    "No WebGPU validation errors"
+  ],
+  "identityError": 0,
+  "near": {
+    "meanDelta": 76.21875,
+    "variation": 26.169270833333332
+  },
+  "focused": {
+    "meanDelta": 0,
+    "variation": 97.27994791666667
+  },
+  "far": {
+    "meanDelta": 64.6015625,
+    "variation": 17.154947916666668
+  },
+  "resources": {
+    "settingsBytes": 32,
+    "targetBytes": 24576
+  }
+}

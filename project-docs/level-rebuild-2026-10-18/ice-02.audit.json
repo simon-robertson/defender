@@ -1,0 +1,514 @@
+{
+  "id": "ice-02",
+  "sourceHash": "81f1dd328f9979fc2175237d02e1b1cadd4af927008551af0ecb24504fdb82b2",
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 1298,
+    "checkedParts": 7139,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "early-1",
+        "group": "early",
+        "box": [
+          2,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 83.14,
+              "72": 163.88,
+              "96": 188.95,
+              "120": 213.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "ray": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    0,
+                    164
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    164
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-2",
+        "group": "early",
+        "box": [
+          3,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 212.95,
+              "120": 237.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    30,
+                    162
+                  ]
+                ],
+                "ray": [
+                  [
+                    30,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    4,
+                    188
+                  ]
+                ],
+                "ray": [
+                  [
+                    4,
+                    188
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "early-3",
+        "group": "early",
+        "box": [
+          3,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 183.5,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    40,
+                    114
+                  ]
+                ],
+                "ray": [
+                  [
+                    30,
+                    114
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    38,
+                    140
+                  ]
+                ],
+                "ray": [
+                  [
+                    22,
+                    140
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-1",
+        "group": "repeat",
+        "box": [
+          6,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 83.14,
+              "72": 231.76,
+              "96": 281.9,
+              "120": 331.15
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "ray": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    76,
+                    308
+                  ]
+                ],
+                "ray": [
+                  [
+                    76,
+                    308
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-2",
+        "group": "repeat",
+        "box": [
+          7,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 281.9,
+              "120": 405.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    174,
+                    306
+                  ]
+                ],
+                "ray": [
+                  [
+                    174,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    148,
+                    332
+                  ]
+                ],
+                "ray": [
+                  [
+                    148,
+                    332
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "repeat-3",
+        "group": "repeat",
+        "box": [
+          9,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 131.14,
+              "72": 241.55,
+              "96": 296.09,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    222,
+                    354
+                  ]
+                ],
+                "ray": [
+                  [
+                    222,
+                    354
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    196,
+                    438
+                  ]
+                ],
+                "ray": [
+                  [
+                    196,
+                    438
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-1",
+        "group": "late",
+        "box": [
+          10,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 83.14,
+              "72": 156.88,
+              "96": 270.37,
+              "120": 411.96
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    414,
+                    498
+                  ]
+                ],
+                "ray": [
+                  [
+                    414,
+                    498
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    234,
+                    246
+                  ],
+                  [
+                    388,
+                    534
+                  ]
+                ],
+                "ray": [
+                  [
+                    234,
+                    246
+                  ],
+                  [
+                    388,
+                    534
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-2",
+        "group": "late",
+        "box": [
+          10,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 212.54,
+              "120": 321.13
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    438,
+                    522
+                  ]
+                ],
+                "ray": [
+                  [
+                    438,
+                    522
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    412,
+                    548
+                  ]
+                ],
+                "ray": [
+                  [
+                    412,
+                    548
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-3",
+        "group": "late",
+        "box": [
+          10,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 648,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 164.95,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    462,
+                    528
+                  ]
+                ],
+                "ray": [
+                  [
+                    462,
+                    528
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    436,
+                    552
+                  ]
+                ],
+                "ray": [
+                  [
+                    436,
+                    552
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "combat": {
+    "seconds": 120,
+    "frames": 7200,
+    "thinkCounts": [
+      2400,
+      2400,
+      2400
+    ],
+    "shots": {
+      "c2-defence-1": 2,
+      "c2-defence-2": 10,
+      "c2-defence-3": 12
+    },
+    "strengths": [
+      30,
+      40,
+      55
+    ],
+    "hits": {
+      "main/tripod/30": 60,
+      "main/ray/40": 220,
+      "main/ray/55": 220,
+      "main/tripod/55": 340,
+      "main/tripod/40": 160
+    },
+    "launches": 0,
+    "claimsSeen": false,
+    "missileHits": 0,
+    "remaining": [
+      {
+        "id": "preview-tripod-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-tripod-2",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-ray-1",
+        "route": "main",
+        "health": 0
+      },
+      {
+        "id": "preview-ray-2",
+        "route": "main",
+        "health": 0
+      }
+    ],
+    "enhancers": [],
+    "failures": []
+  }
+}

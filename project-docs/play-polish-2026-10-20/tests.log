@@ -1,0 +1,175 @@
+bun test v1.4.2 (744846f84)
+
+tests/visibility.test.js:
+(pass) exact occupied scenery blocks solid walls while retaining a real doorway and over-wall clearance [0.98ms]
+(pass) closed leaf bounds handle grazing faces, corners, endpoints, interior origins and zero-length segments [0.20ms]
+(pass) cell bounds follow quarter-turns, detail offsets and terrain or absolute placement anchors [0.92ms]
+(pass) ground mounds and carved beds block in 3D while water, defences and enemies remain excluded [0.29ms]
+(pass) merged cuboids and stackless branches agree with original cell geometry over deterministic 3D rays [6.08ms]
+(pass) queries reuse typed storage, retain no source dependency and fail closed after disposal or for invalid rays [0.41ms]
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [412.99ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [23.69ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [22.83ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [23.17ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [74.88ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [66.52ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [31.86ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [93.13ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [22.47ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [23.09ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [23.01ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [77.90ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [68.21ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [45.54ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [22.83ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [22.23ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [23.96ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [22.66ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [134.85ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [24.54ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [24.63ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [30.99ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [23.29ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [244.07ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [22.28ms]
+(pass) static contact drops its incoming claim before the impact callback [22.88ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [92.34ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [42.22ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [80.84ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [33.15ms]
+
+tests/arc-spire-runtime.test.js:
+(pass) Arc Spire studies load only their actors, preserve movement, and keep wildlife clear of defence geometry [1112.70ms]
+
+tests/missile-effects.test.js:
+(pass) missile contacts create a fast expanding surface-offset flash and light without damage, debris, smoke or waves [0.83ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [1.05ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.15ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.25ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [1.15ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.12ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [0.77ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.14ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.03ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.07ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+
+tests/arc-combat.test.js:
+(pass) Arc studies hit once per pulse and destroy the mixed ground/air rosters [800.13ms]
+(pass) mixed defences share exactly one thinker and do not promise unverified Arc coverage [56.42ms]
+(pass) actual surface LOS, range exits and death cancel live bursts; a stall never replays hits [27.93ms]
+(pass) a surface-blocked priority target yields to hittable alternatives and retries later [29.52ms]
+(pass) upgrade bursts respect real gaps and cooldowns and stop immediately on obstruction [30.42ms]
+(pass) random contacts use exposed facing sides of current articulated poses and release all matrix references [478.35ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [77.81ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [54.55ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [51.12ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [196.27ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [92.76ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1369.65ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [1087.42ms]
+(pass) real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage [53.83ms]
+
+tests/play-polish.test.js:
+(pass) overview/perspective blend preserves invertible projection, exact endpoints and smooth reversible travel [1.15ms]
+(pass) real Drone coordinator eases into a wave, freezes when paused and returns to preparation without a snap [3.94ms]
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.18ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.49ms]
+
+tests/enemy-expansion-preview.test.js:
+(pass) mixed mechanisms use their own speed, path, bounded lap clocks and reusable matrices across frame partitions [114.63ms]
+(pass) wheel, rotor and wing phases remain continuous across each actor clock wrap [127.35ms]
+(pass) actual torso positions and analytic aim velocities include offset centres and route banking [56.52ms]
+(pass) Tripod holds three-phase contacts flat through the complete route with a readable stride [43.83ms]
+(pass) all four flyers clear scenery, terrain and all three defence studies over their complete route [5645.63ms]
+(pass) new ground skid and small airborne sway preserve actual poses, guards, death freeze, reset and scene ownership [112.50ms]
+(pass) new ground actors retain terrain support and clear route scenery through their complete production paths [2572.55ms]
+
+tests/enemy-expansion-models.test.js:
+(pass) all seven expansion models reproduce canonical sources with grounded, unique connected grid parts [12.07ms]
+(pass) approved sensors alone emit and each of the seven meshes exposes exactly one local-light cluster [34.75ms]
+(pass) animated part IDs, parents and pivots agree with the immutable geometry contracts [0.40ms]
+EXPANSION_MECHANISM_BOUNDS {"roller":{"poses":36,"minY":0.007504761219024658,"maxY":23.09000000357628,"radius":10.862630905357298},"dune-tread":{"poses":36,"minY":0.008901119232177734,"maxY":10.17000000178814,"radius":12.932437203218957},"moth":{"poses":36,"minY":-0.0964193344116211,"maxY":10.710541009902954,"radius":12.389798140219126},"twin-fan":{"poses":36,"minY":1.7388859391212463,"maxY":13.037687167525291,"radius":12.859976913682864},"ray":{"poses":36,"minY":-0.12282165884971619,"maxY":9.42706374824047,"radius":11.147574736265565},"lantern":{"poses":36,"minY":1.4238436222076416,"maxY":23.750376984477043,"radius":12.315632622139791}}
+(pass) rolling, wing and rotor envelopes preserve actual occupied-part separation [289.21ms]
+EXPANSION_TRIPOD_BOUNDS {"poses":768,"minY":-0.0000010770880161103946,"radius":11.880981457652627,"soleRadius":11.457193363509928,"maxPart":{"id":"lower-fl","cell":[4,3,5],"point":[94.0642264932394,3.208787575364113,34.74231452122331]},"maxDistance":46.25,"footError":0.000008213820450464482,"plantedError":0.00000762939453125,"rule":{"speed":14,"turnDistance":12,"airborne":false,"altitude":0,"crouch":0.5,"cycleSeconds":0.3,"stanceFraction":0.72,"lift":0.5},"collision":null}
+(pass) Tripod full gait keeps flat planted feet, reach, ground and actual-part clearance through both turns [1557.13ms]
+
+tests/shot-effects.test.js:
+(pass) shot sockets occupy the real open muzzle centres on all three variants [17.20ms]
+(pass) paired flashes and local lights follow the recoiling guns; sparks stay in world space [0.40ms]
+(pass) shot motion and light fading are independent of frame subdivision [0.49ms]
+(pass) effect pools remain bounded under overload, expire cleanly and retain their buffers [1.38ms]
+(pass) burst events reach effects after pose updates and preserve original timestamps across stalls [0.34ms]
+
+tests/play-presentation.test.js:
+(pass) title framing covers every viewport corner with landscape across portrait and widescreen [0.27ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [6.60ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [1.16ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [0.99ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [276.99ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.99ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [282.05ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [520.70ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.74ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.22ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.24ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [34.01ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [16.04ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1775.45ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [19.31ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [15.87ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.26ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.16ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [16.24ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.66ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.13ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.21ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.04ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [98.34ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.27ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.19ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [73.72ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [30.42ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [110.23ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [65.27ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [142.19ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [24.16ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1137.29ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [128.50ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3721.77ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [15522.71ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [27.36ms]
+
+tests/play-conditions.test.js:
+(pass) each zone advances through stable day, afternoon, evening and night with clear weather and no random draws [0.11ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.49ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [4443.66ms]
+(pass) play time-of-day overrides are cloned and do not rewrite saved lighting [3.41ms]
+
+tests/camera.test.js:
+(pass) overview fits full path tiles and all approaches while retaining landscape movement bounds [0.97ms]
+(pass) player camera can disable development path view without changing preview default [0.16ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.14ms]
+(pass) path view samples every path box and restores the complete overview [0.12ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.06ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.18ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.04ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.40ms]
+(pass) camera disposal removes canvas and document handlers before a renderer retry [0.21ms]
+
+ 135 pass
+ 0 fail
+ 1000074 expect() calls
+Ran 135 tests across 16 files. [46.60s]

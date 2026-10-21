@@ -1,0 +1,81 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.16ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.08ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+(pass) real camera switches immediately in both directions at every display rate and restores preparation framing [10.76ms]
+(pass) settling retains Drone, pause freezes its exact displayed pose and resumed flight stays smooth [0.55ms]
+(pass) real Frame, Auto, reset and landscape binding transfer ownership immediately without stale projection state [0.56ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [1.76ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [2.79ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.24ms]
+(pass) stable subjects receive repeated fresh angles with smooth high flight and broad gimbal aiming [7.35ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.06ms]
+{"levelIndex":0,"hz":30,"travelled":222.98446135736634,"readable":1,"minY":144,"maxY":223.9995811224655,"bytes":13058}
+{"levelIndex":0,"hz":60,"travelled":221.79453508764547,"readable":1,"minY":144.16006792073807,"maxY":223.9999162244931,"bytes":13058}
+{"levelIndex":0,"hz":120,"travelled":272.95781406028215,"readable":1,"minY":144,"maxY":223.99997905612327,"bytes":13058}
+{"levelIndex":1,"hz":30,"travelled":461.32421360757473,"readable":0.8948356807511737,"minY":144.4199504255471,"maxY":223.99957017080712,"bytes":15956}
+{"levelIndex":1,"hz":60,"travelled":456.13014502968883,"readable":0.8717707844058243,"minY":144,"maxY":223.9999140341614,"bytes":15956}
+{"levelIndex":1,"hz":120,"travelled":509.9188239645152,"readable":0.8337247534053547,"minY":144,"maxY":223.99997850854035,"bytes":15956}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5817.85ms]
+{"currentLevel":2,"mothFrames":2397,"minY":173.1254905747889,"maxY":223.99993174479368,"minPitch":0.47436626732899945,"minEnemy3D":132.79320792876266,"minFlyer3D":132.79320792876266,"minVerticalGap":100.1254905747889,"stalledFrames":0,"minStep":0.00011111111110077233,"heldDriftFrames":1645,"meanSpeed":10.659585352346847,"blockedMoves":0,"airborneFloor":173,"travelled":887.7911800599297,"bytes":14914}
+{"currentLevel":3,"mothFrames":981,"minY":173.05264461136957,"maxY":224,"minPitch":0.44521811910971076,"minEnemy3D":133.0927168192273,"minFlyer3D":133.0927168192273,"minVerticalGap":100.05264461136957,"stalledFrames":0,"minStep":0.00002777777780165253,"heldDriftFrames":2132,"meanSpeed":10.710534034649383,"blockedMoves":1,"airborneFloor":173,"travelled":976.8007039604178,"bytes":19148}
+{"currentLevel":4,"mothFrames":3043,"minY":173.3599876634919,"maxY":223.9999372913277,"minPitch":0.43909661330056055,"minEnemy3D":142.122009592072,"minFlyer3D":142.122009592072,"minVerticalGap":100.35998766349189,"stalledFrames":0,"minStep":0.00011111111111583855,"heldDriftFrames":2104,"meanSpeed":11.83026979307838,"blockedMoves":0,"airborneFloor":173,"travelled":1172.3797364946488,"bytes":17692}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [6071.45ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [1052.63ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.89ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.00000000058749,"maxJerk":48.00000010487128,"driftFrames":3305,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [11.80ms]
+(pass) opening stations vary across cosmetic seeds and repeated entries while staying clear [3.04ms]
+(pass) every campaign opening stays in the central half across seeds and repeated wave entries [12390.12ms]
+(pass) a blocked centre uses a safe outer opening; a completely blocked scene never activates [1.11ms]
+
+tests/renderer.test.js:
+(pass) blood decals blend last in the cached opaque pass, never write depth/shadows and allocate no new images [3.24ms]
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [4.39ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [1.06ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [0.93ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [328.27ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.93ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [325.81ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [620.50ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.02ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.85ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.31ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [37.11ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [15.02ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1749.54ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [22.32ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.97ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.25ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.57ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [18.00ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.49ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.14ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.08ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [0.98ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [96.19ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.09ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [0.98ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [327.07ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [66.16ms]
+
+tests/screenshot-camera.test.js:
+(pass) screenshot camera restores the exact paused projection/pose after free flight and dragging [0.57ms]
+(pass) free flight follows pitch, strafes, normalizes diagonal speed and is independent of frame rate [0.31ms]
+
+tests/water.test.js:
+(pass) water material is explicit, bounded and survives level serialization [0.92ms]
+(pass) water and stream bed have separate complete surfaces on the box grid [34.81ms]
+(pass) translucent terrain retains submerged solid faces and culls water interfaces against solids/water [17.23ms]
+(pass) all shipped player defences sit on ground at path height; mounds, floating anchors and extra layers are rejected [16.05ms]
+
+ 55 pass
+ 0 fail
+ 289748 expect() calls
+Ran 55 tests across 5 files. [29.14s]

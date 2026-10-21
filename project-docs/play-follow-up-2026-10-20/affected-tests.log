@@ -1,0 +1,42 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.10ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [0.62ms]
+(pass) consecutive preparation upgrades spend each step and the top tier survives the level boundary [0.93ms]
+(pass) upgrade availability follows progression, enabled tiers, phase and wallet [0.58ms]
+(pass) next undeployed selection advances in inventory order, wraps and returns null only when none remain [0.17ms]
+(pass) sixteen finite waves reward once, retain same-map positions and return ownership at every level boundary [0.26ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [0.14ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.12ms]
+(pass) successful waves settle for four seconds before reward or progression and pause freezes settlement [0.16ms]
+(pass) defeat cannot settle, invalid time is rejected and reset clears a pending settlement [0.16ms]
+(pass) family unlocks and upgrades retain correct model and family prices across levels [0.17ms]
+(pass) wave briefing reports effective species profiles and per-approach counts [0.18ms]
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1415.61ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [5347.37ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [28810.10ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [1928.14ms]
+(pass) an animal occupying otherwise legal build ground causes an atomic temporary rejection [1843.94ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [1861.42ms]
+
+tests/play-presentation.test.js:
+(pass) title framing covers every viewport corner with landscape across portrait and widescreen [0.34ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [46.90ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [169.88ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [99.74ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [231.23ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [39.31ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1150.77ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [184.81ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3756.59ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [14283.38ms]
+
+ 28 pass
+ 0 fail
+ 10230 expect() calls
+Ran 28 tests across 4 files. [61.20s]

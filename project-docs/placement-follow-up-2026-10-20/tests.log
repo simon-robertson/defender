@@ -1,0 +1,51 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-route-clearance.test.js:
+(pass) height-specific walking envelopes contain complete native articulated voxels throughout all B/C routes [2595.34ms]
+(pass) later campaign courts recover narrow-body clearance while paths and real conflicts stay protected [4797.66ms]
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1396.34ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [5556.00ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [26324.21ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [1807.91ms]
+(pass) an animal on legal build ground respawns safely while deployment commits in place [1761.02ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [1742.76ms]
+
+tests/missile-effects.test.js:
+(pass) missile contacts create a fast expanding surface-offset flash and light without damage, debris, smoke or waves [1.07ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [1.19ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.27ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [2.09ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [2.88ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.38ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [0.83ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.41ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.18ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [0.87ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.26ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.18ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.10ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.49ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [5.32ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.18ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [9.93ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [812.72ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [1027.78ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [991.41ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [784.53ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.34ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2227.76ms]
+
+tests/play-entrance-markers.test.js:
+(pass) every campaign approach has an inward entry anchor, including branches and shared-start deduplication [5.68ms]
+(pass) entry badges project with the overview, hide in Drone/title, and clear between areas [0.55ms]
+
+ 33 pass
+ 0 fail
+ 32796 expect() calls
+Ran 33 tests across 6 files. [51.93s]

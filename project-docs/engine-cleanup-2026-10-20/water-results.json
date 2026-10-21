@@ -1,0 +1,59 @@
+{
+  "scene": "moss-02",
+  "fixture": "720 ticks, idle+overflowing seeded splash events, exact states/packed Float32 traces, long/zero delta and reset; timed20 repeats",
+  "baseline": "/private/tmp/defender-engine-20261020-euzacphu",
+  "runs": [
+    {
+      "digest": "4ee43f67bdc61b0daf86ddb8c86eab1b55cb16de96faa174a8a7e9f81cd78000",
+      "operations": {
+        "exp": 18172,
+        "sqrt": 15264,
+        "cos": 384,
+        "sin": 2544,
+        "assign": 240
+      },
+      "slotPredicates": 392836,
+      "idle600FramesSlotPredicates": 288000
+    },
+    {
+      "digest": "4ee43f67bdc61b0daf86ddb8c86eab1b55cb16de96faa174a8a7e9f81cd78000",
+      "operations": {
+        "exp": 138,
+        "sqrt": 14736,
+        "cos": 192,
+        "sin": 2352,
+        "assign": 0
+      },
+      "slotPredicates": 136228,
+      "idle600FramesSlotPredicates": 0
+    }
+  ],
+  "timing": {
+    "runtime": "1.4.2",
+    "samplesMs": [
+      [
+        156.693084,
+        151.55925000000013,
+        182.95279099999993,
+        146.7812919999999,
+        146.4871250000001,
+        147.08275000000003,
+        146.92604200000005
+      ],
+      [
+        147.30937499999993,
+        140.75587499999995,
+        140.95024999999987,
+        140.03220899999997,
+        140.14216699999997,
+        139.2675830000003,
+        139.5155420000001
+      ]
+    ],
+    "medianMs": [
+      147.08275000000003,
+      140.14216699999997
+    ],
+    "scope": "isolated Bun CPU fixture; no browser/GPU frame-rate claim"
+  }
+}

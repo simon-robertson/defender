@@ -1,0 +1,95 @@
+{
+  "level": "moss-04",
+  "lighting": "natural",
+  "elapsed": 310,
+  "sheen": true,
+  "waterPhase": 1.884955644607544,
+  "sunIntensity": 0.6499999761581421,
+  "sunY": 0.7844645380973816,
+  "waterMaterial": {
+    "type": "water",
+    "color": "#559B91",
+    "emission": 0,
+    "reflectiveness": 0.65,
+    "opacity": 0.16,
+    "absorption": 0.035,
+    "refraction": 0.65,
+    "rippleStrength": 0.16,
+    "rippleScale": 0.8,
+    "rippleSpeed": 0.13
+  },
+  "waterUniform80to91": [
+    0.09084171056747437,
+    0.3277781009674072,
+    0.28314873576164246,
+    0.6499999761581421,
+    0.1599999964237213,
+    0.03500000014901161,
+    0.6499999761581421,
+    0.1599999964237213,
+    0.800000011920929,
+    0.12999999523162842,
+    0,
+    0
+  ],
+  "waterDrawIndices": 144,
+  "waterBox": {
+    "box": [
+      12,
+      5
+    ],
+    "ground": 8,
+    "water": 12
+  },
+  "camera": {
+    "mode": "overview",
+    "target": [
+      300,
+      12,
+      132
+    ],
+    "eye": [
+      785.3811645507812,
+      605.4462280273438,
+      603.4093017578125
+    ],
+    "radius": 62,
+    "yaw": 0.8,
+    "pitch": 0.72
+  },
+  "gpuTimer": "off",
+  "depthProbe": {
+    "grid": [
+      64,
+      48
+    ],
+    "sampledWaterSurfacePixels": 1092,
+    "sampledShadedWaterPixels": 898,
+    "shadedRatioOfImage": 0.2923177083333333,
+    "wetCenterPixel": [
+      823,
+      851
+    ],
+    "wetCenterOpaqueDepth": 0.41182631254196167,
+    "wetCenterWaterDepth": 0.40908288955688477,
+    "wetCenterNormalAlpha": 1,
+    "wetCenterShadesWater": true
+  },
+  "comparison": {
+    "animation": {
+      "changedPixels": 774758,
+      "changedFraction": 0.2762273315877444,
+      "meanAbsoluteRGBDifference": 3.5353887025406117,
+      "maxChannelDifference": 79
+    },
+    "waterEnabledVsDisabled": {
+      "changedPixels": 822171,
+      "changedFraction": 0.29313166361473825,
+      "meanAbsoluteRGBDifference": 5.170894205519332,
+      "maxChannelDifference": 108
+    },
+    "phaseLater": 3.2735395431518555
+  },
+  "prepassAudit": null,
+  "errors": []
+}

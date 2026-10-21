@@ -1,0 +1,75 @@
+{
+  "level": "moss-03",
+  "lighting": "clear-10:30",
+  "elapsed": 310,
+  "stage": "Gentle breeze refraction · 60% transparent",
+  "waterPhase": 3.769911289215088,
+  "sunIntensity": 0.8130139708518982,
+  "sunY": 0.7597957253456116,
+  "waterMaterial": {
+    "type": "water",
+    "color": "#8FBBD4",
+    "emission": 0,
+    "reflectiveness": 0,
+    "opacity": 0.4,
+    "absorption": 0,
+    "refraction": 1,
+    "rippleStrength": 0.08,
+    "rippleScale": 1,
+    "rippleSpeed": 0.16
+  },
+  "waterUniform80to91": [
+    0.2746773064136505,
+    0.4969329833984375,
+    0.6583748459815979,
+    0,
+    0.4000000059604645,
+    0,
+    1,
+    0.07999999821186066,
+    1,
+    0.1599999964237213,
+    0,
+    0
+  ],
+  "waterDrawIndices": 126,
+  "waterBox": {
+    "box": [
+      13,
+      7
+    ],
+    "ground": 20,
+    "water": 22
+  },
+  "camera": {
+    "mode": "overview",
+    "target": [
+      324,
+      22,
+      180
+    ],
+    "eye": [
+      809.3811645507812,
+      615.4462280273438,
+      651.4093017578125
+    ],
+    "radius": 62,
+    "yaw": 0.8,
+    "pitch": 0.72
+  },
+  "gpuTimer": "off",
+  "depthProbe": null,
+  "comparison": {
+    "transparency": {
+      "opacity": 0.4000000059604645,
+      "transmission": 0.5999999940395355,
+      "checkedPixels": 507638,
+      "maxDisplayByteError": 0.9516146771725147,
+      "failedChannels": 0,
+      "tolerance": 2,
+      "pass": true
+    }
+  },
+  "prepassAudit": null,
+  "errors": []
+}

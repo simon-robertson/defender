@@ -1,0 +1,6357 @@
+{
+  "schema": "defender.c-carving-option-audit",
+  "version": 1,
+  "id": "zone-c-tarn-circuit",
+  "sourceHash": "fffaa93e22303ca11d906be603c5e5306ad3125f46561ae4ad3ab0703cf1b8da",
+  "recordedAt": "2026-10-20T13:33:00.517Z",
+  "method": "Synthetic offline copy removes previewMode only to admit production Tripod/Ray and individual weapon probes. Actual level contains scenery and wildlife only. Guns: production actual pitched muzzles at zero/full recoil, per-species 1-unit bins. Arcs: production closest terminal, centre LOS and deterministic production facing-side surface sampling at 4-unit midpoint bins (eligibility held only as a quadrature approximation over each bin). No damage, waves, budget or simultaneous adjacent-defence claim.",
+  "siteFailures": [],
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 1922,
+    "checkedParts": 10571,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "entry-5-4",
+        "group": "entry",
+        "box": [
+          5,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    78,
+                    210
+                  ]
+                ],
+                "ray": [
+                  [
+                    78,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    52,
+                    246
+                  ]
+                ],
+                "ray": [
+                  [
+                    52,
+                    246
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-2-6",
+        "group": "entry",
+        "box": [
+          2,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 192
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "ray": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-3-6",
+        "group": "entry",
+        "box": [
+          3,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 183.5,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    30,
+                    114
+                  ]
+                ],
+                "ray": [
+                  [
+                    30,
+                    114
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    4,
+                    140
+                  ]
+                ],
+                "ray": [
+                  [
+                    4,
+                    140
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "entry-4-6",
+        "group": "entry",
+        "box": [
+          4,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 240
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "ray": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    28,
+                    174
+                  ]
+                ],
+                "ray": [
+                  [
+                    28,
+                    174
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "fir-return-7-3",
+        "group": "firReturn",
+        "box": [
+          7,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 296.09,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    150,
+                    282
+                  ]
+                ],
+                "ray": [
+                  [
+                    150,
+                    282
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    114,
+                    308
+                  ]
+                ],
+                "ray": [
+                  [
+                    114,
+                    308
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "fir-return-7-4",
+        "group": "firReturn",
+        "box": [
+          7,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 308.95,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "ray": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    100,
+                    294
+                  ]
+                ],
+                "ray": [
+                  [
+                    100,
+                    294
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "fir-return-8-3",
+        "group": "firReturn",
+        "box": [
+          8,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 241.55,
+              "96": 296.09,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "ray": [
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    138,
+                    380
+                  ]
+                ],
+                "ray": [
+                  [
+                    138,
+                    380
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "fir-return-9-3",
+        "group": "firReturn",
+        "box": [
+          9,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 296.09,
+              "120": 347.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    246,
+                    378
+                  ]
+                ],
+                "ray": [
+                  [
+                    246,
+                    378
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    220,
+                    404
+                  ]
+                ],
+                "ray": [
+                  [
+                    220,
+                    404
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "fir-return-9-4",
+        "group": "firReturn",
+        "box": [
+          9,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 65.57,
+              "72": 173.67,
+              "96": 308.95,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    318,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    318,
+                    384
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    234,
+                    408
+                  ]
+                ],
+                "ray": [
+                  [
+                    234,
+                    408
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "fir-return-10-1",
+        "group": "firReturn",
+        "box": [
+          10,
+          1
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 204.45,
+              "120": 288
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    270,
+                    336
+                  ]
+                ],
+                "ray": [
+                  [
+                    270,
+                    336
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    244,
+                    360
+                  ]
+                ],
+                "ray": [
+                  [
+                    244,
+                    360
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-11-3",
+        "group": "eastBank",
+        "box": [
+          11,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 283.15
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    294,
+                    426
+                  ]
+                ],
+                "ray": [
+                  [
+                    294,
+                    426
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    268,
+                    452
+                  ]
+                ],
+                "ray": [
+                  [
+                    268,
+                    452
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-14-3",
+        "group": "eastBank",
+        "box": [
+          14,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    424,
+                    498
+                  ]
+                ],
+                "ray": [
+                  [
+                    414,
+                    498
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    422,
+                    534
+                  ]
+                ],
+                "ray": [
+                  [
+                    406,
+                    534
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-15-3",
+        "group": "eastBank",
+        "box": [
+          15,
+          3
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 235.15
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    438,
+                    522
+                  ]
+                ],
+                "ray": [
+                  [
+                    438,
+                    522
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    412,
+                    548
+                  ]
+                ],
+                "ray": [
+                  [
+                    412,
+                    548
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-15-5",
+        "group": "eastBank",
+        "box": [
+          15,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 283.15
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    438,
+                    570
+                  ]
+                ],
+                "ray": [
+                  [
+                    438,
+                    570
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    412,
+                    596
+                  ]
+                ],
+                "ray": [
+                  [
+                    412,
+                    596
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-15-6",
+        "group": "eastBank",
+        "box": [
+          15,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "ray": [
+                  [
+                    510,
+                    594
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    426,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    426,
+                    620
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-15-7",
+        "group": "eastBank",
+        "box": [
+          15,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 252.45,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    534,
+                    618
+                  ]
+                ],
+                "ray": [
+                  [
+                    534,
+                    618
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    508,
+                    644
+                  ]
+                ],
+                "ray": [
+                  [
+                    508,
+                    644
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-15-8",
+        "group": "eastBank",
+        "box": [
+          15,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 233.9,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "ray": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-15-9",
+        "group": "eastBank",
+        "box": [
+          15,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 283.15
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "ray": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    556,
+                    740
+                  ]
+                ],
+                "ray": [
+                  [
+                    556,
+                    740
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-17-6",
+        "group": "eastBank",
+        "box": [
+          17,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "ray": [
+                  [
+                    510,
+                    594
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    474,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    474,
+                    620
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-17-8",
+        "group": "eastBank",
+        "box": [
+          17,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 204.45,
+              "120": 288
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "ray": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-bank-17-10",
+        "group": "eastBank",
+        "box": [
+          17,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 204.45,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "ray": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    580,
+                    716
+                  ]
+                ],
+                "ray": [
+                  [
+                    580,
+                    716
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-15-12",
+        "group": "southReturn",
+        "box": [
+          15,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    654,
+                    786
+                  ]
+                ],
+                "ray": [
+                  [
+                    654,
+                    786
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    628,
+                    822
+                  ]
+                ],
+                "ray": [
+                  [
+                    628,
+                    822
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-15-13",
+        "group": "southReturn",
+        "box": [
+          15,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 283.15
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    726,
+                    810
+                  ]
+                ],
+                "ray": [
+                  [
+                    726,
+                    810
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    652,
+                    836
+                  ]
+                ],
+                "ray": [
+                  [
+                    652,
+                    836
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-13-13",
+        "group": "southReturn",
+        "box": [
+          13,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 252.45,
+              "120": 309.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    726,
+                    858
+                  ]
+                ],
+                "ray": [
+                  [
+                    726,
+                    858
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    690,
+                    884
+                  ]
+                ],
+                "ray": [
+                  [
+                    690,
+                    884
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-12-13",
+        "group": "southReturn",
+        "box": [
+          12,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 312
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "ray": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    714,
+                    908
+                  ]
+                ],
+                "ray": [
+                  [
+                    714,
+                    908
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-11-13",
+        "group": "southReturn",
+        "box": [
+          11,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 251.14,
+              "120": 277.98
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "ray": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    796,
+                    932
+                  ]
+                ],
+                "ray": [
+                  [
+                    796,
+                    932
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-10-13",
+        "group": "southReturn",
+        "box": [
+          10,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 139.88,
+              "96": 164.95,
+              "120": 253.98
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    846,
+                    930
+                  ]
+                ],
+                "ray": [
+                  [
+                    846,
+                    930
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    820,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    820,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-9-13",
+        "group": "southReturn",
+        "box": [
+          9,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 165.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    870,
+                    954
+                  ]
+                ],
+                "ray": [
+                  [
+                    870,
+                    954
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    844,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    844,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-9-15",
+        "group": "southReturn",
+        "box": [
+          9,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 89.57,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 165.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    870,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    870,
+                    960
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    844,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    844,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-7-14",
+        "group": "southReturn",
+        "box": [
+          7,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 48,
+              "72": 72,
+              "96": 96,
+              "120": 120
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    912,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    912,
+                    960
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    888,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    888,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "south-return-7-15",
+        "group": "southReturn",
+        "box": [
+          7,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 41.57,
+              "72": 67.88,
+              "96": 92.95,
+              "120": 117.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [
+                  [
+                    918,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    918,
+                    960
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    892,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    892,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-2-7",
+        "group": "gunCourt",
+        "box": [
+          2,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 101.67,
+              "96": 131.14,
+              "120": 168
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    102
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-4-7",
+        "group": "gunCourt",
+        "box": [
+          4,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 107.33,
+              "96": 166.28,
+              "120": 205.98
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    42,
+                    150
+                  ]
+                ],
+                "ray": [
+                  [
+                    42,
+                    150
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-8-4",
+        "group": "gunCourt",
+        "box": [
+          8,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 259.88,
+              "96": 308.95,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    124,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    124,
+                    384
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-14-2",
+        "group": "gunCourt",
+        "box": [
+          14,
+          2
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 107.33,
+              "96": 166.28,
+              "120": 277.98
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    434,
+                    510
+                  ]
+                ],
+                "ray": [
+                  [
+                    427,
+                    510
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-18-6",
+        "group": "gunCourt",
+        "box": [
+          18,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 107.33,
+              "96": 166.28,
+              "120": 219.96
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    498,
+                    606
+                  ]
+                ],
+                "ray": [
+                  [
+                    498,
+                    606
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-18-9",
+        "group": "gunCourt",
+        "box": [
+          18,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 107.33,
+              "96": 166.28,
+              "120": 229.98
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    570,
+                    678
+                  ]
+                ],
+                "ray": [
+                  [
+                    570,
+                    678
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-10-12",
+        "group": "gunCourt",
+        "box": [
+          10,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 107.33,
+              "96": 155.14,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    834,
+                    942
+                  ]
+                ],
+                "ray": [
+                  [
+                    834,
+                    942
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gun-court-6-14",
+        "group": "gunCourt",
+        "box": [
+          6,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 960,
+            "ideal": {
+              "48": 0,
+              "72": 48,
+              "96": 72,
+              "120": 96
+            },
+            "eligible": {
+              "base": {
+                "tripod": [],
+                "ray": []
+              },
+              "upgrade1": {
+                "tripod": [
+                  [
+                    912,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    912,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "arc": [
+    {
+      "id": "entry-5-4",
+      "box": [
+        5,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    80,
+                    208
+                  ]
+                ],
+                "ray": [
+                  [
+                    80,
+                    208
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    80,
+                    208
+                  ]
+                ],
+                "ray": [
+                  [
+                    80,
+                    208
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    52,
+                    244
+                  ]
+                ],
+                "ray": [
+                  [
+                    52,
+                    244
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    52,
+                    244
+                  ]
+                ],
+                "ray": [
+                  [
+                    52,
+                    244
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    28,
+                    276
+                  ]
+                ],
+                "ray": [
+                  [
+                    28,
+                    276
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    28,
+                    276
+                  ]
+                ],
+                "ray": [
+                  [
+                    28,
+                    276
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-2-6",
+      "box": [
+        2,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    8,
+                    88
+                  ]
+                ],
+                "ray": [
+                  [
+                    8,
+                    88
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    8,
+                    88
+                  ]
+                ],
+                "ray": [
+                  [
+                    8,
+                    88
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    0,
+                    140
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    140
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    0,
+                    140
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    140
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-3-6",
+      "box": [
+        3,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    32,
+                    112
+                  ]
+                ],
+                "ray": [
+                  [
+                    32,
+                    112
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    32,
+                    112
+                  ]
+                ],
+                "ray": [
+                  [
+                    32,
+                    112
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    4,
+                    140
+                  ]
+                ],
+                "ray": [
+                  [
+                    4,
+                    140
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    4,
+                    140
+                  ]
+                ],
+                "ray": [
+                  [
+                    4,
+                    140
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    0,
+                    184
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    184
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    0,
+                    184
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    184
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "entry-4-6",
+      "box": [
+        4,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    56,
+                    136
+                  ]
+                ],
+                "ray": [
+                  [
+                    56,
+                    136
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    56,
+                    136
+                  ]
+                ],
+                "ray": [
+                  [
+                    56,
+                    136
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    28,
+                    172
+                  ]
+                ],
+                "ray": [
+                  [
+                    28,
+                    172
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    28,
+                    172
+                  ]
+                ],
+                "ray": [
+                  [
+                    28,
+                    172
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    4,
+                    204
+                  ]
+                ],
+                "ray": [
+                  [
+                    4,
+                    204
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    4,
+                    204
+                  ]
+                ],
+                "ray": [
+                  [
+                    4,
+                    204
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fir-return-7-3",
+      "box": [
+        7,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    152,
+                    280
+                  ]
+                ],
+                "ray": [
+                  [
+                    152,
+                    280
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    152,
+                    280
+                  ]
+                ],
+                "ray": [
+                  [
+                    152,
+                    280
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    116,
+                    308
+                  ]
+                ],
+                "ray": [
+                  [
+                    116,
+                    308
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    116,
+                    308
+                  ]
+                ],
+                "ray": [
+                  [
+                    116,
+                    308
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    84,
+                    380
+                  ]
+                ],
+                "ray": [
+                  [
+                    84,
+                    380
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    84,
+                    380
+                  ]
+                ],
+                "ray": [
+                  [
+                    84,
+                    380
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fir-return-7-4",
+      "box": [
+        7,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    128,
+                    208
+                  ]
+                ],
+                "ray": [
+                  [
+                    128,
+                    208
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    128,
+                    208
+                  ]
+                ],
+                "ray": [
+                  [
+                    128,
+                    208
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    100,
+                    292
+                  ]
+                ],
+                "ray": [
+                  [
+                    100,
+                    292
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    100,
+                    292
+                  ]
+                ],
+                "ray": [
+                  [
+                    100,
+                    292
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    76,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    76,
+                    384
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    76,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    76,
+                    384
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fir-return-8-3",
+      "box": [
+        8,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    224,
+                    304
+                  ]
+                ],
+                "ray": [
+                  [
+                    224,
+                    304
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    224,
+                    304
+                  ]
+                ],
+                "ray": [
+                  [
+                    224,
+                    304
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    140,
+                    380
+                  ]
+                ],
+                "ray": [
+                  [
+                    140,
+                    380
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    140,
+                    380
+                  ]
+                ],
+                "ray": [
+                  [
+                    140,
+                    380
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    108,
+                    404
+                  ]
+                ],
+                "ray": [
+                  [
+                    108,
+                    404
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    108,
+                    404
+                  ]
+                ],
+                "ray": [
+                  [
+                    108,
+                    404
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fir-return-9-3",
+      "box": [
+        9,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    248,
+                    376
+                  ]
+                ],
+                "ray": [
+                  [
+                    248,
+                    376
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    248,
+                    376
+                  ]
+                ],
+                "ray": [
+                  [
+                    248,
+                    376
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    220,
+                    404
+                  ]
+                ],
+                "ray": [
+                  [
+                    220,
+                    404
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    220,
+                    404
+                  ]
+                ],
+                "ray": [
+                  [
+                    220,
+                    404
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    132,
+                    428
+                  ]
+                ],
+                "ray": [
+                  [
+                    132,
+                    428
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    132,
+                    428
+                  ]
+                ],
+                "ray": [
+                  [
+                    132,
+                    428
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fir-return-9-4",
+      "box": [
+        9,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    320,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    320,
+                    384
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    320,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    320,
+                    384
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    236,
+                    408
+                  ]
+                ],
+                "ray": [
+                  [
+                    236,
+                    408
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    236,
+                    408
+                  ]
+                ],
+                "ray": [
+                  [
+                    236,
+                    408
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    124,
+                    432
+                  ]
+                ],
+                "ray": [
+                  [
+                    124,
+                    432
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    124,
+                    432
+                  ]
+                ],
+                "ray": [
+                  [
+                    124,
+                    432
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fir-return-10-1",
+      "box": [
+        10,
+        1
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    272,
+                    336
+                  ]
+                ],
+                "ray": [
+                  [
+                    272,
+                    336
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    272,
+                    336
+                  ]
+                ],
+                "ray": [
+                  [
+                    272,
+                    336
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    244,
+                    360
+                  ]
+                ],
+                "ray": [
+                  [
+                    244,
+                    360
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    244,
+                    360
+                  ]
+                ],
+                "ray": [
+                  [
+                    244,
+                    360
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    220,
+                    424
+                  ]
+                ],
+                "ray": [
+                  [
+                    220,
+                    424
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    220,
+                    424
+                  ]
+                ],
+                "ray": [
+                  [
+                    220,
+                    424
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-11-3",
+      "box": [
+        11,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    296,
+                    424
+                  ]
+                ],
+                "ray": [
+                  [
+                    296,
+                    424
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    296,
+                    424
+                  ]
+                ],
+                "ray": [
+                  [
+                    296,
+                    424
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    268,
+                    452
+                  ]
+                ],
+                "ray": [
+                  [
+                    268,
+                    452
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    268,
+                    452
+                  ]
+                ],
+                "ray": [
+                  [
+                    268,
+                    452
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    244,
+                    476
+                  ]
+                ],
+                "ray": [
+                  [
+                    244,
+                    476
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    244,
+                    476
+                  ]
+                ],
+                "ray": [
+                  [
+                    244,
+                    476
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-14-3",
+      "box": [
+        14,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    416,
+                    496
+                  ]
+                ],
+                "ray": [
+                  [
+                    416,
+                    496
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    416,
+                    496
+                  ]
+                ],
+                "ray": [
+                  [
+                    416,
+                    496
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    388,
+                    532
+                  ]
+                ],
+                "ray": [
+                  [
+                    388,
+                    532
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    388,
+                    532
+                  ]
+                ],
+                "ray": [
+                  [
+                    388,
+                    532
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    364,
+                    564
+                  ]
+                ],
+                "ray": [
+                  [
+                    364,
+                    564
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    364,
+                    564
+                  ]
+                ],
+                "ray": [
+                  [
+                    364,
+                    564
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-15-3",
+      "box": [
+        15,
+        3
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    440,
+                    520
+                  ]
+                ],
+                "ray": [
+                  [
+                    440,
+                    520
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    440,
+                    520
+                  ]
+                ],
+                "ray": [
+                  [
+                    440,
+                    520
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    412,
+                    548
+                  ]
+                ],
+                "ray": [
+                  [
+                    412,
+                    548
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    412,
+                    548
+                  ]
+                ],
+                "ray": [
+                  [
+                    412,
+                    548
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    388,
+                    572
+                  ]
+                ],
+                "ray": [
+                  [
+                    388,
+                    572
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    388,
+                    572
+                  ]
+                ],
+                "ray": [
+                  [
+                    388,
+                    572
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-15-5",
+      "box": [
+        15,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    440,
+                    568
+                  ]
+                ],
+                "ray": [
+                  [
+                    440,
+                    568
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    440,
+                    568
+                  ]
+                ],
+                "ray": [
+                  [
+                    440,
+                    568
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    412,
+                    596
+                  ]
+                ],
+                "ray": [
+                  [
+                    412,
+                    596
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    412,
+                    596
+                  ]
+                ],
+                "ray": [
+                  [
+                    412,
+                    596
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    388,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    388,
+                    620
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    388,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    388,
+                    620
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-15-6",
+      "box": [
+        15,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    512,
+                    592
+                  ]
+                ],
+                "ray": [
+                  [
+                    512,
+                    592
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    512,
+                    592
+                  ]
+                ],
+                "ray": [
+                  [
+                    512,
+                    592
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    428,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    428,
+                    620
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    428,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    428,
+                    620
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    396,
+                    644
+                  ]
+                ],
+                "ray": [
+                  [
+                    396,
+                    644
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    396,
+                    644
+                  ]
+                ],
+                "ray": [
+                  [
+                    396,
+                    644
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-15-7",
+      "box": [
+        15,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    536,
+                    616
+                  ]
+                ],
+                "ray": [
+                  [
+                    536,
+                    616
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    536,
+                    616
+                  ]
+                ],
+                "ray": [
+                  [
+                    536,
+                    616
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    508,
+                    644
+                  ]
+                ],
+                "ray": [
+                  [
+                    508,
+                    644
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    508,
+                    644
+                  ]
+                ],
+                "ray": [
+                  [
+                    508,
+                    644
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    416,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    416,
+                    668
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    416,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    416,
+                    668
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-15-8",
+      "box": [
+        15,
+        8
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    560,
+                    640
+                  ]
+                ],
+                "ray": [
+                  [
+                    560,
+                    640
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    560,
+                    640
+                  ]
+                ],
+                "ray": [
+                  [
+                    560,
+                    640
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    508,
+                    740
+                  ]
+                ],
+                "ray": [
+                  [
+                    508,
+                    740
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    508,
+                    740
+                  ]
+                ],
+                "ray": [
+                  [
+                    508,
+                    740
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-15-9",
+      "box": [
+        15,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    584,
+                    664
+                  ]
+                ],
+                "ray": [
+                  [
+                    584,
+                    664
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    584,
+                    664
+                  ]
+                ],
+                "ray": [
+                  [
+                    584,
+                    664
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    556,
+                    740
+                  ]
+                ],
+                "ray": [
+                  [
+                    556,
+                    740
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    556,
+                    740
+                  ]
+                ],
+                "ray": [
+                  [
+                    556,
+                    740
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    532,
+                    764
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    764
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    532,
+                    764
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    764
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-17-6",
+      "box": [
+        17,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    512,
+                    592
+                  ]
+                ],
+                "ray": [
+                  [
+                    512,
+                    592
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    512,
+                    592
+                  ]
+                ],
+                "ray": [
+                  [
+                    512,
+                    592
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    476,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    476,
+                    620
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    476,
+                    620
+                  ]
+                ],
+                "ray": [
+                  [
+                    476,
+                    620
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    444,
+                    644
+                  ]
+                ],
+                "ray": [
+                  [
+                    444,
+                    644
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    444,
+                    644
+                  ]
+                ],
+                "ray": [
+                  [
+                    444,
+                    644
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-17-8",
+      "box": [
+        17,
+        8
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    560,
+                    640
+                  ]
+                ],
+                "ray": [
+                  [
+                    560,
+                    640
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    560,
+                    640
+                  ]
+                ],
+                "ray": [
+                  [
+                    560,
+                    640
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    532,
+                    668
+                  ]
+                ],
+                "ray": [
+                  [
+                    532,
+                    668
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    508,
+                    712
+                  ]
+                ],
+                "ray": [
+                  [
+                    508,
+                    712
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    508,
+                    712
+                  ]
+                ],
+                "ray": [
+                  [
+                    508,
+                    712
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-bank-17-10",
+      "box": [
+        17,
+        10
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    608,
+                    688
+                  ]
+                ],
+                "ray": [
+                  [
+                    608,
+                    688
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    608,
+                    688
+                  ]
+                ],
+                "ray": [
+                  [
+                    608,
+                    688
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    580,
+                    716
+                  ]
+                ],
+                "ray": [
+                  [
+                    580,
+                    716
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    580,
+                    716
+                  ]
+                ],
+                "ray": [
+                  [
+                    580,
+                    716
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    556,
+                    760
+                  ]
+                ],
+                "ray": [
+                  [
+                    556,
+                    760
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    556,
+                    760
+                  ]
+                ],
+                "ray": [
+                  [
+                    556,
+                    760
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-15-12",
+      "box": [
+        15,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    656,
+                    784
+                  ]
+                ],
+                "ray": [
+                  [
+                    656,
+                    784
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    656,
+                    784
+                  ]
+                ],
+                "ray": [
+                  [
+                    656,
+                    784
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    628,
+                    820
+                  ]
+                ],
+                "ray": [
+                  [
+                    628,
+                    820
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    628,
+                    820
+                  ]
+                ],
+                "ray": [
+                  [
+                    628,
+                    820
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    604,
+                    852
+                  ]
+                ],
+                "ray": [
+                  [
+                    604,
+                    852
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    604,
+                    852
+                  ]
+                ],
+                "ray": [
+                  [
+                    604,
+                    852
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-15-13",
+      "box": [
+        15,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    728,
+                    808
+                  ]
+                ],
+                "ray": [
+                  [
+                    728,
+                    808
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    728,
+                    808
+                  ]
+                ],
+                "ray": [
+                  [
+                    728,
+                    808
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    652,
+                    836
+                  ]
+                ],
+                "ray": [
+                  [
+                    652,
+                    836
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    652,
+                    836
+                  ]
+                ],
+                "ray": [
+                  [
+                    652,
+                    836
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    628,
+                    860
+                  ]
+                ],
+                "ray": [
+                  [
+                    628,
+                    860
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    628,
+                    860
+                  ]
+                ],
+                "ray": [
+                  [
+                    628,
+                    860
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-13-13",
+      "box": [
+        13,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    728,
+                    856
+                  ]
+                ],
+                "ray": [
+                  [
+                    728,
+                    856
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    728,
+                    856
+                  ]
+                ],
+                "ray": [
+                  [
+                    728,
+                    856
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    692,
+                    884
+                  ]
+                ],
+                "ray": [
+                  [
+                    692,
+                    884
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    692,
+                    884
+                  ]
+                ],
+                "ray": [
+                  [
+                    692,
+                    884
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    656,
+                    908
+                  ]
+                ],
+                "ray": [
+                  [
+                    656,
+                    908
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    656,
+                    908
+                  ]
+                ],
+                "ray": [
+                  [
+                    656,
+                    908
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-12-13",
+      "box": [
+        12,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    800,
+                    880
+                  ]
+                ],
+                "ray": [
+                  [
+                    800,
+                    880
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    800,
+                    880
+                  ]
+                ],
+                "ray": [
+                  [
+                    800,
+                    880
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    716,
+                    908
+                  ]
+                ],
+                "ray": [
+                  [
+                    716,
+                    908
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    716,
+                    908
+                  ]
+                ],
+                "ray": [
+                  [
+                    716,
+                    908
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    684,
+                    932
+                  ]
+                ],
+                "ray": [
+                  [
+                    684,
+                    932
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    684,
+                    932
+                  ]
+                ],
+                "ray": [
+                  [
+                    684,
+                    932
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-11-13",
+      "box": [
+        11,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    824,
+                    904
+                  ]
+                ],
+                "ray": [
+                  [
+                    824,
+                    904
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    824,
+                    904
+                  ]
+                ],
+                "ray": [
+                  [
+                    824,
+                    904
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    796,
+                    932
+                  ]
+                ],
+                "ray": [
+                  [
+                    796,
+                    932
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    796,
+                    932
+                  ]
+                ],
+                "ray": [
+                  [
+                    796,
+                    932
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    708,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    708,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    708,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    708,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-10-13",
+      "box": [
+        10,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    848,
+                    928
+                  ]
+                ],
+                "ray": [
+                  [
+                    848,
+                    928
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    848,
+                    928
+                  ]
+                ],
+                "ray": [
+                  [
+                    848,
+                    928
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    820,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    820,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    820,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    820,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    796,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    796,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    796,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    796,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-9-13",
+      "box": [
+        9,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    872,
+                    952
+                  ]
+                ],
+                "ray": [
+                  [
+                    872,
+                    952
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    872,
+                    952
+                  ]
+                ],
+                "ray": [
+                  [
+                    872,
+                    952
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    844,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    844,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    844,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    844,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    820,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    820,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    820,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    820,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-9-15",
+      "box": [
+        9,
+        15
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    872,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    872,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    872,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    872,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    844,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    844,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    844,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    844,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    820,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    820,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    820,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    820,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-7-14",
+      "box": [
+        7,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    912,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    912,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    912,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    912,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    888,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    888,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    888,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    888,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    864,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    864,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    864,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    864,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "south-return-7-15",
+      "box": [
+        7,
+        15
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    920,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    920,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    920,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    920,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    892,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    892,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    892,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    892,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    868,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    868,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    868,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    868,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-2-7",
+      "box": [
+        2,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    0,
+                    100
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    100
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    0,
+                    100
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    100
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    0,
+                    132
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    132
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    0,
+                    132
+                  ]
+                ],
+                "ray": [
+                  [
+                    0,
+                    132
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-4-7",
+      "box": [
+        4,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    44,
+                    148
+                  ]
+                ],
+                "ray": [
+                  [
+                    44,
+                    148
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    44,
+                    148
+                  ]
+                ],
+                "ray": [
+                  [
+                    44,
+                    148
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    12,
+                    180
+                  ]
+                ],
+                "ray": [
+                  [
+                    12,
+                    180
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    12,
+                    180
+                  ]
+                ],
+                "ray": [
+                  [
+                    12,
+                    180
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-8-4",
+      "box": [
+        8,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    124,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    124,
+                    384
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    124,
+                    384
+                  ]
+                ],
+                "ray": [
+                  [
+                    124,
+                    384
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    100,
+                    408
+                  ]
+                ],
+                "ray": [
+                  [
+                    100,
+                    408
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    100,
+                    408
+                  ]
+                ],
+                "ray": [
+                  [
+                    100,
+                    408
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-14-2",
+      "box": [
+        14,
+        2
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    428,
+                    508
+                  ]
+                ],
+                "ray": [
+                  [
+                    424,
+                    508
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    428,
+                    508
+                  ]
+                ],
+                "ray": [
+                  [
+                    424,
+                    508
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    372,
+                    392
+                  ],
+                  [
+                    424,
+                    540
+                  ]
+                ],
+                "ray": [
+                  [
+                    372,
+                    396
+                  ],
+                  [
+                    416,
+                    540
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    372,
+                    392
+                  ],
+                  [
+                    424,
+                    540
+                  ]
+                ],
+                "ray": [
+                  [
+                    372,
+                    396
+                  ],
+                  [
+                    416,
+                    540
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-18-6",
+      "box": [
+        18,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    500,
+                    604
+                  ]
+                ],
+                "ray": [
+                  [
+                    500,
+                    604
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    500,
+                    604
+                  ]
+                ],
+                "ray": [
+                  [
+                    500,
+                    604
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    468,
+                    636
+                  ]
+                ],
+                "ray": [
+                  [
+                    468,
+                    636
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    468,
+                    636
+                  ]
+                ],
+                "ray": [
+                  [
+                    468,
+                    636
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-18-9",
+      "box": [
+        18,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    572,
+                    676
+                  ]
+                ],
+                "ray": [
+                  [
+                    572,
+                    676
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    572,
+                    676
+                  ]
+                ],
+                "ray": [
+                  [
+                    572,
+                    676
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    540,
+                    708
+                  ]
+                ],
+                "ray": [
+                  [
+                    540,
+                    708
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    540,
+                    708
+                  ]
+                ],
+                "ray": [
+                  [
+                    540,
+                    708
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-10-12",
+      "box": [
+        10,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    836,
+                    940
+                  ]
+                ],
+                "ray": [
+                  [
+                    836,
+                    940
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    836,
+                    940
+                  ]
+                ],
+                "ray": [
+                  [
+                    836,
+                    940
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    804,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    804,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    804,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    804,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "gun-court-6-14",
+      "box": [
+        6,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "tripod": [],
+                "ray": []
+              },
+              "surfaceContact": {
+                "tripod": [],
+                "ray": []
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    912,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    912,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    912,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    912,
+                    960
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "tripod": [
+                  [
+                    888,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    888,
+                    960
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "tripod": [
+                  [
+                    888,
+                    960
+                  ]
+                ],
+                "ray": [
+                  [
+                    888,
+                    960
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "visibility": {
+    "sceneryPlacements": 192,
+    "camera": {
+      "mode": "default framed orthographic overview",
+      "yaw": 2.45,
+      "pitch": 0.68,
+      "directionTowardCamera": [
+        0.4959084333621017,
+        0.6287930240184686,
+        -0.5989108102765015
+      ],
+      "aspect": 1.25,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "radius": 265.51266374693824
+    },
+    "method": {
+      "groundY": 24,
+      "rayOriginY": 24.01,
+      "clearingSize": [
+        24,
+        24
+      ],
+      "sampleSpacing": 1,
+      "sampleOffsets": [
+        0.5,
+        23.5
+      ],
+      "samplesPerSite": 576,
+      "totalSiteSamples": 22464,
+      "rayLength": 2000,
+      "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+      "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+      "areaTolerance": 1e-8
+    },
+    "limitations": [
+      "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+      "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+      "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+      "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+    ],
+    "sites": [
+      {
+        "id": "entry-5-4",
+        "box": [
+          5,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-2-6",
+        "box": [
+          2,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-3-6",
+        "box": [
+          3,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "entry-4-6",
+        "box": [
+          4,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "fir-return-7-3",
+        "box": [
+          7,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "fir-return-7-4",
+        "box": [
+          7,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "fir-return-8-3",
+        "box": [
+          8,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "fir-return-9-3",
+        "box": [
+          9,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "fir-return-9-4",
+        "box": [
+          9,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "fir-return-10-1",
+        "box": [
+          10,
+          1
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-11-3",
+        "box": [
+          11,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-14-3",
+        "box": [
+          14,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-15-3",
+        "box": [
+          15,
+          3
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-15-5",
+        "box": [
+          15,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-15-6",
+        "box": [
+          15,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-15-7",
+        "box": [
+          15,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-15-8",
+        "box": [
+          15,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-15-9",
+        "box": [
+          15,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-17-6",
+        "box": [
+          17,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-17-8",
+        "box": [
+          17,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-bank-17-10",
+        "box": [
+          17,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-15-12",
+        "box": [
+          15,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-15-13",
+        "box": [
+          15,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-13-13",
+        "box": [
+          13,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-12-13",
+        "box": [
+          12,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-11-13",
+        "box": [
+          11,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-10-13",
+        "box": [
+          10,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-9-13",
+        "box": [
+          9,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-9-15",
+        "box": [
+          9,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-7-14",
+        "box": [
+          7,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "south-return-7-15",
+        "box": [
+          7,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-2-7",
+        "box": [
+          2,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-4-7",
+        "box": [
+          4,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-8-4",
+        "box": [
+          8,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-14-2",
+        "box": [
+          14,
+          2
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-18-6",
+        "box": [
+          18,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-18-9",
+        "box": [
+          18,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-10-12",
+        "box": [
+          10,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "gun-court-6-14",
+        "box": [
+          6,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      }
+    ],
+    "passed": true
+  },
+  "passed": true
+}

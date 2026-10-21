@@ -1,0 +1,63 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1728.13ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [6100.13ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [26456.62ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [1957.14ms]
+143 |     const candidate=cells.find(c=>Math.hypot((c.box[0]+.5)*24-s.x,(c.box[2]+.5)*24-s.z)<s.radius+7);
+144 |     if(candidate){crossing=candidate;break;}
+145 |    }
+146 |   }
+147 |   expect(crossing).not.toBeNull();const rows=[placement(crossing.box)],arrangement=prepare(f,rows),life=engine.wildlife,prior=poses(life),nav=life.nav,defences=life.defences,placements=world.level.placements,rigs=[...world.rigs],draws=[...r.drawMap],buffers=[...r.sceneBuffers],created=r.createdSceneBuffers;
+148 |   const result=engine.updateDeployments(rows,{wildlifePoints:arrangement.wildlifePoints});expect(result.valid).toBe(false);expect(result.code).toBe('wildlife-busy');expect(result.reason.length).toBeGreaterThan(0);assertCurrentPoses(life,prior);
+                                                                                                                     ^
+error: expect(received).toBe(expected)
+
+Expected: false
+Received: true
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/play-deployment.test.js:148:112)
+(fail) an animal occupying otherwise legal build ground causes an atomic temporary rejection [1907.20ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [1972.95ms]
+
+tests/missile-effects.test.js:
+(pass) missile contacts create a fast expanding surface-offset flash and light without damage, debris, smoke or waves [0.75ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [1.07ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.16ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.24ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [1.18ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.19ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [1.59ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.33ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.19ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [0.85ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.25ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.17ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.09ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.33ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [5.42ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.26ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [10.40ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [852.71ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [1103.39ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [1002.87ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [692.97ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.37ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2253.72ms]
+
+tests/play-entrance-markers.test.js:
+(pass) every campaign approach has an inward entry anchor, including branches and shared-start deduplication [3.66ms]
+(pass) entry badges project with the overview, hide in Drone/title, and clear between areas [0.56ms]
+
+1 tests failed:
+(fail) an animal occupying otherwise legal build ground causes an atomic temporary rejection [1907.20ms]
+
+ 30 pass
+ 1 fail
+ 32689 expect() calls
+Ran 31 tests across 5 files. [46.09s]

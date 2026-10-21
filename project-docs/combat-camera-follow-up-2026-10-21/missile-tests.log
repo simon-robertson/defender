@@ -1,0 +1,79 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [385.47ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [22.71ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [21.64ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [22.43ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [73.32ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [70.89ms]
+(pass) powered guidance refreshes the accelerating intercept, then a late turn can miss the inertial terminal flight [34.71ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [88.10ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [23.13ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [21.82ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [21.84ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [84.64ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [65.56ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [50.93ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [24.03ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [26.79ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [26.05ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [26.37ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [153.15ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [26.03ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [26.46ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [33.09ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [26.39ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [278.07ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [25.77ms]
+(pass) static contact drops its incoming claim before the impact callback [25.20ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [100.80ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [37.73ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [86.27ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [37.91ms]
+(pass) steering light and jets stop at alignment and pulse together within the fixed 36-light budget [25.75ms]
+(pass) real slow and fast turns extinguish attitude jets while residual sub-degree steering settles [70.88ms]
+(pass) eased real turns use only short spin-up and braking impulses without late correction pulse trains [165.80ms]
+(pass) missiles collide with actual Arc tower geometry in terminal flight at30/60/120Hz [238.46ms]
+(pass) missile admission sees a live defence blocker and releases the result after deployment removal [27.57ms]
+(pass) a failed missile forecast always releases cached defence poses before later live queries [22.45ms]
+
+tests/missile-effects.test.js:
+(pass) missile impacts retain the core, eight fireball lobes, smoke and original light curve without outward fragments [1.24ms]
+(pass) missile and enemy death visuals retain their independent expansion, colour, peak light and particle timing [1.17ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [0.90ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.22ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [1.09ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.23ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [1.07ms]
+(pass) simultaneous missile bursts stay bounded and pause holds all payloads exactly [0.76ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1471.68ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [391.91ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [796.55ms]
+(pass) missile contacts gib ground and perched/flying birds within 72 units despite a full blast pool, retaining the 48 unit fright event [555.70ms]
+
+tests/missile-interception.test.js:
+(pass) real nearby flyers are intercepted through straight and banked flight at 30 Hz [506.46ms]
+(pass) real nearby flyers are intercepted through straight and banked flight at 60 Hz [520.16ms]
+(pass) real nearby flyers are intercepted through straight and banked flight at 120 Hz [523.40ms]
+(pass) airborne torso forecasts follow actual curve, yaw and bank; active impact keeps the analytic velocity fallback [124.25ms]
+(pass) slow and fast accepted steering variations retain nearby physical flyer interception [638.47ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [34.52ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [96.41ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [62.87ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [135.73ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [23.01ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1046.33ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [102.39ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3040.65ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [13789.74ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [23.74ms]
+
+ 63 pass
+ 0 fail
+ 5504 expect() calls
+Ran 63 tests across 5 files. [26.45s]

@@ -1,0 +1,341 @@
+{
+  "midwave": {
+    "phase": "wave",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 1,
+    "wavesPerLevel": 4,
+    "completedWaves": 0,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "base",
+        "box": [
+          7,
+          0,
+          11
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          12,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "liveCameraEnabled": true,
+    "liveCameraActive": true,
+    "liveCameraTime": 28.63333333333235,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 3,
+    "spawned": 3,
+    "totalEnemies": 3,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 57.458288666664615,
+      "waveTime": 28.641666666665593,
+      "running": true,
+      "completed": false,
+      "spawned": 3,
+      "pending": 0,
+      "active": 3,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 3,
+      "shots": 10,
+      "steps": 3437,
+      "lastSteps": 2,
+      "backlogSeconds": 0.007133333333339032,
+      "modelLightCapacity": 84
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          7,
+          0,
+          11
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          12,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "mode": "live",
+      "fov": 48.969406352964015,
+      "roll": 0,
+      "position": [
+        189,
+        41,
+        171
+      ],
+      "radius": 305.1314346811819,
+      "target": [
+        189.07786560058594,
+        40.957305908203125,
+        171.9960479736328
+      ],
+      "controlsEnabled": false
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 91.39427493217292,
+      "points": 0,
+      "time": 28.81662199999966
+    },
+    "liveCamera": {
+      "enabled": true,
+      "active": true,
+      "time": 28.63333333333235,
+      "subject": "a1-wave-1-dog-3",
+      "position": [
+        189,
+        41,
+        171
+      ],
+      "focus": [
+        186.54499740600585,
+        35.625,
+        296.4
+      ],
+      "speed": 0,
+      "flinch": 0,
+      "explosions": 0,
+      "plans": 28,
+      "travelled": 396.34618489238636,
+      "reachable": 845,
+      "visible": true,
+      "fov": 48.969406352964015,
+      "focusDistance": 126.12825276374794,
+      "safety": 2.4658372992263624
+    },
+    "film": {
+      "active": true,
+      "bytes": 15933968
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "focusedCapture": {
+    "phase": "wave",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 2,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 1,
+    "wavesPerLevel": 4,
+    "completedWaves": 0,
+    "totalWaves": 8,
+    "units": [],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "liveCameraEnabled": true,
+    "liveCameraActive": true,
+    "liveCameraTime": 9.133333333333455,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 3,
+    "spawned": 3,
+    "totalEnemies": 3,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 16.29998933333282,
+      "waveTime": 9.133333333333368,
+      "running": true,
+      "completed": false,
+      "spawned": 3,
+      "pending": 0,
+      "active": 3,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 3,
+      "shots": 0,
+      "steps": 1096,
+      "lastSteps": 3,
+      "backlogSeconds": 0.00006666666666187496,
+      "modelLightCapacity": 84
+    },
+    "placements": [],
+    "loads": 4,
+    "unloads": 3,
+    "camera": {
+      "mode": "live",
+      "fov": 61.165318258781014,
+      "roll": -0.00011938589642808787,
+      "position": [
+        201.93333333333308,
+        41.005371767085,
+        147
+      ],
+      "radius": 305.1314346811819,
+      "target": [
+        201.11085510253906,
+        40.94110870361328,
+        147.56515502929688
+      ],
+      "controlsEnabled": false
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 91.39427493217292,
+      "points": 0,
+      "time": 7.166656000000005
+    },
+    "liveCamera": {
+      "enabled": true,
+      "active": true,
+      "time": 9.133333333333455,
+      "subject": "a1-wave-1-dog-1",
+      "position": [
+        201.93333333333308,
+        41,
+        147
+      ],
+      "focus": [
+        121.60000610351562,
+        34.5,
+        204
+      ],
+      "speed": 32,
+      "flinch": 0,
+      "explosions": 0,
+      "plans": 5,
+      "travelled": 239.06666666666115,
+      "reachable": 2310,
+      "visible": false,
+      "fov": 61.165318258781014,
+      "focusDistance": 106.12745432164917,
+      "safety": 1.239953070262468
+    },
+    "film": {
+      "active": true,
+      "bytes": 15933968
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "pause": {
+    "a": {
+      "enabled": true,
+      "active": true,
+      "time": 65.89166666666517,
+      "subject": "a1-wave-1-dog-3",
+      "position": [
+        188.68750000000003,
+        41,
+        171
+      ],
+      "focus": [
+        301.10499144792556,
+        35.625,
+        200.39999858140945
+      ],
+      "speed": 5.5,
+      "flinch": 0,
+      "explosions": 0,
+      "plans": 80,
+      "travelled": 797.3473075501729,
+      "reachable": 842,
+      "visible": true,
+      "fov": 46.24474149485095,
+      "focusDistance": 119.32740781339997,
+      "safety": 2.0479736996175832
+    },
+    "b": {
+      "enabled": true,
+      "active": true,
+      "time": 65.89166666666517,
+      "subject": "a1-wave-1-dog-3",
+      "position": [
+        188.68750000000003,
+        41,
+        171
+      ],
+      "focus": [
+        301.10499144792556,
+        35.625,
+        200.39999858140945
+      ],
+      "speed": 5.5,
+      "flinch": 0,
+      "explosions": 0,
+      "plans": 80,
+      "travelled": 797.3473075501729,
+      "reachable": 842,
+      "visible": true,
+      "fov": 46.24474149485095,
+      "focusDistance": 119.32740781339997,
+      "safety": 2.0479736996175832
+    },
+    "simulationFrozen": true
+  },
+  "disabledFilmBytesObserved": 0,
+  "console": []
+}

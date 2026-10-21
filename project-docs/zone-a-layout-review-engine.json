@@ -1,0 +1,1075 @@
+{
+  "schema": "defender.zone-a-layout-review-engine",
+  "date": "2026-10-17",
+  "scope": "Research-informed Zone A revision only; saved asset, authored weather off, three posed live dogs. CPU resource accounting and actual transformed vertex clip checks, not GPU timing.",
+  "notes": [
+    "Geometry bytes are uploaded vertex/index/matrix payloads. Shared render targets, uniforms, lazy effect pools and source JSON are excluded. Three scene buffers per nonempty opaque draw group, plus three for water.",
+    "Camera probes use the unmodified default framed overview at stated CSS aspect ratios. Geometry is checked at the initial dog pose; the separate gait tests cover animated clearance and bends.",
+    "Shadow depth remains 2048 squared; the projection spans the complete square level. No quality, light, camera or GPU code change was necessary for these placements.",
+    "Optional weather remains off and allocates no fields or GPU seed buffers. Enabled counts are capacity projections under existing constants, not a request to change accepted weather tuning.",
+    "All static visibility cuboids come from occupied source cells and terrain, preserving holes; water, player defences and moving enemies are excluded.",
+    "Static scenery uses quarter-turn placement and one unposed rigid part. Arbitrarily posed scenery would need a different visibility representation.",
+    "Exact path/deployment box clearance below checks every occupied scenery cell, including unit-offset detail props, against reserved boxes. It does not claim an arbitrary-angle tower sweep is safe for every future player placement."
+  ],
+  "zones": {
+    "A": {
+      "level": "moss-01",
+      "sizeBoxes": [
+        16,
+        16
+      ],
+      "routeBoxes": 30,
+      "routeUnits": 696,
+      "placements": 61,
+      "runtimeActors": 3,
+      "uniqueModelAssets": 14,
+      "opaqueDrawGroups": 30,
+      "waterDrawGroups": 1,
+      "instancesIncludingGroundAndWater": 105,
+      "uniqueQuads": 6183,
+      "instancedQuads": 13976,
+      "vertexBytes": 1088208,
+      "indexBytes": 148392,
+      "instanceBytes": 6720,
+      "gpuGeometryBytes": 1243320,
+      "sceneBufferCount": 93,
+      "retainedRendererTransformBytes": 6656,
+      "actorVisibilityCPUBytes": 2808,
+      "largestGeometryBufferBytes": 374352,
+      "bvh": {
+        "primitiveCount": 2098,
+        "nodeCount": 4195,
+        "bytes": 117460
+      },
+      "actualWorldVertexBounds": {
+        "minimum": [
+          0,
+          0,
+          0
+        ],
+        "maximum": [
+          384,
+          86,
+          384
+        ],
+        "outsideVertices": 0,
+        "totalVertices": 55904
+      },
+      "overview": [
+        {
+          "viewportCSS": [
+            960,
+            640
+          ],
+          "radius": 217.174836,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.829854,
+              -0.861479,
+              0.31294
+            ],
+            "maximum": [
+              0.829854,
+              0.789871,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 55904
+          }
+        },
+        {
+          "viewportCSS": [
+            854,
+            977
+          ],
+          "radius": 334.01278,
+          "near": 0.1,
+          "far": 2200,
+          "clip": {
+            "minimum": [
+              -0.925926,
+              -0.560133,
+              0.31294
+            ],
+            "maximum": [
+              0.925926,
+              0.513573,
+              0.510904
+            ],
+            "outsideVertices": 0,
+            "totalVertices": 55904
+          }
+        }
+      ],
+      "shadow": {
+        "resolution": 2048,
+        "near": 200,
+        "far": 1100,
+        "worldUnitsPerTexel": 0.296985,
+        "clip": {
+          "minimum": [
+            -0.878455,
+            -0.710205,
+            0.303634
+          ],
+          "maximum": [
+            0.878455,
+            0.675998,
+            0.709874
+          ],
+          "outsideVertices": 0,
+          "totalVertices": 55904
+        }
+      },
+      "deploymentClearance": {
+        "reservedBoxes": 59,
+        "occupiedCellViolations": []
+      },
+      "weather": {
+        "type": "rain",
+        "authoredEnabled": false,
+        "activeParticles": 0,
+        "activeSeedBytes": 0,
+        "projectedEnabledParticles": 2560,
+        "projectedEnabledSeedBytes": 81920
+      },
+      "drawGroups": [
+        {
+          "key": "ground",
+          "quads": 2127,
+          "instances": 1,
+          "bytes": 425464
+        },
+        {
+          "key": "turret-study:base:base",
+          "quads": 309,
+          "instances": 2,
+          "bytes": 61928
+        },
+        {
+          "key": "turret-study:base:head",
+          "quads": 327,
+          "instances": 2,
+          "bytes": 65528
+        },
+        {
+          "key": "turret-study:upgrade1:base",
+          "quads": 383,
+          "instances": 1,
+          "bytes": 76664
+        },
+        {
+          "key": "turret-study:upgrade1:head",
+          "quads": 333,
+          "instances": 1,
+          "bytes": 66664
+        },
+        {
+          "key": "scenery-oak-tall:base:body",
+          "quads": 408,
+          "instances": 2,
+          "bytes": 81728
+        },
+        {
+          "key": "scenery-oak:base:body",
+          "quads": 477,
+          "instances": 4,
+          "bytes": 95656
+        },
+        {
+          "key": "scenery-oak-young:base:body",
+          "quads": 263,
+          "instances": 5,
+          "bytes": 52920
+        },
+        {
+          "key": "scenery-cypress:base:body",
+          "quads": 244,
+          "instances": 1,
+          "bytes": 48864
+        },
+        {
+          "key": "scenery-cypress-short:base:body",
+          "quads": 239,
+          "instances": 1,
+          "bytes": 47864
+        },
+        {
+          "key": "scenery-ruin-wall:base:body",
+          "quads": 135,
+          "instances": 3,
+          "bytes": 27192
+        },
+        {
+          "key": "scenery-rock:base:body",
+          "quads": 127,
+          "instances": 8,
+          "bytes": 25912
+        },
+        {
+          "key": "scenery-ruin-pillar:base:body",
+          "quads": 112,
+          "instances": 1,
+          "bytes": 22464
+        },
+        {
+          "key": "scenery-shrub:base:body",
+          "quads": 192,
+          "instances": 7,
+          "bytes": 38848
+        },
+        {
+          "key": "detail-grass:base:body",
+          "quads": 48,
+          "instances": 9,
+          "bytes": 10176
+        },
+        {
+          "key": "detail-pebbles:base:body",
+          "quads": 36,
+          "instances": 9,
+          "bytes": 7776
+        },
+        {
+          "key": "detail-flowers:base:body",
+          "quads": 97,
+          "instances": 8,
+          "bytes": 19912
+        },
+        {
+          "key": "dog:base:body",
+          "quads": 128,
+          "instances": 3,
+          "bytes": 25792
+        },
+        {
+          "key": "dog:base:leg-fl",
+          "quads": 22,
+          "instances": 3,
+          "bytes": 4592
+        },
+        {
+          "key": "dog:base:shin-fl",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-fl",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "dog:base:leg-fr",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "dog:base:shin-fr",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-fr",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "dog:base:leg-rl",
+          "quads": 22,
+          "instances": 3,
+          "bytes": 4592
+        },
+        {
+          "key": "dog:base:shin-rl",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-rl",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "dog:base:leg-rr",
+          "quads": 23,
+          "instances": 3,
+          "bytes": 4792
+        },
+        {
+          "key": "dog:base:shin-rr",
+          "quads": 11,
+          "instances": 3,
+          "bytes": 2392
+        },
+        {
+          "key": "dog:base:paw-rr",
+          "quads": 10,
+          "instances": 3,
+          "bytes": 2192
+        },
+        {
+          "key": "water",
+          "quads": 24,
+          "instances": 1,
+          "bytes": 4864
+        }
+      ],
+      "combat": {
+        "simulationStep": 0.016666666666666666,
+        "allDead": true,
+        "elapsedSeconds": 46,
+        "shots": 82,
+        "deaths": [
+          {
+            "id": "preview-dog-1",
+            "timeSeconds": 9.516667,
+            "hits": 26,
+            "distance": 186.2
+          },
+          {
+            "id": "preview-dog-3",
+            "timeSeconds": 35.3,
+            "hits": 28,
+            "distance": 119.6
+          },
+          {
+            "id": "preview-dog-2",
+            "timeSeconds": 46,
+            "hits": 28,
+            "distance": 88
+          }
+        ],
+        "turrets": [
+          {
+            "id": "scene-1",
+            "variant": "base",
+            "shots": 16,
+            "maxRange": 48,
+            "strength": 10
+          },
+          {
+            "id": "scene-2",
+            "variant": "upgrade1",
+            "shots": 52,
+            "maxRange": 72,
+            "strength": 12
+          },
+          {
+            "id": "scene-3",
+            "variant": "base",
+            "shots": 14,
+            "maxRange": 48,
+            "strength": 10
+          }
+        ]
+      }
+    }
+  },
+  "unmodifiedZones": {
+    "ochre-01": {
+      "expectedSHA256": "f86fb52ed0fdc6eab324ba64c74bd8f157e8357418abd2ee8da2e4eff4bc5d03",
+      "actualSHA256": "f86fb52ed0fdc6eab324ba64c74bd8f157e8357418abd2ee8da2e4eff4bc5d03",
+      "unchanged": true
+    },
+    "ice-01": {
+      "expectedSHA256": "1a7f1130513738b1cc6afb0adc293a05b3ffe9860f472a2c52614ace4fff8fda",
+      "actualSHA256": "1a7f1130513738b1cc6afb0adc293a05b3ffe9860f472a2c52614ace4fff8fda",
+      "unchanged": true
+    },
+    "plum-01": {
+      "expectedSHA256": "8566d8aa6797e0aa092fee6242ca96cb4d862bba78e55a43f1e72c1a06574553",
+      "actualSHA256": "8566d8aa6797e0aa092fee6242ca96cb4d862bba78e55a43f1e72c1a06574553",
+      "unchanged": true
+    }
+  },
+  "candidateValidation": {
+    "routeStepUnits": 1,
+    "recoilSamples": [
+      0,
+      0.625,
+      1.25
+    ],
+    "targetWorldY": 34.5,
+    "semantics": [
+      "Candidate-facing actual paired muzzle origins to the same torso point used by live dogs. Inclusive horizontal current-target range. Every listed pair must be clear.",
+      "Upgrade2 geometry is inspected only; it has no active firing rule or damage.",
+      "Swept cylinder contains every head vertex for all yaw angles and the complete 0–1.25-unit recoil interval. Zero occupied-static-cuboid intersection proves scenery clearance conservatively; it is not only an angle sample.",
+      "Each alternative is considered individually, with other defence geometry excluded by existing static visibility. This does not approve placing two neighbouring turrets simultaneously.",
+      "Coverage intervals omit isolated tangent points; the live inclusive boundary still accepts the exact point. Unit-spaced LOS is finite sampling, supplemented by every actual-shot LOS assertion over a full 58-second no-damage dog loop."
+    ],
+    "candidates": [
+      {
+        "box": [
+          2,
+          6
+        ],
+        "role": "early showcase",
+        "variants": {
+          "base": {
+            "range": 48,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 83.138439,
+              "intervals": [
+                [
+                  6.430781,
+                  89.569219
+                ]
+              ]
+            },
+            "inRangeSamples": 83,
+            "pairedMuzzleChecks": 249,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                38,
+                51
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 143.992768
+            }
+          },
+          "upgrade1": {
+            "range": 72,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 165.430133,
+              "intervals": [
+                [
+                  0,
+                  115.882251
+                ],
+                [
+                  316.117749,
+                  365.665631
+                ]
+              ]
+            },
+            "inRangeSamples": 165,
+            "pairedMuzzleChecks": 495,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                41,
+                56
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 143.992768
+            }
+          },
+          "upgrade2": {
+            "range": 96,
+            "geometryOnly": true,
+            "coverage": {
+              "units": 245.041639,
+              "intervals": [
+                [
+                  0,
+                  140.9516
+                ],
+                [
+                  291.0484,
+                  395.138439
+                ]
+              ]
+            },
+            "inRangeSamples": 245,
+            "pairedMuzzleChecks": 735,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 16.463976,
+              "worldY": [
+                43,
+                59
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 143.342157
+            }
+          }
+        }
+      },
+      {
+        "box": [
+          5,
+          6
+        ],
+        "role": "return showcase",
+        "variants": {
+          "base": {
+            "range": 48,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 166.276878,
+              "intervals": [
+                [
+                  78.430781,
+                  161.569219
+                ],
+                [
+                  270.430781,
+                  353.569219
+                ]
+              ]
+            },
+            "inRangeSamples": 166,
+            "pairedMuzzleChecks": 498,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                38,
+                51
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 104.394788
+            }
+          },
+          "upgrade1": {
+            "range": 72,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 271.529004,
+              "intervals": [
+                [
+                  52.117749,
+                  187.882251
+                ],
+                [
+                  244.117749,
+                  379.882251
+                ]
+              ]
+            },
+            "inRangeSamples": 271,
+            "pairedMuzzleChecks": 813,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                41,
+                56
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 104.394788
+            }
+          },
+          "upgrade2": {
+            "range": 96,
+            "geometryOnly": true,
+            "coverage": {
+              "units": 377.903201,
+              "intervals": [
+                [
+                  27.0484,
+                  404.9516
+                ]
+              ]
+            },
+            "inRangeSamples": 377,
+            "pairedMuzzleChecks": 1131,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 16.463976,
+              "worldY": [
+                43,
+                59
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 103.744177
+            }
+          }
+        }
+      },
+      {
+        "box": [
+          6,
+          6
+        ],
+        "role": "return alternative",
+        "variants": {
+          "base": {
+            "range": 48,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 166.276878,
+              "intervals": [
+                [
+                  102.430781,
+                  185.569219
+                ],
+                [
+                  246.430781,
+                  329.569219
+                ]
+              ]
+            },
+            "inRangeSamples": 167,
+            "pairedMuzzleChecks": 501,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                38,
+                51
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 98.458242
+            }
+          },
+          "upgrade1": {
+            "range": 72,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 289.547882,
+              "intervals": [
+                [
+                  76.117749,
+                  365.665631
+                ]
+              ]
+            },
+            "inRangeSamples": 289,
+            "pairedMuzzleChecks": 867,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                41,
+                56
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 98.458242
+            }
+          },
+          "upgrade2": {
+            "range": 96,
+            "geometryOnly": true,
+            "coverage": {
+              "units": 344.090039,
+              "intervals": [
+                [
+                  51.0484,
+                  395.138439
+                ]
+              ]
+            },
+            "inRangeSamples": 344,
+            "pairedMuzzleChecks": 1032,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 16.463976,
+              "worldY": [
+                43,
+                59
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 97.80763
+            }
+          }
+        }
+      },
+      {
+        "box": [
+          7,
+          6
+        ],
+        "role": "continuous turn alternative",
+        "variants": {
+          "base": {
+            "range": 48,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 179.138439,
+              "intervals": [
+                [
+                  126.430781,
+                  305.569219
+                ]
+              ]
+            },
+            "inRangeSamples": 179,
+            "pairedMuzzleChecks": 537,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                38,
+                51
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 77.186635
+            }
+          },
+          "upgrade1": {
+            "range": 72,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 231.764502,
+              "intervals": [
+                [
+                  100.117749,
+                  331.882251
+                ]
+              ]
+            },
+            "inRangeSamples": 231,
+            "pairedMuzzleChecks": 693,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                41,
+                56
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 77.186635
+            }
+          },
+          "upgrade2": {
+            "range": 96,
+            "geometryOnly": true,
+            "coverage": {
+              "units": 300.449632,
+              "intervals": [
+                [
+                  75.0484,
+                  375.498031
+                ]
+              ]
+            },
+            "inRangeSamples": 300,
+            "pairedMuzzleChecks": 900,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 16.463976,
+              "worldY": [
+                43,
+                59
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 76.536024
+            }
+          }
+        }
+      },
+      {
+        "box": [
+          5,
+          10
+        ],
+        "role": "later bend alternative",
+        "variants": {
+          "base": {
+            "range": 48,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 131.138439,
+              "intervals": [
+                [
+                  366.430781,
+                  497.569219
+                ]
+              ]
+            },
+            "inRangeSamples": 131,
+            "pairedMuzzleChecks": 393,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                38,
+                51
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 147.508404
+            }
+          },
+          "upgrade1": {
+            "range": 72,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 183.764502,
+              "intervals": [
+                [
+                  340.117749,
+                  523.882251
+                ]
+              ]
+            },
+            "inRangeSamples": 184,
+            "pairedMuzzleChecks": 552,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                41,
+                56
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 147.508404
+            }
+          },
+          "upgrade2": {
+            "range": 96,
+            "geometryOnly": true,
+            "coverage": {
+              "units": 300.449632,
+              "intervals": [
+                [
+                  248.501969,
+                  548.9516
+                ]
+              ]
+            },
+            "inRangeSamples": 300,
+            "pairedMuzzleChecks": 900,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 16.463976,
+              "worldY": [
+                43,
+                59
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 147.819316
+            }
+          }
+        }
+      },
+      {
+        "box": [
+          9,
+          10
+        ],
+        "role": "later showcase",
+        "variants": {
+          "base": {
+            "range": 48,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 83.138439,
+              "intervals": [
+                [
+                  510.430781,
+                  593.569219
+                ]
+              ]
+            },
+            "inRangeSamples": 83,
+            "pairedMuzzleChecks": 249,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                38,
+                51
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 59.98901
+            }
+          },
+          "upgrade1": {
+            "range": 72,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 135.764502,
+              "intervals": [
+                [
+                  484.117749,
+                  619.882251
+                ]
+              ]
+            },
+            "inRangeSamples": 135,
+            "pairedMuzzleChecks": 405,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                41,
+                56
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 59.98901
+            }
+          },
+          "upgrade2": {
+            "range": 96,
+            "geometryOnly": true,
+            "coverage": {
+              "units": 246.352832,
+              "intervals": [
+                [
+                  219.0484,
+                  279.498031
+                ],
+                [
+                  459.0484,
+                  644.9516
+                ]
+              ]
+            },
+            "inRangeSamples": 245,
+            "pairedMuzzleChecks": 735,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 16.463976,
+              "worldY": [
+                43,
+                59
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 60.145423
+            }
+          }
+        }
+      },
+      {
+        "box": [
+          13,
+          10
+        ],
+        "role": "final catch alternative",
+        "variants": {
+          "base": {
+            "range": 48,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 83.138439,
+              "intervals": [
+                [
+                  606.430781,
+                  689.569219
+                ]
+              ]
+            },
+            "inRangeSamples": 83,
+            "pairedMuzzleChecks": 249,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                38,
+                51
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 31.026789
+            }
+          },
+          "upgrade1": {
+            "range": 72,
+            "geometryOnly": false,
+            "coverage": {
+              "units": 115.882251,
+              "intervals": [
+                [
+                  580.117749,
+                  696
+                ]
+              ]
+            },
+            "inRangeSamples": 116,
+            "pairedMuzzleChecks": 348,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 15.813365,
+              "worldY": [
+                41,
+                56
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 31.026789
+            }
+          },
+          "upgrade2": {
+            "range": 96,
+            "geometryOnly": true,
+            "coverage": {
+              "units": 140.9516,
+              "intervals": [
+                [
+                  555.0484,
+                  696
+                ]
+              ]
+            },
+            "inRangeSamples": 141,
+            "pairedMuzzleChecks": 423,
+            "blockedPairs": 0,
+            "blockedDistances": [],
+            "headSweep": {
+              "radius": 16.463976,
+              "worldY": [
+                43,
+                59
+              ],
+              "staticCuboidEnvelopeIntersections": 0,
+              "minimumHorizontalGapAtHeadHeight": 30.663511
+            }
+          }
+        }
+      }
+    ]
+  },
+  "verification": {
+    "tests": 51,
+    "failures": 0,
+    "assertions": 472166,
+    "fullSuite": false,
+    "commands": [
+      "bun test tests/world.test.js tests/water.test.js tests/targeting.test.js tests/dog-preview.test.js tests/combat.test.js tests/production-layouts.test.js tests/zones.test.js",
+      "bun test tests/renderer.test.js --test-name-pattern 'three live dogs|hiding a complete dog'",
+      "bun test tests/animation.test.js --test-name-pattern 'random preview uses'",
+      "bun test tests/weather.test.js --test-name-pattern 'rain puddles|all saved levels'",
+      "bun test tests/weather-preview.test.js --test-name-pattern '^A weather toggles|^A authored-off'",
+      "bun test tests/targeting.test.js --test-name-pattern 'A showcase and alternative plots'"
+    ],
+    "notes": [
+      "No full suite, unrelated GPU harness or browser run by Engineer.",
+      "The meaningful A regression checks distinct two-pass/continuous/late choices and open alternatives, not only empty-box totals.",
+      "Gait ground/contact/route-radius and limb/chassis sweeps now cover the complete authored 58-second route at 60 Hz.",
+      "Current combat outcome is a deterministic preview observation, not a wave or mistake-tolerance balance claim.",
+      "The new persistent plot regression covers base and upgrade1 at all seven showcase/alternative sites: route sampled every 1 unit, actual paired muzzles at 0 / 0.625 / 1.25 units of recoil, plus conservative complete yaw/recoil envelope versus exact occupied scenery cuboids."
+    ]
+  },
+  "previousSquarePreviewComparison": {
+    "reference": "docs/production-engine-report.json",
+    "gpuGeometryBytesDelta": 5736,
+    "uniqueQuadsDelta": 29,
+    "instancedQuadsDelta": -2606,
+    "sceneBufferCountDelta": 0,
+    "bvhBytesDelta": -33208,
+    "notes": "Payload/geometry accounting only; no GPU timing or frame-rate claim."
+  }
+}

@@ -1,0 +1,85 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.31ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [6.00ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [3.47ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.63ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [2.54ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.41ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [2.01ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.48ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.71ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [2.90ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [1.75ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.62ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.18ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.90ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [14.37ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.43ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [11.14ms]
+(pass) every enemy death light ends thirty percent sooner with the same peak, radius and independent blast/debris lifetime [4.63ms]
+
+tests/blood-decals.test.js:
+(pass) packing separates solids from a stable decal suffix without replacing shared storage [0.62ms]
+(pass) actual spray collisions convert to larger flat marks on every solid face, never floating past its bounds [1.97ms]
+(pass) blood marks survive next-wave effect rebinding, begin fading in preparation and release old slots before a quick start [0.95ms]
+
+tests/renderer.test.js:
+(pass) blood decals blend last in the cached opaque pass, never write depth/shadows and allocate no new images [8.91ms]
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [8.89ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.57ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.59ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [388.57ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.76ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [303.89ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [597.19ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.89ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.38ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.44ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [41.70ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [19.52ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1708.42ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [19.90ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.03ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.35ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.53ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [16.98ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.83ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.31ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.60ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.52ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [108.45ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.90ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.50ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [247.60ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [60.62ms]
+
+tests/critter-lifecycle.test.js:
+(pass) actual session wave end and late settling impacts retain all remains until build/deploy returns [2.42ms]
+(pass) defeat and final completion do not trigger an early critter fade [1.67ms]
+(pass) level-boundary preparation retains the outgoing board effects until their two-second fade finishes [0.92ms]
+
+tests/water.test.js:
+(pass) water material is explicit, bounded and survives level serialization [0.93ms]
+(pass) water and stream bed have separate complete surfaces on the box grid [44.89ms]
+(pass) translucent terrain retains submerged solid faces and culls water interfaces against solids/water [14.84ms]
+(pass) all shipped player defences sit on ground at path height; mounds, floating anchors and extra layers are rejected [11.67ms]
+
+tests/critter-gibs.test.js:
+(pass) critter blast radii include exact 3D boundaries without a body-radius allowance, for ground and birds [739.73ms]
+(pass) missile physical contacts gib fish at 72 units even if the visual blast pool is full [15.86ms]
+(pass) fragments and persistent solid spray leave in the 3D blast direction and reuse actual model colours [0.97ms]
+(pass) all 24 critters retain all 1152 remains alongside full enemy storage until a 2 second run-end fade [14.52ms]
+(pass) wave preparation safely restores dead ground/perched/flying actors without replacing rig or route storage [228.02ms]
+(pass) late settling gibs stay fully opaque until preparation explicitly begins the fade [0.25ms]
+(pass) critter gore doubles both burst components and adds a stronger outward impulse without extra blast lights [0.16ms]
+(pass) shockwave launch is bounded at the core, strongest nearby and weaker at the inclusive lethal radius [0.71ms]
+(pass) the actual blast radius reaches the impulse model and vertical blasts push away in 3D [213.87ms]
+
+ 65 pass
+ 0 fail
+ 96729 expect() calls
+Ran 65 tests across 7 files. [5.00s]

@@ -1,0 +1,85 @@
+bun test v1.4.2 (744846f84)
+
+tests/enemy-expansion-combat.test.js:
+(pass) expanded enemy defaults and finite mixed rosters preserve original values and actor identities [0.33ms]
+(pass) every zone study loads its complete mixed roster with separate route timing, real aim points and one shared thinker [2686.97ms]
+(pass) real turret-study attacks reach all seven active new enemy meshes, kill once and reset without stale claims [216.91ms]
+(pass) real arc-spire attacks reach all seven active new enemy meshes, kill once and reset without stale claims [187.45ms]
+(pass) real missile-launcher attacks reach all seven active new enemy meshes, kill once and reset without stale claims [194.34ms]
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [352.26ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [29.01ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [28.61ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [27.87ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [89.94ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [72.36ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [34.84ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [113.71ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [28.67ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [27.64ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [29.06ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [99.70ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [88.42ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [56.23ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [28.43ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [27.68ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [28.28ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [27.52ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [168.11ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [28.83ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [30.40ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [35.62ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [29.84ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [311.58ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [27.90ms]
+(pass) static contact drops its incoming claim before the impact callback [28.60ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [113.33ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [34.45ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [88.73ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [34.01ms]
+(pass) steering light and jets stop at alignment and pulse together within the fixed 36-light budget [24.51ms]
+(pass) real slow and fast turns extinguish attitude jets while residual sub-degree steering settles [68.09ms]
+(pass) eased real turns use only short spin-up and braking impulses without late correction pulse trains [163.37ms]
+(pass) missiles collide with actual Arc tower geometry in terminal flight at30/60/120Hz [272.25ms]
+(pass) missile admission sees a live defence blocker and releases the result after deployment removal [31.84ms]
+(pass) a failed missile forecast always releases cached defence poses before later live queries [26.40ms]
+
+tests/play-enhancer-combat.test.js:
+(pass) play generator enhances real gun and Arc damage at every tier, including active Upgrade II gun [259.56ms]
+(pass) play missile captures enhanced strength once for incoming claims and eventual contact at every tier [180.62ms]
+(pass) play bonuses never stack, inactive generators do not join the planner, and combat performs no adjacency search [48.60ms]
+(pass) generator placement uses fixed solid geometry, only enabled base tier, and existing dry ground/path guards [383.89ms]
+(pass) generator solid voxels block other defence rays with normal shooter self-exclusion and retain open space [17.04ms]
+(pass) campaign move/remove/upgrade/start/prepare reuse generator pools and scene buffers and restore old strengths [3426.77ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [60.74ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [40.23ms]
+(pass) Arc surface retries stay with their enemy after active deaths, escapes and later spawns [78.30ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [36.35ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [216.75ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [78.05ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1189.75ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [950.73ms]
+(pass) real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage [46.29ms]
+
+tests/arc-chain.test.js:
+(pass) upgraded actual hits chain once at25percent through exposed departure and arrival surfaces [26.27ms]
+(pass) base never chains; Upgrade II and lethal primary hits conduct25percent of full strength [76.40ms]
+(pass) random selection reaches both valid neighbours including the inclusive half-range boundary and never self or dead actors [29.57ms]
+(pass) transfer rejects blocked scenery and out-of-range3D recipients but can depart the opposite side of the primary [25.42ms]
+(pass) clear nearby airborne recipients use the same physical surface test and release sampler attachments on disposal [27.65ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [823.45ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [998.16ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [962.74ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [788.74ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.25ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2175.44ms]
+
+ 67 pass
+ 0 fail
+ 6310 expect() calls
+Ran 67 tests across 6 files. [19.02s]

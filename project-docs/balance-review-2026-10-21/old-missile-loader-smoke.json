@@ -1,0 +1,61 @@
+{
+  "MISSILE_FLIGHT": {
+    "boostSpeed": 64,
+    "boostSeconds": 0.5,
+    "coastSeconds": 0.4,
+    "coastGravity": 40,
+    "coastTurn": 6.283185307179586,
+    "cruiseSpeed": 120,
+    "acceleration": 420,
+    "homingTurn": 4.1887902047863905,
+    "maxAge": 8,
+    "stepSeconds": 0.008333333333333333,
+    "maxFrameSeconds": 1,
+    "lastPositionRadius": 1,
+    "terminalCutoffRadius": 22
+  },
+  "MISSILE_FIRING": {
+    "base": {
+      "magazine": 2,
+      "gap": 1,
+      "reload": 4,
+      "cycle": {
+        "shotsPerBurst": 1,
+        "shotIntervalSeconds": 0,
+        "cooldownSeconds": 1,
+        "delivery": "projectile",
+        "projectile": {
+          "speedUnitsPerSecond": 120
+        }
+      }
+    },
+    "upgrade1": {
+      "magazine": 4,
+      "gap": 1,
+      "reload": 4.5,
+      "cycle": {
+        "shotsPerBurst": 1,
+        "shotIntervalSeconds": 0,
+        "cooldownSeconds": 1,
+        "delivery": "projectile",
+        "projectile": {
+          "speedUnitsPerSecond": 120
+        }
+      }
+    },
+    "upgrade2": {
+      "magazine": 6,
+      "gap": 1,
+      "reload": 5,
+      "cycle": {
+        "shotsPerBurst": 1,
+        "shotIntervalSeconds": 0,
+        "cooldownSeconds": 1,
+        "delivery": "projectile",
+        "projectile": {
+          "speedUnitsPerSecond": 120
+        }
+      }
+    }
+  }
+}

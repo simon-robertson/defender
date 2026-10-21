@@ -1,0 +1,2634 @@
+{
+  "recordedAt": "2026-10-18T15:57:56.452Z",
+  "browser": "Built-in IAB, one reused tab",
+  "levels": [
+    {
+      "actors": [
+        {
+          "health": 270,
+          "id": "preview-spider-1",
+          "route": "branch",
+          "routeLength": 384
+        },
+        {
+          "health": 300,
+          "id": "preview-spider-2",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 300,
+          "id": "preview-spider-3",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 260,
+          "id": "preview-lantern-1",
+          "route": "branch",
+          "routeLength": 384
+        },
+        {
+          "health": 110,
+          "id": "preview-lantern-2",
+          "route": "main",
+          "routeLength": 600
+        }
+      ],
+      "alive": 5,
+      "arcs": [
+        {
+          "id": "d4-defence-2",
+          "shots": 1
+        }
+      ],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "d4-defence-1",
+          "shots": 0,
+          "strength": 10
+        }
+      ],
+      "id": "plum-04",
+      "lifecycle": {
+        "actors": 47,
+        "assets": [
+          "plum-tuft",
+          "plum-rock",
+          "plum-shrub",
+          "plum-pebbles",
+          "plum-tree-tall",
+          "plum-tree",
+          "plum-tree-young",
+          "plum-flowers",
+          "plum-arch",
+          "plum-wall",
+          "plum-arch-broken",
+          "turret-study",
+          "arc-spire",
+          "missile-launcher",
+          "power-generator",
+          "spider",
+          "lantern",
+          "wildlife-beetle-plum",
+          "wildlife-bird-plum",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 117,
+        "current": "plum-04",
+        "currentId": "plum-04",
+        "destroyedSceneBuffers": 0,
+        "geometryBytes": 1559912,
+        "lastUnload": null,
+        "level": 4,
+        "loads": 1,
+        "phase": "ready",
+        "requested": "plum-04",
+        "requestedId": "plum-04",
+        "requestedLevel": 4,
+        "requestedZone": "D",
+        "sceneBuffers": 117,
+        "unloads": 0,
+        "visibilityBytes": 443828,
+        "visibilityPrimitives": 7926,
+        "zone": "D"
+      },
+      "lights": 17,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "d4-defence-3",
+          "shots": 2
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-spider-2",
+            "preview-spider-3",
+            "preview-lantern-2"
+          ],
+          "boxes": 26,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-spider-1",
+            "preview-lantern-1"
+          ],
+          "boxes": 17,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "e2c9ba8c3110fcf0dc4a266d99e9c1dbb8bfa9a64f323cfa8efd282ff1451007",
+      "screenshot": "screenshots/plum-04.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 300,
+          "id": "preview-spider-1",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 0,
+          "id": "preview-spider-2",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 240,
+          "id": "preview-spider-3",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 0,
+          "id": "preview-lantern-1",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 260,
+          "id": "preview-lantern-2",
+          "route": "main",
+          "routeLength": 480
+        }
+      ],
+      "alive": 3,
+      "arcs": [],
+      "clock": 1,
+      "firing": [],
+      "id": "plum-03",
+      "lifecycle": {
+        "actors": 47,
+        "assets": [
+          "plum-tree-young",
+          "plum-tuft",
+          "plum-shrub",
+          "plum-pebbles",
+          "plum-rock",
+          "plum-tree",
+          "plum-tree-tall",
+          "plum-arch",
+          "plum-wall",
+          "plum-flowers",
+          "plum-arch-broken",
+          "missile-launcher",
+          "spider",
+          "lantern",
+          "wildlife-beetle-plum",
+          "wildlife-bird-plum",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 225,
+        "current": "plum-03",
+        "currentId": "plum-03",
+        "destroyedSceneBuffers": 117,
+        "geometryBytes": 1553768,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "plum-04",
+          "level": 4,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "D"
+        },
+        "level": 3,
+        "loads": 2,
+        "phase": "ready",
+        "requested": "plum-03",
+        "requestedId": "plum-03",
+        "requestedLevel": 3,
+        "requestedZone": "D",
+        "sceneBuffers": 108,
+        "unloads": 1,
+        "visibilityBytes": 388780,
+        "visibilityPrimitives": 6943,
+        "zone": "D"
+      },
+      "lights": 11,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "d3-defence-1",
+          "shots": 4
+        },
+        {
+          "id": "d3-defence-2",
+          "shots": 4
+        },
+        {
+          "id": "d3-defence-3",
+          "shots": 3
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-spider-1",
+            "preview-spider-2",
+            "preview-spider-3",
+            "preview-lantern-1",
+            "preview-lantern-2"
+          ],
+          "boxes": 21,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "0b5b3aa179a84fe31f7be09bb606d616194075277bfa93716bb09b82d71713e5",
+      "screenshot": "screenshots/plum-03.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 300,
+          "id": "preview-spider-1",
+          "route": "main",
+          "routeLength": 528
+        },
+        {
+          "health": 0,
+          "id": "preview-spider-2",
+          "route": "main",
+          "routeLength": 528
+        },
+        {
+          "health": 240,
+          "id": "preview-spider-3",
+          "route": "main",
+          "routeLength": 528
+        },
+        {
+          "health": 200,
+          "id": "preview-lantern-1",
+          "route": "main",
+          "routeLength": 528
+        },
+        {
+          "health": 0,
+          "id": "preview-lantern-2",
+          "route": "main",
+          "routeLength": 528
+        }
+      ],
+      "alive": 3,
+      "arcs": [
+        {
+          "id": "d2-defence-1",
+          "shots": 4
+        },
+        {
+          "id": "d2-defence-2",
+          "shots": 8
+        },
+        {
+          "id": "d2-defence-3",
+          "shots": 5
+        }
+      ],
+      "clock": 1,
+      "firing": [],
+      "id": "plum-02",
+      "lifecycle": {
+        "actors": 11,
+        "assets": [
+          "plum-tuft",
+          "plum-shrub",
+          "plum-rock",
+          "plum-tree",
+          "plum-tree-young",
+          "plum-tree-tall",
+          "plum-pebbles",
+          "plum-arch",
+          "plum-wall",
+          "plum-arch-broken",
+          "plum-flowers",
+          "arc-spire",
+          "spider",
+          "lantern",
+          "wildlife-beetle-plum",
+          "wildlife-bird-plum"
+        ],
+        "createdSceneBuffers": 330,
+        "current": "plum-02",
+        "currentId": "plum-02",
+        "destroyedSceneBuffers": 225,
+        "geometryBytes": 1231552,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "plum-03",
+          "level": 3,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "D"
+        },
+        "level": 2,
+        "loads": 3,
+        "phase": "ready",
+        "requested": "plum-02",
+        "requestedId": "plum-02",
+        "requestedLevel": 2,
+        "requestedZone": "D",
+        "sceneBuffers": 105,
+        "unloads": 2,
+        "visibilityBytes": 357196,
+        "visibilityPrimitives": 6379,
+        "zone": "D"
+      },
+      "lights": 13,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-spider-1",
+            "preview-spider-2",
+            "preview-spider-3",
+            "preview-lantern-1",
+            "preview-lantern-2"
+          ],
+          "boxes": 23,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "8e85c5e83fe0d7eec241c3e9ebc4b3f5386175901205c25abbcc8e05db87f383",
+      "screenshot": "screenshots/plum-02.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 240,
+          "id": "preview-spider-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 250,
+          "id": "preview-spider-2",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 156,
+          "id": "preview-spider-3",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 0,
+          "id": "preview-lantern-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 168,
+          "id": "preview-lantern-2",
+          "route": "main",
+          "routeLength": 456
+        }
+      ],
+      "alive": 4,
+      "arcs": [],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "d1-defence-1",
+          "shots": 8,
+          "strength": 10
+        },
+        {
+          "id": "d1-defence-2",
+          "shots": 39,
+          "strength": 12
+        },
+        {
+          "id": "d1-defence-3",
+          "shots": 6,
+          "strength": 10
+        }
+      ],
+      "id": "plum-01",
+      "lifecycle": {
+        "actors": 11,
+        "assets": [
+          "plum-tuft",
+          "plum-shrub",
+          "plum-rock",
+          "plum-pebbles",
+          "plum-tree",
+          "plum-tree-young",
+          "plum-tree-tall",
+          "plum-arch",
+          "plum-wall",
+          "plum-flowers",
+          "plum-arch-broken",
+          "turret-study",
+          "spider",
+          "lantern",
+          "wildlife-beetle-plum",
+          "wildlife-bird-plum"
+        ],
+        "createdSceneBuffers": 444,
+        "current": "plum-01",
+        "currentId": "plum-01",
+        "destroyedSceneBuffers": 330,
+        "geometryBytes": 1190672,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "plum-02",
+          "level": 2,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "D"
+        },
+        "level": 1,
+        "loads": 4,
+        "phase": "ready",
+        "requested": "plum-01",
+        "requestedId": "plum-01",
+        "requestedLevel": 1,
+        "requestedZone": "D",
+        "sceneBuffers": 114,
+        "unloads": 3,
+        "visibilityBytes": 347116,
+        "visibilityPrimitives": 6199,
+        "zone": "D"
+      },
+      "lights": 17,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-spider-1",
+            "preview-spider-2",
+            "preview-spider-3",
+            "preview-lantern-1",
+            "preview-lantern-2"
+          ],
+          "boxes": 20,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "e8811c48ced0522dc36437952a43e6ad6c3b615ed6612d8a1d0844073d34a241",
+      "screenshot": "screenshots/plum-01.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 300,
+          "id": "preview-dog-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 300,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 250,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 250.5,
+          "id": "preview-roller-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 360,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 117.5,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 456
+        }
+      ],
+      "alive": 6,
+      "arcs": [],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "a1-defence-1",
+          "shots": 8,
+          "strength": 12.5
+        },
+        {
+          "id": "a1-defence-2",
+          "shots": 21,
+          "strength": 12
+        },
+        {
+          "id": "a1-defence-3",
+          "shots": 5,
+          "strength": 10
+        }
+      ],
+      "id": "moss-01",
+      "lifecycle": {
+        "actors": 13,
+        "assets": [
+          "scenery-shrub",
+          "scenery-rock",
+          "scenery-oak-young",
+          "scenery-oak-tall",
+          "detail-grass",
+          "scenery-oak",
+          "scenery-cypress-short",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "detail-pebbles",
+          "detail-flowers",
+          "turret-study",
+          "power-generator",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 576,
+        "current": "moss-01",
+        "currentId": "moss-01",
+        "destroyedSceneBuffers": 444,
+        "geometryBytes": 1245624,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "plum-01",
+          "level": 1,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "D"
+        },
+        "level": 1,
+        "loads": 5,
+        "phase": "ready",
+        "requested": "moss-01",
+        "requestedId": "moss-01",
+        "requestedLevel": 1,
+        "requestedZone": "A",
+        "sceneBuffers": 132,
+        "unloads": 4,
+        "visibilityBytes": 415324,
+        "visibilityPrimitives": 7417,
+        "zone": "A"
+      },
+      "lights": 29,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-1",
+            "preview-roller-2",
+            "preview-moth-1",
+            "preview-moth-2"
+          ],
+          "boxes": 20,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "a4b4aed7d2d32e073f8c001e4d78f2290668e943b5dab0f0e2b61b8376708d3b",
+      "screenshot": "screenshots/moss-01.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 240,
+          "id": "preview-dog-1",
+          "route": "main",
+          "routeLength": 768
+        },
+        {
+          "health": 300,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 768
+        },
+        {
+          "health": 300,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 768
+        },
+        {
+          "health": 220,
+          "id": "preview-roller-1",
+          "route": "main",
+          "routeLength": 768
+        },
+        {
+          "health": 200,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 768
+        },
+        {
+          "health": 180,
+          "id": "preview-moth-1",
+          "route": "main",
+          "routeLength": 768
+        },
+        {
+          "health": 180,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 768
+        }
+      ],
+      "alive": 7,
+      "arcs": [
+        {
+          "id": "a2-defence-1",
+          "shots": 4
+        },
+        {
+          "id": "a2-defence-2",
+          "shots": 6
+        },
+        {
+          "id": "a2-defence-3",
+          "shots": 0
+        }
+      ],
+      "clock": 1,
+      "firing": [],
+      "id": "moss-02",
+      "lifecycle": {
+        "actors": 13,
+        "assets": [
+          "scenery-shrub",
+          "detail-pebbles",
+          "scenery-rock",
+          "detail-grass",
+          "scenery-oak-tall",
+          "scenery-oak",
+          "scenery-cypress-short",
+          "scenery-oak-young",
+          "detail-flowers",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "arc-spire",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 699,
+        "current": "moss-02",
+        "currentId": "moss-02",
+        "destroyedSceneBuffers": 576,
+        "geometryBytes": 1738264,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-01",
+          "level": 1,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 6,
+        "phase": "ready",
+        "requested": "moss-02",
+        "requestedId": "moss-02",
+        "requestedLevel": 2,
+        "requestedZone": "A",
+        "sceneBuffers": 123,
+        "unloads": 5,
+        "visibilityBytes": 343420,
+        "visibilityPrimitives": 6133,
+        "zone": "A"
+      },
+      "lights": 21,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-1",
+            "preview-roller-2",
+            "preview-moth-1",
+            "preview-moth-2"
+          ],
+          "boxes": 33,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "d1f81369116aaf75c8c2ff1abc20eceedcd515682055ca66d70ba2ccd9ce7c79",
+      "screenshot": "screenshots/moss-02.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 300,
+          "id": "preview-dog-1",
+          "route": "branch",
+          "routeLength": 456
+        },
+        {
+          "health": 300,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 696
+        },
+        {
+          "health": 300,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 696
+        },
+        {
+          "health": 360,
+          "id": "preview-roller-1",
+          "route": "branch",
+          "routeLength": 456
+        },
+        {
+          "health": 360,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 696
+        },
+        {
+          "health": 180,
+          "id": "preview-moth-1",
+          "route": "branch",
+          "routeLength": 456
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 696
+        }
+      ],
+      "alive": 6,
+      "arcs": [],
+      "clock": 1,
+      "firing": [],
+      "id": "moss-03",
+      "lifecycle": {
+        "actors": 49,
+        "assets": [
+          "detail-grass",
+          "scenery-shrub",
+          "detail-pebbles",
+          "scenery-rock",
+          "scenery-cypress-short",
+          "scenery-oak-young",
+          "scenery-oak",
+          "scenery-oak-tall",
+          "detail-flowers",
+          "scenery-cypress",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "missile-launcher",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 828,
+        "current": "moss-03",
+        "currentId": "moss-03",
+        "destroyedSceneBuffers": 699,
+        "geometryBytes": 1412256,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-02",
+          "level": 2,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 3,
+        "loads": 7,
+        "phase": "ready",
+        "requested": "moss-03",
+        "requestedId": "moss-03",
+        "requestedLevel": 3,
+        "requestedZone": "A",
+        "sceneBuffers": 129,
+        "unloads": 6,
+        "visibilityBytes": 385700,
+        "visibilityPrimitives": 6888,
+        "zone": "A"
+      },
+      "lights": 19,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "a3-defence-1",
+          "shots": 2
+        },
+        {
+          "id": "a3-defence-2",
+          "shots": 4
+        },
+        {
+          "id": "a3-defence-3",
+          "shots": 1
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-2",
+            "preview-moth-2"
+          ],
+          "boxes": 30,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-roller-1",
+            "preview-moth-1"
+          ],
+          "boxes": 20,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "1178f7c9ba06bfc8236571af3d239b3d1a266235780def619fbac99414d068db",
+      "screenshot": "screenshots/moss-03.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 250,
+          "id": "preview-dog-1",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 270,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 270,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 322.5,
+          "id": "preview-roller-1",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 300,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 180,
+          "id": "preview-moth-1",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 672
+        }
+      ],
+      "alive": 6,
+      "arcs": [
+        {
+          "id": "a4-arc",
+          "shots": 6
+        }
+      ],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "a4-gun",
+          "shots": 7,
+          "strength": 12.5
+        }
+      ],
+      "id": "moss-04",
+      "lifecycle": {
+        "actors": 49,
+        "assets": [
+          "detail-grass",
+          "scenery-oak-tall",
+          "scenery-shrub",
+          "scenery-rock",
+          "scenery-oak-young",
+          "scenery-cypress-short",
+          "scenery-oak",
+          "scenery-cypress",
+          "detail-pebbles",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "detail-flowers",
+          "turret-study",
+          "power-generator",
+          "arc-spire",
+          "missile-launcher",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 966,
+        "current": "moss-04",
+        "currentId": "moss-04",
+        "destroyedSceneBuffers": 828,
+        "geometryBytes": 1519016,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-03",
+          "level": 3,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 4,
+        "loads": 8,
+        "phase": "ready",
+        "requested": "moss-04",
+        "requestedId": "moss-04",
+        "requestedLevel": 4,
+        "requestedZone": "A",
+        "sceneBuffers": 138,
+        "unloads": 7,
+        "visibilityBytes": 519036,
+        "visibilityPrimitives": 9269,
+        "zone": "A"
+      },
+      "lights": 25,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "a4-silo",
+          "shots": 2
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-1",
+            "preview-roller-2",
+            "preview-moth-1",
+            "preview-moth-2"
+          ],
+          "boxes": 29,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "b96b8706e863dae506618861cf623b364a3e2b3f029af72ee85305c01abe5de4",
+      "screenshot": "screenshots/moss-04.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 4,
+          "id": "preview-walker-1",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 72,
+          "id": "preview-walker-2",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 0,
+          "id": "preview-walker-3",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 324,
+          "id": "preview-dune-tread-1",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 294,
+          "id": "preview-dune-tread-2",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 108,
+          "id": "preview-twin-fan-1",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 0,
+          "id": "preview-twin-fan-2",
+          "route": "main",
+          "routeLength": 480
+        }
+      ],
+      "alive": 5,
+      "arcs": [],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "b1-defence-1",
+          "shots": 24,
+          "strength": 10
+        },
+        {
+          "id": "b1-defence-2",
+          "shots": 75,
+          "strength": 12
+        },
+        {
+          "id": "b1-defence-3",
+          "shots": 29,
+          "strength": 10
+        }
+      ],
+      "id": "ochre-01",
+      "lifecycle": {
+        "actors": 13,
+        "assets": [
+          "ochre-tuft",
+          "ochre-shrub",
+          "ochre-pebbles",
+          "ochre-cactus-young",
+          "ochre-rock",
+          "ochre-cactus",
+          "ochre-wall",
+          "ochre-flowers",
+          "ochre-mesa-low",
+          "ochre-mesa",
+          "turret-study",
+          "walker",
+          "dune-tread",
+          "twin-fan",
+          "wildlife-lizard-ochre",
+          "wildlife-bird-ochre"
+        ],
+        "createdSceneBuffers": 117,
+        "current": "ochre-01",
+        "currentId": "ochre-01",
+        "destroyedSceneBuffers": 0,
+        "geometryBytes": 1073720,
+        "lastUnload": null,
+        "level": 1,
+        "loads": 1,
+        "phase": "ready",
+        "requested": "ochre-01",
+        "requestedId": "ochre-01",
+        "requestedLevel": 1,
+        "requestedZone": "B",
+        "sceneBuffers": 117,
+        "unloads": 0,
+        "visibilityBytes": 221900,
+        "visibilityPrimitives": 3963,
+        "zone": "B"
+      },
+      "lights": 19,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-walker-1",
+            "preview-walker-2",
+            "preview-walker-3",
+            "preview-dune-tread-1",
+            "preview-dune-tread-2",
+            "preview-twin-fan-1",
+            "preview-twin-fan-2"
+          ],
+          "boxes": 21,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "5dc89668241546b6cc5376863ac824de0630be1d24abce679435377e8111c2d5",
+      "screenshot": "screenshots/ochre-01.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 0,
+          "id": "preview-walker-1",
+          "route": "main",
+          "routeLength": 720
+        },
+        {
+          "health": 0,
+          "id": "preview-walker-2",
+          "route": "main",
+          "routeLength": 720
+        },
+        {
+          "health": 0,
+          "id": "preview-walker-3",
+          "route": "main",
+          "routeLength": 720
+        },
+        {
+          "health": 0,
+          "id": "preview-dune-tread-1",
+          "route": "main",
+          "routeLength": 720
+        },
+        {
+          "health": 0,
+          "id": "preview-dune-tread-2",
+          "route": "main",
+          "routeLength": 720
+        },
+        {
+          "health": 0,
+          "id": "preview-twin-fan-1",
+          "route": "main",
+          "routeLength": 720
+        },
+        {
+          "health": 0,
+          "id": "preview-twin-fan-2",
+          "route": "main",
+          "routeLength": 720
+        }
+      ],
+      "alive": 0,
+      "arcs": [
+        {
+          "id": "b2-defence-1",
+          "shots": 8
+        },
+        {
+          "id": "b2-defence-2",
+          "shots": 36
+        },
+        {
+          "id": "b2-defence-3",
+          "shots": 13
+        }
+      ],
+      "clock": 1,
+      "firing": [],
+      "id": "ochre-02",
+      "lifecycle": {
+        "actors": 13,
+        "assets": [
+          "ochre-rock",
+          "ochre-shrub",
+          "ochre-pebbles",
+          "ochre-tuft",
+          "ochre-cactus",
+          "ochre-flowers",
+          "ochre-cactus-young",
+          "ochre-mesa",
+          "ochre-wall",
+          "ochre-mesa-low",
+          "arc-spire",
+          "walker",
+          "dune-tread",
+          "twin-fan",
+          "wildlife-lizard-ochre",
+          "wildlife-bird-ochre"
+        ],
+        "createdSceneBuffers": 225,
+        "current": "ochre-02",
+        "currentId": "ochre-02",
+        "destroyedSceneBuffers": 117,
+        "geometryBytes": 1422576,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ochre-01",
+          "level": 1,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "B"
+        },
+        "level": 2,
+        "loads": 2,
+        "phase": "ready",
+        "requested": "ochre-02",
+        "requestedId": "ochre-02",
+        "requestedLevel": 2,
+        "requestedZone": "B",
+        "sceneBuffers": 108,
+        "unloads": 1,
+        "visibilityBytes": 237300,
+        "visibilityPrimitives": 4238,
+        "zone": "B"
+      },
+      "lights": 15,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-walker-1",
+            "preview-walker-2",
+            "preview-walker-3",
+            "preview-dune-tread-1",
+            "preview-dune-tread-2",
+            "preview-twin-fan-1",
+            "preview-twin-fan-2"
+          ],
+          "boxes": 31,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "6032548b93c75d8b58c40292e5bce1a176ee75946fd5213fd47ae72eda74bff6",
+      "screenshot": "screenshots/ochre-02.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 0,
+          "id": "preview-walker-1",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 0,
+          "id": "preview-walker-2",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 0,
+          "id": "preview-walker-3",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 15,
+          "id": "preview-dune-tread-1",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 0,
+          "id": "preview-dune-tread-2",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 0,
+          "id": "preview-twin-fan-1",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 0,
+          "id": "preview-twin-fan-2",
+          "route": "main",
+          "routeLength": 624
+        }
+      ],
+      "alive": 1,
+      "arcs": [],
+      "clock": 1,
+      "firing": [],
+      "id": "ochre-03",
+      "lifecycle": {
+        "actors": 49,
+        "assets": [
+          "ochre-tuft",
+          "ochre-cactus-young",
+          "ochre-shrub",
+          "ochre-pebbles",
+          "ochre-mesa-low",
+          "ochre-rock",
+          "ochre-mesa",
+          "ochre-cactus",
+          "ochre-flowers",
+          "ochre-wall",
+          "missile-launcher",
+          "walker",
+          "dune-tread",
+          "twin-fan",
+          "wildlife-lizard-ochre",
+          "wildlife-bird-ochre",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 336,
+        "current": "ochre-03",
+        "currentId": "ochre-03",
+        "destroyedSceneBuffers": 225,
+        "geometryBytes": 1083312,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ochre-02",
+          "level": 2,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "B"
+        },
+        "level": 3,
+        "loads": 3,
+        "phase": "ready",
+        "requested": "ochre-03",
+        "requestedId": "ochre-03",
+        "requestedLevel": 3,
+        "requestedZone": "B",
+        "sceneBuffers": 111,
+        "unloads": 2,
+        "visibilityBytes": 324828,
+        "visibilityPrimitives": 5801,
+        "zone": "B"
+      },
+      "lights": 13,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "b3-defence-1",
+          "shots": 4
+        },
+        {
+          "id": "b3-defence-2",
+          "shots": 17
+        },
+        {
+          "id": "b3-defence-3",
+          "shots": 13
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-walker-1",
+            "preview-walker-2",
+            "preview-walker-3",
+            "preview-dune-tread-1",
+            "preview-dune-tread-2",
+            "preview-twin-fan-1",
+            "preview-twin-fan-2"
+          ],
+          "boxes": 27,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "5b85ffdc290509ad8a0f0f3b9862a484e4e7bd8f6a85e04903c3656ded117e2d",
+      "screenshot": "screenshots/ochre-03.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 150,
+          "id": "preview-walker-1",
+          "route": "branch",
+          "routeLength": 336
+        },
+        {
+          "health": 300,
+          "id": "preview-walker-2",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 250,
+          "id": "preview-walker-3",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 420,
+          "id": "preview-dune-tread-1",
+          "route": "branch",
+          "routeLength": 336
+        },
+        {
+          "health": 382.5,
+          "id": "preview-dune-tread-2",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 202.5,
+          "id": "preview-twin-fan-1",
+          "route": "branch",
+          "routeLength": 336
+        },
+        {
+          "health": 120,
+          "id": "preview-twin-fan-2",
+          "route": "main",
+          "routeLength": 624
+        }
+      ],
+      "alive": 7,
+      "arcs": [
+        {
+          "id": "b4-defence-2",
+          "shots": 6
+        }
+      ],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "b4-defence-1",
+          "shots": 5,
+          "strength": 10
+        }
+      ],
+      "id": "ochre-04",
+      "lifecycle": {
+        "actors": 49,
+        "assets": [
+          "ochre-tuft",
+          "ochre-shrub",
+          "ochre-pebbles",
+          "ochre-rock",
+          "ochre-cactus-young",
+          "ochre-cactus",
+          "ochre-mesa-low",
+          "ochre-mesa",
+          "ochre-flowers",
+          "ochre-wall",
+          "turret-study",
+          "arc-spire",
+          "missile-launcher",
+          "power-generator",
+          "walker",
+          "dune-tread",
+          "twin-fan",
+          "wildlife-lizard-ochre",
+          "wildlife-bird-ochre",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 456,
+        "current": "ochre-04",
+        "currentId": "ochre-04",
+        "destroyedSceneBuffers": 336,
+        "geometryBytes": 1791088,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ochre-03",
+          "level": 3,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "B"
+        },
+        "level": 4,
+        "loads": 4,
+        "phase": "ready",
+        "requested": "ochre-04",
+        "requestedId": "ochre-04",
+        "requestedLevel": 4,
+        "requestedZone": "B",
+        "sceneBuffers": 120,
+        "unloads": 3,
+        "visibilityBytes": 238756,
+        "visibilityPrimitives": 4264,
+        "zone": "B"
+      },
+      "lights": 19,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "b4-defence-3",
+          "shots": 3
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-walker-2",
+            "preview-walker-3",
+            "preview-dune-tread-2",
+            "preview-twin-fan-2"
+          ],
+          "boxes": 27,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-walker-1",
+            "preview-dune-tread-1",
+            "preview-twin-fan-1"
+          ],
+          "boxes": 15,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "3300ba3861bda96f8a2bcaf3453bbe9d1ef03f5dace03d60fd22a13979c7fc43",
+      "screenshot": "screenshots/ochre-04.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 188,
+          "id": "preview-tripod-1",
+          "route": "main",
+          "routeLength": 528
+        },
+        {
+          "health": 184,
+          "id": "preview-tripod-2",
+          "route": "main",
+          "routeLength": 528
+        },
+        {
+          "health": 4,
+          "id": "preview-ray-1",
+          "route": "main",
+          "routeLength": 528
+        },
+        {
+          "health": 160,
+          "id": "preview-ray-2",
+          "route": "main",
+          "routeLength": 528
+        }
+      ],
+      "alive": 4,
+      "arcs": [],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "c1-defence-1",
+          "shots": 6,
+          "strength": 10
+        },
+        {
+          "id": "c1-defence-2",
+          "shots": 27,
+          "strength": 12
+        },
+        {
+          "id": "c1-defence-3",
+          "shots": 8,
+          "strength": 10
+        }
+      ],
+      "id": "ice-01",
+      "lifecycle": {
+        "actors": 10,
+        "assets": [
+          "ice-tuft",
+          "ice-shrub",
+          "ice-fir-young",
+          "ice-pebbles",
+          "ice-rock",
+          "ice-fir",
+          "ice-wall",
+          "ice-flowers",
+          "turret-study",
+          "tripod",
+          "ray",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice"
+        ],
+        "createdSceneBuffers": 744,
+        "current": "ice-01",
+        "currentId": "ice-01",
+        "destroyedSceneBuffers": 651,
+        "geometryBytes": 1170112,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ice-01",
+          "level": 1,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "C"
+        },
+        "level": 1,
+        "loads": 6,
+        "phase": "ready",
+        "requested": "ice-01",
+        "requestedId": "ice-01",
+        "requestedLevel": 1,
+        "requestedZone": "C",
+        "sceneBuffers": 93,
+        "unloads": 5,
+        "visibilityBytes": 362516,
+        "visibilityPrimitives": 6474,
+        "zone": "C"
+      },
+      "lights": 13,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-tripod-2",
+            "preview-ray-1",
+            "preview-ray-2"
+          ],
+          "boxes": 23,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "a2296b4aa9e657acadd4eb400e5b59b7e4b349064f66ba685cee995127c15c86",
+      "screenshot": "screenshots/ice-01.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 0,
+          "id": "preview-tripod-1",
+          "route": "main",
+          "routeLength": 648
+        },
+        {
+          "health": 0,
+          "id": "preview-tripod-2",
+          "route": "main",
+          "routeLength": 648
+        },
+        {
+          "health": 0,
+          "id": "preview-ray-1",
+          "route": "main",
+          "routeLength": 648
+        },
+        {
+          "health": 0,
+          "id": "preview-ray-2",
+          "route": "main",
+          "routeLength": 648
+        }
+      ],
+      "alive": 0,
+      "arcs": [
+        {
+          "id": "c2-defence-1",
+          "shots": 2
+        },
+        {
+          "id": "c2-defence-2",
+          "shots": 10
+        },
+        {
+          "id": "c2-defence-3",
+          "shots": 12
+        }
+      ],
+      "clock": 1,
+      "firing": [],
+      "id": "ice-02",
+      "lifecycle": {
+        "actors": 10,
+        "assets": [
+          "ice-tuft",
+          "ice-fir-young",
+          "ice-shrub",
+          "ice-rock",
+          "ice-pebbles",
+          "ice-fir",
+          "ice-flowers",
+          "ice-pillar-broken",
+          "ice-wall",
+          "ice-pillar",
+          "arc-spire",
+          "tripod",
+          "ray",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice"
+        ],
+        "createdSceneBuffers": 834,
+        "current": "ice-02",
+        "currentId": "ice-02",
+        "destroyedSceneBuffers": 744,
+        "geometryBytes": 1419824,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ice-01",
+          "level": 1,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "C"
+        },
+        "level": 2,
+        "loads": 7,
+        "phase": "ready",
+        "requested": "ice-02",
+        "requestedId": "ice-02",
+        "requestedLevel": 2,
+        "requestedZone": "C",
+        "sceneBuffers": 90,
+        "unloads": 6,
+        "visibilityBytes": 385084,
+        "visibilityPrimitives": 6877,
+        "zone": "C"
+      },
+      "lights": 9,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-tripod-2",
+            "preview-ray-1",
+            "preview-ray-2"
+          ],
+          "boxes": 28,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "81f1dd328f9979fc2175237d02e1b1cadd4af927008551af0ecb24504fdb82b2",
+      "screenshot": "screenshots/ice-02.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 0,
+          "id": "preview-tripod-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 0,
+          "id": "preview-tripod-2",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 0,
+          "id": "preview-ray-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 0,
+          "id": "preview-ray-2",
+          "route": "main",
+          "routeLength": 480
+        }
+      ],
+      "alive": 0,
+      "arcs": [],
+      "clock": 1,
+      "firing": [],
+      "id": "ice-03",
+      "lifecycle": {
+        "actors": 46,
+        "assets": [
+          "ice-tuft",
+          "ice-rock",
+          "ice-shrub",
+          "ice-flowers",
+          "ice-fir-young",
+          "ice-fir",
+          "ice-pebbles",
+          "ice-pillar",
+          "ice-pillar-broken",
+          "ice-wall",
+          "missile-launcher",
+          "tripod",
+          "ray",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 927,
+        "current": "ice-03",
+        "currentId": "ice-03",
+        "destroyedSceneBuffers": 834,
+        "geometryBytes": 1186632,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ice-02",
+          "level": 2,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "C"
+        },
+        "level": 3,
+        "loads": 8,
+        "phase": "ready",
+        "requested": "ice-03",
+        "requestedId": "ice-03",
+        "requestedLevel": 3,
+        "requestedZone": "C",
+        "sceneBuffers": 93,
+        "unloads": 7,
+        "visibilityBytes": 588252,
+        "visibilityPrimitives": 10505,
+        "zone": "C"
+      },
+      "lights": 7,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "c3-defence-1",
+          "shots": 5
+        },
+        {
+          "id": "c3-defence-2",
+          "shots": 8
+        },
+        {
+          "id": "c3-defence-3",
+          "shots": 6
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-2",
+            "preview-ray-2"
+          ],
+          "boxes": 21,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-ray-1"
+          ],
+          "boxes": 12,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "83c4a48a3f4235fc848eab8b54d109a8c5d4dbde050c67c79d09fd166345950a",
+      "screenshot": "screenshots/ice-03.jpg"
+    },
+    {
+      "actors": [
+        {
+          "health": 60,
+          "id": "preview-tripod-1",
+          "route": "main",
+          "routeLength": 648
+        },
+        {
+          "health": 130,
+          "id": "preview-tripod-2",
+          "route": "main",
+          "routeLength": 648
+        },
+        {
+          "health": 70,
+          "id": "preview-ray-1",
+          "route": "main",
+          "routeLength": 648
+        },
+        {
+          "health": 0,
+          "id": "preview-ray-2",
+          "route": "main",
+          "routeLength": 648
+        }
+      ],
+      "alive": 3,
+      "arcs": [
+        {
+          "id": "c4-defence-2",
+          "shots": 11
+        }
+      ],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "c4-defence-1",
+          "shots": 12,
+          "strength": 10
+        }
+      ],
+      "id": "ice-04",
+      "lifecycle": {
+        "actors": 46,
+        "assets": [
+          "ice-tuft",
+          "ice-rock",
+          "ice-shrub",
+          "ice-fir-young",
+          "ice-pebbles",
+          "ice-fir",
+          "ice-pillar",
+          "ice-wall",
+          "ice-pillar-broken",
+          "ice-flowers",
+          "turret-study",
+          "arc-spire",
+          "missile-launcher",
+          "power-generator",
+          "tripod",
+          "ray",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 1029,
+        "current": "ice-04",
+        "currentId": "ice-04",
+        "destroyedSceneBuffers": 927,
+        "geometryBytes": 1549096,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ice-03",
+          "level": 3,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "C"
+        },
+        "level": 4,
+        "loads": 9,
+        "phase": "ready",
+        "requested": "ice-04",
+        "requestedId": "ice-04",
+        "requestedLevel": 4,
+        "requestedZone": "C",
+        "sceneBuffers": 102,
+        "unloads": 8,
+        "visibilityBytes": 430724,
+        "visibilityPrimitives": 7692,
+        "zone": "C"
+      },
+      "lights": 13,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "c4-defence-3",
+          "shots": 8
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-tripod-2",
+            "preview-ray-1",
+            "preview-ray-2"
+          ],
+          "boxes": 28,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6,
+      "sourceHash": "7c3957a15d9faf3e7ae254d5aab07c761fffeb0163ed1d3cfb13d1dc12fd03a3",
+      "screenshot": "screenshots/ice-04.jpg"
+    }
+  ],
+  "controls": {
+    "nightSnowSlowReset": {
+      "actors": [
+        {
+          "health": 280,
+          "id": "preview-tripod-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 280,
+          "id": "preview-tripod-2",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 220,
+          "id": "preview-ray-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 220,
+          "id": "preview-ray-2",
+          "route": "main",
+          "routeLength": 480
+        }
+      ],
+      "alive": 4,
+      "arcs": [],
+      "clock": 0.1,
+      "firing": [],
+      "id": "ice-03",
+      "lifecycle": {
+        "actors": 46,
+        "assets": [
+          "ice-tuft",
+          "ice-rock",
+          "ice-shrub",
+          "ice-flowers",
+          "ice-fir-young",
+          "ice-fir",
+          "ice-pebbles",
+          "ice-pillar",
+          "ice-pillar-broken",
+          "ice-wall",
+          "missile-launcher",
+          "tripod",
+          "ray",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 1125,
+        "current": "ice-03",
+        "currentId": "ice-03",
+        "destroyedSceneBuffers": 1031,
+        "geometryBytes": 1287432,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ice-04",
+          "level": 4,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "C"
+        },
+        "level": 3,
+        "loads": 10,
+        "phase": "enemies-reset",
+        "requested": "ice-03",
+        "requestedId": "ice-03",
+        "requestedLevel": 3,
+        "requestedZone": "C",
+        "sceneBuffers": 94,
+        "unloads": 9,
+        "visibilityBytes": 588252,
+        "visibilityPrimitives": 10505,
+        "zone": "C"
+      },
+      "lights": 7,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "c3-defence-1",
+          "shots": 1
+        },
+        {
+          "id": "c3-defence-2",
+          "shots": 2
+        },
+        {
+          "id": "c3-defence-3",
+          "shots": 2
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-2",
+            "preview-ray-2"
+          ],
+          "boxes": 21,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-ray-1"
+          ],
+          "boxes": 12,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 4096,
+      "wildlife": 6
+    },
+    "pathView": {
+      "camera": "Path view. WASD to move, drag to look, F to return to overview.",
+      "loading": "false",
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-2",
+            "preview-ray-2"
+          ],
+          "boxes": 21,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-ray-1"
+          ],
+          "boxes": 12,
+          "id": "branch"
+        }
+      ]
+    },
+    "restored": {
+      "actors": [
+        {
+          "health": 280,
+          "id": "preview-tripod-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 205,
+          "id": "preview-tripod-2",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 130,
+          "id": "preview-ray-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 160,
+          "id": "preview-ray-2",
+          "route": "main",
+          "routeLength": 480
+        }
+      ],
+      "alive": 4,
+      "arcs": [],
+      "clock": 1,
+      "firing": [],
+      "id": "ice-03",
+      "lifecycle": {
+        "actors": 46,
+        "assets": [
+          "ice-tuft",
+          "ice-rock",
+          "ice-shrub",
+          "ice-flowers",
+          "ice-fir-young",
+          "ice-fir",
+          "ice-pebbles",
+          "ice-pillar",
+          "ice-pillar-broken",
+          "ice-wall",
+          "missile-launcher",
+          "tripod",
+          "ray",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 1127,
+        "current": "ice-03",
+        "currentId": "ice-03",
+        "destroyedSceneBuffers": 1034,
+        "geometryBytes": 1186632,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ice-04",
+          "level": 4,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "C"
+        },
+        "level": 3,
+        "loads": 10,
+        "phase": "weather-preview",
+        "requested": "ice-03",
+        "requestedId": "ice-03",
+        "requestedLevel": 3,
+        "requestedZone": "C",
+        "sceneBuffers": 93,
+        "unloads": 9,
+        "visibilityBytes": 588252,
+        "visibilityPrimitives": 10505,
+        "zone": "C"
+      },
+      "lights": 7,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "c3-defence-1",
+          "shots": 3
+        },
+        {
+          "id": "c3-defence-2",
+          "shots": 3
+        },
+        {
+          "id": "c3-defence-3",
+          "shots": 4
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-2",
+            "preview-ray-2"
+          ],
+          "boxes": 21,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-ray-1"
+          ],
+          "boxes": 12,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6
+    },
+    "reload": {
+      "actors": [
+        {
+          "health": 0,
+          "id": "preview-tripod-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 0,
+          "id": "preview-tripod-2",
+          "route": "main",
+          "routeLength": 480
+        },
+        {
+          "health": 0,
+          "id": "preview-ray-1",
+          "route": "branch",
+          "routeLength": 264
+        },
+        {
+          "health": 0,
+          "id": "preview-ray-2",
+          "route": "main",
+          "routeLength": 480
+        }
+      ],
+      "alive": 0,
+      "arcs": [],
+      "clock": 1,
+      "firing": [],
+      "id": "ice-03",
+      "lifecycle": {
+        "actors": 46,
+        "assets": [
+          "ice-tuft",
+          "ice-rock",
+          "ice-shrub",
+          "ice-flowers",
+          "ice-fir-young",
+          "ice-fir",
+          "ice-pebbles",
+          "ice-pillar",
+          "ice-pillar-broken",
+          "ice-wall",
+          "missile-launcher",
+          "tripod",
+          "ray",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 93,
+        "current": "ice-03",
+        "currentId": "ice-03",
+        "destroyedSceneBuffers": 0,
+        "geometryBytes": 1186632,
+        "lastUnload": null,
+        "level": 3,
+        "loads": 1,
+        "phase": "ready",
+        "requested": "ice-03",
+        "requestedId": "ice-03",
+        "requestedLevel": 3,
+        "requestedZone": "C",
+        "sceneBuffers": 93,
+        "unloads": 0,
+        "visibilityBytes": 588252,
+        "visibilityPrimitives": 10505,
+        "zone": "C"
+      },
+      "lights": 7,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "c3-defence-1",
+          "shots": 4
+        },
+        {
+          "id": "c3-defence-2",
+          "shots": 8
+        },
+        {
+          "id": "c3-defence-3",
+          "shots": 6
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-tripod-2",
+            "preview-ray-2"
+          ],
+          "boxes": 21,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-tripod-1",
+            "preview-ray-1"
+          ],
+          "boxes": 12,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6
+    }
+  },
+  "logsAfterFinalReload": [],
+  "resolvedDuringReview": [
+    {
+      "level": "ice-01",
+      "issue": "Ground wildlife seed overlapped a turret; scene failed safely and exposed retry.",
+      "fix": "Moved seeds to empty authored candidate clearings; focused lifecycle, source equality, geometry and visibility checks passed; live retry succeeded."
+    }
+  ],
+  "limits": [
+    "Visual and fixed-roster development verification, not campaign balance.",
+    "Earlier first-pass captures are archived separately."
+  ]
+}

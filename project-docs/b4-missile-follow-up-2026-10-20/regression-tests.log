@@ -1,0 +1,50 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.35ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [2.69ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [0.82ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.15ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [0.81ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.18ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [0.53ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [858.96ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [1100.63ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [1079.59ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [796.32ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.42ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2304.25ms]
+
+tests/fish-preview.test.js:
+(pass) fish model is a deterministic matte articulated cosmetic asset [15.59ms]
+(pass) shallow and isolated water are empty; separate usable pools own separate schools [19.90ms]
+(pass) full rotating fish envelopes stay underwater and inside usable pools throughout roaming [31.95ms]
+(pass) actual debris water entries trigger faster outward escapes, then fish return to calm swimming [11.27ms]
+(pass) pause, bounded impact storms, dry contacts, reset and release preserve lifecycle [8.92ms]
+(pass) a bridge hit before water never frightens fish [8.17ms]
+(pass) actual deep pools load fish, retain them through wave preparation, and keep combat outcomes unchanged [5817.88ms]
+
+tests/zone-vista.test.js:
+(pass) Zone A distant terrain is deterministic, bounded and wholly below gameplay [146.01ms]
+(pass) All sixteen production landscapes enable only their matching biome [0.19ms]
+(pass) B–D vistas have deterministic, distinct biome geometry below gameplay within the same budget [242.32ms]
+(pass) Accepted Zone A vista remains byte-for-byte unchanged [62.77ms]
+
+tests/camera.test.js:
+(pass) overview fits full path tiles and all approaches while retaining landscape movement bounds [1.20ms]
+(pass) player camera can disable development path view without changing preview default [0.15ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.18ms]
+(pass) path view samples every path box and restores the complete overview [0.17ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.06ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.25ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.04ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.29ms]
+(pass) camera disposal removes canvas and document handlers before a renderer retry [0.26ms]
+
+ 34 pass
+ 0 fail
+ 4838451 expect() calls
+Ran 34 tests across 5 files. [12.55s]

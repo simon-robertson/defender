@@ -1,0 +1,14 @@
+bun test v1.4.2 (744846f84)
+
+tests/ao-study.test.js:
+(pass) AO reference leaves flat planes and absent/background samples open in both projections [1.30ms]
+(pass) AO reference darkens a nearby wall contact and releases it beyond world radius [0.38ms]
+(pass) A two-wall corner loses more ambient visibility than one exposed contact [0.26ms]
+(pass) A floating surface well beyond AO reach does not ground itself with an AO smudge [0.12ms]
+(pass) World-radius projection stays depth-invariant in overview and scales with perspective distance [0.05ms]
+(pass) Shader entrypoints and isolated opaque helper expose the agreed pipeline interface [0.04ms]
+
+ 6 pass
+ 0 fail
+ 32 expect() calls
+Ran 6 tests across 1 file. [9.00ms]

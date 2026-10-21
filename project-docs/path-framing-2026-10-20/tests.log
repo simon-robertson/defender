@@ -1,0 +1,64 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.24ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.06ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.15ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [5.54ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [3.55ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.31ms]
+(pass) stable coverage drifts gently around its shot while changing height and retaining broad gimbal aiming [8.37ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.15ms]
+{"levelIndex":0,"hz":30,"travelled":155.31583042142572,"readable":1,"minY":144.1148763445814,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":60,"travelled":250.7578749421296,"readable":1,"minY":144.00026969209205,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":120,"travelled":280.17195978498194,"readable":1,"minY":144,"maxY":224,"bytes":11006}
+{"levelIndex":1,"hz":30,"travelled":294.3624793351653,"readable":0.9370892018779343,"minY":145.03330649437027,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":60,"travelled":293.6783599018737,"readable":0.9774542038515736,"minY":144.33659214665948,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":120,"travelled":396.95516161703665,"readable":0.9304837952090184,"minY":144.00200656554856,"maxY":224,"bytes":13904}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5991.99ms]
+{"currentLevel":2,"mothFrames":2807,"minY":173.2828433591373,"maxY":228.46683658808146,"minPitch":0.5617526279483173,"minEnemy3D":126.54413946944229,"minFlyer3D":126.54413946944229,"minVerticalGap":100.2828433591373,"stalledFrames":0,"minStep":0.00011111109786799264,"heldDriftFrames":1346,"meanSpeed":11.538469412839062,"blockedMoves":0,"airborneFloor":173,"travelled":960.989666812368,"bytes":12862}
+{"currentLevel":3,"mothFrames":2127,"minY":173.01592100238466,"maxY":223.9999438263378,"minPitch":0.49217663758208563,"minEnemy3D":152.84219072388555,"minFlyer3D":152.84219072388555,"minVerticalGap":100.01592100238466,"stalledFrames":0,"minStep":0.00011111109785516844,"heldDriftFrames":2789,"meanSpeed":7.303367677751057,"blockedMoves":1,"airborneFloor":173,"travelled":666.0671322111651,"bytes":17096}
+{"currentLevel":4,"mothFrames":1928,"minY":173.43589753781538,"maxY":224,"minPitch":0.4439468889844086,"minEnemy3D":133.18481571008235,"minFlyer3D":133.18481571008235,"minVerticalGap":100.64578641738558,"stalledFrames":0,"minStep":0.00011111109785442916,"heldDriftFrames":3257,"meanSpeed":6.433412591905083,"blockedMoves":1,"airborneFloor":173,"travelled":637.5511878581099,"bytes":15640}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [5930.65ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [872.21ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.46ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.00000000058749,"maxJerk":48.00000010487128,"driftFrames":3305,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [8.83ms]
+
+tests/play-action-camera.test.js:
+(pass) preparation return converges on the same path frame as the Frame button [2.43ms]
+(pass) empty/title preparation never takes camera ownership; bind and release never move a user view [0.17ms]
+(pass) sparse combat closes in smoothly with fixed orientation, finite bounded motion and no long-frame leap [1.67ms]
+(pass) spread fronts and engaged gun envelopes fit wide and portrait views without selecting scheduled enemies or mutating targeting [2.72ms]
+(pass) look-ahead follows actual route through a corner and clamps at exit rather than wrapping [0.08ms]
+(pass) fixed-clock damping agrees at30/60/120Hz and moving-route framing has no material frame-rate drift [2.41ms]
+(pass) death context survives busy gunfire and holds through four-second settling, then returns smoothly only once [1.04ms]
+(pass) recent death interest expires without a settling phase and paused time freezes view, hold and event lifetime [0.81ms]
+(pass) manual drag/key holds, disable/resume and preparation takeover never fight the player or snap on resuming [1.17ms]
+(pass) takeover from extreme manual zoom/pan returns within speed limits instead of clamping to auto bounds [2.11ms]
+(pass) event timestamps follow actual bounded engine time rather than a longer browser-frame delta [0.13ms]
+(pass) zero-hold preparation takeover cancels the return but lets the next wave own the camera immediately [0.81ms]
+(pass) real A1/A2 fights anticipate guns before engagement and keep their animated meshes readable on laptop/desktop frames [3878.76ms]
+
+tests/play-presentation.test.js:
+(pass) title framing covers every viewport corner with landscape across portrait and widescreen [0.28ms]
+
+tests/camera.test.js:
+(pass) overview fits full path tiles and all approaches while retaining landscape movement bounds [0.83ms]
+(pass) player camera can disable development path view without changing preview default [0.16ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.14ms]
+(pass) path view samples every path box and restores the complete overview [0.10ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.07ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.26ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.05ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.30ms]
+(pass) camera disposal removes canvas and document handlers before a renderer retry [0.41ms]
+
+ 38 pass
+ 0 fail
+ 223605 expect() calls
+Ran 38 tests across 5 files. [16.76s]

@@ -1,0 +1,56 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [393.61ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [23.79ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [22.50ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [22.47ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [73.35ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [62.25ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [30.01ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [88.30ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [22.98ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [22.31ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [22.60ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [76.20ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [67.33ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [52.64ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [24.04ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [21.45ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [21.52ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [23.02ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [127.83ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [23.14ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [23.07ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [29.99ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [22.63ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [231.55ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [21.50ms]
+(pass) static contact drops its incoming claim before the impact callback [21.20ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [85.96ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [39.94ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [84.50ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [31.02ms]
+(pass) steering light and jets stop at alignment and pulse together within the fixed 36-light budget [22.84ms]
+(pass) real slow and fast turns extinguish attitude jets while residual sub-degree steering settles [64.36ms]
+(pass) eased real turns use only short spin-up and braking impulses without late correction pulse trains [156.35ms]
+(pass) missiles collide with actual Arc tower geometry in terminal flight at30/60/120Hz [244.96ms]
+(pass) missile admission sees a live defence blocker and releases the result after deployment removal [28.53ms]
+
+tests/play-polish.test.js:
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.44ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.53ms]
+
+tests/play-conditions.test.js:
+(pass) each zone advances through stable day, afternoon, evening and night with clear weather and no random draws [0.07ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.43ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [3719.42ms]
+(pass) play time-of-day overrides are cloned and do not rewrite saved lighting [2.80ms]
+(pass) all four late-afternoon levels brighten direct sunlight without compounding or changing its angle/ambient fill [2.15ms]
+(pass) third levels use a low night key light while preserving evening ambient and authored sources [2.54ms]
+(pass) night shadow projection is one quarter as long on every fourth level without changing heading or ambient [2.25ms]
+
+ 44 pass
+ 0 fail
+ 3765 expect() calls
+Ran 44 tests across 3 files. [6.10s]

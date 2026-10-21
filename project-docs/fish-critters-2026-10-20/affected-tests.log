@@ -1,0 +1,118 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.35ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [2.60ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [0.81ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.14ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [0.91ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.14ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [0.54ms]
+
+tests/wildlife-preview.test.js:
+(pass) each zone adds only six cosmetic actors and two shared source models, independently of combat actors [844.55ms]
+(pass) autonomous journeys cross paths while avoiding water, scenery and other ground critters in every zone [1029.36ms]
+(pass) only one round-robin thinker runs per frame, using stable bounded state and shared scratch [184.01ms]
+(pass) accepted journeys use elapsed seconds independent of frame subdivision [355.78ms]
+(pass) hares use faster longer low hops and complete short journeys without a final vertical snap [165.76ms]
+(pass) a ground critter blocked mid-hop settles on the ground before retrying [164.06ms]
+(pass) invalid habitats/perches fail closed and unload drops every actor and navigation reference [427.10ms]
+(pass) nearby live enemies cause continuous ground escape, dead enemies do not and safe flee routes persist [212.72ms]
+(pass) explosions use a fixed copied event pool, expire, and only the scheduled actor reacts [201.59ms]
+(pass) doubled explosion fright radii reach ground, perched and flying wildlife in the new 3D annulus [1553.12ms]
+(pass) bird flights are twice as fast, use 3D threat distance and react from both perch and mid-flight [175.71ms]
+(pass) bird clearance encloses all turret variants through pitched recoil and yaw [303.08ms]
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1631.58ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [6388.62ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [29416.39ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [2070.09ms]
+(pass) an animal occupying otherwise legal build ground causes an atomic temporary rejection [2066.39ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [1974.97ms]
+
+tests/wildlife-models.test.js:
+(pass) eight saved wildlife sources retain deterministic small matte scenery contracts [9.06ms]
+(pass) shared hare and bird forms differ only through their authored zone palettes [1.22ms]
+(pass) each wildlife part is connected, with no overlapping or coplanar inter-part faces [1.74ms]
+(pass) wildlife meshes retain exposed materials and valid finite buffers [16.21ms]
+(pass) bird perch and complete permitted flap range clear body, opposite wing and ground [46.60ms]
+
+tests/fish-preview.test.js:
+(pass) fish model is a deterministic matte articulated cosmetic asset [12.74ms]
+(pass) shallow and isolated water are empty; separate usable pools own separate schools [18.58ms]
+(pass) full rotating fish envelopes stay underwater and inside usable pools throughout roaming [32.84ms]
+(pass) actual debris water entries trigger faster outward escapes, then fish return to calm swimming [18.93ms]
+(pass) pause, bounded impact storms, dry contacts, reset and release preserve lifecycle [16.36ms]
+(pass) a bridge hit before water never frightens fish [16.84ms]
+(pass) actual deep pools load fish, retain them through wave preparation, and keep combat outcomes unchanged [6802.43ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [6.23ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [1.24ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [1.11ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [246.56ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.45ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [234.20ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [414.66ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [2.69ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [2.18ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [2.30ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [44.66ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [17.92ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1705.87ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [25.64ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [19.33ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.14ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [2.17ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [17.43ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.93ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [3.11ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [2.11ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [2.07ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [154.19ms]
+(pass) camera lens is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [2.44ms]
+(pass) camera lens reuses pipelines through toggles and releases viewport/scene images exactly once [2.34ms]
+(pass) drone depth of field retains its focus and pixel-scaled blur through repeated enabled frames [2.20ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [2.11ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [39.57ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [124.01ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [77.67ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [170.51ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [31.33ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1069.35ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [192.20ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3430.53ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [14241.68ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [31.36ms]
+
+tests/play-conditions.test.js:
+(pass) every player level and fresh run defaults to stable daytime and clear weather without random draws [0.11ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.40ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [4074.08ms]
+
+tests/world.test.js:
+(pass) repeated rig bind poses retain independent instance matrices [235.92ms]
+(pass) first level preserves the 24-unit grid, all three turrets, clear route and shared geometry [349.20ms]
+(pass) detail props share a box with unit offsets, preserve transforms, and reject real overlap, bounds or path intrusion [0.30ms]
+(pass) ground surfaces include the submerged bed exactly once and path paving has no coplanar overlays [109.57ms]
+(pass) camera inverse reconstructs clip coordinates across orbit, pan and zoom [0.24ms]
+(pass) fixed level environment rejects malformed lighting and unsupported weather [0.77ms]
+(pass) current A1–A4 and B1–B4 sources match their preview generators and historical model bounds stay clean [43.56ms]
+(pass) fixed time of day controls daylight without a runtime cycle [0.53ms]
+
+tests/scene-loader.test.js:
+(pass) explicit same-level rebuild releases and activates once; ordinary repeat remains a no-op [0.33ms]
+(pass) scene replacement releases old resources and waits for submitted work before fetching [0.11ms]
+(pass) a stale fetch cannot activate after a newer request, even when it ignores abort [0.32ms]
+(pass) rapid requests during unload coalesce before starting replacement network loads [0.06ms]
+(pass) failed downloads and partial activation release resources and permit retry [0.12ms]
+(pass) disposal cancels a pending load and prevents scene resurrection [0.05ms]
+(pass) scene teardown clears every GPU buffer, camera/CPU reference and live shot without reallocating pools [0.37ms]
+
+ 92 pass
+ 0 fail
+ 3263478 expect() calls
+Ran 92 tests across 10 files. [83.45s]

@@ -1,0 +1,87 @@
+{
+  "level": "moss-02",
+  "lighting": "natural",
+  "elapsed": 310,
+  "stage": "Gentle breeze refraction · 60% transparent",
+  "waterPhase": 3.769911289215088,
+  "sunIntensity": 0.4546279311180115,
+  "sunY": 0.4356991648674011,
+  "waterMaterial": {
+    "type": "water",
+    "color": "#8FBBD4",
+    "emission": 0,
+    "reflectiveness": 0,
+    "opacity": 0.4,
+    "absorption": 0,
+    "refraction": 1,
+    "rippleStrength": 0.08,
+    "rippleScale": 1,
+    "rippleSpeed": 0.16
+  },
+  "waterUniform80to91": [
+    0.2746773064136505,
+    0.4969329833984375,
+    0.6583748459815979,
+    0,
+    0.4000000059604645,
+    0,
+    1,
+    0.07999999821186066,
+    1,
+    0.1599999964237213,
+    0,
+    0
+  ],
+  "waterDrawIndices": 372,
+  "waterBox": {
+    "box": [
+      11,
+      7
+    ],
+    "ground": 10,
+    "water": 20
+  },
+  "camera": {
+    "mode": "overview",
+    "target": [
+      276,
+      20,
+      180
+    ],
+    "eye": [
+      761.3811645507812,
+      613.4462280273438,
+      651.4093017578125
+    ],
+    "radius": 62,
+    "yaw": 0.8,
+    "pitch": 0.72
+  },
+  "gpuTimer": "off",
+  "depthProbe": null,
+  "comparison": {
+    "ripples": {
+      "refractedMotion": {
+        "changedPixels": 194326,
+        "changedFraction": 0.10598613365446707,
+        "meanAbsoluteRGBDifference": 0.36599392929240043,
+        "maxChannelDifference": 54
+      },
+      "refractionOffMotion": {
+        "changedPixels": 0,
+        "changedFraction": 0,
+        "meanAbsoluteRGBDifference": 0,
+        "maxChannelDifference": 0
+      },
+      "opaqueTintMotion": {
+        "changedPixels": 0,
+        "changedFraction": 0,
+        "meanAbsoluteRGBDifference": 0,
+        "maxChannelDifference": 0
+      },
+      "pass": true
+    }
+  },
+  "prepassAudit": null,
+  "errors": []
+}

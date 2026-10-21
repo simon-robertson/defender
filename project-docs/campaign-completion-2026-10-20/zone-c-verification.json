@@ -1,0 +1,1900 @@
+{
+  "schema": "defender.zone-c-carving-verification",
+  "version": 1,
+  "recordedAt": "2026-10-20T13:36:04.401Z",
+  "status": "Implemented and technically verified. Whole-campaign balance and GPU/appearance review belong to the integration evidence; human acceptance pending.",
+  "levels": [
+    {
+      "id": "ice-01",
+      "title": "Tarn and Fir Circuit",
+      "sourceHash": "fffaa93e22303ca11d906be603c5e5306ad3125f46561ae4ad3ab0703cf1b8da",
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 41,
+          "length": 960
+        }
+      ],
+      "unionPathBoxes": 41,
+      "retainedScenery": 192,
+      "removedScenery": 108,
+      "surveyedPlots": 39,
+      "terrainWaterEnvironmentUnchanged": true,
+      "perchesAndRetainedSceneryExact": true,
+      "frozenSourceHashConfirmed": true,
+      "fullGroundVisibility": true,
+      "routePoses": 1922,
+      "routeGeometryFailures": [],
+      "nativeReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 8,
+          "sites": [
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 8,
+          "sites": [
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 8,
+          "sites": [
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 39,
+          "sites": [
+            "entry-5-4",
+            "entry-2-6",
+            "entry-3-6",
+            "entry-4-6",
+            "fir-return-7-3",
+            "fir-return-7-4",
+            "fir-return-8-3",
+            "fir-return-9-3",
+            "fir-return-9-4",
+            "fir-return-10-1",
+            "east-bank-11-3",
+            "east-bank-14-3",
+            "east-bank-15-3",
+            "east-bank-15-5",
+            "east-bank-15-6",
+            "east-bank-15-7",
+            "east-bank-15-8",
+            "east-bank-15-9",
+            "east-bank-17-6",
+            "east-bank-17-8",
+            "east-bank-17-10",
+            "south-return-15-12",
+            "south-return-15-13",
+            "south-return-13-13",
+            "south-return-12-13",
+            "south-return-11-13",
+            "south-return-10-13",
+            "south-return-9-13",
+            "south-return-9-15",
+            "south-return-7-14",
+            "south-return-7-15",
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 39,
+          "sites": [
+            "entry-5-4",
+            "entry-2-6",
+            "entry-3-6",
+            "entry-4-6",
+            "fir-return-7-3",
+            "fir-return-7-4",
+            "fir-return-8-3",
+            "fir-return-9-3",
+            "fir-return-9-4",
+            "fir-return-10-1",
+            "east-bank-11-3",
+            "east-bank-14-3",
+            "east-bank-15-3",
+            "east-bank-15-5",
+            "east-bank-15-6",
+            "east-bank-15-7",
+            "east-bank-15-8",
+            "east-bank-15-9",
+            "east-bank-17-6",
+            "east-bank-17-8",
+            "east-bank-17-10",
+            "south-return-15-12",
+            "south-return-15-13",
+            "south-return-13-13",
+            "south-return-12-13",
+            "south-return-11-13",
+            "south-return-10-13",
+            "south-return-9-13",
+            "south-return-9-15",
+            "south-return-7-14",
+            "south-return-7-15",
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 39,
+          "sites": [
+            "entry-5-4",
+            "entry-2-6",
+            "entry-3-6",
+            "entry-4-6",
+            "fir-return-7-3",
+            "fir-return-7-4",
+            "fir-return-8-3",
+            "fir-return-9-3",
+            "fir-return-9-4",
+            "fir-return-10-1",
+            "east-bank-11-3",
+            "east-bank-14-3",
+            "east-bank-15-3",
+            "east-bank-15-5",
+            "east-bank-15-6",
+            "east-bank-15-7",
+            "east-bank-15-8",
+            "east-bank-15-9",
+            "east-bank-17-6",
+            "east-bank-17-8",
+            "east-bank-17-10",
+            "south-return-15-12",
+            "south-return-15-13",
+            "south-return-13-13",
+            "south-return-12-13",
+            "south-return-11-13",
+            "south-return-10-13",
+            "south-return-9-13",
+            "south-return-9-15",
+            "south-return-7-14",
+            "south-return-7-15",
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 39,
+          "sites": [
+            "entry-5-4",
+            "entry-2-6",
+            "entry-3-6",
+            "entry-4-6",
+            "fir-return-7-3",
+            "fir-return-7-4",
+            "fir-return-8-3",
+            "fir-return-9-3",
+            "fir-return-9-4",
+            "fir-return-10-1",
+            "east-bank-11-3",
+            "east-bank-14-3",
+            "east-bank-15-3",
+            "east-bank-15-5",
+            "east-bank-15-6",
+            "east-bank-15-7",
+            "east-bank-15-8",
+            "east-bank-15-9",
+            "east-bank-17-6",
+            "east-bank-17-8",
+            "east-bank-17-10",
+            "south-return-15-12",
+            "south-return-15-13",
+            "south-return-13-13",
+            "south-return-12-13",
+            "south-return-11-13",
+            "south-return-10-13",
+            "south-return-9-13",
+            "south-return-9-15",
+            "south-return-7-14",
+            "south-return-7-15",
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 39,
+          "sites": [
+            "entry-5-4",
+            "entry-2-6",
+            "entry-3-6",
+            "entry-4-6",
+            "fir-return-7-3",
+            "fir-return-7-4",
+            "fir-return-8-3",
+            "fir-return-9-3",
+            "fir-return-9-4",
+            "fir-return-10-1",
+            "east-bank-11-3",
+            "east-bank-14-3",
+            "east-bank-15-3",
+            "east-bank-15-5",
+            "east-bank-15-6",
+            "east-bank-15-7",
+            "east-bank-15-8",
+            "east-bank-15-9",
+            "east-bank-17-6",
+            "east-bank-17-8",
+            "east-bank-17-10",
+            "south-return-15-12",
+            "south-return-15-13",
+            "south-return-13-13",
+            "south-return-12-13",
+            "south-return-11-13",
+            "south-return-10-13",
+            "south-return-9-13",
+            "south-return-9-15",
+            "south-return-7-14",
+            "south-return-7-15",
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 39,
+          "sites": [
+            "entry-5-4",
+            "entry-2-6",
+            "entry-3-6",
+            "entry-4-6",
+            "fir-return-7-3",
+            "fir-return-7-4",
+            "fir-return-8-3",
+            "fir-return-9-3",
+            "fir-return-9-4",
+            "fir-return-10-1",
+            "east-bank-11-3",
+            "east-bank-14-3",
+            "east-bank-15-3",
+            "east-bank-15-5",
+            "east-bank-15-6",
+            "east-bank-15-7",
+            "east-bank-15-8",
+            "east-bank-15-9",
+            "east-bank-17-6",
+            "east-bank-17-8",
+            "east-bank-17-10",
+            "south-return-15-12",
+            "south-return-15-13",
+            "south-return-13-13",
+            "south-return-12-13",
+            "south-return-11-13",
+            "south-return-10-13",
+            "south-return-9-13",
+            "south-return-9-15",
+            "south-return-7-14",
+            "south-return-7-15",
+            "gun-court-2-7",
+            "gun-court-4-7",
+            "gun-court-8-4",
+            "gun-court-14-2",
+            "gun-court-18-6",
+            "gun-court-18-9",
+            "gun-court-10-12",
+            "gun-court-6-14"
+          ]
+        }
+      ],
+      "nativeUnsafe": [],
+      "coverage": {
+        "baseGunUseful": 0,
+        "baseArcUseful": 31,
+        "baseGunArcUseful": 31,
+        "upgradeDependent": [
+          {
+            "id": "gun-court-2-7",
+            "box": [
+              2,
+              7
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-4-7",
+            "box": [
+              4,
+              7
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-8-4",
+            "box": [
+              8,
+              4
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-14-2",
+            "box": [
+              14,
+              2
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-18-6",
+            "box": [
+              18,
+              6
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-18-9",
+            "box": [
+              18,
+              9
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-10-12",
+            "box": [
+              10,
+              12
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-6-14",
+            "box": [
+              6,
+              14
+            ],
+            "group": "gunCourt"
+          }
+        ]
+      },
+      "flightSummary": {
+        "launches": 18,
+        "representativeLaunches": 18,
+        "representativeHits": 13,
+        "hits": 13,
+        "physicalMisses": 5,
+        "routeExitDiscards": 0,
+        "staticContacts": 5
+      },
+      "wildlife": {
+        "seconds": 180,
+        "completed": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "journeys": 7
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "journeys": 6
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "journeys": 9
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "journeys": 17
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "journeys": 15
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "journeys": 16
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "ice-02",
+      "title": "Meltwater Crossing and Return",
+      "sourceHash": "8482b20d063fd6d8ed60aebe2d5d0aa2f16f26fd2fe6be10c4bcd93598b11e75",
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 38,
+          "length": 888
+        }
+      ],
+      "unionPathBoxes": 38,
+      "retainedScenery": 185,
+      "removedScenery": 90,
+      "surveyedPlots": 41,
+      "terrainWaterEnvironmentUnchanged": true,
+      "perchesAndRetainedSceneryExact": true,
+      "frozenSourceHashConfirmed": true,
+      "fullGroundVisibility": true,
+      "routePoses": 1778,
+      "routeGeometryFailures": [],
+      "nativeReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 7,
+          "sites": [
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 7,
+          "sites": [
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 7,
+          "sites": [
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 41,
+          "sites": [
+            "north-5-1",
+            "north-9-2",
+            "north-11-3",
+            "north-11-4",
+            "banks-9-4",
+            "banks-11-7",
+            "banks-11-8",
+            "banks-9-8",
+            "banks-11-9",
+            "west-court-6-8",
+            "west-court-7-8",
+            "west-court-8-8",
+            "west-court-6-10",
+            "west-court-7-10",
+            "west-court-8-10",
+            "west-court-9-10",
+            "west-court-4-10",
+            "west-court-4-11",
+            "west-court-6-11",
+            "west-court-7-11",
+            "southern-return-6-13",
+            "southern-return-7-13",
+            "southern-return-8-13",
+            "southern-return-9-13",
+            "southern-return-11-15",
+            "southern-return-12-15",
+            "southern-return-13-15",
+            "southern-return-14-15",
+            "late-15-15",
+            "late-16-15",
+            "late-17-15",
+            "late-18-13",
+            "late-19-14",
+            "gun-court-8-4",
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 41,
+          "sites": [
+            "north-5-1",
+            "north-9-2",
+            "north-11-3",
+            "north-11-4",
+            "banks-9-4",
+            "banks-11-7",
+            "banks-11-8",
+            "banks-9-8",
+            "banks-11-9",
+            "west-court-6-8",
+            "west-court-7-8",
+            "west-court-8-8",
+            "west-court-6-10",
+            "west-court-7-10",
+            "west-court-8-10",
+            "west-court-9-10",
+            "west-court-4-10",
+            "west-court-4-11",
+            "west-court-6-11",
+            "west-court-7-11",
+            "southern-return-6-13",
+            "southern-return-7-13",
+            "southern-return-8-13",
+            "southern-return-9-13",
+            "southern-return-11-15",
+            "southern-return-12-15",
+            "southern-return-13-15",
+            "southern-return-14-15",
+            "late-15-15",
+            "late-16-15",
+            "late-17-15",
+            "late-18-13",
+            "late-19-14",
+            "gun-court-8-4",
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 41,
+          "sites": [
+            "north-5-1",
+            "north-9-2",
+            "north-11-3",
+            "north-11-4",
+            "banks-9-4",
+            "banks-11-7",
+            "banks-11-8",
+            "banks-9-8",
+            "banks-11-9",
+            "west-court-6-8",
+            "west-court-7-8",
+            "west-court-8-8",
+            "west-court-6-10",
+            "west-court-7-10",
+            "west-court-8-10",
+            "west-court-9-10",
+            "west-court-4-10",
+            "west-court-4-11",
+            "west-court-6-11",
+            "west-court-7-11",
+            "southern-return-6-13",
+            "southern-return-7-13",
+            "southern-return-8-13",
+            "southern-return-9-13",
+            "southern-return-11-15",
+            "southern-return-12-15",
+            "southern-return-13-15",
+            "southern-return-14-15",
+            "late-15-15",
+            "late-16-15",
+            "late-17-15",
+            "late-18-13",
+            "late-19-14",
+            "gun-court-8-4",
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 41,
+          "sites": [
+            "north-5-1",
+            "north-9-2",
+            "north-11-3",
+            "north-11-4",
+            "banks-9-4",
+            "banks-11-7",
+            "banks-11-8",
+            "banks-9-8",
+            "banks-11-9",
+            "west-court-6-8",
+            "west-court-7-8",
+            "west-court-8-8",
+            "west-court-6-10",
+            "west-court-7-10",
+            "west-court-8-10",
+            "west-court-9-10",
+            "west-court-4-10",
+            "west-court-4-11",
+            "west-court-6-11",
+            "west-court-7-11",
+            "southern-return-6-13",
+            "southern-return-7-13",
+            "southern-return-8-13",
+            "southern-return-9-13",
+            "southern-return-11-15",
+            "southern-return-12-15",
+            "southern-return-13-15",
+            "southern-return-14-15",
+            "late-15-15",
+            "late-16-15",
+            "late-17-15",
+            "late-18-13",
+            "late-19-14",
+            "gun-court-8-4",
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 41,
+          "sites": [
+            "north-5-1",
+            "north-9-2",
+            "north-11-3",
+            "north-11-4",
+            "banks-9-4",
+            "banks-11-7",
+            "banks-11-8",
+            "banks-9-8",
+            "banks-11-9",
+            "west-court-6-8",
+            "west-court-7-8",
+            "west-court-8-8",
+            "west-court-6-10",
+            "west-court-7-10",
+            "west-court-8-10",
+            "west-court-9-10",
+            "west-court-4-10",
+            "west-court-4-11",
+            "west-court-6-11",
+            "west-court-7-11",
+            "southern-return-6-13",
+            "southern-return-7-13",
+            "southern-return-8-13",
+            "southern-return-9-13",
+            "southern-return-11-15",
+            "southern-return-12-15",
+            "southern-return-13-15",
+            "southern-return-14-15",
+            "late-15-15",
+            "late-16-15",
+            "late-17-15",
+            "late-18-13",
+            "late-19-14",
+            "gun-court-8-4",
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 41,
+          "sites": [
+            "north-5-1",
+            "north-9-2",
+            "north-11-3",
+            "north-11-4",
+            "banks-9-4",
+            "banks-11-7",
+            "banks-11-8",
+            "banks-9-8",
+            "banks-11-9",
+            "west-court-6-8",
+            "west-court-7-8",
+            "west-court-8-8",
+            "west-court-6-10",
+            "west-court-7-10",
+            "west-court-8-10",
+            "west-court-9-10",
+            "west-court-4-10",
+            "west-court-4-11",
+            "west-court-6-11",
+            "west-court-7-11",
+            "southern-return-6-13",
+            "southern-return-7-13",
+            "southern-return-8-13",
+            "southern-return-9-13",
+            "southern-return-11-15",
+            "southern-return-12-15",
+            "southern-return-13-15",
+            "southern-return-14-15",
+            "late-15-15",
+            "late-16-15",
+            "late-17-15",
+            "late-18-13",
+            "late-19-14",
+            "gun-court-8-4",
+            "gun-court-12-8",
+            "gun-court-3-10",
+            "gun-court-3-11",
+            "gun-court-7-14",
+            "gun-court-8-14",
+            "gun-court-17-12",
+            "gun-court-18-12"
+          ]
+        }
+      ],
+      "nativeUnsafe": [],
+      "coverage": {
+        "baseGunUseful": 0,
+        "baseArcUseful": 34,
+        "baseGunArcUseful": 34,
+        "upgradeDependent": [
+          {
+            "id": "gun-court-12-8",
+            "box": [
+              12,
+              8
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-3-10",
+            "box": [
+              3,
+              10
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-3-11",
+            "box": [
+              3,
+              11
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-7-14",
+            "box": [
+              7,
+              14
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-8-14",
+            "box": [
+              8,
+              14
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-17-12",
+            "box": [
+              17,
+              12
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-18-12",
+            "box": [
+              18,
+              12
+            ],
+            "group": "gunCourt"
+          }
+        ]
+      },
+      "flightSummary": {
+        "launches": 18,
+        "representativeLaunches": 18,
+        "representativeHits": 18,
+        "hits": 18,
+        "physicalMisses": 0,
+        "routeExitDiscards": 0,
+        "staticContacts": 0
+      },
+      "wildlife": {
+        "seconds": 180,
+        "completed": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "journeys": 11
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "journeys": 21
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "journeys": 15
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "journeys": 15
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "journeys": 13
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "journeys": 16
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "ice-03",
+      "title": "White Ridge Confluence",
+      "sourceHash": "07514a00a314ce23b94f0ddd060230966a8748685dbb0d612115fca5323ab546",
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 36,
+          "length": 840
+        },
+        {
+          "id": "northern",
+          "boxes": 22,
+          "length": 504
+        }
+      ],
+      "unionPathBoxes": 48,
+      "retainedScenery": 181,
+      "removedScenery": 117,
+      "surveyedPlots": 48,
+      "terrainWaterEnvironmentUnchanged": true,
+      "perchesAndRetainedSceneryExact": true,
+      "frozenSourceHashConfirmed": true,
+      "fullGroundVisibility": true,
+      "routePoses": 2692,
+      "routeGeometryFailures": [],
+      "nativeReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 7,
+          "sites": [
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 7,
+          "sites": [
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 7,
+          "sites": [
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 48,
+          "sites": [
+            "west-entry-1-3",
+            "west-entry-2-3",
+            "west-entry-3-3",
+            "west-entry-3-5",
+            "west-entry-5-4",
+            "west-entry-5-5",
+            "west-entry-3-6",
+            "west-fold-2-8",
+            "west-fold-3-8",
+            "west-fold-4-8",
+            "west-fold-2-9",
+            "west-fold-3-9",
+            "west-fold-4-9",
+            "west-fold-0-8",
+            "west-fold-0-9",
+            "west-fold-6-9",
+            "west-fold-6-10",
+            "stream-bank-6-7",
+            "stream-bank-7-7",
+            "stream-bank-9-7",
+            "stream-bank-10-7",
+            "stream-bank-11-7",
+            "stream-bank-9-9",
+            "stream-bank-10-9",
+            "stream-bank-11-9",
+            "north-approach-11-1",
+            "north-approach-11-2",
+            "north-approach-13-1",
+            "north-approach-13-2",
+            "north-approach-11-4",
+            "north-approach-11-5",
+            "north-approach-13-6",
+            "north-approach-13-7",
+            "shared-13-9",
+            "shared-11-10",
+            "shared-11-11",
+            "shared-11-12",
+            "late-11-14",
+            "late-11-15",
+            "late-10-12",
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11",
+            "gun-court-12-15"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 48,
+          "sites": [
+            "west-entry-1-3",
+            "west-entry-2-3",
+            "west-entry-3-3",
+            "west-entry-3-5",
+            "west-entry-5-4",
+            "west-entry-5-5",
+            "west-entry-3-6",
+            "west-fold-2-8",
+            "west-fold-3-8",
+            "west-fold-4-8",
+            "west-fold-2-9",
+            "west-fold-3-9",
+            "west-fold-4-9",
+            "west-fold-0-8",
+            "west-fold-0-9",
+            "west-fold-6-9",
+            "west-fold-6-10",
+            "stream-bank-6-7",
+            "stream-bank-7-7",
+            "stream-bank-9-7",
+            "stream-bank-10-7",
+            "stream-bank-11-7",
+            "stream-bank-9-9",
+            "stream-bank-10-9",
+            "stream-bank-11-9",
+            "north-approach-11-1",
+            "north-approach-11-2",
+            "north-approach-13-1",
+            "north-approach-13-2",
+            "north-approach-11-4",
+            "north-approach-11-5",
+            "north-approach-13-6",
+            "north-approach-13-7",
+            "shared-13-9",
+            "shared-11-10",
+            "shared-11-11",
+            "shared-11-12",
+            "late-11-14",
+            "late-11-15",
+            "late-10-12",
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11",
+            "gun-court-12-15"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 48,
+          "sites": [
+            "west-entry-1-3",
+            "west-entry-2-3",
+            "west-entry-3-3",
+            "west-entry-3-5",
+            "west-entry-5-4",
+            "west-entry-5-5",
+            "west-entry-3-6",
+            "west-fold-2-8",
+            "west-fold-3-8",
+            "west-fold-4-8",
+            "west-fold-2-9",
+            "west-fold-3-9",
+            "west-fold-4-9",
+            "west-fold-0-8",
+            "west-fold-0-9",
+            "west-fold-6-9",
+            "west-fold-6-10",
+            "stream-bank-6-7",
+            "stream-bank-7-7",
+            "stream-bank-9-7",
+            "stream-bank-10-7",
+            "stream-bank-11-7",
+            "stream-bank-9-9",
+            "stream-bank-10-9",
+            "stream-bank-11-9",
+            "north-approach-11-1",
+            "north-approach-11-2",
+            "north-approach-13-1",
+            "north-approach-13-2",
+            "north-approach-11-4",
+            "north-approach-11-5",
+            "north-approach-13-6",
+            "north-approach-13-7",
+            "shared-13-9",
+            "shared-11-10",
+            "shared-11-11",
+            "shared-11-12",
+            "late-11-14",
+            "late-11-15",
+            "late-10-12",
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11",
+            "gun-court-12-15"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 48,
+          "sites": [
+            "west-entry-1-3",
+            "west-entry-2-3",
+            "west-entry-3-3",
+            "west-entry-3-5",
+            "west-entry-5-4",
+            "west-entry-5-5",
+            "west-entry-3-6",
+            "west-fold-2-8",
+            "west-fold-3-8",
+            "west-fold-4-8",
+            "west-fold-2-9",
+            "west-fold-3-9",
+            "west-fold-4-9",
+            "west-fold-0-8",
+            "west-fold-0-9",
+            "west-fold-6-9",
+            "west-fold-6-10",
+            "stream-bank-6-7",
+            "stream-bank-7-7",
+            "stream-bank-9-7",
+            "stream-bank-10-7",
+            "stream-bank-11-7",
+            "stream-bank-9-9",
+            "stream-bank-10-9",
+            "stream-bank-11-9",
+            "north-approach-11-1",
+            "north-approach-11-2",
+            "north-approach-13-1",
+            "north-approach-13-2",
+            "north-approach-11-4",
+            "north-approach-11-5",
+            "north-approach-13-6",
+            "north-approach-13-7",
+            "shared-13-9",
+            "shared-11-10",
+            "shared-11-11",
+            "shared-11-12",
+            "late-11-14",
+            "late-11-15",
+            "late-10-12",
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11",
+            "gun-court-12-15"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 48,
+          "sites": [
+            "west-entry-1-3",
+            "west-entry-2-3",
+            "west-entry-3-3",
+            "west-entry-3-5",
+            "west-entry-5-4",
+            "west-entry-5-5",
+            "west-entry-3-6",
+            "west-fold-2-8",
+            "west-fold-3-8",
+            "west-fold-4-8",
+            "west-fold-2-9",
+            "west-fold-3-9",
+            "west-fold-4-9",
+            "west-fold-0-8",
+            "west-fold-0-9",
+            "west-fold-6-9",
+            "west-fold-6-10",
+            "stream-bank-6-7",
+            "stream-bank-7-7",
+            "stream-bank-9-7",
+            "stream-bank-10-7",
+            "stream-bank-11-7",
+            "stream-bank-9-9",
+            "stream-bank-10-9",
+            "stream-bank-11-9",
+            "north-approach-11-1",
+            "north-approach-11-2",
+            "north-approach-13-1",
+            "north-approach-13-2",
+            "north-approach-11-4",
+            "north-approach-11-5",
+            "north-approach-13-6",
+            "north-approach-13-7",
+            "shared-13-9",
+            "shared-11-10",
+            "shared-11-11",
+            "shared-11-12",
+            "late-11-14",
+            "late-11-15",
+            "late-10-12",
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11",
+            "gun-court-12-15"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 48,
+          "sites": [
+            "west-entry-1-3",
+            "west-entry-2-3",
+            "west-entry-3-3",
+            "west-entry-3-5",
+            "west-entry-5-4",
+            "west-entry-5-5",
+            "west-entry-3-6",
+            "west-fold-2-8",
+            "west-fold-3-8",
+            "west-fold-4-8",
+            "west-fold-2-9",
+            "west-fold-3-9",
+            "west-fold-4-9",
+            "west-fold-0-8",
+            "west-fold-0-9",
+            "west-fold-6-9",
+            "west-fold-6-10",
+            "stream-bank-6-7",
+            "stream-bank-7-7",
+            "stream-bank-9-7",
+            "stream-bank-10-7",
+            "stream-bank-11-7",
+            "stream-bank-9-9",
+            "stream-bank-10-9",
+            "stream-bank-11-9",
+            "north-approach-11-1",
+            "north-approach-11-2",
+            "north-approach-13-1",
+            "north-approach-13-2",
+            "north-approach-11-4",
+            "north-approach-11-5",
+            "north-approach-13-6",
+            "north-approach-13-7",
+            "shared-13-9",
+            "shared-11-10",
+            "shared-11-11",
+            "shared-11-12",
+            "late-11-14",
+            "late-11-15",
+            "late-10-12",
+            "gun-court-1-2",
+            "gun-court-3-2",
+            "gun-court-6-5",
+            "gun-court-6-6",
+            "gun-court-14-1",
+            "gun-court-10-10",
+            "gun-court-10-11",
+            "gun-court-12-15"
+          ]
+        }
+      ],
+      "nativeUnsafe": [],
+      "coverage": {
+        "baseGunUseful": 0,
+        "baseArcUseful": 40,
+        "baseGunArcUseful": 40,
+        "upgradeDependent": [
+          {
+            "id": "gun-court-1-2",
+            "box": [
+              1,
+              2
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-3-2",
+            "box": [
+              3,
+              2
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-6-5",
+            "box": [
+              6,
+              5
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-6-6",
+            "box": [
+              6,
+              6
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-14-1",
+            "box": [
+              14,
+              1
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-10-10",
+            "box": [
+              10,
+              10
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-10-11",
+            "box": [
+              10,
+              11
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-12-15",
+            "box": [
+              12,
+              15
+            ],
+            "group": "gunCourt"
+          }
+        ]
+      },
+      "flightSummary": {
+        "launches": 36,
+        "representativeLaunches": 36,
+        "representativeHits": 32,
+        "hits": 32,
+        "physicalMisses": 4,
+        "routeExitDiscards": 0,
+        "staticContacts": 4
+      },
+      "wildlife": {
+        "seconds": 180,
+        "completed": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "journeys": 32
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "journeys": 20
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "journeys": 21
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "journeys": 15
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "journeys": 16
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "journeys": 15
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "failures": [],
+      "passed": true
+    },
+    {
+      "id": "ice-04",
+      "title": "Sanctuary and Mere Fold",
+      "sourceHash": "394475e4dbea518e3be1e0a9b035cdcb81a81b03a54ce55ce7ea9b3960302997",
+      "routes": [
+        {
+          "id": "main",
+          "boxes": 37,
+          "length": 864
+        }
+      ],
+      "unionPathBoxes": 37,
+      "retainedScenery": 178,
+      "removedScenery": 96,
+      "surveyedPlots": 40,
+      "terrainWaterEnvironmentUnchanged": true,
+      "perchesAndRetainedSceneryExact": true,
+      "frozenSourceHashConfirmed": true,
+      "fullGroundVisibility": true,
+      "routePoses": 1730,
+      "routeGeometryFailures": [],
+      "nativeReady": [
+        {
+          "model": "turret-study",
+          "variant": "base",
+          "count": 5,
+          "sites": [
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade1",
+          "count": 5,
+          "sites": [
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "turret-study",
+          "variant": "upgrade2",
+          "count": 5,
+          "sites": [
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "base",
+          "count": 40,
+          "sites": [
+            "west-entry-5-5",
+            "west-entry-6-5",
+            "west-entry-7-5",
+            "west-entry-2-7",
+            "west-entry-3-7",
+            "west-entry-4-7",
+            "sanctuary-7-3",
+            "sanctuary-7-4",
+            "sanctuary-9-3",
+            "sanctuary-9-4",
+            "sanctuary-9-5",
+            "sanctuary-10-3",
+            "sanctuary-10-4",
+            "sanctuary-10-5",
+            "sanctuary-12-5",
+            "shore-court-7-7",
+            "shore-court-8-7",
+            "shore-court-9-7",
+            "shore-court-10-7",
+            "shore-court-10-9",
+            "shore-court-9-9",
+            "shore-court-8-9",
+            "shore-court-7-9",
+            "shore-court-5-8",
+            "shore-court-5-9",
+            "south-catch-5-11",
+            "south-catch-5-12",
+            "south-catch-5-13",
+            "south-catch-7-11",
+            "south-catch-7-12",
+            "south-catch-7-13",
+            "south-catch-7-15",
+            "south-catch-8-15",
+            "south-catch-10-14",
+            "south-catch-10-15",
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade1",
+          "count": 40,
+          "sites": [
+            "west-entry-5-5",
+            "west-entry-6-5",
+            "west-entry-7-5",
+            "west-entry-2-7",
+            "west-entry-3-7",
+            "west-entry-4-7",
+            "sanctuary-7-3",
+            "sanctuary-7-4",
+            "sanctuary-9-3",
+            "sanctuary-9-4",
+            "sanctuary-9-5",
+            "sanctuary-10-3",
+            "sanctuary-10-4",
+            "sanctuary-10-5",
+            "sanctuary-12-5",
+            "shore-court-7-7",
+            "shore-court-8-7",
+            "shore-court-9-7",
+            "shore-court-10-7",
+            "shore-court-10-9",
+            "shore-court-9-9",
+            "shore-court-8-9",
+            "shore-court-7-9",
+            "shore-court-5-8",
+            "shore-court-5-9",
+            "south-catch-5-11",
+            "south-catch-5-12",
+            "south-catch-5-13",
+            "south-catch-7-11",
+            "south-catch-7-12",
+            "south-catch-7-13",
+            "south-catch-7-15",
+            "south-catch-8-15",
+            "south-catch-10-14",
+            "south-catch-10-15",
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "arc-spire",
+          "variant": "upgrade2",
+          "count": 40,
+          "sites": [
+            "west-entry-5-5",
+            "west-entry-6-5",
+            "west-entry-7-5",
+            "west-entry-2-7",
+            "west-entry-3-7",
+            "west-entry-4-7",
+            "sanctuary-7-3",
+            "sanctuary-7-4",
+            "sanctuary-9-3",
+            "sanctuary-9-4",
+            "sanctuary-9-5",
+            "sanctuary-10-3",
+            "sanctuary-10-4",
+            "sanctuary-10-5",
+            "sanctuary-12-5",
+            "shore-court-7-7",
+            "shore-court-8-7",
+            "shore-court-9-7",
+            "shore-court-10-7",
+            "shore-court-10-9",
+            "shore-court-9-9",
+            "shore-court-8-9",
+            "shore-court-7-9",
+            "shore-court-5-8",
+            "shore-court-5-9",
+            "south-catch-5-11",
+            "south-catch-5-12",
+            "south-catch-5-13",
+            "south-catch-7-11",
+            "south-catch-7-12",
+            "south-catch-7-13",
+            "south-catch-7-15",
+            "south-catch-8-15",
+            "south-catch-10-14",
+            "south-catch-10-15",
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "base",
+          "count": 40,
+          "sites": [
+            "west-entry-5-5",
+            "west-entry-6-5",
+            "west-entry-7-5",
+            "west-entry-2-7",
+            "west-entry-3-7",
+            "west-entry-4-7",
+            "sanctuary-7-3",
+            "sanctuary-7-4",
+            "sanctuary-9-3",
+            "sanctuary-9-4",
+            "sanctuary-9-5",
+            "sanctuary-10-3",
+            "sanctuary-10-4",
+            "sanctuary-10-5",
+            "sanctuary-12-5",
+            "shore-court-7-7",
+            "shore-court-8-7",
+            "shore-court-9-7",
+            "shore-court-10-7",
+            "shore-court-10-9",
+            "shore-court-9-9",
+            "shore-court-8-9",
+            "shore-court-7-9",
+            "shore-court-5-8",
+            "shore-court-5-9",
+            "south-catch-5-11",
+            "south-catch-5-12",
+            "south-catch-5-13",
+            "south-catch-7-11",
+            "south-catch-7-12",
+            "south-catch-7-13",
+            "south-catch-7-15",
+            "south-catch-8-15",
+            "south-catch-10-14",
+            "south-catch-10-15",
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade1",
+          "count": 40,
+          "sites": [
+            "west-entry-5-5",
+            "west-entry-6-5",
+            "west-entry-7-5",
+            "west-entry-2-7",
+            "west-entry-3-7",
+            "west-entry-4-7",
+            "sanctuary-7-3",
+            "sanctuary-7-4",
+            "sanctuary-9-3",
+            "sanctuary-9-4",
+            "sanctuary-9-5",
+            "sanctuary-10-3",
+            "sanctuary-10-4",
+            "sanctuary-10-5",
+            "sanctuary-12-5",
+            "shore-court-7-7",
+            "shore-court-8-7",
+            "shore-court-9-7",
+            "shore-court-10-7",
+            "shore-court-10-9",
+            "shore-court-9-9",
+            "shore-court-8-9",
+            "shore-court-7-9",
+            "shore-court-5-8",
+            "shore-court-5-9",
+            "south-catch-5-11",
+            "south-catch-5-12",
+            "south-catch-5-13",
+            "south-catch-7-11",
+            "south-catch-7-12",
+            "south-catch-7-13",
+            "south-catch-7-15",
+            "south-catch-8-15",
+            "south-catch-10-14",
+            "south-catch-10-15",
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        },
+        {
+          "model": "missile-launcher",
+          "variant": "upgrade2",
+          "count": 40,
+          "sites": [
+            "west-entry-5-5",
+            "west-entry-6-5",
+            "west-entry-7-5",
+            "west-entry-2-7",
+            "west-entry-3-7",
+            "west-entry-4-7",
+            "sanctuary-7-3",
+            "sanctuary-7-4",
+            "sanctuary-9-3",
+            "sanctuary-9-4",
+            "sanctuary-9-5",
+            "sanctuary-10-3",
+            "sanctuary-10-4",
+            "sanctuary-10-5",
+            "sanctuary-12-5",
+            "shore-court-7-7",
+            "shore-court-8-7",
+            "shore-court-9-7",
+            "shore-court-10-7",
+            "shore-court-10-9",
+            "shore-court-9-9",
+            "shore-court-8-9",
+            "shore-court-7-9",
+            "shore-court-5-8",
+            "shore-court-5-9",
+            "south-catch-5-11",
+            "south-catch-5-12",
+            "south-catch-5-13",
+            "south-catch-7-11",
+            "south-catch-7-12",
+            "south-catch-7-13",
+            "south-catch-7-15",
+            "south-catch-8-15",
+            "south-catch-10-14",
+            "south-catch-10-15",
+            "gun-court-2-8",
+            "gun-court-4-8",
+            "gun-court-13-6",
+            "gun-court-8-11",
+            "gun-court-10-12"
+          ]
+        }
+      ],
+      "nativeUnsafe": [],
+      "coverage": {
+        "baseGunUseful": 0,
+        "baseArcUseful": 35,
+        "baseGunArcUseful": 35,
+        "upgradeDependent": [
+          {
+            "id": "gun-court-2-8",
+            "box": [
+              2,
+              8
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-4-8",
+            "box": [
+              4,
+              8
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-13-6",
+            "box": [
+              13,
+              6
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-8-11",
+            "box": [
+              8,
+              11
+            ],
+            "group": "gunCourt"
+          },
+          {
+            "id": "gun-court-10-12",
+            "box": [
+              10,
+              12
+            ],
+            "group": "gunCourt"
+          }
+        ]
+      },
+      "flightSummary": {
+        "launches": 18,
+        "representativeLaunches": 18,
+        "representativeHits": 18,
+        "hits": 18,
+        "physicalMisses": 0,
+        "routeExitDiscards": 0,
+        "staticContacts": 0
+      },
+      "wildlife": {
+        "seconds": 180,
+        "completed": [
+          {
+            "id": "wildlife-ground-1",
+            "kind": "ground",
+            "journeys": 24
+          },
+          {
+            "id": "wildlife-ground-2",
+            "kind": "ground",
+            "journeys": 12
+          },
+          {
+            "id": "wildlife-ground-3",
+            "kind": "ground",
+            "journeys": 16
+          },
+          {
+            "id": "wildlife-bird-1",
+            "kind": "bird",
+            "journeys": 14
+          },
+          {
+            "id": "wildlife-bird-2",
+            "kind": "bird",
+            "journeys": 14
+          },
+          {
+            "id": "wildlife-bird-3",
+            "kind": "bird",
+            "journeys": 13
+          }
+        ],
+        "passed": true,
+        "released": true
+      },
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "passed": true
+}

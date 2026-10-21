@@ -1,0 +1,50 @@
+{
+  "recordedAt": "2026-10-20T13:32:11.733Z",
+  "browser": "Codex built-in IAB",
+  "viewport": [
+    1280,
+    720
+  ],
+  "tabId": "1",
+  "rows": [
+    {
+      "id": "plum-01",
+      "url": "http://127.0.0.1:4173/game/?level=plum-01&inspect",
+      "sourceHash": "14b361c16b51ea1d57478b2e87e49489c1625985604fe7703247a4ecd6e1ff39",
+      "capture": "zone-d-plum-01-overview.png",
+      "screenshotSha256": "ef18a895bcdd3156cc2102963ddd11042b7f129b5eb37a2e9f2725e8fb5107c6",
+      "observed": true
+    },
+    {
+      "id": "plum-02",
+      "url": "http://127.0.0.1:4173/game/?level=plum-02&inspect",
+      "sourceHash": "1e69f9a019101443eb42ed2b67c2056746726521ccd983089e22fa1efb335266",
+      "capture": "zone-d-plum-02-overview.png",
+      "screenshotSha256": "989cb57ee2c9826b77a2daad948a03c37dd4b1ff100ca65ae4da85e01d06a8ce",
+      "observed": true
+    },
+    {
+      "id": "plum-03",
+      "url": "http://127.0.0.1:4173/game/?level=plum-03&inspect",
+      "sourceHash": "f5357ddc18af11831ee0b5e2c8e90324963009f16624a195f726f61c97ef3bde",
+      "capture": "zone-d-plum-03-overview.png",
+      "screenshotSha256": "e3f2b8637ecc15bd8953aa94a6c0d3cb3c3e6b32999a4a5f6d80ab1209564a42",
+      "observed": true
+    },
+    {
+      "id": "plum-04",
+      "url": "http://127.0.0.1:4173/game/?level=plum-04&inspect",
+      "sourceHash": "d8af50121168098e9ec3ee5920ffa7d1e512b1d1bcbfc4bffa45e98358e0c35d",
+      "capture": "zone-d-plum-04-overview.png",
+      "screenshotSha256": "25f2745440f8a8d7999cc91bf78f4da7dd24ea4d1c87146869cb483317884e24",
+      "observed": true
+    }
+  ],
+  "notes": [
+    "Four comparison SVGs and actual production overviews visually inspected.",
+    "Updated Path layout preview metadata reloaded before saved captures.",
+    "Routes, readable intended courts, pond/stream/lake/river identities and D4 short timber deck reviewed.",
+    "Earlier SVG navigation surfaced an animation-in-undefined browser error absent from project sources; no new such error was observed during game rendering/switching."
+  ],
+  "acceptance": "Internal bounded source-layout review; user creative/balance acceptance pending."
+}

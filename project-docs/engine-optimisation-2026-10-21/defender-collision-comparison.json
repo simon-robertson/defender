@@ -1,0 +1,99 @@
+{
+  "kind": "Exact CPU operation/trace comparison, not GPU or frame timing",
+  "native": [
+    {
+      "before": true,
+      "id": "moss-04",
+      "seconds": 20,
+      "defences": 7,
+      "forecastCalls": 172,
+      "computedForecasts": 172,
+      "forecastSweeps": 42074,
+      "liveSweeps": 509,
+      "centerTransforms": 673127,
+      "centerCacheBytes": 0,
+      "trace": "07cadaedc99bbe40659a4eae0729ee1ed420d6b88ba7cfaa7407fef87311c93a"
+    },
+    {
+      "before": true,
+      "id": "ochre-04",
+      "seconds": 20,
+      "defences": 11,
+      "forecastCalls": 1754,
+      "computedForecasts": 1754,
+      "forecastSweeps": 424186,
+      "liveSweeps": 4905,
+      "centerTransforms": 8729456,
+      "centerCacheBytes": 0,
+      "trace": "5f350062beacba5819b8fd55abdfcce72d49b1216225582cf55c9ad60da269f5"
+    },
+    {
+      "before": false,
+      "id": "moss-04",
+      "seconds": 20,
+      "defences": 7,
+      "forecastCalls": 172,
+      "computedForecasts": 172,
+      "forecastSweeps": 42074,
+      "liveSweeps": 509,
+      "centerTransforms": 86671,
+      "centerCacheBytes": 360,
+      "trace": "07cadaedc99bbe40659a4eae0729ee1ed420d6b88ba7cfaa7407fef87311c93a"
+    },
+    {
+      "before": false,
+      "id": "ochre-04",
+      "seconds": 20,
+      "defences": 11,
+      "forecastCalls": 1754,
+      "computedForecasts": 1754,
+      "forecastSweeps": 424186,
+      "liveSweeps": 4905,
+      "centerTransforms": 282570,
+      "centerCacheBytes": 504,
+      "trace": "5f350062beacba5819b8fd55abdfcce72d49b1216225582cf55c9ad60da269f5"
+    }
+  ],
+  "arc": [
+    {
+      "id": "moss-04",
+      "calls": 720,
+      "facesBefore": 199994,
+      "facesAfter": 65982,
+      "bytesBefore": 1848,
+      "bytesAfter": 2856,
+      "traceBefore": "a43c1bcb859f492dbe715ccda4dcd7b2879b9348ec8c7c09087e5264d7da4f50",
+      "traceAfter": "a43c1bcb859f492dbe715ccda4dcd7b2879b9348ec8c7c09087e5264d7da4f50"
+    },
+    {
+      "id": "ochre-04",
+      "calls": 960,
+      "facesBefore": 333178,
+      "facesAfter": 120781,
+      "bytesBefore": 2104,
+      "bytesAfter": 2920,
+      "traceBefore": "8281efd4d73953814c89f4bbb4462c77dc3e82e24306558e1200602ecfb2e59c",
+      "traceAfter": "8281efd4d73953814c89f4bbb4462c77dc3e82e24306558e1200602ecfb2e59c"
+    },
+    {
+      "id": "ice-04",
+      "calls": 840,
+      "facesBefore": 228073,
+      "facesAfter": 90653,
+      "bytesBefore": 1784,
+      "bytesAfter": 2312,
+      "traceBefore": "f284e71baa804dc9883731d0fe6598f3484a5d81e10623a75e1b8534a991250d",
+      "traceAfter": "f284e71baa804dc9883731d0fe6598f3484a5d81e10623a75e1b8534a991250d"
+    },
+    {
+      "id": "plum-04",
+      "calls": 1080,
+      "facesBefore": 346214,
+      "facesAfter": 137772,
+      "bytesBefore": 1872,
+      "bytesAfter": 2592,
+      "traceBefore": "ff585b7d18c489355489813ac0bf67f3d80d997a4991525de09a81d16a4aea3d",
+      "traceAfter": "ff585b7d18c489355489813ac0bf67f3d80d997a4991525de09a81d16a4aea3d"
+    }
+  ]
+}

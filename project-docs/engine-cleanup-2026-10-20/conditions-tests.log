@@ -1,0 +1,11 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-conditions.test.js:
+(pass) every player level and fresh run defaults to stable daytime and clear weather without random draws [0.07ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.95ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [4273.48ms]
+
+ 3 pass
+ 0 fail
+ 69 expect() calls
+Ran 3 tests across 1 file. [4.29s]

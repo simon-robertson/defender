@@ -1,0 +1,32 @@
+bun test v1.4.2 (744846f84)
+
+tests/landscape-preview-runtime.test.js:
+(pass) landscape mode rejects routes and combat placements while preserving historical actor catalogues [4.98ms]
+(pass) layout mode supports a dry continuous route without restoring catalogue combat or legacy wildlife seeds [35.39ms]
+(pass) exact cosmetic seed points are copied and malformed or out-of-box points are rejected [0.18ms]
+(pass) explicit archived sources keep combat review working and receive identical validation and ID guards [337.54ms]
+122 |     expect(routes.map(route=>route.path.length)).toEqual({'ochre-01':[44],'ochre-02':[45],'ochre-03':[45,31],'ochre-04':[31,41]}[profile.level]);
+123 |     for(const route of routes){const boundary=([x,,z])=>x===0||z===0||x===19||z===15;expect(boundary(route.path[0])).toBe(true);expect(boundary(route.path.at(-1))).toBe(true);expect(route.path.slice(1,-1).some(boundary)).toBe(false);}
+124 |     if(profile.level==='ochre-02'){
+125 |      expect(world.level.bridges).toEqual([{id:'river-waist',boxes:[[6,6],[7,6]]}]);
+126 |      for(const x of [6,7]){expect(terrain.flatBox(x,6)).toBeNull();expect(terrain.height(x*24+12,6*24+12)).toBe(17);expect(terrain.height(x*24+12,6*24+12,true)).toBe(20);}
+127 |     }else expect(world.level.bridges).toBeUndefined();
+                                            ^
+error: expect(received).toBeUndefined()
+
+Received: [
+  {
+    id: "basin-crossing",
+    boxes: [
+      [ 2, 4 ], [ 3, 4 ], [ 4, 4 ], [ 5, 4 ], [ 6, 4 ], [ 7, 4 ]
+    ],
+  }
+]
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/landscape-preview-runtime.test.js:127:39)
+(fail) the fifteen remaining noncombat previews request only scenery and cosmetics, animate safely and release before the next load [1619.81ms]
+
+ 4 pass
+ 1 fail
+ 6396 expect() calls
+Ran 5 tests across 1 file. [2.01s]

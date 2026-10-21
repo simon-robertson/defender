@@ -1,0 +1,112 @@
+{
+  "level": "moss-03",
+  "lighting": "natural",
+  "elapsed": 310,
+  "stage": "Breeze refraction + water SSR · 60% base transparency",
+  "ssr": true,
+  "waterPhase": 2.5132741928100586,
+  "sunIntensity": 0.6499999761581421,
+  "sunY": 0.2079116851091385,
+  "waterMaterial": {
+    "type": "water",
+    "color": "#8FBBD4",
+    "emission": 0,
+    "reflectiveness": 0.65,
+    "opacity": 0.4,
+    "absorption": 0,
+    "refraction": 1,
+    "rippleStrength": 0.18,
+    "rippleScale": 2.5,
+    "rippleSpeed": 0.24
+  },
+  "waterUniform80to91": [
+    0.2746773064136505,
+    0.4969329833984375,
+    0.6583748459815979,
+    0.6499999761581421,
+    0.4000000059604645,
+    0,
+    1,
+    0.18000000715255737,
+    2.5,
+    0.23999999463558197,
+    0,
+    0
+  ],
+  "waterDrawIndices": 126,
+  "waterBox": {
+    "box": [
+      13,
+      7
+    ],
+    "ground": 20,
+    "water": 22
+  },
+  "camera": {
+    "mode": "live",
+    "target": [
+      388.3932189941406,
+      76.48656463623047,
+      244.39321899414062
+    ],
+    "eye": [
+      389,
+      77,
+      245
+    ],
+    "radius": 62,
+    "yaw": 0.7853981633974483,
+    "pitch": 0.5391841171547235
+  },
+  "gpuTimer": {
+    "status": "ready",
+    "ms": 6.269610666666668,
+    "samples": 3,
+    "pending": 1,
+    "bufferBytes": 64,
+    "queryCount": 2
+  },
+  "depthProbe": {
+    "grid": [
+      64,
+      48
+    ],
+    "sampledWaterSurfacePixels": 602,
+    "sampledShadedWaterPixels": 453,
+    "shadedRatioOfImage": 0.1474609375,
+    "wetCenterPixel": [
+      890,
+      594
+    ],
+    "wetCenterOpaqueDepth": 0.4104495048522949,
+    "wetCenterWaterDepth": 0.409091055393219,
+    "wetCenterNormalAlpha": 1,
+    "wetCenterShadesWater": true
+  },
+  "comparison": {
+    "reflections": {
+      "enabledVsDisabled": {
+        "changedPixels": 29468,
+        "changedFraction": 0.013911811915777547,
+        "meanAbsoluteRGBDifference": 0.02594404053756334,
+        "maxChannelDifference": 14
+      },
+      "disabledReplay": {
+        "changedPixels": 0,
+        "changedFraction": 0,
+        "meanAbsoluteRGBDifference": 0,
+        "maxChannelDifference": 0
+      },
+      "zeroStrengthVsDisabled": {
+        "changedPixels": 0,
+        "changedFraction": 0,
+        "meanAbsoluteRGBDifference": 0,
+        "maxChannelDifference": 0
+      },
+      "reflectiveness": 0.6499999761581421,
+      "pass": true
+    }
+  },
+  "prepassAudit": null,
+  "errors": []
+}

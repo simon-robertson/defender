@@ -1,0 +1,121 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [402.90ms]
+(pass) boost, unpowered moving turn and reignition are distinct and keep their exact phase timing [24.60ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [23.27ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [23.32ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [80.81ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [67.96ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [33.99ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [94.62ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [23.88ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [24.57ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [36.77ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [82.64ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [71.56ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [47.42ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [25.27ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [24.49ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [24.14ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [23.67ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [146.03ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [28.46ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [28.00ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [31.45ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [24.81ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [253.73ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [23.24ms]
+(pass) static contact drops its incoming claim before the impact callback [23.48ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [93.13ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [30.09ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [74.30ms]
+
+tests/missile-effects.test.js:
+(pass) missile contacts create a fast expanding surface-offset flash and light without damage, debris, smoke or waves [0.69ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [1.07ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.20ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.29ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [0.43ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.11ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [0.49ms]
+
+tests/play-config.test.js:
+(pass) The campaign retains Zone A and adds forty-eight finite later encounters [2.21ms]
+(pass) family and tier introductions are bounded global encounter numbers [2.52ms]
+(pass) play profiles are immutable and leave all shared preview tuning untouched [1.57ms]
+(pass) capacity budgets every affordable family and species without adding disjoint wave peaks [8.63ms]
+(pass) resolved firing profiles preserve actual family delivery and finite cadence [8.01ms]
+(pass) bad schedules, unknown routes and invalid species override fields fail before scene creation [17.23ms]
+(pass) settling time stays tunable independently of combat tuning [7.04ms]
+(pass) later encounters use only their existing zone species, real branches and stable level profiles [1.06ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.32ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.30ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.14ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.09ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [4.39ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [2.91ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.27ms]
+(pass) stable subjects receive repeated fresh angles with smooth high flight and broad gimbal aiming [10.25ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.25ms]
+{"levelIndex":0,"hz":30,"travelled":131.56682014925207,"readable":1,"minY":159.78622096797218,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":60,"travelled":105.58198245213447,"readable":1,"minY":147.13495143836218,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":120,"travelled":153.04317531247466,"readable":1,"minY":159.8806037493186,"maxY":224,"bytes":11006}
+{"levelIndex":1,"hz":30,"travelled":504.4298155395093,"readable":0.9821596244131455,"minY":147.16003862191894,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":60,"travelled":426.31553266036514,"readable":1,"minY":147.71387768605507,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":120,"travelled":493.75469430631944,"readable":0.9828558008454673,"minY":146.52969129040798,"maxY":224,"bytes":13904}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5782.82ms]
+{"currentLevel":2,"mothFrames":1527,"minY":174.23330737221463,"maxY":224,"minPitch":0.40852068401324815,"minEnemy3D":130.03815625663478,"minFlyer3D":130.03815625663478,"minVerticalGap":101.64154072915872,"stalledFrames":0,"minStep":0.00011111109785897433,"heldDriftFrames":1973,"meanSpeed":10.91806714210762,"blockedMoves":0,"airborneFloor":173,"travelled":909.31902055001,"bytes":12862}
+{"currentLevel":3,"mothFrames":2059,"minY":173.71610168483,"maxY":223.99989517395514,"minPitch":0.41559450588450897,"minEnemy3D":150.80688834954705,"minFlyer3D":169.97653655297248,"minVerticalGap":100.71610168483,"stalledFrames":0,"minStep":0.00002777777779947328,"heldDriftFrames":2561,"meanSpeed":9.813046409225386,"blockedMoves":2,"airborneFloor":173,"travelled":894.9498325217163,"bytes":17096}
+{"currentLevel":4,"mothFrames":3821,"minY":175.00756662218006,"maxY":224,"minPitch":0.40762171124215835,"minEnemy3D":148.60753516977337,"minFlyer3D":148.60753516977337,"minVerticalGap":104.52266115929692,"stalledFrames":0,"minStep":0.000027777777784104038,"heldDriftFrames":2844,"meanSpeed":10.552920946695949,"blockedMoves":1,"airborneFloor":173,"travelled":1045.7944658180872,"bytes":15640}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [6302.75ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [1048.43ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.82ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.00000000058749,"maxJerk":48.00000010487128,"driftFrames":3305,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [11.77ms]
+(pass) opening stations vary across cosmetic seeds and repeated entries while staying clear [2.62ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [1.24ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.28ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [0.60ms]
+(pass) the Drone camera leaves a held current shot and moves toward an idle defence before its enemy enters range, then freezes with pause [2.41ms]
+(pass) drone focus follows optical-axis subject depth during a limited turn instead of radial distance [0.13ms]
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":167.43623906238707,"totalTravel":409.3881579251319}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [1149.47ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1188.85ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [274.42ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [779.49ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [639.04ms]
+
+tests/play-campaign-integration.test.js:
+(pass) campaign light capacity fits the portable uniform limit and preserves preview allocation [0.92ms]
+(pass) each zone loads only its own enemy geometry with affordable defence pools and finite native poses [3497.45ms]
+(pass) the maximum affordable42 launchers defer safely and empty launchers receive freed missiles first [96.83ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [30.47ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [111.20ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [72.31ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [142.89ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [24.42ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [925.14ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [105.27ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3099.61ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [14471.61ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [27.26ms]
+
+tests/play-entrance-markers.test.js:
+(pass) every campaign approach has an inward entry anchor, including branches and shared-start deduplication [5.62ms]
+(pass) entry badges project with the overview, hide in Drone/title, and clear between areas [0.42ms]
+
+ 84 pass
+ 0 fail
+ 221522 expect() calls
+Ran 84 tests across 10 files. [41.83s]

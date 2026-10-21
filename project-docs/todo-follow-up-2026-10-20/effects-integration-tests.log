@@ -1,0 +1,21 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.35ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [2.78ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [0.85ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.15ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [0.86ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.15ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [0.54ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1247.44ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [253.97ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [620.88ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [511.63ms]
+
+ 11 pass
+ 0 fail
+ 1135 expect() calls
+Ran 11 tests across 2 files. [2.65s]

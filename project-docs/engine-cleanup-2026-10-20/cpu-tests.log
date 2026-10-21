@@ -1,0 +1,68 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [6.79ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [4.54ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.44ms]
+(pass) stable coverage drifts gently around its shot while changing height and retaining broad gimbal aiming [7.56ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.20ms]
+{"levelIndex":0,"hz":30,"travelled":220.30986272677467,"readable":1,"minY":84.00086221515832,"maxY":143.9996320084631,"bytes":11006}
+{"levelIndex":0,"hz":60,"travelled":289.87615194427644,"readable":1,"minY":84,"maxY":153.49781734948064,"bytes":11006}
+{"levelIndex":0,"hz":120,"travelled":334.89592628059347,"readable":1,"minY":84,"maxY":146.86993258105912,"bytes":11006}
+{"levelIndex":1,"hz":30,"travelled":377.95157325930575,"readable":0.9258215962441314,"minY":84.08875954306534,"maxY":152.26465835100979,"bytes":13904}
+{"levelIndex":1,"hz":60,"travelled":285.77530938271093,"readable":0.9577266322217003,"minY":84.37454301488889,"maxY":157.2138682143683,"bytes":13904}
+{"levelIndex":1,"hz":120,"travelled":296.57779412131856,"readable":0.9436355096289337,"minY":84.3786007189928,"maxY":151.68518679498652,"bytes":13904}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5713.57ms]
+{"currentLevel":2,"mothFrames":2811,"minY":133.26210639258713,"maxY":180.99937222856957,"minPitch":0.3253415992239958,"minEnemy3D":100.333354615515,"minFlyer3D":100.333354615515,"minVerticalGap":60.26210639258713,"stalledFrames":0,"minStep":0.00011111111111980693,"heldDriftFrames":1751,"meanSpeed":9.145353245806637,"blockedMoves":0,"airborneFloor":133,"travelled":761.6772774723402,"bytes":12862}
+{"currentLevel":3,"mothFrames":2053,"minY":133.18364033491054,"maxY":180.88619004859632,"minPitch":0.4165476623921236,"minEnemy3D":99.05102087630328,"minFlyer3D":108.6233813067995,"minVerticalGap":60.183640334910535,"stalledFrames":0,"minStep":0.00011111111109724188,"heldDriftFrames":2669,"meanSpeed":7.836859028172429,"blockedMoves":0,"airborneFloor":133,"travelled":714.7215433696139,"bytes":17096}
+{"currentLevel":4,"mothFrames":3258,"minY":133.22533247961306,"maxY":180.9997438042189,"minPitch":0.32503416466238305,"minEnemy3D":89.29134564099292,"minFlyer3D":89.29134564099292,"minVerticalGap":60.22533247961306,"stalledFrames":0,"minStep":0.00011111111110240346,"heldDriftFrames":2762,"meanSpeed":8.496464188106003,"blockedMoves":0,"airborneFloor":133,"travelled":841.9996010417226,"bytes":15640}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [5764.20ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [823.64ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.42ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.000000000491237,"maxJerk":48.000000085938446,"driftFrames":3349,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [8.57ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [0.74ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.24ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [0.57ms]
+(pass) both cameras leave a held current shot and move toward an idle defence before its enemy enters range, then freeze with pause [12.65ms]
+(pass) drone focus follows optical-axis subject depth during a limited turn instead of radial distance [0.07ms]
+{"actualCamera":"LiveCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":0,"totalTravel":126.62490060552312}
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":102.21500359037927,"totalTravel":291.98362942715704}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [1876.88ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [49.40ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [42.07ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [42.71ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [206.99ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [68.22ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1147.81ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [860.35ms]
+
+tests/enemy-expansion-preview.test.js:
+(pass) mixed mechanisms use their own speed, path, bounded lap clocks and reusable matrices across frame partitions [106.13ms]
+(pass) wheel, rotor and wing phases remain continuous across each actor clock wrap [115.30ms]
+(pass) actual torso positions and analytic aim velocities include offset centres and route banking [52.66ms]
+(pass) Tripod holds three-phase contacts flat through the complete route with a readable stride [41.37ms]
+(pass) all four flyers clear scenery, terrain and all three defence studies over their complete route [4869.14ms]
+(pass) new ground skid and small airborne sway preserve actual poses, guards, death freeze, reset and scene ownership [103.52ms]
+(pass) new ground actors retain terrain support and clear route scenery through their complete production paths [2331.19ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [26.26ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [88.23ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [55.88ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [121.87ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [21.16ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [842.72ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [108.35ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [2948.36ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [12719.95ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [20.13ms]
+
+ 40 pass
+ 0 fail
+ 2131760 expect() calls
+Ran 40 tests across 5 files. [41.26s]

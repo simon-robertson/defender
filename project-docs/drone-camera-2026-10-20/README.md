@@ -1,0 +1,23 @@
+# Cam man and Drone views — 20 October 2026
+
+**Superseded presentation details:** the later [higher-flight, clean depth-of-field and shared anticipation follow-up](../camera-anticipation-2026-10-20/README.md) supersedes this milestone’s lower height bands, zero Drone film-target cost and purely reactive composition. The checks below describe the original delivery.
+
+The user asks to restore the existing Cam man option and add an autonomous flying action camera which can film from low/high positions and tilt upward/downward. This is a cosmetic view, not a defence, enemy, combat drone or new model.
+
+`/play/` offers **Cam man** and **Drone** in preparation and during waves/final effects. A preparation choice arms the view for the next wave. The two live modes are exclusive. During combat **Auto** returns to automatic overview framing; its existing on/off behaviour remains. **Frame** exits either live view and also cancels an armed preparation choice. Preparation restores the overview while retaining the selected live mode for the next wave/landscape. Pause freezes movement and footage; loading, placement updates and next-wave preparation refresh navigation references.
+
+Cam man retains its supported-ground navigation, calmer shot holds, lens treatment and handheld film. Drone uses perspective with stabilised aiming, vertical travel, broad gimbal pitch and purposeful low/middle/high filming stations. It follows actual enemy aim points, includes participating weapons where useful, and keeps the final action framed during settling. Drone footage is clean; it does not activate the handheld film texture/pass. Both share a crisp, mode-labelled viewfinder with elapsed footage time.
+
+The aerial controller uses read-only scene/actor geometry, swept camera clearance and open ascent/descent columns. Complete authored airborne route envelopes, including future spawns and a motion margin, keep the camera outside Moth corridors. Obstructed low transitions can climb above the canopy, cruise and descend. Camera planning never changes combat, wildlife, source geometry or weather. Flight/aim/zoom are smoothed and planning/storage remain bounded. These are finite campaign witnesses, not a universal dynamic-wildlife separation guarantee or certification of every future custom layout/deployment.
+
+`play/camera-views.js` releases an active perspective before another controller captures the saved overview, preventing one live shot being mistaken for the overview. A same-level next-wave refresh discards references to the previous finite enemy slots.
+
+**41 affected tests pass**, zero failures, 193,436 assertions across five files. [Combined final log](tests.log). Covers existing ground/overview cameras, perspective matrices, exclusive view ownership, pause/restoration, real A1/A2 flight at 30/60/120 Hz, and current A2.1/A3.4/A4.4 Moth/merged-front waves at 60 Hz. Enabled/disabled witnesses retain identical combat outcomes. Same-level wave replacement rebuilds actor references. Nine new aerial tests also pass independently; [Engineer handoff and bounds](ENGINEER.md).
+
+Actual current campaign witnesses visit Y44–144 (20–120 units above common path ground), track Moths and include upward pitch. Navigation owns 288 fixed typed-array bytes plus level water/actor/lane storage; measured A2/A3/A4 totals are 12,654 / 16,888 / 15,432 bytes. Shot search is bounded to 72 candidates and routes to three waypoints. No frame-rate/performance target is claimed.
+
+Nine desktop layout fixtures cover preparation, wave and pause at 1024×768, 1280×720 and 1920×1080: controls fit, no horizontal overflow, and the borderless zero-gap panel layout remains intact. [Fixture results](ui-layouts.json). Actual `/play/` verifies arming, Frame cancellation, Cam man→Drone→Auto switching, clean/handheld film separation and pause. The final source is loaded for a fresh two-gun A1 browser run, including the next wave with retained Drone selection and newly prepared enemy references. The view is left on Drone. [Cam man](cam-man.png) · [Drone](drone.png) · [Final battle](drone-settling.png) · [Browser state](browser.json).
+
+Browser bundle builds. All 85 model/level hashes match the preserved baseline; all seven movement/effect sources in the running-rollback verification remain unchanged. [Preservation](preservation.json). No new renderer pipeline, GPU buffer, shader, model, gameplay parameter or economy change is part of this feature. Cam man's existing film target remains lazy: the actual viewport reports 17,176,080 bytes while enabled and zero after exit; Drone itself keeps film inactive with zero target bytes.
+
+Presentation tuning is provisional for user review. Earlier running/gallop work remains rolled back and deferred.

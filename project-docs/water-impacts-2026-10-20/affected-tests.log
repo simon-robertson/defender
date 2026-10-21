@@ -1,0 +1,68 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.38ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [3.39ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [0.64ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.15ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [2.49ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.29ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [1.05ms]
+
+tests/missile-effects.test.js:
+(pass) missile contacts create a fast expanding surface-offset flash and light without damage, debris, smoke or waves [0.46ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [0.80ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.20ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.24ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [0.58ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.12ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.25ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.20ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [0.77ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.39ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.22ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.11ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [1.32ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [6.38ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.23ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [0.68ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [16.34ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.99ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.55ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [397.00ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [6.75ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [321.70ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [639.82ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [3.93ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.67ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.68ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [62.65ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [25.72ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [2140.21ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [23.32ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [19.60ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.87ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.75ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [19.73ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.15ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.42ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.52ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.37ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [141.81ms]
+(pass) live film is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [2.28ms]
+(pass) live film reuses pipelines through toggles and releases viewport/scene images exactly once [1.32ms]
+
+tests/water.test.js:
+(pass) water material is explicit, bounded and survives level serialization [1.02ms]
+(pass) water and stream bed have separate complete surfaces on the box grid [49.26ms]
+(pass) translucent terrain retains submerged solid faces and culls water interfaces against solids/water [21.89ms]
+(pass) all shipped player defences sit on ground at path height; mounds, floating anchors and extra layers are rejected [19.36ms]
+
+ 52 pass
+ 0 fail
+ 93449 expect() calls
+Ran 52 tests across 5 files. [3.98s]

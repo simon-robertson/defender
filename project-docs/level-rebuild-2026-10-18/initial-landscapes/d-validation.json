@@ -1,0 +1,530 @@
+{
+  "zone": "D",
+  "command": "bun scripts/landscapes/build.js D --check",
+  "checks": [
+    "Existing approved scenery only; all materials matte and nonemissive.",
+    "validateLevel checks actual source cells: no overlaps, world/terrain/water intersections.",
+    "Canonical factory/source hash and independent fresh objects.",
+    "Every dry box populated; all Y24 ground connected and at least65% of total boxes.",
+    "Three supported bird perches with a clear6-unit-radius/8-unit-high envelope.",
+    "Dry ground habitat samples with a clear6-unit-radius/11-unit-high envelope."
+  ],
+  "levels": [
+    {
+      "id": "plum-01",
+      "sha256": "12cc3e5cd435e71b23f82ec00a5ea4af306ef09129bdf740befdc20e845e145f",
+      "size": [
+        16,
+        14
+      ],
+      "placements": 215,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 1,
+        "plum-arch-broken": 1,
+        "plum-flowers": 12,
+        "plum-pebbles": 14,
+        "plum-rock": 39,
+        "plum-shrub": 22,
+        "plum-tree": 25,
+        "plum-tree-tall": 4,
+        "plum-tree-young": 22,
+        "plum-tuft": 73,
+        "plum-wall": 2
+      },
+      "terrain": {
+        "flatDry": 197,
+        "raisedDry": 18,
+        "water": 9
+      },
+      "connectedFlatDry": 197,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "d1-land-2-3",
+          "model": "plum-tree-tall",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            56,
+            80,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d1-land-13-10",
+          "model": "plum-tree-tall",
+          "box": [
+            13,
+            0,
+            10
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            328,
+            80,
+            248
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d1-land-3-11",
+          "model": "plum-tree-tall",
+          "box": [
+            3,
+            0,
+            11
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            80,
+            76,
+            272
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1114,
+        "candidateWorldPoints": [
+          [
+            366,
+            24,
+            330
+          ],
+          [
+            6,
+            24,
+            6
+          ],
+          [
+            42,
+            24,
+            330
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "plum-02",
+      "sha256": "7db62326814f6de9b83641a2e7539856ac3cb7bc27a4da418f75c6430a48e361",
+      "size": [
+        18,
+        16
+      ],
+      "placements": 279,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 2,
+        "plum-arch-broken": 2,
+        "plum-flowers": 7,
+        "plum-pebbles": 19,
+        "plum-rock": 46,
+        "plum-shrub": 36,
+        "plum-tree": 16,
+        "plum-tree-tall": 10,
+        "plum-tree-young": 32,
+        "plum-tuft": 106,
+        "plum-wall": 3
+      },
+      "terrain": {
+        "flatDry": 259,
+        "raisedDry": 20,
+        "water": 9
+      },
+      "connectedFlatDry": 259,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "d2-land-3-2",
+          "model": "plum-tree-tall",
+          "box": [
+            3,
+            0,
+            2
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            80,
+            76,
+            56
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d2-land-15-3",
+          "model": "plum-tree-tall",
+          "box": [
+            15,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            368,
+            84,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d2-land-4-13",
+          "model": "plum-tree-tall",
+          "box": [
+            4,
+            0,
+            13
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            112,
+            80,
+            320
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1489,
+        "candidateWorldPoints": [
+          [
+            414,
+            24,
+            378
+          ],
+          [
+            6,
+            24,
+            18
+          ],
+          [
+            414,
+            24,
+            6
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "plum-03",
+      "sha256": "bd927826016ca7f5e88220c9089f75282809adbcf212818edb1d802420d07533",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 294,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 1,
+        "plum-arch-broken": 2,
+        "plum-flowers": 6,
+        "plum-pebbles": 13,
+        "plum-rock": 43,
+        "plum-shrub": 46,
+        "plum-tree": 19,
+        "plum-tree-tall": 6,
+        "plum-tree-young": 39,
+        "plum-tuft": 117,
+        "plum-wall": 2
+      },
+      "terrain": {
+        "flatDry": 261,
+        "raisedDry": 33,
+        "water": 26
+      },
+      "connectedFlatDry": 261,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "d3-land-2-3",
+          "model": "plum-tree-tall",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            56,
+            84,
+            88
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d3-land-4-12",
+          "model": "plum-tree-tall",
+          "box": [
+            4,
+            0,
+            12
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            104,
+            80,
+            296
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d3-land-16-12",
+          "model": "plum-tree-tall",
+          "box": [
+            16,
+            0,
+            12
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            400,
+            80,
+            296
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1476,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            362
+          ],
+          [
+            6,
+            24,
+            26
+          ],
+          [
+            98,
+            24,
+            378
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    },
+    {
+      "id": "plum-04",
+      "sha256": "5a35688ffbe34075c296831cf41ccbd0c3d0c972d716f387e674d428866d752e",
+      "size": [
+        18,
+        18
+      ],
+      "placements": 312,
+      "pathBoxes": 0,
+      "models": 11,
+      "modelCounts": {
+        "plum-arch": 2,
+        "plum-arch-broken": 2,
+        "plum-flowers": 8,
+        "plum-pebbles": 25,
+        "plum-rock": 42,
+        "plum-shrub": 48,
+        "plum-tree": 25,
+        "plum-tree-tall": 13,
+        "plum-tree-young": 43,
+        "plum-tuft": 101,
+        "plum-wall": 3
+      },
+      "terrain": {
+        "flatDry": 277,
+        "raisedDry": 35,
+        "water": 12
+      },
+      "connectedFlatDry": 277,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "d4-land-2-3",
+          "model": "plum-tree-tall",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            56,
+            84,
+            80
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d4-land-14-2",
+          "model": "plum-tree-tall",
+          "box": [
+            14,
+            0,
+            2
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            352,
+            80,
+            56
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "d4-land-15-14",
+          "model": "plum-tree-tall",
+          "box": [
+            15,
+            0,
+            14
+          ],
+          "point": [
+            8,
+            52,
+            16
+          ],
+          "worldPoint": [
+            368,
+            80,
+            352
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1412,
+        "candidateWorldPoints": [
+          [
+            406,
+            24,
+            414
+          ],
+          [
+            6,
+            24,
+            6
+          ],
+          [
+            6,
+            24,
+            410
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving."
+      }
+    }
+  ]
+}

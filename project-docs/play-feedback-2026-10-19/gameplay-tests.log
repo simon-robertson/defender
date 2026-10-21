@@ -1,0 +1,53 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.08ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [0.31ms]
+(pass) consecutive preparation upgrades spend each step and the top tier survives the level boundary [0.47ms]
+(pass) upgrade availability follows enabled tiers, phase and wallet without a wave counter [0.23ms]
+(pass) next undeployed selection advances in inventory order, wraps and returns null only when none remain [0.09ms]
+(pass) eight finite waves reward once, retain same-map positions and return ownership to inventory at level boundary [0.13ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [0.07ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.06ms]
+(pass) successful waves settle for four seconds before reward or progression and pause freezes settlement [0.07ms]
+(pass) defeat cannot settle, invalid time is rejected and reset clears a pending settlement [0.09ms]
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1592.74ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [6423.71ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [38951.85ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [2201.84ms]
+(pass) an animal occupying otherwise legal build ground causes an atomic temporary rejection [2059.37ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [2311.52ms]
+
+tests/play-config.test.js:
+(pass) approved first player scope has an independent validated eight-wave wallet and roster [0.70ms]
+(pass) settling time is tunable and bounded independently of combat tuning [0.74ms]
+(pass) isolated play tuning merges resolved values without changing preview constants or defaults [0.16ms]
+(pass) bad schedules, incomplete resolved combat and unsupported capacities fail before scene construction [1.04ms]
+(pass) enabled upgrade tiers must be a supported ordered chain with complete combat data [0.45ms]
+(pass) wave enemy overrides resolve only bounded Dog HP and speed while preserving global defaults [0.74ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [1047.91ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [1187.42ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [1172.46ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [845.17ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.29ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2814.46ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [60.10ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [214.78ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [128.49ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [296.03ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [50.21ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1421.45ms]
+(pass) maximum affordable inventory plus current-wave slots retain all84 lights and default shaders/capacity remain unchanged [269.53ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [4973.38ms]
+(pass) real eight-wave witness upgrades to tier2, preserves paid ownership and completes48kills with12tokens [15538.03ms]
+
+ 37 pass
+ 0 fail
+ 10277 expect() calls
+Ran 37 tests across 5 files. [83.60s]

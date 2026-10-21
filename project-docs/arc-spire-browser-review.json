@@ -1,0 +1,676 @@
+{
+  "date": "2026-10-18",
+  "scope": "Isolated model approval view; no game levels or actors",
+  "checks": [
+    "All three models rendered at a common scale",
+    "Day/night panel illumination and existing bloom",
+    "A/B/C/D palette switching",
+    "Base/upgrade1/upgrade2 individual selection",
+    "Orbit and reset",
+    "Scene buffer replacement accounting",
+    "No captured console/WebGPU warnings or errors"
+  ],
+  "snapshots": [
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "all",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 5,
+      "authoredModelLights": 5,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 12,
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 247056,
+      "drawGroups": 4,
+      "frames": 2,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "all",
+      "zone": "A",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 5,
+      "authoredModelLights": 5,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 12,
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 247056,
+      "drawGroups": 4,
+      "frames": 3,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "all",
+      "zone": "B",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 5,
+      "authoredModelLights": 5,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 24,
+      "destroyedSceneBuffers": 12,
+      "geometryBytes": 247056,
+      "drawGroups": 4,
+      "frames": 4,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "all",
+      "zone": "C",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 5,
+      "authoredModelLights": 5,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 36,
+      "destroyedSceneBuffers": 24,
+      "geometryBytes": 247056,
+      "drawGroups": 4,
+      "frames": 5,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "all",
+      "zone": "D",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 5,
+      "authoredModelLights": 5,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 48,
+      "destroyedSceneBuffers": 36,
+      "geometryBytes": 247056,
+      "drawGroups": 4,
+      "frames": 6,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "upgrade2",
+      "zone": "D",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 3,
+      "authoredModelLights": 3,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 6,
+      "createdSceneBuffers": 54,
+      "destroyedSceneBuffers": 48,
+      "geometryBytes": 86328,
+      "drawGroups": 2,
+      "frames": 7,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "base",
+      "zone": "D",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 1,
+      "authoredModelLights": 1,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 6,
+      "createdSceneBuffers": 60,
+      "destroyedSceneBuffers": 54,
+      "geometryBytes": 71128,
+      "drawGroups": 2,
+      "frames": 8,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 35
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "upgrade1",
+      "zone": "D",
+      "night": true,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 1,
+      "authoredModelLights": 1,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 6,
+      "createdSceneBuffers": 66,
+      "destroyedSceneBuffers": 60,
+      "geometryBytes": 90128,
+      "drawGroups": 2,
+      "frames": 9,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 35
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "all",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 5,
+      "authoredModelLights": 5,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 12,
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 247056,
+      "drawGroups": 4,
+      "frames": 11,
+      "camera": {
+        "yaw": 1.9699999999999998,
+        "pitch": 0.5250000000000001,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    },
+    {
+      "ready": true,
+      "model": "arc-spire",
+      "selection": "all",
+      "zone": "A",
+      "night": false,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "cells": 4212,
+          "quads": 354,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            32,
+            23
+          ]
+        },
+        "upgrade1": {
+          "parts": 1,
+          "cells": 5476,
+          "quads": 449,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            42,
+            23
+          ]
+        },
+        "upgrade2": {
+          "parts": 1,
+          "cells": 7308,
+          "quads": 430,
+          "bounds": [
+            1,
+            0,
+            1,
+            23,
+            54,
+            23
+          ]
+        }
+      },
+      "modelLights": 5,
+      "authoredModelLights": 5,
+      "modelLightOverflow": 0,
+      "bloomActive": true,
+      "bloomBytes": 1984976,
+      "sceneBuffers": 12,
+      "createdSceneBuffers": 12,
+      "destroyedSceneBuffers": 0,
+      "geometryBytes": 247056,
+      "drawGroups": 4,
+      "frames": 12,
+      "camera": {
+        "yaw": 2.45,
+        "pitch": 0.4,
+        "radius": 39.90393132991115
+      },
+      "weatherEnabled": false,
+      "actors": 0
+    }
+  ],
+  "console": []
+}

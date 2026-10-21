@@ -1,0 +1,48 @@
+bun test v1.4.2 (744846f84)
+
+tests/arc-combat.test.js:
+(pass) Arc studies hit once per pulse and destroy the mixed ground/air rosters [927.53ms]
+(pass) mixed defences share exactly one thinker and do not promise unverified Arc coverage [74.59ms]
+(pass) actual surface LOS, range exits and death cancel live bursts; a stall never replays hits [36.27ms]
+(pass) a surface-blocked priority target yields to hittable alternatives and retries later [35.82ms]
+(pass) upgrade bursts respect real gaps and cooldowns and stop immediately on obstruction [37.57ms]
+(pass) random contacts use exposed facing sides of current articulated poses and release all matrix references [475.50ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [4.25ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [2.72ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.29ms]
+(pass) stable subjects receive repeated fresh angles with smooth high flight and broad gimbal aiming [7.66ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.09ms]
+{"levelIndex":0,"hz":30,"travelled":246.22336181192878,"readable":1,"minY":144,"maxY":223.99946306266395,"bytes":13058}
+{"levelIndex":0,"hz":60,"travelled":278.82371223805455,"readable":1,"minY":144,"maxY":223.99989265302543,"bytes":13058}
+{"levelIndex":0,"hz":120,"travelled":283.46508186769887,"readable":1,"minY":144,"maxY":223.9999731683474,"bytes":13058}
+{"levelIndex":1,"hz":30,"travelled":458.9893408948398,"readable":0.8413145539906103,"minY":144.45226149221588,"maxY":223.99944569427606,"bytes":15956}
+{"levelIndex":1,"hz":60,"travelled":389.9626056827751,"readable":0.8449976514795678,"minY":144.6612154786659,"maxY":223.99988913267666,"bytes":15956}
+{"levelIndex":1,"hz":120,"travelled":439.8655787505713,"readable":0.8224518553311414,"minY":144,"maxY":223.99997228243944,"bytes":15956}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5799.09ms]
+{"currentLevel":2,"mothFrames":2398,"minY":173.1254905747889,"maxY":223.99993174479368,"minPitch":0.4760940352605404,"minEnemy3D":132.7928493402833,"minFlyer3D":132.7928493402833,"minVerticalGap":100.1254905747889,"stalledFrames":0,"minStep":0.00011111111110077233,"heldDriftFrames":1647,"meanSpeed":10.666825362147854,"blockedMoves":0,"airborneFloor":173,"travelled":888.3941694476423,"bytes":14914}
+{"currentLevel":3,"mothFrames":981,"minY":173.05330739215006,"maxY":224,"minPitch":0.44907501245583814,"minEnemy3D":133.0927168192273,"minFlyer3D":133.0927168192273,"minVerticalGap":100.05330739215006,"stalledFrames":0,"minStep":0.00002777777780165253,"heldDriftFrames":2132,"meanSpeed":10.684489478478248,"blockedMoves":1,"airborneFloor":173,"travelled":974.4254404376094,"bytes":19148}
+{"currentLevel":4,"mothFrames":3044,"minY":173.3599876634919,"maxY":223.9999372913277,"minPitch":0.4404234308547098,"minEnemy3D":142.122009592072,"minFlyer3D":142.122009592072,"minVerticalGap":100.35998766349189,"stalledFrames":0,"minStep":0.00011111111111583855,"heldDriftFrames":1997,"meanSpeed":12.114112578699915,"blockedMoves":0,"airborneFloor":173,"travelled":1200.508556549757,"bytes":17692}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [6112.27ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [897.42ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.57ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.00000000058749,"maxJerk":48.00000010487128,"driftFrames":3305,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [11.55ms]
+(pass) opening stations vary across cosmetic seeds and repeated entries while staying clear [2.39ms]
+(pass) every campaign opening stays in the central half across seeds and repeated wave entries [12910.70ms]
+(pass) a blocked centre uses a safe outer opening; a completely blocked scene never activates [1.22ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [1.01ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.31ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [2.78ms]
+(pass) the Drone camera leaves a held current shot and moves toward an idle defence before its enemy enters range, then freezes with pause [1.18ms]
+(pass) drone keeps its gradual gimbal turn without restoring removed depth-of-field state [0.08ms]
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":75.6402198967989,"totalTravel":165.97283166002586}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [1120.55ms]
+
+ 25 pass
+ 0 fail
+ 218231 expect() calls
+Ran 25 tests across 3 files. [28.49s]

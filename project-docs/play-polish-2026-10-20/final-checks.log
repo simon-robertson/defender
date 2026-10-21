@@ -1,0 +1,33 @@
+bun test v1.4.2 (744846f84)
+
+tests/visibility.test.js:
+(pass) exact occupied scenery blocks solid walls while retaining a real doorway and over-wall clearance [1.32ms]
+(pass) closed leaf bounds handle grazing faces, corners, endpoints, interior origins and zero-length segments [0.47ms]
+(pass) cell bounds follow quarter-turns, detail offsets and terrain or absolute placement anchors [0.97ms]
+(pass) ground mounds and carved beds block in 3D while water, defences and enemies remain excluded [0.34ms]
+(pass) merged cuboids and stackless branches agree with original cell geometry over deterministic 3D rays [5.46ms]
+(pass) queries reuse typed storage, retain no source dependency and fail closed after disposal or for invalid rays [0.22ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.15ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.03ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.11ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+
+tests/play-polish.test.js:
+(pass) overview/perspective blend preserves invertible projection, exact endpoints and smooth reversible travel [1.65ms]
+(pass) real Drone coordinator eases into a wave, freezes when paused and returns to preparation without a snap [5.07ms]
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.65ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.69ms]
+
+tests/play-conditions.test.js:
+(pass) each zone advances through stable day, afternoon, evening and night with clear weather and no random draws [0.09ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.72ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [4906.63ms]
+(pass) play time-of-day overrides are cloned and do not rewrite saved lighting [2.62ms]
+
+ 19 pass
+ 0 fail
+ 2756 expect() calls
+Ran 19 tests across 4 files. [4.95s]

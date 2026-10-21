@@ -1,0 +1,2530 @@
+{
+  "date": "2026-10-18",
+  "browser": "Existing sole built-in browser tab reused",
+  "approvedTuning": {
+    "damage": [
+      30,
+      40,
+      55
+    ],
+    "range": [
+      48,
+      72,
+      96
+    ],
+    "burst": [
+      1,
+      2,
+      3
+    ],
+    "gapSeconds": 0.2,
+    "cooldownSeconds": [
+      1.4,
+      1.4,
+      1.6
+    ],
+    "arcWidthMultiplier": 2,
+    "branches": 0,
+    "lightMultiplier": 1.5,
+    "sparksPerHit": 6,
+    "groundFadeSeconds": 0.35
+  },
+  "checks": {
+    "targetedBun": 76,
+    "arcGPU": 34,
+    "affectedRegressionGPU": 76,
+    "fullSuiteRun": false
+  },
+  "initialCombatReview": [
+    {
+      "id": "moss-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              95.14289082342572,
+              29.31211531561464,
+              139
+            ],
+            "lastImpactPart": "leg-rr",
+            "lastNormal": [
+              6.123234262925839e-17,
+              0,
+              1
+            ],
+            "lastShotAt": 1.4166000000000003,
+            "lastShotDamage": 30,
+            "lastShotDistance": 47.50720367102236,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 2,
+            "source": [
+              67,
+              56,
+              149
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 1,
+            "thinkCount": 296,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastImpact": [
+              146.8463510400644,
+              37.93794642421349,
+              135
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              6.123234262925839e-17,
+              0,
+              1
+            ],
+            "lastShotAt": 5.100000000000004,
+            "lastShotDamage": 40,
+            "lastShotDistance": 27.39050930523201,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 8,
+            "source": [
+              139,
+              66,
+              149
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 1,
+            "thinkCount": 296,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              168.54782351999555,
+              26.80711460787103,
+              269
+            ],
+            "lastImpactPart": "paw-fl",
+            "lastNormal": [
+              -6.123234262925839e-17,
+              0,
+              -1
+            ],
+            "lastShotAt": 8.066700000000022,
+            "lastShotDamage": 25,
+            "lastShotDistance": 67.60317625792422,
+            "lastShotTargetId": "preview-dog-3",
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 10,
+            "source": [
+              220,
+              78,
+              260
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 295,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 0,
+        "time": 8.066700000000022,
+        "alive": 0,
+        "actors": [
+          {
+            "id": "preview-dog-1",
+            "model": "dog",
+            "health": 0,
+            "hits": 8
+          },
+          {
+            "id": "preview-dog-2",
+            "model": "dog",
+            "health": 0,
+            "hits": 6
+          },
+          {
+            "id": "preview-dog-3",
+            "model": "dog",
+            "health": 0,
+            "hits": 6
+          }
+        ]
+      },
+      "firing": {
+        "active": 0,
+        "lastThinkId": "scene-2",
+        "plannerThinks": 887,
+        "shots": 20,
+        "tracking": true,
+        "turning": 0,
+        "turrets": [],
+        "updatedParts": 0
+      },
+      "lifecycle": {
+        "actors": 9,
+        "assets": [
+          "arc-spire",
+          "scenery-oak-tall",
+          "scenery-oak",
+          "scenery-oak-young",
+          "scenery-cypress",
+          "scenery-cypress-short",
+          "scenery-ruin-wall",
+          "scenery-rock",
+          "scenery-ruin-pillar",
+          "scenery-shrub",
+          "detail-grass",
+          "detail-pebbles",
+          "detail-flowers",
+          "dog",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 207,
+        "current": "moss-02",
+        "currentId": "moss-02",
+        "destroyedSceneBuffers": 105,
+        "geometryBytes": 1253176,
+        "lastUnload": {
+          "actors": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-01",
+          "level": 1,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 2,
+        "phase": "ready",
+        "requested": "moss-02",
+        "requestedId": "moss-02",
+        "requestedLevel": 2,
+        "requestedZone": "A",
+        "sceneBuffers": 102,
+        "unloads": 1,
+        "visibilityBytes": 228508,
+        "visibilityPrimitives": 4081,
+        "zone": "A"
+      },
+      "render": {
+        "arcBindingBytes": 368,
+        "arcBytes": 15376,
+        "arcInstances": 0,
+        "arcLightBytes": 2128,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "moss-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              94.88032484244472,
+              31.889378117451184,
+              126.5184045949695
+            ],
+            "lastImpactPart": "leg-rl",
+            "lastNormal": [
+              -0.9482650756835938,
+              0.3174797296524048,
+              5.806449234608651e-17
+            ],
+            "lastShotAt": 16.38319999999994,
+            "lastShotDamage": 30,
+            "lastShotDistance": 47.50720367102235,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 4,
+            "source": [
+              67,
+              56,
+              149
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 1,
+            "thinkCount": 269,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastImpact": [
+              139.54206277481117,
+              32.39359410762199,
+              137.69377487155688
+            ],
+            "lastImpactPart": "leg-rr",
+            "lastNormal": [
+              -0.8175380229949951,
+              0.5758746266365051,
+              5.005976960545981e-17
+            ],
+            "lastShotAt": 20.0998999999998,
+            "lastShotDamage": 40,
+            "lastShotDistance": 27.58530623647312,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 16,
+            "source": [
+              139,
+              66,
+              149
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 1,
+            "thinkCount": 269,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              173.7991943359375,
+              34.932189118638306,
+              276.19657817263055
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1,
+              0,
+              -6.123234262925839e-17
+            ],
+            "lastShotAt": 23.033199999999702,
+            "lastShotDamage": 25,
+            "lastShotDistance": 67.60429809294646,
+            "lastShotTargetId": "preview-dog-3",
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 20,
+            "source": [
+              220,
+              78,
+              260
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 268,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 1,
+        "time": 8.066600000000024,
+        "alive": 0,
+        "actors": [
+          {
+            "id": "preview-dog-1",
+            "model": "dog",
+            "health": 0,
+            "hits": 8
+          },
+          {
+            "id": "preview-dog-2",
+            "model": "dog",
+            "health": 0,
+            "hits": 6
+          },
+          {
+            "id": "preview-dog-3",
+            "model": "dog",
+            "health": 0,
+            "hits": 6
+          }
+        ]
+      },
+      "render": {
+        "arcBindingBytes": 368,
+        "arcBytes": 15376,
+        "arcInstances": 0,
+        "arcLightBytes": 2128,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "ochre-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              127.25774697267477,
+              36.35183870044243,
+              152.7142353224505
+            ],
+            "lastImpactPart": "thigh-l",
+            "lastNormal": [
+              -0.9975503087043762,
+              0.0699523463845253,
+              6.108234500570048e-17
+            ],
+            "lastShotAt": 2.816800000000001,
+            "lastShotDamage": 30,
+            "lastShotDistance": 35.9028991275078,
+            "lastShotTargetId": "preview-walker-1",
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 3,
+            "source": [
+              115,
+              56,
+              173
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 1,
+            "thinkCount": 229,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 1.0674000000000063,
+            "id": "scene-2",
+            "lastImpact": [
+              253.87898311797755,
+              50.73632684216302,
+              246.45100794993223
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              -0.7408530712127686,
+              0,
+              -0.6716671586036682
+            ],
+            "lastShotAt": 11.083400000000006,
+            "lastShotDamage": 20,
+            "lastShotDistance": 33.59027242283109,
+            "lastShotTargetId": "preview-walker-2",
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 8,
+            "source": [
+              235,
+              66,
+              235
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 3,
+            "thinkCount": 228,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              88,
+              48.43639940350364,
+              319.33594180513876
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1,
+              0,
+              -1.2246468525851679e-16
+            ],
+            "lastShotAt": 2.500100000000005,
+            "lastShotDamage": 25,
+            "lastShotDistance": 31.89162277526819,
+            "lastShotTargetId": "preview-walker-3",
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 6,
+            "source": [
+              100,
+              78,
+              308
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 228,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 0,
+        "time": 11.416,
+        "alive": 1,
+        "actors": [
+          {
+            "id": "preview-walker-1",
+            "model": "walker",
+            "health": 210,
+            "hits": 3
+          },
+          {
+            "id": "preview-walker-2",
+            "model": "walker",
+            "health": 0,
+            "hits": 8
+          },
+          {
+            "id": "preview-walker-3",
+            "model": "walker",
+            "health": 0,
+            "hits": 6
+          }
+        ]
+      },
+      "lifecycle": {
+        "actors": 9,
+        "assets": [
+          "arc-spire",
+          "ochre-mesa",
+          "ochre-mesa-low",
+          "ochre-cactus",
+          "ochre-cactus-young",
+          "ochre-rock",
+          "ochre-wall",
+          "ochre-shrub",
+          "ochre-tuft",
+          "ochre-pebbles",
+          "ochre-flowers",
+          "walker",
+          "wildlife-lizard-ochre",
+          "wildlife-bird-ochre"
+        ],
+        "createdSceneBuffers": 285,
+        "current": "ochre-02",
+        "currentId": "ochre-02",
+        "destroyedSceneBuffers": 207,
+        "geometryBytes": 997248,
+        "lastUnload": {
+          "actors": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-02",
+          "level": 2,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 3,
+        "phase": "ready",
+        "requested": "ochre-02",
+        "requestedId": "ochre-02",
+        "requestedLevel": 2,
+        "requestedZone": "B",
+        "sceneBuffers": 78,
+        "unloads": 2,
+        "visibilityBytes": 111244,
+        "visibilityPrimitives": 1987,
+        "zone": "B"
+      },
+      "render": {
+        "arcBindingBytes": 368,
+        "arcBytes": 15376,
+        "arcInstances": 0,
+        "arcLightBytes": 2128,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 1,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "plum-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              237.6361175949303,
+              25.169897155258933,
+              96.96799546634756
+            ],
+            "lastImpactPart": "foot-ml",
+            "lastNormal": [
+              -7.786096767326e-11,
+              -1.4863839048473435e-9,
+              -0.9999999403953552
+            ],
+            "lastShotAt": 1.4166719999999982,
+            "lastShotDamage": 30,
+            "lastShotDistance": 45.08545791669859,
+            "lastShotTargetId": "preview-spider-1",
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 2,
+            "source": [
+              245,
+              56,
+              67
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 349,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastImpact": [
+              221.54553359643592,
+              35.84379462957613,
+              115.6982297494534
+            ],
+            "lastImpactPart": "upper-rr",
+            "lastNormal": [
+              -0.9893571138381958,
+              -0.14547233283519745,
+              -0.003201308660209179
+            ],
+            "lastShotAt": 3.466671999999996,
+            "lastShotDamage": 40,
+            "lastShotDistance": 26.26364246555301,
+            "lastShotTargetId": "preview-spider-1",
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 6,
+            "source": [
+              211,
+              66,
+              115
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 3,
+            "thinkCount": 349,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              82.81688867163784,
+              36.615304679416305,
+              81
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              6.123234262925839e-17,
+              0,
+              -1
+            ],
+            "lastShotAt": 2.483372000000002,
+            "lastShotDamage": 25,
+            "lastShotDistance": 24.0144766555176,
+            "lastShotTargetId": "preview-spider-3",
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 6,
+            "source": [
+              76,
+              78,
+              68
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 349,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 0,
+        "time": 17.44997199999994,
+        "alive": 1,
+        "actors": [
+          {
+            "id": "preview-spider-1",
+            "model": "spider",
+            "health": 0,
+            "hits": 8
+          },
+          {
+            "id": "preview-spider-2",
+            "model": "spider",
+            "health": 300,
+            "hits": 0
+          },
+          {
+            "id": "preview-spider-3",
+            "model": "spider",
+            "health": 0,
+            "hits": 6
+          }
+        ]
+      },
+      "lifecycle": {
+        "actors": 9,
+        "assets": [
+          "arc-spire",
+          "plum-arch",
+          "plum-wall",
+          "plum-arch-broken",
+          "plum-rock",
+          "plum-tree-young",
+          "plum-tree",
+          "plum-shrub",
+          "plum-tree-tall",
+          "plum-tuft",
+          "plum-pebbles",
+          "plum-flowers",
+          "spider",
+          "wildlife-beetle-plum",
+          "wildlife-bird-plum"
+        ],
+        "createdSceneBuffers": 402,
+        "current": "plum-02",
+        "currentId": "plum-02",
+        "destroyedSceneBuffers": 285,
+        "geometryBytes": 1044872,
+        "lastUnload": {
+          "actors": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "ochre-02",
+          "level": 2,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "B"
+        },
+        "level": 2,
+        "loads": 4,
+        "phase": "ready",
+        "requested": "plum-02",
+        "requestedId": "plum-02",
+        "requestedLevel": 2,
+        "requestedZone": "D",
+        "sceneBuffers": 117,
+        "unloads": 3,
+        "visibilityBytes": 191996,
+        "visibilityPrimitives": 3429,
+        "zone": "D"
+      },
+      "render": {
+        "arcBindingBytes": 368,
+        "arcBytes": 15376,
+        "arcInstances": 0,
+        "arcLightBytes": 2128,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "plum-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              228.06149254139268,
+              36.16243499161385,
+              95
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              -1.2246468525851679e-16,
+              0,
+              -1
+            ],
+            "lastShotAt": 19.56667199999995,
+            "lastShotDamage": 30,
+            "lastShotDistance": 45.79301256742123,
+            "lastShotTargetId": "preview-spider-1",
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 4,
+            "source": [
+              245,
+              56,
+              67
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 343,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastImpact": [
+              234.24625762948736,
+              31.140267712818357,
+              128.1275964716078
+            ],
+            "lastImpactPart": "lower-fl",
+            "lastNormal": [
+              -0.9991827607154846,
+              0.04040789231657982,
+              -0.0010463109938427806
+            ],
+            "lastShotAt": 21.633271999999973,
+            "lastShotDamage": 40,
+            "lastShotDistance": 26.68511862443185,
+            "lastShotTargetId": "preview-spider-1",
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 12,
+            "source": [
+              211,
+              66,
+              115
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 3,
+            "thinkCount": 343,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              73.16699981689453,
+              36.88974486739017,
+              85.91161385893797
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1,
+              0,
+              6.123234262925839e-17
+            ],
+            "lastShotAt": 21.949971999999978,
+            "lastShotDamage": 25,
+            "lastShotDistance": 28.213788986947485,
+            "lastShotTargetId": "preview-spider-3",
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 13,
+            "source": [
+              76,
+              78,
+              68
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 343,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 1,
+        "time": 17.23319999999993,
+        "alive": 1,
+        "actors": [
+          {
+            "id": "preview-spider-1",
+            "model": "spider",
+            "health": 0,
+            "hits": 8
+          },
+          {
+            "id": "preview-spider-2",
+            "model": "spider",
+            "health": 300,
+            "hits": 0
+          },
+          {
+            "id": "preview-spider-3",
+            "model": "spider",
+            "health": 0,
+            "hits": 6
+          }
+        ]
+      },
+      "render": {
+        "arcBindingBytes": 368,
+        "arcBytes": 15376,
+        "arcInstances": 0,
+        "arcLightBytes": 2128,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 1024,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "ice-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              0,
+              0,
+              0
+            ],
+            "lastImpactPart": null,
+            "lastNormal": [
+              0,
+              0,
+              0
+            ],
+            "lastShotAt": null,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 0,
+            "source": [
+              0,
+              0,
+              0
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 0,
+            "thinkCount": 0,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastImpact": [
+              0,
+              0,
+              0
+            ],
+            "lastImpactPart": null,
+            "lastNormal": [
+              0,
+              0,
+              0
+            ],
+            "lastShotAt": null,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 0,
+            "source": [
+              0,
+              0,
+              0
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 0,
+            "thinkCount": 0,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              0,
+              0,
+              0
+            ],
+            "lastImpactPart": null,
+            "lastNormal": [
+              0,
+              0,
+              0
+            ],
+            "lastShotAt": null,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 0,
+            "source": [
+              0,
+              0,
+              0
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 0,
+            "thinkCount": 0,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 0,
+        "time": 0,
+        "alive": 0,
+        "actors": []
+      },
+      "lifecycle": {
+        "actors": 6,
+        "assets": [
+          "arc-spire",
+          "ice-fir",
+          "ice-fir-young",
+          "ice-pillar",
+          "ice-pillar-broken",
+          "ice-wall",
+          "ice-rock",
+          "ice-shrub",
+          "ice-tuft",
+          "ice-pebbles",
+          "ice-flowers",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice"
+        ],
+        "createdSceneBuffers": 462,
+        "current": "ice-02",
+        "currentId": "ice-02",
+        "destroyedSceneBuffers": 405,
+        "geometryBytes": 1068568,
+        "lastUnload": {
+          "actors": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "plum-02",
+          "level": 2,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "D"
+        },
+        "level": 2,
+        "loads": 5,
+        "phase": "ready",
+        "requested": "ice-02",
+        "requestedId": "ice-02",
+        "requestedLevel": 2,
+        "requestedZone": "C",
+        "sceneBuffers": 57,
+        "unloads": 4,
+        "visibilityBytes": 209580,
+        "visibilityPrimitives": 3743,
+        "zone": "C"
+      },
+      "render": {
+        "arcBindingBytes": 368,
+        "arcBytes": 0,
+        "arcInstances": 0,
+        "arcLightBytes": 0,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "ice-01",
+      "arcs": {
+        "droppedSparks": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [],
+        "strikes": 0
+      },
+      "enemies": null,
+      "firing": {
+        "active": 0,
+        "lastThinkId": null,
+        "plannerThinks": 0,
+        "shots": 11,
+        "tracking": false,
+        "turning": 0,
+        "turrets": [
+          {
+            "aimError": null,
+            "aimPoint": null,
+            "angularVelocity": 0,
+            "burstRemaining": 0,
+            "cooldownRemaining": 0.2332999999999981,
+            "id": "scene-1",
+            "lastShotAimError": null,
+            "lastShotAt": 4.649900000000008,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lastShotVisible": null,
+            "lineOfSight": null,
+            "maxRange": 48,
+            "occludedTargets": 0,
+            "predictedCoverage": 0,
+            "recoil": 0,
+            "requiresLineOfSight": true,
+            "reservation": null,
+            "shots": 3,
+            "strength": 10,
+            "targetDistance": null,
+            "targetId": null,
+            "targetYaw": 2.7622833490125087,
+            "thinkCount": 0,
+            "turning": false,
+            "variant": "base",
+            "x": 108,
+            "yaw": 2.7622833490125087,
+            "z": 84
+          },
+          {
+            "aimError": null,
+            "aimPoint": null,
+            "angularVelocity": 0,
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastShotAimError": null,
+            "lastShotAt": 4.106700000000006,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lastShotVisible": null,
+            "lineOfSight": null,
+            "maxRange": 72,
+            "occludedTargets": 0,
+            "predictedCoverage": 0,
+            "recoil": 0,
+            "requiresLineOfSight": true,
+            "reservation": null,
+            "shots": 6,
+            "strength": 12,
+            "targetDistance": null,
+            "targetId": null,
+            "targetYaw": 0.10259173859163172,
+            "thinkCount": 0,
+            "turning": false,
+            "variant": "upgrade1",
+            "x": 156,
+            "yaw": 0.10259173859163172,
+            "z": 132
+          },
+          {
+            "aimError": null,
+            "aimPoint": null,
+            "angularVelocity": 0,
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastShotAimError": null,
+            "lastShotAt": 4.36670000000001,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lastShotVisible": null,
+            "lineOfSight": null,
+            "maxRange": 48,
+            "occludedTargets": 0,
+            "predictedCoverage": 0,
+            "recoil": 0,
+            "requiresLineOfSight": true,
+            "reservation": null,
+            "shots": 2,
+            "strength": 10,
+            "targetDistance": null,
+            "targetId": null,
+            "targetYaw": 2.7036527417717595,
+            "thinkCount": 0,
+            "turning": false,
+            "variant": "base",
+            "x": 276,
+            "yaw": 2.7036527417717595,
+            "z": 276
+          }
+        ],
+        "updatedParts": 0
+      },
+      "render": {
+        "arcBindingBytes": 368,
+        "arcBytes": 0,
+        "arcInstances": 0,
+        "arcLightBytes": 0,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    }
+  ],
+  "finalLiveReview": [
+    {
+      "id": "moss-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "grounded": 0,
+        "lights": 1,
+        "replacedStrikes": 0,
+        "sparks": 24,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 1.1501000000000003,
+            "id": "scene-1",
+            "lastImpact": [
+              77,
+              35.81435194877845,
+              130.1446704182397
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              -1,
+              0,
+              6.123234262925839e-17
+            ],
+            "lastShotAt": 0,
+            "lastShotDamage": 30,
+            "lastShotDistance": 33.941125496954285,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": true,
+            "maxRange": 48,
+            "shots": 1,
+            "source": [
+              67,
+              56,
+              149
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": 36.12388685399177,
+            "targetId": "preview-dog-1",
+            "terminal": 1,
+            "thinkCount": 5,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 1.4,
+            "id": "scene-2",
+            "lastImpact": [
+              95.9988021850586,
+              33.94037899130511,
+              132.36473378004712
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1,
+              0,
+              -6.123234262925839e-17
+            ],
+            "lastShotAt": 0.2498999999999996,
+            "lastShotDamage": 40,
+            "lastShotDistance": 51.00105882665576,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": true,
+            "maxRange": 72,
+            "shots": 2,
+            "source": [
+              125,
+              66,
+              149
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": 51.00105882665576,
+            "targetId": "preview-dog-1",
+            "terminal": 0,
+            "thinkCount": 5,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 2,
+            "cooldownRemaining": 1.8,
+            "id": "scene-3",
+            "lastImpact": [
+              202.21975275330476,
+              35.01395890481906,
+              180.5988006591797
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1.2246468525851679e-16,
+              0,
+              1
+            ],
+            "lastShotAt": 0.04989999999999964,
+            "lastShotDamage": 55,
+            "lastShotDistance": 82.94908415070057,
+            "lastShotTargetId": "preview-dog-2",
+            "lineOfSight": true,
+            "maxRange": 96,
+            "shots": 1,
+            "source": [
+              220,
+              78,
+              244
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": 80.6547258469087,
+            "targetId": "preview-dog-2",
+            "terminal": 0,
+            "thinkCount": 5,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 1
+      },
+      "enemies": {
+        "resets": 0,
+        "time": 0.2498999999999996,
+        "alive": 3,
+        "actors": [
+          {
+            "id": "preview-dog-1",
+            "model": "dog",
+            "health": 190,
+            "hits": 3
+          },
+          {
+            "id": "preview-dog-2",
+            "model": "dog",
+            "health": 245,
+            "hits": 1
+          },
+          {
+            "id": "preview-dog-3",
+            "model": "dog",
+            "health": 300,
+            "hits": 0
+          }
+        ]
+      },
+      "lifecycle": {
+        "actors": 9,
+        "assets": [
+          "arc-spire",
+          "scenery-oak-tall",
+          "scenery-oak",
+          "scenery-oak-young",
+          "scenery-cypress",
+          "scenery-cypress-short",
+          "scenery-ruin-wall",
+          "scenery-rock",
+          "scenery-ruin-pillar",
+          "scenery-shrub",
+          "detail-grass",
+          "detail-pebbles",
+          "detail-flowers",
+          "dog",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 207,
+        "current": "moss-02",
+        "currentId": "moss-02",
+        "destroyedSceneBuffers": 105,
+        "geometryBytes": 1253176,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-01",
+          "level": 1,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 2,
+        "phase": "ready",
+        "requested": "moss-02",
+        "requestedId": "moss-02",
+        "requestedLevel": 2,
+        "requestedZone": "A",
+        "sceneBuffers": 102,
+        "unloads": 1,
+        "visibilityBytes": 228508,
+        "visibilityPrimitives": 4081,
+        "zone": "A"
+      },
+      "render": {
+        "arcBindingBytes": 304,
+        "arcBytes": 15568,
+        "arcGrounded": 0,
+        "arcInstances": 56,
+        "arcLightBytes": 1744,
+        "arcLights": 1,
+        "arcSparks": 24,
+        "arcStrikes": 1,
+        "arcUploadBytes": 2992,
+        "arcUploads": 2,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "moss-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "grounded": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              96.29924700758048,
+              30.93292040101685,
+              139
+            ],
+            "lastImpactPart": "leg-rr",
+            "lastNormal": [
+              6.123234262925839e-17,
+              0,
+              1
+            ],
+            "lastShotAt": 1.4000000000000012,
+            "lastShotDamage": 30,
+            "lastShotDistance": 47.33539901595846,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 2,
+            "source": [
+              67,
+              56,
+              149
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 1,
+            "thinkCount": 759,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastImpact": [
+              143.3379863485444,
+              35.84769418901311,
+              137
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              6.123234262925839e-17,
+              0,
+              1
+            ],
+            "lastShotAt": 5.099900000000012,
+            "lastShotDamage": 40,
+            "lastShotDistance": 27.38993102291431,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 8,
+            "source": [
+              139,
+              66,
+              149
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 1,
+            "thinkCount": 758,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              165.99879455566406,
+              37.9214171889608,
+              275.36325673830834
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1,
+              0,
+              -6.123234262925839e-17
+            ],
+            "lastShotAt": 7.999900000000037,
+            "lastShotDamage": 25,
+            "lastShotDistance": 68.3531535588516,
+            "lastShotTargetId": "preview-dog-3",
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 10,
+            "source": [
+              220,
+              78,
+              260
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 2,
+            "thinkCount": 758,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 0,
+        "time": 7.999900000000037,
+        "alive": 0,
+        "actors": [
+          {
+            "id": "preview-dog-1",
+            "model": "dog",
+            "health": 0,
+            "hits": 8
+          },
+          {
+            "id": "preview-dog-2",
+            "model": "dog",
+            "health": 0,
+            "hits": 6
+          },
+          {
+            "id": "preview-dog-3",
+            "model": "dog",
+            "health": 0,
+            "hits": 6
+          }
+        ]
+      },
+      "lifecycle": {
+        "actors": 9,
+        "assets": [
+          "arc-spire",
+          "scenery-oak-tall",
+          "scenery-oak",
+          "scenery-oak-young",
+          "scenery-cypress",
+          "scenery-cypress-short",
+          "scenery-ruin-wall",
+          "scenery-rock",
+          "scenery-ruin-pillar",
+          "scenery-shrub",
+          "detail-grass",
+          "detail-pebbles",
+          "detail-flowers",
+          "dog",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 207,
+        "current": "moss-02",
+        "currentId": "moss-02",
+        "destroyedSceneBuffers": 105,
+        "geometryBytes": 1253176,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-01",
+          "level": 1,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 2,
+        "phase": "ready",
+        "requested": "moss-02",
+        "requestedId": "moss-02",
+        "requestedLevel": 2,
+        "requestedZone": "A",
+        "sceneBuffers": 102,
+        "unloads": 1,
+        "visibilityBytes": 228508,
+        "visibilityPrimitives": 4081,
+        "zone": "A"
+      },
+      "render": {
+        "arcBindingBytes": 304,
+        "arcBytes": 15568,
+        "arcGrounded": 0,
+        "arcInstances": 0,
+        "arcLightBytes": 1744,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "moss-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "grounded": 0,
+        "lights": 1,
+        "replacedStrikes": 0,
+        "sparks": 18,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 1.2332999999999856,
+            "id": "scene-1",
+            "lastImpact": [
+              79.91128493779615,
+              35.82281527540476,
+              137
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              6.123234262925839e-17,
+              0,
+              1
+            ],
+            "lastShotAt": 37.94979999999972,
+            "lastShotDamage": 30,
+            "lastShotDistance": 34.08568051249674,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": true,
+            "maxRange": 48,
+            "shots": 3,
+            "source": [
+              67,
+              56,
+              149
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": 35.53407631218234,
+            "targetId": "preview-dog-1",
+            "terminal": 1,
+            "thinkCount": 4,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 1,
+            "cooldownRemaining": 1.4488999999999876,
+            "id": "scene-2",
+            "lastImpact": [
+              94.39119720458984,
+              32.89123691753635,
+              131.8659327933981
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1,
+              0,
+              -6.123234262925839e-17
+            ],
+            "lastShotAt": 37.96539999999972,
+            "lastShotDamage": 40,
+            "lastShotDistance": 53.316018582035944,
+            "lastShotTargetId": "preview-dog-1",
+            "lineOfSight": true,
+            "maxRange": 72,
+            "shots": 9,
+            "source": [
+              125,
+              66,
+              149
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": 51.70335559090921,
+            "targetId": "preview-dog-1",
+            "terminal": 0,
+            "thinkCount": 4,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 2,
+            "cooldownRemaining": 1.866599999999984,
+            "id": "scene-3",
+            "lastImpact": [
+              204.4101341088107,
+              34.87947201371773,
+              181.6036071777344
+            ],
+            "lastImpactPart": "body",
+            "lastNormal": [
+              1.2246468525851679e-16,
+              0,
+              1
+            ],
+            "lastShotAt": 37.98309999999971,
+            "lastShotDamage": 55,
+            "lastShotDistance": 82.94448946711293,
+            "lastShotTargetId": "preview-dog-2",
+            "lineOfSight": true,
+            "maxRange": 96,
+            "shots": 11,
+            "source": [
+              220,
+              78,
+              244
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": 81.41348401438182,
+            "targetId": "preview-dog-2",
+            "terminal": 0,
+            "thinkCount": 3,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 1
+      },
+      "enemies": {
+        "resets": 1,
+        "time": 0.1836999999999971,
+        "alive": 3,
+        "actors": [
+          {
+            "id": "preview-dog-1",
+            "model": "dog",
+            "health": 230,
+            "hits": 2
+          },
+          {
+            "id": "preview-dog-2",
+            "model": "dog",
+            "health": 245,
+            "hits": 1
+          },
+          {
+            "id": "preview-dog-3",
+            "model": "dog",
+            "health": 300,
+            "hits": 0
+          }
+        ]
+      },
+      "lifecycle": {
+        "actors": 9,
+        "assets": [
+          "arc-spire",
+          "scenery-oak-tall",
+          "scenery-oak",
+          "scenery-oak-young",
+          "scenery-cypress",
+          "scenery-cypress-short",
+          "scenery-ruin-wall",
+          "scenery-rock",
+          "scenery-ruin-pillar",
+          "scenery-shrub",
+          "detail-grass",
+          "detail-pebbles",
+          "detail-flowers",
+          "dog",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 207,
+        "current": "moss-02",
+        "currentId": "moss-02",
+        "destroyedSceneBuffers": 105,
+        "geometryBytes": 1253176,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-01",
+          "level": 1,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 2,
+        "phase": "enemies-reset",
+        "requested": "moss-02",
+        "requestedId": "moss-02",
+        "requestedLevel": 2,
+        "requestedZone": "A",
+        "sceneBuffers": 102,
+        "unloads": 1,
+        "visibilityBytes": 228508,
+        "visibilityPrimitives": 4081,
+        "zone": "A"
+      },
+      "render": {
+        "arcBindingBytes": 304,
+        "arcBytes": 15568,
+        "arcGrounded": 0,
+        "arcInstances": 50,
+        "arcLightBytes": 1744,
+        "arcLights": 1,
+        "arcSparks": 18,
+        "arcStrikes": 1,
+        "arcUploadBytes": 2704,
+        "arcUploads": 2,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "moss-01",
+      "arcs": {
+        "droppedSparks": 0,
+        "grounded": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [],
+        "strikes": 0
+      },
+      "enemies": null,
+      "lifecycle": {
+        "actors": 9,
+        "assets": [
+          "turret-study",
+          "scenery-oak-tall",
+          "scenery-oak",
+          "scenery-oak-young",
+          "scenery-cypress",
+          "scenery-cypress-short",
+          "scenery-ruin-wall",
+          "scenery-rock",
+          "scenery-ruin-pillar",
+          "scenery-shrub",
+          "detail-grass",
+          "detail-pebbles",
+          "detail-flowers",
+          "dog",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 312,
+        "current": "moss-01",
+        "currentId": "moss-01",
+        "destroyedSceneBuffers": 207,
+        "geometryBytes": 1277168,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-02",
+          "level": 2,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 1,
+        "loads": 3,
+        "phase": "ready",
+        "requested": "moss-01",
+        "requestedId": "moss-01",
+        "requestedLevel": 1,
+        "requestedZone": "A",
+        "sceneBuffers": 105,
+        "unloads": 2,
+        "visibilityBytes": 228508,
+        "visibilityPrimitives": 4081,
+        "zone": "A"
+      },
+      "render": {
+        "arcBindingBytes": 304,
+        "arcBytes": 0,
+        "arcGrounded": 0,
+        "arcInstances": 0,
+        "arcLightBytes": 0,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    },
+    {
+      "id": "ice-02",
+      "arcs": {
+        "droppedSparks": 0,
+        "grounded": 0,
+        "lights": 0,
+        "replacedStrikes": 0,
+        "sparks": 0,
+        "spires": [
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-1",
+            "lastImpact": [
+              0,
+              0,
+              0
+            ],
+            "lastImpactPart": null,
+            "lastNormal": [
+              0,
+              0,
+              0
+            ],
+            "lastShotAt": null,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lineOfSight": null,
+            "maxRange": 48,
+            "shots": 0,
+            "source": [
+              0,
+              0,
+              0
+            ],
+            "strength": 30,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 0,
+            "thinkCount": 0,
+            "variant": "base"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-2",
+            "lastImpact": [
+              0,
+              0,
+              0
+            ],
+            "lastImpactPart": null,
+            "lastNormal": [
+              0,
+              0,
+              0
+            ],
+            "lastShotAt": null,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lineOfSight": null,
+            "maxRange": 72,
+            "shots": 0,
+            "source": [
+              0,
+              0,
+              0
+            ],
+            "strength": 40,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 0,
+            "thinkCount": 0,
+            "variant": "upgrade1"
+          },
+          {
+            "burstRemaining": 0,
+            "cooldownRemaining": 0,
+            "id": "scene-3",
+            "lastImpact": [
+              0,
+              0,
+              0
+            ],
+            "lastImpactPart": null,
+            "lastNormal": [
+              0,
+              0,
+              0
+            ],
+            "lastShotAt": null,
+            "lastShotDamage": 0,
+            "lastShotDistance": null,
+            "lastShotTargetId": null,
+            "lineOfSight": null,
+            "maxRange": 96,
+            "shots": 0,
+            "source": [
+              0,
+              0,
+              0
+            ],
+            "strength": 55,
+            "surfaceRejects": 0,
+            "targetDistance": null,
+            "targetId": null,
+            "terminal": 0,
+            "thinkCount": 0,
+            "variant": "upgrade2"
+          }
+        ],
+        "strikes": 0
+      },
+      "enemies": {
+        "resets": 0,
+        "time": 0,
+        "alive": 0,
+        "actors": []
+      },
+      "lifecycle": {
+        "actors": 6,
+        "assets": [
+          "arc-spire",
+          "ice-fir",
+          "ice-fir-young",
+          "ice-pillar",
+          "ice-pillar-broken",
+          "ice-wall",
+          "ice-rock",
+          "ice-shrub",
+          "ice-tuft",
+          "ice-pebbles",
+          "ice-flowers",
+          "wildlife-hare-ice",
+          "wildlife-bird-ice"
+        ],
+        "createdSceneBuffers": 369,
+        "current": "ice-02",
+        "currentId": "ice-02",
+        "destroyedSceneBuffers": 312,
+        "geometryBytes": 1068568,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-01",
+          "level": 1,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 4,
+        "phase": "ready",
+        "requested": "ice-02",
+        "requestedId": "ice-02",
+        "requestedLevel": 2,
+        "requestedZone": "C",
+        "sceneBuffers": 57,
+        "unloads": 3,
+        "visibilityBytes": 209580,
+        "visibilityPrimitives": 3743,
+        "zone": "C"
+      },
+      "render": {
+        "arcBindingBytes": 304,
+        "arcBytes": 0,
+        "arcGrounded": 0,
+        "arcInstances": 0,
+        "arcLightBytes": 0,
+        "arcLights": 0,
+        "arcSparks": 0,
+        "arcStrikes": 0,
+        "arcUploadBytes": 0,
+        "arcUploads": 0,
+        "leafCount": 0,
+        "rainCount": 0,
+        "shockwaveCount": 0,
+        "snowCount": 0
+      }
+    }
+  ],
+  "finalVisualReview": [
+    {
+      "ready": true,
+      "level": "moss-02",
+      "night": true,
+      "enabled": true,
+      "age": 0.08,
+      "selected": {
+        "placement": "scene-1",
+        "variant": "base",
+        "enemy": "preview-dog-1",
+        "part": "body",
+        "time": 0,
+        "distance": 33.941125496954285,
+        "terminal": 1
+      },
+      "source": [
+        67,
+        56,
+        149
+      ],
+      "impact": [
+        78,
+        36.20529138295585,
+        130.14816783814132
+      ],
+      "normal": [
+        -1,
+        0,
+        6.123234262925839e-17
+      ],
+      "strikes": 1,
+      "sparks": 6,
+      "grounded": 0,
+      "lights": 1,
+      "instances": 38,
+      "arcBytes": 15568,
+      "modelLights": 5,
+      "modelLightOverflow": 0,
+      "sceneBuffers": 90,
+      "geometryBytes": 1222208,
+      "createdSceneBuffers": 90,
+      "destroyedSceneBuffers": 0,
+      "camera": {
+        "radius": 38,
+        "yaw": 4.184191932448643,
+        "pitch": 0.48
+      }
+    },
+    {
+      "ready": true,
+      "level": "moss-02",
+      "night": true,
+      "enabled": true,
+      "age": 0.35000000000000003,
+      "selected": {
+        "placement": "scene-1",
+        "variant": "base",
+        "enemy": "preview-dog-1",
+        "part": "body",
+        "time": 0,
+        "distance": 33.941125496954285,
+        "terminal": 1
+      },
+      "source": [
+        67,
+        56,
+        149
+      ],
+      "impact": [
+        78,
+        36.20529138295585,
+        130.14816783814132
+      ],
+      "normal": [
+        -1,
+        0,
+        6.123234262925839e-17
+      ],
+      "strikes": 0,
+      "sparks": 6,
+      "grounded": 0,
+      "lights": 0,
+      "instances": 6,
+      "arcBytes": 15568,
+      "modelLights": 5,
+      "modelLightOverflow": 0,
+      "sceneBuffers": 90,
+      "geometryBytes": 1222208,
+      "createdSceneBuffers": 90,
+      "destroyedSceneBuffers": 0,
+      "camera": {
+        "radius": 38,
+        "yaw": 4.184191932448643,
+        "pitch": 0.48
+      }
+    },
+    {
+      "ready": true,
+      "level": "moss-02",
+      "night": true,
+      "enabled": true,
+      "age": 0.65,
+      "selected": {
+        "placement": "scene-1",
+        "variant": "base",
+        "enemy": "preview-dog-1",
+        "part": "body",
+        "time": 0,
+        "distance": 33.941125496954285,
+        "terminal": 1
+      },
+      "source": [
+        67,
+        56,
+        149
+      ],
+      "impact": [
+        78,
+        36.20529138295585,
+        130.14816783814132
+      ],
+      "normal": [
+        -1,
+        0,
+        6.123234262925839e-17
+      ],
+      "strikes": 0,
+      "sparks": 6,
+      "grounded": 4,
+      "lights": 0,
+      "instances": 6,
+      "arcBytes": 15568,
+      "modelLights": 5,
+      "modelLightOverflow": 0,
+      "sceneBuffers": 90,
+      "geometryBytes": 1222208,
+      "createdSceneBuffers": 90,
+      "destroyedSceneBuffers": 0,
+      "camera": {
+        "radius": 38,
+        "yaw": 4.184191932448643,
+        "pitch": 0.48
+      }
+    },
+    {
+      "ready": true,
+      "level": "moss-02",
+      "night": true,
+      "enabled": true,
+      "age": 1.2,
+      "selected": {
+        "placement": "scene-1",
+        "variant": "base",
+        "enemy": "preview-dog-1",
+        "part": "body",
+        "time": 0,
+        "distance": 33.941125496954285,
+        "terminal": 1
+      },
+      "source": [
+        67,
+        56,
+        149
+      ],
+      "impact": [
+        78,
+        36.20529138295585,
+        130.14816783814132
+      ],
+      "normal": [
+        -1,
+        0,
+        6.123234262925839e-17
+      ],
+      "strikes": 0,
+      "sparks": 0,
+      "grounded": 0,
+      "lights": 0,
+      "instances": 0,
+      "arcBytes": 15568,
+      "modelLights": 5,
+      "modelLightOverflow": 0,
+      "sceneBuffers": 90,
+      "geometryBytes": 1222208,
+      "createdSceneBuffers": 90,
+      "destroyedSceneBuffers": 0,
+      "camera": {
+        "radius": 38,
+        "yaw": 4.184191932448643,
+        "pitch": 0.48
+      }
+    },
+    {
+      "ready": true,
+      "level": "plum-02",
+      "night": true,
+      "enabled": true,
+      "age": 0.02,
+      "selected": {
+        "placement": "scene-3",
+        "variant": "upgrade2",
+        "enemy": "preview-spider-3",
+        "part": "lower-fl",
+        "time": 0,
+        "distance": 33.941125496954285,
+        "terminal": 3
+      },
+      "source": [
+        92,
+        78,
+        68
+      ],
+      "impact": [
+        101.84978497052123,
+        32.4127511349325,
+        90.30325642895939
+      ],
+      "normal": [
+        0.00031465842039324343,
+        0.04089472442865372,
+        -0.9991633892059326
+      ],
+      "strikes": 1,
+      "sparks": 6,
+      "grounded": 0,
+      "lights": 1,
+      "instances": 38,
+      "arcBytes": 15568,
+      "modelLights": 5,
+      "modelLightOverflow": 0,
+      "sceneBuffers": 105,
+      "geometryBytes": 1011704,
+      "createdSceneBuffers": 195,
+      "destroyedSceneBuffers": 90,
+      "camera": {
+        "radius": 48.36,
+        "yaw": 1.9866679158136846,
+        "pitch": 0.48
+      }
+    },
+    {
+      "ready": true,
+      "level": "plum-02",
+      "night": false,
+      "enabled": true,
+      "age": 0.02,
+      "selected": {
+        "placement": "scene-3",
+        "variant": "upgrade2",
+        "enemy": "preview-spider-3",
+        "part": "lower-fl",
+        "time": 0,
+        "distance": 33.941125496954285,
+        "terminal": 3
+      },
+      "source": [
+        92,
+        78,
+        68
+      ],
+      "impact": [
+        101.84978497052123,
+        32.4127511349325,
+        90.30325642895939
+      ],
+      "normal": [
+        0.00031465842039324343,
+        0.04089472442865372,
+        -0.9991633892059326
+      ],
+      "strikes": 1,
+      "sparks": 6,
+      "grounded": 0,
+      "lights": 1,
+      "instances": 38,
+      "arcBytes": 15568,
+      "modelLights": 5,
+      "modelLightOverflow": 0,
+      "sceneBuffers": 105,
+      "geometryBytes": 1011704,
+      "createdSceneBuffers": 195,
+      "destroyedSceneBuffers": 90,
+      "camera": {
+        "radius": 48.36,
+        "yaw": 1.9866679158136846,
+        "pitch": 0.48
+      }
+    }
+  ],
+  "artist": "Final day/night, source attachment, visible welding flight and ground fade accepted; no blockers",
+  "warnings": [],
+  "finalPreview": {
+    "zone": "A",
+    "level": 2,
+    "night": true
+  }
+}

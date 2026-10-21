@@ -1,0 +1,8443 @@
+{
+  "schema": "defender.b-carving-option-audit",
+  "version": 1,
+  "id": "riverfold-crossing",
+  "sourceHash": "6e437f27aaac3f8b75212039e6bb3a6f966c25b0a20b41d38aed6c40bf5fb129",
+  "recordedAt": "2026-10-19T06:54:02.415Z",
+  "method": "Synthetic offline copy removes previewMode only to admit production Walker/DuneTread/TwinFan and individual weapon probes. Actual level contains scenery and wildlife only. Guns: production actual pitched muzzles at zero/full recoil, per-species 1-unit bins. Arcs: production closest terminal, centre LOS and deterministic production facing-side surface sampling at 1-unit bins. No damage, waves, budget or simultaneous adjacent-defence claim.",
+  "siteFailures": [],
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 3171,
+    "checkedParts": 17969,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "west-court-1-6",
+        "group": "westCourt",
+        "box": [
+          1,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 65.57,
+              "72": 101.67,
+              "96": 131.14,
+              "120": 264
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    10
+                  ],
+                  [
+                    38,
+                    102
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    102
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-2-6",
+        "group": "westCourt",
+        "box": [
+          2,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 228.45,
+              "120": 336
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    34
+                  ],
+                  [
+                    62,
+                    116
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-2-8",
+        "group": "westCourt",
+        "box": [
+          2,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 131.14,
+              "72": 173.67,
+              "96": 299.14,
+              "120": 325.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    6,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    0,
+                    174
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    34
+                  ],
+                  [
+                    62,
+                    82
+                  ],
+                  [
+                    110,
+                    174
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    174
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-2-9",
+        "group": "westCourt",
+        "box": [
+          2,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 187.88,
+              "96": 279.5,
+              "120": 312
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    0,
+                    188
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    106
+                  ],
+                  [
+                    134,
+                    188
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    188
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-2-10",
+        "group": "westCourt",
+        "box": [
+          2,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 255.5,
+              "120": 288
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    102,
+                    168
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    102,
+                    168
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    102,
+                    168
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    76,
+                    192
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    76,
+                    130
+                  ],
+                  [
+                    148,
+                    192
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    76,
+                    192
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-4-7",
+        "group": "westCourt",
+        "box": [
+          4,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 148.71,
+              "72": 251.65,
+              "96": 356.95,
+              "120": 381.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    24,
+                    68
+                  ],
+                  [
+                    86,
+                    140
+                  ],
+                  [
+                    196,
+                    250
+                  ],
+                  [
+                    278,
+                    332
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-4-8",
+        "group": "westCourt",
+        "box": [
+          4,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 166.28,
+              "72": 289.55,
+              "96": 344.09,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    28,
+                    318
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    28,
+                    82
+                  ],
+                  [
+                    110,
+                    226
+                  ],
+                  [
+                    254,
+                    318
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    28,
+                    318
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-4-9",
+        "group": "westCourt",
+        "box": [
+          4,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 179.14,
+              "72": 241.55,
+              "96": 314.64,
+              "120": 360
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    78,
+                    258
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    78,
+                    258
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    78,
+                    258
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    42,
+                    284
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    42,
+                    106
+                  ],
+                  [
+                    134,
+                    154
+                  ],
+                  [
+                    182,
+                    202
+                  ],
+                  [
+                    230,
+                    284
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    42,
+                    284
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-4-11",
+        "group": "westCourt",
+        "box": [
+          4,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    100,
+                    236
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    100,
+                    154
+                  ],
+                  [
+                    182,
+                    236
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    100,
+                    236
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-court-5-11",
+        "group": "westCourt",
+        "box": [
+          5,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 65.57,
+              "72": 125.67,
+              "96": 179.14,
+              "120": 240
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    150,
+                    216
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    150,
+                    216
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    150,
+                    216
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    114,
+                    240
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    114,
+                    178
+                  ],
+                  [
+                    196,
+                    240
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    114,
+                    240
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "crossing-5-5",
+        "group": "crossing",
+        "box": [
+          5,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 65.57,
+              "72": 127.21,
+              "96": 235.23,
+              "120": 337.54
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    264,
+                    330
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    264,
+                    330
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    264,
+                    330
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    284
+                  ],
+                  [
+                    302,
+                    356
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "crossing-9-5",
+        "group": "crossing",
+        "box": [
+          9,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 325.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    342,
+                    474
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    342,
+                    474
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    342,
+                    474
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    316,
+                    510
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    316,
+                    370
+                  ],
+                  [
+                    398,
+                    418
+                  ],
+                  [
+                    446,
+                    510
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    316,
+                    510
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "crossing-9-7",
+        "group": "crossing",
+        "box": [
+          9,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 336
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    342,
+                    426
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    316,
+                    370
+                  ],
+                  [
+                    398,
+                    452
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    316,
+                    452
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "crossing-10-7",
+        "group": "crossing",
+        "box": [
+          10,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 164.95,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    366,
+                    432
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    366,
+                    432
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    366,
+                    432
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    340,
+                    456
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    340,
+                    394
+                  ],
+                  [
+                    412,
+                    456
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    340,
+                    456
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "crossing-11-6",
+        "group": "crossing",
+        "box": [
+          11,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 231.5,
+              "120": 421.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    384,
+                    450
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    384,
+                    450
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    384,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    360,
+                    476
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    360,
+                    404
+                  ],
+                  [
+                    422,
+                    476
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    360,
+                    476
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-court-11-4",
+        "group": "northCourt",
+        "box": [
+          11,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    414,
+                    546
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    414,
+                    546
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    414,
+                    546
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    378,
+                    442
+                  ],
+                  [
+                    470,
+                    490
+                  ],
+                  [
+                    518,
+                    572
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    378,
+                    572
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-court-12-4",
+        "group": "northCourt",
+        "box": [
+          12,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 314.64,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    486,
+                    570
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    402,
+                    596
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    402,
+                    514
+                  ],
+                  [
+                    542,
+                    596
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    402,
+                    596
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-court-13-4",
+        "group": "northCourt",
+        "box": [
+          13,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 310.28,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    510,
+                    594
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    484,
+                    678
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    484,
+                    538
+                  ],
+                  [
+                    566,
+                    678
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    484,
+                    678
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-court-14-4",
+        "group": "northCourt",
+        "box": [
+          14,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    534,
+                    666
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    534,
+                    666
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    534,
+                    666
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    508,
+                    692
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    508,
+                    562
+                  ],
+                  [
+                    590,
+                    610
+                  ],
+                  [
+                    638,
+                    692
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    508,
+                    692
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-court-14-5",
+        "group": "northCourt",
+        "box": [
+          14,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 266.64,
+              "120": 405.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    522,
+                    716
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    522,
+                    634
+                  ],
+                  [
+                    662,
+                    716
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    522,
+                    716
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-court-16-4",
+        "group": "northCourt",
+        "box": [
+          16,
+          4
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 299.56
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    556,
+                    692
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    556,
+                    610
+                  ],
+                  [
+                    638,
+                    692
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    556,
+                    692
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-court-16-5",
+        "group": "northCourt",
+        "box": [
+          16,
+          5
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 262.28,
+              "120": 315.96
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    570,
+                    716
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    570,
+                    634
+                  ],
+                  [
+                    662,
+                    716
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    570,
+                    716
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-14-6",
+        "group": "eastReturn",
+        "box": [
+          14,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 266.64,
+              "120": 432
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    630,
+                    714
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    604,
+                    750
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    604,
+                    658
+                  ],
+                  [
+                    686,
+                    750
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    604,
+                    750
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-14-7",
+        "group": "eastReturn",
+        "box": [
+          14,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 405.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    628,
+                    764
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    628,
+                    682
+                  ],
+                  [
+                    710,
+                    764
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    628,
+                    764
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-16-7",
+        "group": "eastReturn",
+        "box": [
+          16,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 325.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    654,
+                    786
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    654,
+                    786
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    654,
+                    786
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    628,
+                    822
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    628,
+                    682
+                  ],
+                  [
+                    710,
+                    730
+                  ],
+                  [
+                    758,
+                    822
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    628,
+                    822
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-16-9",
+        "group": "eastReturn",
+        "box": [
+          16,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 395.56
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    702,
+                    786
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    676,
+                    870
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    676,
+                    730
+                  ],
+                  [
+                    758,
+                    870
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    676,
+                    870
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-17-9",
+        "group": "eastReturn",
+        "box": [
+          17,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    726,
+                    858
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    726,
+                    858
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    726,
+                    858
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    690,
+                    884
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    690,
+                    754
+                  ],
+                  [
+                    782,
+                    802
+                  ],
+                  [
+                    830,
+                    884
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    690,
+                    884
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-17-10",
+        "group": "eastReturn",
+        "box": [
+          17,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 314.64,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    714,
+                    908
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    714,
+                    826
+                  ],
+                  [
+                    854,
+                    908
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    714,
+                    908
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-17-11",
+        "group": "eastReturn",
+        "box": [
+          17,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 314.64,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    796,
+                    965
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    796,
+                    850
+                  ],
+                  [
+                    878,
+                    957
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    796,
+                    990
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-17-12",
+        "group": "eastReturn",
+        "box": [
+          17,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 252.45,
+              "120": 349.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    846,
+                    978
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    846,
+                    976
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    846,
+                    978
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    820,
+                    991
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    820,
+                    874
+                  ],
+                  [
+                    902,
+                    922
+                  ],
+                  [
+                    950,
+                    975
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    820,
+                    1004
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-19-10",
+        "group": "eastReturn",
+        "box": [
+          19,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 218.64,
+              "120": 288
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    762,
+                    908
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    762,
+                    826
+                  ],
+                  [
+                    854,
+                    908
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    762,
+                    908
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "east-return-19-11",
+        "group": "eastReturn",
+        "box": [
+          19,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 218.64,
+              "120": 277.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    796,
+                    942
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    796,
+                    850
+                  ],
+                  [
+                    878,
+                    942
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    796,
+                    942
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-15-14",
+        "group": "late",
+        "box": [
+          15,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 113.57,
+              "72": 139.88,
+              "96": 183.5,
+              "120": 216
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    942,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    942,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    942,
+                    1056
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    916,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    916,
+                    970
+                  ],
+                  [
+                    998,
+                    1018
+                  ],
+                  [
+                    1046,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    916,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-16-14",
+        "group": "late",
+        "box": [
+          16,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 173.67,
+              "96": 203.14,
+              "120": 229.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    918,
+                    1002
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    918,
+                    1002
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    918,
+                    1002
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    882,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    882,
+                    946
+                  ],
+                  [
+                    974,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    882,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-17-14",
+        "group": "late",
+        "box": [
+          17,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 212.95,
+              "120": 237.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    894,
+                    978
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    894,
+                    978
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    894,
+                    978
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    868,
+                    1004
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    868,
+                    922
+                  ],
+                  [
+                    950,
+                    1004
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    868,
+                    1004
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-13-14",
+        "group": "late",
+        "box": [
+          13,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 141.58
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    990,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    990,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    990,
+                    1056
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    964,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    964,
+                    1018
+                  ],
+                  [
+                    1046,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    964,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-13-15",
+        "group": "late",
+        "box": [
+          13,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 1056,
+            "ideal": {
+              "48": 41.57,
+              "72": 77.67,
+              "96": 107.14,
+              "120": 133.98
+            },
+            "eligible": {
+              "base": {
+                "walker": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "walker": [
+                  [
+                    978,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    978,
+                    1042
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    978,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "arc": [
+    {
+      "id": "west-court-1-6",
+      "box": [
+        1,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    102
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    102
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    131
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    131
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    131
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    131
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    131
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    131
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-2-6",
+      "box": [
+        2,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    141
+                  ],
+                  [
+                    225,
+                    312
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    141
+                  ],
+                  [
+                    225,
+                    312
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    141
+                  ],
+                  [
+                    225,
+                    312
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    141
+                  ],
+                  [
+                    225,
+                    312
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    141
+                  ],
+                  [
+                    225,
+                    312
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    141
+                  ],
+                  [
+                    225,
+                    312
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-2-8",
+      "box": [
+        2,
+        8
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    6,
+                    138
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    6,
+                    138
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    174
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    174
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    174
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    174
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    174
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    174
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    299
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    299
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    299
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    299
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    299
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    299
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-2-9",
+      "box": [
+        2,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    188
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    188
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    188
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    188
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    188
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    188
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    279
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    279
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    279
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    279
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    279
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    279
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-2-10",
+      "box": [
+        2,
+        10
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    102,
+                    168
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    102,
+                    168
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    102,
+                    168
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    102,
+                    168
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    102,
+                    168
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    102,
+                    168
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    76,
+                    192
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    76,
+                    192
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    76,
+                    192
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    76,
+                    192
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    76,
+                    192
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    76,
+                    192
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    255
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    255
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    255
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    255
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    255
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    255
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-4-7",
+      "box": [
+        4,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    48,
+                    114
+                  ],
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    24,
+                    140
+                  ],
+                  [
+                    196,
+                    332
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    0,
+                    357
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    357
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    357
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    0,
+                    357
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    0,
+                    357
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    0,
+                    357
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-4-8",
+      "box": [
+        4,
+        8
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    54,
+                    138
+                  ],
+                  [
+                    198,
+                    282
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    28,
+                    318
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    28,
+                    318
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    28,
+                    318
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    28,
+                    318
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    28,
+                    318
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    28,
+                    318
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    3,
+                    347
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    3,
+                    347
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    3,
+                    347
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    3,
+                    347
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    3,
+                    347
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    3,
+                    347
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-4-9",
+      "box": [
+        4,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    78,
+                    258
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    78,
+                    258
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    78,
+                    258
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    78,
+                    258
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    78,
+                    258
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    78,
+                    258
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    42,
+                    284
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    42,
+                    284
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    42,
+                    284
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    42,
+                    284
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    42,
+                    284
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    42,
+                    284
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    13,
+                    327
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    13,
+                    327
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    13,
+                    327
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    13,
+                    327
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    13,
+                    327
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    13,
+                    327
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-4-11",
+      "box": [
+        4,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    126,
+                    210
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    126,
+                    210
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    100,
+                    236
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    100,
+                    236
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    100,
+                    236
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    100,
+                    236
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    100,
+                    236
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    100,
+                    236
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    75,
+                    261
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    75,
+                    261
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    75,
+                    261
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    75,
+                    261
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    75,
+                    261
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    75,
+                    261
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-court-5-11",
+      "box": [
+        5,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    150,
+                    216
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    150,
+                    216
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    150,
+                    216
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    150,
+                    216
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    150,
+                    216
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    150,
+                    216
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    114,
+                    240
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    114,
+                    240
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    114,
+                    240
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    114,
+                    240
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    114,
+                    240
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    114,
+                    240
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    85,
+                    264
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    85,
+                    264
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    85,
+                    264
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    85,
+                    264
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    85,
+                    264
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    85,
+                    264
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "crossing-5-5",
+      "box": [
+        5,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    264,
+                    330
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    264,
+                    330
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    264,
+                    330
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    264,
+                    330
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    264,
+                    330
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    264,
+                    330
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    66,
+                    78
+                  ],
+                  [
+                    240,
+                    356
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    37,
+                    107
+                  ],
+                  [
+                    216,
+                    381
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    37,
+                    107
+                  ],
+                  [
+                    216,
+                    381
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    37,
+                    107
+                  ],
+                  [
+                    216,
+                    381
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    37,
+                    107
+                  ],
+                  [
+                    216,
+                    381
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    37,
+                    107
+                  ],
+                  [
+                    216,
+                    381
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    37,
+                    107
+                  ],
+                  [
+                    216,
+                    381
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "crossing-9-5",
+      "box": [
+        9,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    342,
+                    474
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    342,
+                    474
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    342,
+                    474
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    342,
+                    474
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    342,
+                    474
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    342,
+                    474
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    316,
+                    510
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    316,
+                    510
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    316,
+                    510
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    316,
+                    510
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    316,
+                    510
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    316,
+                    439
+                  ],
+                  [
+                    440,
+                    510
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    291,
+                    539
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    291,
+                    539
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    291,
+                    539
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    291,
+                    539
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    291,
+                    539
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    291,
+                    539
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "crossing-9-7",
+      "box": [
+        9,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    342,
+                    426
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    342,
+                    426
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    342,
+                    426
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    316,
+                    452
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    316,
+                    452
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    316,
+                    452
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    291,
+                    477
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    291,
+                    477
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    291,
+                    477
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    291,
+                    477
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    291,
+                    477
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    291,
+                    477
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "crossing-10-7",
+      "box": [
+        10,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    366,
+                    432
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    366,
+                    432
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    366,
+                    432
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    366,
+                    432
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    366,
+                    432
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    366,
+                    432
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    340,
+                    456
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    340,
+                    456
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    340,
+                    456
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    340,
+                    456
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    340,
+                    456
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    340,
+                    456
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    315,
+                    480
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    315,
+                    480
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    315,
+                    480
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    315,
+                    480
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    315,
+                    480
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    315,
+                    480
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "crossing-11-6",
+      "box": [
+        11,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    384,
+                    450
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    384,
+                    450
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    384,
+                    450
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    384,
+                    450
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    384,
+                    450
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    384,
+                    450
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    360,
+                    476
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    360,
+                    476
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    360,
+                    476
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    360,
+                    476
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    360,
+                    476
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    360,
+                    476
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    336,
+                    567
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    336,
+                    567
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    336,
+                    567
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    336,
+                    567
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    336,
+                    567
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    336,
+                    567
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-court-11-4",
+      "box": [
+        11,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    414,
+                    546
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    414,
+                    546
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    414,
+                    546
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    414,
+                    546
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    414,
+                    546
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    414,
+                    546
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    378,
+                    572
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    378,
+                    572
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    378,
+                    447
+                  ],
+                  [
+                    448,
+                    463
+                  ],
+                  [
+                    464,
+                    572
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    349,
+                    597
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    349,
+                    597
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    349,
+                    597
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    349,
+                    597
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    349,
+                    597
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    349,
+                    597
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-court-12-4",
+      "box": [
+        12,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    486,
+                    570
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    486,
+                    570
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    486,
+                    570
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    402,
+                    596
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    402,
+                    596
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    402,
+                    596
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    402,
+                    596
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    402,
+                    596
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    402,
+                    596
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    373,
+                    687
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    373,
+                    687
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    373,
+                    687
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    373,
+                    687
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    373,
+                    687
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    373,
+                    687
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-court-13-4",
+      "box": [
+        13,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    510,
+                    594
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    510,
+                    594
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    510,
+                    594
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    484,
+                    678
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    484,
+                    678
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    484,
+                    678
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    484,
+                    678
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    484,
+                    678
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    484,
+                    678
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    397,
+                    707
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    397,
+                    707
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    397,
+                    707
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    397,
+                    707
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    397,
+                    707
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    397,
+                    707
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-court-14-4",
+      "box": [
+        14,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    534,
+                    666
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    534,
+                    666
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    534,
+                    666
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    534,
+                    666
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    534,
+                    666
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    534,
+                    666
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    508,
+                    692
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    508,
+                    692
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    508,
+                    692
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    508,
+                    692
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    508,
+                    692
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    508,
+                    692
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    483,
+                    717
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    483,
+                    717
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    483,
+                    717
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    483,
+                    717
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    483,
+                    717
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    483,
+                    717
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-court-14-5",
+      "box": [
+        14,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    522,
+                    716
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    522,
+                    716
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    522,
+                    716
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    522,
+                    716
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    522,
+                    716
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    522,
+                    638
+                  ],
+                  [
+                    639,
+                    716
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    493,
+                    759
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    493,
+                    759
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    493,
+                    759
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    493,
+                    759
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    493,
+                    759
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    493,
+                    759
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-court-16-4",
+      "box": [
+        16,
+        4
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    556,
+                    692
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    556,
+                    692
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    556,
+                    692
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    556,
+                    692
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    556,
+                    692
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    556,
+                    692
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    531,
+                    717
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    531,
+                    717
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    531,
+                    717
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    531,
+                    717
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    531,
+                    717
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    531,
+                    717
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-court-16-5",
+      "box": [
+        16,
+        5
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    606,
+                    690
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    606,
+                    690
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    570,
+                    716
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    570,
+                    716
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    570,
+                    716
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    570,
+                    716
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    570,
+                    716
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    570,
+                    716
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    541,
+                    803
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    541,
+                    803
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    541,
+                    803
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    541,
+                    803
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    541,
+                    803
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    541,
+                    803
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-14-6",
+      "box": [
+        14,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    630,
+                    714
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    630,
+                    714
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    630,
+                    714
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    604,
+                    750
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    604,
+                    750
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    604,
+                    750
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    604,
+                    750
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    604,
+                    750
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    604,
+                    750
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    513,
+                    779
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    513,
+                    779
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    513,
+                    779
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    513,
+                    779
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    513,
+                    779
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    513,
+                    779
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-14-7",
+      "box": [
+        14,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    628,
+                    764
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    628,
+                    764
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    628,
+                    764
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    628,
+                    764
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    628,
+                    764
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    628,
+                    764
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    603,
+                    789
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    603,
+                    789
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    603,
+                    789
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    603,
+                    789
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    603,
+                    789
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    603,
+                    789
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-16-7",
+      "box": [
+        16,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    654,
+                    786
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    654,
+                    786
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    654,
+                    786
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    654,
+                    786
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    654,
+                    786
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    654,
+                    786
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    628,
+                    822
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    628,
+                    822
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    628,
+                    822
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    628,
+                    822
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    628,
+                    822
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    628,
+                    822
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    603,
+                    851
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    603,
+                    851
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    603,
+                    851
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    603,
+                    851
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    603,
+                    851
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    603,
+                    851
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-16-9",
+      "box": [
+        16,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    702,
+                    786
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    702,
+                    786
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    676,
+                    870
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    676,
+                    870
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    676,
+                    870
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    676,
+                    870
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    676,
+                    870
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    676,
+                    870
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    651,
+                    899
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    651,
+                    899
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    651,
+                    899
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    651,
+                    899
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    651,
+                    899
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    651,
+                    899
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-17-9",
+      "box": [
+        17,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    726,
+                    858
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    726,
+                    858
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    726,
+                    858
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    726,
+                    858
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    726,
+                    858
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    726,
+                    858
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    690,
+                    884
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    690,
+                    884
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    690,
+                    884
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    690,
+                    884
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    690,
+                    884
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    690,
+                    884
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    661,
+                    909
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    661,
+                    909
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    661,
+                    909
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    661,
+                    909
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    661,
+                    909
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    661,
+                    909
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-17-10",
+      "box": [
+        17,
+        10
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    714,
+                    908
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    714,
+                    908
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    714,
+                    908
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    714,
+                    908
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    714,
+                    908
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    714,
+                    908
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    685,
+                    999
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    685,
+                    960
+                  ],
+                  [
+                    980,
+                    999
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    685,
+                    999
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    685,
+                    999
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    685,
+                    960
+                  ],
+                  [
+                    980,
+                    999
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    685,
+                    999
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-17-11",
+      "box": [
+        17,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    796,
+                    990
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    796,
+                    968
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    796,
+                    990
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    796,
+                    990
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    796,
+                    968
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    796,
+                    990
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    709,
+                    1023
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    709,
+                    1023
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    709,
+                    1023
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    709,
+                    1023
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    709,
+                    1023
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    709,
+                    1023
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-17-12",
+      "box": [
+        17,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    846,
+                    978
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    846,
+                    978
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    846,
+                    978
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    846,
+                    978
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    846,
+                    978
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    846,
+                    978
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    820,
+                    1004
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    820,
+                    1004
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    820,
+                    1004
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    820,
+                    1004
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    820,
+                    1004
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    820,
+                    948
+                  ],
+                  [
+                    949,
+                    1004
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    795,
+                    1047
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    795,
+                    1047
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    795,
+                    1047
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    795,
+                    1047
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    795,
+                    1047
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    795,
+                    1047
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-19-10",
+      "box": [
+        19,
+        10
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    762,
+                    908
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    762,
+                    908
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    762,
+                    908
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    762,
+                    908
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    762,
+                    908
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    762,
+                    908
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    733,
+                    951
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    733,
+                    951
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    733,
+                    951
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    733,
+                    951
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    733,
+                    951
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    733,
+                    951
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "east-return-19-11",
+      "box": [
+        19,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    796,
+                    942
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    796,
+                    942
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    796,
+                    942
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    796,
+                    942
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    796,
+                    942
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    796,
+                    942
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    753,
+                    971
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    753,
+                    971
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    753,
+                    971
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    753,
+                    971
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    753,
+                    971
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    753,
+                    971
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-15-14",
+      "box": [
+        15,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    942,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    942,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    942,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    942,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    942,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    942,
+                    1056
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    916,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    916,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    916,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    916,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    916,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    916,
+                    1038
+                  ],
+                  [
+                    1039,
+                    1056
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    873,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    873,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    873,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    873,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    873,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    873,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-16-14",
+      "box": [
+        16,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    918,
+                    1002
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    918,
+                    1002
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    918,
+                    1002
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    918,
+                    1002
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    918,
+                    1002
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    918,
+                    1002
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    882,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    882,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    882,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    882,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    882,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    882,
+                    1056
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    853,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    853,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    853,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    853,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    853,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    853,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-17-14",
+      "box": [
+        17,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    894,
+                    978
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    894,
+                    978
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    894,
+                    978
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    894,
+                    978
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    894,
+                    978
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    894,
+                    978
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    868,
+                    1004
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    868,
+                    1004
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    868,
+                    1004
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    868,
+                    1004
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    868,
+                    1004
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    868,
+                    1004
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    843,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    843,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    843,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    843,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    843,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    843,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-13-14",
+      "box": [
+        13,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    990,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    990,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    990,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    990,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    990,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    990,
+                    1056
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    964,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    964,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    964,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    964,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    964,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    964,
+                    1056
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    939,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    939,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    939,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    939,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    939,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    939,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-13-15",
+      "box": [
+        13,
+        15
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "walker": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    1014,
+                    1056
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "walker": [
+                  [
+                    978,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    978,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    978,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    978,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    978,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    978,
+                    1047
+                  ],
+                  [
+                    1048,
+                    1056
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "walker": [
+                  [
+                    949,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    949,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    949,
+                    1056
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "walker": [
+                  [
+                    949,
+                    1056
+                  ]
+                ],
+                "dune-tread": [
+                  [
+                    949,
+                    1056
+                  ]
+                ],
+                "twin-fan": [
+                  [
+                    949,
+                    1056
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "visibility": {
+    "sceneryPlacements": 178,
+    "camera": {
+      "mode": "default framed orthographic overview",
+      "yaw": 2.45,
+      "pitch": 0.68,
+      "directionTowardCamera": [
+        0.4959084333621017,
+        0.6287930240184686,
+        -0.5989108102765015
+      ],
+      "aspect": 1.25,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "radius": 265.51266374693824
+    },
+    "method": {
+      "groundY": 24,
+      "rayOriginY": 24.01,
+      "clearingSize": [
+        24,
+        24
+      ],
+      "sampleSpacing": 1,
+      "sampleOffsets": [
+        0.5,
+        23.5
+      ],
+      "samplesPerSite": 576,
+      "totalSiteSamples": 21312,
+      "rayLength": 2000,
+      "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+      "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+      "areaTolerance": 1e-8
+    },
+    "limitations": [
+      "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+      "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+      "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+      "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+    ],
+    "sites": [
+      {
+        "id": "west-court-1-6",
+        "box": [
+          1,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-2-6",
+        "box": [
+          2,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-2-8",
+        "box": [
+          2,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-2-9",
+        "box": [
+          2,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-2-10",
+        "box": [
+          2,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-4-7",
+        "box": [
+          4,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-4-8",
+        "box": [
+          4,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-4-9",
+        "box": [
+          4,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-4-11",
+        "box": [
+          4,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-court-5-11",
+        "box": [
+          5,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "crossing-5-5",
+        "box": [
+          5,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "crossing-9-5",
+        "box": [
+          9,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "crossing-9-7",
+        "box": [
+          9,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "crossing-10-7",
+        "box": [
+          10,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "crossing-11-6",
+        "box": [
+          11,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-court-11-4",
+        "box": [
+          11,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-court-12-4",
+        "box": [
+          12,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-court-13-4",
+        "box": [
+          13,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-court-14-4",
+        "box": [
+          14,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-court-14-5",
+        "box": [
+          14,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-court-16-4",
+        "box": [
+          16,
+          4
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-court-16-5",
+        "box": [
+          16,
+          5
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-14-6",
+        "box": [
+          14,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-14-7",
+        "box": [
+          14,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-16-7",
+        "box": [
+          16,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-16-9",
+        "box": [
+          16,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-17-9",
+        "box": [
+          17,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-17-10",
+        "box": [
+          17,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-17-11",
+        "box": [
+          17,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-17-12",
+        "box": [
+          17,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-19-10",
+        "box": [
+          19,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "east-return-19-11",
+        "box": [
+          19,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-15-14",
+        "box": [
+          15,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-16-14",
+        "box": [
+          16,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-17-14",
+        "box": [
+          17,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-13-14",
+        "box": [
+          13,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-13-15",
+        "box": [
+          13,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      }
+    ],
+    "passed": true
+  },
+  "passed": true
+}

@@ -1,0 +1,326 @@
+{
+  "wave": "a2-wave-1",
+  "placements": [
+    {
+      "id": "player-gun-1",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "box": [
+        16,
+        0,
+        9
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-2",
+      "model": "turret-study",
+      "variant": "upgrade1",
+      "box": [
+        17,
+        0,
+        7
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-3",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-4",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        5
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-5",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        10
+      ],
+      "turn": 0
+    },
+    {
+      "id": "player-gun-6",
+      "model": "turret-study",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        8
+      ],
+      "turn": 0
+    }
+  ],
+  "killed": 4,
+  "escaped": 3,
+  "stats": [
+    {
+      "id": "player-gun-1",
+      "variant": "upgrade1",
+      "range": 66,
+      "pivotY": 51.5,
+      "shots": 28,
+      "airShots": 8,
+      "inRange": 327,
+      "pitchRejected": 126,
+      "blocked": 0,
+      "eligible": 201,
+      "minPitch": 17.37619182671801,
+      "maxPitch": 38.51522881808523,
+      "examples": [
+        {
+          "at": 32.408333333331996,
+          "horizontal": 64.4672612864654,
+          "aimY": 73,
+          "pitch": 17.90630584641986,
+          "reason": "eligible"
+        },
+        {
+          "at": 32.50833333333199,
+          "horizontal": 62.61544892791341,
+          "aimY": 73,
+          "pitch": 18.383648251070976,
+          "reason": "eligible"
+        }
+      ],
+      "airEligibleAttention": {
+        "idle / dog": 102,
+        "dog / dog": 45,
+        "moth / unreserved": 46,
+        "dog / unreserved": 8
+      }
+    },
+    {
+      "id": "player-gun-2",
+      "variant": "upgrade1",
+      "range": 66,
+      "pivotY": 51.5,
+      "shots": 16,
+      "airShots": 0,
+      "inRange": 153,
+      "pitchRejected": 27,
+      "blocked": 0,
+      "eligible": 126,
+      "minPitch": 17.49163162289167,
+      "maxPitch": 37.099316154440295,
+      "examples": [
+        {
+          "at": 33.60833333333193,
+          "horizontal": 64.46726128647046,
+          "aimY": 73,
+          "pitch": 17.90630584641986,
+          "reason": "eligible"
+        },
+        {
+          "at": 33.70833333333192,
+          "horizontal": 62.61544892791846,
+          "aimY": 73,
+          "pitch": 18.383648251070976,
+          "reason": "eligible"
+        }
+      ],
+      "airEligibleAttention": {
+        "idle / dog": 126
+      }
+    },
+    {
+      "id": "player-gun-3",
+      "variant": "base",
+      "range": 48,
+      "pivotY": 48.5,
+      "shots": 15,
+      "airShots": 6,
+      "inRange": 123,
+      "pitchRejected": 63,
+      "blocked": 0,
+      "eligible": 60,
+      "minPitch": 25.627424735105787,
+      "maxPitch": 42.205563715678984,
+      "examples": [
+        {
+          "at": 8.208333333333371,
+          "horizontal": 46.50477872697172,
+          "aimY": 72.96005284786224,
+          "pitch": 26.845605445969696,
+          "reason": "eligible"
+        },
+        {
+          "at": 8.308333333333366,
+          "horizontal": 44.803583686031814,
+          "aimY": 72.98894909024239,
+          "pitch": 27.627115904182872,
+          "reason": "eligible"
+        }
+      ],
+      "airEligibleAttention": {
+        "moth / unreserved": 55,
+        "dog / unreserved": 3,
+        "idle / unreserved": 2
+      }
+    },
+    {
+      "id": "player-gun-4",
+      "variant": "base",
+      "range": 48,
+      "pivotY": 48.5,
+      "shots": 25,
+      "airShots": 6,
+      "inRange": 246,
+      "pitchRejected": 126,
+      "blocked": 0,
+      "eligible": 120,
+      "minPitch": 25.812797581080105,
+      "maxPitch": 42.205563995102004,
+      "examples": [
+        {
+          "at": 8.208333333333371,
+          "horizontal": 46.50477872697172,
+          "aimY": 72.96005284786224,
+          "pitch": 26.58651253019305,
+          "reason": "eligible"
+        },
+        {
+          "at": 8.308333333333366,
+          "horizontal": 44.803583686031814,
+          "aimY": 72.98894909024239,
+          "pitch": 27.459929668192785,
+          "reason": "eligible"
+        }
+      ],
+      "airEligibleAttention": {
+        "dog / dog": 27,
+        "moth / unreserved": 81,
+        "dog / unreserved": 11,
+        "idle / unreserved": 1
+      }
+    },
+    {
+      "id": "player-gun-5",
+      "variant": "base",
+      "range": 48,
+      "pivotY": 48.5,
+      "shots": 18,
+      "airShots": 4,
+      "inRange": 123,
+      "pitchRejected": 63,
+      "blocked": 0,
+      "eligible": 60,
+      "minPitch": 25.627427597941033,
+      "maxPitch": 42.205563995102004,
+      "examples": [
+        {
+          "at": 22.608333333332553,
+          "horizontal": 46.504778726964126,
+          "aimY": 72.96005284786224,
+          "pitch": 26.58651253019305,
+          "reason": "eligible"
+        },
+        {
+          "at": 22.708333333332547,
+          "horizontal": 44.803583686024176,
+          "aimY": 72.98894909024239,
+          "pitch": 27.459929668192785,
+          "reason": "eligible"
+        }
+      ],
+      "airEligibleAttention": {
+        "moth / unreserved": 40,
+        "dog / dog": 20
+      }
+    },
+    {
+      "id": "player-gun-6",
+      "variant": "base",
+      "range": 48,
+      "pivotY": 48.5,
+      "shots": 19,
+      "airShots": 5,
+      "inRange": 168,
+      "pitchRejected": 111,
+      "blocked": 0,
+      "eligible": 57,
+      "minPitch": 26.029596772811395,
+      "maxPitch": 42.205563995102004,
+      "examples": [
+        {
+          "at": 22.608333333332553,
+          "horizontal": 46.504778726964126,
+          "aimY": 72.96005284786224,
+          "pitch": 26.845605445969692,
+          "reason": "eligible"
+        },
+        {
+          "at": 22.708333333332547,
+          "horizontal": 44.803583686024176,
+          "aimY": 72.98894909024239,
+          "pitch": 27.627115904182865,
+          "reason": "eligible"
+        }
+      ],
+      "airEligibleAttention": {
+        "moth / unreserved": 45,
+        "idle / unreserved": 1,
+        "dog / unreserved": 9,
+        "dog / dog": 2
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "a2-wave-1-dog-1",
+      "model": "dog",
+      "result": "killed",
+      "at": 43.58333333333136
+    },
+    {
+      "id": "a2-wave-1-dog-3",
+      "model": "dog",
+      "result": "killed",
+      "at": 51.00833333333094
+    },
+    {
+      "id": "a2-wave-1-dog-2",
+      "model": "dog",
+      "result": "killed",
+      "at": 51.06666666666427
+    },
+    {
+      "id": "a2-wave-1-moth-5",
+      "result": "escaped",
+      "at": 52.19999999999754
+    },
+    {
+      "id": "a2-wave-1-dog-4",
+      "model": "dog",
+      "result": "killed",
+      "at": 54.16666666666409
+    },
+    {
+      "id": "a2-wave-1-moth-6",
+      "result": "escaped",
+      "at": 56.19999999999731
+    },
+    {
+      "id": "a2-wave-1-moth-7",
+      "result": "escaped",
+      "at": 60.19999999999708
+    }
+  ]
+}

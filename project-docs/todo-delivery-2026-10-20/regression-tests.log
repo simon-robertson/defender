@@ -1,0 +1,61 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-effects.test.js:
+(pass) missile impacts throw a layered fireball, hot fragments and smoke with the original light curve [1.37ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [0.95ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.04ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.17ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [0.97ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.16ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [0.89ms]
+(pass) simultaneous missile bursts stay bounded and pause holds all payloads exactly [0.73ms]
+
+tests/model-lights.test.js:
+(pass) flagged exposed face clusters preserve all zone colours and only the authored turret panels [146.25ms]
+(pass) edge-connected matching faces share an emitter; gaps, point contacts and different materials do not [0.24ms]
+(pass) logical transforms, compacted visibility and unchanged invalidations reuse storage correctly [0.08ms]
+(pass) model light overflow is explicit, bounded and does not allocate one light per quad [0.09ms]
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [5.00ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [3.48ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.31ms]
+(pass) stable subjects receive repeated fresh angles with smooth high flight and broad gimbal aiming [8.17ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.15ms]
+{"levelIndex":0,"hz":30,"travelled":137.22212303816013,"readable":1,"minY":158.41014722180694,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":60,"travelled":111.6314230626908,"readable":1,"minY":147.13741205704844,"maxY":224,"bytes":11006}
+{"levelIndex":0,"hz":120,"travelled":161.05727757206753,"readable":1,"minY":154.7870044367845,"maxY":224,"bytes":11006}
+{"levelIndex":1,"hz":30,"travelled":491.0924335657881,"readable":0.9821596244131455,"minY":155.8752406330935,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":60,"travelled":468.80237243983095,"readable":0.9065288868013152,"minY":144.00025079639758,"maxY":224,"bytes":13904}
+{"levelIndex":1,"hz":120,"travelled":521.7474652887545,"readable":0.9828558008454673,"minY":146.51653249452036,"maxY":224,"bytes":13904}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5797.92ms]
+{"currentLevel":2,"mothFrames":1527,"minY":174.23330737221463,"maxY":224,"minPitch":0.40852068401324815,"minEnemy3D":130.03815625663478,"minFlyer3D":130.03815625663478,"minVerticalGap":101.64154072915872,"stalledFrames":0,"minStep":0.00011111109785897433,"heldDriftFrames":1973,"meanSpeed":10.91806714210762,"blockedMoves":0,"airborneFloor":173,"travelled":909.31902055001,"bytes":12862}
+{"currentLevel":3,"mothFrames":2059,"minY":173.71610168483,"maxY":223.99989517395514,"minPitch":0.41559450588450897,"minEnemy3D":150.80688834954705,"minFlyer3D":169.97653655297248,"minVerticalGap":100.71610168483,"stalledFrames":0,"minStep":0.00002777777779947328,"heldDriftFrames":2561,"meanSpeed":9.813046409225386,"blockedMoves":2,"airborneFloor":173,"travelled":894.9498325217163,"bytes":17096}
+{"currentLevel":4,"mothFrames":3821,"minY":175.00756662218006,"maxY":224,"minPitch":0.40762171124215835,"minEnemy3D":148.60753516977337,"minFlyer3D":148.60753516977337,"minVerticalGap":104.52266115929692,"stalledFrames":0,"minStep":0.000027777777784104038,"heldDriftFrames":2844,"meanSpeed":10.552920946695949,"blockedMoves":1,"airborneFloor":173,"travelled":1045.7944658180872,"bytes":15640}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [5734.16ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [828.87ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.73ms]
+{"smoothMotion":{"minStep":0.000027777777773962953,"maxAcceleration":24.00000000058749,"maxJerk":48.00000010487128,"driftFrames":3305,"blocked":0}}
+(pass) open three-leg travel eases continuously into drift with bounded actual acceleration, gimbal acceleration and optical zoom [10.73ms]
+(pass) opening stations vary across cosmetic seeds and repeated entries while staying clear [3.83ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1102.25ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [261.31ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [818.86ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [670.61ms]
+
+tests/tube-light-bounds.test.js:
+(pass) bounds contain complete production plasma and moving/restriking Arc falloff volumes [1.75ms]
+(pass) bounds include independently scaled segments, large Float32 coordinates and empty records [0.03ms]
+
+tests/play-conditions.test.js:
+(pass) each zone advances through stable day, afternoon, evening and night with clear weather and no random draws [0.14ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.60ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [3678.94ms]
+(pass) play time-of-day overrides are cloned and do not rewrite saved lighting [1.71ms]
+
+ 33 pass
+ 0 fail
+ 218374 expect() calls
+Ran 33 tests across 6 files. [19.11s]

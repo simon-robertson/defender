@@ -1,0 +1,34 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-polish.test.js:
+(pass) overview/perspective blend preserves invertible projection, exact endpoints and smooth reversible travel [2.56ms]
+(pass) real Drone coordinator eases into a wave, freezes when paused and returns to preparation without a snap [5.20ms]
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.86ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.46ms]
+
+tests/enemy-expansion-models.test.js:
+(pass) all seven expansion models reproduce canonical sources with grounded, unique connected grid parts [15.11ms]
+(pass) approved sensors alone emit and each of the seven meshes exposes exactly one local-light cluster [68.71ms]
+(pass) animated part IDs, parents and pivots agree with the immutable geometry contracts [0.58ms]
+EXPANSION_MECHANISM_BOUNDS {"roller":{"poses":36,"minY":0.007504761219024658,"maxY":23.09000000357628,"radius":10.862630905357298},"dune-tread":{"poses":36,"minY":0.008901119232177734,"maxY":10.17000000178814,"radius":12.932437203218957},"moth":{"poses":36,"minY":-0.0964193344116211,"maxY":10.710541009902954,"radius":12.389798140219126},"twin-fan":{"poses":36,"minY":1.7388859391212463,"maxY":13.037687167525291,"radius":12.859976913682864},"ray":{"poses":36,"minY":-0.12282165884971619,"maxY":9.42706374824047,"radius":11.147574736265565},"lantern":{"poses":36,"minY":1.4238436222076416,"maxY":23.750376984477043,"radius":12.315632622139791}}
+(pass) rolling, wing and rotor envelopes preserve actual occupied-part separation [240.50ms]
+EXPANSION_TRIPOD_BOUNDS {"poses":768,"minY":-0.0000010770880161103946,"radius":11.880981457652627,"soleRadius":11.457193363509928,"maxPart":{"id":"lower-fl","cell":[4,3,5],"point":[94.0642264932394,3.208787575364113,34.74231452122331]},"maxDistance":46.25,"footError":0.000008213820450464482,"plantedError":0.00000762939453125,"rule":{"speed":14,"turnDistance":12,"airborne":false,"altitude":0,"crouch":0.5,"cycleSeconds":0.3,"stanceFraction":0.72,"lift":0.5},"collision":null}
+(pass) Tripod full gait keeps flat planted feet, reach, ground and actual-part clearance through both turns [1247.58ms]
+
+tests/shot-effects.test.js:
+(pass) shot sockets occupy the real open muzzle centres on all three variants [14.03ms]
+(pass) paired flashes and local lights follow the recoiling guns; sparks stay in world space [0.34ms]
+(pass) shot motion and light fading are independent of frame subdivision [0.51ms]
+(pass) effect pools remain bounded under overload, expire cleanly and retain their buffers [1.70ms]
+(pass) burst events reach effects after pose updates and preserve original timestamps across stalls [0.67ms]
+
+tests/play-conditions.test.js:
+(pass) each zone advances through stable day, afternoon, evening and night with clear weather and no random draws [0.09ms]
+(pass) play composition changes only weather on a clone, retains authored time and keeps unsupported zones clear [1.69ms]
+(pass) real A2 runtime retains selected conditions across wave preparation and deployments [3782.73ms]
+(pass) play time-of-day overrides are cloned and do not rewrite saved lighting [1.19ms]
+
+ 18 pass
+ 0 fail
+ 7132 expect() calls
+Ran 18 tests across 4 files. [5.41s]

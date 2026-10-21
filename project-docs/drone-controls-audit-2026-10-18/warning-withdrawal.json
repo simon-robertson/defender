@@ -1,0 +1,41 @@
+{
+  "method": "Inject a stale prior threat warning into an otherwise clear production controller with a living target. Verify normal useful launch and fire without an avoidance manoeuvre at30/60/120Hz.",
+  "runs": [
+    {
+      "hz": 30,
+      "currentClear": true,
+      "futureClear": true,
+      "wantEvade": false,
+      "evasions": 0,
+      "launches": 1,
+      "firstShot": 1.166666666666667,
+      "shots": 7,
+      "phase": "attack",
+      "flightElapsed": 2.999999999999999
+    },
+    {
+      "hz": 60,
+      "currentClear": true,
+      "futureClear": true,
+      "wantEvade": false,
+      "evasions": 0,
+      "launches": 1,
+      "firstShot": 1.1500000000000008,
+      "shots": 7,
+      "phase": "attack",
+      "flightElapsed": 2.9999999999999942
+    },
+    {
+      "hz": 120,
+      "currentClear": true,
+      "futureClear": true,
+      "wantEvade": false,
+      "evasions": 0,
+      "launches": 1,
+      "firstShot": 1.1499999999999984,
+      "shots": 8,
+      "phase": "attack",
+      "flightElapsed": 2.999999999999992
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "distinctAffectedTests": 189,
+  "files": [
+    "tests/arc-chain.test.js",
+    "tests/arc-combat.test.js",
+    "tests/arc-effects.test.js",
+    "tests/blood-decals.test.js",
+    "tests/collision-query-cache.test.js",
+    "tests/critter-gibs.test.js",
+    "tests/damage-effects.test.js",
+    "tests/leaves.test.js",
+    "tests/missile-flight.test.js",
+    "tests/model-lights.test.js",
+    "tests/planar-reflection.test.js",
+    "tests/play-camera-anticipation.test.js",
+    "tests/play-camera-views.test.js",
+    "tests/play-drone-camera.test.js",
+    "tests/play-polish.test.js",
+    "tests/rain.test.js",
+    "tests/renderer.test.js",
+    "tests/screenshot-camera.test.js",
+    "tests/snow.test.js",
+    "tests/visibility.test.js",
+    "tests/water-impact.test.js",
+    "tests/water.test.js"
+  ],
+  "recordedLogTests": 138,
+  "specialistAdditionalPassingChecks": {
+    "camera": {
+      "count": 29,
+      "assertions": 218631,
+      "files": [
+        "tests/play-camera-anticipation.test.js",
+        "tests/play-drone-camera.test.js",
+        "tests/play-camera-views.test.js",
+        "tests/screenshot-camera.test.js"
+      ],
+      "log": "Specialist tool transcript; no saved raw log."
+    },
+    "damage": {
+      "count": 22,
+      "files": [
+        "tests/damage-effects.test.js",
+        "tests/critter-gibs.test.js"
+      ],
+      "log": "Specialist tool transcript; blood-decals 3 checks already counted in shared log."
+    }
+  },
+  "scope": "Affected tests only; not the full suite."
+}

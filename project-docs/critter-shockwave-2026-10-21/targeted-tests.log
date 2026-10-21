@@ -1,0 +1,43 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.42ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [6.86ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [2.04ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.52ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [1.13ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.42ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [1.80ms]
+
+tests/critter-density.test.js:
+{"densitySurvey":[{"id":"moss-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"moss-02","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"moss-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"moss-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ochre-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ochre-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ice-01","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"ice-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ice-03","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"ice-04","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"plum-01","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"plum-02","ground":9,"birds":3,"fish":0,"additionalNearRoute":6},{"id":"plum-03","ground":9,"birds":3,"fish":3,"additionalNearRoute":6},{"id":"plum-04","ground":9,"birds":3,"fish":0,"additionalNearRoute":5}]}
+(pass) all sixteen levels double land wildlife with separated supported routeside seeds and safe gib/respawn [4093.00ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.34ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.42ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [1.91ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.59ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.36ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.16ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.35ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [17.94ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.33ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [10.59ms]
+(pass) every enemy death light ends thirty percent sooner with the same peak, radius and independent blast/debris lifetime [2.64ms]
+
+tests/critter-gibs.test.js:
+(pass) critter blast radii include exact 3D boundaries without a body-radius allowance, for ground and birds [979.76ms]
+(pass) missile physical contacts gib fish at 72 units even if the visual blast pool is full [19.07ms]
+(pass) fragments and persistent solid spray leave in the 3D blast direction and reuse actual model colours [0.74ms]
+(pass) all 24 critters retain all 1152 remains alongside full enemy storage until a 2 second run-end fade [30.16ms]
+(pass) wave preparation safely restores dead ground/perched/flying actors without replacing rig or route storage [223.45ms]
+(pass) a critter killed by a late settling missile receives a fresh fade bounded by the existing settlement end [0.36ms]
+(pass) critter gore doubles both burst components and adds a stronger outward impulse without extra blast lights [0.17ms]
+(pass) shockwave launch is bounded at the core, strongest nearby and weaker at the inclusive lethal radius [0.65ms]
+(pass) the actual blast radius reaches the impulse model and vertical blasts push away in 3D [205.63ms]
+
+ 28 pass
+ 0 fail
+ 26278 expect() calls
+Ran 28 tests across 4 files. [5.64s]

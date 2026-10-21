@@ -1,0 +1,15 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1618.53ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [6300.32ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [29335.38ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [1993.52ms]
+(pass) an animal on legal build ground respawns safely while deployment commits in place [1884.74ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [1868.76ms]
+(pass) a bird occupying build ground returns to a clear supported perch without replacing its actor [1873.64ms]
+
+ 7 pass
+ 0 fail
+ 9532 expect() calls
+Ran 7 tests across 1 file. [44.89s]

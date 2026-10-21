@@ -1,0 +1,59 @@
+bun test v1.4.2 (744846f84)
+
+tests/enemy-eyes.test.js:
+(pass) dog eye faces alone glow and retain exposed local-light metadata [23.28ms]
+(pass) walker eye faces alone glow and retain exposed local-light metadata [13.42ms]
+(pass) spider eye faces alone glow and retain exposed local-light metadata [15.82ms]
+
+tests/enemy-aesthetics.test.js:
+(pass) enemy refinement preserves rig contracts, footprints and accepted geometry except removing fan guard clutter [135.08ms]
+(pass) front sensor face details are bilaterally balanced [1.43ms]
+
+tests/enemy-models.test.js:
+(pass) Walker and Spider reproduce the accepted saved designs without shared mutable state [5.52ms]
+(pass) enemy geometry has only emissive eyes, stays matte and bounded, and has no enemy upgrades [3.35ms]
+(pass) rigs have independent grounded feet and documented parent chains/pivots [1.29ms]
+(pass) accepted rigid parts have no shared coplanar faces and each solid part is connected [3.34ms]
+(pass) accepted source meshes compile to finite exposed quads with preserved face materials [27.63ms]
+(pass) small isolated hip and knee pitch inspections preserve rigid-part clearance [10.56ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1356.44ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [275.09ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [619.22ms]
+(pass) missile contacts gib ground and perched/flying birds within 72 units despite a full blast pool, retaining the 48 unit fright event [507.17ms]
+
+tests/renderer.test.js:
+(pass) blood decals blend last in the cached opaque pass, never write depth/shadows and allocate no new images [4.11ms]
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [7.09ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.24ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.25ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [378.25ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [6.49ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [329.91ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [542.97ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [3.03ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [3.42ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [4.14ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [56.41ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [18.42ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1598.45ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [20.68ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [15.49ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.02ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [2.08ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [14.36ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.45ms]
+(pass) all plasma links coexist with primary and secondary combat Arcs, and detached plasma cannot resurrect expired arc light [3.09ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.92ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.90ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [133.14ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [2.02ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.96ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [267.38ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [51.75ms]
+
+ 43 pass
+ 0 fail
+ 32723 expect() calls
+Ran 43 tests across 5 files. [6.51s]

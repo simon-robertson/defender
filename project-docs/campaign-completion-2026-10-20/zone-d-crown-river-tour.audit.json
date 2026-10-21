@@ -1,0 +1,8542 @@
+{
+  "schema": "defender.d-carving-option-audit",
+  "version": 1,
+  "id": "crown-river-tour",
+  "sourceHash": "d8af50121168098e9ec3ee5920ffa7d1e512b1d1bcbfc4bffa45e98358e0c35d",
+  "recordedAt": "2026-10-20T13:32:23.870Z",
+  "method": "Synthetic offline copy removes previewMode only to admit production Spider/Lantern and individual weapon probes. Actual level contains scenery and wildlife only. Guns: production actual pitched muzzles at zero/full recoil, per-species 1-unit bins. Arcs: production closest terminal, centre LOS and deterministic production facing-side surface sampling at 1-unit bins. No damage, waves, budget or simultaneous adjacent-defence claim.",
+  "siteFailures": [],
+  "geometry": {
+    "sampling": "Clearance: 1-unit canonical route poses and endpoints, actual occupied-part vertex envelopes against exact static cuboids and complete defence motion envelopes. Coverage: 1-unit midpoint bins, both actual muzzle rays at zero/full recoil; base/upgrade1 guns only. Ideal120 is missile range geometry, not a flight prediction.",
+    "sampledPoses": 2450,
+    "checkedParts": 18375,
+    "failures": [],
+    "coverage": [
+      {
+        "id": "west-1-6",
+        "group": "west",
+        "box": [
+          1,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 65.57,
+              "72": 101.67,
+              "96": 131.14,
+              "120": 189.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    102
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-2-6",
+        "group": "west",
+        "box": [
+          2,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 140.95,
+              "120": 192
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-2-8",
+        "group": "west",
+        "box": [
+          2,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 192,
+              "96": 216,
+              "120": 240
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    192
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    192
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-2-9",
+        "group": "west",
+        "box": [
+          2,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 113.57,
+              "72": 216,
+              "96": 240,
+              "120": 312
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    78,
+                    192
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    192
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    0,
+                    216
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    216
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-4-7",
+        "group": "west",
+        "box": [
+          4,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 65.57,
+              "72": 115.88,
+              "96": 179.14,
+              "120": 275.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    48,
+                    114
+                  ]
+                ],
+                "lantern": [
+                  [
+                    48,
+                    114
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    24,
+                    140
+                  ]
+                ],
+                "lantern": [
+                  [
+                    24,
+                    140
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-4-8",
+        "group": "west",
+        "box": [
+          4,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 325.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    28,
+                    174
+                  ]
+                ],
+                "lantern": [
+                  [
+                    28,
+                    174
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-4-9",
+        "group": "west",
+        "box": [
+          4,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 155.33,
+              "96": 214.28,
+              "120": 477.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    42,
+                    198
+                  ]
+                ],
+                "lantern": [
+                  [
+                    42,
+                    198
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-1-11",
+        "group": "west",
+        "box": [
+          1,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 155.33,
+              "96": 214.28,
+              "120": 325.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    114,
+                    270
+                  ]
+                ],
+                "lantern": [
+                  [
+                    114,
+                    270
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-3-11",
+        "group": "west",
+        "box": [
+          3,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 113.57,
+              "72": 221.67,
+              "96": 275.14,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    120,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    234
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    96,
+                    318
+                  ]
+                ],
+                "lantern": [
+                  [
+                    96,
+                    318
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-1-12",
+        "group": "west",
+        "box": [
+          1,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    174,
+                    258
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    258
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    138,
+                    284
+                  ]
+                ],
+                "lantern": [
+                  [
+                    138,
+                    284
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "west-3-12",
+        "group": "west",
+        "box": [
+          3,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 211.88,
+              "96": 260.95,
+              "120": 309.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    174,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    120,
+                    332
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    332
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bridge-3-14",
+        "group": "bridge",
+        "box": [
+          3,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 261.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "lantern": [
+                  [
+                    196,
+                    332
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bridge-6-12",
+        "group": "bridge",
+        "box": [
+          6,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 274.73,
+              "120": 432
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    294,
+                    378
+                  ]
+                ],
+                "lantern": [
+                  [
+                    294,
+                    378
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    268,
+                    462
+                  ]
+                ],
+                "lantern": [
+                  [
+                    268,
+                    462
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bridge-7-12",
+        "group": "bridge",
+        "box": [
+          7,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 233.9,
+              "120": 481.54
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    318,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    292,
+                    476
+                  ]
+                ],
+                "lantern": [
+                  [
+                    292,
+                    476
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bridge-7-14",
+        "group": "bridge",
+        "box": [
+          7,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 135.76,
+              "96": 185.9,
+              "120": 331.15
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    402
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    292,
+                    428
+                  ]
+                ],
+                "lantern": [
+                  [
+                    292,
+                    428
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bridge-9-13",
+        "group": "bridge",
+        "box": [
+          9,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 65.57,
+              "72": 217.55,
+              "96": 300.45,
+              "120": 381.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    360,
+                    426
+                  ]
+                ],
+                "lantern": [
+                  [
+                    360,
+                    426
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    336,
+                    452
+                  ],
+                  [
+                    1122,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    336,
+                    452
+                  ],
+                  [
+                    1122,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-9-9",
+        "group": "bank",
+        "box": [
+          9,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 243.1,
+              "96": 352.18,
+              "120": 491.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    438,
+                    570
+                  ]
+                ],
+                "lantern": [
+                  [
+                    438,
+                    570
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    412,
+                    606
+                  ],
+                  [
+                    1084,
+                    1134
+                  ]
+                ],
+                "lantern": [
+                  [
+                    412,
+                    606
+                  ],
+                  [
+                    1084,
+                    1134
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-9-10",
+        "group": "bank",
+        "box": [
+          9,
+          10
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 271.21,
+              "96": 397.77,
+              "120": 507.96
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    414,
+                    498
+                  ]
+                ],
+                "lantern": [
+                  [
+                    414,
+                    498
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    388,
+                    582
+                  ],
+                  [
+                    1080,
+                    1158
+                  ]
+                ],
+                "lantern": [
+                  [
+                    388,
+                    582
+                  ],
+                  [
+                    1080,
+                    1158
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-9-11",
+        "group": "bank",
+        "box": [
+          9,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 243.1,
+              "96": 414.37,
+              "120": 505.54
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    354,
+                    500
+                  ],
+                  [
+                    1084,
+                    1182
+                  ]
+                ],
+                "lantern": [
+                  [
+                    354,
+                    500
+                  ],
+                  [
+                    1084,
+                    1182
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-9-12",
+        "group": "bank",
+        "box": [
+          9,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 243.1,
+              "96": 341.04,
+              "120": 481.54
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    340,
+                    476
+                  ],
+                  [
+                    1098,
+                    1206
+                  ]
+                ],
+                "lantern": [
+                  [
+                    340,
+                    476
+                  ],
+                  [
+                    1098,
+                    1206
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-10-7",
+        "group": "bank",
+        "box": [
+          10,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 203.33,
+              "96": 322.73,
+              "120": 503.11
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    510,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    510,
+                    642
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    474,
+                    678
+                  ]
+                ],
+                "lantern": [
+                  [
+                    474,
+                    503
+                  ],
+                  [
+                    506,
+                    678
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-10-6",
+        "group": "bank",
+        "box": [
+          10,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 248.09,
+              "120": 407.11
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "lantern": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    500,
+                    507
+                  ],
+                  [
+                    516,
+                    692
+                  ]
+                ],
+                "lantern": [
+                  [
+                    526,
+                    692
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-12-6",
+        "group": "bank",
+        "box": [
+          12,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 204.88,
+              "96": 318.37,
+              "120": 513.13
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    582,
+                    714
+                  ]
+                ],
+                "lantern": [
+                  [
+                    582,
+                    714
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    546,
+                    740
+                  ],
+                  [
+                    978,
+                    990
+                  ]
+                ],
+                "lantern": [
+                  [
+                    546,
+                    740
+                  ],
+                  [
+                    978,
+                    990
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-12-7",
+        "group": "bank",
+        "box": [
+          12,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 243.1,
+              "96": 433.99,
+              "120": 561.13
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    532,
+                    726
+                  ],
+                  [
+                    964,
+                    1014
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    726
+                  ],
+                  [
+                    964,
+                    1014
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank-12-8",
+        "group": "bank",
+        "box": [
+          12,
+          8
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 65.57,
+              "72": 279.76,
+              "96": 444.45,
+              "120": 597.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    552,
+                    618
+                  ]
+                ],
+                "lantern": [
+                  [
+                    552,
+                    618
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    528,
+                    644
+                  ],
+                  [
+                    960,
+                    1124
+                  ]
+                ],
+                "lantern": [
+                  [
+                    528,
+                    644
+                  ],
+                  [
+                    960,
+                    1124
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-13-6",
+        "group": "north",
+        "box": [
+          13,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 243.1,
+              "96": 352.18,
+              "120": 519.52
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "lantern": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    570,
+                    764
+                  ],
+                  [
+                    989,
+                    1004
+                  ]
+                ],
+                "lantern": [
+                  [
+                    570,
+                    764
+                  ],
+                  [
+                    954,
+                    1004
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-14-6",
+        "group": "north",
+        "box": [
+          14,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 213.43,
+              "96": 379.23,
+              "120": 565.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    678,
+                    762
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    762
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    652,
+                    788
+                  ],
+                  [
+                    930,
+                    939
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    788
+                  ],
+                  [
+                    930,
+                    1008
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-15-6",
+        "group": "north",
+        "box": [
+          15,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 233.31,
+              "96": 377.9,
+              "120": 517.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "lantern": [
+                  [
+                    702,
+                    786
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    676,
+                    812
+                  ],
+                  [
+                    906,
+                    1004
+                  ]
+                ],
+                "lantern": [
+                  [
+                    676,
+                    812
+                  ],
+                  [
+                    906,
+                    1004
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-16-6",
+        "group": "north",
+        "box": [
+          16,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 289.55,
+              "96": 344.09,
+              "120": 405.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    726,
+                    810
+                  ]
+                ],
+                "lantern": [
+                  [
+                    726,
+                    810
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    700,
+                    990
+                  ]
+                ],
+                "lantern": [
+                  [
+                    700,
+                    990
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-17-6",
+        "group": "north",
+        "box": [
+          17,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 241.55,
+              "96": 300.45,
+              "120": 357.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    750,
+                    882
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    882
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    724,
+                    966
+                  ]
+                ],
+                "lantern": [
+                  [
+                    724,
+                    966
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-17-7",
+        "group": "north",
+        "box": [
+          17,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 241.55,
+              "96": 314.64,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    822,
+                    954
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    954
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    738,
+                    980
+                  ]
+                ],
+                "lantern": [
+                  [
+                    738,
+                    980
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-19-6",
+        "group": "north",
+        "box": [
+          19,
+          6
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "lantern": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    772,
+                    918
+                  ]
+                ],
+                "lantern": [
+                  [
+                    772,
+                    918
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "north-19-7",
+        "group": "north",
+        "box": [
+          19,
+          7
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 145.55,
+              "96": 200.09,
+              "120": 251.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    786,
+                    932
+                  ]
+                ],
+                "lantern": [
+                  [
+                    786,
+                    932
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-15-9",
+        "group": "return",
+        "box": [
+          15,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 183.76,
+              "96": 252.45,
+              "120": 549.58
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    918,
+                    1050
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    1050
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    892,
+                    1076
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    1076
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-13-9",
+        "group": "return",
+        "box": [
+          13,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 243.1,
+              "96": 352.18,
+              "120": 561.13
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    966,
+                    1098
+                  ]
+                ],
+                "lantern": [
+                  [
+                    966,
+                    1098
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    556,
+                    606
+                  ],
+                  [
+                    940,
+                    1134
+                  ]
+                ],
+                "lantern": [
+                  [
+                    556,
+                    606
+                  ],
+                  [
+                    940,
+                    1134
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-12-9",
+        "group": "return",
+        "box": [
+          12,
+          9
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 118.28,
+              "72": 271.53,
+              "96": 371.81,
+              "120": 619.15
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    558,
+                    594
+                  ],
+                  [
+                    1038,
+                    1122
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    594
+                  ],
+                  [
+                    1038,
+                    1122
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    532,
+                    620
+                  ],
+                  [
+                    964,
+                    1148
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    620
+                  ],
+                  [
+                    964,
+                    1148
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-12-11",
+        "group": "return",
+        "box": [
+          12,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 131.14,
+              "72": 193.55,
+              "96": 312.9,
+              "120": 539.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1038,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1038,
+                    1170
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1002,
+                    1196
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1002,
+                    1196
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-10-11",
+        "group": "return",
+        "box": [
+          10,
+          11
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 243.1,
+              "96": 433.99,
+              "120": 539.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    378,
+                    486
+                  ],
+                  [
+                    1060,
+                    1196
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    486
+                  ],
+                  [
+                    1060,
+                    1196
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-10-12",
+        "group": "return",
+        "box": [
+          10,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 243.1,
+              "96": 331.23,
+              "120": 499.15
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    364,
+                    462
+                  ],
+                  [
+                    1074,
+                    1220
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    462
+                  ],
+                  [
+                    1074,
+                    1220
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-10-13",
+        "group": "return",
+        "box": [
+          10,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 290.64,
+              "120": 373.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    360,
+                    438
+                  ],
+                  [
+                    1108,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    360,
+                    438
+                  ],
+                  [
+                    1108,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-12-12",
+        "group": "return",
+        "box": [
+          12,
+          12
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 193.55,
+              "96": 227.14,
+              "120": 451.15
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1026,
+                    1220
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1026,
+                    1220
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "return-12-13",
+        "group": "return",
+        "box": [
+          12,
+          13
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 83.14,
+              "72": 115.88,
+              "96": 203.14,
+              "120": 325.98
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1108,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1108,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-10-14",
+        "group": "late",
+        "box": [
+          10,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 65.57,
+              "72": 141.43,
+              "96": 221.04,
+              "120": 323.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    364,
+                    414
+                  ],
+                  [
+                    1132,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    414
+                  ],
+                  [
+                    1132,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-10-15",
+        "group": "late",
+        "box": [
+          10,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 41.57,
+              "72": 79.21,
+              "96": 163.23,
+              "120": 241.54
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    378,
+                    390
+                  ],
+                  [
+                    1156,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    390
+                  ],
+                  [
+                    1156,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-12-14",
+        "group": "late",
+        "box": [
+          12,
+          14
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 65.57,
+              "72": 91.88,
+              "96": 116.95,
+              "120": 275.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1132,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1132,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "late-12-15",
+        "group": "late",
+        "box": [
+          12,
+          15
+        ],
+        "routes": {
+          "main": {
+            "length": 1224,
+            "ideal": {
+              "48": 41.57,
+              "72": 67.88,
+              "96": 92.95,
+              "120": 155.56
+            },
+            "eligible": {
+              "base": {
+                "spider": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ]
+              },
+              "upgrade1": {
+                "spider": [
+                  [
+                    1156,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1156,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "arc": [
+    {
+      "id": "west-1-6",
+      "box": [
+        1,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    66
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    66
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    102
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    102
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    102
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    131
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    131
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    131
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    131
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-2-6",
+      "box": [
+        2,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    6,
+                    90
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    90
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    116
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    116
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    141
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    141
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    141
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    141
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-2-8",
+      "box": [
+        2,
+        8
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    138
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    6,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    6,
+                    138
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    192
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    192
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    192
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    192
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    216
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    216
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    216
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    216
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-2-9",
+      "box": [
+        2,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    78,
+                    192
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    192
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    78,
+                    192
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    192
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    216
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    216
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    216
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    216
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    240
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    240
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    240
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    240
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-4-7",
+      "box": [
+        4,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    48,
+                    114
+                  ]
+                ],
+                "lantern": [
+                  [
+                    48,
+                    114
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    48,
+                    114
+                  ]
+                ],
+                "lantern": [
+                  [
+                    48,
+                    114
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    24,
+                    140
+                  ]
+                ],
+                "lantern": [
+                  [
+                    24,
+                    140
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    24,
+                    140
+                  ]
+                ],
+                "lantern": [
+                  [
+                    24,
+                    140
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    0,
+                    179
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    179
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    0,
+                    179
+                  ]
+                ],
+                "lantern": [
+                  [
+                    0,
+                    179
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-4-8",
+      "box": [
+        4,
+        8
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    54,
+                    138
+                  ]
+                ],
+                "lantern": [
+                  [
+                    54,
+                    138
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    28,
+                    174
+                  ]
+                ],
+                "lantern": [
+                  [
+                    28,
+                    174
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    28,
+                    174
+                  ]
+                ],
+                "lantern": [
+                  [
+                    28,
+                    174
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    3,
+                    203
+                  ]
+                ],
+                "lantern": [
+                  [
+                    3,
+                    203
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    3,
+                    203
+                  ]
+                ],
+                "lantern": [
+                  [
+                    3,
+                    203
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-4-9",
+      "box": [
+        4,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    78,
+                    162
+                  ]
+                ],
+                "lantern": [
+                  [
+                    78,
+                    162
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    42,
+                    198
+                  ]
+                ],
+                "lantern": [
+                  [
+                    42,
+                    198
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    42,
+                    198
+                  ]
+                ],
+                "lantern": [
+                  [
+                    42,
+                    198
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    13,
+                    227
+                  ]
+                ],
+                "lantern": [
+                  [
+                    13,
+                    227
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    13,
+                    227
+                  ]
+                ],
+                "lantern": [
+                  [
+                    13,
+                    227
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-1-11",
+      "box": [
+        1,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    150,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    150,
+                    234
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    114,
+                    270
+                  ]
+                ],
+                "lantern": [
+                  [
+                    114,
+                    270
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    114,
+                    270
+                  ]
+                ],
+                "lantern": [
+                  [
+                    114,
+                    270
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    85,
+                    299
+                  ]
+                ],
+                "lantern": [
+                  [
+                    85,
+                    299
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    85,
+                    299
+                  ]
+                ],
+                "lantern": [
+                  [
+                    85,
+                    299
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-3-11",
+      "box": [
+        3,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    120,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    234
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    120,
+                    234
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    234
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    96,
+                    318
+                  ]
+                ],
+                "lantern": [
+                  [
+                    96,
+                    318
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    96,
+                    318
+                  ]
+                ],
+                "lantern": [
+                  [
+                    96,
+                    318
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    72,
+                    347
+                  ]
+                ],
+                "lantern": [
+                  [
+                    72,
+                    347
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    72,
+                    347
+                  ]
+                ],
+                "lantern": [
+                  [
+                    72,
+                    347
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-1-12",
+      "box": [
+        1,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    174,
+                    258
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    258
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    174,
+                    258
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    258
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    138,
+                    284
+                  ]
+                ],
+                "lantern": [
+                  [
+                    138,
+                    284
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    138,
+                    284
+                  ]
+                ],
+                "lantern": [
+                  [
+                    138,
+                    284
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    109,
+                    309
+                  ]
+                ],
+                "lantern": [
+                  [
+                    109,
+                    309
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    109,
+                    309
+                  ]
+                ],
+                "lantern": [
+                  [
+                    109,
+                    309
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "west-3-12",
+      "box": [
+        3,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    174,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    306
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    174,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    174,
+                    306
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    120,
+                    332
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    332
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    120,
+                    332
+                  ]
+                ],
+                "lantern": [
+                  [
+                    120,
+                    332
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    96,
+                    357
+                  ]
+                ],
+                "lantern": [
+                  [
+                    96,
+                    357
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    96,
+                    357
+                  ]
+                ],
+                "lantern": [
+                  [
+                    96,
+                    357
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bridge-3-14",
+      "box": [
+        3,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    222,
+                    306
+                  ]
+                ],
+                "lantern": [
+                  [
+                    222,
+                    306
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "lantern": [
+                  [
+                    196,
+                    332
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    196,
+                    332
+                  ]
+                ],
+                "lantern": [
+                  [
+                    196,
+                    332
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    171,
+                    357
+                  ]
+                ],
+                "lantern": [
+                  [
+                    171,
+                    357
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    171,
+                    357
+                  ]
+                ],
+                "lantern": [
+                  [
+                    171,
+                    357
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bridge-6-12",
+      "box": [
+        6,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    294,
+                    378
+                  ]
+                ],
+                "lantern": [
+                  [
+                    294,
+                    378
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    294,
+                    378
+                  ]
+                ],
+                "lantern": [
+                  [
+                    294,
+                    378
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    268,
+                    462
+                  ]
+                ],
+                "lantern": [
+                  [
+                    268,
+                    462
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    268,
+                    462
+                  ]
+                ],
+                "lantern": [
+                  [
+                    268,
+                    462
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    129,
+                    155
+                  ],
+                  [
+                    243,
+                    491
+                  ]
+                ],
+                "lantern": [
+                  [
+                    129,
+                    155
+                  ],
+                  [
+                    243,
+                    491
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    129,
+                    155
+                  ],
+                  [
+                    243,
+                    491
+                  ]
+                ],
+                "lantern": [
+                  [
+                    129,
+                    155
+                  ],
+                  [
+                    243,
+                    491
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bridge-7-12",
+      "box": [
+        7,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    318,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    450
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    318,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    450
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    292,
+                    476
+                  ]
+                ],
+                "lantern": [
+                  [
+                    292,
+                    476
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    292,
+                    476
+                  ]
+                ],
+                "lantern": [
+                  [
+                    292,
+                    476
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    267,
+                    501
+                  ]
+                ],
+                "lantern": [
+                  [
+                    267,
+                    501
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    267,
+                    501
+                  ]
+                ],
+                "lantern": [
+                  [
+                    267,
+                    501
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bridge-7-14",
+      "box": [
+        7,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    402
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    318,
+                    402
+                  ]
+                ],
+                "lantern": [
+                  [
+                    318,
+                    402
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    292,
+                    428
+                  ]
+                ],
+                "lantern": [
+                  [
+                    292,
+                    428
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    292,
+                    428
+                  ]
+                ],
+                "lantern": [
+                  [
+                    292,
+                    428
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    267,
+                    453
+                  ]
+                ],
+                "lantern": [
+                  [
+                    267,
+                    453
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    267,
+                    453
+                  ]
+                ],
+                "lantern": [
+                  [
+                    267,
+                    453
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bridge-9-13",
+      "box": [
+        9,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    360,
+                    426
+                  ]
+                ],
+                "lantern": [
+                  [
+                    360,
+                    426
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    360,
+                    426
+                  ]
+                ],
+                "lantern": [
+                  [
+                    360,
+                    426
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    336,
+                    452
+                  ],
+                  [
+                    1122,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    336,
+                    452
+                  ],
+                  [
+                    1122,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    336,
+                    452
+                  ],
+                  [
+                    1122,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    336,
+                    452
+                  ],
+                  [
+                    1122,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    312,
+                    477
+                  ],
+                  [
+                    1089,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    312,
+                    477
+                  ],
+                  [
+                    1089,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    312,
+                    477
+                  ],
+                  [
+                    1089,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    312,
+                    477
+                  ],
+                  [
+                    1089,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-9-9",
+      "box": [
+        9,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    438,
+                    570
+                  ]
+                ],
+                "lantern": [
+                  [
+                    438,
+                    570
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    438,
+                    570
+                  ]
+                ],
+                "lantern": [
+                  [
+                    438,
+                    570
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    412,
+                    606
+                  ],
+                  [
+                    1084,
+                    1134
+                  ]
+                ],
+                "lantern": [
+                  [
+                    412,
+                    606
+                  ],
+                  [
+                    1084,
+                    1134
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    412,
+                    606
+                  ],
+                  [
+                    1084,
+                    1134
+                  ]
+                ],
+                "lantern": [
+                  [
+                    412,
+                    606
+                  ],
+                  [
+                    1084,
+                    1134
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    387,
+                    635
+                  ],
+                  [
+                    1059,
+                    1163
+                  ]
+                ],
+                "lantern": [
+                  [
+                    387,
+                    635
+                  ],
+                  [
+                    1059,
+                    1163
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    387,
+                    635
+                  ],
+                  [
+                    1059,
+                    1163
+                  ]
+                ],
+                "lantern": [
+                  [
+                    387,
+                    635
+                  ],
+                  [
+                    1059,
+                    1163
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-9-10",
+      "box": [
+        9,
+        10
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    414,
+                    498
+                  ]
+                ],
+                "lantern": [
+                  [
+                    414,
+                    498
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    414,
+                    498
+                  ]
+                ],
+                "lantern": [
+                  [
+                    414,
+                    498
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    388,
+                    582
+                  ],
+                  [
+                    1080,
+                    1158
+                  ]
+                ],
+                "lantern": [
+                  [
+                    388,
+                    582
+                  ],
+                  [
+                    1080,
+                    1158
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    388,
+                    582
+                  ],
+                  [
+                    1080,
+                    1158
+                  ]
+                ],
+                "lantern": [
+                  [
+                    388,
+                    582
+                  ],
+                  [
+                    1080,
+                    1158
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    345,
+                    611
+                  ],
+                  [
+                    1056,
+                    1187
+                  ]
+                ],
+                "lantern": [
+                  [
+                    345,
+                    611
+                  ],
+                  [
+                    1056,
+                    1187
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    345,
+                    611
+                  ],
+                  [
+                    1056,
+                    1187
+                  ]
+                ],
+                "lantern": [
+                  [
+                    345,
+                    611
+                  ],
+                  [
+                    1056,
+                    1187
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-9-11",
+      "box": [
+        9,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    390,
+                    474
+                  ]
+                ],
+                "lantern": [
+                  [
+                    390,
+                    474
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    354,
+                    500
+                  ],
+                  [
+                    1084,
+                    1182
+                  ]
+                ],
+                "lantern": [
+                  [
+                    354,
+                    500
+                  ],
+                  [
+                    1084,
+                    1182
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    354,
+                    500
+                  ],
+                  [
+                    1084,
+                    1182
+                  ]
+                ],
+                "lantern": [
+                  [
+                    354,
+                    500
+                  ],
+                  [
+                    1084,
+                    1182
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    325,
+                    587
+                  ],
+                  [
+                    1059,
+                    1211
+                  ]
+                ],
+                "lantern": [
+                  [
+                    325,
+                    587
+                  ],
+                  [
+                    1059,
+                    1211
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    325,
+                    587
+                  ],
+                  [
+                    1059,
+                    1211
+                  ]
+                ],
+                "lantern": [
+                  [
+                    325,
+                    587
+                  ],
+                  [
+                    1059,
+                    1211
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-9-12",
+      "box": [
+        9,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    366,
+                    450
+                  ]
+                ],
+                "lantern": [
+                  [
+                    366,
+                    450
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    340,
+                    476
+                  ],
+                  [
+                    1098,
+                    1206
+                  ]
+                ],
+                "lantern": [
+                  [
+                    340,
+                    476
+                  ],
+                  [
+                    1098,
+                    1206
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    340,
+                    476
+                  ],
+                  [
+                    1098,
+                    1206
+                  ]
+                ],
+                "lantern": [
+                  [
+                    340,
+                    476
+                  ],
+                  [
+                    1098,
+                    1206
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    315,
+                    501
+                  ],
+                  [
+                    1069,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    315,
+                    501
+                  ],
+                  [
+                    1069,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    315,
+                    501
+                  ],
+                  [
+                    1069,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    315,
+                    501
+                  ],
+                  [
+                    1069,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-10-7",
+      "box": [
+        10,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    510,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    510,
+                    642
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    510,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    510,
+                    642
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    474,
+                    678
+                  ]
+                ],
+                "lantern": [
+                  [
+                    474,
+                    678
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    474,
+                    678
+                  ]
+                ],
+                "lantern": [
+                  [
+                    474,
+                    678
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    445,
+                    707
+                  ],
+                  [
+                    1065,
+                    1125
+                  ]
+                ],
+                "lantern": [
+                  [
+                    445,
+                    707
+                  ],
+                  [
+                    1065,
+                    1125
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    445,
+                    707
+                  ],
+                  [
+                    1065,
+                    1125
+                  ]
+                ],
+                "lantern": [
+                  [
+                    445,
+                    707
+                  ],
+                  [
+                    1065,
+                    1125
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-10-6",
+      "box": [
+        10,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "lantern": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    582,
+                    666
+                  ]
+                ],
+                "lantern": [
+                  [
+                    582,
+                    666
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    510,
+                    692
+                  ]
+                ],
+                "lantern": [
+                  [
+                    528,
+                    692
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    510,
+                    692
+                  ]
+                ],
+                "lantern": [
+                  [
+                    528,
+                    692
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    516,
+                    717
+                  ]
+                ],
+                "lantern": [
+                  [
+                    469,
+                    497
+                  ],
+                  [
+                    510,
+                    717
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    516,
+                    717
+                  ]
+                ],
+                "lantern": [
+                  [
+                    469,
+                    497
+                  ],
+                  [
+                    510,
+                    717
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-12-6",
+      "box": [
+        12,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    582,
+                    714
+                  ]
+                ],
+                "lantern": [
+                  [
+                    582,
+                    714
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    582,
+                    714
+                  ]
+                ],
+                "lantern": [
+                  [
+                    582,
+                    714
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    546,
+                    740
+                  ],
+                  [
+                    978,
+                    990
+                  ]
+                ],
+                "lantern": [
+                  [
+                    546,
+                    740
+                  ],
+                  [
+                    978,
+                    990
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    546,
+                    740
+                  ],
+                  [
+                    978,
+                    990
+                  ]
+                ],
+                "lantern": [
+                  [
+                    546,
+                    740
+                  ],
+                  [
+                    978,
+                    990
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    517,
+                    765
+                  ],
+                  [
+                    949,
+                    1019
+                  ]
+                ],
+                "lantern": [
+                  [
+                    517,
+                    765
+                  ],
+                  [
+                    949,
+                    1019
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    517,
+                    765
+                  ],
+                  [
+                    949,
+                    1019
+                  ]
+                ],
+                "lantern": [
+                  [
+                    517,
+                    765
+                  ],
+                  [
+                    949,
+                    1019
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-12-7",
+      "box": [
+        12,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    558,
+                    642
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    642
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    532,
+                    726
+                  ],
+                  [
+                    964,
+                    1014
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    726
+                  ],
+                  [
+                    964,
+                    1014
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    532,
+                    726
+                  ],
+                  [
+                    964,
+                    1014
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    726
+                  ],
+                  [
+                    964,
+                    1014
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    507,
+                    755
+                  ],
+                  [
+                    939,
+                    1125
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    755
+                  ],
+                  [
+                    939,
+                    1125
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    507,
+                    755
+                  ],
+                  [
+                    939,
+                    1125
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    755
+                  ],
+                  [
+                    939,
+                    1125
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bank-12-8",
+      "box": [
+        12,
+        8
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    552,
+                    618
+                  ]
+                ],
+                "lantern": [
+                  [
+                    552,
+                    618
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    552,
+                    618
+                  ]
+                ],
+                "lantern": [
+                  [
+                    552,
+                    618
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    528,
+                    644
+                  ],
+                  [
+                    960,
+                    1124
+                  ]
+                ],
+                "lantern": [
+                  [
+                    528,
+                    644
+                  ],
+                  [
+                    960,
+                    1124
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    528,
+                    644
+                  ],
+                  [
+                    960,
+                    1124
+                  ]
+                ],
+                "lantern": [
+                  [
+                    528,
+                    644
+                  ],
+                  [
+                    960,
+                    1124
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    504,
+                    735
+                  ],
+                  [
+                    936,
+                    1149
+                  ]
+                ],
+                "lantern": [
+                  [
+                    504,
+                    735
+                  ],
+                  [
+                    936,
+                    1149
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    504,
+                    735
+                  ],
+                  [
+                    936,
+                    1149
+                  ]
+                ],
+                "lantern": [
+                  [
+                    504,
+                    735
+                  ],
+                  [
+                    936,
+                    1149
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-13-6",
+      "box": [
+        13,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "lantern": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    654,
+                    738
+                  ]
+                ],
+                "lantern": [
+                  [
+                    654,
+                    738
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    570,
+                    764
+                  ],
+                  [
+                    954,
+                    1004
+                  ]
+                ],
+                "lantern": [
+                  [
+                    570,
+                    764
+                  ],
+                  [
+                    954,
+                    1004
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    570,
+                    764
+                  ],
+                  [
+                    954,
+                    1004
+                  ]
+                ],
+                "lantern": [
+                  [
+                    570,
+                    764
+                  ],
+                  [
+                    954,
+                    1004
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    541,
+                    789
+                  ],
+                  [
+                    925,
+                    1029
+                  ]
+                ],
+                "lantern": [
+                  [
+                    541,
+                    789
+                  ],
+                  [
+                    925,
+                    1029
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    541,
+                    789
+                  ],
+                  [
+                    925,
+                    1029
+                  ]
+                ],
+                "lantern": [
+                  [
+                    541,
+                    789
+                  ],
+                  [
+                    925,
+                    1029
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-14-6",
+      "box": [
+        14,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    678,
+                    762
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    762
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    678,
+                    762
+                  ]
+                ],
+                "lantern": [
+                  [
+                    678,
+                    762
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    652,
+                    788
+                  ],
+                  [
+                    930,
+                    1008
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    788
+                  ],
+                  [
+                    930,
+                    1008
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    652,
+                    788
+                  ],
+                  [
+                    930,
+                    1008
+                  ]
+                ],
+                "lantern": [
+                  [
+                    652,
+                    788
+                  ],
+                  [
+                    930,
+                    1008
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    565,
+                    813
+                  ],
+                  [
+                    901,
+                    1032
+                  ]
+                ],
+                "lantern": [
+                  [
+                    565,
+                    813
+                  ],
+                  [
+                    901,
+                    1032
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    565,
+                    813
+                  ],
+                  [
+                    901,
+                    1032
+                  ]
+                ],
+                "lantern": [
+                  [
+                    565,
+                    813
+                  ],
+                  [
+                    901,
+                    1032
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-15-6",
+      "box": [
+        15,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "lantern": [
+                  [
+                    702,
+                    786
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    702,
+                    786
+                  ]
+                ],
+                "lantern": [
+                  [
+                    702,
+                    786
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    676,
+                    812
+                  ],
+                  [
+                    906,
+                    1004
+                  ]
+                ],
+                "lantern": [
+                  [
+                    676,
+                    812
+                  ],
+                  [
+                    906,
+                    1004
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    676,
+                    812
+                  ],
+                  [
+                    906,
+                    1004
+                  ]
+                ],
+                "lantern": [
+                  [
+                    676,
+                    812
+                  ],
+                  [
+                    906,
+                    1004
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    651,
+                    1029
+                  ]
+                ],
+                "lantern": [
+                  [
+                    651,
+                    1029
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    651,
+                    1029
+                  ]
+                ],
+                "lantern": [
+                  [
+                    651,
+                    1029
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-16-6",
+      "box": [
+        16,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    726,
+                    810
+                  ]
+                ],
+                "lantern": [
+                  [
+                    726,
+                    810
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    726,
+                    810
+                  ]
+                ],
+                "lantern": [
+                  [
+                    726,
+                    810
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    700,
+                    990
+                  ]
+                ],
+                "lantern": [
+                  [
+                    700,
+                    990
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    700,
+                    990
+                  ]
+                ],
+                "lantern": [
+                  [
+                    700,
+                    990
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    675,
+                    1019
+                  ]
+                ],
+                "lantern": [
+                  [
+                    675,
+                    1019
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    675,
+                    1019
+                  ]
+                ],
+                "lantern": [
+                  [
+                    675,
+                    1019
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-17-6",
+      "box": [
+        17,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    750,
+                    882
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    882
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    750,
+                    882
+                  ]
+                ],
+                "lantern": [
+                  [
+                    750,
+                    882
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    724,
+                    966
+                  ]
+                ],
+                "lantern": [
+                  [
+                    724,
+                    966
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    724,
+                    966
+                  ]
+                ],
+                "lantern": [
+                  [
+                    724,
+                    966
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    699,
+                    999
+                  ]
+                ],
+                "lantern": [
+                  [
+                    699,
+                    999
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    699,
+                    999
+                  ]
+                ],
+                "lantern": [
+                  [
+                    699,
+                    999
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-17-7",
+      "box": [
+        17,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    822,
+                    954
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    954
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    822,
+                    954
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    954
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    738,
+                    980
+                  ]
+                ],
+                "lantern": [
+                  [
+                    738,
+                    980
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    738,
+                    980
+                  ]
+                ],
+                "lantern": [
+                  [
+                    738,
+                    980
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    709,
+                    1023
+                  ]
+                ],
+                "lantern": [
+                  [
+                    709,
+                    1023
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    709,
+                    1023
+                  ]
+                ],
+                "lantern": [
+                  [
+                    709,
+                    1023
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-19-6",
+      "box": [
+        19,
+        6
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "lantern": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    798,
+                    882
+                  ]
+                ],
+                "lantern": [
+                  [
+                    798,
+                    882
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    772,
+                    918
+                  ]
+                ],
+                "lantern": [
+                  [
+                    772,
+                    918
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    772,
+                    918
+                  ]
+                ],
+                "lantern": [
+                  [
+                    772,
+                    918
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    747,
+                    947
+                  ]
+                ],
+                "lantern": [
+                  [
+                    747,
+                    947
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    747,
+                    947
+                  ]
+                ],
+                "lantern": [
+                  [
+                    747,
+                    947
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "north-19-7",
+      "box": [
+        19,
+        7
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    822,
+                    906
+                  ]
+                ],
+                "lantern": [
+                  [
+                    822,
+                    906
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    786,
+                    932
+                  ]
+                ],
+                "lantern": [
+                  [
+                    786,
+                    932
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    786,
+                    932
+                  ]
+                ],
+                "lantern": [
+                  [
+                    786,
+                    932
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    757,
+                    957
+                  ]
+                ],
+                "lantern": [
+                  [
+                    757,
+                    957
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    757,
+                    957
+                  ]
+                ],
+                "lantern": [
+                  [
+                    757,
+                    957
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-15-9",
+      "box": [
+        15,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    918,
+                    1050
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    1050
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    918,
+                    1050
+                  ]
+                ],
+                "lantern": [
+                  [
+                    918,
+                    1050
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    892,
+                    1076
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    1076
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    892,
+                    1076
+                  ]
+                ],
+                "lantern": [
+                  [
+                    892,
+                    1076
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    849,
+                    1101
+                  ]
+                ],
+                "lantern": [
+                  [
+                    849,
+                    1101
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    849,
+                    1101
+                  ]
+                ],
+                "lantern": [
+                  [
+                    849,
+                    1101
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-13-9",
+      "box": [
+        13,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    966,
+                    1098
+                  ]
+                ],
+                "lantern": [
+                  [
+                    966,
+                    1098
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    966,
+                    1098
+                  ]
+                ],
+                "lantern": [
+                  [
+                    966,
+                    1098
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    556,
+                    606
+                  ],
+                  [
+                    940,
+                    1134
+                  ]
+                ],
+                "lantern": [
+                  [
+                    556,
+                    606
+                  ],
+                  [
+                    940,
+                    1134
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    556,
+                    606
+                  ],
+                  [
+                    940,
+                    1134
+                  ]
+                ],
+                "lantern": [
+                  [
+                    556,
+                    606
+                  ],
+                  [
+                    940,
+                    1134
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    531,
+                    635
+                  ],
+                  [
+                    915,
+                    1163
+                  ]
+                ],
+                "lantern": [
+                  [
+                    531,
+                    635
+                  ],
+                  [
+                    915,
+                    1163
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    531,
+                    635
+                  ],
+                  [
+                    915,
+                    1163
+                  ]
+                ],
+                "lantern": [
+                  [
+                    531,
+                    635
+                  ],
+                  [
+                    915,
+                    1163
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-12-9",
+      "box": [
+        12,
+        9
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    558,
+                    594
+                  ],
+                  [
+                    1038,
+                    1122
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    594
+                  ],
+                  [
+                    1038,
+                    1122
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    558,
+                    594
+                  ],
+                  [
+                    1038,
+                    1122
+                  ]
+                ],
+                "lantern": [
+                  [
+                    558,
+                    594
+                  ],
+                  [
+                    1038,
+                    1122
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    532,
+                    620
+                  ],
+                  [
+                    964,
+                    1148
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    620
+                  ],
+                  [
+                    964,
+                    1148
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    532,
+                    620
+                  ],
+                  [
+                    964,
+                    1148
+                  ]
+                ],
+                "lantern": [
+                  [
+                    532,
+                    620
+                  ],
+                  [
+                    964,
+                    1148
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    507,
+                    645
+                  ],
+                  [
+                    939,
+                    1173
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    645
+                  ],
+                  [
+                    939,
+                    1173
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    507,
+                    645
+                  ],
+                  [
+                    939,
+                    1173
+                  ]
+                ],
+                "lantern": [
+                  [
+                    507,
+                    645
+                  ],
+                  [
+                    939,
+                    1173
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-12-11",
+      "box": [
+        12,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1038,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1038,
+                    1170
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1038,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1038,
+                    1170
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1002,
+                    1196
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1002,
+                    1196
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1002,
+                    1196
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1002,
+                    1196
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    537,
+                    597
+                  ],
+                  [
+                    969,
+                    1221
+                  ]
+                ],
+                "lantern": [
+                  [
+                    537,
+                    597
+                  ],
+                  [
+                    969,
+                    1221
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    537,
+                    597
+                  ],
+                  [
+                    969,
+                    1221
+                  ]
+                ],
+                "lantern": [
+                  [
+                    537,
+                    597
+                  ],
+                  [
+                    969,
+                    1221
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-10-11",
+      "box": [
+        10,
+        11
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1086,
+                    1170
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    378,
+                    486
+                  ],
+                  [
+                    1060,
+                    1196
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    486
+                  ],
+                  [
+                    1060,
+                    1196
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    378,
+                    486
+                  ],
+                  [
+                    1060,
+                    1196
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    486
+                  ],
+                  [
+                    1060,
+                    1196
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    349,
+                    597
+                  ],
+                  [
+                    1035,
+                    1221
+                  ]
+                ],
+                "lantern": [
+                  [
+                    349,
+                    597
+                  ],
+                  [
+                    1035,
+                    1221
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    349,
+                    597
+                  ],
+                  [
+                    1035,
+                    1221
+                  ]
+                ],
+                "lantern": [
+                  [
+                    349,
+                    597
+                  ],
+                  [
+                    1035,
+                    1221
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-10-12",
+      "box": [
+        10,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    364,
+                    462
+                  ],
+                  [
+                    1074,
+                    1220
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    462
+                  ],
+                  [
+                    1074,
+                    1220
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    364,
+                    462
+                  ],
+                  [
+                    1074,
+                    1220
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    462
+                  ],
+                  [
+                    1074,
+                    1220
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    339,
+                    491
+                  ],
+                  [
+                    1045,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    339,
+                    491
+                  ],
+                  [
+                    1045,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    339,
+                    491
+                  ],
+                  [
+                    1045,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    339,
+                    491
+                  ],
+                  [
+                    1045,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-10-13",
+      "box": [
+        10,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    360,
+                    438
+                  ],
+                  [
+                    1108,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    360,
+                    438
+                  ],
+                  [
+                    1108,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    360,
+                    438
+                  ],
+                  [
+                    1108,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    360,
+                    438
+                  ],
+                  [
+                    1108,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    336,
+                    467
+                  ],
+                  [
+                    1065,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    336,
+                    467
+                  ],
+                  [
+                    1065,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    336,
+                    467
+                  ],
+                  [
+                    1065,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    336,
+                    467
+                  ],
+                  [
+                    1065,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-12-12",
+      "box": [
+        12,
+        12
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1110,
+                    1194
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1026,
+                    1220
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1026,
+                    1220
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1026,
+                    1220
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1026,
+                    1220
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    997,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    997,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    997,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    997,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "return-12-13",
+      "box": [
+        12,
+        13
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1134,
+                    1218
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1108,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1108,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1108,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1108,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1021,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1021,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1021,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1021,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-10-14",
+      "box": [
+        10,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    364,
+                    414
+                  ],
+                  [
+                    1132,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    414
+                  ],
+                  [
+                    1132,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    364,
+                    414
+                  ],
+                  [
+                    1132,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    364,
+                    414
+                  ],
+                  [
+                    1132,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    339,
+                    443
+                  ],
+                  [
+                    1107,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    339,
+                    443
+                  ],
+                  [
+                    1107,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    339,
+                    443
+                  ],
+                  [
+                    1107,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    339,
+                    443
+                  ],
+                  [
+                    1107,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-10-15",
+      "box": [
+        10,
+        15
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    378,
+                    390
+                  ],
+                  [
+                    1156,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    390
+                  ],
+                  [
+                    1156,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    378,
+                    390
+                  ],
+                  [
+                    1156,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    378,
+                    390
+                  ],
+                  [
+                    1156,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    349,
+                    419
+                  ],
+                  [
+                    1131,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    349,
+                    419
+                  ],
+                  [
+                    1131,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    349,
+                    419
+                  ],
+                  [
+                    1131,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    349,
+                    419
+                  ],
+                  [
+                    1131,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-12-14",
+      "box": [
+        12,
+        14
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1158,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1132,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1132,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1132,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1132,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1107,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1107,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1107,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1107,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "late-12-15",
+      "box": [
+        12,
+        15
+      ],
+      "routes": {
+        "main": {
+          "variants": {
+            "base": {
+              "range": 48,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1182,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade1": {
+              "range": 72,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1156,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1156,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1156,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1156,
+                    1224
+                  ]
+                ]
+              }
+            },
+            "upgrade2": {
+              "range": 96,
+              "centreEligible": {
+                "spider": [
+                  [
+                    1131,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1131,
+                    1224
+                  ]
+                ]
+              },
+              "surfaceContact": {
+                "spider": [
+                  [
+                    1131,
+                    1224
+                  ]
+                ],
+                "lantern": [
+                  [
+                    1131,
+                    1224
+                  ]
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "visibility": {
+    "sceneryPlacements": 166,
+    "camera": {
+      "mode": "default framed orthographic overview",
+      "yaw": 2.45,
+      "pitch": 0.68,
+      "directionTowardCamera": [
+        0.4959084333621017,
+        0.6287930240184686,
+        -0.5989108102765015
+      ],
+      "aspect": 1.25,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "radius": 265.51266374693824
+    },
+    "method": {
+      "groundY": 24,
+      "rayOriginY": 24.01,
+      "clearingSize": [
+        24,
+        24
+      ],
+      "sampleSpacing": 1,
+      "sampleOffsets": [
+        0.5,
+        23.5
+      ],
+      "samplesPerSite": 576,
+      "totalSiteSamples": 26496,
+      "rayLength": 2000,
+      "sceneryScope": "Every retained scenery placement, without a distance filter; exact occupied cuboids from SceneryVisibility.",
+      "continuousCheck": "Project each occupied cuboid onto the exact ground plane and convex-clip against the full 24x24 ground rectangle. Any overlap area above 1e-8 square world units fails. Ray origins alone use a0.01-unit lift to avoid ground self-contact.",
+      "areaTolerance": 1e-8
+    },
+    "limitations": [
+      "Checks scenery and terrain only. Existing defences, moving enemies, wildlife and effects are excluded.",
+      "Checks the default overview direction and ground footprint; arbitrary camera rotations and hypothetical future model heights are outside this audit.",
+      "The ray grid alone is sampled; the separate continuous projected-cuboid check covers unsampled slivers. Zero-area edge tangency is not counted as an obstruction.",
+      "This is geometric visibility, not a GPU pixel, contrast, tactical coverage or weapon line-of-sight test. Source geometry and shared visibility transforms must remain consistent."
+    ],
+    "sites": [
+      {
+        "id": "west-1-6",
+        "box": [
+          1,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-2-6",
+        "box": [
+          2,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-2-8",
+        "box": [
+          2,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-2-9",
+        "box": [
+          2,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-4-7",
+        "box": [
+          4,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-4-8",
+        "box": [
+          4,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-4-9",
+        "box": [
+          4,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-1-11",
+        "box": [
+          1,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-3-11",
+        "box": [
+          3,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-1-12",
+        "box": [
+          1,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "west-3-12",
+        "box": [
+          3,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bridge-3-14",
+        "box": [
+          3,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bridge-6-12",
+        "box": [
+          6,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bridge-7-12",
+        "box": [
+          7,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bridge-7-14",
+        "box": [
+          7,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bridge-9-13",
+        "box": [
+          9,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-9-9",
+        "box": [
+          9,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-9-10",
+        "box": [
+          9,
+          10
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-9-11",
+        "box": [
+          9,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-9-12",
+        "box": [
+          9,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-10-7",
+        "box": [
+          10,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-10-6",
+        "box": [
+          10,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-12-6",
+        "box": [
+          12,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-12-7",
+        "box": [
+          12,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "bank-12-8",
+        "box": [
+          12,
+          8
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-13-6",
+        "box": [
+          13,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-14-6",
+        "box": [
+          14,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-15-6",
+        "box": [
+          15,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-16-6",
+        "box": [
+          16,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-17-6",
+        "box": [
+          17,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-17-7",
+        "box": [
+          17,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-19-6",
+        "box": [
+          19,
+          6
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "north-19-7",
+        "box": [
+          19,
+          7
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-15-9",
+        "box": [
+          15,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-13-9",
+        "box": [
+          13,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-12-9",
+        "box": [
+          12,
+          9
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-12-11",
+        "box": [
+          12,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-10-11",
+        "box": [
+          10,
+          11
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-10-12",
+        "box": [
+          10,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-10-13",
+        "box": [
+          10,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-12-12",
+        "box": [
+          12,
+          12
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "return-12-13",
+        "box": [
+          12,
+          13
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-10-14",
+        "box": [
+          10,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-10-15",
+        "box": [
+          10,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-12-14",
+        "box": [
+          12,
+          14
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      },
+      {
+        "id": "late-12-15",
+        "box": [
+          12,
+          15
+        ],
+        "placement": null,
+        "raySamples": 576,
+        "terrainBlockedSamples": 0,
+        "clear": true,
+        "obstructions": []
+      }
+    ],
+    "passed": true
+  },
+  "passed": true
+}

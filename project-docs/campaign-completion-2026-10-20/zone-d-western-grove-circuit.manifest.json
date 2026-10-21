@@ -1,0 +1,1490 @@
+{
+  "id": "western-grove-circuit",
+  "level": "plum-03",
+  "title": "Western Grove Circuit",
+  "rationale": "A northern entrance bends around the western grove and along the southern mainland. It retains the lake entirely but spends more travel on the narrow western strip and bypasses the shore garden. Its strongest late court repeats much of the southern exposure rather than adding a distinct shore encounter.",
+  "baseline": {
+    "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z/assets/levels/plum-03.json",
+    "sha256": "20880e8f8932c279d8c7ac233eac0808f35a1fab21254ad5c212d3f37851796d"
+  },
+  "sourceHash": "a71db10e26a6781fa0c69a4c821b05f91a5fa5e95b9808218329e8f7d771795d",
+  "corners": [
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      5
+    ],
+    [
+      6,
+      5
+    ],
+    [
+      6,
+      8
+    ],
+    [
+      1,
+      8
+    ],
+    [
+      1,
+      13
+    ],
+    [
+      10,
+      13
+    ],
+    [
+      10,
+      15
+    ]
+  ],
+  "additional": [],
+  "bridges": [],
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 32,
+      "length": 744
+    }
+  ],
+  "edges": [
+    {
+      "id": "main",
+      "entry": [
+        8,
+        0,
+        0
+      ],
+      "exit": [
+        10,
+        0,
+        15
+      ],
+      "interiorBoxes": 30
+    }
+  ],
+  "sites": [
+    {
+      "id": "north-7-1",
+      "group": "north",
+      "box": [
+        7,
+        1
+      ]
+    },
+    {
+      "id": "north-9-1",
+      "group": "north",
+      "box": [
+        9,
+        1
+      ]
+    },
+    {
+      "id": "north-7-2",
+      "group": "north",
+      "box": [
+        7,
+        2
+      ]
+    },
+    {
+      "id": "north-9-2",
+      "group": "north",
+      "box": [
+        9,
+        2
+      ]
+    },
+    {
+      "id": "north-7-3",
+      "group": "north",
+      "box": [
+        7,
+        3
+      ]
+    },
+    {
+      "id": "north-9-3",
+      "group": "north",
+      "box": [
+        9,
+        3
+      ]
+    },
+    {
+      "id": "north-7-4",
+      "group": "north",
+      "box": [
+        7,
+        4
+      ]
+    },
+    {
+      "id": "north-9-4",
+      "group": "north",
+      "box": [
+        9,
+        4
+      ]
+    },
+    {
+      "id": "middle-7-6",
+      "group": "middle",
+      "box": [
+        7,
+        6
+      ]
+    },
+    {
+      "id": "middle-7-7",
+      "group": "middle",
+      "box": [
+        7,
+        7
+      ]
+    },
+    {
+      "id": "middle-5-7",
+      "group": "middle",
+      "box": [
+        5,
+        7
+      ]
+    },
+    {
+      "id": "middle-4-7",
+      "group": "middle",
+      "box": [
+        4,
+        7
+      ]
+    },
+    {
+      "id": "middle-3-7",
+      "group": "middle",
+      "box": [
+        3,
+        7
+      ]
+    },
+    {
+      "id": "middle-2-7",
+      "group": "middle",
+      "box": [
+        2,
+        7
+      ]
+    },
+    {
+      "id": "west-0-9",
+      "group": "west",
+      "box": [
+        0,
+        9
+      ]
+    },
+    {
+      "id": "west-0-10",
+      "group": "west",
+      "box": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "west-0-11",
+      "group": "west",
+      "box": [
+        0,
+        11
+      ]
+    },
+    {
+      "id": "west-0-12",
+      "group": "west",
+      "box": [
+        0,
+        12
+      ]
+    },
+    {
+      "id": "west-2-9",
+      "group": "west",
+      "box": [
+        2,
+        9
+      ]
+    },
+    {
+      "id": "south-4-14",
+      "group": "south",
+      "box": [
+        4,
+        14
+      ]
+    },
+    {
+      "id": "south-5-14",
+      "group": "south",
+      "box": [
+        5,
+        14
+      ]
+    },
+    {
+      "id": "south-6-14",
+      "group": "south",
+      "box": [
+        6,
+        14
+      ]
+    },
+    {
+      "id": "south-7-14",
+      "group": "south",
+      "box": [
+        7,
+        14
+      ]
+    },
+    {
+      "id": "south-8-14",
+      "group": "south",
+      "box": [
+        8,
+        14
+      ]
+    },
+    {
+      "id": "south-9-14",
+      "group": "south",
+      "box": [
+        9,
+        14
+      ]
+    },
+    {
+      "id": "south-11-14",
+      "group": "south",
+      "box": [
+        11,
+        14
+      ]
+    },
+    {
+      "id": "south-11-15",
+      "group": "south",
+      "box": [
+        11,
+        15
+      ]
+    }
+  ],
+  "rejectedSites": [
+    {
+      "id": "west-2-13",
+      "group": "west",
+      "box": [
+        2,
+        13
+      ],
+      "reason": "route, terrain or retained bird perch"
+    },
+    {
+      "id": "south-3-14",
+      "group": "south",
+      "box": [
+        3,
+        14
+      ],
+      "reason": "normal-overview retained terrain/perch obstruction"
+    }
+  ],
+  "baselinePlacements": 249,
+  "retainedPlacements": 174,
+  "removed": [
+    {
+      "id": "d3-land-8-0",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        0
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-7-1",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        1
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-8-1",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        1
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-9-1",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        1
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        1
+      ],
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-7-2",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        2
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-8-2",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        2
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        3
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-9-2",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        2
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        3
+      ],
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-7-3",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        3
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        1
+      ],
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-8-3",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        3
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-9-3",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        3
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-7-4",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        4
+      ],
+      "turn": 3,
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-8-4",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        4
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-9-4",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        4
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: north"
+    },
+    {
+      "id": "d3-land-6-5",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        5
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-7-5",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        5
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        -1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-8-5",
+      "model": "plum-arch",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        5
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-6-6",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        6
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        3
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-7-6",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        6
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        -1
+      ],
+      "reason": "full defence-ground footprint: middle"
+    },
+    {
+      "id": "d3-land-2-7",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -3
+      ],
+      "reason": "full defence-ground footprint: middle"
+    },
+    {
+      "id": "d3-land-3-7",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        7
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: middle"
+    },
+    {
+      "id": "d3-land-4-7",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        7
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -1
+      ],
+      "reason": "full defence-ground footprint: middle"
+    },
+    {
+      "id": "d3-land-5-7",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        7
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: middle"
+    },
+    {
+      "id": "d3-land-6-7",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        7
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-7-7",
+      "model": "plum-flowers",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        7
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        -3
+      ],
+      "reason": "full defence-ground footprint: middle"
+    },
+    {
+      "id": "d3-land-1-8",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        8
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-2-8",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        8
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-3-8",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        8
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        0
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-4-8",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        8
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-5-8",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        8
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-6-8",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        8
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-0-9",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        9
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "d3-land-1-9",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        9
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        0
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-2-9",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        9
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "d3-land-0-10",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        10
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        1
+      ],
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "d3-land-1-10",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        10
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        0
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-0-11",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        11
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        2
+      ],
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "d3-land-1-11",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        11
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-0-12",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        12
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: west"
+    },
+    {
+      "id": "d3-land-1-12",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        12
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-1-13",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        1,
+        0,
+        13
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        -2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-2-13",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        13
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-3-13",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        3,
+        0,
+        13
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-4-13",
+      "model": "plum-tree-tall",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        13
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-5-13",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        13
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-6-13",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        13
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-7-13",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        13
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        -1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-8-13",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        13
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-9-13",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        13
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-10-13",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        13
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        3
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-4-14",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        14
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        0
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-5-14",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        14
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        0,
+        0,
+        2
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-6-14",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        0
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-7-14",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        14
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -3
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-8-14",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        14
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-9-14",
+      "model": "plum-pebbles",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        14
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        -1
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-10-14",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        14
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-11-14",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        14
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        0
+      ],
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-10-15",
+      "model": "plum-tuft",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        15
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "d3-land-11-15",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        15
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: south"
+    },
+    {
+      "id": "d3-land-7-0",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        7,
+        0,
+        0
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: north-7-1"
+    },
+    {
+      "id": "d3-land-9-0",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        0
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: north-9-1"
+    },
+    {
+      "id": "d3-land-10-2",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        2
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: north-9-3"
+    },
+    {
+      "id": "d3-land-10-3",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        3
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: north-9-3, north-9-4"
+    },
+    {
+      "id": "d3-land-10-4",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        4
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: north-9-4"
+    },
+    {
+      "id": "d3-land-5-5",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        5
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: middle-4-7, middle-3-7"
+    },
+    {
+      "id": "d3-land-2-6",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        6
+      ],
+      "turn": 3,
+      "reason": "full placement-ground overview visibility: middle-2-7"
+    },
+    {
+      "id": "d3-land-4-6",
+      "model": "plum-shrub",
+      "variant": "base",
+      "box": [
+        4,
+        0,
+        6
+      ],
+      "turn": 3,
+      "reason": "full placement-ground overview visibility: middle-4-7"
+    },
+    {
+      "id": "d3-land-5-6",
+      "model": "plum-tree-young",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        6
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: middle-5-7, middle-4-7"
+    },
+    {
+      "id": "d3-land-8-6",
+      "model": "plum-arch-broken",
+      "variant": "base",
+      "box": [
+        8,
+        0,
+        6
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: middle-7-6, middle-7-7"
+    },
+    {
+      "id": "d3-land-0-8",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        0,
+        0,
+        8
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: west-0-9"
+    },
+    {
+      "id": "d3-land-2-10",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        2,
+        0,
+        10
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: west-0-11, west-0-12"
+    },
+    {
+      "id": "d3-land-5-12",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        5,
+        0,
+        12
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: south-4-14"
+    },
+    {
+      "id": "d3-land-6-12",
+      "model": "plum-tree",
+      "variant": "base",
+      "box": [
+        6,
+        0,
+        12
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: south-4-14, south-5-14"
+    },
+    {
+      "id": "d3-land-11-13",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        13
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: south-11-14"
+    },
+    {
+      "id": "d3-land-12-14",
+      "model": "plum-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        14
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: south-11-14, south-11-15"
+    }
+  ],
+  "terrainChanged": false,
+  "environmentChanged": false,
+  "modelsChanged": false,
+  "previewWildlife": {
+    "habitats": [
+      [
+        19,
+        15
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        15
+      ]
+    ],
+    "habitatPoints": [
+      [
+        458,
+        24,
+        378
+      ],
+      [
+        22,
+        24,
+        6
+      ],
+      [
+        74,
+        24,
+        378
+      ]
+    ],
+    "perches": [
+      {
+        "id": "d3-land-2-3",
+        "point": [
+          8,
+          52,
+          16
+        ]
+      },
+      {
+        "id": "d3-land-4-12",
+        "point": [
+          8,
+          52,
+          16
+        ]
+      },
+      {
+        "id": "d3-land-18-13",
+        "point": [
+          8,
+          52,
+          16
+        ]
+      }
+    ]
+  }
+}

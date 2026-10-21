@@ -1,0 +1,540 @@
+{
+  "zone": "C",
+  "command": "bun scripts/landscapes/build.js C --check",
+  "checks": [
+    "Existing approved scenery only; all materials matte and nonemissive.",
+    "validateLevel checks actual source cells: no overlaps, world/terrain/water intersections.",
+    "Canonical factory/source hash and independent fresh objects.",
+    "Every dry box populated; sorted Y24 dry-component sizes and dry percentage reported without a connectivity quota.",
+    "Three supported bird perches with a clear6-unit-radius/8-unit-high envelope.",
+    "Dry ground habitat samples with a clear6-unit-radius/11-unit-high envelope."
+  ],
+  "levels": [
+    {
+      "id": "ice-01",
+      "sha256": "0db2731c6f9cd06e224c4549f6ed0045b4e40bfac62bf07a0f48b54fb3495e4d",
+      "size": [
+        16,
+        14
+      ],
+      "placements": 204,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 22,
+        "ice-fir-young": 28,
+        "ice-flowers": 9,
+        "ice-pebbles": 19,
+        "ice-pillar": 1,
+        "ice-pillar-broken": 1,
+        "ice-rock": 27,
+        "ice-shrub": 33,
+        "ice-tuft": 62,
+        "ice-wall": 2
+      },
+      "terrain": {
+        "flatDry": 184,
+        "raisedDry": 20,
+        "water": 20
+      },
+      "flatDryComponents": [
+        184
+      ],
+      "flatDryPercent": 82.14285714285714,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "c1-land-2-2",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            63,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c1-land-13-2",
+          "model": "ice-fir-young",
+          "box": [
+            13,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            323,
+            55,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c1-land-2-11",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            11
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            55,
+            277
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 683,
+        "candidateWorldPoints": [
+          [
+            378,
+            24,
+            314
+          ],
+          [
+            6,
+            24,
+            22
+          ],
+          [
+            350,
+            24,
+            6
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "ice-02",
+      "sha256": "09b87fc8f52bdb97c1d03b47549c0e20a67da89b1202c46ed65cb75e757dfb2c",
+      "size": [
+        18,
+        16
+      ],
+      "placements": 247,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 21,
+        "ice-fir-young": 36,
+        "ice-flowers": 10,
+        "ice-pebbles": 16,
+        "ice-pillar": 1,
+        "ice-pillar-broken": 1,
+        "ice-rock": 41,
+        "ice-shrub": 31,
+        "ice-tuft": 88,
+        "ice-wall": 2
+      },
+      "terrain": {
+        "flatDry": 225,
+        "raisedDry": 22,
+        "water": 41
+      },
+      "flatDryComponents": [
+        152,
+        73
+      ],
+      "flatDryPercent": 78.125,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "c2-land-2-3",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            59,
+            85
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c2-land-15-12",
+          "model": "ice-fir-young",
+          "box": [
+            15,
+            0,
+            12
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            373,
+            61,
+            299
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c2-land-8-1",
+          "model": "ice-fir-young",
+          "box": [
+            8,
+            0,
+            1
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            203,
+            55,
+            35
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1008,
+        "candidateWorldPoints": [
+          [
+            410,
+            24,
+            378
+          ],
+          [
+            18,
+            24,
+            6
+          ],
+          [
+            22,
+            24,
+            378
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "ice-03",
+      "sha256": "c0951ecc674c42f6d6d31055355b5ca1eac883edf5755895c5e08aa56de54ca2",
+      "size": [
+        20,
+        16
+      ],
+      "placements": 298,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 34,
+        "ice-fir-young": 51,
+        "ice-flowers": 5,
+        "ice-pebbles": 15,
+        "ice-pillar": 1,
+        "ice-pillar-broken": 2,
+        "ice-rock": 39,
+        "ice-shrub": 35,
+        "ice-tuft": 113,
+        "ice-wall": 3
+      },
+      "terrain": {
+        "flatDry": 268,
+        "raisedDry": 30,
+        "water": 22
+      },
+      "flatDryComponents": [
+        143,
+        125
+      ],
+      "flatDryPercent": 83.75,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "c3-land-17-3",
+          "model": "ice-fir-young",
+          "box": [
+            17,
+            0,
+            3
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            421,
+            59,
+            83
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c3-land-4-12",
+          "model": "ice-fir-young",
+          "box": [
+            4,
+            0,
+            12
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            107,
+            55,
+            299
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c3-land-10-1",
+          "model": "ice-fir-young",
+          "box": [
+            10,
+            0,
+            1
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            251,
+            55,
+            37
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1170,
+        "candidateWorldPoints": [
+          [
+            474,
+            24,
+            358
+          ],
+          [
+            22,
+            24,
+            6
+          ],
+          [
+            82,
+            24,
+            378
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving. Water may intentionally separate dry components."
+      }
+    },
+    {
+      "id": "ice-04",
+      "sha256": "c28355fa023e62b2eb70092ba3293960fe92f77fb2fd628be4d14f8b8bb17e03",
+      "size": [
+        18,
+        18
+      ],
+      "placements": 278,
+      "pathBoxes": 0,
+      "models": 10,
+      "modelCounts": {
+        "ice-fir": 21,
+        "ice-fir-young": 42,
+        "ice-flowers": 5,
+        "ice-pebbles": 18,
+        "ice-pillar": 2,
+        "ice-pillar-broken": 2,
+        "ice-rock": 52,
+        "ice-shrub": 27,
+        "ice-tuft": 106,
+        "ice-wall": 3
+      },
+      "terrain": {
+        "flatDry": 245,
+        "raisedDry": 33,
+        "water": 46
+      },
+      "flatDryComponents": [
+        245
+      ],
+      "flatDryPercent": 75.61728395061728,
+      "allDryBoxesPopulated": true,
+      "perches": [
+        {
+          "id": "c4-land-2-3",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            3
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            59,
+            63,
+            83
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c4-land-2-14",
+          "model": "ice-fir-young",
+          "box": [
+            2,
+            0,
+            14
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            61,
+            59,
+            349
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        },
+        {
+          "id": "c4-land-15-2",
+          "model": "ice-fir-young",
+          "box": [
+            15,
+            0,
+            2
+          ],
+          "point": [
+            11,
+            31,
+            11
+          ],
+          "worldPoint": [
+            373,
+            55,
+            59
+          ],
+          "footSupport": true,
+          "clearEnvelope": {
+            "radius": 6,
+            "height": 8
+          }
+        }
+      ],
+      "habitat": {
+        "sampleSpacing": 4,
+        "clearRadius": 6,
+        "clearHeight": 11,
+        "clearGroundSamples": 1001,
+        "candidateWorldPoints": [
+          [
+            426,
+            24,
+            410
+          ],
+          [
+            6,
+            24,
+            22
+          ],
+          [
+            22,
+            24,
+            426
+          ]
+        ],
+        "limitation": "Available baseline ground samples, not reserved habitats or a guarantee after tactical carving. Water may intentionally separate dry components."
+      }
+    }
+  ]
+}

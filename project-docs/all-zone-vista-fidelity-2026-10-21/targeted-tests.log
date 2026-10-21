@@ -1,0 +1,42 @@
+bun test v1.4.2 (744846f84)
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [13.64ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.39ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.34ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [413.55ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.58ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [292.49ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [582.30ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.72ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.83ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.45ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [33.07ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [15.65ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1652.46ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [17.43ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [15.54ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.02ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.31ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [14.09ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.71ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.10ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.28ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.28ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [107.01ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.43ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.34ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [294.80ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [58.30ms]
+
+tests/zone-vista.test.js:
+(pass) Detailed A–D vistas are deterministic, distinct, finite and bounded below gameplay [563.78ms]
+(pass) All detailed vistas retain centered geometry when the battlefield dimensions change [338.04ms]
+(pass) All sixteen production landscapes enable only their matching biome [0.14ms]
+(pass) Production dispatch and the Zone A compatibility entry use the detailed geometry [419.04ms]
+(pass) the all-zone rollout retains the reviewed Zone A geometry exactly [49.37ms]
+
+ 32 pass
+ 0 fail
+ 1703 expect() calls
+Ran 32 tests across 2 files. [4.92s]

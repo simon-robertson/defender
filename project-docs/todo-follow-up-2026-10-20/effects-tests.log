@@ -1,0 +1,65 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-effects.test.js:
+(pass) missile impacts retain the core, eight fireball lobes, smoke and original light curve without outward fragments [1.37ms]
+(pass) missile and enemy death visuals retain their independent expansion, colour, peak light and particle timing [0.97ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.06ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.17ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [1.05ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.18ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [0.90ms]
+(pass) simultaneous missile bursts stay bounded and pause holds all payloads exactly [0.76ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.25ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.19ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [0.78ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.24ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.17ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.12ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.69ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [5.21ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.18ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [9.43ms]
+(pass) every enemy death light ends thirty percent sooner with the same peak, radius and independent blast/debris lifetime [1.59ms]
+
+tests/shot-effects.test.js:
+(pass) shot sockets occupy the real open muzzle centres on all three variants [14.62ms]
+(pass) paired flashes and local lights follow the recoiling guns; sparks stay in world space [0.42ms]
+(pass) shot motion and light fading are independent of frame subdivision [0.81ms]
+(pass) effect pools remain bounded under overload, expire cleanly and retain their buffers [1.67ms]
+(pass) burst events reach effects after pose updates and preserve original timestamps across stalls [0.66ms]
+(pass) turret light peak is reduced twenty percent while its fade, reach and flash lifetime remain fixed [0.18ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [12.85ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.26ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.27ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [307.60ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.02ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [262.06ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [533.51ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.75ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.29ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.46ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [42.25ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [19.04ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1512.46ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [20.39ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [17.58ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.20ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.40ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [16.23ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.59ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.09ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.11ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.04ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [104.88ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [2.20ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.78ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [48.67ms]
+
+ 51 pass
+ 0 fail
+ 24588 expect() calls
+Ran 51 tests across 4 files. [2.98s]

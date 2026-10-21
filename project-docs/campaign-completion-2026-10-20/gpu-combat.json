@@ -1,0 +1,613 @@
+{
+  "samples": [
+    {
+      "encounter": "b3-wave-4",
+      "paused": true,
+      "errors": [],
+      "engine": {
+        "time": 63.908333333330155,
+        "waveTime": 63.908333333330155,
+        "running": true,
+        "completed": false,
+        "spawned": 17,
+        "pending": 3,
+        "active": 2,
+        "killed": 15,
+        "escaped": 0,
+        "resolved": 15,
+        "total": 20,
+        "shots": 776,
+        "gunShots": 526,
+        "arcShots": 196,
+        "missileShots": 54,
+        "activeMissiles": 0,
+        "steps": 7669,
+        "lastSteps": 2,
+        "backlogSeconds": 0.0007666666428567601,
+        "modelLightCapacity": 424
+      },
+      "gpu": {
+        "sceneBuffers": 144,
+        "geometryBytes": 1966952,
+        "modelLights": 28,
+        "modelLightOverflow": 0,
+        "arcInstances": 0,
+        "arcLights": 0,
+        "missileThrust": 0,
+        "drawCalls": 120,
+        "cpuSubmitMS": 0.19999998807907104,
+        "maxObservedRenderSubmitMS": 98.69999998807907
+      },
+      "camera": {
+        "selected": "overview",
+        "live": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 0,
+            "pairs": 0,
+            "samples": 0,
+            "revision": 0
+          },
+          "enabled": false,
+          "active": false,
+          "time": 0,
+          "subject": null,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "focus": [
+            0,
+            0,
+            0
+          ],
+          "speed": 0,
+          "flinch": 0,
+          "explosions": 0,
+          "plans": 0,
+          "travelled": 0,
+          "reachable": 0,
+          "visible": false,
+          "quality": 0,
+          "holding": false,
+          "panRoll": 0,
+          "fov": 70,
+          "focusDistance": 120,
+          "safety": null
+        },
+        "drone": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 0,
+            "pairs": 0,
+            "samples": 0,
+            "revision": 0
+          },
+          "enabled": false,
+          "active": false,
+          "time": 0,
+          "subject": null,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "focus": [
+            0,
+            0,
+            0
+          ],
+          "speed": 0,
+          "velocity": [
+            0,
+            0,
+            0
+          ],
+          "acceleration": [
+            0,
+            0,
+            0
+          ],
+          "drifting": false,
+          "blockedMoves": 0,
+          "yawVelocity": 0,
+          "pitchVelocity": 0,
+          "fovVelocity": 0,
+          "travelled": 0,
+          "plans": 0,
+          "holding": false,
+          "heldFor": 0,
+          "quality": 0,
+          "visible": false,
+          "fov": 64,
+          "focusDistance": 100,
+          "pitch": 0,
+          "panRoll": 0,
+          "flinch": 0,
+          "explosions": 0,
+          "routeLength": 0,
+          "routeIndex": 0,
+          "emergency": false,
+          "airborneFloor": null,
+          "cruiseY": 144,
+          "planningBytes": 1776
+        }
+      },
+      "resources": {
+        "createdSceneBuffers": 303,
+        "destroyedSceneBuffers": 159
+      }
+    },
+    {
+      "encounter": "c3-wave-4",
+      "paused": true,
+      "errors": [],
+      "engine": {
+        "time": 26.141666666665635,
+        "waveTime": 26.141666666665635,
+        "running": true,
+        "completed": false,
+        "spawned": 10,
+        "pending": 12,
+        "active": 5,
+        "killed": 5,
+        "escaped": 0,
+        "resolved": 5,
+        "total": 22,
+        "shots": 358,
+        "gunShots": 239,
+        "arcShots": 86,
+        "missileShots": 33,
+        "activeMissiles": 4,
+        "steps": 3137,
+        "lastSteps": 2,
+        "backlogSeconds": 0.007133333339288769,
+        "modelLightCapacity": 424
+      },
+      "gpu": {
+        "sceneBuffers": 123,
+        "geometryBytes": 2021584,
+        "modelLights": 37,
+        "modelLightOverflow": 0,
+        "arcInstances": 32,
+        "arcLights": 0,
+        "missileThrust": 6,
+        "drawCalls": 43,
+        "cpuSubmitMS": 1.800000011920929,
+        "maxObservedRenderSubmitMS": 16.599999994039536
+      },
+      "camera": {
+        "selected": "drone",
+        "live": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 0,
+            "pairs": 0,
+            "samples": 0,
+            "revision": 0
+          },
+          "enabled": false,
+          "active": false,
+          "time": 0,
+          "subject": null,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "focus": [
+            0,
+            0,
+            0
+          ],
+          "speed": 0,
+          "flinch": 0,
+          "explosions": 0,
+          "plans": 0,
+          "travelled": 0,
+          "reachable": 0,
+          "visible": false,
+          "quality": 0,
+          "holding": false,
+          "panRoll": 0,
+          "fov": 70,
+          "focusDistance": 120,
+          "safety": null
+        },
+        "drone": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 43,
+            "pairs": 96,
+            "samples": 1297,
+            "revision": 1
+          },
+          "enabled": true,
+          "active": true,
+          "time": 26.13333333333249,
+          "subject": "c3-wave-4-ray-15",
+          "position": [
+            238.30470166415893,
+            179.01089016444487,
+            222.34854663050885
+          ],
+          "focus": [
+            112.73223495483398,
+            68.1,
+            148.7780960083008
+          ],
+          "speed": 0.13688563188233502,
+          "velocity": [
+            -7.812519746780693e-05,
+            0.0016139665080382116,
+            0.1368760944226222
+          ],
+          "acceleration": [
+            0.3340505905986677,
+            -0.0011842935508489816,
+            0.2513602564596703
+          ],
+          "drifting": true,
+          "blockedMoves": 0,
+          "yawVelocity": 0.1091883332893305,
+          "pitchVelocity": 0.02816000496312794,
+          "fovVelocity": -1.9572319809610441,
+          "travelled": 419.36862470650146,
+          "plans": 35,
+          "holding": true,
+          "heldFor": 1.483333333333249,
+          "quality": 1,
+          "visible": true,
+          "fov": 56.682683906295296,
+          "focusDistance": 185.14122036565666,
+          "pitch": 0.6153863479796732,
+          "panRoll": -0.0011717719512597897,
+          "flinch": 0,
+          "explosions": 0,
+          "routeLength": 0,
+          "routeIndex": 0,
+          "emergency": false,
+          "airborneFloor": 131,
+          "cruiseY": 155,
+          "planningBytes": 26294
+        }
+      },
+      "resources": {
+        "createdSceneBuffers": 426,
+        "destroyedSceneBuffers": 303
+      }
+    },
+    {
+      "encounter": "d4-wave-4",
+      "paused": true,
+      "errors": [],
+      "engine": {
+        "time": 30.258333333332107,
+        "waveTime": 30.258333333332107,
+        "running": true,
+        "completed": false,
+        "spawned": 18,
+        "pending": 8,
+        "active": 16,
+        "killed": 2,
+        "escaped": 0,
+        "resolved": 2,
+        "total": 26,
+        "shots": 185,
+        "gunShots": 128,
+        "arcShots": 19,
+        "missileShots": 38,
+        "activeMissiles": 5,
+        "steps": 3631,
+        "lastSteps": 2,
+        "backlogSeconds": 0.006666666660702567,
+        "modelLightCapacity": 424
+      },
+      "gpu": {
+        "sceneBuffers": 141,
+        "geometryBytes": 2262088,
+        "modelLights": 70,
+        "modelLightOverflow": 0,
+        "arcInstances": 48,
+        "arcLights": 0,
+        "missileThrust": 6,
+        "drawCalls": 47,
+        "cpuSubmitMS": 0.4000000059604645,
+        "maxObservedRenderSubmitMS": 15.599999994039536
+      },
+      "camera": {
+        "selected": "overview",
+        "live": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 0,
+            "pairs": 0,
+            "samples": 0,
+            "revision": 0
+          },
+          "enabled": false,
+          "active": false,
+          "time": 0,
+          "subject": null,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "focus": [
+            0,
+            0,
+            0
+          ],
+          "speed": 0,
+          "flinch": 0,
+          "explosions": 0,
+          "plans": 0,
+          "travelled": 0,
+          "reachable": 0,
+          "visible": false,
+          "quality": 0,
+          "holding": false,
+          "panRoll": 0,
+          "fov": 70,
+          "focusDistance": 120,
+          "safety": null
+        },
+        "drone": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 0,
+            "pairs": 0,
+            "samples": 0,
+            "revision": 0
+          },
+          "enabled": false,
+          "active": false,
+          "time": 0,
+          "subject": null,
+          "position": [
+            238.30470166415893,
+            179.01089016444487,
+            222.34854663050885
+          ],
+          "focus": [
+            0,
+            0,
+            0
+          ],
+          "speed": 0,
+          "velocity": [
+            0,
+            0,
+            0
+          ],
+          "acceleration": [
+            0,
+            0,
+            0
+          ],
+          "drifting": false,
+          "blockedMoves": 0,
+          "yawVelocity": 0,
+          "pitchVelocity": 0,
+          "fovVelocity": 0,
+          "travelled": 0,
+          "plans": 0,
+          "holding": false,
+          "heldFor": 0,
+          "quality": 1,
+          "visible": true,
+          "fov": 56.682683906295296,
+          "focusDistance": 185.14122036565666,
+          "pitch": 0.6153863479796732,
+          "panRoll": 0,
+          "flinch": 0,
+          "explosions": 0,
+          "routeLength": 0,
+          "routeIndex": 0,
+          "emergency": false,
+          "airborneFloor": null,
+          "cruiseY": 144,
+          "planningBytes": 1776
+        }
+      },
+      "resources": {
+        "createdSceneBuffers": 567,
+        "destroyedSceneBuffers": 426
+      }
+    },
+    {
+      "encounter": "d4-wave-4",
+      "paused": true,
+      "errors": [],
+      "engine": {
+        "time": 90.65833333335141,
+        "waveTime": 90.65833333335141,
+        "running": true,
+        "completed": false,
+        "spawned": 26,
+        "pending": 0,
+        "active": 6,
+        "killed": 20,
+        "escaped": 0,
+        "resolved": 20,
+        "total": 26,
+        "shots": 2058,
+        "gunShots": 1090,
+        "arcShots": 716,
+        "missileShots": 252,
+        "activeMissiles": 9,
+        "steps": 10879,
+        "lastSteps": 2,
+        "backlogSeconds": 0.005566666660699732,
+        "modelLightCapacity": 424
+      },
+      "gpu": {
+        "sceneBuffers": 141,
+        "geometryBytes": 2262088,
+        "modelLights": 57,
+        "modelLightOverflow": 0,
+        "arcInstances": 118,
+        "arcLights": 2,
+        "missileThrust": 14,
+        "drawCalls": 120,
+        "cpuSubmitMS": 0.20000001788139343,
+        "maxObservedRenderSubmitMS": 16.400000005960464
+      },
+      "camera": {
+        "selected": "live",
+        "live": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 100,
+            "pairs": 0,
+            "samples": 0,
+            "revision": 0
+          },
+          "enabled": true,
+          "active": true,
+          "time": 60.38333333333055,
+          "subject": "d4-wave-4-spider-8",
+          "position": [
+            165,
+            41,
+            141
+          ],
+          "focus": [
+            407.7,
+            35.4125,
+            135.6
+          ],
+          "speed": 0,
+          "flinch": 1.8647327824483135e-106,
+          "explosions": 1,
+          "plans": 108,
+          "travelled": 0,
+          "reachable": 606,
+          "visible": true,
+          "quality": 1,
+          "holding": false,
+          "panRoll": 2.123529920583981e-05,
+          "fov": 42.026119689034665,
+          "focusDistance": 239.50997034873438,
+          "safety": 2.6497565157771836
+        },
+        "drone": {
+          "anticipation": {
+            "active": false,
+            "target": null,
+            "defence": null,
+            "at": null,
+            "point": null,
+            "scans": 0,
+            "pairs": 0,
+            "samples": 0,
+            "revision": 0
+          },
+          "enabled": false,
+          "active": false,
+          "time": 0,
+          "subject": null,
+          "position": [
+            238.30470166415893,
+            179.01089016444487,
+            222.34854663050885
+          ],
+          "focus": [
+            0,
+            0,
+            0
+          ],
+          "speed": 0,
+          "velocity": [
+            0,
+            0,
+            0
+          ],
+          "acceleration": [
+            0,
+            0,
+            0
+          ],
+          "drifting": false,
+          "blockedMoves": 0,
+          "yawVelocity": 0,
+          "pitchVelocity": 0,
+          "fovVelocity": 0,
+          "travelled": 0,
+          "plans": 0,
+          "holding": false,
+          "heldFor": 0,
+          "quality": 1,
+          "visible": true,
+          "fov": 56.682683906295296,
+          "focusDistance": 185.14122036565666,
+          "pitch": 0.6153863479796732,
+          "panRoll": 0,
+          "flinch": 0,
+          "explosions": 0,
+          "routeLength": 0,
+          "routeIndex": 0,
+          "emergency": false,
+          "airborneFloor": null,
+          "cruiseY": 144,
+          "planningBytes": 1776
+        }
+      },
+      "resources": {
+        "createdSceneBuffers": 567,
+        "destroyedSceneBuffers": 426
+      }
+    }
+  ],
+  "pause": {
+    "simulationFrozen": true,
+    "droneFrozen": true
+  },
+  "logs": [],
+  "sourceHashes": {
+    "play/config.js": "50097804e2253c327fa65c36a6f80f6c8c135542ff8259db602523db50cd644b",
+    "play/engine.js": "5f1dea13ff207c65aa5967e54248cbe7b71d8bf5a952a1793f39e9351808be9f",
+    "play/enemies.js": "b4b1aa4ed82c5d9a5dd5eecb6e59d97caf213257bc3410190477e1e054435137",
+    "play/placement.js": "4b74c2b6cfed97d94c24a56d26ec325e0bdf2be9c9c4bb42c0acce77322f9316",
+    "engine/shot-shaders.js": "b0d5df1ea7b3335471d786989cbedacdf842f7ce10a311f2c3f891b02c1b1df9",
+    "shared/model-lights.js": "ab0a9a923e8cd9e717667cbec6d8843e6221fff9d0a019e756dbdc3c2d3843ef",
+    "assets/levels/ochre-03.json": "01a498d7720489c3837023f6f4183ba4688da1fde814907a5370a8815d874ad8",
+    "assets/levels/ice-03.json": "07514a00a314ce23b94f0ddd060230966a8748685dbb0d612115fca5323ab546",
+    "assets/levels/plum-04.json": "d8af50121168098e9ec3ee5920ffa7d1e512b1d1bcbfc4bffa45e98358e0c35d"
+  },
+  "checks": {
+    "noErrors": true,
+    "noLightOverflow": true,
+    "sceneOwnership": true
+  }
+}

@@ -1,0 +1,2360 @@
+{
+  "initial": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 1,
+    "wavesPerLevel": 4,
+    "completedWaves": 0,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "base",
+        "box": null,
+        "deployed": false,
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": null,
+        "deployed": false,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": "player-gun-2",
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 3,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 0.8168540000000003,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 3,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 3,
+      "shots": 0,
+      "steps": 0,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.96381666239188,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 78.14341613869624,
+      "points": 0,
+      "time": 0.8168540000000003
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "afterFirstPlacement": {
+    "phase": "deploy",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 1,
+    "wavesPerLevel": 4,
+    "completedWaves": 0,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "base",
+        "box": null,
+        "deployed": false,
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": "player-gun-1",
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 3,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 21.63345399999968,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 3,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 3,
+      "shots": 0,
+      "steps": 0,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.96381666239188,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 78.14341613869624,
+      "points": 0,
+      "time": 21.63345399999968
+    },
+    "eligible": [
+      [
+        11,
+        0,
+        6
+      ],
+      [
+        12,
+        0,
+        6
+      ],
+      [
+        13,
+        0,
+        6
+      ],
+      [
+        4,
+        0,
+        7
+      ],
+      [
+        11,
+        0,
+        7
+      ],
+      [
+        12,
+        0,
+        7
+      ],
+      [
+        13,
+        0,
+        7
+      ],
+      [
+        4,
+        0,
+        9
+      ],
+      [
+        8,
+        0,
+        9
+      ],
+      [
+        9,
+        0,
+        9
+      ],
+      [
+        13,
+        0,
+        9
+      ],
+      [
+        14,
+        0,
+        9
+      ],
+      [
+        15,
+        0,
+        9
+      ],
+      [
+        16,
+        0,
+        9
+      ],
+      [
+        17,
+        0,
+        9
+      ],
+      [
+        18,
+        0,
+        9
+      ],
+      [
+        4,
+        0,
+        10
+      ],
+      [
+        6,
+        0,
+        10
+      ],
+      [
+        7,
+        0,
+        10
+      ],
+      [
+        8,
+        0,
+        10
+      ],
+      [
+        9,
+        0,
+        10
+      ],
+      [
+        4,
+        0,
+        11
+      ],
+      [
+        6,
+        0,
+        11
+      ],
+      [
+        7,
+        0,
+        11
+      ],
+      [
+        8,
+        0,
+        11
+      ],
+      [
+        9,
+        0,
+        11
+      ],
+      [
+        15,
+        0,
+        11
+      ],
+      [
+        16,
+        0,
+        11
+      ],
+      [
+        17,
+        0,
+        11
+      ],
+      [
+        18,
+        0,
+        11
+      ],
+      [
+        7,
+        0,
+        13
+      ],
+      [
+        8,
+        0,
+        13
+      ],
+      [
+        9,
+        0,
+        13
+      ]
+    ],
+    "errors": []
+  },
+  "afterAllPlaced": {
+    "phase": "deploy",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 1,
+    "wavesPerLevel": 4,
+    "completedWaves": 0,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "base",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 3,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 29.066653999999392,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 3,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 3,
+      "shots": 0,
+      "steps": 0,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.96381666239188,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "radiusGoal": 78.14341613869624,
+      "points": 0,
+      "time": 29.066653999999392
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "widerCamera": {
+    "phase": "wave",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 1,
+    "wavesPerLevel": 4,
+    "completedWaves": 0,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "base",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 3,
+    "spawned": 3,
+    "totalEnemies": 3,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 53.14992066666513,
+      "waveTime": 17.06666666666625,
+      "running": true,
+      "completed": false,
+      "spawned": 3,
+      "pending": 0,
+      "active": 3,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 3,
+      "shots": 13,
+      "steps": 2048,
+      "lastSteps": 2,
+      "backlogSeconds": 0.0000333333333392867,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 116.00000000108665,
+      "target": [
+        140.13836669921875,
+        32,
+        243.52011108398438
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": true,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        140.63999999999996,
+        32,
+        253.25155385711633
+      ],
+      "radiusGoal": 116,
+      "points": 6,
+      "time": 53.14992066666513
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "beforeUpgrades": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 2,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4,
+    "completedWaves": 1,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "base",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 4,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 126.8997873333446,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 4,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 4,
+      "shots": 0,
+      "steps": 4696,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.9461474570837,
+      "target": [
+        239.99998474121094,
+        22.000089645385742,
+        192.00045776367188
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 3,
+      "time": 126.8997873333446
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "afterUpgradeI": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 1,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4,
+    "completedWaves": 1,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "upgrade1",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 4,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 135.3823873333455,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 4,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 4,
+      "shots": 0,
+      "steps": 4696,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.9461474570837,
+      "target": [
+        239.99998474121094,
+        22.000089645385742,
+        192.00045776367188
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 3,
+      "time": 135.3823873333455
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "afterUpgradeII": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 0,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4,
+    "completedWaves": 1,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": false
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 4,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 135.9163873333455,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 4,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 4,
+      "shots": 0,
+      "steps": 4696,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.9461474570837,
+      "target": [
+        239.99998474121094,
+        22.000089645385742,
+        192.00045776367188
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 3,
+      "time": 135.9163873333455
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "stageTwoCombat": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 2,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 3,
+    "wavesPerLevel": 4,
+    "completedWaves": 2,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 5,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 183.06628733332275,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 5,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 5,
+      "shots": 0,
+      "steps": 8020,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "base",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.9463892846151,
+      "target": [
+        239.99954223632812,
+        22.00008773803711,
+        192.0008544921875
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 6,
+      "time": 183.06628733332275
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "retainedUpgradeI": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 1,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 3,
+    "wavesPerLevel": 4,
+    "completedWaves": 2,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "upgrade1",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 5,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 193.99948733332428,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 5,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 5,
+      "shots": 0,
+      "steps": 8020,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.9463892846151,
+      "target": [
+        239.99954223632812,
+        22.00008773803711,
+        192.0008544921875
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 6,
+      "time": 193.99948733332428
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "thirdWaveResult": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 3,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 1,
+    "waveNumber": 4,
+    "wavesPerLevel": 4,
+    "completedWaves": 3,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "deployed": true,
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "upgrade1",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "deployed": true,
+        "label": "Gun 02",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "Limestone Orchard",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 6,
+    "levelId": "moss-01",
+    "engine": {
+      "time": 274.94845399998275,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 6,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 6,
+      "shots": 0,
+      "steps": 10362,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          9,
+          0,
+          10
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "variant": "upgrade1",
+        "box": [
+          2,
+          0,
+          7
+        ],
+        "turn": 0
+      }
+    ],
+    "loads": 2,
+    "unloads": 1,
+    "camera": {
+      "radius": 237.94590230053745,
+      "target": [
+        239.998779296875,
+        22.000091552734375,
+        192.00054931640625
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 3,
+      "time": 274.94845399998275
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "levelTransition": {
+    "phase": "loadout",
+    "paused": false,
+    "settleRemaining": 0,
+    "tokens": 5,
+    "misses": 0,
+    "missLimit": 10,
+    "levelNumber": 2,
+    "waveNumber": 1,
+    "wavesPerLevel": 4,
+    "completedWaves": 4,
+    "totalWaves": 8,
+    "units": [
+      {
+        "id": "player-gun-1",
+        "variant": "upgrade2",
+        "box": null,
+        "deployed": false,
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "canUpgrade": false
+      },
+      {
+        "id": "player-gun-2",
+        "variant": "upgrade1",
+        "box": null,
+        "deployed": false,
+        "label": "Gun 02",
+        "nextVariant": "upgrade2",
+        "upgradeCost": 1,
+        "canUpgrade": true
+      }
+    ],
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "busy": false,
+    "error": "",
+    "notice": "Wave complete · +2 tokens · Redeploy your guns on the new landscape.",
+    "selectedId": null,
+    "cameraAutoEnabled": true,
+    "levelName": "The Broadwater Garden",
+    "enemiesRemaining": 0,
+    "spawned": 0,
+    "totalEnemies": 3,
+    "levelId": "moss-02",
+    "engine": {
+      "time": 62.21635400000043,
+      "waveTime": 0,
+      "running": false,
+      "completed": false,
+      "spawned": 0,
+      "pending": 3,
+      "active": 0,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 3,
+      "shots": 0,
+      "steps": 0,
+      "lastSteps": 0,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 72
+    },
+    "placements": [],
+    "loads": 3,
+    "unloads": 2,
+    "camera": {
+      "radius": 237.96381666239188,
+      "target": [
+        240,
+        22,
+        192
+      ],
+      "controlsEnabled": true
+    },
+    "actionCamera": {
+      "enabled": true,
+      "owned": false,
+      "returning": false,
+      "hold": 0,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "radiusGoal": 237.96381666239188,
+      "points": 0,
+      "time": 62.21635400000043
+    },
+    "eligible": [],
+    "errors": []
+  },
+  "upgradeAfterLevel": {
+    "actionCamera": {
+      "enabled": true,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "hold": 0,
+      "owned": false,
+      "points": 0,
+      "radiusGoal": 237.96381666239188,
+      "returning": false,
+      "time": 213.91565400002472
+    },
+    "busy": false,
+    "camera": {
+      "controlsEnabled": true,
+      "radius": 237.96381666239188,
+      "target": [
+        240,
+        22,
+        192
+      ]
+    },
+    "cameraAutoEnabled": true,
+    "completedWaves": 4,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "eligible": [],
+    "enemiesRemaining": 0,
+    "engine": {
+      "active": 0,
+      "backlogSeconds": 0,
+      "completed": false,
+      "escaped": 0,
+      "killed": 0,
+      "lastSteps": 0,
+      "modelLightCapacity": 72,
+      "pending": 3,
+      "resolved": 0,
+      "running": false,
+      "shots": 0,
+      "spawned": 0,
+      "steps": 0,
+      "time": 213.91565400002472,
+      "total": 3,
+      "waveTime": 0
+    },
+    "error": "",
+    "errors": [],
+    "levelId": "moss-02",
+    "levelName": "The Broadwater Garden",
+    "levelNumber": 2,
+    "loads": 3,
+    "missLimit": 10,
+    "misses": 0,
+    "notice": "Wave complete · +2 tokens · Redeploy your guns on the new landscape.",
+    "paused": false,
+    "phase": "loadout",
+    "placements": [],
+    "selectedId": null,
+    "settleRemaining": 0,
+    "spawned": 0,
+    "tokens": 4,
+    "totalEnemies": 3,
+    "totalWaves": 8,
+    "units": [
+      {
+        "box": null,
+        "canUpgrade": false,
+        "deployed": false,
+        "id": "player-gun-1",
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "variant": "upgrade2"
+      },
+      {
+        "box": null,
+        "canUpgrade": false,
+        "deployed": false,
+        "id": "player-gun-2",
+        "label": "Gun 02",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "variant": "upgrade2"
+      }
+    ],
+    "unloads": 2,
+    "waveNumber": 1,
+    "wavesPerLevel": 4
+  },
+  "finalFirstPlacement": {
+    "actionCamera": {
+      "enabled": true,
+      "focus": [
+        240,
+        24,
+        192
+      ],
+      "hold": 0,
+      "owned": false,
+      "points": 0,
+      "radiusGoal": 78.14341613869624,
+      "returning": false,
+      "time": 49.78309200000062
+    },
+    "busy": false,
+    "camera": {
+      "controlsEnabled": true,
+      "radius": 237.96381666239188,
+      "target": [
+        240,
+        22,
+        192
+      ]
+    },
+    "cameraAutoEnabled": true,
+    "completedWaves": 0,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "eligible": [
+      [
+        11,
+        0,
+        6
+      ],
+      [
+        12,
+        0,
+        6
+      ],
+      [
+        13,
+        0,
+        6
+      ],
+      [
+        1,
+        0,
+        7
+      ],
+      [
+        2,
+        0,
+        7
+      ],
+      [
+        3,
+        0,
+        7
+      ],
+      [
+        4,
+        0,
+        7
+      ],
+      [
+        11,
+        0,
+        7
+      ],
+      [
+        12,
+        0,
+        7
+      ],
+      [
+        13,
+        0,
+        7
+      ],
+      [
+        8,
+        0,
+        9
+      ],
+      [
+        9,
+        0,
+        9
+      ],
+      [
+        13,
+        0,
+        9
+      ],
+      [
+        14,
+        0,
+        9
+      ],
+      [
+        15,
+        0,
+        9
+      ],
+      [
+        16,
+        0,
+        9
+      ],
+      [
+        17,
+        0,
+        9
+      ],
+      [
+        18,
+        0,
+        9
+      ],
+      [
+        6,
+        0,
+        10
+      ],
+      [
+        7,
+        0,
+        10
+      ],
+      [
+        8,
+        0,
+        10
+      ],
+      [
+        9,
+        0,
+        10
+      ],
+      [
+        4,
+        0,
+        11
+      ],
+      [
+        6,
+        0,
+        11
+      ],
+      [
+        7,
+        0,
+        11
+      ],
+      [
+        8,
+        0,
+        11
+      ],
+      [
+        9,
+        0,
+        11
+      ],
+      [
+        15,
+        0,
+        11
+      ],
+      [
+        16,
+        0,
+        11
+      ],
+      [
+        17,
+        0,
+        11
+      ],
+      [
+        18,
+        0,
+        11
+      ],
+      [
+        7,
+        0,
+        13
+      ],
+      [
+        8,
+        0,
+        13
+      ],
+      [
+        9,
+        0,
+        13
+      ]
+    ],
+    "enemiesRemaining": 0,
+    "engine": {
+      "active": 0,
+      "backlogSeconds": 0,
+      "completed": false,
+      "escaped": 0,
+      "killed": 0,
+      "lastSteps": 0,
+      "modelLightCapacity": 84,
+      "pending": 3,
+      "resolved": 0,
+      "running": false,
+      "shots": 0,
+      "spawned": 0,
+      "steps": 0,
+      "time": 49.78309200000062,
+      "total": 3,
+      "waveTime": 0
+    },
+    "error": "",
+    "errors": [],
+    "levelId": "moss-01",
+    "levelName": "Limestone Orchard",
+    "levelNumber": 1,
+    "loads": 2,
+    "missLimit": 10,
+    "misses": 0,
+    "notice": "",
+    "paused": false,
+    "phase": "deploy",
+    "placements": [
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "base"
+      }
+    ],
+    "selectedId": "player-gun-1",
+    "settleRemaining": 0,
+    "spawned": 0,
+    "tokens": 0,
+    "totalEnemies": 3,
+    "totalWaves": 8,
+    "units": [
+      {
+        "box": null,
+        "canUpgrade": false,
+        "deployed": false,
+        "id": "player-gun-1",
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "variant": "base"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "canUpgrade": false,
+        "deployed": true,
+        "id": "player-gun-2",
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "variant": "base"
+      }
+    ],
+    "unloads": 1,
+    "waveNumber": 1,
+    "wavesPerLevel": 4
+  },
+  "finalTuningOpening": {
+    "actionCamera": {
+      "enabled": true,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "hold": 0,
+      "owned": false,
+      "points": 3,
+      "radiusGoal": 237.96381666239188,
+      "returning": false,
+      "time": 143.682992000052
+    },
+    "busy": false,
+    "camera": {
+      "controlsEnabled": true,
+      "radius": 237.9461474570837,
+      "target": [
+        240.0006866455078,
+        22.000089645385746,
+        192.000244140625
+      ]
+    },
+    "cameraAutoEnabled": true,
+    "completedWaves": 1,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "eligible": [],
+    "enemiesRemaining": 0,
+    "engine": {
+      "active": 0,
+      "backlogSeconds": 0,
+      "completed": false,
+      "escaped": 0,
+      "killed": 0,
+      "lastSteps": 0,
+      "modelLightCapacity": 84,
+      "pending": 4,
+      "resolved": 0,
+      "running": false,
+      "shots": 0,
+      "spawned": 0,
+      "steps": 8016,
+      "time": 143.682992000052,
+      "total": 4,
+      "waveTime": 0
+    },
+    "error": "",
+    "errors": [],
+    "levelId": "moss-01",
+    "levelName": "Limestone Orchard",
+    "levelNumber": 1,
+    "loads": 2,
+    "missLimit": 10,
+    "misses": 0,
+    "notice": "Wave complete · +2 tokens",
+    "paused": false,
+    "phase": "loadout",
+    "placements": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "base"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "base"
+      }
+    ],
+    "selectedId": null,
+    "settleRemaining": 0,
+    "spawned": 0,
+    "tokens": 2,
+    "totalEnemies": 4,
+    "totalWaves": 8,
+    "units": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "canUpgrade": true,
+        "deployed": true,
+        "id": "player-gun-1",
+        "label": "Gun 01",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "variant": "base"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "canUpgrade": true,
+        "deployed": true,
+        "id": "player-gun-2",
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "variant": "base"
+      }
+    ],
+    "unloads": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4
+  },
+  "console": [],
+  "finalConsecutiveUpgrades": {
+    "actionCamera": {
+      "enabled": true,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "hold": 0,
+      "owned": false,
+      "points": 3,
+      "radiusGoal": 237.96381666239188,
+      "returning": false,
+      "time": 160.13259200005385
+    },
+    "busy": false,
+    "camera": {
+      "controlsEnabled": true,
+      "radius": 237.9461474570837,
+      "target": [
+        240.0006866455078,
+        22.000089645385746,
+        192.000244140625
+      ]
+    },
+    "cameraAutoEnabled": true,
+    "completedWaves": 1,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "eligible": [],
+    "enemiesRemaining": 0,
+    "engine": {
+      "active": 0,
+      "backlogSeconds": 0,
+      "completed": false,
+      "escaped": 0,
+      "killed": 0,
+      "lastSteps": 0,
+      "modelLightCapacity": 84,
+      "pending": 4,
+      "resolved": 0,
+      "running": false,
+      "shots": 0,
+      "spawned": 0,
+      "steps": 8016,
+      "time": 160.13259200005385,
+      "total": 4,
+      "waveTime": 0
+    },
+    "error": "",
+    "errors": [],
+    "levelId": "moss-01",
+    "levelName": "Limestone Orchard",
+    "levelNumber": 1,
+    "loads": 2,
+    "missLimit": 10,
+    "misses": 0,
+    "notice": "Wave complete · +2 tokens",
+    "paused": false,
+    "phase": "loadout",
+    "placements": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "upgrade2"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "base"
+      }
+    ],
+    "selectedId": null,
+    "settleRemaining": 0,
+    "spawned": 0,
+    "tokens": 0,
+    "totalEnemies": 4,
+    "totalWaves": 8,
+    "units": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "canUpgrade": false,
+        "deployed": true,
+        "id": "player-gun-1",
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "variant": "upgrade2"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "canUpgrade": false,
+        "deployed": true,
+        "id": "player-gun-2",
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "variant": "base"
+      }
+    ],
+    "unloads": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4
+  },
+  "finalCombat": {
+    "actionCamera": {
+      "enabled": true,
+      "focus": [
+        137.60933466433775,
+        32,
+        247.20802006853265
+      ],
+      "hold": 0,
+      "owned": true,
+      "points": 11,
+      "radiusGoal": 116,
+      "returning": false,
+      "time": 183.32455866670483
+    },
+    "busy": false,
+    "camera": {
+      "controlsEnabled": true,
+      "radius": 116.00000000028194,
+      "target": [
+        136.6526641845703,
+        32,
+        243.64239501953125
+      ]
+    },
+    "cameraAutoEnabled": true,
+    "completedWaves": 1,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "eligible": [],
+    "enemiesRemaining": 4,
+    "engine": {
+      "active": 4,
+      "backlogSeconds": 0.008233333333330447,
+      "completed": false,
+      "escaped": 0,
+      "killed": 0,
+      "lastSteps": 2,
+      "modelLightCapacity": 84,
+      "pending": 0,
+      "resolved": 0,
+      "running": true,
+      "shots": 14,
+      "spawned": 4,
+      "steps": 10157,
+      "time": 183.32455866670483,
+      "total": 4,
+      "waveTime": 17.84166666666613
+    },
+    "error": "",
+    "errors": [],
+    "levelId": "moss-01",
+    "levelName": "Limestone Orchard",
+    "levelNumber": 1,
+    "loads": 2,
+    "missLimit": 10,
+    "misses": 0,
+    "notice": "",
+    "paused": false,
+    "phase": "wave",
+    "placements": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "upgrade2"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "base"
+      }
+    ],
+    "selectedId": null,
+    "settleRemaining": 0,
+    "spawned": 4,
+    "tokens": 0,
+    "totalEnemies": 4,
+    "totalWaves": 8,
+    "units": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "canUpgrade": false,
+        "deployed": true,
+        "id": "player-gun-1",
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "variant": "upgrade2"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "canUpgrade": false,
+        "deployed": true,
+        "id": "player-gun-2",
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "variant": "base"
+      }
+    ],
+    "unloads": 1,
+    "waveNumber": 2,
+    "wavesPerLevel": 4
+  },
+  "finalWaveTwoResult": {
+    "actionCamera": {
+      "enabled": true,
+      "focus": [
+        240,
+        22,
+        192
+      ],
+      "hold": 0,
+      "owned": false,
+      "points": 5,
+      "radiusGoal": 237.96381666239188,
+      "returning": false,
+      "time": 258.7080253333596
+    },
+    "busy": false,
+    "camera": {
+      "controlsEnabled": true,
+      "radius": 237.94590230053743,
+      "target": [
+        240.00035095214844,
+        22.000091552734375,
+        192.00054931640625
+      ]
+    },
+    "cameraAutoEnabled": true,
+    "completedWaves": 2,
+    "costs": {
+      "buy": 1,
+      "upgrade": 1
+    },
+    "eligible": [],
+    "enemiesRemaining": 0,
+    "engine": {
+      "active": 0,
+      "backlogSeconds": 0,
+      "completed": false,
+      "escaped": 0,
+      "killed": 0,
+      "lastSteps": 0,
+      "modelLightCapacity": 84,
+      "pending": 5,
+      "resolved": 0,
+      "running": false,
+      "shots": 0,
+      "spawned": 0,
+      "steps": 12427,
+      "time": 258.7080253333596,
+      "total": 5,
+      "waveTime": 0
+    },
+    "error": "",
+    "errors": [],
+    "levelId": "moss-01",
+    "levelName": "Limestone Orchard",
+    "levelNumber": 1,
+    "loads": 2,
+    "missLimit": 10,
+    "misses": 0,
+    "notice": "Wave complete · +2 tokens",
+    "paused": false,
+    "phase": "loadout",
+    "placements": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "upgrade2"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "id": "player-gun-2",
+        "model": "turret-study",
+        "turn": 0,
+        "variant": "base"
+      }
+    ],
+    "selectedId": null,
+    "settleRemaining": 0,
+    "spawned": 0,
+    "tokens": 2,
+    "totalEnemies": 5,
+    "totalWaves": 8,
+    "units": [
+      {
+        "box": [
+          13,
+          0,
+          9
+        ],
+        "canUpgrade": false,
+        "deployed": true,
+        "id": "player-gun-1",
+        "label": "Gun 01",
+        "nextVariant": null,
+        "upgradeCost": null,
+        "variant": "upgrade2"
+      },
+      {
+        "box": [
+          4,
+          0,
+          9
+        ],
+        "canUpgrade": true,
+        "deployed": true,
+        "id": "player-gun-2",
+        "label": "Gun 02",
+        "nextVariant": "upgrade1",
+        "upgradeCost": 1,
+        "variant": "base"
+      }
+    ],
+    "unloads": 1,
+    "waveNumber": 3,
+    "wavesPerLevel": 4
+  },
+  "finalConsole": []
+}

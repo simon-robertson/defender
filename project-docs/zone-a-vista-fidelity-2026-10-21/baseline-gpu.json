@@ -1,0 +1,211 @@
+{
+  "benchmark": {
+    "status": "complete",
+    "views": [
+      {
+        "mode": "overview",
+        "vista": {
+          "samples": 30,
+          "median": 4.063232,
+          "p90": 8.126464
+        },
+        "wholeFrame": {
+          "samples": 30,
+          "median": 6.029312,
+          "p90": 10.616832
+        },
+        "supported": true,
+        "geometryBytes": 3291192,
+        "targetBytes": 8491000,
+        "viewport": [
+          2426,
+          1750
+        ],
+        "vistaSize": [
+          1213,
+          875
+        ]
+      },
+      {
+        "mode": "high",
+        "vista": {
+          "samples": 30,
+          "median": 4.194304,
+          "p90": 8.650752
+        },
+        "wholeFrame": {
+          "samples": 30,
+          "median": 6.094848,
+          "p90": 9.8304
+        },
+        "supported": true,
+        "geometryBytes": 3291192,
+        "targetBytes": 8491000,
+        "viewport": [
+          2426,
+          1750
+        ],
+        "vistaSize": [
+          1213,
+          875
+        ]
+      },
+      {
+        "mode": "low",
+        "vista": {
+          "samples": 30,
+          "median": 0.32768,
+          "p90": 4.128768
+        },
+        "wholeFrame": {
+          "samples": 30,
+          "median": 5.963776,
+          "p90": 9.764864
+        },
+        "supported": true,
+        "geometryBytes": 3291192,
+        "targetBytes": 8491000,
+        "viewport": [
+          2426,
+          1750
+        ],
+        "vistaSize": [
+          1213,
+          875
+        ]
+      }
+    ],
+    "method": "350 ms warmup followed by 30 asynchronous timestamp samples per view; isolated vista replay plus full production frames; stationary world, tiny camera yaw sweep"
+  },
+  "level": "moss-01",
+  "conditions": {
+    "period": "day",
+    "timeOfDay": 10.5,
+    "night": false,
+    "weather": false
+  },
+  "lighting": {
+    "brighterSun": true,
+    "direction": [
+      -0.5345579981803894,
+      0.7597957253456116,
+      -0.3700786232948303
+    ],
+    "sunIntensity": 0.8130139708518982,
+    "ambientIntensity": 0.45003896951675415
+  },
+  "errors": [],
+  "checks": [],
+  "inspection": {
+    "frames": 640,
+    "deltaSeconds": 0,
+    "elapsedSeconds": 0,
+    "waterPhase": 0,
+    "rainCount": 0,
+    "rainBytes": 0,
+    "rainPhase": 0,
+    "rainTime": 0,
+    "snowCount": 0,
+    "snowBytes": 0,
+    "snowPhase": 0,
+    "snowTime": 0,
+    "snowCycleSeconds": 0,
+    "leafCount": 0,
+    "leafBytes": 0,
+    "leafPhase": 0,
+    "leafTime": 0,
+    "leafCycleSeconds": 0,
+    "drawGroups": 53,
+    "drawCalls": 38,
+    "geometryBytes": 1951064,
+    "transformBytes": 49664,
+    "visibilityBytes": 39312,
+    "transformUploads": 0,
+    "transformUploadBytes": 0,
+    "sceneBuffers": 159,
+    "createdSceneBuffers": 159,
+    "destroyedSceneBuffers": 0,
+    "targetBytes": 288489216,
+    "vistaActive": true,
+    "vistaGeometryBytes": 3291192,
+    "vistaTargetBytes": 8491000,
+    "effectBytes": 24336,
+    "missileThrustBytes": 0,
+    "missileThrustInstances": 0,
+    "missileThrustUploadBytes": 0,
+    "missileLights": 0,
+    "missileLightCPUBytes": 0,
+    "localLightUploadBytes": 0,
+    "plasmaBytes": 0,
+    "plasmaLinks": 0,
+    "plasmaTime": 0,
+    "plasmaOverflow": 0,
+    "plasmaInstances": 0,
+    "plasmaLights": 0,
+    "plasmaUploadBytes": 0,
+    "plasmaLightBytes": 0,
+    "plasmaCPUBytes": 0,
+    "plasmaMergeBytes": 0,
+    "arcBytes": 0,
+    "arcLightBytes": 0,
+    "arcBindingBytes": 320,
+    "arcStrikes": 0,
+    "arcSparks": 0,
+    "arcGrounded": 0,
+    "arcInstances": 0,
+    "arcLights": 0,
+    "arcUploads": 0,
+    "arcUploadBytes": 0,
+    "shotLights": 0,
+    "localLights": 0,
+    "bloomActive": true,
+    "bloomPasses": 3,
+    "bloomDraws": 3,
+    "bloomBytes": 4253856,
+    "bloomSettingsBytes": 16,
+    "modelLights": 0,
+    "authoredModelLights": 12,
+    "modelLightOverflow": 0,
+    "modelLightBytes": 13584,
+    "localLightUniformBytes": 15120,
+    "damageCubes": 0,
+    "damageParticles": 0,
+    "damageBytes": 0,
+    "shockwaveCount": 0,
+    "shockwaveBytes": 0,
+    "shockwaveTargetBytes": 0,
+    "shotInstances": 0,
+    "droppedSparks": 0,
+    "replacedFlashes": 0,
+    "cpuSubmitMs": 0.19999998807907104,
+    "gpuFrameTiming": {
+      "status": "ready",
+      "ms": 5.826150400000001,
+      "samples": 10,
+      "pending": 0,
+      "bufferBytes": 64,
+      "queryCount": 2
+    },
+    "cameraUpdated": true,
+    "depthUpdated": true,
+    "shadowUpdated": false,
+    "opaqueUpdated": true,
+    "waterUpdated": true,
+    "mode": "overview",
+    "yaw": 2.45,
+    "pitch": 0.68,
+    "radius": 197.67412524136589,
+    "target": [
+      240,
+      24,
+      216
+    ],
+    "eye": [
+      686.3175659179688,
+      589.9136962890625,
+      -323.01971435546875
+    ],
+    "fov": null,
+    "groundHeight": null
+  }
+}

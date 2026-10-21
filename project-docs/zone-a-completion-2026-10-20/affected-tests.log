@@ -1,0 +1,192 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.11ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [0.63ms]
+(pass) consecutive preparation upgrades spend each step and the top tier survives the level boundary [1.03ms]
+(pass) upgrade availability follows progression, enabled tiers, phase and wallet [0.59ms]
+(pass) next undeployed selection advances in inventory order, wraps and returns null only when none remain [0.18ms]
+(pass) sixteen finite waves reward once, retain same-map positions and return ownership at every level boundary [0.28ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [0.15ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.12ms]
+(pass) successful waves settle for four seconds before reward or progression and pause freezes settlement [0.14ms]
+(pass) defeat cannot settle, invalid time is rejected and reset clears a pending settlement [0.16ms]
+(pass) family unlocks and upgrades retain correct model and family prices across levels [0.24ms]
+(pass) wave briefing reports effective species profiles and per-approach counts [0.31ms]
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [415.21ms]
+(pass) boost, unpowered moving turn and reignition are distinct and keep their exact phase timing [23.91ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [23.32ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [22.72ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [72.68ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [49.11ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [24.30ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [93.12ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [23.66ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [23.69ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [24.04ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [69.37ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [68.37ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [45.11ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [24.52ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [22.76ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [22.86ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [22.56ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [136.59ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [23.18ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [24.71ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [29.01ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [23.51ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [250.94ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [23.15ms]
+(pass) static contact drops its incoming claim before the impact callback [23.26ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [90.59ms]
+
+tests/arc-spire-runtime.test.js:
+(pass) Arc Spire studies load only their actors, preserve movement, and keep wildlife clear of defence geometry [1146.60ms]
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1640.39ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [6212.97ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [35596.46ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [2026.51ms]
+(pass) an animal occupying otherwise legal build ground causes an atomic temporary rejection [1879.32ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [1870.27ms]
+
+tests/model-lights.test.js:
+(pass) flagged exposed face clusters preserve all zone colours and only the authored turret panels [180.49ms]
+(pass) edge-connected matching faces share an emitter; gaps, point contacts and different materials do not [0.45ms]
+(pass) logical transforms, compacted visibility and unchanged invalidations reuse storage correctly [0.16ms]
+(pass) model light overflow is explicit, bounded and does not allocate one light per quad [0.16ms]
+
+tests/play-config.test.js:
+(pass) Zone A has sixteen finite varied encounters and the retained wallet [0.78ms]
+(pass) family and tier introductions are bounded global encounter numbers [0.93ms]
+(pass) play profiles are immutable and leave all shared preview tuning untouched [0.42ms]
+(pass) capacity budgets every affordable family and species without adding disjoint wave peaks [1.17ms]
+(pass) resolved firing profiles preserve actual family delivery and finite cadence [1.53ms]
+(pass) bad schedules, unknown routes and invalid species override fields fail before scene creation [3.86ms]
+(pass) settling time stays tunable independently of combat tuning [1.60ms]
+
+tests/play-unit-highlight.test.js:
+(pass) outline encloses actual articulated base/upgrade meshes, follows camera and preserves source/matrices [57.97ms]
+(pass) projection reuses unchanged work, follows in-place upgrades/moves and rejects absent or offscreen rigs [31.98ms]
+(pass) whole-row hover including upgrade outranks keyboard focus; leave restores only live focus [31.29ms]
+(pass) camera/pose updates repaint persistent nodes and phase/scene/ownership changes clear without stale worlds [31.36ms]
+
+tests/arc-combat.test.js:
+(pass) Arc studies hit once per pulse and destroy the mixed ground/air rosters [1089.01ms]
+(pass) mixed defences share exactly one thinker and do not promise unverified Arc coverage [51.51ms]
+(pass) actual surface LOS, range exits and death cancel live bursts; a stall never replays hits [25.99ms]
+(pass) a surface-blocked priority target yields to hittable alternatives and retries later [26.18ms]
+(pass) upgrade bursts respect real gaps and cooldowns and stop immediately on obstruction [31.23ms]
+(pass) random contacts use exposed facing sides of current articulated poses and release all matrix references [567.75ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [970.01ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [266.33ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [811.47ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [659.81ms]
+
+tests/play-action-camera.test.js:
+(pass) empty/title preparation never takes camera ownership; bind and release never move a user view [1.23ms]
+(pass) sparse combat closes in smoothly with fixed orientation, finite bounded motion and no long-frame leap [6.05ms]
+(pass) spread fronts and engaged gun envelopes fit wide and portrait views without selecting scheduled enemies or mutating targeting [3.78ms]
+(pass) look-ahead follows actual route through a corner and clamps at exit rather than wrapping [0.10ms]
+(pass) fixed-clock damping agrees at30/60/120Hz and moving-route framing has no material frame-rate drift [2.94ms]
+(pass) death context survives busy gunfire and holds through four-second settling, then returns smoothly only once [1.26ms]
+(pass) recent death interest expires without a settling phase and paused time freezes view, hold and event lifetime [0.85ms]
+(pass) manual drag/key holds, disable/resume and preparation takeover never fight the player or snap on resuming [0.71ms]
+(pass) takeover from extreme manual zoom/pan returns within speed limits instead of clamping to auto bounds [2.14ms]
+(pass) event timestamps follow actual bounded engine time rather than a longer browser-frame delta [0.15ms]
+(pass) zero-hold preparation takeover cancels the return but lets the next wave own the camera immediately [1.04ms]
+(pass) real A1/A2 fights anticipate guns before engagement and keep their animated meshes readable on laptop/desktop frames [4331.73ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [50.71ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [37.10ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [35.89ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [211.83ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [73.95ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1241.36ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [1126.66ms]
+
+tests/play-target-commitment.test.js:
+(pass) A1 wave 3 at the reported gun positions finishes acquired targets without unfired reconsideration [5733.15ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [878.79ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [1037.15ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [978.82ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [694.69ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.39ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2182.04ms]
+
+tests/target-planner.test.js:
+(pass) equal threat follows time to exit, explicit threat can outweigh progress, and health breaks close urgency ties [0.85ms]
+(pass) unknown route metadata still ranks threat but never invents downstream capacity [0.05ms]
+(pass) explicitly disabled forecasts skip all route probes while default coverage and live eligibility remain intact [0.31ms]
+(pass) uncertified route aim offsets and banking skip probes and credit without excluding live gun hits [0.52ms]
+(pass) revoking route forecast eligibility clears an existing reservation without rejecting its live target [0.15ms]
+(pass) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [733.26ms]
+(pass) future projectile aiming does not borrow the hitscan damage forecast [0.14ms]
+(pass) impact recovery suspends route promises while keeping actual live shots eligible [0.12ms]
+(pass) an idle downstream owner accepts one explicit assignment when the upstream gun switches [0.08ms]
+(pass) delegation requires the full margin and respects cooldown, visibility and weapon strength [0.27ms]
+(pass) incoming missile damage is credited once and only residual health needs the gun forecast margin [0.22ms]
+(pass) fully claimed missile damage releases old gun reservations and never recruits unnecessary owners [0.09ms]
+(pass) unknown health and invalid incoming values cannot manufacture a lethal damage claim [0.28ms]
+(pass) mixed families share actual incoming credit while only one thinker forecasts gun damage [0.19ms]
+(pass) capacity uses only the next continuous window and never counts a later preview lap [0.05ms]
+(pass) one downstream promise cannot be reused to delegate a different actor [0.10ms]
+(pass) an owner cannot abandon its reserved actor for a more urgent challenger [0.07ms]
+(pass) covered targets remain fireable when there is no uncovered alternative [0.06ms]
+(pass) near-equal urgency and a short hold preserve locks; a valid burst finishes before a discretionary switch [0.05ms]
+(pass) forecast counts single attack pulses, partial bursts and real cooldowns [0.02ms]
+(pass) one roster scan per frame rotates fairly and releases all planner references on disposal [0.11ms]
+(pass) death, departure and lap changes invalidate reservations instead of preserving spent promises [0.18ms]
+(pass) a stale current-target lock cannot recreate downstream confidence after its reservation lapses [0.05ms]
+(pass) an unreserved lock in a coverage gap cannot promise a disconnected later window [0.04ms]
+(pass) current turret capacity never covers itself and spent weapon time reduces a promise [0.04ms]
+(pass) roster growth reuses spare slots and gives unprofiled actors no speculative capacity [0.12ms]
+(pass) continuing burst forecasts require pitch alignment as well as yaw [0.04ms]
+(pass) non-thinking turrets still reject invalid shots and cancel bursts every frame [0.30ms]
+(pass) gun acquisition survives priority changes through cooldown and its first valid burst [0.07ms]
+(pass) gun acquisition hold is bounded and cannot retain dead, blocked, removed or out-of-range targets [0.14ms]
+
+tests/play-presentation.test.js:
+(pass) title framing covers every viewport corner with landscape across portrait and widescreen [0.36ms]
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [0.18ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [910.07ms]
+(pass) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [933.64ms]
+{"levelIndex":0,"hz":30,"travelled":209.54888888889266,"minFov":44.458382221406374,"maxFov":72.60610134029295,"minGunGap":65.87463214693366,"minEnemyGap":62.957744023615,"visible":0.8257191201353637,"held":0.34348561759729274,"readable":0.46362098138747887}
+{"levelIndex":0,"hz":60,"travelled":209.84888888889267,"minFov":44.326617113615896,"maxFov":72.60645775974562,"minGunGap":65.86683569478986,"minEnemyGap":62.85901958443605,"visible":0.8238780694326842,"held":0.3420829805249788,"readable":0.46316680779000846}
+{"levelIndex":0,"hz":120,"travelled":209.84888888889267,"minFov":44.26220217671396,"maxFov":72.60736210554043,"minGunGap":65.86460864231213,"minEnemyGap":62.80992431908102,"visible":0.8238034731046167,"held":0.3418043202033037,"readable":0.4633629817873782}
+{"levelIndex":1,"hz":30,"travelled":552.2244444444057,"minFov":40.00016375368392,"maxFov":69.66666666666669,"minGunGap":45.912966510857906,"minEnemyGap":104.06195955852695,"visible":0.8253521126760563,"held":0.10328638497652583,"readable":0.6328638497652582}
+{"levelIndex":1,"hz":60,"travelled":539.8866666666308,"minFov":40.00015589246394,"maxFov":69.83333333333334,"minGunGap":45.89771284546153,"minEnemyGap":104.55235440562596,"visible":0.8257397839361202,"held":0.13104744011272898,"readable":0.6608736496007516}
+{"levelIndex":1,"hz":120,"travelled":540.0366666666308,"minFov":40.000153983654464,"maxFov":69.91666666666667,"minGunGap":45.893354692572565,"minEnemyGap":104.55021582595522,"visible":0.8257397839361202,"held":0.1308125880695162,"readable":0.6611085016439643}
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5398.18ms]
+(pass) standoff routing avoids close approaches and permits retreat when action moves towards the operator [883.49ms]
+(pass) a useful stationary shot stays planted instead of orbiting on a timer, and framing rejects foreground canopy [0.26ms]
+(pass) fast pans lean in opposite directions, settle smoothly and freeze with pause [874.10ms]
+{"scenario":"reported-opening","travelled":367.8719151458703,"held":0.680952380952381,"readable":0.9257936507936508}
+(pass) the reported two-base-gun A1 opening holds shots and stays near the battle without constant running [1047.24ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [26.59ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [92.97ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [54.41ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [119.67ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [18.84ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [898.77ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [125.08ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [3153.54ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [13694.54ms]
+
+ 145 pass
+ 0 fail
+ 515101 expect() calls
+Ran 145 tests across 17 files. [104.65s]

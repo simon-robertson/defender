@@ -1,0 +1,1587 @@
+{
+  "id": "basin-confluence",
+  "level": "ochre-04",
+  "title": "Basin Confluence",
+  "baseline": {
+    "path": "backups/pre-path-carving-2026-10-18T17-00-34-263Z/assets/levels/ochre-04.json",
+    "sha256": "a6fc00d9feab604eb45502fc4120e96116fe845c0bdea93ded4e3642c9b49cc6"
+  },
+  "sourceHash": "b6703bdfaa7f0d4f9fc3e0c672011a49458ff1c9db4100f675a34bc2dc974647",
+  "rationale": "A northeastern approach descends the mainland while a southern approach climbs the lake shore, meeting beside the aqueduct before one shared lower court and southeast exit. This offers early branch-specific choices on constrained land, but concentrates more coverage around the common shore junction and uses less of the northern dry entry.",
+  "corners": [
+    [
+      19,
+      4
+    ],
+    [
+      14,
+      4
+    ],
+    [
+      14,
+      8
+    ],
+    [
+      12,
+      8
+    ],
+    [
+      12,
+      11
+    ],
+    [
+      13,
+      11
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      18,
+      14
+    ],
+    [
+      18,
+      15
+    ]
+  ],
+  "additional": [
+    {
+      "id": "southern",
+      "corners": [
+        [
+          9,
+          15
+        ],
+        [
+          9,
+          13
+        ],
+        [
+          10,
+          13
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          11
+        ],
+        [
+          13,
+          11
+        ],
+        [
+          13,
+          14
+        ],
+        [
+          18,
+          14
+        ],
+        [
+          18,
+          15
+        ]
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "id": "east-entry-16-3",
+      "group": "eastEntry",
+      "box": [
+        16,
+        3
+      ]
+    },
+    {
+      "id": "east-entry-17-3",
+      "group": "eastEntry",
+      "box": [
+        17,
+        3
+      ]
+    },
+    {
+      "id": "east-entry-18-3",
+      "group": "eastEntry",
+      "box": [
+        18,
+        3
+      ]
+    },
+    {
+      "id": "east-entry-15-5",
+      "group": "eastEntry",
+      "box": [
+        15,
+        5
+      ]
+    },
+    {
+      "id": "east-entry-15-6",
+      "group": "eastEntry",
+      "box": [
+        15,
+        6
+      ]
+    },
+    {
+      "id": "east-entry-13-5",
+      "group": "eastEntry",
+      "box": [
+        13,
+        5
+      ]
+    },
+    {
+      "id": "east-entry-13-6",
+      "group": "eastEntry",
+      "box": [
+        13,
+        6
+      ]
+    },
+    {
+      "id": "east-entry-13-7",
+      "group": "eastEntry",
+      "box": [
+        13,
+        7
+      ]
+    },
+    {
+      "id": "shore-entry-11-14",
+      "group": "shoreEntry",
+      "box": [
+        11,
+        14
+      ]
+    },
+    {
+      "id": "shore-entry-11-13",
+      "group": "shoreEntry",
+      "box": [
+        11,
+        13
+      ]
+    },
+    {
+      "id": "shore-entry-11-12",
+      "group": "shoreEntry",
+      "box": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "shore-entry-9-11",
+      "group": "shoreEntry",
+      "box": [
+        9,
+        11
+      ]
+    },
+    {
+      "id": "shore-entry-9-10",
+      "group": "shoreEntry",
+      "box": [
+        9,
+        10
+      ]
+    },
+    {
+      "id": "shore-entry-11-10",
+      "group": "shoreEntry",
+      "box": [
+        11,
+        10
+      ]
+    },
+    {
+      "id": "shore-entry-11-9",
+      "group": "shoreEntry",
+      "box": [
+        11,
+        9
+      ]
+    },
+    {
+      "id": "shore-entry-11-8",
+      "group": "shoreEntry",
+      "box": [
+        11,
+        8
+      ]
+    },
+    {
+      "id": "shore-entry-11-7",
+      "group": "shoreEntry",
+      "box": [
+        11,
+        7
+      ]
+    },
+    {
+      "id": "junction-12-5",
+      "group": "junction",
+      "box": [
+        12,
+        5
+      ]
+    },
+    {
+      "id": "junction-13-9",
+      "group": "junction",
+      "box": [
+        13,
+        9
+      ]
+    },
+    {
+      "id": "junction-13-10",
+      "group": "junction",
+      "box": [
+        13,
+        10
+      ]
+    },
+    {
+      "id": "lower-court-12-12",
+      "group": "lowerCourt",
+      "box": [
+        12,
+        12
+      ]
+    },
+    {
+      "id": "lower-court-12-13",
+      "group": "lowerCourt",
+      "box": [
+        12,
+        13
+      ]
+    },
+    {
+      "id": "lower-court-12-14",
+      "group": "lowerCourt",
+      "box": [
+        12,
+        14
+      ]
+    },
+    {
+      "id": "late-14-15",
+      "group": "late",
+      "box": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": "late-15-15",
+      "group": "late",
+      "box": [
+        15,
+        15
+      ]
+    },
+    {
+      "id": "late-16-15",
+      "group": "late",
+      "box": [
+        16,
+        15
+      ]
+    },
+    {
+      "id": "late-17-15",
+      "group": "late",
+      "box": [
+        17,
+        15
+      ]
+    },
+    {
+      "id": "late-18-13",
+      "group": "late",
+      "box": [
+        18,
+        13
+      ]
+    },
+    {
+      "id": "late-19-14",
+      "group": "late",
+      "box": [
+        19,
+        14
+      ]
+    }
+  ],
+  "rejectedSites": [
+    {
+      "id": "east-entry-15-4",
+      "group": "eastEntry",
+      "box": [
+        15,
+        4
+      ],
+      "reason": "route box"
+    },
+    {
+      "id": "shore-entry-9-14",
+      "group": "shoreEntry",
+      "box": [
+        9,
+        14
+      ],
+      "reason": "route box"
+    },
+    {
+      "id": "junction-13-8",
+      "group": "junction",
+      "box": [
+        13,
+        8
+      ],
+      "reason": "route box"
+    },
+    {
+      "id": "lower-court-14-14",
+      "group": "lowerCourt",
+      "box": [
+        14,
+        14
+      ],
+      "reason": "route box"
+    },
+    {
+      "id": "shore-entry-8-15",
+      "group": "shoreEntry",
+      "box": [
+        8,
+        15
+      ],
+      "reason": "normal-overview obstruction from retained terrain/perch",
+      "obstructions": [
+        "b4-land-8-14"
+      ]
+    },
+    {
+      "id": "junction-14-9",
+      "group": "junction",
+      "box": [
+        14,
+        9
+      ],
+      "reason": "normal-overview obstruction from retained terrain/perch",
+      "obstructions": [
+        "terrain",
+        "b4-land-3-2",
+        "b4-land-18-7",
+        "b4-land-8-14"
+      ]
+    },
+    {
+      "id": "junction-14-10",
+      "group": "junction",
+      "box": [
+        14,
+        10
+      ],
+      "reason": "normal-overview obstruction from retained terrain/perch",
+      "obstructions": [
+        "terrain",
+        "b4-land-3-2",
+        "b4-land-18-7",
+        "b4-land-8-14"
+      ]
+    },
+    {
+      "id": "lower-court-14-12",
+      "group": "lowerCourt",
+      "box": [
+        14,
+        12
+      ],
+      "reason": "normal-overview obstruction from retained terrain/perch",
+      "obstructions": [
+        "terrain",
+        "b4-land-3-2",
+        "b4-land-18-7",
+        "b4-land-8-14"
+      ]
+    },
+    {
+      "id": "lower-court-14-13",
+      "group": "lowerCourt",
+      "box": [
+        14,
+        13
+      ],
+      "reason": "normal-overview obstruction from retained terrain/perch",
+      "obstructions": [
+        "terrain",
+        "b4-land-3-2",
+        "b4-land-18-7",
+        "b4-land-8-14"
+      ]
+    }
+  ],
+  "bridges": [],
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 25,
+      "length": 576
+    },
+    {
+      "id": "southern",
+      "boxes": 28,
+      "length": 648
+    }
+  ],
+  "edges": [
+    {
+      "id": "main",
+      "entry": [
+        19,
+        0,
+        4
+      ],
+      "exit": [
+        18,
+        0,
+        15
+      ],
+      "boundaryBoxes": 2,
+      "interiorBoxes": 23,
+      "edgeRunningSegments": 0
+    },
+    {
+      "id": "southern",
+      "entry": [
+        9,
+        0,
+        15
+      ],
+      "exit": [
+        18,
+        0,
+        15
+      ],
+      "boundaryBoxes": 2,
+      "interiorBoxes": 26,
+      "edgeRunningSegments": 0
+    }
+  ],
+  "unionPathBoxes": 39,
+  "baselinePlacements": 240,
+  "retainedPlacements": 164,
+  "removed": [
+    {
+      "id": "b4-land-16-3",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        3
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -3
+      ],
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-17-3",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        3
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-18-3",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        3
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-14-4",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        4
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-15-4",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        4
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-16-4",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        4
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        3
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-17-4",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        4
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-18-4",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        4
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-19-4",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        19,
+        0,
+        4
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-12-5",
+      "model": "ochre-pebbles",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        5
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        3
+      ],
+      "reason": "full defence-ground footprint: junction"
+    },
+    {
+      "id": "b4-land-13-5",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        5
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        0
+      ],
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-14-5",
+      "model": "ochre-pebbles",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        5
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-15-5",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        5
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        -2
+      ],
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-10-6",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        6
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-6",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        6
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-12-6",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        6
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        1
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-13-6",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        6
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-14-6",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        6
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-15-6",
+      "model": "ochre-wall",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        6
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-10-7",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        7
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-7",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        7
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-12-7",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        7
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-13-7",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        7
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        1
+      ],
+      "reason": "full defence-ground footprint: eastEntry"
+    },
+    {
+      "id": "b4-land-14-7",
+      "model": "ochre-pebbles",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        7
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        -2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-10-8",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        8
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-8",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        8
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-12-8",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        8
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-13-8",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        8
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-14-8",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        8
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-10-9",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        9
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-9",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        9
+      ],
+      "turn": 3,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-12-9",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        9
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-13-9",
+      "model": "ochre-pebbles",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        9
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        3,
+        0,
+        1
+      ],
+      "reason": "full defence-ground footprint: junction"
+    },
+    {
+      "id": "b4-land-9-10",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        10
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-10-10",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        10
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-10",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        10
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-12-10",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        10
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-13-10",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        10
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: junction"
+    },
+    {
+      "id": "b4-land-9-11",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        11
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-10-11",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        11
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-12-11",
+      "model": "ochre-pebbles",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        11
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        3
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-13-11",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        11
+      ],
+      "turn": 1,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-10-12",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        12
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-12",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        12
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-12-12",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        12
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: lowerCourt"
+    },
+    {
+      "id": "b4-land-13-12",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        12
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-9-13",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        13
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-10-13",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        10,
+        0,
+        13
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-13",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        13
+      ],
+      "turn": 3,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-12-13",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        13
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: lowerCourt"
+    },
+    {
+      "id": "b4-land-13-13",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        13
+      ],
+      "turn": 2,
+      "kind": "detail",
+      "offset": [
+        -2,
+        0,
+        2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-18-13",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        13
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "b4-land-9-14",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        14
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-11-14",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        11,
+        0,
+        14
+      ],
+      "turn": 0,
+      "reason": "full defence-ground footprint: shoreEntry"
+    },
+    {
+      "id": "b4-land-12-14",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        14
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: lowerCourt"
+    },
+    {
+      "id": "b4-land-13-14",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        14
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-14-14",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        14
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        -2
+      ],
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-15-14",
+      "model": "ochre-mesa",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        14
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-16-14",
+      "model": "ochre-mesa",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        14
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-17-14",
+      "model": "ochre-mesa-low",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        14
+      ],
+      "turn": 3,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-18-14",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        14
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-19-14",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        19,
+        0,
+        14
+      ],
+      "turn": 3,
+      "kind": "detail",
+      "offset": [
+        1,
+        0,
+        -3
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "b4-land-9-15",
+      "model": "ochre-cactus",
+      "variant": "base",
+      "box": [
+        9,
+        0,
+        15
+      ],
+      "turn": 2,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-14-15",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        15
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -3,
+        0,
+        -1
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "b4-land-15-15",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        15,
+        0,
+        15
+      ],
+      "turn": 1,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "b4-land-16-15",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        15
+      ],
+      "turn": 2,
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "b4-land-17-15",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        15
+      ],
+      "turn": 1,
+      "kind": "detail",
+      "offset": [
+        2,
+        0,
+        1
+      ],
+      "reason": "full defence-ground footprint: late"
+    },
+    {
+      "id": "b4-land-18-15",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        15
+      ],
+      "turn": 0,
+      "reason": "continuous supported route travel"
+    },
+    {
+      "id": "b4-land-17-2",
+      "model": "ochre-shrub",
+      "variant": "base",
+      "box": [
+        17,
+        0,
+        2
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: east-entry-17-3"
+    },
+    {
+      "id": "b4-land-18-2",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        2
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: east-entry-18-3"
+    },
+    {
+      "id": "b4-land-12-4",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        12,
+        0,
+        4
+      ],
+      "turn": 0,
+      "reason": "full placement-ground overview visibility: junction-12-5"
+    },
+    {
+      "id": "b4-land-13-4",
+      "model": "ochre-tuft",
+      "variant": "base",
+      "box": [
+        13,
+        0,
+        4
+      ],
+      "turn": 0,
+      "kind": "detail",
+      "offset": [
+        -1,
+        0,
+        3
+      ],
+      "reason": "full placement-ground overview visibility: east-entry-13-5"
+    },
+    {
+      "id": "b4-land-16-5",
+      "model": "ochre-cactus-young",
+      "variant": "base",
+      "box": [
+        16,
+        0,
+        5
+      ],
+      "turn": 1,
+      "reason": "full placement-ground overview visibility: east-entry-15-5, east-entry-15-6"
+    },
+    {
+      "id": "b4-land-14-9",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        9
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: junction-13-9, junction-13-10"
+    },
+    {
+      "id": "b4-land-14-10",
+      "model": "ochre-mesa-low",
+      "variant": "base",
+      "box": [
+        14,
+        0,
+        10
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: junction-13-10"
+    },
+    {
+      "id": "b4-land-18-12",
+      "model": "ochre-rock",
+      "variant": "base",
+      "box": [
+        18,
+        0,
+        12
+      ],
+      "turn": 2,
+      "reason": "full placement-ground overview visibility: late-18-13"
+    }
+  ],
+  "added": [],
+  "moved": [],
+  "terrainChanged": false,
+  "environmentChanged": false,
+  "lostPerches": [],
+  "previewWildlife": {
+    "habitats": [
+      [
+        18,
+        14
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        15
+      ]
+    ],
+    "habitatPoints": [
+      [
+        454,
+        24,
+        358
+      ],
+      [
+        6,
+        24,
+        6
+      ],
+      [
+        70,
+        24,
+        378
+      ]
+    ],
+    "perches": [
+      {
+        "id": "b4-land-3-2",
+        "point": [
+          11,
+          45,
+          11
+        ]
+      },
+      {
+        "id": "b4-land-18-7",
+        "point": [
+          11,
+          45,
+          11
+        ]
+      },
+      {
+        "id": "b4-land-8-14",
+        "point": [
+          11,
+          45,
+          11
+        ]
+      }
+    ]
+  },
+  "validationStatus": "Comparison source; production route, weapons, roaming and visual evidence is separate."
+}

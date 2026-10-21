@@ -1,0 +1,3433 @@
+{
+  "scope": "Current saved sixteen-level preview layouts; source hashes must match successful geometry/combat audits. No new test or simulation run.",
+  "units": "Coverage and distances are world units. Windows use 1-unit midpoint bins. Comparisons use the first listed zone species and actual base/upgrade1 gun eligibility; full per-species evidence remains in each level audit. These are opportunity measurements, not wave balance or predicted missile outcomes.",
+  "levels": [
+    {
+      "id": "moss-01",
+      "name": "Limestone Orchard",
+      "size": [
+        16,
+        14
+      ],
+      "sourceHash": "a4b4aed7d2d32e073f8c001e4d78f2290668e943b5dab0f0e2b61b8376708d3b",
+      "baseline": {
+        "path": "docs/landscapes/moss-01.json",
+        "sha256": "7d4ab1a02c83a7ce62670e64cb5dfa9be95b4f2923eb75dab2608a60c0818e35"
+      },
+      "waterBoxes": 0,
+      "retainedScenery": 188,
+      "removedScenery": 36,
+      "removedLandmarks": [
+        "a1-land-14-8"
+      ],
+      "attackSites": 9,
+      "visibilityAreas": 10,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 456,
+          "referenceEnemy": "dog",
+          "bestEarly": {
+            "id": "early-2",
+            "box": [
+              4,
+              6
+            ],
+            "windows": [
+              [
+                54,
+                186
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              13,
+              6
+            ],
+            "windows": [
+              [
+                366,
+                450
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                3,
+                8
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 146
+            },
+            {
+              "id": "early-2",
+              "box": [
+                4,
+                6
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 161
+            },
+            {
+              "id": "early-3",
+              "box": [
+                4,
+                8
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                7,
+                6
+              ],
+              "group": "repeat",
+              "base": 78,
+              "upgrade1": 102
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                8,
+                6
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                9,
+                6
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "late-1",
+              "box": [
+                13,
+                6
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 164
+            },
+            {
+              "id": "late-2",
+              "box": [
+                13,
+                8
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 126
+            },
+            {
+              "id": "late-3",
+              "box": [
+                14,
+                6
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1371,
+      "checkedParts": 9597,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/moth/12": 288,
+        "main/roller/12.5": 237.5,
+        "main/dog/10": 260,
+        "main/moth/12.5": 62.5,
+        "main/roller/12": 442.5,
+        "main/dog/12.5": 337.5,
+        "main/dog/12": 302.5,
+        "main/roller/10": 40,
+        "main/moth/10": 9.5
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "moss-02",
+      "name": "The Broadwater Garden",
+      "size": [
+        18,
+        16
+      ],
+      "sourceHash": "d1f81369116aaf75c8c2ff1abc20eceedcd515682055ca66d70ba2ccd9ce7c79",
+      "baseline": {
+        "path": "docs/landscapes/moss-02.json",
+        "sha256": "2cd7f34566e7bdb3e48a88ba480b086cb92bc1664853ef71c91b03bbec4f076f"
+      },
+      "waterBoxes": 62,
+      "retainedScenery": 179,
+      "removedScenery": 47,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 768,
+          "referenceEnemy": "dog",
+          "bestEarly": {
+            "id": "early-2",
+            "box": [
+              3,
+              7
+            ],
+            "windows": [
+              [
+                30,
+                162
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              13,
+              14
+            ],
+            "windows": [
+              [
+                630,
+                714
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [
+            {
+              "site": "repeat-1",
+              "box": [
+                5,
+                5
+              ],
+              "variant": "base",
+              "range": 48,
+              "rangeWindows": [
+                [
+                  126,
+                  210
+                ],
+                [
+                  270,
+                  354
+                ]
+              ],
+              "actualWindows": [
+                [
+                  126,
+                  210
+                ],
+                [
+                  270,
+                  354
+                ]
+              ]
+            },
+            {
+              "site": "repeat-2",
+              "box": [
+                5,
+                6
+              ],
+              "variant": "base",
+              "range": 48,
+              "rangeWindows": [
+                [
+                  102,
+                  186
+                ],
+                [
+                  294,
+                  378
+                ]
+              ],
+              "actualWindows": [
+                [
+                  102,
+                  186
+                ],
+                [
+                  294,
+                  378
+                ]
+              ]
+            },
+            {
+              "site": "repeat-3",
+              "box": [
+                5,
+                8
+              ],
+              "variant": "base",
+              "range": 48,
+              "rangeWindows": [
+                [
+                  72,
+                  138
+                ],
+                [
+                  342,
+                  426
+                ]
+              ],
+              "actualWindows": [
+                [
+                  72,
+                  138
+                ],
+                [
+                  342,
+                  421
+                ]
+              ]
+            }
+          ],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                2,
+                7
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 174
+            },
+            {
+              "id": "early-2",
+              "box": [
+                3,
+                7
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                3,
+                5
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 146
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                5,
+                5
+              ],
+              "group": "repeat",
+              "base": 168,
+              "upgrade1": 280
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                5,
+                6
+              ],
+              "group": "repeat",
+              "base": 168,
+              "upgrade1": 282
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                5,
+                8
+              ],
+              "group": "repeat",
+              "base": 145,
+              "upgrade1": 236
+            },
+            {
+              "id": "late-1",
+              "box": [
+                13,
+                14
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 126
+            },
+            {
+              "id": "late-2",
+              "box": [
+                14,
+                14
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-3",
+              "box": [
+                15,
+                14
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 2307,
+      "checkedParts": 16149,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/roller/30": 60,
+        "main/roller/40": 400,
+        "main/dog/30": 120,
+        "main/moth/40": 180,
+        "main/moth/55": 180,
+        "main/dog/40": 420,
+        "main/roller/55": 260,
+        "main/dog/55": 360
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "moss-03",
+      "name": "Cypress Rise",
+      "size": [
+        20,
+        16
+      ],
+      "sourceHash": "1178f7c9ba06bfc8236571af3d239b3d1a266235780def619fbac99414d068db",
+      "baseline": {
+        "path": "docs/landscapes/moss-03.json",
+        "sha256": "60d2e503c5a057b0f544a11f4f68c63dbb56a5ddd4d1c5dd57cddeba1723f100"
+      },
+      "waterBoxes": 19,
+      "retainedScenery": 246,
+      "removedScenery": 55,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 696,
+          "referenceEnemy": "dog",
+          "bestEarly": {
+            "id": "early-2",
+            "box": [
+              5,
+              9
+            ],
+            "windows": [
+              [
+                78,
+                210
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              13,
+              15
+            ],
+            "windows": [
+              [
+                510,
+                594
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                5,
+                11
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-2",
+              "box": [
+                5,
+                9
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 179
+            },
+            {
+              "id": "early-3",
+              "box": [
+                7,
+                10
+              ],
+              "group": "early",
+              "base": 66,
+              "upgrade1": 116
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                8,
+                14
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                9,
+                13
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                9,
+                14
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "late-1",
+              "box": [
+                13,
+                15
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                18,
+                15
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "late-3",
+              "box": [
+                19,
+                13
+              ],
+              "group": "late",
+              "base": 42,
+              "upgrade1": 45
+            }
+          ]
+        },
+        {
+          "routeId": "branch",
+          "length": 456,
+          "referenceEnemy": "dog",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              5,
+              11
+            ],
+            "windows": [],
+            "eligibleUnits": 0
+          },
+          "lateAddition": {
+            "id": "late-2",
+            "box": [
+              18,
+              15
+            ],
+            "windows": [
+              [
+                390,
+                456
+              ]
+            ],
+            "additionalFinalThirdUnits": 66
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                5,
+                11
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-2",
+              "box": [
+                5,
+                9
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-3",
+              "box": [
+                7,
+                10
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                8,
+                14
+              ],
+              "group": "branch",
+              "base": 84,
+              "upgrade1": 194
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                9,
+                13
+              ],
+              "group": "branch",
+              "base": 84,
+              "upgrade1": 194
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                9,
+                14
+              ],
+              "group": "branch",
+              "base": 132,
+              "upgrade1": 194
+            },
+            {
+              "id": "late-1",
+              "box": [
+                13,
+                15
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                18,
+                15
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "late-3",
+              "box": [
+                19,
+                13
+              ],
+              "group": "late",
+              "base": 42,
+              "upgrade1": 45
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 3462,
+      "checkedParts": 24234,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/moth/75": 180,
+        "branch/moth/75": 75,
+        "branch/moth/90": 105,
+        "branch/roller/75": 75,
+        "branch/roller/90": 285,
+        "main/roller/90": 90,
+        "main/dog/90": 540,
+        "main/roller/60": 270,
+        "branch/dog/90": 90,
+        "branch/dog/75": 210,
+        "main/dog/60": 60
+      },
+      "missileHits": 29
+    },
+    {
+      "id": "moss-04",
+      "name": "The old garden mere",
+      "size": [
+        18,
+        16
+      ],
+      "sourceHash": "b96b8706e863dae506618861cf623b364a3e2b3f029af72ee85305c01abe5de4",
+      "baseline": {
+        "path": "docs/landscapes/moss-04.json",
+        "sha256": "6a2a373612c98805bc0ebb2609f835ff0f6fb6c33fc30baf3b5a1815d1aaeab9"
+      },
+      "waterBoxes": 24,
+      "retainedScenery": 233,
+      "removedScenery": 59,
+      "removedLandmarks": [],
+      "attackSites": 10,
+      "visibilityAreas": 11,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 672,
+          "referenceEnemy": "dog",
+          "bestEarly": {
+            "id": "early-entry",
+            "box": [
+              2,
+              9
+            ],
+            "windows": [
+              [
+                6,
+                138
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-approach",
+            "box": [
+              14,
+              8
+            ],
+            "windows": [
+              [
+                558,
+                642
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [
+            {
+              "site": "repeat-upper",
+              "box": [
+                11,
+                10
+              ],
+              "variant": "base",
+              "range": 48,
+              "rangeWindows": [
+                [
+                  264,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ],
+              "actualWindows": [
+                [
+                  264,
+                  330
+                ],
+                [
+                  438,
+                  522
+                ]
+              ]
+            },
+            {
+              "site": "repeat-middle",
+              "box": [
+                11,
+                11
+              ],
+              "variant": "base",
+              "range": 48,
+              "rangeWindows": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ],
+              "actualWindows": [
+                [
+                  270,
+                  354
+                ],
+                [
+                  414,
+                  498
+                ]
+              ]
+            }
+          ],
+          "siteUnits": [
+            {
+              "id": "early-entry",
+              "box": [
+                2,
+                9
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 164
+            },
+            {
+              "id": "early-turn",
+              "box": [
+                4,
+                9
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-straight",
+              "box": [
+                5,
+                9
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-upper",
+              "box": [
+                11,
+                10
+              ],
+              "group": "repeat",
+              "base": 150,
+              "upgrade1": 252
+            },
+            {
+              "id": "repeat-middle",
+              "box": [
+                11,
+                11
+              ],
+              "group": "repeat",
+              "base": 168,
+              "upgrade1": 280
+            },
+            {
+              "id": "repeat-turn",
+              "box": [
+                11,
+                12
+              ],
+              "group": "repeat",
+              "base": 180,
+              "upgrade1": 242
+            },
+            {
+              "id": "late-approach",
+              "box": [
+                14,
+                8
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 108
+            },
+            {
+              "id": "late-middle",
+              "box": [
+                15,
+                8
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-exit",
+              "box": [
+                16,
+                8
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "late-opposite",
+              "box": [
+                16,
+                6
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 2019,
+      "checkedParts": 14133,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/moth/30": 165,
+        "main/roller/12.5": 60,
+        "main/dog/30": 520,
+        "main/dog/12.5": 275,
+        "main/moth/60": 120,
+        "main/roller/30": 240,
+        "main/roller/60": 420,
+        "main/dog/60": 105,
+        "main/moth/12.5": 75
+      },
+      "missileHits": 11
+    },
+    {
+      "id": "ochre-01",
+      "name": "Sunworn Cistern",
+      "size": [
+        16,
+        14
+      ],
+      "sourceHash": "5dc89668241546b6cc5376863ac824de0630be1d24abce679435377e8111c2d5",
+      "baseline": {
+        "path": "docs/landscapes/ochre-01.json",
+        "sha256": "b0f7f64033e5d2174682a2cf1e99feb4422518c69082c3478f5ff7753cff6218"
+      },
+      "waterBoxes": 1,
+      "retainedScenery": 191,
+      "removedScenery": 32,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 480,
+          "referenceEnemy": "walker",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              3,
+              7
+            ],
+            "windows": [
+              [
+                30,
+                114
+              ]
+            ],
+            "eligibleUnits": 84
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              12,
+              6
+            ],
+            "windows": [
+              [
+                366,
+                450
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [
+            {
+              "site": "repeat-1",
+              "box": [
+                8,
+                6
+              ],
+              "variant": "base",
+              "range": 48,
+              "rangeWindows": [
+                [
+                  144,
+                  210
+                ],
+                [
+                  270,
+                  354
+                ]
+              ],
+              "actualWindows": [
+                [
+                  144,
+                  210
+                ],
+                [
+                  270,
+                  354
+                ]
+              ]
+            }
+          ],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                3,
+                7
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-2",
+              "box": [
+                4,
+                7
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-3",
+              "box": [
+                5,
+                7
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                8,
+                6
+              ],
+              "group": "repeat",
+              "base": 150,
+              "upgrade1": 260
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                8,
+                7
+              ],
+              "group": "repeat",
+              "base": 180,
+              "upgrade1": 242
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                8,
+                9
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-1",
+              "box": [
+                12,
+                6
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                13,
+                6
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-3",
+              "box": [
+                14,
+                6
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1443,
+      "checkedParts": 8177,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/walker/10": 248,
+        "main/dune-tread/12": 552,
+        "main/dune-tread/10": 288,
+        "main/walker/12": 652,
+        "main/twin-fan/10": 226,
+        "main/twin-fan/12": 254
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "ochre-02",
+      "name": "Broken Aqueduct",
+      "size": [
+        18,
+        16
+      ],
+      "sourceHash": "6032548b93c75d8b58c40292e5bce1a176ee75946fd5213fd47ae72eda74bff6",
+      "baseline": {
+        "path": "docs/landscapes/ochre-02.json",
+        "sha256": "ff669a9ed28073bcfaa4ce46ddc9b2482ce2ca6726332a3269248dc0864df02b"
+      },
+      "waterBoxes": 39,
+      "retainedScenery": 201,
+      "removedScenery": 48,
+      "removedLandmarks": [
+        "b2-land-13-9",
+        "b2-land-16-12"
+      ],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 720,
+          "referenceEnemy": "walker",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              13,
+              3
+            ],
+            "windows": [
+              [
+                54,
+                186
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              15,
+              13
+            ],
+            "windows": [
+              [
+                630,
+                714
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [
+            {
+              "site": "repeat-2",
+              "box": [
+                15,
+                7
+              ],
+              "variant": "upgrade1",
+              "range": 72,
+              "rangeWindows": [
+                [
+                  210,
+                  452
+                ],
+                [
+                  546,
+                  596
+                ]
+              ],
+              "actualWindows": [
+                [
+                  210,
+                  452
+                ],
+                [
+                  546,
+                  596
+                ]
+              ]
+            },
+            {
+              "site": "repeat-3",
+              "box": [
+                13,
+                7
+              ],
+              "variant": "upgrade1",
+              "range": 72,
+              "rangeWindows": [
+                [
+                  172,
+                  270
+                ],
+                [
+                  364,
+                  596
+                ]
+              ],
+              "actualWindows": [
+                [
+                  172,
+                  270
+                ],
+                [
+                  364,
+                  596
+                ]
+              ]
+            }
+          ],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                13,
+                3
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 242
+            },
+            {
+              "id": "early-2",
+              "box": [
+                14,
+                3
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 290
+            },
+            {
+              "id": "early-3",
+              "box": [
+                14,
+                4
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 300
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                15,
+                6
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 242
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                15,
+                7
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 292
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                13,
+                7
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 330
+            },
+            {
+              "id": "late-1",
+              "box": [
+                15,
+                13
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-2",
+              "box": [
+                15,
+                14
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "late-3",
+              "box": [
+                13,
+                15
+              ],
+              "group": "late",
+              "base": 42,
+              "upgrade1": 68
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 2163,
+      "checkedParts": 12257,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/twin-fan/30": 30,
+        "main/walker/40": 690,
+        "main/walker/30": 210,
+        "main/twin-fan/55": 240,
+        "main/twin-fan/40": 210,
+        "main/dune-tread/40": 420,
+        "main/dune-tread/55": 420
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "ochre-03",
+      "name": "Three Mesas",
+      "size": [
+        20,
+        16
+      ],
+      "sourceHash": "5b85ffdc290509ad8a0f0f3b9862a484e4e7bd8f6a85e04903c3656ded117e2d",
+      "baseline": {
+        "path": "docs/landscapes/ochre-03.json",
+        "sha256": "1d4f649794f08f84deec59a949851e029fe299af4f010aec4cb86ea7d600ee01"
+      },
+      "waterBoxes": 10,
+      "retainedScenery": 264,
+      "removedScenery": 46,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 624,
+          "referenceEnemy": "walker",
+          "bestEarly": {
+            "id": "early-2",
+            "box": [
+              5,
+              6
+            ],
+            "windows": [
+              [
+                78,
+                210
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              17,
+              7
+            ],
+            "windows": [
+              [
+                534,
+                618
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                4,
+                6
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-2",
+              "box": [
+                5,
+                6
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                5,
+                8
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                8,
+                6
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                10,
+                6
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                12,
+                7
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 194
+            },
+            {
+              "id": "late-1",
+              "box": [
+                17,
+                7
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 164
+            },
+            {
+              "id": "late-2",
+              "box": [
+                18,
+                7
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "late-3",
+              "box": [
+                18,
+                5
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1875,
+      "checkedParts": 10625,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/twin-fan/90": 240,
+        "main/walker/75": 570,
+        "main/walker/60": 180,
+        "main/twin-fan/60": 60,
+        "main/dune-tread/90": 615,
+        "main/twin-fan/75": 180,
+        "main/walker/90": 150,
+        "main/dune-tread/75": 225
+      },
+      "missileHits": 32
+    },
+    {
+      "id": "ochre-04",
+      "name": "Petrol Basin",
+      "size": [
+        18,
+        18
+      ],
+      "sourceHash": "3300ba3861bda96f8a2bcaf3453bbe9d1ef03f5dace03d60fd22a13979c7fc43",
+      "baseline": {
+        "path": "docs/landscapes/ochre-04.json",
+        "sha256": "7885bb1ed9fe32807ba110c4b5a1036cc56ce394bc8537ebca711f11ad54c013"
+      },
+      "waterBoxes": 80,
+      "retainedScenery": 195,
+      "removedScenery": 49,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 10,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 624,
+          "referenceEnemy": "walker",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              13,
+              4
+            ],
+            "windows": [
+              [
+                54,
+                186
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              15,
+              16
+            ],
+            "windows": [
+              [
+                534,
+                618
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                13,
+                4
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 194
+            },
+            {
+              "id": "early-2",
+              "box": [
+                14,
+                4
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                15,
+                4
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                8,
+                16
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 50
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                9,
+                16
+              ],
+              "group": "branch",
+              "base": 36,
+              "upgrade1": 88
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                11,
+                17
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 98
+            },
+            {
+              "id": "late-1",
+              "box": [
+                15,
+                16
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-2",
+              "box": [
+                16,
+                16
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "late-3",
+              "box": [
+                17,
+                16
+              ],
+              "group": "late",
+              "base": 42,
+              "upgrade1": 68
+            }
+          ]
+        },
+        {
+          "routeId": "branch",
+          "length": 336,
+          "referenceEnemy": "walker",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              13,
+              4
+            ],
+            "windows": [],
+            "eligibleUnits": 0
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              15,
+              16
+            ],
+            "windows": [
+              [
+                246,
+                330
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                13,
+                4
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-2",
+              "box": [
+                14,
+                4
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-3",
+              "box": [
+                15,
+                4
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                8,
+                16
+              ],
+              "group": "branch",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                9,
+                16
+              ],
+              "group": "branch",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                11,
+                17
+              ],
+              "group": "branch",
+              "base": 66,
+              "upgrade1": 174
+            },
+            {
+              "id": "late-1",
+              "box": [
+                15,
+                16
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-2",
+              "box": [
+                16,
+                16
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "late-3",
+              "box": [
+                17,
+                16
+              ],
+              "group": "late",
+              "base": 42,
+              "upgrade1": 68
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 2886,
+      "checkedParts": 16354,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/twin-fan/37.5": 112.5,
+        "main/walker/10": 247.5,
+        "branch/walker/37.5": 240,
+        "branch/twin-fan/60": 120,
+        "main/dune-tread/37.5": 225,
+        "branch/walker/60": 60,
+        "main/twin-fan/10": 70,
+        "main/walker/37.5": 262.5,
+        "branch/twin-fan/37.5": 120,
+        "main/dune-tread/60": 145,
+        "branch/dune-tread/37.5": 262.5,
+        "main/twin-fan/60": 57.5,
+        "main/dune-tread/10": 50,
+        "branch/dune-tread/60": 157.5,
+        "main/walker/60": 90
+      },
+      "missileHits": 12
+    },
+    {
+      "id": "ice-01",
+      "name": "Slate Tarn",
+      "size": [
+        16,
+        14
+      ],
+      "sourceHash": "a2296b4aa9e657acadd4eb400e5b59b7e4b349064f66ba685cee995127c15c86",
+      "baseline": {
+        "path": "docs/landscapes/ice-01.json",
+        "sha256": "0db2731c6f9cd06e224c4549f6ed0045b4e40bfac62bf07a0f48b54fb3495e4d"
+      },
+      "waterBoxes": 20,
+      "retainedScenery": 163,
+      "removedScenery": 41,
+      "removedLandmarks": [
+        "c1-land-6-3",
+        "c1-land-7-4"
+      ],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 528,
+          "referenceEnemy": "tripod",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              4,
+              5
+            ],
+            "windows": [
+              [
+                54,
+                138
+              ]
+            ],
+            "eligibleUnits": 84
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              12,
+              12
+            ],
+            "windows": [
+              [
+                414,
+                498
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                4,
+                5
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-2",
+              "box": [
+                5,
+                5
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 146
+            },
+            {
+              "id": "early-3",
+              "box": [
+                6,
+                5
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                8,
+                9
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                8,
+                10
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                8,
+                11
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 146
+            },
+            {
+              "id": "late-1",
+              "box": [
+                12,
+                12
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                13,
+                12
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-3",
+              "box": [
+                14,
+                12
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1058,
+      "checkedParts": 5819,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/tripod/10": 172,
+        "main/tripod/12": 388,
+        "main/ray/10": 144,
+        "main/ray/12": 296
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "ice-02",
+      "name": "The Meltwater Bend",
+      "size": [
+        18,
+        16
+      ],
+      "sourceHash": "81f1dd328f9979fc2175237d02e1b1cadd4af927008551af0ecb24504fdb82b2",
+      "baseline": {
+        "path": "docs/landscapes/ice-02.json",
+        "sha256": "09b87fc8f52bdb97c1d03b47549c0e20a67da89b1202c46ed65cb75e757dfb2c"
+      },
+      "waterBoxes": 41,
+      "retainedScenery": 202,
+      "removedScenery": 45,
+      "removedLandmarks": [
+        "c2-land-6-10"
+      ],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 648,
+          "referenceEnemy": "tripod",
+          "bestEarly": {
+            "id": "early-2",
+            "box": [
+              3,
+              10
+            ],
+            "windows": [
+              [
+                30,
+                162
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-2",
+            "box": [
+              10,
+              14
+            ],
+            "windows": [
+              [
+                438,
+                522
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [
+            {
+              "site": "late-1",
+              "box": [
+                10,
+                13
+              ],
+              "variant": "upgrade1",
+              "range": 72,
+              "rangeWindows": [
+                [
+                  234,
+                  246
+                ],
+                [
+                  388,
+                  534
+                ]
+              ],
+              "actualWindows": [
+                [
+                  234,
+                  246
+                ],
+                [
+                  388,
+                  534
+                ]
+              ]
+            }
+          ],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                2,
+                10
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 164
+            },
+            {
+              "id": "early-2",
+              "box": [
+                3,
+                10
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                3,
+                8
+              ],
+              "group": "early",
+              "base": 74,
+              "upgrade1": 102
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                6,
+                10
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 232
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                7,
+                10
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                9,
+                10
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 242
+            },
+            {
+              "id": "late-1",
+              "box": [
+                10,
+                13
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 158
+            },
+            {
+              "id": "late-2",
+              "box": [
+                10,
+                14
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-3",
+              "box": [
+                10,
+                15
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 116
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1298,
+      "checkedParts": 7139,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/tripod/30": 60,
+        "main/ray/40": 220,
+        "main/ray/55": 220,
+        "main/tripod/55": 340,
+        "main/tripod/40": 160
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "ice-03",
+      "name": "White Ridge",
+      "size": [
+        20,
+        16
+      ],
+      "sourceHash": "83c4a48a3f4235fc848eab8b54d109a8c5d4dbde050c67c79d09fd166345950a",
+      "baseline": {
+        "path": "docs/landscapes/ice-03.json",
+        "sha256": "c0951ecc674c42f6d6d31055355b5ca1eac883edf5755895c5e08aa56de54ca2"
+      },
+      "waterBoxes": 22,
+      "retainedScenery": 263,
+      "removedScenery": 35,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 480,
+          "referenceEnemy": "tripod",
+          "bestEarly": {
+            "id": "early-3",
+            "box": [
+              4,
+              4
+            ],
+            "windows": [
+              [
+                54,
+                186
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              1,
+              12
+            ],
+            "windows": [
+              [
+                366,
+                450
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [
+            {
+              "site": "branch-2",
+              "box": [
+                1,
+                7
+              ],
+              "variant": "upgrade1",
+              "range": 72,
+              "rangeWindows": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  356
+                ]
+              ],
+              "actualWindows": [
+                [
+                  114,
+                  126
+                ],
+                [
+                  268,
+                  356
+                ]
+              ]
+            }
+          ],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                4,
+                2
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "early-2",
+              "box": [
+                4,
+                3
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                4,
+                4
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                1,
+                5
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 78
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                1,
+                7
+              ],
+              "group": "branch",
+              "base": 36,
+              "upgrade1": 100
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                0,
+                7
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 29
+            },
+            {
+              "id": "late-1",
+              "box": [
+                1,
+                12
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                1,
+                13
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-3",
+              "box": [
+                1,
+                14
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        },
+        {
+          "routeId": "branch",
+          "length": 264,
+          "referenceEnemy": "tripod",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              4,
+              2
+            ],
+            "windows": [],
+            "eligibleUnits": 0
+          },
+          "lateAddition": {
+            "id": "late-2",
+            "box": [
+              1,
+              13
+            ],
+            "windows": [
+              [
+                174,
+                258
+              ]
+            ],
+            "additionalFinalThirdUnits": 82
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                4,
+                2
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-2",
+              "box": [
+                4,
+                3
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-3",
+              "box": [
+                4,
+                4
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 12
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                1,
+                5
+              ],
+              "group": "branch",
+              "base": 66,
+              "upgrade1": 92
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                1,
+                7
+              ],
+              "group": "branch",
+              "base": 114,
+              "upgrade1": 140
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                0,
+                7
+              ],
+              "group": "branch",
+              "base": 42,
+              "upgrade1": 105
+            },
+            {
+              "id": "late-1",
+              "box": [
+                1,
+                12
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                1,
+                13
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-3",
+              "box": [
+                1,
+                14
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1492,
+      "checkedParts": 8206,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/ray/60": 220,
+        "main/tripod/75": 150,
+        "branch/ray/90": 180,
+        "branch/tripod/75": 280,
+        "branch/ray/75": 40,
+        "main/tripod/90": 130
+      },
+      "missileHits": 15
+    },
+    {
+      "id": "ice-04",
+      "name": "Shattered Sanctuary",
+      "size": [
+        18,
+        18
+      ],
+      "sourceHash": "7c3957a15d9faf3e7ae254d5aab07c761fffeb0163ed1d3cfb13d1dc12fd03a3",
+      "baseline": {
+        "path": "docs/landscapes/ice-04.json",
+        "sha256": "c28355fa023e62b2eb70092ba3293960fe92f77fb2fd628be4d14f8b8bb17e03"
+      },
+      "waterBoxes": 46,
+      "retainedScenery": 236,
+      "removedScenery": 42,
+      "removedLandmarks": [
+        "c4-land-9-5"
+      ],
+      "attackSites": 9,
+      "visibilityAreas": 10,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 648,
+          "referenceEnemy": "tripod",
+          "bestEarly": {
+            "id": "early-3",
+            "box": [
+              5,
+              6
+            ],
+            "windows": [
+              [
+                78,
+                210
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              8,
+              12
+            ],
+            "windows": [
+              [
+                486,
+                570
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [
+            {
+              "site": "repeat-1",
+              "box": [
+                7,
+                6
+              ],
+              "variant": "upgrade1",
+              "range": 72,
+              "rangeWindows": [
+                [
+                  100,
+                  284
+                ],
+                [
+                  388,
+                  438
+                ]
+              ],
+              "actualWindows": [
+                [
+                  100,
+                  284
+                ],
+                [
+                  388,
+                  409
+                ]
+              ]
+            },
+            {
+              "site": "repeat-2",
+              "box": [
+                8,
+                6
+              ],
+              "variant": "base",
+              "range": 48,
+              "rangeWindows": [
+                [
+                  198,
+                  282
+                ],
+                [
+                  390,
+                  426
+                ]
+              ],
+              "actualWindows": [
+                [
+                  198,
+                  282
+                ],
+                [
+                  390,
+                  426
+                ]
+              ]
+            }
+          ],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                3,
+                6
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-2",
+              "box": [
+                4,
+                6
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                5,
+                6
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                7,
+                6
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 205
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                8,
+                6
+              ],
+              "group": "repeat",
+              "base": 120,
+              "upgrade1": 229
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                10,
+                6
+              ],
+              "group": "repeat",
+              "base": 180,
+              "upgrade1": 232
+            },
+            {
+              "id": "late-1",
+              "box": [
+                8,
+                12
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                8,
+                14
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-3",
+              "box": [
+                8,
+                16
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1298,
+      "checkedParts": 7139,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/ray/10": 120,
+        "main/ray/30": 170,
+        "main/tripod/10": 90,
+        "main/ray/75": 150,
+        "main/tripod/30": 260,
+        "main/tripod/75": 210
+      },
+      "missileHits": 5
+    },
+    {
+      "id": "plum-01",
+      "name": "Mauve Orchard",
+      "size": [
+        16,
+        14
+      ],
+      "sourceHash": "e8811c48ced0522dc36437952a43e6ad6c3b615ed6612d8a1d0844073d34a241",
+      "baseline": {
+        "path": "docs/landscapes/plum-01.json",
+        "sha256": "14875c8ca434721c2f0e902344f9105d3ad4908a01dfdca369f35977e565b5b2"
+      },
+      "waterBoxes": 12,
+      "retainedScenery": 182,
+      "removedScenery": 30,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 456,
+          "referenceEnemy": "spider",
+          "bestEarly": {
+            "id": "early-3",
+            "box": [
+              5,
+              7
+            ],
+            "windows": [
+              [
+                78,
+                210
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              12,
+              7
+            ],
+            "windows": [
+              [
+                342,
+                426
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                3,
+                7
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-2",
+              "box": [
+                4,
+                7
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                5,
+                7
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                7,
+                7
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 232
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                8,
+                7
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 232
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                8,
+                9
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 146
+            },
+            {
+              "id": "late-1",
+              "box": [
+                12,
+                7
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "late-2",
+              "box": [
+                13,
+                7
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-3",
+              "box": [
+                14,
+                7
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 914,
+      "checkedParts": 6855,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/spider/10": 380,
+        "main/lantern/12": 432,
+        "main/lantern/10": 88,
+        "main/spider/12": 520
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "plum-02",
+      "name": "Fallen Arches",
+      "size": [
+        18,
+        16
+      ],
+      "sourceHash": "8e85c5e83fe0d7eec241c3e9ebc4b3f5386175901205c25abbcc8e05db87f383",
+      "baseline": {
+        "path": "docs/landscapes/plum-02.json",
+        "sha256": "c6426b653d4c15bb1b5df36fcdf4f070f6f28123b1ca48f6e8629a75e1f2a423"
+      },
+      "waterBoxes": 15,
+      "retainedScenery": 233,
+      "removedScenery": 40,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 528,
+          "referenceEnemy": "spider",
+          "bestEarly": {
+            "id": "early-2",
+            "box": [
+              5,
+              7
+            ],
+            "windows": [
+              [
+                78,
+                210
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-2",
+            "box": [
+              12,
+              14
+            ],
+            "windows": [
+              [
+                414,
+                528
+              ]
+            ],
+            "additionalFinalThirdUnits": 114
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                4,
+                7
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-2",
+              "box": [
+                5,
+                7
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                7,
+                7
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                9,
+                9
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                9,
+                10
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 194
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                9,
+                11
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 146
+            },
+            {
+              "id": "late-1",
+              "box": [
+                11,
+                14
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 164
+            },
+            {
+              "id": "late-2",
+              "box": [
+                12,
+                14
+              ],
+              "group": "late",
+              "base": 114,
+              "upgrade1": 150
+            },
+            {
+              "id": "late-3",
+              "box": [
+                14,
+                14
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1058,
+      "checkedParts": 7935,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/lantern/30": 60,
+        "main/spider/40": 690,
+        "main/lantern/55": 260,
+        "main/spider/30": 210,
+        "main/lantern/40": 200
+      },
+      "missileHits": 0
+    },
+    {
+      "id": "plum-03",
+      "name": "Lantern Mere",
+      "size": [
+        20,
+        16
+      ],
+      "sourceHash": "0b5b3aa179a84fe31f7be09bb606d616194075277bfa93716bb09b82d71713e5",
+      "baseline": {
+        "path": "docs/landscapes/plum-03.json",
+        "sha256": "56ecd004821bd5696eec9d9b587d0a7c90f639aed220eafb9c4534ed7d208284"
+      },
+      "waterBoxes": 71,
+      "retainedScenery": 216,
+      "removedScenery": 33,
+      "removedLandmarks": [
+        "d3-land-11-11"
+      ],
+      "attackSites": 9,
+      "visibilityAreas": 9,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 480,
+          "referenceEnemy": "spider",
+          "bestEarly": {
+            "id": "early-2",
+            "box": [
+              5,
+              8
+            ],
+            "windows": [
+              [
+                78,
+                210
+              ]
+            ],
+            "eligibleUnits": 132
+          },
+          "lateAddition": {
+            "id": "late-2",
+            "box": [
+              11,
+              14
+            ],
+            "windows": [
+              [
+                366,
+                480
+              ]
+            ],
+            "additionalFinalThirdUnits": 114
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                4,
+                8
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-2",
+              "box": [
+                5,
+                8
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 184
+            },
+            {
+              "id": "early-3",
+              "box": [
+                7,
+                8
+              ],
+              "group": "early",
+              "base": 132,
+              "upgrade1": 194
+            },
+            {
+              "id": "repeat-1",
+              "box": [
+                8,
+                10
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 194
+            },
+            {
+              "id": "repeat-2",
+              "box": [
+                8,
+                11
+              ],
+              "group": "repeat",
+              "base": 84,
+              "upgrade1": 204
+            },
+            {
+              "id": "repeat-3",
+              "box": [
+                10,
+                12
+              ],
+              "group": "repeat",
+              "base": 132,
+              "upgrade1": 194
+            },
+            {
+              "id": "late-1",
+              "box": [
+                10,
+                14
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 164
+            },
+            {
+              "id": "late-2",
+              "box": [
+                11,
+                14
+              ],
+              "group": "late",
+              "base": 114,
+              "upgrade1": 150
+            },
+            {
+              "id": "late-3",
+              "box": [
+                11,
+                15
+              ],
+              "group": "late",
+              "base": 42,
+              "upgrade1": 126
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 962,
+      "checkedParts": 7215,
+      "combatFrames": 7200,
+      "combatHits": {
+        "main/lantern/75": 300,
+        "main/lantern/60": 220,
+        "main/spider/75": 480,
+        "main/spider/90": 300,
+        "main/spider/60": 120
+      },
+      "missileHits": 21
+    },
+    {
+      "id": "plum-04",
+      "name": "Crown Gardens",
+      "size": [
+        18,
+        18
+      ],
+      "sourceHash": "e2c9ba8c3110fcf0dc4a266d99e9c1dbb8bfa9a64f323cfa8efd282ff1451007",
+      "baseline": {
+        "path": "docs/landscapes/plum-04.json",
+        "sha256": "d5d0fe5c83dba9244a23fe443fa3391312283a1b9a3c9e6737931f3ad49a7624"
+      },
+      "waterBoxes": 42,
+      "retainedScenery": 234,
+      "removedScenery": 48,
+      "removedLandmarks": [],
+      "attackSites": 9,
+      "visibilityAreas": 10,
+      "routeComparisons": [
+        {
+          "routeId": "main",
+          "length": 600,
+          "referenceEnemy": "spider",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              9,
+              3
+            ],
+            "windows": [
+              [
+                30,
+                114
+              ]
+            ],
+            "eligibleUnits": 84
+          },
+          "lateAddition": {
+            "id": "late-1",
+            "box": [
+              11,
+              12
+            ],
+            "windows": [
+              [
+                438,
+                522
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                9,
+                3
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-2",
+              "box": [
+                9,
+                5
+              ],
+              "group": "early",
+              "base": 84,
+              "upgrade1": 136
+            },
+            {
+              "id": "early-3",
+              "box": [
+                9,
+                6
+              ],
+              "group": "early",
+              "base": 66,
+              "upgrade1": 116
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                17,
+                7
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                17,
+                9
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                17,
+                10
+              ],
+              "group": "branch",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "late-1",
+              "box": [
+                11,
+                12
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 194
+            },
+            {
+              "id": "late-2",
+              "box": [
+                11,
+                15
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-3",
+              "box": [
+                9,
+                16
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        },
+        {
+          "routeId": "branch",
+          "length": 384,
+          "referenceEnemy": "spider",
+          "bestEarly": {
+            "id": "early-1",
+            "box": [
+              9,
+              3
+            ],
+            "windows": [],
+            "eligibleUnits": 0
+          },
+          "lateAddition": {
+            "id": "late-2",
+            "box": [
+              11,
+              15
+            ],
+            "windows": [
+              [
+                294,
+                378
+              ]
+            ],
+            "additionalFinalThirdUnits": 84
+          },
+          "trueRangeReentries": [],
+          "siteUnits": [
+            {
+              "id": "early-1",
+              "box": [
+                9,
+                3
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-2",
+              "box": [
+                9,
+                5
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "early-3",
+              "box": [
+                9,
+                6
+              ],
+              "group": "early",
+              "base": 0,
+              "upgrade1": 0
+            },
+            {
+              "id": "branch-1",
+              "box": [
+                17,
+                7
+              ],
+              "group": "branch",
+              "base": 42,
+              "upgrade1": 68
+            },
+            {
+              "id": "branch-2",
+              "box": [
+                17,
+                9
+              ],
+              "group": "branch",
+              "base": 90,
+              "upgrade1": 116
+            },
+            {
+              "id": "branch-3",
+              "box": [
+                17,
+                10
+              ],
+              "group": "branch",
+              "base": 66,
+              "upgrade1": 120
+            },
+            {
+              "id": "late-1",
+              "box": [
+                11,
+                12
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 194
+            },
+            {
+              "id": "late-2",
+              "box": [
+                11,
+                15
+              ],
+              "group": "late",
+              "base": 84,
+              "upgrade1": 116
+            },
+            {
+              "id": "late-3",
+              "box": [
+                9,
+                16
+              ],
+              "group": "late",
+              "base": 66,
+              "upgrade1": 92
+            }
+          ]
+        }
+      ],
+      "sampledPoses": 1972,
+      "checkedParts": 14790,
+      "combatFrames": 7200,
+      "combatHits": {
+        "branch/spider/30": 60,
+        "main/lantern/75": 210,
+        "main/spider/10": 140,
+        "branch/lantern/75": 150,
+        "branch/spider/75": 240,
+        "branch/lantern/30": 110,
+        "main/lantern/10": 50,
+        "main/spider/75": 460
+      },
+      "missileHits": 17
+    }
+  ]
+}

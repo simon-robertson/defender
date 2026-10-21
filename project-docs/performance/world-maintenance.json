@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-18T13:04:56.111Z",
+  "environment": {
+    "bun": "1.4.2",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M3"
+  },
+  "method": "Five alternating-order measured world builds after one warmup per implementation and scene; asset reads and exact hashing excluded. Bind counts derive from actual placements/actors and unique model+variant pairs. CPU load times include unchanged validation, meshing and visibility building; small differences are noisy and are not frame or GPU timings.",
+  "scenes": [
+    {
+      "id": "moss-01",
+      "equivalent": true,
+      "sha256": "eca467374255f20f28b5defb220bedd642a7658e98ad350fa4cb954aa7545130",
+      "bindHierarchyBuilds": {
+        "before": 116,
+        "after": 18
+      },
+      "bindPartTransforms": {
+        "before": 164,
+        "after": 36
+      },
+      "buildWorldMs": {
+        "before": [
+          229.727708,
+          186.032375,
+          162.92425000000003,
+          168.71391599999993,
+          152.49437499999976
+        ],
+        "after": [
+          161.37275,
+          158.60812499999997,
+          155.95337499999982,
+          165.8380830000001,
+          148.8148339999998
+        ],
+        "medianBefore": 168.71391599999993,
+        "medianAfter": 158.60812499999997
+      }
+    },
+    {
+      "id": "moss-02",
+      "equivalent": true,
+      "sha256": "023dbb6fc8d8662e0246a27dbd6fd17c795486d80341b32c4058a9f986d61c87",
+      "bindHierarchyBuilds": {
+        "before": 115,
+        "after": 18
+      },
+      "bindPartTransforms": {
+        "before": 157,
+        "after": 32
+      },
+      "buildWorldMs": {
+        "before": [
+          152.102167,
+          148.72170899999992,
+          148.62304200000017,
+          151.4163749999998,
+          153.5350830000002
+        ],
+        "after": [
+          140.35920799999985,
+          145.451959,
+          145.141208,
+          149.77979200000027,
+          149.90412500000002
+        ],
+        "medianBefore": 151.4163749999998,
+        "medianAfter": 145.451959
+      }
+    },
+    {
+      "id": "moss-03",
+      "equivalent": true,
+      "sha256": "d5f85b809e85e220b6ae11c8144622c216d80fe0e0717b5a33b094bcbb901703",
+      "bindHierarchyBuilds": {
+        "before": 151,
+        "after": 19
+      },
+      "bindPartTransforms": {
+        "before": 193,
+        "after": 33
+      },
+      "buildWorldMs": {
+        "before": [
+          145.16962499999954,
+          144.80162500000006,
+          149.47208300000057,
+          154.27449999999953,
+          148.46087499999976
+        ],
+        "after": [
+          150.3422500000006,
+          140.2597080000005,
+          151.13037499999973,
+          149.61595900000066,
+          154.80612500000007
+        ],
+        "medianBefore": 148.46087499999976,
+        "medianAfter": 150.3422500000006
+      }
+    },
+    {
+      "id": "ochre-03",
+      "equivalent": true,
+      "sha256": "a08aca2441ae8463db7b6ac41970cbdabdb021691989258ee73adaa25000729d",
+      "bindHierarchyBuilds": {
+        "before": 142,
+        "after": 17
+      },
+      "bindPartTransforms": {
+        "before": 166,
+        "after": 25
+      },
+      "buildWorldMs": {
+        "before": [
+          138.75937500000055,
+          136.68395800000053,
+          125.3901249999999,
+          134.77612500000032,
+          134.70333300000038
+        ],
+        "after": [
+          138.42174999999952,
+          128.83466700000008,
+          122.17829200000051,
+          131.91525000000001,
+          135.7366659999998
+        ],
+        "medianBefore": 134.77612500000032,
+        "medianAfter": 131.91525000000001
+      }
+    },
+    {
+      "id": "plum-03",
+      "equivalent": true,
+      "sha256": "735055d786982b8c4e5cbf54318ddd73ebb394c59d779563f3e31b3659a9e583",
+      "bindHierarchyBuilds": {
+        "before": 147,
+        "after": 18
+      },
+      "bindPartTransforms": {
+        "before": 189,
+        "after": 32
+      },
+      "buildWorldMs": {
+        "before": [
+          130.01475000000028,
+          136.01475000000028,
+          139.39570900000035,
+          139.2139590000006,
+          134.59791600000062
+        ],
+        "after": [
+          128.97183300000052,
+          138.64258300000074,
+          136.69004200000018,
+          134.72400000000016,
+          138.6812919999993
+        ],
+        "medianBefore": 136.01475000000028,
+        "medianAfter": 136.69004200000018
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+# Cosmetic wildlife
+
+**Title graphics options, 21 October (implemented for review):** Critters, Reflections and Bloom switches default on and persist locally. Critters off skips land/bird/fish assets, navigation/ticks and cosmetic habitat constraints; reflections off skips planar/SSR while retaining water transmission/refraction/ripples; bloom off skips its passes while retaining lights. Title-only changes are loading-safe. Sixty affected checks pass; four older deployment pose tests retain pre-existing safe-respawn expectation failures, with a baseline reproduction. Actual UI persistence and five A2 GPU combinations pass; active B2 run is untouched. [Delivery and limits](graphics-options-2026-10-21/README.md).
+
+**TODO 20/23 follow-up, 20 October (implemented):** removed health-based stagger/catch-up; ordinary configured enemy movement is restored, with existing physical-hit reactions retained. Upgrade I Arc chain range is96units/four tiles; enemy/missile critter-gib radii are48/72units/two/three tiles. Inclusive3D tests,20%chain strength, visibility and wave-end remains fading stay intact. Missile fright radius remains48units. [Current delivery](water-regression-2026-10-20/README.md).
+
+**Earlier TODO14–19 delivery, 20 October (historical; movement/radii superseded by TODO 20/23):** completed items 14–19: sampled asynchronous GPU frame timing beside an audited whole-callback CPU app timer; 35% stronger direct sunlight on A2/B2/C2/D2; smooth half-health route staggering and bounded catch-up; one Upgrade I Arc chain at 20% strength within two tiles; and persistent blast-driven critter gibs/spray with safe respawn and run-end fading. Stage 2 means the middle Upgrade I tier, consistent with existing project terminology. Enemy run means the current wave. Actual combat/visual tuning remains provisional for user playtesting. GI and AO remain removed. [Implementation and checks](latest-todo-2026-10-20/README.md).
+
+**Critter explosion gibs TODO, 20 October (queued):** critters within one tile (24 units) of an enemy explosion or 1.5 tiles (36 units) of a missile explosion should gib. Fragments and spray fly away from the blast realistically, persist in the level until the enemy run ends, then fade. Exact run-end cleanup/fade, distance metric and respawn handling remain to specify during implementation. No runtime wildlife/effects change or active-playthrough reload. [Current TODO](../TODO.md).
+
+## Deep-water fish (20 October)
+
+User-authorised and implemented for review. Three fish per usable deep-water component, up to four schools per world, now complement the existing six land/bird actors. Current campaign schools appear in A2/A4/B4/C1/C4/D3. The one new `wildlife-fish` source has matte olive/gold geometry and an animated Y-axis tail. Existing wildlife assets remain unchanged.
+
+Water must be at least eight units deep. Full-envelope node/edge clearance, connected components and minimum roaming extent reject shallow or cramped habitats. `FishPreview` exposes separate `fish.states`/`fish.stats()`; these actors never enter enemy targeting or the land/bird threat rules. `WildlifePreview.advance` moves all animals but schedules only one thinker across both collections per call. Swimming is four units/second; nearby debris surface entries trigger outward escapes at eighteen, with 2.4 seconds of fear after the last detection. Same-water-body events use an eight-slot scalar pool and a radius capped at 64; direct explosions and dry/bridge contacts do not trigger fish. Wave changes and deployment edits preserve their journeys. Pause and disposal clear/freeze all relevant state.
+
+The fish model/graph are enabled only by player and wildlife-preview world loaders, not ordinary editor builds. Existing refraction renders them beneath the water. [Full implementation, resource bounds and verification](fish-critters-2026-10-20/README.md). Earlier six-actor/two-asset counts below describe land/bird wildlife and are historical totals for fish-free scenes.
+
+**Player deployment continuity, 20 October follow-up:** `/play/` stages navigation and safe replacements before committing deployment. A legal build overlapping a current critter/flight, invalidating its current edge, or isolating it from usable roaming ground respawns that critter on connected usable ground or a clear supported perch. Respect separation and destination reservations. All actor/controller identities, random states and time remain; unaffected poses/journeys persist and invalid future routes replan. An arrangement without any safe habitat still fails atomically. This supersedes the former temporary `wildlife-busy` rejection. Fish are unaffected by dry-ground defence placement. [Checks and limits](placement-follow-up-2026-10-20/README.md).
+
+**Critter placement rule (18 October):** a collision-free spawn point is not enough. Ground critters must start in connected, usable roaming ground with several meaningful destinations and room to flee. Reject isolated single-node pockets and tiny scenery cages. Check the actual movement/navigation envelope after carving or placement changes, then observe completed journeys; choose a better seed instead of trapping wildlife among props. Keep birds on supported perches with clear departure/arrival flight. This is an authoring/readability requirement, not a new confinement radius or gameplay mechanic.
+
+A4 follow-up: two ground seeds now use[106,24,250] and[358,24,202]. All three critters share connected roaming ground; the approved path, scenery and bird perches are unchanged. `bun scripts/wildlife-roaming-audit.js moss-04` checks actual reach and60 seconds of movement; [evidence](a4-path-carving-2026-10-18/wildlife-roaming.json) is stored under docs/a4-path-carving-2026-10-18.
+
+The user authorised small critters running or hopping, and birds perching or flying, suited to each zone. They have no gameplay effect. The lead selected an initial bounded preview of three ground critters and three birds per zone. Existing scenery supplies habitat/perches; this approval adds no audio, emitters, particles, combat behaviour or new scenery structures.
+
+## Authoring sources
+
+[Generator](../scripts/wildlife-models.js) exports `wildlifeModels(zone?)`, `wildlifeGroundModel(zone)`, `wildlifeBirdModel(zone)`, `WILDLIFE_MODEL_IDS` and `WILDLIFE_RIG_CONTRACTS`. Importing it performs no writes. **`bun run seed:wildlife`** creates missing JSON sources only and preserves existing authored files. The eight sources are exported under `assets/models/` and their meshes compiled under ignored `build/models/`; all eight saved sources match their generators exactly. This handoff contains **655 cells / 605 quads** across the eight unique models. Runtime integration is implemented in `game/wildlife-preview.js`; the current autonomous controller contract follows below.
+
+All sources use model version 3, `role: 'scenery'`, `colorMode: 'authored'`, integer cells and a 24-unit source canvas. Materials are texture-free, emission 0 and reflectiveness 0, including eyes. Only `base` has geometry; both upgrade slots remain empty. These cosmetic actors must remain outside combat targeting/damage and static scenery obstruction data despite their authoring role.
+
+| Zone | Ground model ID | Appearance | Cells / quads | Occupied bounds, max exclusive |
+| --- | --- | --- | ---: | --- |
+| A | `wildlife-hare-moss` | Warm brown field hare, pale tail, upright ears | 158 / 80 | X9–15, Y0–9, Z8–16 |
+| B | `wildlife-lizard-ochre` | Low sand/olive lizard, four splayed legs and tapered tail | 71 / 70 | X8–16, Y0–4, Z8–16 |
+| C | `wildlife-hare-ice` | White hare with restrained grey shading | 158 / 80 | X9–15, Y0–9, Z8–16 |
+| D | `wildlife-beetle-plum` | Dark plum beetle, six short legs | 76 / 91 | X8–16, Y0–4, Z8–14 |
+
+The four bird IDs are `wildlife-bird-moss`, `wildlife-bird-ochre`, `wildlife-bird-ice` and `wildlife-bird-plum`. Each has **48 cells / 71 quads**, bind bounds **X8–16, Y0–6, Z8–16**, and an **8-unit bind wingspan**. Their shared form has a small upright head, short beak/tail, narrow torso and separate pointed wings. Palettes respectively use moss/brown, sand/petrol, pale grey/slate and muted plum. The hare pair and bird quartet share exact source geometry and material indices; their authored palettes differ.
+
+## Common contact contract
+
+All models face **−Z**, with Y up and navigation/contact origin **[12,0,12]**. The root part is `body`, with pivot `[12,0,12]`. Soles contact **Y0**; placing the root on a level terrain/perch surface places the feet on that surface. Bounds are much smaller than the combat enemies and fit within one box at any horizontal heading.
+
+Each ground critter is one connected solid body. Hopping/scuttling uses root motion; there are no leg joints or IK requirements. The hare ears and lizard tail are fixed geometry. Small limb gaps, six beetle legs and the hares' long ears distinguish silhouettes without extra animation systems.
+
+## Bird wing contract
+
+`body` parents `wing-l` and `wing-r`. The high wing hinges meet the torso at an edge in the bind pose, with no shared coplanar faces. Both wings are connected solids.
+
+| Part | Pivot | Rotation axis | Direction |
+| --- | --- | --- | --- |
+| `wing-l` | `[11,4,13]` | local Z | Positive folds downward |
+| `wing-r` | `[13,4,13]` | local Z | Negative folds downward |
+
+Use one scalar angle and mirror its sign: `leftZ = angle`, `rightZ = -angle`. PoseRig accepts radians; the following author values are degrees:
+
+- Perching: **left +70°, right −70°**. The wings fold beside the torso while their tips stay above the perch.
+- Ordinary flight: left **−45° through +45°**, with right opposite.
+- Permitted envelope: left **−55° through +70°**, right **−70° through +55°**. Do not introduce X/Y wing rotation without a new clearance check.
+
+The 3-unit outer wing reach and 4-unit-high hinge leave the lowest possible tip at `4 − 3 sin(70°) ≈ 1.181` units. Maximum width through this Z-only envelope is at most `2 + 2 sqrt(10) ≈ 8.325` units, below the 10-unit allowance. Downward wing poses remain outside the torso's side planes; upward poses remain above its top. Head and tail lie outside the wing's Z interior. Mirrored wings remain on opposite sides of X12, so these rotations do not intersect each other.
+
+## Focused verification and limits
+
+`bun test tests/wildlife-models.test.js` passes **5 tests** after export. Checks cover exact saved-source/generator agreement, deterministic independent generation, all eight IDs, schema/matte material contracts, small grounded bounds, shared geometry with distinct palettes, connected solids, absence of overlapping cells/inter-part coplanar faces, and finite exposed meshes with valid materials. Only the eight wildlife meshes were compiled for this handoff; existing model source files were not rewritten.
+
+The bird check samples every whole degree from −55° to +70° using the existing `PoseRig`, with independent oriented-cell SAT against the body, separate-halfspace checks between wings, and transformed vertex bounds against the ground/width limits. The simple continuous geometry bounds above also explain why the accepted Z-only envelope remains clear between samples. These model checks do not verify flight paths, terrain clearance, perch choice, runtime pooling, frame-time costs or visual density. Those belong to the lead/Engineer integration and built-in-browser review. No full test suite was run for this model pass.
+
+
+## Autonomous runtime journeys
+
+The user subsequently authorised autonomous destination choices instead of fixed repeating paths, with **one scheduled critter thinker per frame** and delta-driven movement. The six actors and two zone-specific source assets remain unchanged. `wildlifeActorsForLevel(levelId)` supplies only spawn seeds; it does not prescribe journeys. `WildlifePreview` controls shared model instances through reused `PoseRig` matrices. Wildlife remains excluded from combat and static obstruction records.
+
+Ground navigation is built when loading the zone. A four-unit lattice tests the full rotating body envelope, including maximum hare hop height, against the exact static scenery BVH, water, terrain steps, world bounds and conservative rotating/recoiling defence envelopes. **Latest user decision: ground wildlife may cross the enemy route**, superseding the earlier exclusion. Route surfaces now participate in the same flat-ground navigation as other dry terrain. A load-time mask records full-body off-path nodes only to prefer them as frightened escape destinations. Cardinal links join flat dry ground at one height; connected components delimit reachable destinations. Critters choose new destinations within their component and route around scenery. The original habitat is only the initial safe spawn search. They reserve destinations, avoid the other ground critters, and abandon/retry blocked journeys safely on the ground. Isolated raised terrain remains isolated: C's first hare has a small 16-node safe mound component, so it makes shorter autonomous hops there instead of crossing a cliff. Larger components support travel well beyond the spawn box.
+
+Bird destinations are prepared from actual supported top cells on authored oaks, cypresses, cacti, firs and plum trees. Each candidate requires both soles to have solid support and the complete bird/wing envelope to be clear. Existing non-tree starting perches are permitted, but subsequent destinations must be another actual tree/cactus placement. A bird reserves its destination and cannot choose its present tree through a duplicate candidate. Its cubic flight ascends, crosses and descends; 64 conservative intervals bound the entire continuous arc, including the analytic vertical maximum, all horizontal headings and wing motion. Two candidate ceiling heights are tried at most. Obstructed choices leave it safely perched until a later scheduled decision. Both birds and ground wildlife may cross the route. This permission does not add collision or damage gameplay between wildlife and combat actors.
+
+No source cells, meshes or palettes change during movement. The controller adds no effects, lights, sounds or gameplay targets.
+
+### Motion tuning
+
+The user rejected the initial slow rabbit motion as looking like moon gravity. Current provisional values are **20 units/second**, **at most eight units per hop**, and **1.2-unit hop height**, for both A/C hares. An accepted journey divides its complete distance into equal hop spans no longer than eight units, so a short final journey lands smoothly rather than cutting an arc off. A `sin²` height profile gives zero vertical velocity at takeoff and landing. Ground headings turn at up to eight radians/second. Lizards normally move six units/second, beetles four. The user requested faster birds: their flight-length timing is now **44 units/second**, twice the previous 22, with the minimum flight duration reduced from two seconds to one. Birds retain six wing cycles/second, ±45° airborne flap and 70° perched fold. Wing transitions occupy the first/last 0.3 seconds of flight.
+
+Decision scheduling is deliberately frame-based; accepted journey movement and pose evaluation use elapsed seconds. Identical accepted trajectories therefore agree under different delta subdivisions, while autonomous decisions can differ with the number/timing of planning turns. Paused/zero-delta frames do no simulation or planning work.
+
+### Bounded work, memory and teardown
+
+The planner holds one shared BFS queue/parent/visited set. Only its owner resumes that search on its next round-robin turn, with at most **512 node expansions** per scheduled turn. Each ground actor holds a fixed **256-node accepted waypoint buffer**. Destination sampling is limited to eight choices; short destinations are allowed after four unsuccessful longer choices. Paths exceeding the waypoint capacity are rejected and retried. Bird thinkers examine one destination and at most two 64-interval flight envelopes per turn. While frightened, each proposed flight also receives a bounded 64-interval threat-separation check; an existing airborne journey can receive one such check before it is retained. Movement and planning reuse state, matrices and typed scratch buffers; there are no explicit per-frame array/object creations in the controller.
+
+The lead's current 60-second real-combat audit reports safe ground nodes A **5,261**, B **4,984**, C **5,181**, D **5,215**. `planningBytes` reports typed navigation (including the off-path preference mask) and three waypoint buffers: A **226,972**, B **225,948**, C **226,728**, D **226,788** bytes. It excludes JS object overhead, pose matrices, small defence/query arrays, the **320-byte explosion event pool** and existing world data. Available supported tree destinations remain A **30**, B **12**, C **13**, D **24**. Runtime reuses the active world's static BVH; no second geometry tree or inactive-zone cache is retained.
+
+Historical construction timing before route traversal was enabled was 15–43 ms in one local Bun run, excluding world/model construction. That observation is not a current performance benchmark or an FPS/hardware acceptance claim; the route change adds navigable nodes. See [real-combat audit](wildlife-combat-review.json) for current counts and bounded-work evidence.
+
+`dispose()` clears actor rigs/routes, shared navigation, world references, defence bounds, perch arrays, query scratch, enemy-state references and the event pool. Scene loading still fetches only the active zone's two wildlife assets. The renderer's shared pipelines do not belong to this controller.
+
+Diagnostics exposed for the lead's inspector:
+
+- Controller: `time`, `updatedParts`, `thinkCount`, `lastThinkId`, `lastThinkWork`, `planningBytes`, `treePerches.length`, `explosionEvents` (alias of the cumulative `spookCount`).
+- State: `phase`, `flight` (currently airborne), `x/y/z`, `homeX/homeY/homeZ` (spawn seed), `thinkCount`, `journeys` (accepted), `journeysCompleted`, `groundComponent`, `destinationX/Y/Z`, `targetPerch` (placement ID while flying), plus numeric `perch`/`goalPerch` indices into the controller's perch list. Threat diagnostics are `frightened`, `fleeUntil`, `spooks` (fear episodes), `fleeJourneys`, `threatKind`, and persistent `lastSpookKind`.
+- `lastThinkWork` counts BFS expansions for ground planning or one bird candidate; its units are diagnostic, not elapsed CPU time. A scheduled actor may do no planning while moving or waiting.
+
+### Threat response API
+
+`setThreatSources(enemiesArray)` stores the existing active enemy-state array by reference; it does not copy or add combat actors. Only entries with `health.alive` are considered. The scheduled wildlife actor compares its body centre against enemy `[x, aimY, z]` in **3D**, using a 24-unit radius plus the critter's body bound. High birds are not frightened solely because an enemy passes below in X/Z. The current preview has at most three live enemy states; scan cost is linear in that active array. A future large enemy population should use an appropriate spatial query rather than claiming this small-preview scan is a campaign-scale solution.
+
+`spookExplosion(x, y, z, radius)` immediately copies four scalars into an eight-slot reusable event pool and returns `true`; after disposal it returns `false`. Invalid values throw. The callback passes the actual pooled blast centre and the enemy's validated `explosion.frightRadius` from `shared/enemy.js`: **72 units for Dog/Spider and 84 for Walker**. The user requested doubling the previous 36/42-unit fright radii on 18 October 2026 and explicitly including birds. This changes the cosmetic threat radius; visual explosion and movement settings are separate. Events live for 1.5 seconds, and a ninth concurrent event replaces the oldest slot. The callback does not scan wildlife, start journeys or consume additional thinker turns. Each scheduled actor checks the eight slots along with live enemies, selecting the strongest nearby source by normalised **3D body-centre distance**. The animal's existing body-radius allowance is retained. Ground critters, perched birds and flying birds already share this detection path; no extra bird callback or thinker is needed.
+
+A detected source extends fear for two seconds after the latest detection. Safe journeys already leading away remain intact; an unsafe route is cancelled before its next movement. Ground escapes follow monotonically non-approaching straight segments and prefer a reachable full-body off-path endpoint, initially seeking 24 units of additional separation. If that is unavailable, the search can use a nearer safe endpoint that still increases separation. A shared BFS expands at most 512 nodes per turn, as for ordinary journeys. An actor interrupted mid-edge can seed only either continuously clear endpoint of that same cardinal edge; it never teleports to a grid node or takes an unchecked diagonal shortcut.
+
+Frightened speeds are **30 units/second for hares, 24 for lizards, 12 for beetles**, and **66-unit/second flight timing for birds**. Ordinary speeds and hare hop shapes remain unchanged. Speed boost time is integrated over only the frightened portion of a delta, including a delta that crosses fear expiry. Scenery/water/defence clearance remains unchanged.
+
+A perched bird can take off promptly. An airborne bird retains a safe-away arc, or pauses briefly at its current clear position while scheduling a newly validated escape from that exact point. Escape arcs must end farther from the threat and their conservative continuous bounds may not enter the initial body-centre separation sphere. The current position, yaw and wing angle seed the replacement flight. If no safe choice is available it waits safely and retries, then resumes ordinary autonomous planning after fear expires. No threat reaction adds damage, collision gameplay, particles, audio or new assets.
+
+### Runtime verification
+
+On **18 October 2026**, `bun test tests/wildlife-preview.test.js -t 'explosion|bird'` passes **3 tests / 677 assertions**, with the other eight tests filtered out. The new regression uses the actual Dog/Walker/Spider fright-radius configuration with ground, perched and airborne wildlife: all nine cases react in the newly covered annulus, would not react there at the old radius, and remain unaffected by an event outside the new 3D radius despite being close in X/Z. It verifies unchanged event-pool identity, one scheduled thinker per frame and no immediate reaction from unscheduled animals. The selected existing regressions also cover event expiry/reuse and actual perched/airborne bird escape. No controller movement, model, physics or visual changes were needed for this follow-up; no full suite was run.
+
+At the previous autonomous-wildlife milestone on **17 October**, **ten focused controller tests passed**. They simulate autonomous motion in all four zones for 180 seconds at 30 updates/second and verify route crossing is possible while retaining dry equal-height terrain, static/defence clearance, mutual ground separation, supported perches, actual tree-to-tree relocations and completed journeys. Periodic transformed mesh checks cover the navigation envelope. The checks also cover one-thinker round-robin scheduling, bounded work/storage identities, source immutability, accepted-journey delta subdivision, hare span/height and smooth short-journey landing, blocked-mid-hop settling, invalid spawn rejection and unload references.
+
+New threat regressions use a live `EnemyPreview` state, confirm dead-enemy exclusion, continuous mid-edge reversal with increasing separation, retention of an already-safe flee route, explosion copying/expiry/pool reuse without extra thinker turns, 3D distance gating, faster flight and both perched/airborne bird escape. The lead additionally ran a separate 60-second-per-zone real-combat audit with actual enemy movement, turret hits and damage-effect origins. It observed natural path visits in A/B/C, enemy reactions in A/B, three deaths and copied explosion events in A/B/D, exactly 3,600 thinker turns per zone, a 512-node maximum and clean teardown. No critter was naturally close to a blast in that seeded audit; the focused tests exercise those reactions explicitly. The affected transformed blast-origin test also passes, including the borrowed event identity and configuration. No full suite or model-geometry tests were run for this controller-only change.
+
+Lead browser review is complete in the existing built-in Chrome tab: all four zones render with moving wildlife, B records a natural enemy fright and a new lizard escape journey, and round-robin thinker counts remain balanced. A→B→C→D→A clears old scene resources and restores A's original buffer/geometry counts; no warnings or errors were captured during this review. Weather stays off and all nine accent lights remain active without overflow. [Combined browser evidence](zone-preview-review-browser.json). Engineer's independent read-only review found no blocking navigation, event-storage or teardown issue. Sampled motion checks do not establish correctness for every future layout.
+
+
+Turret pitch follow-up (18 October): defence clearance now includes the full ±35° gun sweep and 0–1.25 recoil height, including interior angle extrema, computed once while the scene loads. The existing horizontal bound remains conservative. Twelve affected wildlife checks pass, including all three real turret meshes across pitch/yaw/recoil and the existing four-zone journeys.
+
+## Missile contact scattering (18 October)
+
+The user explicitly requested wildlife flee missile impacts. Enemy-hit and missed-ground contacts both call the production `emitMissileImpact` helper with exact contact coordinates and a 48-unit fright radius, below the 72/84-unit enemy-death radii. It always sends the existing copied event even if all visual blast slots hold higher-priority deaths. Ground critters, perched birds and flying birds use the same existing 3D body-distance test and one-actor-per-frame planner; no wildlife pool, movement, geometry or navigation changes. Four missile integration checks pass (955 assertions), including saturated visual-pool escape in all three movement states. Live A3 records 19 missile contacts and 19 corresponding events alongside three death events; a nearby ground critter completes two escape journeys. [Evidence](missile-attack-refinement-browser-review.json).
+
+
+## Blast lethality and respawn (20 October)
+
+Current wave is the enemy run. All live ground/bird/fish body centres are tested in3D, inclusively48/72units (two/three tiles) for enemy/missile explosions; no additional occlusion rule. Dead actors hide immediately, stop thinking/moving and release destination/Drone obstacles. Model-colour gibs and spray persist through the wave, then fade2s; next preparation certifies safe connected ground/perch/pool respawns. No rewards or misses are assigned. Fish born-underwater fragments start submerged without a false entry splash.

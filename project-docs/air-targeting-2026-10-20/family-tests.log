@@ -1,0 +1,47 @@
+bun test v1.4.2 (744846f84)
+
+tests/drone-combat.test.js:
+(pass) base timing is independent and a settled twin-gun burst applies ten single 10HP rounds with five-second cooldown [77.50ms]
+(pass) expiry finishes the current valid burst then begins returning immediately without waiting for weapon cooldown [57.51ms]
+(pass) expiry in cooldown returns without starting a new burst; obstruction or death cancels remaining rounds safely [91.64ms]
+(pass) return, neutral pad hover and ten-second recharge preserve clocks and reset reuses every fleet slot [30.74ms]
+(pass) long frames emit at most one current round and unreachable/occluded targets receive no hits [26.22ms]
+(pass) mobile burst commitments stop before range exit and never promise unknown or banking future poses [26.24ms]
+(pass) head-on returning aircraft hold safely, replan around each other and both reach their own pads [40.14ms]
+(pass) an empty held return plan cannot align, descend or snap the aircraft to a distant home goal [24.09ms]
+(pass) return releases stale attack braking flags and completes after target invalidation [26.42ms]
+(pass) retained head-on intents and a neutral launch share right of way and make useful return progress at30/60/120Hz [238.31ms]
+(pass) a level fuselage uses collective fan tilt for acceleration and differential tilt for yaw and yaw braking [24.82ms]
+(pass) a complete-route intercept remains committed through a target corner and holds a useful firing station [30.92ms]
+(pass) committed firing stations reserve space independently of current aircraft positions [27.60ms]
+(pass) a settled firing aircraft actively evades approaching birds and living flyers without current solid overlap [69.37ms]
+(pass) a target dying during travel releases its station and brakes without splicing a new path into momentum [26.24ms]
+(pass) range exit and a target passing underneath invalidate the station, reposition and resume the same enemy after the real cooldown [59.82ms]
+(pass) actual A1 first sorties launch safely, attack productively and finish returns at30/60/120Hz, including a live-wildlife reset [2299.37ms]
+(pass) the actual A1 fleet navigates, attacks ground and air, returns/recharges and releases without changing the landscape [977.93ms]
+
+tests/arc-combat.test.js:
+(pass) Arc studies hit once per pulse and destroy the mixed ground/air rosters [897.48ms]
+(pass) mixed defences share exactly one thinker and do not promise unverified Arc coverage [54.79ms]
+(pass) actual surface LOS, range exits and death cancel live bursts; a stall never replays hits [28.25ms]
+(pass) a surface-blocked priority target yields to hittable alternatives and retries later [27.94ms]
+(pass) upgrade bursts respect real gaps and cooldowns and stop immediately on obstruction [28.75ms]
+(pass) random contacts use exposed facing sides of current articulated poses and release all matrix references [550.54ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [931.09ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [241.38ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [691.71ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [602.37ms]
+
+tests/lead-targeting.test.js:
+(pass) the current hitscan turret still aims exactly at the present target, without requiring velocity [0.12ms]
+(pass) projectile aim leads crossing motion according to speed and keeps the intercept inside maximum travel range [0.17ms]
+(pass) unreachable, out-of-range and unknown-motion targets cannot fall back to an unled projectile shot [0.26ms]
+(pass) projectile speed is explicit, finite and positive; unknown delivery cannot silently become hitscan [0.23ms]
+(pass) route motion reports true travel direction instead of the eased facing through a bend [0.17ms]
+
+ 33 pass
+ 0 fail
+ 404762 expect() calls
+Ran 33 tests across 4 files. [8.25s]

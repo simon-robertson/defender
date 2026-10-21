@@ -1,0 +1,123 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.32ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [3.07ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [0.91ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.19ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [0.97ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.14ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [0.76ms]
+
+tests/play-run-clearance.test.js:
+(pass) bounding Dog poses keep actual limb cells outside the chassis and soles above the route plane [1814.78ms]
+
+tests/dog-preview.test.js:
+(pass) dog target velocity follows the route and stays bounded across entrance resets [287.75ms]
+(pass) three runtime dogs share part meshes without becoming saved scenery or bypassing path clearance [1459.20ms]
+(pass) path motion keeps exact box-centre segments while facing turns continuously [4.25ms]
+(pass) uniform path indexing keeps boundary position and travel direction, including clamped endpoints [0.10ms]
+(pass) cached gait contacts preserve poses while avoiding repeated path sampling within a stride [510.99ms]
+(pass) walking keeps paw contacts planted through bends and all animated geometry above and inside the route [790.51ms]
+(pass) root and gait agree across frame rates, uneven frames and multiple preview loops [2449.04ms]
+(pass) dog preview teardown releases actor and path references without adding or retaining slots [576.05ms]
+(pass) turn abduction and folded steps keep moving limb cells clear of the dog chassis [3298.68ms]
+
+tests/play-escape.test.js:
+(pass) escape certainty admits no false proof from current LOS, targeting reservation or route re-entry [0.56ms]
+(pass) run corner smoothing keeps endpoints and continuous position/tangent inside the authored turn [0.84ms]
+(pass) undefended Dogs genuinely bound with airborne phases, valid leg reach and smooth 2x acceleration [1610.85ms]
+(pass) real A2/A3 ground and air escapes complete through corners and merges, deterministically across host rates [8566.00ms]
+(pass) a surviving missile reaction and zero-delta pause retain valid running poses and clean retry state [1534.91ms]
+
+tests/lead-targeting.test.js:
+(pass) the current hitscan turret still aims exactly at the present target, without requiring velocity [0.59ms]
+(pass) projectile aim leads crossing motion according to speed and keeps the intercept inside maximum travel range [0.24ms]
+(pass) unreachable, out-of-range and unknown-motion targets cannot fall back to an unled projectile shot [0.16ms]
+(pass) projectile speed is explicit, finite and positive; unknown delivery cannot silently become hitscan [0.12ms]
+(pass) route motion reports true travel direction instead of the eased facing through a bend [0.06ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [100.63ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [72.86ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [77.58ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [410.83ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [154.20ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1976.30ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [1328.18ms]
+
+tests/enemy-expansion-preview.test.js:
+(pass) mixed mechanisms use their own speed, path, bounded lap clocks and reusable matrices across frame partitions [160.14ms]
+(pass) wheel, rotor and wing phases remain continuous across each actor clock wrap [215.37ms]
+(pass) actual torso positions and analytic aim velocities include offset centres and route banking [84.28ms]
+(pass) Tripod holds three-phase contacts flat through the complete route with a readable stride [61.16ms]
+(pass) all four flyers clear scenery, terrain and all three defence studies over their complete route [8988.43ms]
+(pass) new ground skid and small airborne sway preserve actual poses, guards, death freeze, reset and scene ownership [183.19ms]
+(pass) new ground actors retain terrain support and clear route scenery through their complete production paths [4534.73ms]
+
+tests/target-planner.test.js:
+(pass) equal threat follows time to exit, explicit threat can outweigh progress, and health breaks close urgency ties [0.73ms]
+(pass) unknown route metadata still ranks threat but never invents downstream capacity [0.20ms]
+(pass) explicitly disabled forecasts skip all route probes while default coverage and live eligibility remain intact [0.49ms]
+(pass) uncertified route aim offsets and banking skip probes and credit without excluding live gun hits [1.68ms]
+(pass) revoking route forecast eligibility clears an existing reservation without rejecting its live target [0.27ms]
+(pass) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [1207.59ms]
+(pass) future projectile aiming does not borrow the hitscan damage forecast [0.28ms]
+(pass) impact recovery suspends route promises while keeping actual live shots eligible [0.26ms]
+(pass) an idle downstream owner accepts one explicit assignment when the upstream gun switches [0.15ms]
+(pass) a future reservation yields to a hittable uncovered flyer and revokes its promised damage [0.17ms]
+(pass) future reservations still wait when current alternatives are already covered and hold a hittable assignment [0.19ms]
+(pass) delegation requires the full margin and respects cooldown, visibility and weapon strength [0.51ms]
+(pass) incoming missile damage is credited once and only residual health needs the gun forecast margin [0.38ms]
+(pass) fully claimed missile damage releases old gun reservations and never recruits unnecessary owners [0.16ms]
+(pass) unknown health and invalid incoming values cannot manufacture a lethal damage claim [0.54ms]
+(pass) mixed families share actual incoming credit while only one thinker forecasts gun damage [0.33ms]
+(pass) capacity uses only the next continuous window and never counts a later preview lap [0.09ms]
+(pass) one downstream promise cannot be reused to delegate a different actor [0.18ms]
+(pass) an owner cannot abandon its reserved actor for a more urgent challenger [0.10ms]
+(pass) covered targets remain fireable when there is no uncovered alternative [0.11ms]
+(pass) near-equal urgency and a short hold preserve locks; a valid burst finishes before a discretionary switch [0.09ms]
+(pass) forecast counts single attack pulses, partial bursts and real cooldowns [0.04ms]
+(pass) one roster scan per frame rotates fairly and releases all planner references on disposal [0.21ms]
+(pass) death, departure and lap changes invalidate reservations instead of preserving spent promises [0.32ms]
+(pass) a stale current-target lock cannot recreate downstream confidence after its reservation lapses [0.09ms]
+(pass) an unreserved lock in a coverage gap cannot promise a disconnected later window [0.06ms]
+(pass) current turret capacity never covers itself and spent weapon time reduces a promise [0.09ms]
+(pass) roster growth reuses spare slots and gives unprofiled actors no speculative capacity [0.20ms]
+(pass) continuing burst forecasts require pitch alignment as well as yaw [0.08ms]
+(pass) non-thinking turrets still reject invalid shots and cancel bursts every frame [0.58ms]
+(pass) gun acquisition survives priority changes through cooldown and its first valid burst [0.17ms]
+(pass) gun acquisition hold is bounded and cannot retain dead, blocked, removed or out-of-range targets [0.25ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [43.79ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [151.67ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [93.61ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [210.17ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [33.72ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [1355.50ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [170.19ms]
+(pass) real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward [5032.85ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [24962.88ms]
+
+tests/enemy-impact.test.js:
+(pass) a directional hit tilts the body while IK keeps feet flat and public coordinates match the rig [311.75ms]
+(pass) downward hits cause a forward stumble and brace while legacy or invalid hits do not react [51.53ms]
+(pass) closed-form recovery agrees across frame partitions, settles on long deltas and performs no frame queries [105.31ms]
+(pass) repeated directional hits preserve position continuity and bound the complete recovery peak [54.93ms]
+(pass) clearance preserves sliding sole support and excludes banks, water, bounds, scenery and defences [404.81ms]
+(pass) clearance checks the future recovery corridor rather than only the impact position [62.45ms]
+(pass) a rejected repeat hit leaves the previously certified recovery unchanged before a narrowing corridor [124.88ms]
+(pass) an incomplete visibility fixture suppresses only the impulse and preserves ordinary damage and gait [64.48ms]
+(pass) death freezes the displaced pose, while reset, route wrap and disposal clear reaction storage [58.12ms]
+(pass) full torso aim point and analytic velocity remain current after a hit and freeze before death [174.84ms]
+(pass) impact phase and corner regression certifies actual cells, sole support and IK (dog) [49537.57ms]
+(pass) impact phase and corner regression certifies actual cells, sole support and IK (walker) [10799.92ms]
+(pass) impact phase and corner regression certifies actual cells, sole support and IK (spider) [18529.04ms]
+(pass) Dog corner guard preserves the accepted whole gait and cannot snap a repeated active balance [74.38ms]
+(pass) stagger is visibly larger, slower to recover and remains useful on downward Dog corner hits [141.17ms]
+
+ 97 pass
+ 0 fail
+ 3098358 expect() calls
+Ran 97 tests across 10 files. [155.15s]

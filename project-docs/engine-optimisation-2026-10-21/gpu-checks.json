@@ -1,0 +1,1558 @@
+{
+  "bloom": {
+    "passed": 27,
+    "failed": 0,
+    "checks": [
+      "All complete production geometry, display, emitter, blur and particle modules compile",
+      "Original full-resolution particle entrypoints require no bloom binding",
+      "White non-emissive armour produces no bloom",
+      "Zero emission preserves the complete production display byte-for-byte",
+      "Emissive panel produces source-coloured bloom",
+      "Fixed separable blur has a restrained finite halo",
+      "Halo is included in the existing linear-to-display composite",
+      "Production bloom strength is doubled from0.35to0.70",
+      "Actual halo pixels double in linear light within display quantisation tolerance",
+      "One-pixel emitter survives non-divisible 65×67 downsampling",
+      "Particle/depth coordinates use exact ceil-resolution ratios",
+      "Water transmission attenuates an emitter behind its surface",
+      "Disappearing opaque emission clears the previous cached halo",
+      "Reduced muzzle core obeys full-resolution opaque depth",
+      "Reduced muzzle core obeys water attenuation",
+      "Production elongated muzzle flame contributes bloom",
+      "Sparks never become bloom emitters",
+      "Explosion hot core blooms only when visible",
+      "Explosion halo source respects water attenuation",
+      "Smoke and water prefixes do not shift or replace explosion bloom",
+      "Smoke is excluded and expired blast leaves no residual halo",
+      "Original muzzle shape, opacity and water coverage remain correct",
+      "Original explosion shape still renders and obeys depth",
+      "Original lit smoke remains visible without producing bloom",
+      "Player bloom water receives the511th local light at the portable uniform limit",
+      "Extended-capacity bloom and ordinary water display match byte-for-byte with zero emission",
+      "No WebGPU validation errors"
+    ],
+    "pixels": {
+      "doubledPixels": 731,
+      "doubledFailures": 0,
+      "centre": [
+        54,
+        11,
+        2
+      ],
+      "near": [
+        30,
+        6,
+        1
+      ],
+      "far": [
+        1,
+        0,
+        0
+      ],
+      "originalCore": [
+        255,
+        255,
+        232
+      ],
+      "originalHidden": [
+        0,
+        0,
+        0
+      ],
+      "originalWater": [
+        77,
+        77,
+        70
+      ],
+      "originalBlast": [
+        224,
+        205,
+        183
+      ],
+      "smoke": [
+        20,
+        22,
+        23
+      ]
+    },
+    "energy": {
+      "panel": 486,
+      "dry": 486,
+      "submerged": 240,
+      "core": 10313,
+      "coreHidden": 0,
+      "coreWater": 3077,
+      "flame": 5175,
+      "spark": 0,
+      "blast": 6185,
+      "blastWater": 1848
+    },
+    "resources": {
+      "width": 17,
+      "height": 17,
+      "targetBytes": 4624,
+      "settingsBytes": 16
+    }
+  },
+  "damage": {
+    "passed": 24,
+    "failed": 0,
+    "checks": [
+      "Lit smoke responds to sky and ambient",
+      "Smoke receives sky shadows with ambient retained",
+      "Smoke follows night light colours",
+      "Twelfth merged local light illuminates smoke",
+      "Final slot77 carries warm missile exhaust light onto smoke",
+      "Last exhaust slot has the same smoke response as the first point-light slot",
+      "Smoke has no emissive floor",
+      "Opaque depth fully occludes smoke",
+      "Water attenuates smoke behind its surface",
+      "Compact additive blast produces a warm luminous core",
+      "Blast respects opaque depth",
+      "Weighted water droplets render in the production translucent pipeline",
+      "Water droplets respect opaque depth",
+      "Water droplets have no emissive floor",
+      "Water crown sheet renders above the impact",
+      "Expanding ripple is visible on its matching water plane",
+      "Ripple clips off dry pixels and unrelated water heights",
+      "Ripple retains an open centre",
+      "Opaque cubes preserve model-colour hierarchy under scene lighting",
+      "Cube normal buffer carries physical face normals and zero reflectiveness",
+      "Cube casts into the production shadow-depth pass",
+      "Cube depth prepass rejects scenery-hidden fragments",
+      "Twelfth merged light illuminates opaque debris",
+      "No WebGPU validation errors"
+    ],
+    "pixelValues": {
+      "day": [
+        101,
+        99,
+        96,
+        255
+      ],
+      "shadowed": [
+        28,
+        31,
+        36,
+        255
+      ],
+      "night": [
+        19,
+        23,
+        33,
+        255
+      ],
+      "blastLit": [
+        146,
+        138,
+        98,
+        255
+      ],
+      "thrustLit": [
+        130,
+        106,
+        77,
+        255
+      ],
+      "firstThrust": [
+        130,
+        106,
+        77,
+        255
+      ],
+      "unlit": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "hidden": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "underwater": [
+        30,
+        30,
+        29,
+        255
+      ],
+      "blast": [
+        220,
+        198,
+        176,
+        255
+      ],
+      "blastHidden": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "dropDay": [
+        166,
+        183,
+        181,
+        255
+      ],
+      "dropHidden": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "dropDark": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "crown": [
+        161,
+        178,
+        176,
+        255
+      ],
+      "ring": [
+        34,
+        52,
+        69,
+        255
+      ],
+      "ringDry": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "ringOtherHeight": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "ringCentre": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "cubeDay": [
+        107,
+        52,
+        24,
+        0
+      ],
+      "cubeNormal": [
+        128,
+        128,
+        255,
+        0
+      ],
+      "shadowDepth": 0.32499998807907104,
+      "cubeOccluded": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cubeLocal": [
+        255,
+        111,
+        24,
+        0
+      ]
+    }
+  },
+  "arc": {
+    "passed": 34,
+    "failed": 0,
+    "checks": [
+      "opaque production module compiles with tube lighting",
+      "water and SSR production module compiles with tube lighting",
+      "bloom display production module compiles with tube lighting",
+      "rain production module compiles with tube lighting",
+      "snow production module compiles with tube lighting",
+      "leaves production module compiles with tube lighting",
+      "debris production module compiles with tube lighting",
+      "smoke and blast production module compiles with tube lighting",
+      "Finite tube illuminates its middle although both endpoints lie beyond the radius",
+      "Light stops beyond the finite end cap",
+      "Opaque back faces remain dark",
+      "Light stops exactly at the radial boundary",
+      "Exact tube centre and boundaries stay finite",
+      "Minimal inactive storage binding produces no arc illumination",
+      "Splitting one tube at a joint does not multiply its brightness",
+      "Independent strikes add their light",
+      "Rain and snow use their production scattering response along the tube",
+      "Tumbling leaves receive tube light on their reverse side",
+      "Existing point lights and new tube lights combine without replacing either",
+      "Existing point light colour and contribution are preserved",
+      "The actual pooled jagged arc lights surfaces along its interior",
+      "The production strike contains one unbranched channel and eight tube spans",
+      "Actual pool expiry removes every tube light",
+      "Both full-resolution ribbon and reduced bloom pipelines compile",
+      "The actual ribbon renders a bright narrow channel",
+      "Opaque depth completely hides a channel behind it",
+      "Water attenuates the channel behind its surface",
+      "Reduced channel emission observes full-resolution opaque depth",
+      "Reduced channel emission observes water attenuation",
+      "Hot metal flecks reach the display in warm yellow-orange colours",
+      "Metal flecks stay crisp without extra bloom",
+      "Perspective near-plane clipping retains a narrow crossing ribbon without screen-filling triangles",
+      "A channel wholly behind the perspective near plane is hidden",
+      "No WebGPU validation errors"
+    ],
+    "readbacks": {
+      "midpoint": [
+        0.8505339622497559,
+        1.3054707050323486,
+        1.9779858589172363
+      ],
+      "ribbon": {
+        "visible": {
+          "sum": 72696,
+          "count": 288,
+          "centre": [
+            186,
+            191,
+            194
+          ]
+        },
+        "hidden": {
+          "sum": 0,
+          "count": 0,
+          "centre": [
+            0,
+            0,
+            0
+          ]
+        },
+        "underwater": {
+          "sum": 21596,
+          "count": 196,
+          "centre": [
+            56,
+            57,
+            58
+          ]
+        }
+      },
+      "bloom": {
+        "halo": {
+          "sum": 1608,
+          "count": 24,
+          "centre": [
+            10,
+            19,
+            38
+          ]
+        },
+        "haloHidden": {
+          "sum": 0,
+          "count": 0,
+          "centre": [
+            0,
+            0,
+            0
+          ]
+        },
+        "haloWet": {
+          "sum": 480,
+          "count": 24,
+          "centre": [
+            3,
+            6,
+            11
+          ]
+        }
+      },
+      "metal": {
+        "sum": 49820,
+        "count": 288,
+        "centre": [
+          194,
+          138,
+          54
+        ]
+      }
+    },
+    "resources": {
+      "inactiveLightBytes": 320,
+      "activeLightBytes": 3664
+    },
+    "errors": []
+  },
+  "rain": {
+    "passed": 9,
+    "failed": 0,
+    "checks": "Production rain: day/night, sky shadow, muzzle lighting/radius/expiry, zero emission, opaque and water occlusion",
+    "pixelValues": {
+      "day": [
+        94,
+        94,
+        93
+      ],
+      "shadowed": [
+        43,
+        47,
+        53
+      ],
+      "night": [
+        17,
+        21,
+        31
+      ],
+      "muzzle": [
+        140,
+        133,
+        95
+      ],
+      "outsideRadius": [
+        17,
+        21,
+        31
+      ],
+      "expired": [
+        17,
+        21,
+        31
+      ],
+      "unlit": [
+        0,
+        0,
+        0
+      ],
+      "opaqueHidden": [
+        0,
+        0,
+        0
+      ],
+      "waterHidden": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "snow": {
+    "passed": 13,
+    "failed": 0,
+    "checks": "Production snow lighting, shadows, muzzle radius/expiry, zero emission, opaque/water depth, first-hit lifetime, cycle restart and level clipping",
+    "pixelValues": {
+      "day": [
+        117,
+        116,
+        116
+      ],
+      "shadowed": [
+        53,
+        58,
+        66
+      ],
+      "night": [
+        21,
+        26,
+        38
+      ],
+      "muzzle": [
+        174,
+        166,
+        118
+      ],
+      "outsideRadius": [
+        21,
+        26,
+        38
+      ],
+      "expired": [
+        21,
+        26,
+        38
+      ],
+      "unlit": [
+        0,
+        0,
+        0
+      ],
+      "opaqueHidden": [
+        0,
+        0,
+        0
+      ],
+      "waterHidden": [
+        0,
+        0,
+        0
+      ],
+      "restarted": [
+        117,
+        116,
+        116
+      ],
+      "outsideLevel": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "leaf": {
+    "passed": 17,
+    "failed": 0,
+    "checks": "Production leaf lighting, shadows, muzzle radius/expiry, zero emission, opaque/water depth, first-hit lifetime, cycle restart, true 3D tumble, two-sided response, purple/rust palette and level clipping",
+    "pixelValues": {
+      "day": [
+        109,
+        72,
+        93
+      ],
+      "shadowed": [
+        33,
+        22,
+        37
+      ],
+      "night": [
+        17,
+        11,
+        29
+      ],
+      "muzzle": [
+        222,
+        122,
+        112
+      ],
+      "outsideRadius": [
+        17,
+        11,
+        29
+      ],
+      "expired": [
+        17,
+        11,
+        29
+      ],
+      "unlit": [
+        0,
+        0,
+        0
+      ],
+      "opaqueHidden": [
+        0,
+        0,
+        0
+      ],
+      "waterHidden": [
+        0,
+        0,
+        0
+      ],
+      "restarted": [
+        109,
+        72,
+        93
+      ],
+      "backSide": [
+        109,
+        72,
+        93
+      ],
+      "edgeOn": [
+        0,
+        0,
+        0
+      ],
+      "rust": [
+        131,
+        89,
+        67
+      ],
+      "outsideLevel": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "shot": {
+    "passed": 10,
+    "failed": 0,
+    "checks": "Light falloff, back faces, radius, colour, finite origin, expiry; particle visibility, opaque occlusion, water attenuation",
+    "pixelValues": {
+      "visible": 239,
+      "hidden": 0,
+      "underwater": 72,
+      "dryBinding": 239
+    }
+  },
+  "shockwave": {
+    "passed": 14,
+    "failed": 0,
+    "checks": [
+      "Spherical rim displaces the completed image",
+      "Sphere interior remains clear without a filled bubble",
+      "Distant pixels remain unchanged",
+      "Zero strength is an exact passthrough",
+      "Opaque foreground is not refracted",
+      "Foreground water is not refracted",
+      "Water and image content behind the wave are refracted",
+      "Displaced-source guard does not pull foreground across its edge",
+      "A sphere behind the camera has no effect",
+      "Expired waves leave no residual distortion",
+      "All four fixed wave slots contribute without serial image copies",
+      "Perspective camera rays produce visible sphere refraction",
+      "Perspective foreground remains undistorted",
+      "No WebGPU validation errors"
+    ],
+    "pixels": {
+      "baseRim": [
+        176,
+        128,
+        26,
+        255
+      ],
+      "bentRim": [
+        181,
+        128,
+        26,
+        255
+      ],
+      "guarded": [
+        176,
+        128,
+        26,
+        255
+      ],
+      "perspective": [
+        181,
+        128,
+        26,
+        255
+      ]
+    }
+  },
+  "decals": {
+    "passed": true,
+    "results": [
+      {
+        "slope": 0,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0.4,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0.4,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": -0.4,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": -0.4,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0.49,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0.49,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": -0.49,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": -0.49,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 3,
+          "angle": 0
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 3,
+          "angle": 0
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 3,
+          "angle": 75
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 3,
+          "angle": 75
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 3,
+          "angle": 87
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 3,
+          "angle": 87
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 8,
+          "angle": 0
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 8,
+          "angle": 0
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 8,
+          "angle": 75
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 8,
+          "angle": 75
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 8,
+          "angle": 87
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 8,
+          "angle": 87
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 800,
+          "angle": 0
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 800,
+          "angle": 0
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 800,
+          "angle": 75
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 800,
+          "angle": 75
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 800,
+          "angle": 87
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": {
+          "distance": 800,
+          "angle": 87
+        },
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 1,
+        "actual": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "expected": [
+          9,
+          52,
+          7,
+          0
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          0
+        ]
+      },
+      {
+        "slope": 0,
+        "view": null,
+        "occluded": true,
+        "gap": 0.01,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          51,
+          77,
+          102,
+          204
+        ],
+        "expected": [
+          51,
+          77,
+          102,
+          204
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          153
+        ]
+      },
+      {
+        "slope": 0,
+        "view": null,
+        "occluded": true,
+        "gap": 0.009,
+        "opacity": 1,
+        "repeat": 0,
+        "actual": [
+          51,
+          77,
+          102,
+          204
+        ],
+        "expected": [
+          51,
+          77,
+          102,
+          204
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          153
+        ]
+      },
+      {
+        "slope": 0,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 0.5,
+        "repeat": 0,
+        "actual": [
+          31,
+          46,
+          29,
+          51
+        ],
+        "expected": [
+          31,
+          46,
+          29,
+          51
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          39
+        ]
+      },
+      {
+        "slope": 0,
+        "view": null,
+        "occluded": false,
+        "gap": 0.01,
+        "opacity": 0,
+        "repeat": 0,
+        "actual": [
+          51,
+          77,
+          102,
+          204
+        ],
+        "expected": [
+          51,
+          77,
+          102,
+          204
+        ],
+        "error": 0,
+        "normal": [
+          128,
+          128,
+          255,
+          153
+        ]
+      }
+    ]
+  }
+}

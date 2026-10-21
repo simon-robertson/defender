@@ -1,0 +1,58 @@
+bun test v1.4.2 (744846f84)
+
+tests/enemy-expansion-preview.test.js:
+(pass) mixed mechanisms use their own speed, path, bounded lap clocks and reusable matrices across frame partitions [190.34ms]
+(pass) wheel, rotor and wing phases remain continuous across each actor clock wrap [112.38ms]
+(pass) actual torso positions and analytic aim velocities include offset centres and route banking [52.83ms]
+(pass) Tripod holds three-phase contacts flat through the complete route with a readable stride [41.00ms]
+(pass) all four flyers clear scenery, terrain and all three defence studies over their complete route [5078.01ms]
+(pass) new ground skid and small airborne sway preserve actual poses, guards, death freeze, reset and scene ownership [120.18ms]
+(pass) new ground actors retain terrain support and clear route scenery through their complete production paths [2419.27ms]
+
+tests/drone-obstacles.test.js:
+(pass) current articulated parts obstruct aircraft sweeps while a low ground animal permits overhead flight [0.71ms]
+(pass) a living airborne crossing is anticipated before contact and death removes it immediately [0.14ms]
+(pass) posed wings and leg chains enclose every transformed occupied cell, including root rotation [0.52ms]
+(pass) route prediction includes an intervening corner and stops at exit instead of wrapping across the board [0.11ms]
+(pass) preview wrap predicts a separate entrance region without a false teleport corridor [0.09ms]
+(pass) flying bird prediction covers its full wing envelope and the cubic flight peak [0.09ms]
+(pass) time-matched bird sweeps catch ascent crossings and allow escape after the bird has vacated the origin [0.39ms]
+(pass) time-matched route sweeps retain separate wrap regions and include intervening corners [0.15ms]
+(pass) time-matched queries preserve neutral half-height and discard observed velocity on reset [0.07ms]
+(pass) explicit asymmetric queries reject real above/below contact while preserving cube defaults [0.03ms]
+(pass) ground prediction respects supplied fixed-defence exclusions without hiding protruding or current contact [0.15ms]
+(pass) source-derived Dog Y envelope contains legal extreme impact, brace, gait and recovery poses [111.77ms]
+(pass) articulated defence prediction covers later yaw/pitch/recoil and excludes every drone part and pad [0.22ms]
+(pass) launcher wells reserve seated round tips while launched missile actor matrices are excluded [0.05ms]
+(pass) reset and lap discontinuity discard old velocity, storage is reused, and teardown releases source references [0.24ms]
+(pass) curved route predictions include the intervening extremum between opposing bends [0.10ms]
+(pass) actual A1 enemy and wildlife poses remain enclosed throughout moving flight, turns and hops [390.17ms]
+(pass) gibbed cosmetic wildlife releases current and predicted drone clearance immediately and on update [0.96ms]
+
+tests/flight-path-motion.test.js:
+(pass) flight curves preserve endpoints and authored timing, with continuous actual tangents through both turn directions [2.57ms]
+(pass) flight bounds include extrema between consecutive opposing bends [1.15ms]
+(pass) all four rendered flyers bank into turns and their analytic root/torso velocities follow the curve [33.65ms]
+(pass) finite curved flight reaches the same exit at the authored time [16.59ms]
+
+tests/enemy-impact.test.js:
+(pass) a directional hit tilts the body while IK keeps feet flat and public coordinates match the rig [128.58ms]
+(pass) downward hits cause a forward stumble and brace while legacy or invalid hits do not react [21.32ms]
+(pass) closed-form recovery agrees across frame partitions, settles on long deltas and performs no frame queries [43.46ms]
+(pass) repeated directional hits preserve position continuity and bound the complete recovery peak [23.17ms]
+(pass) clearance preserves sliding sole support and excludes banks, water, bounds, scenery and defences [161.97ms]
+(pass) clearance checks the future recovery corridor rather than only the impact position [26.00ms]
+(pass) a rejected repeat hit leaves the previously certified recovery unchanged before a narrowing corridor [50.91ms]
+(pass) an incomplete visibility fixture suppresses only the impulse and preserves ordinary damage and gait [22.68ms]
+(pass) death freezes the displaced pose, while reset, route wrap and disposal clear reaction storage [20.55ms]
+(pass) full torso aim point and analytic velocity remain current after a hit and freeze before death [62.91ms]
+(pass) impact phase and corner regression certifies actual cells, sole support and IK (dog) [21760.04ms]
+(pass) impact phase and corner regression certifies actual cells, sole support and IK (walker) [5825.90ms]
+(pass) impact phase and corner regression certifies actual cells, sole support and IK (spider) [9405.94ms]
+(pass) Dog corner guard preserves the accepted whole gait and cannot snap a repeated active balance [42.10ms]
+(pass) stagger is visibly larger, slower to recover and remains useful on downward Dog corner hits [81.76ms]
+
+ 44 pass
+ 0 fail
+ 891655 expect() calls
+Ran 44 tests across 4 files. [46.28s]

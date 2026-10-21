@@ -1,0 +1,24 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-mixed-combat.test.js:
+Verified pre-fix Arc SHA-256: 9331c4823b3e85ed94caca21387515749cdf3ca357e1ae6825bc155300fad4ea
+55 |    state.targeting.rangeSquared=500**2;state.requiresLineOfSight=false;
+56 |    state.target=blocked;state.targetLap=blocked.lap;arcs.contacts.sample=()=>false;
+57 |    arcs.advance(.01);expect(state.surfaceRejects).toBe(1);expect(arcs.eligible(state,blocked)).toBe(false);
+58 |    if(resolution==='killed')e.enemies.takeHit(first,99999);else e.enemies.resolve(first,'escaped');
+59 |    expect(arcs.targets).toEqual([blocked,other]);
+60 |    expect(arcs.eligible(state,blocked)).toBe(false);expect(arcs.eligible(state,other)).toBe(true);
+                                             ^
+error: expect(received).toBe(expected)
+
+Expected: false
+Received: true
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/play-mixed-combat.test.js:60:41)
+(fail) Arc surface retries stay with their enemy after active deaths, escapes and later spawns [94.92ms]
+
+ 0 pass
+ 8 filtered out
+ 1 fail
+ 6 expect() calls
+Ran 1 test across 1 file. [136.00ms]

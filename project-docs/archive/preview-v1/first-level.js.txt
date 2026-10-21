@@ -1,0 +1,54 @@
+import {newModel,newPart,canonicalModel} from '../shared/model.js';
+import {defaultWaterMaterial} from '../shared/water.js';
+import {newLevel,validateLevel} from '../shared/level.js';
+import {TerrainField} from '../shared/terrain.js';
+
+const palette=[['Bark','#645C3E'],['Bark light','#827551'],['Deep foliage','#334D35'],['Forest foliage','#4F693F'],['Moss foliage','#758949'],['Leaf highlight','#96A25D'],['Porcelain stone','#D7CCAF'],['Stone shade','#AAAD8C'],['Stone light','#E8DDC0'],['Flower','#F1E8D0'],['Vermilion','#B96D4F']].map(([name,color])=>({name,color,emission:0,reflectiveness:0}));
+export function builder(id,name,height,materials=palette){
+ const m=newModel(id);m.name=name;m.colorMode='authored';m.size[1]=height;m.materials=structuredClone(materials);const p=newPart('body'),cells=new Map();m.variants.base.parts=[p];
+ const box=(x0,y0,z0,x1,y1,z1,mat)=>{for(let y=y0;y<y1;y++)for(let z=z0;z<z1;z++)for(let x=x0;x<x1;x++){if(x<0||x>=24||z<0||z>=24||y<0||y>=height)throw new Error(id+' bounds');cells.set(x+24*(z+24*y),[x,y,z,mat]);}};
+ const crown=(x0,y0,z0,x1,y1,z1,mat,cut=2)=>{for(let y=y0;y<y1;y++)for(let z=z0;z<z1;z++)for(let x=x0;x<x1;x++)if(Math.min(x-x0,x1-1-x)+Math.min(z-z0,z1-1-z)>=cut)box(x,y,z,x+1,y+1,z+1,mat);};
+ return {box,crown,finish(){p.voxels=[...cells.values()];return canonicalModel(m);}};
+}
+export function sceneryModels(){
+ const result=[];
+ for(const tall of [false,true]){const b=builder(tall?'scenery-oak-tall':'scenery-oak','Oak · '+(tall?'tall canopy':'broad canopy'),tall?52:43),lift=tall?8:0;
+  b.box(10,0,10,14,24+lift,14,0);b.box(11,0,10,13,25+lift,11,1);b.box(8,0,11,16,2,13,0);b.box(11,0,8,13,2,16,0);
+  b.box(6,15+lift,11,11,18+lift,14,0);b.box(13,20+lift,10,18,23+lift,13,0);
+  b.crown(1,19+lift,4,13,27+lift,19,2,2);b.crown(9,22+lift,1,23,32+lift,15,3,3);b.crown(5,27+lift,7,22,37+lift,23,4,3);b.crown(3,29+lift,3,17,39+lift,16,3,3);b.crown(6,36+lift,6,15,42+lift,15,5,2);b.crown(15,33+lift,11,21,39+lift,19,4,2);result.push(b.finish());
+ }
+ {const b=builder('scenery-cypress','Cypress · column canopy',58);b.box(11,0,11,14,29,14,0);b.crown(6,10,6,19,30,19,2,3);b.crown(7,26,7,18,43,18,3,3);b.crown(9,40,9,16,51,16,4,2);b.box(11,49,11,14,57,14,4);result.push(b.finish());}
+ {const b=builder('scenery-ruin-wall','Mossy limestone · ruined wall',27);b.box(1,0,9,23,4,16,7);for(let row=0;row<3;row++)for(let col=0;col<3;col++){const x=1+col*7;const h=row===2?(col===1?5:8):7;b.box(x,row*8+3,10,x+7,row*8+3+h,15,(row+col)%3===0?8:6);}b.box(2,24,10,8,26,15,4);b.box(16,20,10,22,22,15,4);b.box(8,3,9,10,9,10,3);result.push(b.finish());}
+ {const b=builder('scenery-ruin-pillar','Mossy limestone · pillar',39);b.box(6,0,6,18,3,18,7);b.box(8,3,8,16,27,16,6);b.box(7,11,7,17,13,17,8);b.box(7,24,7,17,27,17,8);b.box(6,27,6,18,31,18,6);b.box(7,31,7,17,34,17,4);b.box(8,34,8,14,37,14,3);result.push(b.finish());}
+ {const b=builder('scenery-rock','Limestone outcrop',17);b.crown(2,0,3,22,7,21,7,3);b.crown(5,5,2,21,12,18,6,3);b.crown(6,11,5,17,16,16,8,2);b.box(7,16,7,14,17,14,4);result.push(b.finish());}
+ {const b=builder('scenery-shrub','Low leafy shrub',15);b.crown(4,0,5,19,5,19,2,3);b.crown(2,4,7,12,10,17,3,2);b.crown(10,3,3,22,12,14,4,2);b.crown(8,8,9,17,15,20,5,2);result.push(b.finish());}
+ {const b=builder('detail-grass','Detail · grass tuft',8);for(const [x,z,h]of [[10,10,5],[12,11,8],[14,13,4],[9,14,6],[13,15,5]]){b.box(x,0,z,x+1,h,z+1,3);b.box(x,Math.max(1,h-3),z-1,x+1,h,z,4);}result.push(b.finish());}
+ {const b=builder('detail-flowers','Detail · porcelain flowers',8);for(const [x,z,h]of [[9,10,5],[14,13,6],[10,15,4]]){b.box(x,0,z,x+1,h,z+1,3);b.box(x-1,h,z-1,x+2,h+1,z+2,9);b.box(x,h+1,z,x+1,h+2,z+1,4);}result.push(b.finish());}
+ {const b=builder('detail-pebbles','Detail · limestone fragments',4);b.box(7,0,8,11,2,12,7);b.box(8,2,9,11,3,11,8);b.box(14,0,14,17,2,17,6);b.box(12,0,7,14,1,9,8);result.push(b.finish());}
+ return result;
+}
+export function firstLevel(){
+ const l=newLevel('moss-01');l.name='The old waterway';l.waterMaterial=defaultWaterMaterial();l.size=[14,10];
+ for(let x=0;x<=5;x++)l.path.push([x,0,2]);for(let z=3;z<=6;z++)l.path.push([5,0,z]);for(let x=6;x<=10;x++)l.path.push([x,0,6]);for(let z=5;z>=3;z--)l.path.push([10,0,z]);for(let x=11;x<14;x++)l.path.push([x,0,3]);
+ l.environment={timeOfDay:10.5,weather:{enabled:false},sky:{direction:[-.65,1,-.45],color:'#FFF2D9',intensity:.88,ambient:'#B8C8C1',ambientIntensity:.48}};
+ const t=new TerrainField(l);for(let x=0;x<14;x++)t.setBox(x,8,4,12);
+ for(const [x,z,h]of [[0,0,32],[1,0,32],[2,0,32],[3,0,28],[9,0,32],[10,0,40],[11,0,40],[12,0,40],[13,0,32],[0,5,32],[0,6,40],[1,6,32],[0,7,32],[12,6,32],[13,6,40],[12,7,32],[13,7,32]])t.setBox(x,z,h,0);t.commit();
+ const used=new Set(l.path.map(p=>`${p[0]},${p[2]}`));let id=0;
+ function place(model,x,z,turn=0,variant='base',offset=null){const k=`${x},${z}`;if(used.has(k)&&!offset)throw new Error('Occupied '+k);if(!offset)used.add(k);l.placements.push({id:`scene-${++id}`,model,variant,box:[x,0,z],turn,...(offset?{kind:'detail',offset}: {})});}
+ place('turret-study',3,4);place('turret-study',7,4,0,'upgrade1');place('turret-study',12,4);
+ const trees=[[0,0],[1,0],[2,0],[3,0],[5,0],[7,0],[9,0],[10,0],[11,0],[12,0],[13,0],[0,1],[3,1],[7,1],[12,1],[13,1],[0,4],[0,5],[0,6],[1,6],[0,7],[1,7],[12,6],[13,6],[12,7],[13,7],[2,9],[4,9],[9,9],[12,9]];
+ trees.forEach(([x,z],i)=>place(i%5===0?'scenery-cypress':i%3===0?'scenery-oak-tall':'scenery-oak',x,z,i%4));
+ for(const [x,z,turn]of [[1,3,0],[2,3,0],[6,1,0],[8,1,0],[9,1,0],[11,5,1],[11,6,1],[1,5,1],[6,7,0],[7,7,0]])place('scenery-ruin-wall',x,z,turn);
+ for(const [x,z]of [[1,4],[8,2],[11,1],[9,7]])place('scenery-ruin-pillar',x,z);
+ for(const [x,z]of [[4,0],[8,0],[2,6],[2,7],[4,7],[10,7],[11,7],[0,9],[6,9],[13,9]])place('scenery-rock',x,z,(x+z)%4);
+ for(const [x,z]of [[2,1],[4,1],[9,2],[11,2],[0,3],[2,4],[4,4],[6,3],[8,4],[9,4],[13,4],[2,5],[3,6],[8,7],[1,9],[3,9],[8,9],[11,9]])if(!used.has(`${x},${z}`))place('scenery-shrub',x,z,(x+z)%4);
+ // Small geometry props are unit-offset within otherwise clear boxes. They
+ // never spill into path or water boxes; no coplanar decals or texture layers.
+ for(let z=0;z<10;z++)for(let x=0;x<14;x++){if(used.has(`${x},${z}`)||z===8)continue;const n=(x*37+z*19)%11;if(n<8){place(n<3?'detail-flowers':n<6?'detail-grass':'detail-pebbles',x,z,0,'base',[-5,0,-4]);if(n%2===0)place('detail-grass',x,z,0,'base',[5,0,5]);}}
+ return l;
+}
+if(import.meta.main){
+ const models=sceneryModels();for(const m of models){const path=`assets/models/${m.id}.json`;if(!await Bun.file(path).exists())await Bun.write(path,JSON.stringify(m,null,2)+'\n');}
+ const l=firstLevel();const library=new Map(models.map(m=>[m.id,m]));library.set('turret-study',await Bun.file('assets/models/turret-study.json').json());validateLevel(l,library);
+ const path=`assets/levels/${l.id}.json`;if(!await Bun.file(path).exists())await Bun.write(path,JSON.stringify(l,null,2)+'\n');console.log(`First level: ${l.path.length} route boxes, ${l.placements.length} placements, ${models.length} scenery models.`);
+}

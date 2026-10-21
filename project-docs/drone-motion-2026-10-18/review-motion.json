@@ -1,0 +1,1616 @@
+{
+  "date": "2026-10-18",
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "method": {
+    "level": "moss-01",
+    "seconds": 60,
+    "deltaSeconds": 0.016666666666666666,
+    "frames": 3600,
+    "random": 0.5,
+    "targetHealth": 100000,
+    "appliedDamage": 0,
+    "renderer": false,
+    "velocityJumpThresholdUnitsPerSecond": 8,
+    "sourceSelectedEnemyRoster": [
+      "dog",
+      "dog",
+      "moth"
+    ]
+  },
+  "units": {
+    "v": "world units/second",
+    "maxAcceleration": "world units/second squared",
+    "bodyTilt": "radians",
+    "distance": "world units",
+    "jumps": "frames above velocity-change threshold",
+    "goalChanges": "navigation goal-node changes including lifecycle transitions"
+  },
+  "before": [
+    {
+      "v": [
+        -48.00000000000068,
+        0,
+        0
+      ],
+      "maxAcceleration": 5760.000000000082,
+      "jumps": 118,
+      "bodyTilt": 0.08726646259971771,
+      "goal": 788,
+      "goalChanges": 43,
+      "distance": 1324.5336777049515
+    },
+    {
+      "v": [
+        0,
+        0,
+        0
+      ],
+      "maxAcceleration": 5760.000000000082,
+      "jumps": 75,
+      "bodyTilt": 0.08726646259971771,
+      "goal": 810,
+      "goalChanges": 30,
+      "distance": 794.1336777049892
+    }
+  ],
+  "midpoint": {
+    "cruiseUnitsPerSecond": 48,
+    "verticalUnitsPerSecond": 32,
+    "fanCapDegrees": 10,
+    "after": [
+      {
+        "v": [
+          -48,
+          0,
+          0
+        ],
+        "maxAcceleration": 138.0339685494043,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 788,
+        "goalChanges": 24,
+        "distance": 1044.0951163668055
+      },
+      {
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 109.76921711263003,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 809,
+        "goalChanges": 16,
+        "distance": 693.1991148841695
+      }
+    ],
+    "displacement": [
+      {
+        "position": [
+          297.20000000000005,
+          57,
+          264
+        ],
+        "v": [
+          -48.00000000000068,
+          0,
+          0
+        ],
+        "maxAcceleration": 97.93423125438494,
+        "jumps": 0,
+        "distance": 1043.7036380894435,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.16821098950461727,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      },
+      {
+        "position": [
+          360,
+          57,
+          228
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 89.94913851554998,
+        "jumps": 0,
+        "distance": 693.1778743435684,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.16834302200264148,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      }
+    ],
+    "states": [
+      {
+        "id": "drone-1",
+        "phase": "return",
+        "launches": 2,
+        "returns": 2,
+        "holds": 0,
+        "routeChanges": 27,
+        "stationChanges": 21,
+        "emergencyStops": 0
+      },
+      {
+        "id": "drone-2",
+        "phase": "intercept",
+        "launches": 2,
+        "returns": 1,
+        "holds": 0,
+        "routeChanges": 48,
+        "stationChanges": 14,
+        "emergencyStops": 0
+      }
+    ],
+    "fanTiltCap": 0.17453292519943295,
+    "fanFrameAudit": [
+      {
+        "hz": 30,
+        "accelerationCorrect": 11,
+        "accelerationFrames": 11,
+        "brakingCorrect": 12,
+        "brakingFrames": 12,
+        "samples": [
+          {
+            "time": 0.5,
+            "yaw": 0.5471607205002225,
+            "fanPitch": 0.014432636395384906,
+            "fanRoll": 0.012370831196044204,
+            "torque": 0.7009612582502855
+          },
+          {
+            "time": 1,
+            "yaw": 1.3916260185002884,
+            "fanPitch": -0.018162270596546133,
+            "fanRoll": -0.015567660511325257,
+            "torque": -0.8820628148431569
+          },
+          {
+            "time": 1.5,
+            "yaw": 1.5707963267948966,
+            "fanPitch": -0.007667559802527192,
+            "fanRoll": -0.00657219411645188,
+            "torque": -0.3724164590239525
+          },
+          {
+            "time": 2,
+            "yaw": 1.5707963267948966,
+            "fanPitch": -0.0002315402432704703,
+            "fanRoll": -0.00019846306566040313,
+            "torque": -0.011246240232139826
+          }
+        ]
+      },
+      {
+        "hz": 60,
+        "accelerationCorrect": 22,
+        "accelerationFrames": 22,
+        "brakingCorrect": 23,
+        "brakingFrames": 23,
+        "samples": [
+          {
+            "time": 0.5,
+            "yaw": 0.5471607205002222,
+            "fanPitch": 0.014432636395384904,
+            "fanRoll": 0.012370831196044206,
+            "torque": 0.7009612582502855
+          },
+          {
+            "time": 1,
+            "yaw": 1.3916260185002882,
+            "fanPitch": -0.01824471543041004,
+            "fanRoll": -0.01563832751178003,
+            "torque": -0.8860658896425216
+          },
+          {
+            "time": 1.5,
+            "yaw": 1.5707963267948966,
+            "fanPitch": -0.007637628754886029,
+            "fanRoll": -0.006546538932759453,
+            "torque": -0.37096275202929974
+          },
+          {
+            "time": 2,
+            "yaw": 1.5707963267948966,
+            "fanPitch": -0.00023063640394861823,
+            "fanRoll": -0.00019768834624167282,
+            "torque": -0.011202339373994619
+          }
+        ]
+      },
+      {
+        "hz": 120,
+        "accelerationCorrect": 44,
+        "accelerationFrames": 44,
+        "brakingCorrect": 44,
+        "brakingFrames": 44,
+        "samples": [
+          {
+            "time": 0.5,
+            "yaw": 0.5471607205002222,
+            "fanPitch": 0.014432636395384914,
+            "fanRoll": 0.012370831196044207,
+            "torque": 0.7009612582502855
+          },
+          {
+            "time": 1,
+            "yaw": 1.3916260185002882,
+            "fanPitch": -0.018277093351565583,
+            "fanRoll": -0.015666080015627637,
+            "torque": -0.8876379106085622
+          },
+          {
+            "time": 1.5,
+            "yaw": 1.5707963267948966,
+            "fanPitch": -0.007625874166330157,
+            "fanRoll": -0.006536463571140131,
+            "torque": -0.37039185501635075
+          },
+          {
+            "time": 2,
+            "yaw": 1.5707963267948966,
+            "fanPitch": -0.0002302814461310253,
+            "fanRoll": -0.00019738409668373588,
+            "torque": -0.01118509832303971
+          }
+        ]
+      }
+    ]
+  },
+  "smooth72Milestone": {
+    "after": [
+      {
+        "v": [
+          -22.80879219463993,
+          0,
+          -22.80879219463993
+        ],
+        "maxAcceleration": 217.0942118053954,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 788,
+        "goalChanges": 34,
+        "distance": 1206.1249011119992
+      },
+      {
+        "v": [
+          24.502173844556516,
+          0,
+          0
+        ],
+        "maxAcceleration": 120.00000000000061,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 810,
+        "goalChanges": 19,
+        "distance": 757.8778198831967
+      }
+    ],
+    "displacement": [
+      {
+        "position": [
+          116.1341600415855,
+          57,
+          236.1341600415855
+        ],
+        "v": [
+          -22.845229415756307,
+          0,
+          -22.772094748867175
+        ],
+        "maxAcceleration": 154.514347381435,
+        "maxSpeed": 72.00000000000328,
+        "jumps": 0,
+        "distance": 1205.921589157204,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.34185833450619607,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      },
+      {
+        "position": [
+          369.49269926908437,
+          57,
+          228
+        ],
+        "v": [
+          25.50217384455891,
+          0,
+          0
+        ],
+        "maxAcceleration": 127.63623884329718,
+        "maxSpeed": 72.00000000000276,
+        "jumps": 0,
+        "distance": 757.6959508364765,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.3360424808713087,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      }
+    ],
+    "states": [
+      {
+        "id": "drone-1",
+        "phase": "return",
+        "launches": 2,
+        "returns": 2,
+        "holds": 0,
+        "routeChanges": 63,
+        "stationChanges": 31,
+        "emergencyStops": 0
+      },
+      {
+        "id": "drone-2",
+        "phase": "return",
+        "launches": 2,
+        "returns": 2,
+        "holds": 0,
+        "routeChanges": 50,
+        "stationChanges": 16,
+        "emergencyStops": 0
+      }
+    ],
+    "tuning": {
+      "maxRange": 72,
+      "speed": 72,
+      "lift": 24,
+      "verticalSpeed": 48,
+      "step": 12,
+      "hullRadius": 16.5,
+      "transitLayers": [
+        24,
+        48,
+        72,
+        96
+      ],
+      "rotorSpeed": 28,
+      "replanSeconds": 0.4,
+      "acceleration": 96,
+      "braking": 120,
+      "turnAcceleration": 84,
+      "cornerRadius": 18,
+      "stationGain": 24,
+      "stationMargin": 4,
+      "fanResponse": 10.5,
+      "fanYawShare": 0.3,
+      "bodyTurn": {
+        "maxSpeed": 2.5918139392115793,
+        "acceleration": 7.0685834705770345
+      },
+      "fineYaw": {
+        "min": -0.2617993877991494,
+        "max": 0.2617993877991494,
+        "maxSpeed": 6.283185307179586,
+        "acceleration": 37.69911184307752
+      },
+      "pitch": {
+        "min": -0.6108652381980153,
+        "max": 0.17453292519943295,
+        "maxSpeed": 3.141592653589793,
+        "acceleration": 25.132741228718345
+      },
+      "aimTolerance": 0.03490658503988659,
+      "finishHealth": 100,
+      "finishPriority": 2
+    },
+    "fanTiltCap": 0.3490658503988659,
+    "minimumFanTiltLift": 6,
+    "yawMatrixAudit": [
+      {
+        "turn": 0,
+        "accelerating": 44,
+        "braking": 45,
+        "accelCorrect": 44,
+        "brakeCorrect": 44,
+        "maxTilt": 0.10244774693395502,
+        "normalMismatch": 0,
+        "bodyTilt": 0,
+        "minTorque": -3.7591428794156916,
+        "maxTorque": 3.7714682550135383
+      },
+      {
+        "turn": 1,
+        "accelerating": 44,
+        "braking": 45,
+        "accelCorrect": 44,
+        "brakeCorrect": 44,
+        "maxTilt": 0.10244774693395502,
+        "normalMismatch": 0,
+        "bodyTilt": 0,
+        "minTorque": -3.7591428794156916,
+        "maxTorque": 3.7714682550135383
+      },
+      {
+        "turn": 2,
+        "accelerating": 44,
+        "braking": 45,
+        "accelCorrect": 44,
+        "brakeCorrect": 44,
+        "maxTilt": 0.10244774693395502,
+        "normalMismatch": 0,
+        "bodyTilt": 0,
+        "minTorque": -3.7591428794156916,
+        "maxTorque": 3.7714682550135383
+      },
+      {
+        "turn": 3,
+        "accelerating": 44,
+        "braking": 45,
+        "accelCorrect": 44,
+        "brakeCorrect": 44,
+        "maxTilt": 0.10244774693395502,
+        "normalMismatch": 0,
+        "bodyTilt": 0,
+        "minTorque": -3.7591428794156916,
+        "maxTorque": 3.7714682550135383
+      }
+    ],
+    "closedRetuneFinding": {
+      "timeSeconds": 53.916666666666664,
+      "aircraft": "drone-2",
+      "issue": "Perpendicular fleet approach forced a 54-to-zero emergency stop",
+      "observedEmergencyStops": 1,
+      "fix": "Sweep the other aircraft's current velocity over the braking horizon",
+      "finalEmergencyStops": 0
+    }
+  },
+  "after": [
+    {
+      "v": [
+        -0.12504995666666327,
+        3.1975557084025397,
+        0
+      ],
+      "maxAcceleration": 195.74010335028603,
+      "jumps": 0,
+      "bodyTilt": 0,
+      "goal": 4821,
+      "goalChanges": 14,
+      "distance": 1066.4355425335486
+    },
+    {
+      "v": [
+        0,
+        0,
+        0
+      ],
+      "maxAcceleration": 180.92947606505163,
+      "jumps": 0,
+      "bodyTilt": 0,
+      "goal": 769,
+      "goalChanges": 8,
+      "distance": 976.4032761935994
+    }
+  ],
+  "status": "Independent final source review complete; no outstanding blocker in bounded checks. Lead owns browser acceptance. Conservative one-second collision forecasts and provisional station/flight tuning remain finite-scene evidence, not a general collision or performance proof.",
+  "interceptionReview": {
+    "status": "No outstanding actionable blocker in reviewed final source and finite fixtures",
+    "closedFindings": [
+      "Interrupted evasion replans once stopped instead of retaining an unfinished blocked route",
+      "Rejected station probes clear speculative motion before planner selection",
+      "Preview lap entrance is forecast separately from exit without a whole-board teleport corridor",
+      "Escape candidates and active escapes now check time-matched intermediate actor envelopes, closing the real bird approach failure",
+      "Return alignment requires actual home position, preventing an empty held return plan from snapping to its pad"
+    ],
+    "closedBirdCrossing": {
+      "firstFailureSeconds": 31.233333333333334,
+      "previousCurrentEnvelopeOverlapFrames": 56,
+      "previousEmergencyStops": 1,
+      "finalCurrentEnvelopeOverlapFrames": 0,
+      "finalEmergencyStops": 0
+    }
+  },
+  "finalCoreSupplement": {
+    "after": [
+      {
+        "v": [
+          -0.12504995666666327,
+          3.1975557084025397,
+          0
+        ],
+        "maxAcceleration": 195.74010335028603,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 4821,
+        "goalChanges": 14,
+        "distance": 1066.4355425335486
+      },
+      {
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 180.92947606505163,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 769,
+        "goalChanges": 8,
+        "distance": 976.4032761935994
+      }
+    ],
+    "displacement": [
+      {
+        "position": [
+          289.8750990537964,
+          81.05329259514004,
+          216
+        ],
+        "v": [
+          -0.09378746749803213,
+          2.398166781301825,
+          0
+        ],
+        "maxAcceleration": 142.94264497017366,
+        "maxSpeed": 72.00000000000273,
+        "jumps": 0,
+        "distance": 1066.3947602776211,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.3376084679925839,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      },
+      {
+        "position": [
+          372,
+          57,
+          216
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 166.05328645511116,
+        "maxSpeed": 72.0000000000036,
+        "jumps": 0,
+        "distance": 976.4095462688327,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.3408033186189979,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      }
+    ],
+    "states": [
+      {
+        "id": "drone-1",
+        "phase": "return",
+        "launches": 2,
+        "returns": 2,
+        "holds": 262,
+        "routeChanges": 30,
+        "stationChanges": 11,
+        "emergencyStops": 0
+      },
+      {
+        "id": "drone-2",
+        "phase": "intercept",
+        "launches": 2,
+        "returns": 1,
+        "holds": 0,
+        "routeChanges": 15,
+        "stationChanges": 6,
+        "emergencyStops": 0
+      }
+    ],
+    "tuning": {
+      "maxRange": 72,
+      "speed": 72,
+      "lift": 24,
+      "verticalSpeed": 48,
+      "step": 12,
+      "hullRadius": 16.5,
+      "transitLayers": [
+        24,
+        48,
+        72,
+        96
+      ],
+      "rotorSpeed": 28,
+      "replanSeconds": 0.4,
+      "acceleration": 96,
+      "braking": 120,
+      "turnAcceleration": 84,
+      "cornerRadius": 18,
+      "stationGain": 24,
+      "stationMargin": 4,
+      "fanResponse": 10.5,
+      "fanYawShare": 0.3,
+      "stationShortlist": 12,
+      "minimumUsefulPulses": 3,
+      "urgentSwitchRatio": 2,
+      "bodyTurn": {
+        "maxSpeed": 2.5918139392115793,
+        "acceleration": 7.0685834705770345
+      },
+      "fineYaw": {
+        "min": -0.2617993877991494,
+        "max": 0.2617993877991494,
+        "maxSpeed": 6.283185307179586,
+        "acceleration": 37.69911184307752
+      },
+      "pitch": {
+        "min": -0.6108652381980153,
+        "max": 0.17453292519943295,
+        "maxSpeed": 3.141592653589793,
+        "acceleration": 25.132741228718345
+      },
+      "aimTolerance": 0.03490658503988659,
+      "finishHealth": 100,
+      "finishPriority": 2
+    },
+    "fanTiltCap": 0.3490658503988659,
+    "minimumFanTiltLift": 6
+  },
+  "fullWildlifeSupplement": {
+    "after": [
+      {
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 195.74010335028603,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 4847,
+        "goalChanges": 10,
+        "distance": 962.1369521921973
+      },
+      {
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 180.92947606505248,
+        "jumps": 0,
+        "bodyTilt": 0,
+        "goal": 810,
+        "goalChanges": 9,
+        "distance": 1035.5553359728317
+      }
+    ],
+    "displacement": [
+      {
+        "position": [
+          108,
+          129,
+          228
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 142.94264497017366,
+        "maxSpeed": 72.0000000000012,
+        "jumps": 0,
+        "distance": 962.1273209958756,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.3408031402923764,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      },
+      {
+        "position": [
+          372,
+          33.000000000000014,
+          228
+        ],
+        "v": [
+          0,
+          0,
+          0
+        ],
+        "maxAcceleration": 135.32149560538755,
+        "maxSpeed": 72.0000000000036,
+        "jumps": 0,
+        "distance": 1035.56931750368,
+        "maxBodyUpError": 0,
+        "maxFanTilt": 0.3408033186189979,
+        "maxRotorNormalMismatch": 0,
+        "staticFailures": 0,
+        "nonfinite": 0,
+        "emergencyStops": 0
+      }
+    ],
+    "extra": [
+      {
+        "id": "drone-1",
+        "currentHoldSeconds": 0,
+        "maxHoldSeconds": 1.5499999999999994,
+        "holdEnemyTravel": 0,
+        "currentEnemyDistance": 0,
+        "previousEnemyDistance": 0,
+        "holdEnemyTravelPeak": 30.999999999998295,
+        "burstGoalChanges": 0,
+        "previousGoal": 4847,
+        "dynamicBlockedFrames": 0,
+        "firstDynamicBlock": null
+      },
+      {
+        "id": "drone-2",
+        "currentHoldSeconds": 0,
+        "maxHoldSeconds": 3.949999999999991,
+        "holdEnemyTravel": 0,
+        "currentEnemyDistance": 0,
+        "previousEnemyDistance": 0,
+        "holdEnemyTravelPeak": 78.99999999999557,
+        "burstGoalChanges": 0,
+        "previousGoal": 810,
+        "dynamicBlockedFrames": 0,
+        "firstDynamicBlock": null
+      }
+    ],
+    "obstacles": {
+      "actors": 9,
+      "parts": 43,
+      "activeActors": 9,
+      "activeParts": 43,
+      "bytes": 6086,
+      "predictionSeconds": 1,
+      "updates": 3602,
+      "queries": 288184,
+      "actorTests": 2417431,
+      "partTests": 83,
+      "lastBlockedId": null,
+      "disposed": false
+    },
+    "states": [
+      {
+        "id": "drone-1",
+        "phase": "return",
+        "launches": 1,
+        "returns": 1,
+        "holds": 318,
+        "routeChanges": 28,
+        "stationChanges": 6,
+        "emergencyStops": 0
+      },
+      {
+        "id": "drone-2",
+        "phase": "recharge",
+        "launches": 1,
+        "returns": 1,
+        "holds": 0,
+        "routeChanges": 19,
+        "stationChanges": 4,
+        "emergencyStops": 0
+      }
+    ],
+    "tuning": {
+      "maxRange": 72,
+      "speed": 72,
+      "lift": 24,
+      "verticalSpeed": 48,
+      "step": 12,
+      "hullRadius": 16.5,
+      "transitLayers": [
+        24,
+        48,
+        72,
+        96
+      ],
+      "rotorSpeed": 28,
+      "replanSeconds": 0.4,
+      "acceleration": 96,
+      "braking": 120,
+      "turnAcceleration": 84,
+      "cornerRadius": 18,
+      "stationGain": 24,
+      "stationMargin": 4,
+      "fanResponse": 10.5,
+      "fanYawShare": 0.3,
+      "stationShortlist": 12,
+      "minimumUsefulPulses": 3,
+      "urgentSwitchRatio": 2,
+      "bodyTurn": {
+        "maxSpeed": 2.5918139392115793,
+        "acceleration": 7.0685834705770345
+      },
+      "fineYaw": {
+        "min": -0.2617993877991494,
+        "max": 0.2617993877991494,
+        "maxSpeed": 6.283185307179586,
+        "acceleration": 37.69911184307752
+      },
+      "pitch": {
+        "min": -0.6108652381980153,
+        "max": 0.17453292519943295,
+        "maxSpeed": 3.141592653589793,
+        "acceleration": 25.132741228718345
+      },
+      "aimTolerance": 0.03490658503988659,
+      "finishHealth": 100,
+      "finishPriority": 2
+    },
+    "fanTiltCap": 0.3490658503988659,
+    "minimumFanTiltLift": 6
+  },
+  "actualCombat": {
+    "method": {
+      "level": "moss-01",
+      "seconds": 150,
+      "dt": 0.016666666666666666,
+      "random": 0.5,
+      "realDamage": true,
+      "wildlife": true,
+      "deathExplosionSpook": true,
+      "renderer": false,
+      "sampleHz": 2,
+      "collisionMeaning": "Conservative current part AABBs against the declared drone flight envelope; not exact mesh contact."
+    },
+    "tuning": {
+      "maxRange": 72,
+      "speed": 72,
+      "lift": 24,
+      "verticalSpeed": 48,
+      "step": 12,
+      "hullRadius": 16.5,
+      "transitLayers": [
+        24,
+        48,
+        72,
+        96
+      ],
+      "rotorSpeed": 28,
+      "replanSeconds": 0.4,
+      "acceleration": 96,
+      "braking": 120,
+      "turnAcceleration": 84,
+      "cornerRadius": 18,
+      "stationGain": 24,
+      "stationMargin": 4,
+      "fanResponse": 10.5,
+      "fanYawShare": 0.3,
+      "stationShortlist": 12,
+      "minimumUsefulPulses": 3,
+      "urgentSwitchRatio": 2,
+      "bodyTurn": {
+        "maxSpeed": 2.5918139392115793,
+        "acceleration": 7.0685834705770345
+      },
+      "fineYaw": {
+        "min": -0.2617993877991494,
+        "max": 0.2617993877991494,
+        "maxSpeed": 6.283185307179586,
+        "acceleration": 37.69911184307752
+      },
+      "pitch": {
+        "min": -0.6108652381980153,
+        "max": 0.17453292519943295,
+        "maxSpeed": 3.141592653589793,
+        "acceleration": 25.132741228718345
+      },
+      "aimTolerance": 0.03490658503988659,
+      "finishHealth": 100,
+      "finishPriority": 2
+    },
+    "metrics": [
+      {
+        "id": "drone-1",
+        "goal": 788,
+        "goalChanges": 21,
+        "attackGoalChanges": 14,
+        "maxSpeed": 72,
+        "maxFanDegrees": 19.399076221929878,
+        "maxBodyTilt": 0,
+        "maxBodyPositionError": 2.9707627949679196e-05,
+        "heldWhileTargetMovedFrames": 441,
+        "obstacleOverlapFrames": 0,
+        "staticOverlapFrames": 0,
+        "arrivalErrorSeconds": [
+          -0.8029405548122046,
+          1.7673856040242555,
+          -0.8039014404445766,
+          2.0433333333383104,
+          -0.3766666666612224
+        ],
+        "lastCommitAt": 120.0433333333279,
+        "awaitingArrival": false,
+        "stationChanges": 13,
+        "routeChanges": 35,
+        "committedThinks": 620,
+        "evasions": 8,
+        "emergencyStops": 0,
+        "holds": 339,
+        "shots": 28,
+        "launches": 3,
+        "returns": 3,
+        "phase": "pad-hover"
+      },
+      {
+        "id": "drone-2",
+        "goal": 810,
+        "goalChanges": 35,
+        "attackGoalChanges": 28,
+        "maxSpeed": 72,
+        "maxFanDegrees": 19.46685928396474,
+        "maxBodyTilt": 0,
+        "maxBodyPositionError": 2.3832319258880232e-05,
+        "heldWhileTargetMovedFrames": 1122,
+        "obstacleOverlapFrames": 0,
+        "staticOverlapFrames": 0,
+        "arrivalErrorSeconds": [
+          -0.41315841899130845,
+          -1.3316504060233072,
+          -0.9247914886121436,
+          -0.6776296233959158,
+          -0.9171716262656915,
+          -1.2683043163754633,
+          -0.3466666666637792,
+          -0.9393104485711348,
+          -1.0588742646227445
+        ],
+        "lastCommitAt": 120.14220759795607,
+        "awaitingArrival": false,
+        "stationChanges": 27,
+        "routeChanges": 119,
+        "committedThinks": 796,
+        "evasions": 13,
+        "emergencyStops": 0,
+        "holds": 0,
+        "shots": 50,
+        "launches": 3,
+        "returns": 3,
+        "phase": "pad-hover"
+      }
+    ],
+    "pairOverlapFrames": 0,
+    "maxThinks": 1,
+    "hits": [
+      "moth",
+      "dog"
+    ],
+    "enemiesAlive": 0,
+    "wildlifeJourneys": [
+      {
+        "id": "wildlife-ground-1",
+        "completed": 9,
+        "phase": "idle"
+      },
+      {
+        "id": "wildlife-ground-2",
+        "completed": 15,
+        "phase": "planning"
+      },
+      {
+        "id": "wildlife-ground-3",
+        "completed": 11,
+        "phase": "hop"
+      },
+      {
+        "id": "wildlife-bird-1",
+        "completed": 16,
+        "phase": "perched"
+      },
+      {
+        "id": "wildlife-bird-2",
+        "completed": 14,
+        "phase": "flying"
+      },
+      {
+        "id": "wildlife-bird-3",
+        "completed": 12,
+        "phase": "perched"
+      }
+    ],
+    "obstacles": {
+      "actors": 9,
+      "parts": 43,
+      "activeActors": 6,
+      "activeParts": 12,
+      "bytes": 6086,
+      "predictionSeconds": 1,
+      "updates": 9002,
+      "queries": 1307161,
+      "actorTests": 9872756,
+      "partTests": 47,
+      "lastBlockedId": null,
+      "disposed": false
+    },
+    "sourceUnchanged": true,
+    "events": [],
+    "reset": [
+      {
+        "phase": "pad-hover",
+        "shots": 0,
+        "stationCommitted": false,
+        "evasions": 0
+      },
+      {
+        "phase": "pad-hover",
+        "shots": 0,
+        "stationCommitted": false,
+        "evasions": 0
+      }
+    ],
+    "disposal": {
+      "aircraft": 0,
+      "obstacles": null,
+      "oldObstacleBytes": 0,
+      "oldObstacleActors": 0,
+      "oldNavigationBytes": 0
+    }
+  },
+  "sameTargetReposition": {
+    "underneath": {
+      "changed": {
+        "time": 1.1500000000000008,
+        "goal": 286,
+        "remaining": 9,
+        "pos": [
+          132,
+          56.999999999999986,
+          132
+        ]
+      },
+      "afterShot": {
+        "time": 6.16666666666665,
+        "goal": 185,
+        "remaining": 9,
+        "pos": [
+          120,
+          57,
+          84
+        ],
+        "shot": {
+          "time": 6.16666666666665,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        }
+      },
+      "shots": [
+        {
+          "time": 1.1500000000000008,
+          "id": "same-enemy",
+          "pos": [
+            132,
+            56.999999999999986,
+            132
+          ]
+        },
+        {
+          "time": 6.16666666666665,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 6.433333333333316,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 6.6999999999999815,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 6.966666666666647,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 7.233333333333313,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 7.499999999999979,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 7.766666666666644,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 8.016666666666644,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 8.266666666666657,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 8.51666666666667,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 13.516666666666918,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 13.76666666666693,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.016666666666943,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.266666666666955,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.516666666666968,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.76666666666698,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.016666666666993,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.266666666667005,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.516666666667017,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.76666666666703,
+          "id": "same-enemy",
+          "pos": [
+            120,
+            57,
+            84
+          ]
+        }
+      ],
+      "phase": "return",
+      "goal": 286,
+      "stationChanges": 2,
+      "emergencies": 0
+    },
+    "outOfRange": {
+      "changed": {
+        "time": 1.1500000000000008,
+        "goal": 286,
+        "remaining": 9,
+        "pos": [
+          132,
+          56.999999999999986,
+          132
+        ]
+      },
+      "afterShot": {
+        "time": 6.16666666666665,
+        "goal": 193,
+        "remaining": 9,
+        "pos": [
+          216,
+          57,
+          84
+        ],
+        "shot": {
+          "time": 6.16666666666665,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        }
+      },
+      "shots": [
+        {
+          "time": 1.1500000000000008,
+          "id": "same-enemy",
+          "pos": [
+            132,
+            56.999999999999986,
+            132
+          ]
+        },
+        {
+          "time": 6.16666666666665,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 6.433333333333316,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 6.6999999999999815,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 6.966666666666647,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 7.233333333333313,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 7.499999999999979,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 7.766666666666644,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 8.016666666666644,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 8.266666666666657,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 8.51666666666667,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 13.516666666666918,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 13.76666666666693,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.016666666666943,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.266666666666955,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.516666666666968,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 14.76666666666698,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.016666666666993,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.266666666667005,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.516666666667017,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        },
+        {
+          "time": 15.76666666666703,
+          "id": "same-enemy",
+          "pos": [
+            216,
+            57,
+            84
+          ]
+        }
+      ],
+      "phase": "return",
+      "goal": 286,
+      "stationChanges": 2,
+      "emergencies": 0
+    }
+  },
+  "expiryDuringEvasion": {
+    "changed": {
+      "time": 1.1500000000000008,
+      "started": true,
+      "resume": "attack",
+      "phase": "attack",
+      "returns": 0
+    },
+    "attackAfterExpiry": 0,
+    "maxReturns": 1,
+    "phases": [
+      {
+        "time": 1.1500000000000008,
+        "phase": "attack",
+        "evading": true,
+        "expired": false,
+        "returns": 0
+      },
+      {
+        "time": 1.1666666666666674,
+        "phase": "intercept",
+        "evading": true,
+        "expired": false,
+        "returns": 0
+      },
+      {
+        "time": 2.116666666666664,
+        "phase": "return",
+        "evading": false,
+        "expired": true,
+        "returns": 1
+      },
+      {
+        "time": 3.049999999999994,
+        "phase": "descend",
+        "evading": false,
+        "expired": true,
+        "returns": 1
+      },
+      {
+        "time": 3.9999999999999907,
+        "phase": "recharge",
+        "evading": false,
+        "expired": true,
+        "returns": 1
+      },
+      {
+        "time": 14.000000000000275,
+        "phase": "launch",
+        "evading": false,
+        "expired": false,
+        "returns": 1
+      },
+      {
+        "time": 14.950000000000323,
+        "phase": "intercept",
+        "evading": false,
+        "expired": false,
+        "returns": 1
+      }
+    ],
+    "afterShot": null,
+    "shots": [
+      {
+        "time": 1.1500000000000008,
+        "id": "same-enemy",
+        "pos": [
+          132,
+          56.999999999999986,
+          132
+        ]
+      }
+    ],
+    "phase": "intercept",
+    "goal": 286,
+    "stationChanges": 2,
+    "emergencies": 0
+  },
+  "sourceHashes": {
+    "game/drone-preview.js": "03ed7cf9fe62624ef0194a06bb81155d2c7a560d597da3ede141ed6f8de5c7de",
+    "engine/drone-navigation.js": "68ef721a8aeb8ef200ddf15fc5b1dd2cb75a8d23689d9c1af489fdc67d64776f",
+    "engine/drone-motion.js": "e82846eaec86b5d35343c9efcb0e85cdd0033ec29902afb430e49b3ccbc68ff0",
+    "engine/drone-obstacles.js": "0e3d3aa9b350fd64c233e4eedcc853bf2c5d4f19d34a098b2394b5e1858b8f2d",
+    "shared/drone.js": "c5c9d4a5c367d0efdfbf76af25747b1bd6d58e1de13a3da5bbb055ca560ec08b",
+    "shared/drone-model.js": "1249d41d91b366417e56f48f17c93849d708a43a3b23c18fcea389e70b81799e",
+    "game/defence-preview.js": "1768855047b933156921812fd22fa9b245f8f528315ccf6d1bd6b6ca35fe67b7",
+    "docs/drone-motion-2026-10-18/trace-interception.js": "d057a5433cb34db6aadecb98de6b6b332a774211493e4118c51dcdcb53eaba13"
+  },
+  "focusedChecks": {
+    "command": "bun test tests/drone-combat.test.js tests/drone-motion.test.js tests/drone-obstacles.test.js",
+    "passed": 31,
+    "failed": 0,
+    "assertions": 291073
+  },
+  "reproduction": {
+    "coreSupplementSource": "\nimport {actorsForPreview} from \"./game/preview-actors.js\";import {buildWorld,disposeWorld} from \"./engine/world.js\";import {EnemyPreview} from \"./game/enemy-preview.js\";import {DefencePreview} from \"./game/defence-preview.js\";import {DRONE_ROTORS,DRONE_MODEL} from \"./shared/drone-model.js\";import {DRONE_PREVIEW} from \"./shared/drone.js\";\nconst level=await Bun.file(\"assets/levels/moss-01.json\").json(),actors=actorsForPreview(level),models=new Map();for(const id of new Set([...level.placements.map(p=>p.model),...actors.map(a=>a.model)]))models.set(id,await Bun.file(\"assets/models/\"+id+\".json\").json());const w=buildWorld(level,models,{actors}),e=new EnemyPreview(w,()=>{});for(const t of e.states)t.health.current=t.health.maximum=100000;const d=new DefencePreview(w,()=>{},()=>.5,null,e.states,()=>0);\nconst m=d.drones.states.map(s=>({v:[0,0,0],maxAcceleration:0,jumps:0,bodyTilt:0,goal:s.goalNode,goalChanges:0,distance:0}));\nconst physical=d.drones.states.map(s=>({position:[s.x,s.y,s.z],v:[0,0,0],maxAcceleration:0,maxSpeed:0,jumps:0,distance:0,maxBodyUpError:0,maxFanTilt:0,maxRotorNormalMismatch:0,staticFailures:0,nonfinite:0,emergencyStops:0}));\nfor(let f=0;f<3600;f++){e.advance(1/60);d.advance(1/60);d.drones.states.forEach((s,i)=>{\n const r=m[i],v=[s.velocityX,s.velocityY,s.velocityZ],dv=Math.hypot(v[0]-r.v[0],v[1]-r.v[1],v[2]-r.v[2]);r.maxAcceleration=Math.max(r.maxAcceleration,dv*60);if(dv>8)r.jumps++;r.bodyTilt=Math.max(r.bodyTilt,Math.abs(s.bodyPitch),Math.abs(s.bodyRoll));r.distance+=Math.hypot(...v)/60;if(s.goalNode!==r.goal){r.goal=s.goalNode;r.goalChanges++;}r.v=v;\n const q=physical[i],pos=[s.x,s.y,s.z],pv=pos.map((x,j)=>(x-q.position[j])*60),pdv=Math.hypot(...pv.map((x,j)=>x-q.v[j]));q.maxAcceleration=Math.max(q.maxAcceleration,pdv*60);q.maxSpeed=Math.max(q.maxSpeed,Math.hypot(...pv));if(pdv>8)q.jumps++;q.distance+=Math.hypot(...pv)/60;q.v=pv;q.position=pos;\n const b=s.bodyMatrix;q.maxBodyUpError=Math.max(q.maxBodyUpError,Math.abs(b[4]),Math.abs(b[6]),Math.abs(b[5]-1));for(const rotor of DRONE_ROTORS){const fan=s.rig.byId.get(rotor.gimbal).instance.matrix,spin=s.rig.byId.get(rotor.id).instance.matrix;q.maxFanTilt=Math.max(q.maxFanTilt,Math.acos(Math.max(-1,Math.min(1,fan[5]))));q.maxRotorNormalMismatch=Math.max(q.maxRotorNormalMismatch,Math.hypot(fan[4]-spin[4],fan[5]-spin[5],fan[6]-spin[6]));}\n if(![\"launch\",\"descend\",\"pad-hover\",\"recharge\"].includes(s.phase)&&!d.drones.navigation.clearSegment(s.x,s.y,s.z,s.x,s.y,s.z))q.staticFailures++;if(![...s.bodyMatrix,...s.gunMatrix,s.x,s.y,s.z].every(Number.isFinite))q.nonfinite++;q.emergencyStops=s.emergencyStops;\n});}\nconsole.log(JSON.stringify({after:m,displacement:physical,states:d.drones.states.map(s=>({id:s.id,phase:s.phase,launches:s.launches,returns:s.returns,holds:s.holds,routeChanges:s.routeChanges,stationChanges:s.stationChanges,emergencyStops:s.emergencyStops})),tuning:DRONE_PREVIEW,fanTiltCap:DRONE_MODEL.fanTiltMax,minimumFanTiltLift:DRONE_MODEL.minimumFanTiltLift}));\nd.dispose();e.dispose();disposeWorld(w);",
+    "wildlifeSupplementSource": "\nimport {actorsForPreview} from \"./game/preview-actors.js\";import {buildWorld,disposeWorld} from \"./engine/world.js\";import {EnemyPreview} from \"./game/enemy-preview.js\";import {DefencePreview} from \"./game/defence-preview.js\";import {DRONE_ROTORS,DRONE_MODEL} from \"./shared/drone-model.js\";import {DRONE_PREVIEW} from \"./shared/drone.js\";\nimport {WildlifePreview} from \"./game/wildlife-preview.js\";\nconst level=await Bun.file(\"assets/levels/moss-01.json\").json(),actors=actorsForPreview(level),models=new Map();for(const id of new Set([...level.placements.map(p=>p.model),...actors.map(a=>a.model)]))models.set(id,await Bun.file(\"assets/models/\"+id+\".json\").json());const w=buildWorld(level,models,{actors}),e=new EnemyPreview(w,()=>{});for(const t of e.states)t.health.current=t.health.maximum=100000;const d=new DefencePreview(w,()=>{},()=>.5,null,e.states,()=>0);\nconst wildlife=new WildlifePreview(w,()=>{});wildlife.setThreatSources(e.states);d.drones.setWildlife(wildlife.states);\nconst extra=d.drones.states.map(s=>({id:s.id,currentHoldSeconds:0,maxHoldSeconds:0,holdEnemyTravel:0,currentEnemyDistance:0,previousEnemyDistance:0,previousTarget:null,holdEnemyTravelPeak:0,burstGoalChanges:0,previousGoal:-1,dynamicBlockedFrames:0,firstDynamicBlock:null}));\nconst m=d.drones.states.map(s=>({v:[0,0,0],maxAcceleration:0,jumps:0,bodyTilt:0,goal:s.goalNode,goalChanges:0,distance:0}));\nconst physical=d.drones.states.map(s=>({position:[s.x,s.y,s.z],v:[0,0,0],maxAcceleration:0,maxSpeed:0,jumps:0,distance:0,maxBodyUpError:0,maxFanTilt:0,maxRotorNormalMismatch:0,staticFailures:0,nonfinite:0,emergencyStops:0}));\nfor(let f=0;f<3600;f++){e.advance(1/60);wildlife.advance(1/60);d.advance(1/60);d.drones.states.forEach((s,i)=>{\n const ex=extra[i],t=s.target,held=s.stationCommitted&&s.speed<.1&&t&&s.phase!==\"return\";\n if(held&&t===ex.previousTarget){ex.currentHoldSeconds+=1/60;ex.holdEnemyTravel+=Math.max(0,t.distance-ex.previousEnemyDistance);}else{ex.currentHoldSeconds=0;ex.holdEnemyTravel=0;}\n ex.maxHoldSeconds=Math.max(ex.maxHoldSeconds,ex.currentHoldSeconds);ex.holdEnemyTravelPeak=Math.max(ex.holdEnemyTravelPeak,ex.holdEnemyTravel);\n if(s.cycle.remaining&&ex.previousGoal!==-1&&s.goalNode!==ex.previousGoal)ex.burstGoalChanges++;\n if(!d.drones.dynamicPointClear(s,s.x,s.y,s.z,0)){ex.dynamicBlockedFrames++;ex.firstDynamicBlock??={frame:f,phase:s.phase,blocker:d.drones.obstacles.lastBlockedId,position:[s.x,s.y,s.z]};}\n ex.previousGoal=s.goalNode;ex.previousTarget=t;ex.previousEnemyDistance=t?.distance??0;\n const r=m[i],v=[s.velocityX,s.velocityY,s.velocityZ],dv=Math.hypot(v[0]-r.v[0],v[1]-r.v[1],v[2]-r.v[2]);r.maxAcceleration=Math.max(r.maxAcceleration,dv*60);if(dv>8)r.jumps++;r.bodyTilt=Math.max(r.bodyTilt,Math.abs(s.bodyPitch),Math.abs(s.bodyRoll));r.distance+=Math.hypot(...v)/60;if(s.goalNode!==r.goal){r.goal=s.goalNode;r.goalChanges++;}r.v=v;\n const q=physical[i],pos=[s.x,s.y,s.z],pv=pos.map((x,j)=>(x-q.position[j])*60),pdv=Math.hypot(...pv.map((x,j)=>x-q.v[j]));q.maxAcceleration=Math.max(q.maxAcceleration,pdv*60);q.maxSpeed=Math.max(q.maxSpeed,Math.hypot(...pv));if(pdv>8)q.jumps++;q.distance+=Math.hypot(...pv)/60;q.v=pv;q.position=pos;\n const b=s.bodyMatrix;q.maxBodyUpError=Math.max(q.maxBodyUpError,Math.abs(b[4]),Math.abs(b[6]),Math.abs(b[5]-1));for(const rotor of DRONE_ROTORS){const fan=s.rig.byId.get(rotor.gimbal).instance.matrix,spin=s.rig.byId.get(rotor.id).instance.matrix;q.maxFanTilt=Math.max(q.maxFanTilt,Math.acos(Math.max(-1,Math.min(1,fan[5]))));q.maxRotorNormalMismatch=Math.max(q.maxRotorNormalMismatch,Math.hypot(fan[4]-spin[4],fan[5]-spin[5],fan[6]-spin[6]));}\n if(![\"launch\",\"descend\",\"pad-hover\",\"recharge\"].includes(s.phase)&&!d.drones.navigation.clearSegment(s.x,s.y,s.z,s.x,s.y,s.z))q.staticFailures++;if(![...s.bodyMatrix,...s.gunMatrix,s.x,s.y,s.z].every(Number.isFinite))q.nonfinite++;q.emergencyStops=s.emergencyStops;\n});}\nconsole.log(JSON.stringify({after:m,displacement:physical,extra:extra.map(({previousTarget,...r})=>r),obstacles:d.drones.obstacles.inspect(),states:d.drones.states.map(s=>({id:s.id,phase:s.phase,launches:s.launches,returns:s.returns,holds:s.holds,routeChanges:s.routeChanges,stationChanges:s.stationChanges,emergencyStops:s.emergencyStops})),tuning:DRONE_PREVIEW,fanTiltCap:DRONE_MODEL.fanTiltMax,minimumFanTiltLift:DRONE_MODEL.minimumFanTiltLift}));\nd.dispose();wildlife.dispose();e.dispose();disposeWorld(w);",
+    "underneathSource": "\nimport {newLevel} from \"./shared/level.js\";import {buildWorld,disposeWorld} from \"./engine/world.js\";import {Health} from \"./engine/health.js\";import {DefencePreview} from \"./game/defence-preview.js\";\nconst drone=await Bun.file(\"assets/models/drone-defence.json\").json(),level=newLevel(\"review-underneath\");level.size=[12,10];level.placements=[{id:\"drone-1\",model:drone.id,variant:\"base\",box:[5,0,5],turn:0}];\nconst world=buildWorld(level,new Map([[drone.id,drone]])),target={id:\"same-enemy\",x:132,z:84,aimX:132,aimY:34.5,aimZ:84,lap:0,health:new Health(10000),threat:1,movement:{speed:0}};\nconst shots=[],f=new DefencePreview(world,()=>{},()=>.5,()=>shots.push({time:f.drones.time,id:f.drones.states[0].lastShotTargetId,pos:[s.x,s.y,s.z]}),[target],(t,n)=>t.health.takeDamage(n)),s=f.drones.states[0];let changed=null,afterShot=null,minSpeed=Infinity;\nfor(let frame=0;frame<1200;frame++){f.advance(1/60);if(changed===null&&shots.length===1){changed={time:f.drones.time,goal:s.goalNode,remaining:s.cycle.remaining,pos:[s.x,s.y,s.z]};target.x=target.aimX=s.x;target.z=target.aimZ=s.z;}else if(changed&&shots.length>1&&!afterShot)afterShot={time:f.drones.time,goal:s.goalNode,remaining:s.cycle.remaining,pos:[s.x,s.y,s.z],shot:shots.at(-1)};}\nconsole.log(JSON.stringify({changed,afterShot,shots,phase:s.phase,goal:s.goalNode,stationChanges:s.stationChanges,emergencies:s.emergencyStops}));f.dispose();disposeWorld(world);\n",
+    "outOfRangeSource": "\nimport {newLevel} from \"./shared/level.js\";import {buildWorld,disposeWorld} from \"./engine/world.js\";import {Health} from \"./engine/health.js\";import {DefencePreview} from \"./game/defence-preview.js\";\nconst drone=await Bun.file(\"assets/models/drone-defence.json\").json(),level=newLevel(\"review-underneath\");level.size=[12,10];level.placements=[{id:\"drone-1\",model:drone.id,variant:\"base\",box:[5,0,5],turn:0}];\nconst world=buildWorld(level,new Map([[drone.id,drone]])),target={id:\"same-enemy\",x:132,z:84,aimX:132,aimY:34.5,aimZ:84,lap:0,health:new Health(10000),threat:1,movement:{speed:0}};\nconst shots=[],f=new DefencePreview(world,()=>{},()=>.5,()=>shots.push({time:f.drones.time,id:f.drones.states[0].lastShotTargetId,pos:[s.x,s.y,s.z]}),[target],(t,n)=>t.health.takeDamage(n)),s=f.drones.states[0];let changed=null,afterShot=null,minSpeed=Infinity;\nfor(let frame=0;frame<1200;frame++){f.advance(1/60);if(changed===null&&shots.length===1){changed={time:f.drones.time,goal:s.goalNode,remaining:s.cycle.remaining,pos:[s.x,s.y,s.z]};target.x=target.aimX=s.x+100;target.z=target.aimZ=s.z;}else if(changed&&shots.length>1&&!afterShot)afterShot={time:f.drones.time,goal:s.goalNode,remaining:s.cycle.remaining,pos:[s.x,s.y,s.z],shot:shots.at(-1)};}\nconsole.log(JSON.stringify({changed,afterShot,shots,phase:s.phase,goal:s.goalNode,stationChanges:s.stationChanges,emergencies:s.emergencyStops}));f.dispose();disposeWorld(world);\n",
+    "expiryDuringEvasionSource": "\nimport {newLevel} from \"./shared/level.js\";import {buildWorld,disposeWorld} from \"./engine/world.js\";import {Health} from \"./engine/health.js\";import {DefencePreview} from \"./game/defence-preview.js\";\nconst drone=await Bun.file(\"assets/models/drone-defence.json\").json(),level=newLevel(\"review-underneath\");level.size=[12,10];level.placements=[{id:\"drone-1\",model:drone.id,variant:\"base\",box:[5,0,5],turn:0}];\nconst world=buildWorld(level,new Map([[drone.id,drone]])),target={id:\"same-enemy\",x:132,z:84,aimX:132,aimY:34.5,aimZ:84,lap:0,health:new Health(10000),threat:1,movement:{speed:0}};\nconst shots=[],f=new DefencePreview(world,()=>{},()=>.5,()=>shots.push({time:f.drones.time,id:f.drones.states[0].lastShotTargetId,pos:[s.x,s.y,s.z]}),[target],(t,n)=>t.health.takeDamage(n)),s=f.drones.states[0];let changed=null,afterShot=null,minSpeed=Infinity;let attackAfterExpiry=0,maxReturns=0,phases=[];\nfor(let frame=0;frame<900;frame++){f.advance(1/60);if(changed===null&&shots.length===1){s.cycle.cancelBurst();s.flightElapsed=19.9;const started=f.drones.planEvasion(s);changed={time:f.drones.time,started,resume:s.evadeResume,phase:s.phase,returns:s.returns};}if(changed){if(s.expired&&s.phase===\"attack\")attackAfterExpiry++;maxReturns=Math.max(maxReturns,s.returns);if(phases.at(-1)?.phase!==s.phase)phases.push({time:f.drones.time,phase:s.phase,evading:s.evading,expired:s.expired,returns:s.returns});}}\nconsole.log(JSON.stringify({changed,attackAfterExpiry,maxReturns,phases,afterShot,shots,phase:s.phase,goal:s.goalNode,stationChanges:s.stationChanges,emergencies:s.emergencyStops}));f.dispose();disposeWorld(world);\n",
+    "actualCombatSource": "docs/drone-motion-2026-10-18/trace-interception.js",
+    "actualCombatExecution": "Read this source, replace '../../' with './' for bun -e from repository root, discard final Bun.write block and print compact summary. Final saved source runs150 seconds."
+  }
+}

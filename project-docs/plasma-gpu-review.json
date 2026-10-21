@@ -1,0 +1,161 @@
+{
+  "passed": 44,
+  "failed": 0,
+  "checks": [
+    "opaque production module compiles with tube lighting",
+    "water and SSR production module compiles with tube lighting",
+    "bloom display production module compiles with tube lighting",
+    "rain production module compiles with tube lighting",
+    "snow production module compiles with tube lighting",
+    "leaves production module compiles with tube lighting",
+    "debris production module compiles with tube lighting",
+    "smoke and blast production module compiles with tube lighting",
+    "Finite tube illuminates its middle although both endpoints lie beyond the radius",
+    "Light stops beyond the finite end cap",
+    "Opaque back faces remain dark",
+    "Light stops exactly at the radial boundary",
+    "Exact tube centre and boundaries stay finite",
+    "Minimal inactive storage binding produces no arc illumination",
+    "Splitting one tube at a joint does not multiply its brightness",
+    "Independent strikes add their light",
+    "Rain and snow use their production scattering response along the tube",
+    "Tumbling leaves receive tube light on their reverse side",
+    "Existing point lights and new tube lights combine without replacing either",
+    "Existing point light colour and contribution are preserved",
+    "The actual pooled jagged arc lights surfaces along its interior",
+    "The production strike contains one unbranched channel and eight tube spans",
+    "Actual pool expiry removes every tube light",
+    "Actual plasma illuminates its middle in green although both anchors are beyond the light radius",
+    "Rain and snow receive green plasma scattering",
+    "Leaf reverse faces receive the same green tube illumination",
+    "The final reserved plasma slot contributes after all six combat Arc slots",
+    "All six combat Arcs and sixteen plasma links add without replacing or clipping each other",
+    "Disposed plasma removes all continuous local illumination",
+    "Both full-resolution ribbon and reduced bloom pipelines compile",
+    "The actual ribbon renders a bright narrow channel",
+    "Opaque depth completely hides a channel behind it",
+    "Water attenuates the channel behind its surface",
+    "Reduced channel emission observes full-resolution opaque depth",
+    "Reduced channel emission observes water attenuation",
+    "Hot metal flecks reach the display in warm yellow-orange colours",
+    "Metal flecks stay crisp without extra bloom",
+    "Plasma capsule reaches display with a bright mint core and green sheath",
+    "Persistent plasma emits controlled source bloom rather than being classified as impact sparks",
+    "Plasma display and bloom both obey opaque depth",
+    "Water attenuates plasma behind its surface",
+    "Perspective near-plane clipping retains a narrow crossing ribbon without screen-filling triangles",
+    "A channel wholly behind the perspective near plane is hidden",
+    "No WebGPU validation errors"
+  ],
+  "readbacks": {
+    "midpoint": [
+      0.8505339622497559,
+      1.3054707050323486,
+      1.9779858589172363
+    ],
+    "plasmaMiddle": [
+      0.04313047230243683,
+      0.5391309261322021,
+      0.08626094460487366
+    ],
+    "allTubes": [
+      5.793290138244629,
+      16.45892333984375,
+      13.248086929321289
+    ],
+    "ribbon": {
+      "visible": {
+        "sum": 72696,
+        "count": 288,
+        "centre": [
+          186,
+          191,
+          194
+        ]
+      },
+      "hidden": {
+        "sum": 0,
+        "count": 0,
+        "centre": [
+          0,
+          0,
+          0
+        ]
+      },
+      "underwater": {
+        "sum": 21596,
+        "count": 196,
+        "centre": [
+          56,
+          57,
+          58
+        ]
+      }
+    },
+    "bloom": {
+      "halo": {
+        "sum": 1608,
+        "count": 24,
+        "centre": [
+          10,
+          19,
+          38
+        ]
+      },
+      "haloHidden": {
+        "sum": 0,
+        "count": 0,
+        "centre": [
+          0,
+          0,
+          0
+        ]
+      },
+      "haloWet": {
+        "sum": 480,
+        "count": 24,
+        "centre": [
+          3,
+          6,
+          11
+        ]
+      }
+    },
+    "metal": {
+      "sum": 49820,
+      "count": 288,
+      "centre": [
+        194,
+        138,
+        54
+      ]
+    },
+    "plasmaRibbon": {
+      "plasmaRibbon": {
+        "sum": 59048,
+        "count": 288,
+        "centre": [
+          159,
+          194,
+          170
+        ]
+      },
+      "plasmaHalo": {
+        "sum": 936,
+        "count": 24,
+        "centre": [
+          0,
+          38,
+          1
+        ]
+      }
+    }
+  },
+  "resources": {
+    "inactiveLightBytes": 304,
+    "activeArcLightBytes": 1744,
+    "combinedTubeLightBytes": 6352,
+    "maxPlasmaLinks": 16
+  },
+  "errors": []
+}

@@ -1,0 +1,64 @@
+bun test v1.4.2 (744846f84)
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [12.50ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [3.55ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.84ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [344.72ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.09ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [307.40ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [597.98ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.85ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.66ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.57ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [45.63ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [21.22ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1805.95ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [21.07ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [16.85ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.30ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.42ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [17.14ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.48ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [3.85ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [2.30ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [2.00ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [124.91ms]
+(pass) live film is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [2.18ms]
+(pass) live film reuses pipelines through toggles and releases viewport/scene images exactly once [1.75ms]
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [0.19ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [1249.95ms]
+54 |   for(let i=0;i<120;i++){e.advance(1/120,{combat:false});live.advance(1/120,{engine:e,phase:'settling'});}expect(live.flinch).toBeLessThan(.01);
+55 |   live.noteExplosion({x,y,z},e.time);e.advance(2,{combat:false});live.advance(2,{engine:e,phase:'settling'});expect(live.flinch).toBeLessThan(.001);
+56 |   live.setEnabled(false);live.noteExplosion({x,y,z});expect(live.flinch).toBe(0);
+57 |   // Turning the mode on during final effects should look at the last battle,
+58 |   // including a death that happened while the operator was disabled.
+59 |   live.noteExplosion({x:180,y:34,z:240},e.time);e.stopWave();live.setEnabled(true);live.sync('settling',e);expect(Array.from(live.focus)).toEqual([180,34,240]);
+                                                                                                                                               ^
+error: expect(received).toEqual(expected)
+
+  [
+-   180,
+-   34,
+-   240,
++   13.399999618530273,
++   34.5,
++   204,
+  ]
+
+- Expected  - 3
++ Received  + 3
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/play-live-camera.test.js:59:139)
+(fail) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [1117.14ms]
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5982.62ms]
+
+1 tests failed:
+(fail) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [1117.14ms]
+
+ 28 pass
+ 1 fail
+ 39403 expect() calls
+Ran 29 tests across 2 files. [11.72s]

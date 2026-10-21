@@ -1,0 +1,466 @@
+{
+  "policies": {
+    "mixed": {
+      "name": "mixed",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 0,
+      "tokens": 4,
+      "spent": 126,
+      "killed": 1084,
+      "escaped": 0
+    },
+    "arc-heavy": {
+      "name": "arc-heavy",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 0,
+      "tokens": 2,
+      "spent": 128,
+      "killed": 1084,
+      "escaped": 0
+    },
+    "gun-focused": {
+      "name": "gun-focused",
+      "phase": "defeat",
+      "completedWaves": 33,
+      "misses": 10,
+      "tokens": 0,
+      "spent": 68,
+      "killed": 469,
+      "escaped": 10
+    },
+    "missile-heavy": {
+      "name": "missile-heavy",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 0,
+      "tokens": 2,
+      "spent": 128,
+      "killed": 1084,
+      "escaped": 0
+    },
+    "arc-heavy-no-chain": {
+      "name": "arc-heavy",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 8,
+      "tokens": 2,
+      "spent": 128,
+      "killed": 1076,
+      "escaped": 8
+    },
+    "mixed-old-missiles": {
+      "name": "mixed",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 0,
+      "tokens": 4,
+      "spent": 126,
+      "killed": 1084,
+      "escaped": 0
+    },
+    "adaptive-gen": {
+      "name": "cluster-gen",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 0,
+      "tokens": 3,
+      "spent": 127,
+      "killed": 1084,
+      "escaped": 0
+    },
+    "adaptive-control": {
+      "name": "cluster-control",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 0,
+      "tokens": 4,
+      "spent": 126,
+      "killed": 1084,
+      "escaped": 0
+    },
+    "adaptive-gen-capped-b": {
+      "name": "cluster-gen",
+      "phase": "defeat",
+      "completedWaves": 47,
+      "misses": 10,
+      "tokens": 32,
+      "spent": 64,
+      "killed": 730,
+      "escaped": 10
+    },
+    "adaptive-control-capped-b": {
+      "name": "cluster-control",
+      "phase": "defeat",
+      "completedWaves": 43,
+      "misses": 10,
+      "tokens": 25,
+      "spent": 63,
+      "killed": 652,
+      "escaped": 10
+    },
+    "adaptive-gen-no-bonus": {
+      "name": "cluster-gen",
+      "phase": "complete",
+      "completedWaves": 64,
+      "misses": 2,
+      "tokens": 3,
+      "spent": 127,
+      "killed": 1082,
+      "escaped": 2
+    }
+  },
+  "chainByZone": {
+    "mixed": {
+      "a": {
+        "primaryUsefulHP": 41825.5,
+        "secondaryUsefulHP": 6700.75,
+        "secondaryFractionOfPrimary": 0.16020728981123955,
+        "waveSeconds": 876.2916666666476
+      },
+      "b": {
+        "primaryUsefulHP": 121302.5,
+        "secondaryUsefulHP": 9076.0,
+        "secondaryFractionOfPrimary": 0.07482121143422436,
+        "waveSeconds": 1441.2833333336125
+      },
+      "c": {
+        "primaryUsefulHP": 354692.25,
+        "secondaryUsefulHP": 69208.25,
+        "secondaryFractionOfPrimary": 0.1951219684106433,
+        "waveSeconds": 1132.575000000053
+      },
+      "d": {
+        "primaryUsefulHP": 716713.5,
+        "secondaryUsefulHP": 165388.75,
+        "secondaryFractionOfPrimary": 0.23075992010754645,
+        "waveSeconds": 1366.2333333335596
+      }
+    },
+    "arc-heavy": {
+      "a": {
+        "primaryUsefulHP": 88208.5,
+        "secondaryUsefulHP": 12690.0,
+        "secondaryFractionOfPrimary": 0.14386368660616608,
+        "waveSeconds": 820.9749999999913
+      },
+      "b": {
+        "primaryUsefulHP": 436299.5,
+        "secondaryUsefulHP": 43296.0,
+        "secondaryFractionOfPrimary": 0.09923458541666906,
+        "waveSeconds": 1539.8333333336914
+      },
+      "c": {
+        "primaryUsefulHP": 805704.5,
+        "secondaryUsefulHP": 156996.25,
+        "secondaryFractionOfPrimary": 0.19485586837357866,
+        "waveSeconds": 1073.0500000000302
+      },
+      "d": {
+        "primaryUsefulHP": 1414638.75,
+        "secondaryUsefulHP": 329573.0,
+        "secondaryFractionOfPrimary": 0.23297325907409225,
+        "waveSeconds": 1279.2916666668252
+      }
+    }
+  },
+  "missileByZone": {
+    "mixed": {
+      "a": {
+        "launches": 169,
+        "contacts": 115,
+        "contactPerLaunch": 0.6804733727810651,
+        "usefulMissileHP": 26950.0,
+        "waveSeconds": 876.2916666666476,
+        "collisions": 50,
+        "missed": 48
+      },
+      "b": {
+        "launches": 1136,
+        "contacts": 952,
+        "contactPerLaunch": 0.8380281690140845,
+        "usefulMissileHP": 303172.25,
+        "waveSeconds": 1441.2833333336125,
+        "collisions": 173,
+        "missed": 213
+      },
+      "c": {
+        "launches": 2100,
+        "contacts": 1306,
+        "contactPerLaunch": 0.621904761904762,
+        "usefulMissileHP": 440266.25,
+        "waveSeconds": 1132.575000000053,
+        "collisions": 762,
+        "missed": 781
+      },
+      "d": {
+        "launches": 3043,
+        "contacts": 2159,
+        "contactPerLaunch": 0.7094972067039106,
+        "usefulMissileHP": 731404.0,
+        "waveSeconds": 1366.2333333335596,
+        "collisions": 819,
+        "missed": 1052
+      }
+    },
+    "mixed-old-missiles": {
+      "a": {
+        "launches": 151,
+        "contacts": 116,
+        "contactPerLaunch": 0.7682119205298014,
+        "usefulMissileHP": 28294.25,
+        "waveSeconds": 870.4083333333135,
+        "collisions": 29,
+        "missed": 19
+      },
+      "b": {
+        "launches": 1105,
+        "contacts": 962,
+        "contactPerLaunch": 0.8705882352941177,
+        "usefulMissileHP": 307539.5,
+        "waveSeconds": 1430.575000000271,
+        "collisions": 133,
+        "missed": 96
+      },
+      "c": {
+        "launches": 2017,
+        "contacts": 1381,
+        "contactPerLaunch": 0.6846802181457611,
+        "usefulMissileHP": 463668.5,
+        "waveSeconds": 1090.9916666666877,
+        "collisions": 595,
+        "missed": 625
+      },
+      "d": {
+        "launches": 2903,
+        "contacts": 2195,
+        "contactPerLaunch": 0.7561143644505683,
+        "usefulMissileHP": 745771.0,
+        "waveSeconds": 1362.8583333335598,
+        "collisions": 634,
+        "missed": 678
+      }
+    }
+  },
+  "generatorByZone": {
+    "adaptive-gen": {
+      "a": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 876.2916666666476,
+        "escapes": 0
+      },
+      "b": {
+        "marginalContactUsefulHP": 59179.8125,
+        "recipientCounts": [
+          2,
+          3
+        ],
+        "waveSeconds": 1297.2333333335487,
+        "escapes": 0
+      },
+      "c": {
+        "marginalContactUsefulHP": 71319.25,
+        "recipientCounts": [
+          3
+        ],
+        "waveSeconds": 1133.6500000000608,
+        "escapes": 0
+      },
+      "d": {
+        "marginalContactUsefulHP": 99968.25,
+        "recipientCounts": [
+          3
+        ],
+        "waveSeconds": 1312.2166666668559,
+        "escapes": 0
+      }
+    },
+    "adaptive-control": {
+      "a": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 876.2916666666476,
+        "escapes": 0
+      },
+      "b": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 1364.1083333335848,
+        "escapes": 0
+      },
+      "c": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 1161.98333333341,
+        "escapes": 0
+      },
+      "d": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 1373.516666666898,
+        "escapes": 0
+      }
+    },
+    "adaptive-gen-capped-b": {
+      "a": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 876.2916666666476,
+        "escapes": 0
+      },
+      "b": {
+        "marginalContactUsefulHP": 59179.8125,
+        "recipientCounts": [
+          2,
+          3
+        ],
+        "waveSeconds": 1297.2333333335487,
+        "escapes": 0
+      },
+      "c": {
+        "marginalContactUsefulHP": 100337.75,
+        "recipientCounts": [
+          3
+        ],
+        "waveSeconds": 1332.08333333353,
+        "escapes": 10
+      }
+    },
+    "adaptive-control-capped-b": {
+      "a": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 876.2916666666476,
+        "escapes": 0
+      },
+      "b": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 1364.1083333335848,
+        "escapes": 0
+      },
+      "c": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 960.8214285715404,
+        "escapes": 10
+      }
+    },
+    "adaptive-gen-no-bonus": {
+      "a": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [],
+        "waveSeconds": 876.2916666666476,
+        "escapes": 0
+      },
+      "b": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [
+          2,
+          3
+        ],
+        "waveSeconds": 1369.6833333335928,
+        "escapes": 0
+      },
+      "c": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [
+          3
+        ],
+        "waveSeconds": 1209.6464285715322,
+        "escapes": 2
+      },
+      "d": {
+        "marginalContactUsefulHP": 0,
+        "recipientCounts": [
+          3
+        ],
+        "waveSeconds": 1391.4500000002463,
+        "escapes": 0
+      }
+    }
+  },
+  "reconciliation": {
+    "mixed": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 53
+    },
+    "arc-heavy": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 53
+    },
+    "gun-focused": {
+      "completeWaveHPChecks": 33,
+      "partialDefeatWaves": 1,
+      "walletExact": true,
+      "sourceHashesVerified": 53
+    },
+    "missile-heavy": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 53
+    },
+    "arc-heavy-no-chain": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 53
+    },
+    "mixed-old-missiles": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 53
+    },
+    "adaptive-gen": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 54
+    },
+    "adaptive-control": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 54
+    },
+    "adaptive-gen-capped-b": {
+      "completeWaveHPChecks": 47,
+      "partialDefeatWaves": 1,
+      "walletExact": true,
+      "sourceHashesVerified": 54
+    },
+    "adaptive-control-capped-b": {
+      "completeWaveHPChecks": 43,
+      "partialDefeatWaves": 1,
+      "walletExact": true,
+      "sourceHashesVerified": 54
+    },
+    "adaptive-gen-no-bonus": {
+      "completeWaveHPChecks": 64,
+      "partialDefeatWaves": 0,
+      "walletExact": true,
+      "sourceHashesVerified": 54
+    }
+  },
+  "evidenceHashes": {
+    "mixed.json": "c6b8a986334dc3f4655372aee91c78b4a315c83c3f07970d0588c6c9469752d5",
+    "arc-heavy.json": "7d3edbfe1e024212f575a7a09cbf2b56386a6f63c903db35dcd5791fd95cd52a",
+    "gun-focused.json": "fb6e88a6b8747be5ce895a61e2ae40072ccfff2732117760598a37aec91f1378",
+    "missile-heavy.json": "aa86d9a1946a471c75f1b751c1869602ed33732b31d40b37c25a1fe0daf25920",
+    "arc-heavy-no-chain.json": "6aedb56a18e25724c73f56771435ed0148fb73018743d14f95afb27d59ed50ef",
+    "mixed-old-missiles.json": "854273e6f87ba8ce864237345a0a5af2f73a5125e2d27225bd0e5dfdf709c6c4",
+    "adaptive-gen.json": "a21d1dfbf934d01c0b8f7931e5f662051b5d5b0414a583dfceb0ce454d44afde",
+    "adaptive-control.json": "093bb4a7fece1e1689b4bf53cc2161451fc23d1caf5cbd1e27f8443eeda736b5",
+    "adaptive-gen-capped-b.json": "7274c4290e41a8d22a39f83e89da7ac587d7906d4caf1197d98a7f96db1a002a",
+    "adaptive-control-capped-b.json": "5ae448b753aba6e152efe5bf1306cfbac247ecf67ddf3c9143a73731e10345c7",
+    "adaptive-gen-no-bonus.json": "e170eec37c9b2bd6f9946c8db29025217bec0640827edd6aece917338ed75319"
+  }
+}

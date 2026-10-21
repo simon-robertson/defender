@@ -1,0 +1,54 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-presentation.test.js:
+(pass) title framing covers every viewport corner with landscape across portrait and widescreen [0.67ms]
+(pass) test-only night/rain use the existing renderer overrides without altering authored environment [0.05ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [12.11ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.23ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.31ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [285.99ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [3.76ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [257.52ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [545.22ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.94ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.63ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.46ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [41.44ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [19.12ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1459.24ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [17.99ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [15.18ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.27ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.45ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [14.72ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [1.79ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.35ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.46ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.46ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [113.06ms]
+(pass) live film is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [1.64ms]
+(pass) live film reuses pipelines through toggles and releases viewport/scene images exactly once [1.31ms]
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [0.17ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [1094.47ms]
+(pass) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [1026.34ms]
+{"levelIndex":0,"hz":30,"travelled":209.54888888889266,"minFov":44.458382221406374,"maxFov":72.60610134029295,"minGunGap":65.87463214693366,"minEnemyGap":62.957744023615,"visible":0.8257191201353637,"held":0.34348561759729274,"readable":0.46362098138747887}
+{"levelIndex":0,"hz":60,"travelled":209.84888888889267,"minFov":44.326617113615896,"maxFov":72.60645775974562,"minGunGap":65.86683569478986,"minEnemyGap":62.85901958443605,"visible":0.8238780694326842,"held":0.3420829805249788,"readable":0.46316680779000846}
+{"levelIndex":0,"hz":120,"travelled":209.84888888889267,"minFov":44.26220217671396,"maxFov":72.60736210554043,"minGunGap":65.86460864231213,"minEnemyGap":62.80992431908102,"visible":0.8238034731046167,"held":0.3418043202033037,"readable":0.4633629817873782}
+{"levelIndex":1,"hz":30,"travelled":552.2244444444057,"minFov":40.00016375368392,"maxFov":69.66666666666669,"minGunGap":45.912966510857906,"minEnemyGap":104.06195955852695,"visible":0.8253521126760563,"held":0.10328638497652583,"readable":0.6328638497652582}
+{"levelIndex":1,"hz":60,"travelled":539.8866666666308,"minFov":40.00015589246394,"maxFov":69.83333333333334,"minGunGap":45.89771284546153,"minEnemyGap":104.55235440562596,"visible":0.8257397839361202,"held":0.13104744011272898,"readable":0.6608736496007516}
+{"levelIndex":1,"hz":120,"travelled":540.0366666666308,"minFov":40.000153983654464,"maxFov":69.91666666666667,"minGunGap":45.893354692572565,"minEnemyGap":104.55021582595522,"visible":0.8257397839361202,"held":0.1308125880695162,"readable":0.6611085016439643}
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5641.63ms]
+(pass) standoff routing avoids close approaches and permits retreat when action moves towards the operator [1057.43ms]
+(pass) a useful stationary shot stays planted instead of orbiting on a timer, and framing rejects foreground canopy [0.28ms]
+(pass) fast pans lean in opposite directions, settle smoothly and freeze with pause [1041.30ms]
+{"scenario":"reported-opening","travelled":367.8719151458703,"held":0.680952380952381,"readable":0.9257936507936508}
+(pass) the reported two-base-gun A1 opening holds shots and stays near the battle without constant running [1107.54ms]
+
+ 35 pass
+ 0 fail
+ 70150 expect() calls
+Ran 35 tests across 3 files. [13.79s]

@@ -1,0 +1,94 @@
+bun test v1.4.2 (744846f84)
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [370.18ms]
+(pass) boost, attitude-jet coast and reignition are distinct and keep their exact phase timing [21.80ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [21.11ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [20.54ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [70.94ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [59.39ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [28.20ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [81.65ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [20.88ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [21.06ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [21.52ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [72.92ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [62.58ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [40.95ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [20.55ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [20.85ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [20.45ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [21.00ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [123.38ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [22.16ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [22.84ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [27.32ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [22.25ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [227.31ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [20.26ms]
+(pass) static contact drops its incoming claim before the impact callback [20.07ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [81.01ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [36.71ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [73.92ms]
+(pass) each seated missile varies its turn rate and steering jets pulse as opposite white torque couples while accelerating and braking [31.64ms]
+
+tests/missile-effects.test.js:
+(pass) missile impacts throw a layered fireball, hot fragments and smoke with the original light curve [1.18ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [0.94ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.02ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.16ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [0.91ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.19ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [0.83ms]
+(pass) simultaneous missile bursts stay bounded and pause holds all payloads exactly [0.70ms]
+
+tests/play-config.test.js:
+(pass) The campaign retains Zone A and adds forty-eight finite later encounters [1.63ms]
+(pass) family and tier introductions are bounded global encounter numbers [2.55ms]
+(pass) play profiles are immutable and leave all shared preview tuning untouched [1.58ms]
+(pass) capacity budgets every affordable family and species without adding disjoint wave peaks [8.43ms]
+(pass) resolved firing profiles preserve actual family delivery and finite cadence [7.19ms]
+(pass) bad schedules, unknown routes and invalid species override fields fail before scene creation [16.99ms]
+(pass) settling time stays tunable independently of combat tuning [6.85ms]
+(pass) later encounters use only their existing zone species, real branches and stable level profiles [1.07ms]
+
+tests/missile-integration.test.js:
+(pass) all third levels isolate missile actors from mixed enemies and cosmetic wildlife [1130.17ms]
+(pass) mixed missile, Arc and gun families share one thinker and never forecast guided damage [304.13ms]
+(pass) silo lights survive missile visibility changes and stay within the existing enemy-light budget [751.04ms]
+(pass) missile contacts scatter ground and perched/flying birds even when death blasts fill the visual pool [524.71ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [0.86ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.22ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [1.03ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.32ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.14ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.10ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.24ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [4.68ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.13ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [11.08ms]
+
+tests/b4-lake-approach.test.js:
+(pass) B4 lake approach crosses a real wooden bridge, joins one tail, and regenerates exactly [2.20ms]
+(pass) every B4 wave uses both approaches without changing its existing roster totals [0.08ms]
+(pass) B4 gains useful bank ground and keeps bridge decks unavailable for defence deployment [1290.38ms]
+
+tests/bridges.test.js:
+(pass) explicit bridges retain water and bed, add walking support, preserve dry land-only placement and protect source edits [0.86ms]
+(pass) offline actual Dog poses retain supported flat soles across both banks and the bridge deck [24.40ms]
+(pass) bridge validation rejects invalid metadata, submerged decks, dry fills, route gaps and missing or turning banks [0.61ms]
+(pass) wooden deck and natural terrain exactly match an independent solid-cell surface oracle without hidden or duplicate faces [37.73ms]
+(pass) weather rebuild preserves the exact water mesh and matte nonemissive wood without stone or soil on the deck [14.50ms]
+(pass) bridge top supports path camera, off-line ground clearance, debris and rain while preserving an open under-deck gap [4.84ms]
+
+tests/play-campaign-integration.test.js:
+(pass) campaign light capacity fits the portable uniform limit and preserves preview allocation [0.69ms]
+(pass) each zone loads only its own enemy geometry with affordable defence pools and finite native poses [3167.21ms]
+(pass) the maximum affordable42 launchers defer safely and empty launchers receive freed missiles first [94.41ms]
+
+ 72 pass
+ 0 fail
+ 62017 expect() calls
+Ran 72 tests across 8 files. [9.18s]

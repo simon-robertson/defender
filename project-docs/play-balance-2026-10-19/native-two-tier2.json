@@ -1,0 +1,598 @@
+{
+  "recordedAt": "2026-10-19T09:38:02.814Z",
+  "method": "Production PlaySession, PlayEngine, loadPlayWorld, actual LOS/yaw/pitch/burst/target planner, 120Hz fixed simulation, 30Hz outer updates; all deployments pass source placement and connected-wildlife preparation checks.",
+  "sourceHashes": {
+    "play/config.js": "82fad79ca4f3af0cadda74bc307663f98d74e69a463c4972d50a9e7190f16524",
+    "play/enemies.js": "b9641fe66a3e9497e8c951fee7156ff1413343eab1b506bd9c75ac6ee63d7db0",
+    "play/engine.js": "2fad5c4e1155d00da92e173416d86cbd55c6dee92be084247ac4c85884209abb",
+    "play/session.js": "ef1a487607b1ad889616130b91da6e5ff3b198c653264a7d551dc264191b95c6",
+    "play/placement.js": "672f1a408e77692e9b35df5770b9a5c5e31d46a992c9798c5b3d9a76d2d92d18",
+    "shared/defence.js": "9f035ffb076af791d2c1e4607995971e6e59b17234ef395bb9386e052c8a33a1",
+    "shared/arsenal.js": "e5173302a8cd45b14535c00ea1fa7324e2de20e3883a07b75e3a79abbb3d846d",
+    "assets/levels/moss-01.json": "70807bb01eaeff105aeffacfa8616866c1a3b6e0fa75810732c9000c86b56003",
+    "assets/levels/moss-02.json": "05880b6fe2330d2497b3df52e06fc6648842f8e0453edd9b2d4f33db1f1dd8fb"
+  },
+  "proposed": {
+    "hp": [
+      100,
+      120,
+      140,
+      160,
+      180,
+      200,
+      220,
+      240
+    ],
+    "speed": [
+      12,
+      13,
+      14,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    "count": [
+      3,
+      4,
+      5,
+      6,
+      6,
+      7,
+      8,
+      9
+    ],
+    "gap": [
+      3,
+      2.8,
+      2.6,
+      2.4,
+      2.3,
+      2.2,
+      2.1,
+      2
+    ]
+  },
+  "results": [
+    {
+      "name": "harder-two-tier2",
+      "profile": {
+        "hp": [
+          100,
+          120,
+          140,
+          160,
+          180,
+          200,
+          220,
+          240
+        ],
+        "speed": [
+          12,
+          13,
+          14,
+          15,
+          15,
+          15,
+          15,
+          15
+        ],
+        "count": [
+          3,
+          4,
+          5,
+          6,
+          6,
+          7,
+          8,
+          9
+        ],
+        "gap": [
+          3,
+          2.8,
+          2.6,
+          2.4,
+          2.3,
+          2.2,
+          2.1,
+          2
+        ]
+      },
+      "capacity": {
+        "maxOwnedUnits": 16,
+        "maxWaveEnemies": 9,
+        "modelLights": 84
+      },
+      "phase": "complete",
+      "completedWaves": 8,
+      "misses": 0,
+      "spent": 6,
+      "tokens": 12,
+      "killed": 48,
+      "escaped": 0,
+      "waves": [
+        {
+          "wave": "a1-wave-1",
+          "hp": 100,
+          "speed": 12,
+          "count": 3,
+          "gap": 3,
+          "tiers": [
+            "base",
+            "base"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "base",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              474,
+              24,
+              362
+            ],
+            [
+              106,
+              24,
+              250
+            ],
+            [
+              406,
+              24,
+              6
+            ]
+          ],
+          "killed": 3,
+          "escaped": 0,
+          "shots": 30,
+          "seconds": 66.79999999999914,
+          "misses": 0,
+          "tokens": 2,
+          "phase": "loadout",
+          "escapedHealth": []
+        },
+        {
+          "wave": "a1-wave-2",
+          "hp": 120,
+          "speed": 13,
+          "count": 4,
+          "gap": 2.8,
+          "tiers": [
+            "upgrade1",
+            "upgrade1"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade1",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              474,
+              24,
+              362
+            ],
+            [
+              106,
+              24,
+              250
+            ],
+            [
+              406,
+              24,
+              6
+            ]
+          ],
+          "killed": 4,
+          "escaped": 0,
+          "shots": 40,
+          "seconds": 48.47499999999772,
+          "misses": 0,
+          "tokens": 2,
+          "phase": "loadout",
+          "escapedHealth": []
+        },
+        {
+          "wave": "a1-wave-3",
+          "hp": 140,
+          "speed": 14,
+          "count": 5,
+          "gap": 2.6,
+          "tiers": [
+            "upgrade2",
+            "upgrade2"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              474,
+              24,
+              362
+            ],
+            [
+              106,
+              24,
+              250
+            ],
+            [
+              406,
+              24,
+              6
+            ]
+          ],
+          "killed": 5,
+          "escaped": 0,
+          "shots": 50,
+          "seconds": 25.316666666665693,
+          "misses": 0,
+          "tokens": 2,
+          "phase": "loadout",
+          "escapedHealth": []
+        },
+        {
+          "wave": "a1-wave-4",
+          "hp": 160,
+          "speed": 15,
+          "count": 6,
+          "gap": 2.4,
+          "tiers": [
+            "upgrade2",
+            "upgrade2"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                13,
+                0,
+                9
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                4,
+                0,
+                9
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              474,
+              24,
+              362
+            ],
+            [
+              106,
+              24,
+              250
+            ],
+            [
+              406,
+              24,
+              6
+            ]
+          ],
+          "killed": 6,
+          "escaped": 0,
+          "shots": 72,
+          "seconds": 26.599999999998982,
+          "misses": 0,
+          "tokens": 4,
+          "phase": "loadout",
+          "escapedHealth": []
+        },
+        {
+          "wave": "a2-wave-1",
+          "hp": 180,
+          "speed": 15,
+          "count": 6,
+          "gap": 2.3,
+          "tiers": [
+            "upgrade2",
+            "upgrade2"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              462,
+              24,
+              334
+            ],
+            [
+              6,
+              24,
+              42
+            ],
+            [
+              434,
+              24,
+              26
+            ]
+          ],
+          "killed": 6,
+          "escaped": 0,
+          "shots": 78,
+          "seconds": 26.458333333332337,
+          "misses": 0,
+          "tokens": 6,
+          "phase": "loadout",
+          "escapedHealth": []
+        },
+        {
+          "wave": "a2-wave-2",
+          "hp": 200,
+          "speed": 15,
+          "count": 7,
+          "gap": 2.2,
+          "tiers": [
+            "upgrade2",
+            "upgrade2"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              462,
+              24,
+              334
+            ],
+            [
+              6,
+              24,
+              42
+            ],
+            [
+              434,
+              24,
+              26
+            ]
+          ],
+          "killed": 7,
+          "escaped": 0,
+          "shots": 105,
+          "seconds": 31.41666666666538,
+          "misses": 0,
+          "tokens": 8,
+          "phase": "loadout",
+          "escapedHealth": []
+        },
+        {
+          "wave": "a2-wave-3",
+          "hp": 220,
+          "speed": 15,
+          "count": 8,
+          "gap": 2.1,
+          "tiers": [
+            "upgrade2",
+            "upgrade2"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              462,
+              24,
+              334
+            ],
+            [
+              6,
+              24,
+              42
+            ],
+            [
+              434,
+              24,
+              26
+            ]
+          ],
+          "killed": 8,
+          "escaped": 0,
+          "shots": 128,
+          "seconds": 35.4833333333318,
+          "misses": 0,
+          "tokens": 10,
+          "phase": "loadout",
+          "escapedHealth": []
+        },
+        {
+          "wave": "a2-wave-4",
+          "hp": 240,
+          "speed": 15,
+          "count": 9,
+          "gap": 2,
+          "tiers": [
+            "upgrade2",
+            "upgrade2"
+          ],
+          "placements": [
+            {
+              "id": "player-gun-1",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                5,
+                0,
+                5
+              ],
+              "turn": 0
+            },
+            {
+              "id": "player-gun-2",
+              "model": "turret-study",
+              "variant": "upgrade2",
+              "box": [
+                8,
+                0,
+                8
+              ],
+              "turn": 0
+            }
+          ],
+          "wildlifePoints": [
+            [
+              462,
+              24,
+              334
+            ],
+            [
+              6,
+              24,
+              42
+            ],
+            [
+              434,
+              24,
+              26
+            ]
+          ],
+          "killed": 9,
+          "escaped": 0,
+          "shots": 162,
+          "seconds": 40.22499999999817,
+          "misses": 0,
+          "tokens": 12,
+          "phase": "complete",
+          "escapedHealth": []
+        }
+      ]
+    }
+  ]
+}

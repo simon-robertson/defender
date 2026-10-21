@@ -1,0 +1,31 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.28ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.05ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.17ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+
+tests/play-polish.test.js:
+(pass) overview/perspective blend preserves invertible projection, exact endpoints and smooth reversible travel [2.84ms]
+(pass) real Drone coordinator eases into a wave, freezes when paused and returns to preparation without a snap [4.52ms]
+(pass) other defence solids block rays, while self-exclusion, real gaps, pose changes and removal remain exact [0.69ms]
+(pass) bullet contact sparks originate on the supplied surface and use bounded storage, pause time and cleanup [0.47ms]
+
+tests/camera.test.js:
+(pass) overview fits full path tiles and all approaches while retaining landscape movement bounds [0.82ms]
+(pass) player camera can disable development path view without changing preview default [0.17ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.14ms]
+(pass) path view samples every path box and restores the complete overview [0.10ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.05ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.23ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.04ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.05ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.29ms]
+(pass) camera disposal removes canvas and document handlers before a renderer retry [0.20ms]
+
+ 19 pass
+ 0 fail
+ 3913 expect() calls
+Ran 19 tests across 3 files. [22.00ms]

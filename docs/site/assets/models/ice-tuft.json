@@ -1,0 +1,339 @@
+{
+  "schema": "defender.model",
+  "version": 3,
+  "id": "ice-tuft",
+  "name": "Alpine · low shoots",
+  "size": [
+    24,
+    8,
+    24
+  ],
+  "materials": [
+    {
+      "name": "Trunk",
+      "color": "#575348",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Trunk light",
+      "color": "#786E5D",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage deep",
+      "color": "#263C35",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage",
+      "color": "#3B5548",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage light",
+      "color": "#D2DCD7",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage cap",
+      "color": "#EFF0E8",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone",
+      "color": "#85939A",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone shade",
+      "color": "#5B6973",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone light",
+      "color": "#AFBBBC",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Flower",
+      "color": "#DFDFCF",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Muted accent",
+      "color": "#92785A",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Crevice",
+      "color": "#39443F",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Stone middle",
+      "color": "#9AA8AB",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Foliage middle",
+      "color": "#597064",
+      "emission": 0,
+      "reflectiveness": 0
+    },
+    {
+      "name": "Pale mineral",
+      "color": "#E2E7DE",
+      "emission": 0,
+      "reflectiveness": 0
+    }
+  ],
+  "variants": {
+    "base": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": [
+            [
+              11,
+              0,
+              8,
+              3
+            ],
+            [
+              8,
+              0,
+              10,
+              3
+            ],
+            [
+              14,
+              0,
+              12,
+              3
+            ],
+            [
+              12,
+              0,
+              16,
+              3
+            ],
+            [
+              11,
+              1,
+              8,
+              3
+            ],
+            [
+              8,
+              1,
+              9,
+              13
+            ],
+            [
+              9,
+              1,
+              9,
+              13
+            ],
+            [
+              8,
+              1,
+              10,
+              3
+            ],
+            [
+              14,
+              1,
+              12,
+              3
+            ],
+            [
+              12,
+              1,
+              15,
+              13
+            ],
+            [
+              13,
+              1,
+              15,
+              13
+            ],
+            [
+              12,
+              1,
+              16,
+              3
+            ],
+            [
+              11,
+              2,
+              8,
+              3
+            ],
+            [
+              8,
+              2,
+              9,
+              13
+            ],
+            [
+              9,
+              2,
+              9,
+              13
+            ],
+            [
+              8,
+              2,
+              10,
+              4
+            ],
+            [
+              14,
+              2,
+              11,
+              13
+            ],
+            [
+              15,
+              2,
+              11,
+              13
+            ],
+            [
+              14,
+              2,
+              12,
+              3
+            ],
+            [
+              12,
+              2,
+              15,
+              13
+            ],
+            [
+              13,
+              2,
+              15,
+              13
+            ],
+            [
+              12,
+              2,
+              16,
+              4
+            ],
+            [
+              11,
+              3,
+              7,
+              13
+            ],
+            [
+              12,
+              3,
+              7,
+              13
+            ],
+            [
+              11,
+              3,
+              8,
+              3
+            ],
+            [
+              14,
+              3,
+              11,
+              13
+            ],
+            [
+              15,
+              3,
+              11,
+              13
+            ],
+            [
+              14,
+              3,
+              12,
+              4
+            ],
+            [
+              11,
+              4,
+              7,
+              13
+            ],
+            [
+              12,
+              4,
+              7,
+              13
+            ],
+            [
+              11,
+              4,
+              8,
+              4
+            ]
+          ]
+        }
+      ]
+    },
+    "upgrade1": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    },
+    "upgrade2": {
+      "parts": [
+        {
+          "id": "body",
+          "name": "body",
+          "parent": null,
+          "pivot": [
+            12,
+            0,
+            12
+          ],
+          "voxels": []
+        }
+      ]
+    }
+  },
+  "colorMode": "authored",
+  "role": "scenery"
+}

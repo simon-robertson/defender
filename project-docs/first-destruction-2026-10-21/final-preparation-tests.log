@@ -1,0 +1,13 @@
+bun test v1.4.2 (744846f84)
+
+tests/renderer.test.js:
+(pass) actual preparation blood fade keeps renderer depth and shadow caches intact through expiry [20.02ms]
+(pass) play effect preparation awaits asynchronous pipelines once and leaves first destruction and decals allocation-free [7.78ms]
+(pass) failed asynchronous effect compilation rejects loading instead of declaring combat effects ready [0.28ms]
+(pass) disposing during effect preparation prevents a late ready state and releases every allocated pool [0.27ms]
+
+ 4 pass
+ 32 filtered out
+ 0 fail
+ 31 expect() calls
+Ran 4 tests across 1 file. [62.00ms]

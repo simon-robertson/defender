@@ -1,0 +1,53 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-drone-camera.test.js:
+(pass) drone lifecycle arms in preparation, shares the simulation clock, freezes on pause and restores overview [4.37ms]
+(pass) swept flight rejects a wall between clear endpoints and uses a continuous high route [2.98ms]
+(pass) water, raised terrain and world edges remain outside the camera hull [0.32ms]
+(pass) stationary coverage holds its azimuth across the higher altitude profile and retains broad gimbal aiming [6.11ms]
+(pass) pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched [1.21ms]
+{"levelIndex":0,"hz":30,"travelled":298.6952333656603,"readable":1,"minY":84,"maxY":151.99792002446216,"bytes":10910}
+{"levelIndex":0,"hz":60,"travelled":278.9211906147652,"readable":1,"minY":84,"maxY":152,"bytes":10910}
+{"levelIndex":0,"hz":120,"travelled":242.14035025183458,"readable":1,"minY":84.00000000132077,"maxY":143.99889694608592,"bytes":10910}
+{"levelIndex":1,"hz":30,"travelled":316.97357985235027,"readable":0.9117370892018779,"minY":84.00000000002046,"maxY":151.9999958952621,"bytes":13808}
+{"levelIndex":1,"hz":60,"travelled":298.1743153286932,"readable":0.954908407703147,"minY":84.00001157084152,"maxY":151.99999990039066,"bytes":13808}
+{"levelIndex":1,"hz":120,"travelled":363.4725115766937,"readable":0.8844527947393143,"minY":84.00000661470547,"maxY":152,"bytes":13808}
+(pass) actual A1/A2 camera flights have swept static and actor clearance and preserve finite combat at 30/60/120 Hz [5847.23ms]
+{"currentLevel":2,"mothFrames":2029,"minY":84.01766181762564,"maxY":151.99999999989842,"minPitch":0.05940348781786391,"minEnemy3D":93.71518956706144,"travelled":694.0943353921555,"bytes":12766}
+{"currentLevel":3,"mothFrames":2049,"minY":84,"maxY":152,"minPitch":0.07831487718666039,"minEnemy3D":85.73009451096421,"travelled":880.0045380112489,"bytes":17000}
+{"currentLevel":4,"mothFrames":2842,"minY":84.01010110997667,"maxY":151.99999943515223,"minPitch":0.08290494835442447,"minEnemy3D":40.07647233778743,"travelled":1191.5535004042579,"bytes":15544}
+(pass) current A2/A3/A4 Moth and merged-front flights retain the higher profile, track real altitude and leave combat unchanged [6054.89ms]
+(pass) a same-level next wave rebuilds actor references even if the armed camera was only left in preparation [901.58ms]
+(pass) an approaching actor forecast triggers a continuous climb through currently clear space [0.48ms]
+
+tests/play-camera-anticipation.test.js:
+(pass) idle gun, Arc and missile forecasts use real future route/range, readiness and a fixed committed event [0.81ms]
+(pass) route bends, airborne aiming, LOS, pitch, scheduled arrivals and unknown inputs have conservative bounded handling [0.24ms]
+(pass) recent real firing keeps attention before a future opportunity and sample work is bounded across large rosters [0.59ms]
+(pass) both cameras leave a held current shot and move toward an idle defence before its enemy enters range, then freeze with pause [13.18ms]
+(pass) drone focus follows optical-axis subject depth during a limited turn instead of radial distance [0.06ms]
+{"actualCamera":"LiveCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":0,"totalTravel":126.62490060552312}
+{"actualCamera":"DroneCamera","firstForecastAt":10.999999999999929,"firstShotAt":18.999999999999474,"forecastFrames":480,"leadTravel":0,"totalTravel":205.27296839476415}
+(pass) accepted A1 source and actual weapons demonstrate advance forecasting and useful pre-shot coverage [2046.05ms]
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [1.21ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [942.76ms]
+(pass) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [907.49ms]
+{"levelIndex":0,"hz":30,"travelled":164.5855548371087,"minFov":40.393241672896835,"maxFov":69.66666666666669,"minGunGap":65.87463214693366,"minEnemyGap":81.00022545312322,"visible":0.8663282571912013,"held":0.4653130287648054,"readable":0.49746192893401014}
+{"levelIndex":0,"hz":60,"travelled":61.260030065521875,"minFov":42.901372380889235,"maxFov":69.83333333333334,"minGunGap":65.86683569478986,"minEnemyGap":81.0000154320973,"visible":1,"held":0.8128704487722269,"readable":0.9381879762912786}
+{"levelIndex":0,"hz":120,"travelled":72.31301091320937,"minFov":40.759425038379405,"maxFov":69.91666666666667,"minGunGap":65.86460864231213,"minEnemyGap":81.0000659121817,"visible":1,"held":0.7534942820838628,"readable":0.9080897924608217}
+{"levelIndex":1,"hz":30,"travelled":557.9622222221824,"minFov":40.011593106777056,"maxFov":74.66111168812898,"minGunGap":45.912966510857906,"minEnemyGap":73.05648499620457,"visible":0.9436619718309859,"held":0.11737089201877934,"readable":0.7605633802816901}
+{"levelIndex":1,"hz":60,"travelled":552.8237474605709,"minFov":40.00310028377972,"maxFov":73.1862188751599,"minGunGap":45.89771284546153,"minEnemyGap":76.48138662446384,"visible":0.8835133865664632,"held":0.10145608266791921,"readable":0.669798027242837}
+{"levelIndex":1,"hz":120,"travelled":555.7481449057282,"minFov":40.00011962994112,"maxFov":69.91666666666667,"minGunGap":45.893354692572565,"minEnemyGap":103.8195549980831,"visible":0.8024894316580554,"held":0.11390324095819633,"readable":0.6254109910756224}
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5874.95ms]
+(pass) standoff routing avoids close approaches and permits retreat when action moves towards the operator [905.27ms]
+(pass) a useful stationary shot stays planted instead of orbiting on a timer, and framing rejects foreground canopy [0.28ms]
+(pass) fast pans lean in opposite directions, settle smoothly and freeze with pause [884.33ms]
+{"scenario":"reported-opening","travelled":314.27276980795347,"held":0.7263888888888889,"readable":0.9571428571428572}
+(pass) the reported two-base-gun A1 opening holds shots and stays near the battle without constant running [991.41ms]
+
+ 23 pass
+ 0 fail
+ 190180 expect() calls
+Ran 23 tests across 3 files. [25.41s]

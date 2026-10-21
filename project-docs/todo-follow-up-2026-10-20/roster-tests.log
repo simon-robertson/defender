@@ -1,0 +1,43 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-roster.test.js:
+(pass) roster groups all upgrade tiers by defence family while retaining ownership order and identity [0.13ms]
+(pass) group updates preserve row controls/focus and avoid moving unchanged DOM; empty families are removed [0.24ms]
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.09ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [2.35ms]
+(pass) consecutive preparation upgrades spend each step and the top tier survives the level boundary [3.25ms]
+(pass) upgrade availability follows progression, enabled tiers, phase and wallet [3.18ms]
+(pass) next undeployed selection advances in inventory order, wraps and returns null only when none remain [0.70ms]
+(pass) 64 finite waves reward once, retain positions and transfer ownership across every level and zone boundary [2.94ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [1.02ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.90ms]
+(pass) successful waves settle for four seconds before reward or progression and pause freezes settlement [0.67ms]
+(pass) defeat cannot settle, invalid time is rejected and reset clears a pending settlement [0.67ms]
+(pass) family unlocks and upgrades retain correct model and family prices across levels [0.65ms]
+(pass) wave briefing reports effective species profiles and per-approach counts [0.65ms]
+
+tests/play-config.test.js:
+(pass) The campaign retains Zone A and adds forty-eight finite later encounters [0.98ms]
+(pass) family and tier introductions are bounded global encounter numbers [2.14ms]
+(pass) play profiles are immutable and leave all shared preview tuning untouched [1.23ms]
+(pass) capacity budgets every affordable family and species without adding disjoint wave peaks [6.92ms]
+(pass) resolved firing profiles preserve actual family delivery and finite cadence [6.18ms]
+(pass) bad schedules, unknown routes and invalid species override fields fail before scene creation [15.67ms]
+(pass) settling time stays tunable independently of combat tuning [5.55ms]
+(pass) later encounters use only their existing zone species, real branches and stable level profiles [0.89ms]
+
+tests/play-unit-highlight.test.js:
+(pass) outline encloses actual articulated base/upgrade meshes, follows camera and preserves source/matrices [49.51ms]
+(pass) projection reuses unchanged work, follows in-place upgrades/moves and rejects absent or offscreen rigs [18.44ms]
+(pass) whole-row hover including upgrade outranks keyboard focus; leave restores only live focus [19.12ms]
+(pass) camera/pose updates repaint persistent nodes and phase/scene/ownership changes clear without stale worlds [15.66ms]
+(pass) ranges use each family and the session override, with no next tier for disabled/max variants [2.67ms]
+(pass) range circle projects actual horizontal distance and centre, follows moves/camera/tiers and reuses its buffers [13.63ms]
+(pass) row and Upgrade previews switch without selection, buying or world mutation and clear at lifecycle boundaries [16.35ms]
+
+ 29 pass
+ 0 fail
+ 297907 expect() calls
+Ran 29 tests across 4 files. [210.00ms]

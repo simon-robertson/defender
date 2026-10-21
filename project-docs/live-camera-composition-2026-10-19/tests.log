@@ -1,0 +1,50 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-action-camera.test.js:
+(pass) empty/title preparation never takes camera ownership; bind and release never move a user view [1.02ms]
+(pass) sparse combat closes in smoothly with fixed orientation, finite bounded motion and no long-frame leap [2.54ms]
+(pass) spread fronts and engaged gun envelopes fit wide and portrait views without selecting scheduled enemies or mutating targeting [3.93ms]
+(pass) look-ahead follows actual route through a corner and clamps at exit rather than wrapping [0.23ms]
+(pass) fixed-clock damping agrees at30/60/120Hz and moving-route framing has no material frame-rate drift [2.63ms]
+(pass) death context survives busy gunfire and holds through four-second settling, then returns smoothly only once [1.18ms]
+(pass) recent death interest expires without a settling phase and paused time freezes view, hold and event lifetime [0.79ms]
+(pass) manual drag/key holds, disable/resume and preparation takeover never fight the player or snap on resuming [0.72ms]
+(pass) takeover from extreme manual zoom/pan returns within speed limits instead of clamping to auto bounds [3.83ms]
+(pass) event timestamps follow actual bounded engine time rather than a longer browser-frame delta [0.20ms]
+(pass) zero-hold preparation takeover cancels the return but lets the next wave own the camera immediately [0.83ms]
+(pass) real A1/A2 fights anticipate guns before engagement and keep their animated meshes readable on laptop/desktop frames [4414.62ms]
+
+tests/play-presentation.test.js:
+(pass) title framing covers every viewport corner with landscape across portrait and widescreen [0.26ms]
+
+tests/play-live-camera.test.js:
+(pass) live perspective with handheld roll retains invertible camera matrices and the supplied eye height [0.21ms]
+(pass) arming, enabling midwave, pause, settlement, toggle off and scene release retain the gameplay overview [957.97ms]
+(pass) nearby explosions create a bounded flinch while distant blasts and inactive cameras do not [966.02ms]
+{"levelIndex":0,"hz":30,"travelled":209.54888888889266,"minFov":44.458382221406374,"maxFov":72.60610134029295,"minGunGap":65.87463214693366,"minEnemyGap":62.957744023615,"visible":0.8257191201353637,"held":0.34348561759729274,"readable":0.46362098138747887}
+{"levelIndex":0,"hz":60,"travelled":209.84888888889267,"minFov":44.326617113615896,"maxFov":72.60645775974562,"minGunGap":65.86683569478986,"minEnemyGap":62.85901958443605,"visible":0.8238780694326842,"held":0.3420829805249788,"readable":0.46316680779000846}
+{"levelIndex":0,"hz":120,"travelled":209.84888888889267,"minFov":44.26220217671396,"maxFov":72.60736210554043,"minGunGap":65.86460864231213,"minEnemyGap":62.80992431908102,"visible":0.8238034731046167,"held":0.3418043202033037,"readable":0.4633629817873782}
+{"levelIndex":1,"hz":30,"travelled":552.2244444444057,"minFov":40.00016375368392,"maxFov":69.66666666666669,"minGunGap":45.912966510857906,"minEnemyGap":104.06195955852695,"visible":0.8253521126760563,"held":0.10328638497652583,"readable":0.6328638497652582}
+{"levelIndex":1,"hz":60,"travelled":539.8866666666308,"minFov":40.00015589246394,"maxFov":69.83333333333334,"minGunGap":45.89771284546153,"minEnemyGap":104.55235440562596,"visible":0.8257397839361202,"held":0.13104744011272898,"readable":0.6608736496007516}
+{"levelIndex":1,"hz":120,"travelled":540.0366666666308,"minFov":40.000153983654464,"maxFov":69.91666666666667,"minGunGap":45.893354692572565,"minEnemyGap":104.55021582595522,"visible":0.8257397839361202,"held":0.1308125880695162,"readable":0.6611085016439643}
+(pass) actual A1/A2 operator journeys stay supported and scenery-clear, move usefully and never alter combat outcomes [5662.40ms]
+(pass) standoff routing avoids close approaches and permits retreat when action moves towards the operator [1008.84ms]
+(pass) a useful stationary shot stays planted instead of orbiting on a timer, and framing rejects foreground canopy [0.25ms]
+(pass) fast pans lean in opposite directions, settle smoothly and freeze with pause [1020.00ms]
+{"scenario":"reported-opening","travelled":367.8719151458703,"held":0.680952380952381,"readable":0.9257936507936508}
+(pass) the reported two-base-gun A1 opening holds shots and stays near the battle without constant running [1022.94ms]
+
+tests/camera.test.js:
+(pass) player camera can disable development path view without changing preview default [0.50ms]
+(pass) fixed title camera ignores zoom, drag and held keys, then restores normal controls [0.16ms]
+(pass) path view samples every path box and restores the complete overview [0.11ms]
+(pass) F ignores auto-repeat and text editing; frame exits path view and clears held input [0.07ms]
+(pass) path WASD is horizontal, camera-relative and frame-rate independent with normalized diagonals [0.26ms]
+(pass) path camera stays 12 above ground through stream beds, mounds and level edges [0.05ms]
+(pass) development drag rotates path view without translating; wheel cannot change FOV or height [0.06ms]
+(pass) 80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points [0.53ms]
+
+ 29 pass
+ 0 fail
+ 72389 expect() calls
+Ran 29 tests across 4 files. [15.11s]

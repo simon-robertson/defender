@@ -1,0 +1,164 @@
+{
+  "id": "ochre-03",
+  "sourceSha256": "6526551957ef7c52a3a14db0576ace1db3dac9263b73601bbb3cd3c173edf2c3",
+  "seconds": 60,
+  "hz": 30,
+  "routes": [
+    {
+      "id": "main",
+      "boxes": 45
+    },
+    {
+      "id": "eastern",
+      "boxes": 31
+    }
+  ],
+  "unionPathBoxes": 52,
+  "bridgeBoxes": 0,
+  "resources": {
+    "modelAssets": 11,
+    "opaqueEntries": 14,
+    "waterQuads": 10,
+    "visibilityPrimitives": 4505,
+    "visibilityBytes": 252252,
+    "planningBytes": 274900,
+    "explosionEventBytes": 320,
+    "groundNodes": 4529,
+    "treePerches": 15
+  },
+  "thinkCount": 1800,
+  "maxThinkWork": 14,
+  "envelopeChecks": 10806,
+  "meshPoseChecks": 366,
+  "rows": [
+    {
+      "id": "wildlife-ground-1",
+      "kind": "ground",
+      "start": [
+        462,
+        24,
+        378
+      ],
+      "reachableNodes": 14,
+      "farthestReach": 20,
+      "maxDisplacement": 17.888543819997505,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 11,
+      "completed": 11,
+      "thinkCount": 300,
+      "passed": false
+    },
+    {
+      "id": "wildlife-ground-2",
+      "kind": "ground",
+      "start": [
+        18,
+        24,
+        6
+      ],
+      "reachableNodes": 13,
+      "farthestReach": 24.331050121192877,
+      "maxDisplacement": 24.331050121192806,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 9,
+      "completed": 9,
+      "thinkCount": 300,
+      "passed": false
+    },
+    {
+      "id": "wildlife-ground-3",
+      "kind": "ground",
+      "start": [
+        430,
+        24,
+        6
+      ],
+      "reachableNodes": 1,
+      "farthestReach": 0,
+      "maxDisplacement": 0,
+      "visitedPerches": [],
+      "flightFrames": 0,
+      "accepted": 0,
+      "completed": 0,
+      "thinkCount": 300,
+      "passed": false
+    },
+    {
+      "id": "wildlife-bird-1",
+      "kind": "bird",
+      "start": [
+        179,
+        69,
+        59
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 374.7692623468472,
+      "visitedPerches": [
+        "b3-land-7-2",
+        "b3-land-18-13",
+        "b3-land-4-11",
+        "b3-land-18-11",
+        "b3-land-18-9",
+        "b3-land-17-10"
+      ],
+      "flightFrames": 1145,
+      "accepted": 6,
+      "completed": 5,
+      "thinkCount": 300,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-2",
+      "kind": "bird",
+      "start": [
+        445,
+        69,
+        251
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 339.4112549695428,
+      "visitedPerches": [
+        "b3-land-18-10",
+        "b3-land-19-13",
+        "b3-land-8-0",
+        "b3-land-6-13",
+        "b3-land-18-13"
+      ],
+      "flightFrames": 1160,
+      "accepted": 5,
+      "completed": 4,
+      "thinkCount": 300,
+      "passed": true
+    },
+    {
+      "id": "wildlife-bird-3",
+      "kind": "bird",
+      "start": [
+        155,
+        69,
+        325
+      ],
+      "reachableNodes": 0,
+      "farthestReach": 0,
+      "maxDisplacement": 333.56858365259757,
+      "visitedPerches": [
+        "b3-land-6-13",
+        "b3-land-1-0",
+        "b3-land-16-8",
+        "b3-land-18-12",
+        "b3-land-4-11"
+      ],
+      "flightFrames": 1107,
+      "accepted": 5,
+      "completed": 4,
+      "thinkCount": 300,
+      "passed": true
+    }
+  ],
+  "passed": false,
+  "released": true
+}

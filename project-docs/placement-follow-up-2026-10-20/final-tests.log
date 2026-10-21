@@ -1,0 +1,151 @@
+bun test v1.4.2 (744846f84)
+
+tests/water-impact.test.js:
+(pass) water surface queries span neighbouring cells and exclude dry or upward crossings [0.36ms]
+(pass) real debris crosses water once, transfers momentum and sinks without smoke, light or solid bounce [2.75ms]
+(pass) solid bridges win over underlying water and dry impacts create no splash [0.84ms]
+(pass) droplets have a ballistic apex, descending velocity and finite water contact lifetime [0.14ms]
+(pass) larger faster debris creates a stronger bounded disturbance and event exhaustion is explicit [0.83ms]
+(pass) water clocks pause exactly, reset retains optional bindings and disposal drops level references [0.17ms]
+(pass) surface crossing remains single and downward at30/60/120Hz including a long frame [0.52ms]
+
+tests/play-route-clearance.test.js:
+(pass) height-specific walking envelopes contain complete native articulated voxels throughout all B/C routes [2783.85ms]
+(pass) later campaign courts recover narrow-body clearance while paths and real conflicts stay protected [5199.78ms]
+
+tests/missile-flight.test.js:
+(pass) fixed missiles are seated at actual transformed sockets; loaded rounds never produce thrust [384.28ms]
+(pass) boost, unpowered moving turn and reignition are distinct and keep their exact phase timing [22.51ms]
+(pass) every powered missile has one reusable warm exhaust light following its actual tail [21.43ms]
+(pass) the second burn enlarges flame and core and strengthens its light without changing boost [21.70ms]
+(pass) missiles consume finite magazines, never top up early and fully refill only after the last-launch reload [71.39ms]
+(pass) real nose contact damages once after travel; prediction intercepts a straight moving enemy beyond launch range [58.37ms]
+(pass) reignition commits one velocity-based intercept and a later enemy turn can produce a real miss [27.20ms]
+(pass) admission uses inclusive horizontal range without intercept rejection; lost or wrapped targets discard without retargeting [85.76ms]
+(pass) prediction and a final death destination use the articulated aim point and its full velocity [21.65ms]
+(pass) quad motion follows actual root translation independently of torso aim and root yaw [21.18ms]
+(pass) contact bounds build only for queried targets and refresh after zero-delta motion or reset [22.24ms]
+(pass) death during any flight phase freezes the final enemy position without snapping, retargeting or damage [72.23ms]
+(pass) frozen-position flights retain fallback coordinates and pass swept arrival before scenery or lifetime limits [64.37ms]
+(pass) homing maintains full cruise speed through close live-target and frozen-point arrivals [43.48ms]
+(pass) terminal cutoff latches at the nose threshold and preserves velocity and attitude through a later death [21.29ms]
+(pass) swept scenery collision blocks travel, and uneven frames or stalls cannot tunnel or replay damage [21.81ms]
+(pass) surface events choose the earliest static face regardless of BVH leaf order [21.42ms]
+(pass) animated quad contacts report world surface coordinates and outward rotated normals [21.18ms]
+(pass) missile effects are absent on stalls, reset, invalidation, expiry and off-map release [127.68ms]
+(pass) unreachable moving targets receive a bounded prediction and retire without damage [22.07ms]
+(pass) pool exhaustion defers a complete refill and reset releases every flight while keeping clocks [22.75ms]
+(pass) three same-frame 75-damage launches cover225HP exactly across silos and hold the fourth [25.74ms]
+(pass) a silo credits its own captured round and resumes a held partial magazine only when that claim ends [22.71ms]
+(pass) flight claims validate exact live identity and lap before simulation and ignore loaded or failed launches [233.76ms]
+(pass) an arriving round releases its claim before visibility, impact and damage callbacks without dropping other flights [22.01ms]
+(pass) static contact drops its incoming claim before the impact callback [21.45ms]
+(pass) unknown health cannot falsely mark a missile target as lethally covered [85.89ms]
+(pass) launch admission waits for a clear full flight, preserves ammo and readiness, and rechecks a changed target [27.19ms]
+(pass) flight smoke follows the real powered attack tail at fixed cadence and stops on terminal cutoff [68.09ms]
+
+tests/wildlife-preview.test.js:
+(pass) each zone adds only six cosmetic actors and two shared source models, independently of combat actors [743.79ms]
+(pass) autonomous journeys cross paths while avoiding water, scenery and other ground critters in every zone [917.31ms]
+(pass) only one round-robin thinker runs per frame, using stable bounded state and shared scratch [163.38ms]
+(pass) accepted journeys use elapsed seconds independent of frame subdivision [311.50ms]
+(pass) hares use faster longer low hops and complete short journeys without a final vertical snap [158.59ms]
+(pass) a ground critter blocked mid-hop settles on the ground before retrying [149.25ms]
+(pass) invalid habitats/perches fail closed and unload drops every actor and navigation reference [341.32ms]
+(pass) nearby live enemies cause continuous ground escape, dead enemies do not and safe flee routes persist [173.04ms]
+(pass) explosions use a fixed copied event pool, expire, and only the scheduled actor reacts [131.98ms]
+(pass) doubled explosion fright radii reach ground, perched and flying wildlife in the new 3D annulus [1290.51ms]
+(pass) bird flights are twice as fast, use 3D threat distance and react from both perch and mid-flight [175.28ms]
+(pass) bird clearance encloses all turret variants through pitched recoil and yaw [264.16ms]
+
+tests/play-deployment.test.js:
+(pass) wave overrides survive reset and reused slots receive the next profile without changing defaults or wildlife [1455.51ms]
+(pass) real A1/A2 deployment edits retain landscape, camera, wildlife identities and valid journey progress [5738.14ms]
+(pass) repeated deployment edits reuse fixed instance/light capacity and release every scene buffer exactly once [31553.44ms]
+(pass) same-map wave preparation reuses Dog slots, hides old IDs and preserves wildlife/camera without fetching [2017.93ms]
+(pass) an animal on legal build ground respawns safely while deployment commits in place [1946.53ms]
+(pass) blocking a future ground route replans only affected journeys without moving current wildlife poses [1908.41ms]
+(pass) a bird occupying build ground returns to a clear supported perch without replacing its actor [1875.32ms]
+
+tests/missile-effects.test.js:
+(pass) missile contacts create a fast expanding surface-offset flash and light without damage, debris, smoke or waves [1.19ms]
+(pass) missile flash tuning leaves enemy death expansion, colour, light and timing unchanged [1.03ms]
+(pass) the shared flash budget replaces old missile flashes while every active death blast retains priority [1.49ms]
+(pass) launch smoke is immediately visible around the mouth and drifts outward and upward before expiry [0.52ms]
+(pass) launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse [2.00ms]
+(pass) missile effect reset reuses every pool and payload, including a scene with no enemy emitters [0.30ms]
+(pass) attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse [1.31ms]
+
+tests/damage-effects.test.js:
+(pass) enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts [1.63ms]
+(pass) damage smoke starts strictly below half health, rises, expires and stops emitting on death [0.26ms]
+(pass) explosions add no smoke while existing living-damage puffs finish naturally [0.75ms]
+(pass) dominant debris colours are weighted by visible model area and stay in linear model colour space [0.21ms]
+(pass) smoke, fragments, blast, light and wave share the current transformed body centre [0.15ms]
+(pass) smoke blends by current projected depth instead of radial camera distance [0.10ms]
+(pass) swept debris cannot tunnel through thin scenery and lands on roofs rather than the ground below [0.26ms]
+(pass) all flight cubes bounce, settle flat on a real surface, rest 1.5 seconds then vanish [6.48ms]
+(pass) resting debris can sit on scenery tops and low stream beds without treating water as solid [0.25ms]
+(pass) pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work [10.94ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [835.67ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [1039.38ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [1000.15ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [687.63ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.27ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2317.68ms]
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [9.37ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [1.38ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [1.17ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [299.03ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.92ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [329.45ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [642.03ms]
+182 |   r.render(1/60,1/60);expect(r.damageBytes).toBe(0);expect(r.damageCubeBuffer).toBeUndefined();expect(r.damageParticleBuffer).toBeUndefined();expect(f.allocated.length).toBe(allocated);expect(labels(f)).toEqual([DISPLAY]);
+183 |   damage.cubeCount=1;damage.cubeRevision++;damage.smokeCount=damage.blastCount=1;damage.waterParticleCount=2;damage.particleCount=4;
+184 |   f.effects.lightCount=8;f.effects.lightData[0]=8;for(let i=0;i<64;i++)f.effects.lightData[4+i]=i+1;
+185 |   damage.lightCount=4;damage.lightData[0]=4;for(let i=0;i<32;i++)damage.lightData[4+i]=101+i;
+186 |   f.reset();r.render(1/60,2/60);
+187 |   expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,...BLOOM,DISPLAY]);expect(f.cameraUpdates).toBe(0);expect(r.damageBytes).toBe(37824);expect(r.sceneBuffers.size).toBe(scene);expect(f.allocated.length).toBe(allocated+3);
+                                                                                                                                ^
+error: expect(received).toBe(expected)
+
+Expected: 37824
+Received: 50112
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/renderer.test.js:187:123)
+(fail) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [3.19ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [2.35ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [2.87ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [46.67ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [18.39ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [2138.34ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [26.64ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [20.21ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [3.58ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [2.33ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [20.38ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.73ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [3.05ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [2.88ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [2.35ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [163.29ms]
+(pass) camera lens is lazy, processes the entire scene after shockwaves, and leaves the normal display untouched [2.46ms]
+(pass) camera lens reuses pipelines through toggles and releases viewport/scene images exactly once [2.20ms]
+(pass) drone depth of field retains its focus and pixel-scaled blur through repeated enabled frames [2.10ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [2.20ms]
+
+tests/play-entrance-markers.test.js:
+(pass) every campaign approach has an inward entry anchor, including branches and shared-start deduplication [2.11ms]
+(pass) entry badges project with the overview, hide in Drone/title, and clear between areas [0.40ms]
+
+1 tests failed:
+(fail) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [3.19ms]
+
+ 108 pass
+ 1 fail
+ 2860408 expect() calls
+Ran 109 tests across 10 files. [70.80s]

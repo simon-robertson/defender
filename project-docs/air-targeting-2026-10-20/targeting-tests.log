@@ -1,0 +1,76 @@
+bun test v1.4.2 (744846f84)
+
+tests/turret-pitch.test.js:
+(pass) pitch servo preserves momentum but never crosses mechanical bounds during reversals, braking or stalls [2.62ms]
+(pass) pitch integration agrees across frame subdivisions within the hard stops [0.17ms]
+(pass) real gun joints aim their shared centreline above and below across every placed root turn [2.84ms]
+(pass) mechanically unreachable and missing heights cannot damage even with LOS disabled; reachable alternatives remain selectable [0.23ms]
+(pass) candidate pitch is separate from actual pose; height changes cancel bursts until both axes align [0.19ms]
+(pass) reset and lethal hits clear pitch lock state while preserving weapon time, rig matrices and bounded braking [0.12ms]
+
+tests/targeting.test.js:
+(pass) continuous yaw retains momentum through retargets while respecting speed and acceleration caps [0.88ms]
+(pass) static target tracking is independent of frame subdivisions with initial motion and angle wrapping [0.21ms]
+(pass) live targeting retains valid targets, uses stable-ID ties and includes the exact range boundary [0.19ms]
+(pass) aiming accounts for the placed root rotation and cannot fire before live alignment [0.69ms]
+(pass) candidate scans retain the selected projectile solution and reject unreachable locks [0.22ms]
+(pass) obstruction drops a lock, selects a visible in-range dog and cancels the old burst [0.11ms]
+(pass) both muzzle lines are required, while LOS is an explicit per-defence policy [0.16ms]
+(pass) LOS acquires from candidate-facing muzzles but checks actual yaw and recoil before a pulse [0.79ms]
+(pass) live burst pulses revalidate alignment and cancel after target departure, removal or replacement [0.74ms]
+(pass) live weapon stalls emit at most one currently validated shot and never compress pending burst gaps [0.48ms]
+(pass) the real dog loop is tracked with bounded errors and valid shot snapshots while reusing rig state [333.42ms]
+(pass) occupied scenery blocks a target at the exact range boundary and a clear dog replaces that lock [35.26ms]
+(pass) A showcase and alternative plots retain actual muzzle sightlines and complete yaw/pitch/recoil sweep clearance [250.42ms]
+(pass) articulated torso aim and velocity are distinct from the shared root range contract [0.17ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [68.45ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [46.76ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [42.19ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [181.16ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [72.80ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1334.37ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [980.01ms]
+
+tests/play-target-commitment.test.js:
+(pass) A1 wave 3 at the reported gun positions finishes acquired targets without unfired reconsideration [5519.70ms]
+
+tests/target-planner.test.js:
+(pass) equal threat follows time to exit, explicit threat can outweigh progress, and health breaks close urgency ties [0.36ms]
+(pass) unknown route metadata still ranks threat but never invents downstream capacity [0.05ms]
+(pass) explicitly disabled forecasts skip all route probes while default coverage and live eligibility remain intact [0.24ms]
+(pass) uncertified route aim offsets and banking skip probes and credit without excluding live gun hits [0.38ms]
+(pass) revoking route forecast eligibility clears an existing reservation without rejecting its live target [0.16ms]
+(pass) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [789.79ms]
+(pass) future projectile aiming does not borrow the hitscan damage forecast [0.10ms]
+(pass) impact recovery suspends route promises while keeping actual live shots eligible [0.10ms]
+(pass) an idle downstream owner accepts one explicit assignment when the upstream gun switches [0.07ms]
+(pass) a future reservation yields to a hittable uncovered flyer and revokes its promised damage [0.07ms]
+(pass) future reservations still wait when current alternatives are already covered and hold a hittable assignment [0.09ms]
+(pass) delegation requires the full margin and respects cooldown, visibility and weapon strength [0.23ms]
+(pass) incoming missile damage is credited once and only residual health needs the gun forecast margin [0.18ms]
+(pass) fully claimed missile damage releases old gun reservations and never recruits unnecessary owners [0.07ms]
+(pass) unknown health and invalid incoming values cannot manufacture a lethal damage claim [0.35ms]
+(pass) mixed families share actual incoming credit while only one thinker forecasts gun damage [0.66ms]
+(pass) capacity uses only the next continuous window and never counts a later preview lap [0.10ms]
+(pass) one downstream promise cannot be reused to delegate a different actor [0.14ms]
+(pass) an owner cannot abandon its reserved actor for a more urgent challenger [0.06ms]
+(pass) covered targets remain fireable when there is no uncovered alternative [0.07ms]
+(pass) near-equal urgency and a short hold preserve locks; a valid burst finishes before a discretionary switch [0.05ms]
+(pass) forecast counts single attack pulses, partial bursts and real cooldowns [0.02ms]
+(pass) one roster scan per frame rotates fairly and releases all planner references on disposal [0.14ms]
+(pass) death, departure and lap changes invalidate reservations instead of preserving spent promises [0.17ms]
+(pass) a stale current-target lock cannot recreate downstream confidence after its reservation lapses [0.05ms]
+(pass) an unreserved lock in a coverage gap cannot promise a disconnected later window [0.03ms]
+(pass) current turret capacity never covers itself and spent weapon time reduces a promise [0.05ms]
+(pass) roster growth reuses spare slots and gives unprofiled actors no speculative capacity [0.14ms]
+(pass) continuing burst forecasts require pitch alignment as well as yaw [0.04ms]
+(pass) non-thinking turrets still reject invalid shots and cancel bursts every frame [0.20ms]
+(pass) gun acquisition survives priority changes through cooldown and its first valid burst [0.07ms]
+(pass) gun acquisition hold is bounded and cannot retain dead, blocked, removed or out-of-range targets [0.12ms]
+
+ 60 pass
+ 0 fail
+ 20791 expect() calls
+Ran 60 tests across 5 files. [9.73s]

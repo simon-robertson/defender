@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Missile flight review · Defender</title>
+<style>
+:root{color-scheme:dark;font:13px system-ui,sans-serif;background:#121816;color:#eee8d9}*{box-sizing:border-box}body{margin:0;padding:20px 28px}header{display:flex;align-items:center;justify-content:space-between;gap:20px}h1{font:32px Georgia,serif;font-weight:400;margin:0 0 8px}p{color:#a8b7aa;margin:0;line-height:1.6}a{color:#bbc9a2}canvas{width:100%;height:calc(100vh - 225px);min-height:360px;display:block;border:1px solid #3b4b3d;border-radius:8px;margin-top:18px;touch-action:none;cursor:grab}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:14px 0}label{display:flex;align-items:center;gap:8px}button,select{font:inherit;background:#263629;color:#eee8d9;border:1px solid #53664c;border-radius:5px;padding:8px 10px}button{cursor:pointer}button[aria-pressed=true]{background:#4a3b2f;border-color:#d39372}button:disabled,select:disabled{opacity:.5}#status{font-size:12px;color:#bbcca4}#error{color:#ed9375;white-space:pre-wrap}footer{font-size:11px;color:#8d9d90}input[type=range]{width:140px}
+</style></head><body>
+<header><div><h1>Missile flight review</h1><p>Vertical boost · Steering-jet turning coast · Committed second burn · Engine-off arrival · Physical impact</p></div><a href="/game/">Game preview ↗</a></header>
+<canvas id="scene" tabindex="0" aria-label="Production missile flight. Drag to orbit, right drag to pan, scroll to zoom."></canvas>
+<div class="controls">
+<label>Level<select id="level" disabled><option value="moss-03">A3 · Dog</option><option value="ochre-03">B3 · Walker</option><option value="plum-03">D3 · Spider</option></select></label>
+<label>Launcher<select id="variant" disabled><option value="base">Base</option><option value="upgrade1" selected>Upgrade 1</option><option value="upgrade2">Upgrade 2</option></select></label>
+<button id="night" disabled aria-pressed="false">Night</button><button id="close" disabled>Close view</button><button id="attitude" disabled>Missile close-up</button><button id="overview" disabled>Overview</button>
+<button id="boost" disabled>Boost · 250 ms</button><button id="coast" disabled>Coast · 700 ms</button><button id="homing" disabled>Attack · 1200 ms</button><button id="terminal" disabled>Engine cutoff</button>
+<button id="launch-smoke" disabled>Launch smoke</button><button id="enemy-impact" disabled>Enemy impact</button><button id="ground-impact" disabled>Miss → ground</button>
+<label>Age<input id="age" type="range" min="0" max="4000" step="10" value="250" disabled><output id="age-label">250 ms</output></label>
+<label>After impact<input id="impact-age" type="range" min="0" max="1800" step="10" value="140" disabled></label>
+<span id="status" role="status">Loading…</span></div><p id="error" role="alert"></p>
+<footer>Drag to orbit · Right/Shift drag or WASD to pan · Scroll to zoom · N for day/night. Real level, posed enemy and flight/rendering code; one frozen snapshot, no saved changes. Miss review moves the enemy after missile commitment.</footer>
+<script id="review-diagnostics" type="application/json">{"ready":false}</script><script type="module" src="/tools/missile-review.js"></script></body></html>

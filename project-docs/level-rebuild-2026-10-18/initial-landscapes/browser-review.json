@@ -1,0 +1,566 @@
+{
+  "stage": "superseded first landscape pass",
+  "levels": [
+    {
+      "actors": [
+        {
+          "health": 179.5,
+          "id": "preview-dog-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 230,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 225,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 192.5,
+          "id": "preview-roller-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 260,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-1",
+          "route": "main",
+          "routeLength": 456
+        },
+        {
+          "health": 9.5,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 456
+        }
+      ],
+      "alive": 6,
+      "arcs": [],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "a1-defence-1",
+          "shots": 19,
+          "strength": 12.5
+        },
+        {
+          "id": "a1-defence-2",
+          "shots": 43,
+          "strength": 12
+        },
+        {
+          "id": "a1-defence-3",
+          "shots": 13,
+          "strength": 10
+        }
+      ],
+      "id": "moss-01",
+      "lifecycle": {
+        "actors": 13,
+        "assets": [
+          "scenery-shrub",
+          "scenery-rock",
+          "scenery-oak-young",
+          "scenery-oak-tall",
+          "detail-grass",
+          "scenery-oak",
+          "scenery-cypress-short",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "detail-pebbles",
+          "detail-flowers",
+          "turret-study",
+          "power-generator",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 135,
+        "current": "moss-01",
+        "currentId": "moss-01",
+        "destroyedSceneBuffers": 0,
+        "geometryBytes": 1321904,
+        "lastUnload": null,
+        "level": 1,
+        "loads": 1,
+        "phase": "ready",
+        "requested": "moss-01",
+        "requestedId": "moss-01",
+        "requestedLevel": 1,
+        "requestedZone": "A",
+        "sceneBuffers": 135,
+        "unloads": 0,
+        "visibilityBytes": 422212,
+        "visibilityPrimitives": 7540,
+        "zone": "A"
+      },
+      "lights": 29,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-1",
+            "preview-roller-2",
+            "preview-moth-1",
+            "preview-moth-2"
+          ],
+          "boxes": 20,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6
+    },
+    {
+      "actors": [
+        {
+          "health": 180,
+          "id": "preview-dog-1",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 220,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 0,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 300,
+          "id": "preview-roller-1",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 0,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-1",
+          "route": "main",
+          "routeLength": 600
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 600
+        }
+      ],
+      "alive": 3,
+      "arcs": [
+        {
+          "id": "a2-defence-1",
+          "shots": 7
+        },
+        {
+          "id": "a2-defence-2",
+          "shots": 14
+        },
+        {
+          "id": "a2-defence-3",
+          "shots": 11
+        }
+      ],
+      "clock": 1,
+      "firing": [],
+      "id": "moss-02",
+      "lifecycle": {
+        "actors": 13,
+        "assets": [
+          "scenery-shrub",
+          "detail-pebbles",
+          "scenery-rock",
+          "detail-grass",
+          "scenery-oak-tall",
+          "scenery-oak",
+          "scenery-cypress-short",
+          "scenery-oak-young",
+          "detail-flowers",
+          "scenery-cypress",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "arc-spire",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss"
+        ],
+        "createdSceneBuffers": 261,
+        "current": "moss-02",
+        "currentId": "moss-02",
+        "destroyedSceneBuffers": 135,
+        "geometryBytes": 1479824,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-01",
+          "level": 1,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 2,
+        "loads": 2,
+        "phase": "ready",
+        "requested": "moss-02",
+        "requestedId": "moss-02",
+        "requestedLevel": 2,
+        "requestedZone": "A",
+        "sceneBuffers": 126,
+        "unloads": 1,
+        "visibilityBytes": 420252,
+        "visibilityPrimitives": 7505,
+        "zone": "A"
+      },
+      "lights": 21,
+      "loading": "false",
+      "missiles": [],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-1",
+            "preview-roller-2",
+            "preview-moth-1",
+            "preview-moth-2"
+          ],
+          "boxes": 26,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6
+    },
+    {
+      "actors": [
+        {
+          "health": 300,
+          "id": "preview-dog-1",
+          "route": "branch",
+          "routeLength": 528
+        },
+        {
+          "health": 300,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 210,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 360,
+          "id": "preview-roller-1",
+          "route": "branch",
+          "routeLength": 528
+        },
+        {
+          "health": 360,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 624
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-1",
+          "route": "branch",
+          "routeLength": 528
+        },
+        {
+          "health": 0,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 624
+        }
+      ],
+      "alive": 5,
+      "arcs": [],
+      "clock": 1,
+      "firing": [],
+      "id": "moss-03",
+      "lifecycle": {
+        "actors": 49,
+        "assets": [
+          "detail-grass",
+          "scenery-shrub",
+          "detail-pebbles",
+          "scenery-rock",
+          "scenery-cypress-short",
+          "scenery-oak-young",
+          "scenery-oak",
+          "scenery-oak-tall",
+          "scenery-cypress",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "detail-flowers",
+          "missile-launcher",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 129,
+        "current": "moss-03",
+        "currentId": "moss-03",
+        "destroyedSceneBuffers": 0,
+        "geometryBytes": 1414656,
+        "lastUnload": null,
+        "level": 3,
+        "loads": 1,
+        "phase": "ready",
+        "requested": "moss-03",
+        "requestedId": "moss-03",
+        "requestedLevel": 3,
+        "requestedZone": "A",
+        "sceneBuffers": 129,
+        "unloads": 0,
+        "visibilityBytes": 397460,
+        "visibilityPrimitives": 7098,
+        "zone": "A"
+      },
+      "lights": 19,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "a3-defence-1",
+          "shots": 2
+        },
+        {
+          "id": "a3-defence-2",
+          "shots": 4
+        },
+        {
+          "id": "a3-defence-3",
+          "shots": 5
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-2",
+            "preview-moth-2"
+          ],
+          "boxes": 27,
+          "id": "main"
+        },
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-roller-1",
+            "preview-moth-1"
+          ],
+          "boxes": 23,
+          "id": "branch"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6
+    },
+    {
+      "actors": [
+        {
+          "health": 262.5,
+          "id": "preview-dog-1",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 270,
+          "id": "preview-dog-2",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 270,
+          "id": "preview-dog-3",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 322.5,
+          "id": "preview-roller-1",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 330,
+          "id": "preview-roller-2",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 180,
+          "id": "preview-moth-1",
+          "route": "main",
+          "routeLength": 672
+        },
+        {
+          "health": 60,
+          "id": "preview-moth-2",
+          "route": "main",
+          "routeLength": 672
+        }
+      ],
+      "alive": 7,
+      "arcs": [
+        {
+          "id": "a4-arc",
+          "shots": 5
+        }
+      ],
+      "clock": 1,
+      "firing": [
+        {
+          "id": "a4-gun",
+          "shots": 6,
+          "strength": 12.5
+        }
+      ],
+      "id": "moss-04",
+      "lifecycle": {
+        "actors": 49,
+        "assets": [
+          "detail-grass",
+          "scenery-oak-tall",
+          "scenery-shrub",
+          "scenery-rock",
+          "scenery-oak-young",
+          "scenery-cypress-short",
+          "scenery-oak",
+          "scenery-cypress",
+          "detail-pebbles",
+          "scenery-ruin-pillar",
+          "scenery-ruin-wall",
+          "detail-flowers",
+          "turret-study",
+          "power-generator",
+          "arc-spire",
+          "missile-launcher",
+          "dog",
+          "roller",
+          "moth",
+          "wildlife-hare-moss",
+          "wildlife-bird-moss",
+          "guided-missile"
+        ],
+        "createdSceneBuffers": 272,
+        "current": "moss-04",
+        "currentId": "moss-04",
+        "destroyedSceneBuffers": 134,
+        "geometryBytes": 1519208,
+        "lastUnload": {
+          "actors": 0,
+          "arcBytes": 0,
+          "arcLights": 0,
+          "arcSparks": 0,
+          "arcStrikes": 0,
+          "assets": 0,
+          "geometryBytes": 0,
+          "id": "moss-03",
+          "level": 3,
+          "missileThrustBytes": 0,
+          "missileThrustInstances": 0,
+          "plasmaBytes": 0,
+          "plasmaLinks": 0,
+          "rigs": 0,
+          "sceneBuffers": 0,
+          "shotInstances": 0,
+          "shotLights": 0,
+          "visibilityBytes": 0,
+          "zone": "A"
+        },
+        "level": 4,
+        "loads": 2,
+        "phase": "ready",
+        "requested": "moss-04",
+        "requestedId": "moss-04",
+        "requestedLevel": 4,
+        "requestedZone": "A",
+        "sceneBuffers": 138,
+        "unloads": 1,
+        "visibilityBytes": 531188,
+        "visibilityPrimitives": 9486,
+        "zone": "A"
+      },
+      "lights": 25,
+      "loading": "false",
+      "missiles": [
+        {
+          "id": "a4-silo",
+          "shots": 2
+        }
+      ],
+      "overflow": 0,
+      "routes": [
+        {
+          "actors": [
+            "preview-dog-1",
+            "preview-dog-2",
+            "preview-dog-3",
+            "preview-roller-1",
+            "preview-roller-2",
+            "preview-moth-1",
+            "preview-moth-2"
+          ],
+          "boxes": 29,
+          "id": "main"
+        }
+      ],
+      "weatherParticles": 0,
+      "wildlife": 6
+    }
+  ]
+}

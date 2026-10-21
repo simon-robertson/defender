@@ -1,0 +1,330 @@
+{
+  "measurement": "Operation counts and exact deterministic equivalence; no CPU/GPU timing or FPS measurement.",
+  "baselineRoot": "/private/tmp/defender-perf-20261018-jl1q_hdw",
+  "currentRoot": "/Users/simon/Development/codex/defender",
+  "framesPerScene": 2400,
+  "deltaSeconds": 0.016666666666666666,
+  "randomSeed": 232,
+  "assetPolicy": "Both runs use the current root assets. No models or levels changed in this maintenance pass.",
+  "actors": "Production enemies and missiles; no wildlife, renderer or cosmetic effect pools.",
+  "trace": "Every-frame health, aiming/movement, weapon target/cadence, missile flight state, all actor matrix bytes; separate exact hit-event digest.",
+  "results": [
+    {
+      "kind": "before",
+      "id": "moss-01",
+      "frames": 2400,
+      "profileSamples": 2091,
+      "boundBuilds": 0,
+      "neededBuilds": 0,
+      "shots": [
+        9,
+        62,
+        5
+      ],
+      "hits": [
+        25,
+        25,
+        26
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "2e2116125643b16822a1a744c86f85286779de7ee619b4bd782d2c52e9cf15c9",
+      "hitTrace": "e7198b3abd32a40b1b9963c60a8b7a0effad8c6f2b6204be3b0682b580e3095b"
+    },
+    {
+      "kind": "before",
+      "id": "moss-02",
+      "frames": 2400,
+      "profileSamples": 2091,
+      "boundBuilds": 0,
+      "neededBuilds": 0,
+      "shots": [
+        2,
+        8,
+        10
+      ],
+      "hits": [
+        8,
+        6,
+        6
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "69818db0ac5821df9b97b8495fc7940dcdc5570c877b9d331412b403ed37edd8",
+      "hitTrace": "d9457127d1a1432b9730a99d5a41a1a1c17254f50a06061efe15b8631b03dcc7"
+    },
+    {
+      "kind": "before",
+      "id": "moss-03",
+      "frames": 2400,
+      "profileSamples": 2091,
+      "boundBuilds": 2166,
+      "neededBuilds": 1245,
+      "shots": [
+        2,
+        7,
+        6
+      ],
+      "hits": [
+        5,
+        4,
+        4
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "91affe0f115bd9f9d6bf4f59dcd67cc84b0e50de65386147207ecb3cbe07c285",
+      "hitTrace": "ef4762999f44b74205f3bac72daca9c3e74cf73f5fd064ca0859b7d9019b0826"
+    },
+    {
+      "kind": "before",
+      "id": "ochre-03",
+      "frames": 2400,
+      "profileSamples": 2451,
+      "boundBuilds": 2136,
+      "neededBuilds": 987,
+      "shots": [
+        3,
+        6,
+        4
+      ],
+      "hits": [
+        5,
+        4,
+        4
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "e12f6951a656be1be1a79f2ef45b243fdcbf473517b66dd03f9962b05cd5125c",
+      "hitTrace": "e9d0bfd083e68f97bfbdcfb81b5b7eec3be8e347a8ffe66c4665d529999e05c1"
+    },
+    {
+      "kind": "before",
+      "id": "plum-03",
+      "frames": 2400,
+      "profileSamples": 2163,
+      "boundBuilds": 2112,
+      "neededBuilds": 924,
+      "shots": [
+        2,
+        4,
+        7
+      ],
+      "hits": [
+        5,
+        4,
+        4
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "58939554862fda5b73e3190eee1b2c974c2e7fe5abb913707194073e3fbf3bc2",
+      "hitTrace": "9e571fc6400c7338f09614504081addff2823f228b48b8c13f59513951516f73"
+    },
+    {
+      "kind": "after",
+      "id": "moss-01",
+      "frames": 2400,
+      "profileSamples": 2091,
+      "boundBuilds": 0,
+      "neededBuilds": 0,
+      "shots": [
+        9,
+        62,
+        5
+      ],
+      "hits": [
+        25,
+        25,
+        26
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "2e2116125643b16822a1a744c86f85286779de7ee619b4bd782d2c52e9cf15c9",
+      "hitTrace": "e7198b3abd32a40b1b9963c60a8b7a0effad8c6f2b6204be3b0682b580e3095b"
+    },
+    {
+      "kind": "after",
+      "id": "moss-02",
+      "frames": 2400,
+      "profileSamples": 0,
+      "boundBuilds": 0,
+      "neededBuilds": 0,
+      "shots": [
+        2,
+        8,
+        10
+      ],
+      "hits": [
+        8,
+        6,
+        6
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "69818db0ac5821df9b97b8495fc7940dcdc5570c877b9d331412b403ed37edd8",
+      "hitTrace": "d9457127d1a1432b9730a99d5a41a1a1c17254f50a06061efe15b8631b03dcc7"
+    },
+    {
+      "kind": "after",
+      "id": "moss-03",
+      "frames": 2400,
+      "profileSamples": 0,
+      "boundBuilds": 1245,
+      "neededBuilds": 1245,
+      "shots": [
+        2,
+        7,
+        6
+      ],
+      "hits": [
+        5,
+        4,
+        4
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "91affe0f115bd9f9d6bf4f59dcd67cc84b0e50de65386147207ecb3cbe07c285",
+      "hitTrace": "ef4762999f44b74205f3bac72daca9c3e74cf73f5fd064ca0859b7d9019b0826"
+    },
+    {
+      "kind": "after",
+      "id": "ochre-03",
+      "frames": 2400,
+      "profileSamples": 0,
+      "boundBuilds": 987,
+      "neededBuilds": 987,
+      "shots": [
+        3,
+        6,
+        4
+      ],
+      "hits": [
+        5,
+        4,
+        4
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "e12f6951a656be1be1a79f2ef45b243fdcbf473517b66dd03f9962b05cd5125c",
+      "hitTrace": "e9d0bfd083e68f97bfbdcfb81b5b7eec3be8e347a8ffe66c4665d529999e05c1"
+    },
+    {
+      "kind": "after",
+      "id": "plum-03",
+      "frames": 2400,
+      "profileSamples": 0,
+      "boundBuilds": 924,
+      "neededBuilds": 924,
+      "shots": [
+        2,
+        4,
+        7
+      ],
+      "hits": [
+        5,
+        4,
+        4
+      ],
+      "health": [
+        0,
+        0,
+        0
+      ],
+      "trace": "58939554862fda5b73e3190eee1b2c974c2e7fe5abb913707194073e3fbf3bc2",
+      "hitTrace": "9e571fc6400c7338f09614504081addff2823f228b48b8c13f59513951516f73"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "moss-01",
+      "exactTrace": true,
+      "exactHits": true,
+      "routeSamples": [
+        2091,
+        2091
+      ],
+      "worldBoundBuilds": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "moss-02",
+      "exactTrace": true,
+      "exactHits": true,
+      "routeSamples": [
+        2091,
+        0
+      ],
+      "worldBoundBuilds": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "moss-03",
+      "exactTrace": true,
+      "exactHits": true,
+      "routeSamples": [
+        2091,
+        0
+      ],
+      "worldBoundBuilds": [
+        2166,
+        1245
+      ]
+    },
+    {
+      "id": "ochre-03",
+      "exactTrace": true,
+      "exactHits": true,
+      "routeSamples": [
+        2451,
+        0
+      ],
+      "worldBoundBuilds": [
+        2136,
+        987
+      ]
+    },
+    {
+      "id": "plum-03",
+      "exactTrace": true,
+      "exactHits": true,
+      "routeSamples": [
+        2163,
+        0
+      ],
+      "worldBoundBuilds": [
+        2112,
+        924
+      ]
+    }
+  ]
+}

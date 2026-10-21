@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Missile launcher model review · Defender</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#121816;color:#f1e8d5}*{box-sizing:border-box}body{margin:0;padding:22px 32px;max-width:1500px;margin-inline:auto}header{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #344338;padding-bottom:16px}nav{display:flex;gap:20px}a{color:#b8ca9b;text-decoration:none;font-size:13px}.eyebrow{font-size:10px;letter-spacing:.2em;color:#b6c29e;text-transform:uppercase}h1{font-family:Georgia,serif;font-weight:400;font-size:36px;margin:20px 0 6px}p{color:#a6b1a5;font-size:13px;line-height:1.6;margin:0}.viewport{margin-top:20px;border:1px solid #344338;border-radius:8px;overflow:hidden;background:#262b29}canvas{display:block;width:100%;height:clamp(360px,53vh,620px);touch-action:none;cursor:grab;outline-offset:-3px}.variants{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;margin-top:18px}.variants h2{font-family:Georgia,serif;font-size:23px;font-weight:400;margin:0 0 5px}.variants p{font-size:12px}.controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:16px 0;margin-top:18px;border-top:1px solid #344338}label{font-size:12px;display:flex;align-items:center;gap:8px}button,select{font:inherit;color:#f1e8d5;background:#253128;border:1px solid #4b5b46;border-radius:6px;padding:8px 12px}button{cursor:pointer}button:disabled,select:disabled{opacity:.5;cursor:default}button[aria-pressed="true"]{border-color:#d4856a;background:#49352d}.swatches{display:flex;gap:4px;margin-top:8px}.swatches span{width:22px;height:9px}#review-status{font-size:12px;color:#b7c994}#error{color:#e67c60;white-space:pre-wrap;margin-top:8px}footer{font-size:11px;line-height:1.7;color:#89978b;margin-top:14px}@media(max-width:650px){body{padding:16px 12px}header{flex-wrap:wrap}h1{font-size:30px}canvas{height:410px}.variants{gap:8px}.variants h2{font-size:18px}.variants p{font-size:11px}.controls{gap:10px}nav{gap:14px}}
+</style>
+</head>
+<body>
+<header><span class="eyebrow">Defender / model review</span><nav><a href="/">Workshop ↗</a><a href="/game/">Game preview ↗</a></nav></header>
+<h1>Missile launcher</h1>
+<p>Vertical launch defence · Base and two upgrades with loaded missiles</p>
+<div class="viewport"><canvas id="scene" tabindex="0" aria-label="Missile launcher defence models. Drag to orbit, shift-drag to pan, scroll to zoom."></canvas></div>
+<div class="variants">
+ <article data-variant="base"><h2>Base</h2><p id="base-stats">Loading geometry…</p></article>
+ <article data-variant="upgrade1"><h2>Upgrade 1</h2><p id="upgrade1-stats">Loading geometry…</p></article>
+ <article data-variant="upgrade2"><h2>Upgrade 2</h2><p id="upgrade2-stats">Loading geometry…</p></article>
+</div>
+<div class="controls">
+ <label>Inspect<select id="variant" disabled><option value="all">All three</option><option value="base">Base</option><option value="upgrade1">Upgrade 1</option><option value="upgrade2">Upgrade 2</option></select></label>
+ <label>Palette<select id="zone" disabled><option value="A">A · Moss &amp; Porcelain</option><option value="B">B · Ochre &amp; Petrol</option><option value="C">C · Ice &amp; Ember</option><option value="D">D · Plum &amp; Mint</option></select></label>
+ <button id="night" disabled aria-pressed="false">Night</button><button id="reset" disabled>Reset view</button>
+ <span id="review-status" role="status">Loading models…</span>
+</div>
+<div id="palette" class="swatches" aria-label="Current model material colours"></div>
+<footer>Drag to orbit · Shift/right-drag to pan · Scroll to zoom · N for day/night<br>Actual model geometry · Matte surfaces · 2 / 4 / 6 loaded missiles · Live flight testing in each zone’s level 3</footer>
+<p id="error" role="alert"></p>
+<script id="review-diagnostics" type="application/json">{"ready":false}</script>
+<script type="module" src="/tools/missile-launcher-review.js"></script>
+</body>
+</html>

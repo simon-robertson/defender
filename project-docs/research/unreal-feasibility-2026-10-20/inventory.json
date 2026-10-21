@@ -1,0 +1,2190 @@
+{
+  "scope": "Read-only JSON/mesh availability inventory; no Unreal installation, connection, import, build or performance test.",
+  "modelSourceCount": 68,
+  "levelSourceCount": 18,
+  "campaignLevelCount": 16,
+  "waveCount": 64,
+  "enemySpawnCount": 1084,
+  "playableDefenceFamilies": [
+    "turret-study",
+    "arc-spire",
+    "missile-launcher"
+  ],
+  "sampleMeshes": [
+    {
+      "id": "scenery-rock",
+      "variants": {
+        "base": {
+          "parts": 1,
+          "vertices": 508,
+          "triangles": 254
+        },
+        "upgrade1": {
+          "parts": 1,
+          "vertices": 0,
+          "triangles": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "vertices": 0,
+          "triangles": 0
+        }
+      }
+    },
+    {
+      "id": "dog",
+      "variants": {
+        "base": {
+          "parts": 13,
+          "vertices": 1208,
+          "triangles": 604
+        },
+        "upgrade1": {
+          "parts": 1,
+          "vertices": 0,
+          "triangles": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "vertices": 0,
+          "triangles": 0
+        }
+      }
+    },
+    {
+      "id": "turret-study",
+      "variants": {
+        "base": {
+          "parts": 3,
+          "vertices": 2652,
+          "triangles": 1326
+        },
+        "upgrade1": {
+          "parts": 3,
+          "vertices": 3116,
+          "triangles": 1558
+        },
+        "upgrade2": {
+          "parts": 3,
+          "vertices": 3040,
+          "triangles": 1520
+        }
+      }
+    },
+    {
+      "id": "missile-launcher",
+      "variants": {
+        "base": {
+          "parts": 1,
+          "vertices": 632,
+          "triangles": 316
+        },
+        "upgrade1": {
+          "parts": 1,
+          "vertices": 860,
+          "triangles": 430
+        },
+        "upgrade2": {
+          "parts": 1,
+          "vertices": 936,
+          "triangles": 468
+        }
+      }
+    },
+    {
+      "id": "guided-missile",
+      "variants": {
+        "base": {
+          "parts": 1,
+          "vertices": 136,
+          "triangles": 68
+        },
+        "upgrade1": {
+          "parts": 1,
+          "vertices": 0,
+          "triangles": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "vertices": 0,
+          "triangles": 0
+        }
+      }
+    },
+    {
+      "id": "drone-defence",
+      "variants": {
+        "base": {
+          "parts": 12,
+          "vertices": 1464,
+          "triangles": 732
+        },
+        "upgrade1": {
+          "parts": 12,
+          "vertices": 1584,
+          "triangles": 792
+        },
+        "upgrade2": {
+          "parts": 12,
+          "vertices": 1620,
+          "triangles": 810
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "arc-spire",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "defence",
+      "materials": 17,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 4212,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 5476,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 7308,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "detail-flowers",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 30,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "detail-grass",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 38,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "detail-pebbles",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 141,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "dog",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 11,
+      "variants": {
+        "base": {
+          "parts": 13,
+          "voxels": 1100,
+          "pivots": true,
+          "parentedParts": 12
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "drone-defence",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "defence",
+      "materials": 17,
+      "variants": {
+        "base": {
+          "parts": 12,
+          "voxels": 1840,
+          "pivots": true,
+          "parentedParts": 10
+        },
+        "upgrade1": {
+          "parts": 12,
+          "voxels": 1952,
+          "pivots": true,
+          "parentedParts": 10
+        },
+        "upgrade2": {
+          "parts": 12,
+          "voxels": 2112,
+          "pivots": true,
+          "parentedParts": 10
+        }
+      }
+    },
+    {
+      "id": "dune-tread",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 8,
+      "variants": {
+        "base": {
+          "parts": 7,
+          "voxels": 1166,
+          "pivots": true,
+          "parentedParts": 6
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "guided-missile",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "unspecified",
+      "materials": 17,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 64,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-fir-young",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2264,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-fir",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 5924,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-flowers",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 19,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-pebbles",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 122,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-pillar-broken",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3660,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-pillar",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 6326,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-rock",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2672,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-shrub",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 1130,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-tuft",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 31,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ice-wall",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3308,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "lantern",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 8,
+      "variants": {
+        "base": {
+          "parts": 2,
+          "voxels": 606,
+          "pivots": true,
+          "parentedParts": 1
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "missile-launcher",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "defence",
+      "materials": 17,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3576,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 5808,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 7464,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "moth",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 8,
+      "variants": {
+        "base": {
+          "parts": 5,
+          "voxels": 362,
+          "pivots": true,
+          "parentedParts": 4
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-cactus-young",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 1449,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-cactus",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2966,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-flowers",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 19,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-mesa-low",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 6783,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-mesa",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 10800,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-pebbles",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 94,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-rock",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2463,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-shrub",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 621,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-tuft",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 172,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ochre-wall",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2654,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-arch-broken",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 1961,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-arch",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3486,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-flowers",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 28,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-pebbles",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 126,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-rock",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2549,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-shrub",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 953,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-tree-tall",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3249,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-tree-young",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 1831,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-tree",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3711,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-tuft",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 36,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "plum-wall",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3059,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "power-generator",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "defence",
+      "materials": 17,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3790,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 5074,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 6070,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "ray",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 8,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 516,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "roller",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 8,
+      "variants": {
+        "base": {
+          "parts": 3,
+          "voxels": 1574,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-cypress-short",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2292,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-cypress",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 4222,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-oak-tall",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 4821,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-oak-young",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2208,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-oak",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 5684,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-rock",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2268,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-ruin-pillar",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 3169,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-ruin-wall",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 2586,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "scenery-shrub",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 15,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 971,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "spider",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 11,
+      "variants": {
+        "base": {
+          "parts": 13,
+          "voxels": 740,
+          "pivots": true,
+          "parentedParts": 12
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "tripod",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 8,
+      "variants": {
+        "base": {
+          "parts": 10,
+          "voxels": 604,
+          "pivots": true,
+          "parentedParts": 9
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "turret-study",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "defence",
+      "materials": 17,
+      "variants": {
+        "base": {
+          "parts": 3,
+          "voxels": 4694,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade1": {
+          "parts": 3,
+          "voxels": 5365,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade2": {
+          "parts": 3,
+          "voxels": 5884,
+          "pivots": true,
+          "parentedParts": 2
+        }
+      }
+    },
+    {
+      "id": "twin-fan",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 8,
+      "variants": {
+        "base": {
+          "parts": 3,
+          "voxels": 426,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "walker",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "enemy",
+      "materials": 12,
+      "variants": {
+        "base": {
+          "parts": 7,
+          "voxels": 926,
+          "pivots": true,
+          "parentedParts": 6
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-beetle-plum",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 5,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 76,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-bird-ice",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 6,
+      "variants": {
+        "base": {
+          "parts": 3,
+          "voxels": 48,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-bird-moss",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 6,
+      "variants": {
+        "base": {
+          "parts": 3,
+          "voxels": 48,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-bird-ochre",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 6,
+      "variants": {
+        "base": {
+          "parts": 3,
+          "voxels": 48,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-bird-plum",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 6,
+      "variants": {
+        "base": {
+          "parts": 3,
+          "voxels": 48,
+          "pivots": true,
+          "parentedParts": 2
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-fish",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 5,
+      "variants": {
+        "base": {
+          "parts": 2,
+          "voxels": 43,
+          "pivots": true,
+          "parentedParts": 1
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-hare-ice",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 7,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 158,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-hare-moss",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 7,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 158,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    },
+    {
+      "id": "wildlife-lizard-ochre",
+      "schema": "defender.model",
+      "version": 3,
+      "role": "scenery",
+      "materials": 5,
+      "variants": {
+        "base": {
+          "parts": 1,
+          "voxels": 71,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade1": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        },
+        "upgrade2": {
+          "parts": 1,
+          "voxels": 0,
+          "pivots": true,
+          "parentedParts": 0
+        }
+      }
+    }
+  ],
+  "levels": [
+    {
+      "id": "ice-01",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 192,
+      "campaign": true
+    },
+    {
+      "id": "ice-02",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 185,
+      "campaign": true
+    },
+    {
+      "id": "ice-03",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 181,
+      "campaign": true
+    },
+    {
+      "id": "ice-04",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 178,
+      "campaign": true
+    },
+    {
+      "id": "layout-study",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 3,
+      "campaign": false
+    },
+    {
+      "id": "moss-01",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 231,
+      "campaign": true
+    },
+    {
+      "id": "moss-02",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 171,
+      "campaign": true
+    },
+    {
+      "id": "moss-03",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 194,
+      "campaign": true
+    },
+    {
+      "id": "moss-04",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 210,
+      "campaign": true
+    },
+    {
+      "id": "ochre-01",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 201,
+      "campaign": true
+    },
+    {
+      "id": "ochre-02",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 178,
+      "campaign": true
+    },
+    {
+      "id": "ochre-03",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 193,
+      "campaign": true
+    },
+    {
+      "id": "ochre-04",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 126,
+      "campaign": true
+    },
+    {
+      "id": "plum-01",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 200,
+      "campaign": true
+    },
+    {
+      "id": "plum-02",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 189,
+      "campaign": true
+    },
+    {
+      "id": "plum-03",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 167,
+      "campaign": true
+    },
+    {
+      "id": "plum-04",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 166,
+      "campaign": true
+    },
+    {
+      "id": "terrain-study",
+      "schema": "defender.level",
+      "version": 4,
+      "placements": 3,
+      "campaign": false
+    }
+  ],
+  "sourceHashes": {
+    "assets/models/arc-spire.json": "2080fcc80986b6f4a686ec0dbaacf154a68083f104f1b51d4f7c172c2ec1a5ce",
+    "assets/models/detail-flowers.json": "74de3a6f31e9229cc4ceec6a2612d5a6a77381c49a8f84dedf0feeb41c26bdc9",
+    "assets/models/detail-grass.json": "ee0e72703939771ebb6dfdc4ab2c5f46f74aa593da6339f54dc2d96a7a7c13cb",
+    "assets/models/detail-pebbles.json": "d89c91a2a90da269ad7fcd85439727718ade0a4054c790acebb690d8497930b1",
+    "assets/models/dog.json": "cb3c2784e7cf1217108ebff320c85ca4f128ed991ad441a83f03639db0993966",
+    "assets/models/drone-defence.json": "262ff26cf56820674fa8b79959cc49e91d197870426714b4d0be28fe552ff7a0",
+    "assets/models/dune-tread.json": "b28074b20003017e16941933ec0360e6ed203dc4c1e6635c3e825494e3ac2cf5",
+    "assets/models/guided-missile.json": "57d08a57785855d2bbea92c9dabbcbbd042ddafbce07e4528f0e605a94df339e",
+    "assets/models/ice-fir-young.json": "f64330df4e4c8e1c24117cd4730134d90bbb75b25fd0c30cae462374b91f3575",
+    "assets/models/ice-fir.json": "8573b64c5f65cd5089deee871c45322b7c39f3087b1da0568b0d2544eb160ebe",
+    "assets/models/ice-flowers.json": "8e3141fa3e32868c74748347416bd2163651e6df2fef477e9de552dc9eecd5bd",
+    "assets/models/ice-pebbles.json": "718f85ac3c7da4131b033c253e8dbe0339eb6cd9bca9b326afd3e73302be0f5d",
+    "assets/models/ice-pillar-broken.json": "540b6783756a0784521fcd61b0e7071a902d20ca625750f1fd2079f377edf58c",
+    "assets/models/ice-pillar.json": "9c0bea89d812080a9e8f77228e2ba626e800c26ff87461c962b22e88426030a5",
+    "assets/models/ice-rock.json": "45f2e59c1ef90f16aff98797af5b9f1d6cd9c2f8ec6a0a124a3c0885883615cd",
+    "assets/models/ice-shrub.json": "9a9757c8107ff89cbcf7cad45c748b271ead5d0a9ea8a1a46b324a2d8a13d736",
+    "assets/models/ice-tuft.json": "56b217bc1e956771f55397899485a680b60468ba428355d69250fc08512a4bc4",
+    "assets/models/ice-wall.json": "bbd4528947db5f30da033db1a9108274621ad87b3e9732c3fe699436e33e3898",
+    "assets/models/lantern.json": "1d839062e47a03a2b52fe7a14835ae75ecb1ab0b057490050d69ba65331e989d",
+    "assets/models/missile-launcher.json": "08da848e6ab09c95114fe8af10aa4a11223d0740046f8a7daf20d121f767654a",
+    "assets/models/moth.json": "17ad882980b3f688203ef7868e4b09fce941ca6f3dfa01804633aa9ce2f02642",
+    "assets/models/ochre-cactus-young.json": "8a55893ced06367fb8fea3ee97773198ca1299e018575e0f83cc399ea13dbcde",
+    "assets/models/ochre-cactus.json": "4c5d5a3a44d596df2622be6066cb11bb1725dc9226c1a096c7b1fad55c6bb8ba",
+    "assets/models/ochre-flowers.json": "f4497c8ed112dea79fe5fc9f6109937b5ff8fd3f4008c2d96d69460348e57bde",
+    "assets/models/ochre-mesa-low.json": "4386c06d40976d1c378070c5933bfff2bab84783987312b60714e4b152cd7cbe",
+    "assets/models/ochre-mesa.json": "184313df501a04bf64a66fccef49a3646b747ea1a2ed546165f8a0ff68575309",
+    "assets/models/ochre-pebbles.json": "ac11d0b66912e26c67c73fbd282c849f3637db6cd24a53c0e72ab2831d5484ff",
+    "assets/models/ochre-rock.json": "7e3667e5fab2b4d31fde22e7380c1cb33be64a1f0a732aead74c1ad45a464af3",
+    "assets/models/ochre-shrub.json": "1eedb56a6591ff1d8a10fdd88f3da8a755095576e2296b5bcc58a696649b9878",
+    "assets/models/ochre-tuft.json": "e5b4c87c83f7592a9505b9fb32afc93441d9855d858ca33549860051f00c038b",
+    "assets/models/ochre-wall.json": "9dcbb3726019bc1cace730e982daedc43cc8ee97343f4cbbf4af68a15d4198d0",
+    "assets/models/plum-arch-broken.json": "3715d6663a288f0f79eb06686b6b42d030d178e9b957cdf7c747cf040e826377",
+    "assets/models/plum-arch.json": "756917b17cc9000e36a5efed7d6b6739da9420405544b6d8a7da8242f6c60dc6",
+    "assets/models/plum-flowers.json": "873558eee637959d7cefe063fc6f2881a2dfa6f3b49eda3454aa495862300cb8",
+    "assets/models/plum-pebbles.json": "0668ae751724fbc019962ef9dd0d2684faa3944f66212d0519786b838464b3d3",
+    "assets/models/plum-rock.json": "eda3b34fc4766c987cc715a82ac4baf82121d3da7238253261e0db84a0099aec",
+    "assets/models/plum-shrub.json": "4420332ccb9c787baf9d57dab557e84d84f9d00d3804e3487de71f738d066510",
+    "assets/models/plum-tree-tall.json": "27e2cba49835418383276a7d281344c9b83e4d1a272002a3dff2ddefa6a27884",
+    "assets/models/plum-tree-young.json": "3257d12942918e8f1622968f215ba276c6f81844c5bfe8b65d6f91d945b22183",
+    "assets/models/plum-tree.json": "2d82bf7f944407b73f84ba69ec96ddae74453bfe037c125741d7c1445f5f2eb4",
+    "assets/models/plum-tuft.json": "a93d1db5437abc9f94dfa17378fbd82540d19730b0e86f39bf168e24708d22f5",
+    "assets/models/plum-wall.json": "bf8ef128bcd684d6972f508e76755cda4f8e1db2d30ad55c6ce5206c51d71b5a",
+    "assets/models/power-generator.json": "9356ddafdabab96dfd2c1c7ef4f61734218e9b3a1bea13c0a700434d314efd79",
+    "assets/models/ray.json": "701c38c8b3fbd5d2c8a7b9a04c002e64b5f64c8b1ca424869b87662f8e23e6ea",
+    "assets/models/roller.json": "b24c5f9584423b63990e51956ea44baed9d75daf32fc58fb0db5dd05d5461b65",
+    "assets/models/scenery-cypress-short.json": "c546b3b14aa7549c4ee134248588c06f62e878a4d4ea3387e55d05e4b46396e3",
+    "assets/models/scenery-cypress.json": "3235eb51939e970809179142912521584e621bef08d432ac89cf768af96992ae",
+    "assets/models/scenery-oak-tall.json": "4441b5113c4d15d13c766fa734a07971ea2434eab610ab36d6b23230f37b4e2c",
+    "assets/models/scenery-oak-young.json": "d54862bfd2d51c08ba849c8252eb9ad9471b5a1d8c975b1069f547474f1b21e1",
+    "assets/models/scenery-oak.json": "4fdc7fdf527ede8ae28dc27568d1a3a9c60413fd076ec03eef64db4261f5e0e6",
+    "assets/models/scenery-rock.json": "d48cd00bcfc01bd2ef5b336fd7fbe9952da33a3e225394d989c437b28919da45",
+    "assets/models/scenery-ruin-pillar.json": "1831b0c9620f93867be07e1f67df57678110fe0abde9aaa4adda3bc831731506",
+    "assets/models/scenery-ruin-wall.json": "806c5b2aecff2d1c662258d853d974f7dcce83c6b81d08a140c4e7b1a7037fca",
+    "assets/models/scenery-shrub.json": "55872af02090c65df69b4d607e3cc55eb7868c927d63e90b96ceb44b16a25d01",
+    "assets/models/spider.json": "923abbc9a8646cc4703493474b374686c33e0685ea3784a6e149ef6fe6709116",
+    "assets/models/tripod.json": "40c545187d4108a39606b57db342f581bdf1cbeec95d23c9845dac508d25ccc2",
+    "assets/models/turret-study.json": "2f082540dd14484bf729b52ad40c710992198637d8e0408f7515cd27953b5073",
+    "assets/models/twin-fan.json": "3f460f4e1f7a813e3426d28963a1cd4ce5a6566a967043562cea9a19a8bd85b5",
+    "assets/models/walker.json": "44aa5f51d4dab1cde4153f751d19cc1a7f10bbc6ffec162d97f7ed60846a1805",
+    "assets/models/wildlife-beetle-plum.json": "f992568369fb37197d5d4546e46c72bb974c5e1e6be0fd96da85a632eecc1466",
+    "assets/models/wildlife-bird-ice.json": "e0b4228f32a42a39d1893a5333b8de2c92faf51839a08f3dfd0f277ff6743ed7",
+    "assets/models/wildlife-bird-moss.json": "fd79a121aeecc4916aabc4e49da331748000b633b3d3b249ba770b07012d3b0f",
+    "assets/models/wildlife-bird-ochre.json": "e7271782825c957fc5d88128a3a31d99ad286ea46a422aa2fb8ec225872cfae3",
+    "assets/models/wildlife-bird-plum.json": "ed7bfd5aee3354a37d55c76420d9ec4f200d598ef2bcad8e41f6edaa86416bbc",
+    "assets/models/wildlife-fish.json": "f29a1a4e080cc573e5ed16f3dc09e4e625dec75224446c9c66064a7445a36c80",
+    "assets/models/wildlife-hare-ice.json": "cf6e5db2e94afa1112db52de0e1fc4099058dbdd1f09d66e0675875b23131979",
+    "assets/models/wildlife-hare-moss.json": "01f46f7d67185f109d771e6a87215d8afbe5db50d67a6dc6be1734fd6f7b201e",
+    "assets/models/wildlife-lizard-ochre.json": "b8aa9afb95c736045c45ce50873c07bffba148e4490ba4288be6c94c26b67563",
+    "assets/levels/ice-01.json": "fffaa93e22303ca11d906be603c5e5306ad3125f46561ae4ad3ab0703cf1b8da",
+    "assets/levels/ice-02.json": "8482b20d063fd6d8ed60aebe2d5d0aa2f16f26fd2fe6be10c4bcd93598b11e75",
+    "assets/levels/ice-03.json": "07514a00a314ce23b94f0ddd060230966a8748685dbb0d612115fca5323ab546",
+    "assets/levels/ice-04.json": "394475e4dbea518e3be1e0a9b035cdcb81a81b03a54ce55ce7ea9b3960302997",
+    "assets/levels/layout-study.json": "2271fa07da3707228282863ac91f7caff41120e1caf3a6b3d9129a8120e69c1b",
+    "assets/levels/moss-01.json": "70807bb01eaeff105aeffacfa8616866c1a3b6e0fa75810732c9000c86b56003",
+    "assets/levels/moss-02.json": "05880b6fe2330d2497b3df52e06fc6648842f8e0453edd9b2d4f33db1f1dd8fb",
+    "assets/levels/moss-03.json": "e7b3b6dd37d4eb7174936ecd3016b9c8d606e4bf74bfec21e6a6370e61b9d909",
+    "assets/levels/moss-04.json": "b3fc84cc2f893dcdf82604758fcb92dd01a34f51a8d63191ddfe5aa7f1f2fe6f",
+    "assets/levels/ochre-01.json": "0f733a25a14d886049ef71716e368316d5496b680682763ddcc562c498ef669e",
+    "assets/levels/ochre-02.json": "6e437f27aaac3f8b75212039e6bb3a6f966c25b0a20b41d38aed6c40bf5fb129",
+    "assets/levels/ochre-03.json": "01a498d7720489c3837023f6f4183ba4688da1fde814907a5370a8815d874ad8",
+    "assets/levels/ochre-04.json": "4ba8aedc9b712be6e38a3e405a9f3dc8742d64f622d1e5d89c15752471a49329",
+    "assets/levels/plum-01.json": "14b361c16b51ea1d57478b2e87e49489c1625985604fe7703247a4ecd6e1ff39",
+    "assets/levels/plum-02.json": "1e69f9a019101443eb42ed2b67c2056746726521ccd983089e22fa1efb335266",
+    "assets/levels/plum-03.json": "f5357ddc18af11831ee0b5e2c8e90324963009f16624a195f726f61c97ef3bde",
+    "assets/levels/plum-04.json": "d8af50121168098e9ec3ee5920ffa7d1e512b1d1bcbfc4bffa45e98358e0c35d",
+    "assets/levels/terrain-study.json": "dbf37e278bf1e313962df936f3083ea9e76074b9c2cf4dc40d96dbfa35fa03e8"
+  },
+  "unchangedSourceCount": 86
+}

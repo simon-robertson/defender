@@ -1,0 +1,25 @@
+bun test v1.4.2 (744846f84)
+
+tests/arc-effects.test.js:
+(pass) strike joins exact endpoints with one thicker unbranched channel, stronger light and six outward flecks [1.13ms]
+(pass) endpoint attachment follows the live bone without retaining caller point scratch or moving its source [0.27ms]
+(pass) fixed pools replace the oldest strike and drop excess sparks without changing their backing storage [0.85ms]
+(pass) expiry and reset remove lights, particles and attachment references without replay after stalls [0.15ms]
+(pass) spark tail may remain after the channel but neither light nor attachments persist [0.05ms]
+(pass) manual enemy reset can clear effects while preserving the shared firing clock [0.04ms]
+(pass) shape is deterministic at equal elapsed time, with finite vertical and coincident inputs [0.67ms]
+(pass) coarse tube segment endpoints follow the same visible trunk and do not encode endpoint point lights [0.29ms]
+(pass) the connected terminal escape rises before the descending main channel [0.06ms]
+(pass) hot metal flecks fall onto actual support, remain still with finite nonzero geometry, then fade away [0.56ms]
+(pass) swept flecks cannot tunnel through elevated ground after fast travel or a frame stall [0.16ms]
+(pass) reset preserves the collider only for the in-place reset and releases every scene reference on unload [0.06ms]
+(pass) reserved secondary bank remains visible under primary saturation and follows both enemies [0.49ms]
+
+tests/enemy-aesthetics.test.js:
+(pass) enemy refinement preserves rig contracts, footprints and accepted geometry except removing fan guard clutter [280.67ms]
+(pass) front sensor face details are bilaterally balanced [1.47ms]
+
+ 15 pass
+ 0 fail
+ 705 expect() calls
+Ran 15 tests across 2 files. [314.00ms]

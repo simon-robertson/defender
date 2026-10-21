@@ -1,0 +1,51 @@
+bun test v1.4.2 (744846f84)
+
+tests/renderer.test.js:
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize [12.78ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.32ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.35ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [294.39ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [4.09ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [244.80ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [531.61ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.75ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.73ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.44ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [38.92ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [17.98ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1418.99ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [17.88ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [15.03ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.10ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.26ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [13.58ms]
+(pass) plasma links allocate lazily, refresh colour and bloom only, and release every scene reference [2.35ms]
+(pass) all plasma links coexist with six combat Arcs, and detached plasma cannot resurrect expired arc light [2.27ms]
+(pass) empty plasma replacement uploads one cleared light header and returns to idle work [1.41ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.36ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [108.57ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.60ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.69ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [43.86ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [10.42ms]
+
+tests/water.test.js:
+(pass) water material is explicit, bounded and survives level serialization [0.86ms]
+(pass) water and stream bed have separate complete surfaces on the box grid [43.10ms]
+(pass) translucent terrain retains submerged solid faces and culls water interfaces against solids/water [16.49ms]
+(pass) all shipped player defences sit on ground at path height; mounds, floating anchors and extra layers are rejected [12.96ms]
+
+tests/world.test.js:
+(pass) repeated rig bind poses retain independent instance matrices [185.76ms]
+(pass) first level preserves the 24-unit grid, all three turrets, clear route and shared geometry [286.43ms]
+(pass) detail props share a box with unit offsets, preserve transforms, and reject real overlap, bounds or path intrusion [0.28ms]
+(pass) ground surfaces include the submerged bed exactly once and path paving has no coplanar overlays [84.40ms]
+(pass) camera inverse reconstructs clip coordinates across orbit, pan and zoom [0.25ms]
+(pass) fixed level environment rejects malformed lighting and unsupported weather [0.70ms]
+(pass) current A1–A4 and B1–B4 sources match their preview generators and historical model bounds stay clean [29.36ms]
+(pass) fixed time of day controls daylight without a runtime cycle [0.52ms]
+
+ 39 pass
+ 0 fail
+ 366679 expect() calls
+Ran 39 tests across 3 files. [3.51s]

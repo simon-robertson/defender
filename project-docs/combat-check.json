@@ -1,0 +1,608 @@
+{
+  "finished": {
+    "dogs": {
+      "actors": [
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 200.99999999999997,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.8749999999999858,
+              "position": [
+                137.5,
+                25.704188906600276,
+                145.51465020576117
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.3749999999999858,
+              "position": [
+                126.5,
+                25,
+                144.02
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.3749999999999858,
+              "position": [
+                137.5,
+                25,
+                136.02
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.8749999999999858,
+              "position": [
+                126.5,
+                25.704188906600276,
+                137.51465020576117
+              ],
+              "stance": false
+            }
+          ],
+          "health": 0,
+          "hits": 13,
+          "id": "preview-dog-1",
+          "maxHealth": 150,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 132,
+          "yaw": -3.141592653589793,
+          "z": 140.99999999999997
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 299.79640000000006,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.4575833333333392,
+              "position": [
+                218.42,
+                25,
+                150.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.9575833333333392,
+              "position": [
+                220.70009852943156,
+                25.102187402981272,
+                161.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.9575833333333392,
+              "position": [
+                212.70009852943156,
+                25.102187402981272,
+                150.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.4575833333333392,
+              "position": [
+                210.42,
+                25,
+                161.5
+              ],
+              "stance": true
+            }
+          ],
+          "health": 0,
+          "hits": 13,
+          "id": "preview-dog-2",
+          "maxHealth": 150,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 215.7964000000001,
+          "yaw": -1.5707963267948966,
+          "z": 156
+        },
+        {
+          "aimY": 34.5,
+          "alive": false,
+          "distance": 150.59959999999808,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.3749166666662624,
+              "position": [
+                137.5,
+                25,
+                93.62
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.8749166666662624,
+              "position": [
+                126.5,
+                25.704876361431587,
+                95.11358002749066
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.8749166666662624,
+              "position": [
+                137.5,
+                25.704876361431587,
+                87.11358002749066
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.3749166666662624,
+              "position": [
+                126.5,
+                25,
+                85.62
+              ],
+              "stance": true
+            }
+          ],
+          "health": 0,
+          "hits": 14,
+          "id": "preview-dog-3",
+          "maxHealth": 150,
+          "velocityX": 0,
+          "velocityZ": 0,
+          "x": 132,
+          "yaw": -3.141592653589793,
+          "z": 90.59959999999808
+        }
+      ],
+      "alive": 0,
+      "time": 19.88329999999984,
+      "updatedParts": 0
+    },
+    "firing": {
+      "active": 0,
+      "shots": 40,
+      "tracking": true,
+      "turning": 0,
+      "turrets": [
+        {
+          "aimError": null,
+          "aimPoint": null,
+          "angularVelocity": 0,
+          "burstRemaining": 0,
+          "cooldownRemaining": 0,
+          "id": "scene-1",
+          "lastShotAimError": 0,
+          "lastShotAt": 0,
+          "lastShotDamage": 10,
+          "lastShotDistance": 48,
+          "lastShotTargetId": "preview-dog-1",
+          "lastShotVisible": true,
+          "lineOfSight": null,
+          "maxRange": 48,
+          "occludedTargets": 0,
+          "recoil": 0,
+          "requiresLineOfSight": true,
+          "shots": 1,
+          "strength": 10,
+          "targetDistance": null,
+          "targetId": null,
+          "targetYaw": -0.01154263028830736,
+          "turning": false,
+          "variant": "base",
+          "x": 84,
+          "yaw": -0.01154263028830736,
+          "z": 108
+        },
+        {
+          "aimError": null,
+          "aimPoint": null,
+          "angularVelocity": 0,
+          "burstRemaining": 0,
+          "cooldownRemaining": 0,
+          "id": "scene-2",
+          "lastShotAimError": 0.00002374433649121599,
+          "lastShotAt": 19.88329999999984,
+          "lastShotDamage": 6,
+          "lastShotDistance": 51.05657567992655,
+          "lastShotTargetId": "preview-dog-3",
+          "lastShotVisible": true,
+          "lineOfSight": null,
+          "maxRange": 72,
+          "occludedTargets": 0,
+          "recoil": 0,
+          "requiresLineOfSight": true,
+          "shots": 33,
+          "strength": 12,
+          "targetDistance": null,
+          "targetId": null,
+          "targetYaw": 1.2230219734923369,
+          "turning": false,
+          "variant": "upgrade1",
+          "x": 180,
+          "yaw": 1.2230219734923369,
+          "z": 108
+        },
+        {
+          "aimError": null,
+          "aimPoint": null,
+          "angularVelocity": 0,
+          "burstRemaining": 0,
+          "cooldownRemaining": 0,
+          "id": "scene-3",
+          "lastShotAimError": -0.00012423191893740082,
+          "lastShotAt": 7.16670000000002,
+          "lastShotDamage": 10,
+          "lastShotDistance": 32.55791148338619,
+          "lastShotTargetId": "preview-dog-3",
+          "lastShotVisible": true,
+          "lineOfSight": null,
+          "maxRange": 48,
+          "occludedTargets": 0,
+          "recoil": 0,
+          "requiresLineOfSight": true,
+          "shots": 6,
+          "strength": 10,
+          "targetDistance": null,
+          "targetId": null,
+          "targetYaw": -0.7811972809810448,
+          "turning": false,
+          "variant": "base",
+          "x": 300,
+          "yaw": -0.7811972809810448,
+          "z": 108
+        }
+      ],
+      "updatedParts": 0
+    },
+    "render": {
+      "cameraUpdated": false,
+      "cpuSubmitMs": 0,
+      "createdSceneBuffers": 87,
+      "deltaSeconds": 0.017,
+      "depthUpdated": false,
+      "destroyedSceneBuffers": 0,
+      "drawCalls": 1,
+      "drawGroups": 29,
+      "droppedSparks": 0,
+      "effectBytes": 9488,
+      "elapsedSeconds": 41.816500000000254,
+      "eye": [
+        614.3175659179688,
+        587.9136962890625,
+        -419.0197143554687
+      ],
+      "fov": null,
+      "frames": 2510,
+      "geometryBytes": 961992,
+      "groundHeight": null,
+      "leafBytes": 0,
+      "leafCount": 0,
+      "leafCycleSeconds": 0,
+      "leafPhase": 0,
+      "leafTime": 0,
+      "mode": "overview",
+      "opaqueUpdated": false,
+      "pitch": 0.68,
+      "radius": 254.4376436252491,
+      "rainBytes": 0,
+      "rainCount": 0,
+      "rainPhase": 0,
+      "rainTime": 0,
+      "replacedFlashes": 0,
+      "sceneBuffers": 87,
+      "shadowUpdated": false,
+      "shotInstances": 0,
+      "shotLights": 0,
+      "snowBytes": 0,
+      "snowCount": 0,
+      "snowCycleSeconds": 0,
+      "snowPhase": 0,
+      "snowTime": 0,
+      "target": [
+        168,
+        22,
+        120
+      ],
+      "targetBytes": 230372864,
+      "transformBytes": 9728,
+      "transformUploadBytes": 0,
+      "transformUploads": 0,
+      "visibilityBytes": 2808,
+      "waterPhase": 2.740379810333252,
+      "waterUpdated": false,
+      "yaw": 2.45
+    }
+  },
+  "reset": {
+    "dogs": {
+      "actors": [
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 73.00080000000011,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.2085000000000203,
+              "position": [
+                88.82000000000001,
+                25,
+                54.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.7085000000000203,
+              "position": [
+                87.78698122798384,
+                25.95941415910949,
+                65.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rl",
+              "phase": 0.7085000000000203,
+              "position": [
+                79.78698122798384,
+                25.95941415910949,
+                54.5
+              ],
+              "stance": false
+            },
+            {
+              "name": "rr",
+              "phase": 0.2085000000000203,
+              "position": [
+                80.82000000000001,
+                25,
+                65.5
+              ],
+              "stance": true
+            }
+          ],
+          "health": 140,
+          "hits": 1,
+          "id": "preview-dog-1",
+          "maxHealth": 150,
+          "velocityX": 12,
+          "velocityZ": 0,
+          "x": 85.00080000000011,
+          "yaw": -1.5707963267948966,
+          "z": 60
+        },
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 233.0008000000001,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.5418333333333507,
+              "position": [
+                151.22000000000003,
+                25,
+                150.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "fr",
+              "phase": 0.04183333333335071,
+              "position": [
+                153.62000000000003,
+                25,
+                161.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.04183333333335071,
+              "position": [
+                145.62000000000003,
+                25,
+                150.5
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.5418333333333507,
+              "position": [
+                143.22000000000003,
+                25,
+                161.5
+              ],
+              "stance": true
+            }
+          ],
+          "health": 150,
+          "hits": 0,
+          "id": "preview-dog-2",
+          "maxHealth": 150,
+          "velocityX": 12,
+          "velocityZ": 0,
+          "x": 149.0008000000001,
+          "yaw": -1.5707963267948966,
+          "z": 156
+        },
+        {
+          "aimY": 34.5,
+          "alive": true,
+          "distance": 393.0008000000001,
+          "feet": [
+            {
+              "name": "fl",
+              "phase": 0.8751666666666722,
+              "position": [
+                246.5,
+                25.702813574704795,
+                94.48321075494574
+              ],
+              "stance": false
+            },
+            {
+              "name": "fr",
+              "phase": 0.3751666666666722,
+              "position": [
+                257.5,
+                25,
+                95.9799999999999
+              ],
+              "stance": true
+            },
+            {
+              "name": "rl",
+              "phase": 0.3751666666666722,
+              "position": [
+                246.5,
+                25,
+                103.9799999999999
+              ],
+              "stance": true
+            },
+            {
+              "name": "rr",
+              "phase": 0.8751666666666722,
+              "position": [
+                257.5,
+                25.702813574704795,
+                102.48321075494574
+              ],
+              "stance": false
+            }
+          ],
+          "health": 150,
+          "hits": 0,
+          "id": "preview-dog-3",
+          "maxHealth": 150,
+          "velocityX": 0,
+          "velocityZ": -12,
+          "x": 252,
+          "yaw": 0,
+          "z": 98.99919999999992
+        }
+      ],
+      "alive": 3,
+      "time": 0.08340000000000873,
+      "updatedParts": 39
+    },
+    "lifecycle": {
+      "actors": 3,
+      "assets": [
+        "turret-study",
+        "scenery-cypress",
+        "scenery-oak",
+        "scenery-oak-tall",
+        "scenery-ruin-wall",
+        "scenery-ruin-pillar",
+        "scenery-rock",
+        "scenery-shrub",
+        "detail-flowers",
+        "detail-grass",
+        "detail-pebbles",
+        "dog"
+      ],
+      "createdSceneBuffers": 216,
+      "current": "moss-01",
+      "destroyedSceneBuffers": 129,
+      "geometryBytes": 961992,
+      "lastUnload": {
+        "actors": 0,
+        "assets": 0,
+        "geometryBytes": 0,
+        "rigs": 0,
+        "sceneBuffers": 0,
+        "shotInstances": 0,
+        "shotLights": 0,
+        "visibilityBytes": 0,
+        "zone": "B"
+      },
+      "loads": 3,
+      "phase": "ready",
+      "requested": "moss-01",
+      "sceneBuffers": 87,
+      "unloads": 2,
+      "visibilityBytes": 202300,
+      "visibilityPrimitives": 3613
+    },
+    "render": {
+      "cameraUpdated": false,
+      "cpuSubmitMs": 0.19999998807907104,
+      "createdSceneBuffers": 216,
+      "deltaSeconds": 0.01780000000000291,
+      "depthUpdated": true,
+      "destroyedSceneBuffers": 129,
+      "drawCalls": 86,
+      "drawGroups": 29,
+      "droppedSparks": 0,
+      "effectBytes": 9488,
+      "elapsedSeconds": 0.08340000000000873,
+      "eye": [
+        614.3175659179688,
+        587.9136962890625,
+        -419.0197143554687
+      ],
+      "fov": null,
+      "frames": 6295,
+      "geometryBytes": 961992,
+      "groundHeight": null,
+      "leafBytes": 0,
+      "leafCount": 0,
+      "leafCycleSeconds": 0,
+      "leafPhase": 0,
+      "leafTime": 0,
+      "mode": "overview",
+      "opaqueUpdated": true,
+      "pitch": 0.68,
+      "radius": 254.4376436252491,
+      "rainBytes": 0,
+      "rainCount": 0,
+      "rainPhase": 0,
+      "rainTime": 0,
+      "replacedFlashes": 0,
+      "sceneBuffers": 87,
+      "shadowUpdated": true,
+      "shotInstances": 16,
+      "shotLights": 2,
+      "snowBytes": 0,
+      "snowCount": 0,
+      "snowCycleSeconds": 0,
+      "snowPhase": 0,
+      "snowTime": 0,
+      "target": [
+        168,
+        22,
+        120
+      ],
+      "targetBytes": 230372864,
+      "transformBytes": 9728,
+      "transformUploadBytes": 2624,
+      "transformUploads": 15,
+      "visibilityBytes": 2808,
+      "waterPhase": 0.06812229752540588,
+      "waterUpdated": false,
+      "yaw": 2.45
+    }
+  },
+  "console": []
+}

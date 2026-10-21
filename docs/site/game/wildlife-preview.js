@@ -174,9 +174,9 @@ function arcEscapes(s,x0,y0,z0,x1,y1,z1,ceiling,start){
  return true;
 }
 
-// Autonomous cosmetic journeys. Only one actor thinks per advance. Escape
-// searches get consecutive bounded slices instead of waiting a whole roster
-// cycle between slices; ordinary journeys retain round-robin scheduling.
+// Autonomous cosmetic journeys. Only one actor thinks per advance; a shared
+// incremental BFS job is resumed on its owner's next cyclic-roster turn.
+// Fear handling must retain this intentional performance/fairness schedule.
 export class WildlifePreview {
  constructor(world,onPoseChange,actors=wildlifeActorsForLevel(world.level),onVisible=()=>{}){
   this.onVisible=onVisible;this.gibCount=0;
@@ -481,10 +481,7 @@ export class WildlifePreview {
  advance(deltaSeconds){
   if(!Number.isFinite(deltaSeconds)||deltaSeconds<0)throw new Error('Invalid wildlife delta.');this.updatedParts=0;this.lastThinkWork=0;
   if(!deltaSeconds)return;this.fish.advance(deltaSeconds);this.updatedParts+=this.fish.updatedParts;const thinkers=this.states.length+this.fish.states.length;if(!thinkers)return;this.time+=deltaSeconds;
-  // Complete urgent searches at up to SEARCH_BUDGET nodes per advance. Do not
-  // consume the ordinary round-robin turn while an escape owns the scratch.
-  const urgent=this.nav?.flee?this.nav.owner:null,turn=urgent?this.states.indexOf(urgent):this.thinker;
-  if(!urgent)this.thinker=(this.thinker+1)%thinkers;
+  const turn=this.thinker;this.thinker=(this.thinker+1)%thinkers;
   for(const s of this.states){if(s.dead)continue;const scared=Math.max(0,Math.min(deltaSeconds,s.fleeUntil-(this.time-deltaSeconds))),motionDelta=deltaSeconds+scared*((s.kind==='bird'?FLEE_BOOST:s.fleeSpeed/s.speed)-1);s.frightened=s.fleeUntil>this.time;if(s.kind==='ground')this.moveGround(s,motionDelta);else this.moveBird(s,motionDelta);this.writePose(s);}
   if(turn>=this.states.length){this.fish.think(turn-this.states.length);this.thinkCount++;this.lastThinkId=this.fish.states[turn-this.states.length].id;return;}
   const s=this.states[turn];if(s.dead)return;this.thinkCount++;s.thinkCount++;this.lastThinkId=s.id;this.threatCheck(s);this.writePose(s);

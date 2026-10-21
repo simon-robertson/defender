@@ -1,5 +1,7 @@
 # Development team
 
+**Dark loading viewport, 21 October (implemented):** renderer loading clears and player viewport CSS now match GUI charcoal `#15171a`; loading no longer reuses the olive scene background. Local package rebuilt, with no tests/browser checks or player reload. Local commit only; remote pushes remain forbidden.
+
 **Critter cyclic roster, 21 October (latest user constraint):** preserve the intentional cyclic-buffer rotation across land critters, birds and fish for performance. The consecutive-turn escape override from `758e448` has been removed; one thinker and at most 512 BFS expansions per advance remain. Escape requests may replace roaming jobs only on their own scheduled turns. That remaining behaviour is unverified, and the intermittent stall's cause is unconfirmed. GUI changes remain. Local package/correction commit updated; no tests/browser checks, player reload or remote push.
 
 **GUI input/tint and critter escape scheduling, 21 October (implemented for review):** HTML root pointer handling is disabled, with opt-in controls/canvas/scrolling. GUI retains 55% of its prior blue-grey chroma. Escape searches preempt roaming searches and run consecutive bounded slices, preserving one thinker and the 512-node cap; interrupted animals keep continuous safe positions. Source review identifies planner delays, but no fresh test/browser evidence establishes every reported pause is resolved. Local package rebuilt and local commit requested; no active-player reload or remote push.

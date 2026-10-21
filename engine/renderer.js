@@ -60,7 +60,9 @@ export class WorldRenderer {
   this.waterPass={label:'Nearest water surface',colorAttachments:[{view:null,clearValue:{r:.5,g:1,b:.5,a:0},loadOp:'clear',storeOp:'store'}],depthStencilAttachment:{view:null,depthClearValue:1,depthLoadOp:'clear',depthStoreOp:'store'}};
   this.displayPass={label:'Water, reflections and display',colorAttachments:[{view:null,loadOp:'clear',storeOp:'store'}]};
   this.shockwavePass={label:'Explosion shockwave refraction',colorAttachments:[{view:null,loadOp:'clear',storeOp:'store'}]};
-  this.clearPass={colorAttachments:[{view:null,clearValue:this.backgroundColor,loadOp:'clear',storeOp:'store'}]};this.submitBuffers=[null];
+  // Loading clears go straight to the display texture, so use display RGB
+  // matching the player's --deep (#15171a), independent of scene lighting.
+  this.clearPass={colorAttachments:[{view:null,clearValue:{r:21/255,g:23/255,b:26/255,a:1},loadOp:'clear',storeOp:'store'}]};this.submitBuffers=[null];
  }
  fail(message){if(this.disposed)return;this.failed=true;this.gpuTimer?.dispose();this.onError(message);}
  setTimingActive(active){this.gpuTimer?.setActive(active);}

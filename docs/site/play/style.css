@@ -94,6 +94,7 @@ body[data-phase="title"] #scene{position:absolute;inset:0}
 .development-preview{margin:0 0 20px;line-height:1.4}.development-preview strong{display:block;color:var(--amber);font-size:20px;font-weight:700}.development-preview small{display:block;margin-top:3px;color:#d5ddc9;font-size:13px}
 @media(max-height:700px){#title-screen{overflow:auto;align-items:safe center}.title-content{margin-top:20px;margin-bottom:40px}.title-mark{width:36px;height:36px;margin-bottom:9px}.title-content h1{font-size:58px;margin-bottom:12px}.title-zone{margin:10px 0}.title-route{margin-bottom:14px}.graphics-options{margin-top:14px}.title-spec{margin-top:16px}}
 /* Enlarge the half-resolution game output without smoothing its pixels. */
+#scene,#world{background:var(--deep)}
 #world{image-rendering:pixelated}
 /* Pointer interaction is opt-in; decorative chrome stays transparent to input. */
 button:enabled,a[href],summary,input:enabled,select:enabled,textarea:enabled,

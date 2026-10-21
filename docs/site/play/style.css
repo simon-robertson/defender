@@ -75,6 +75,9 @@ body[data-phase="title"] #scene{position:absolute;inset:0}
 @media(max-width:620px){.unit-group-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Keep frame timing legible without changing the small footer's height. */
 #board-caption{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.performance-readout{flex-shrink:0;margin-left:auto;color:#c6d3b2;white-space:nowrap;font:10px ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.performance-readout[hidden]{display:none!important}
+@media(max-width:620px){#board-footer{gap:8px}.performance-readout{font-size:9px}}
 /* Title graphics controls use the same flat command-panel tones. */
 .graphics-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;min-width:0;margin:20px 0 0;padding:8px 0 0;border:0;text-align:left}
 .graphics-options legend{padding:0;color:#b0bc9c;font:700 10px ui-monospace,Menlo,monospace;letter-spacing:.09em}

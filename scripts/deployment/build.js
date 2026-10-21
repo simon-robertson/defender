@@ -18,17 +18,12 @@ function cut(text,start,end){const a=text.indexOf(start),b=text.indexOf(end,a+st
 export function productionSource(file,source){
  let s=source;
  if(file==='play/app.js'){
-  s=replace(s,"import {FramePerformance} from './performance.js';\n",'');
-  s=replace(s,"const performanceReadout=new FramePerformance(document.getElementById('performance-readout'));\n",'');
+  // Footer performance data is approved player UI, including its GPU sampler.
   s=replace(s,',lastDiagnostics=-Infinity,diagnosticsPending=false','');
   s=cut(s,'// Keep the review dataset available by default.','function fail(');
   s=s.replace(/diagnostics\([^;]*\);/g,'');
   s=replace(s,'else if(diagnosticsPending)','');
-  s=s.replace(/performanceReadout\.[^;]+;/g,'').replace(/renderer\?\.setTimingActive\([^;]+;/g,'');
-  s=replace(s,',gpuTiming:true','');
   s=replace(s,"renderer.inspect=new URLSearchParams(location.search).has('inspect');",'');
-  s=replace(s,'   const frameStarted=performance.now();\n','');
-  s=replace(s,'const renderStarted=performance.now();renderer.render(dt,engine.time);const cpuRenderMs=performance.now()-renderStarted;','renderer.render(dt,engine.time);');
  }
  if(file==='play/engine.js'){
   s=replace(s,'fetch(`/api/${kind}/${key}`,{signal,cache:\'no-store\'})','fetch(new URL(`../assets/${kind}/${key}.json`,import.meta.url),{signal})');
@@ -36,19 +31,9 @@ export function productionSource(file,source){
  }
  if(file==='engine/world.js')s=cut(s,'export async function loadWorld(','export function disposeWorld(');
  if(file==='engine/renderer.js'){
-  s=replace(s,"import {GPUFrameTimer,requestRenderDevice} from './gpu-frame-timer.js';\n",'');
-  s=replace(s,',gpuTiming=false','');s=replace(s,'this.gpuTiming=gpuTiming;','');
-  s=s.replace(/this\.gpuTimer\?\.[a-zA-Z]+\([^;]*\);/g,'');
-  s=replace(s,' setTimingActive(active){}\n','');
-  s=replace(s,'requestRenderDevice(adapter,this.gpuTiming)','adapter.requestDevice()');
-  s=replace(s,'  if(this.gpuTiming)this.gpuTimer=new GPUFrameTimer(d);\n','');
   s=replace(s,'render(deltaSeconds,elapsedSeconds,inspectFrame=true)','render(deltaSeconds,elapsedSeconds)');
   s=replace(s,'this.draw(inspectFrame);','this.draw();');
   s=replace(s,'draw(inspectFrame=true)','draw()');
-  s=replace(s,'const start=performance.now(),canvas=this.canvas','const canvas=this.canvas');
-  s=replace(s,'const encoder=this.device.createCommandEncoder(),timing=this.gpuTimer?.begin(encoder,this.shockwaveCount?this.shockwavePass:this.displayPass),renderEncoder=this.gpuTimer?.renderEncoder?.(encoder,timing)??encoder;','const encoder=this.device.createCommandEncoder(),renderEncoder=encoder;');
-  s=replace(s,'this.frames++;this.lastSubmitMs=performance.now()-start;','');
-  s=replace(s,'this.frames=0;','');
   s=s.split('\n').filter(line=>!line.includes('if(this.inspect&&inspectFrame)')&&!line.includes('delete this.canvas.dataset.inspection;')).join('\n');
  }
  if(file==='engine/camera.js')s=s.split('\n').filter(line=>!line.includes("listen(canvas.ownerDocument??canvas,'keydown'")).join('\n');
@@ -97,13 +82,12 @@ export async function gather(){
   add('docs/site/'+file,raw,file,'verbatim');
  }
  let html=(await input('play/index.html')).toString();
- html=replace(html,html.match(/<span id="performance-readout"[^]*?<\/span>/)?.[0]??'MISSING PERFORMANCE HUD','');
- add('docs/index.html',html.replaceAll('/play/style.css','./site/play/style.css').replaceAll('/play/app.js','./site/play/app.js'),'play/index.html','relative entry URLs; remove timing HUD');
- add('docs/site/play/index.html',html.replaceAll('/play/style.css','./style.css').replaceAll('/play/app.js','./app.js'),'play/index.html','relative entry URLs; remove timing HUD');
- const css=(await input('play/style.css')).toString().split('\n').filter(line=>!line.includes('.performance-readout')).join('\n');
+ add('docs/index.html',html.replaceAll('/play/style.css','./site/play/style.css').replaceAll('/play/app.js','./site/play/app.js'),'play/index.html','relative entry URLs; preserve performance HUD');
+ add('docs/site/play/index.html',html.replaceAll('/play/style.css','./style.css').replaceAll('/play/app.js','./app.js'),'play/index.html','relative entry URLs; preserve performance HUD');
+ const css=(await input('play/style.css')).toString();
  if(/url\s*\(|@import/.test(css))throw new Error('Unaccounted CSS resource');
- add('docs/site/play/style.css',css,'play/style.css','remove timing HUD styles');
- const forbidden=/\/api\/|localhost|127\.0\.0\.1|dataset\.(?:play|inspection|firing)|FramePerformance|performanceReadout|diagnosticsPending|\?inspect|gpuTimer|gpuTiming|timestamp-query|performance-readout|console\.(?:log|debug|info|warn)|defenderPreview/;
+ add('docs/site/play/style.css',css,'play/style.css','verbatim; preserve performance HUD styles');
+ const forbidden=/\/api\/|localhost|127\.0\.0\.1|dataset\.(?:play|inspection|firing)|diagnosticsPending|\?inspect|console\.(?:log|debug|info|warn)|defenderPreview/;
  for(const [file,{data}]of outputs)if(/\.(?:js|html|css)$/.test(file)&&forbidden.test(data.toString()))throw new Error('Production boundary leak: '+file+' '+data.toString().match(forbidden)[0]);
  // Include build recipe identity as well as every transitive source/asset.
  for(const recipe of ['scripts/deployment/build.js','scripts/deployment/serve.js','scripts/deployment/validate.js','package.json'])await input(recipe);
@@ -130,7 +114,7 @@ export async function build(){
  await mkdir(path.join(ROOT,'build/deployment'),{recursive:true});
  for(const [file,hash]of inputs)if(digest(await readFile(path.join(ROOT,file)))!==hash)throw new Error('Input changed during build: '+file);
  const files=[...outputs].sort(([a],[b])=>a.localeCompare(b)).map(([file,v])=>({path:file,source:v.source,sourceSha256:inputs.get(v.source),transformation:v.transformation,size:v.data.length,sha256:digest(v.data)}));
- const manifest={owner,version,generatedAt:new Date().toISOString(),entry:'index.html',directEntry:'site/play/index.html',documentRoot:'docs',siteBase:'relative to entry/module; domain root or arbitrary project prefix',inputIdentity:{algorithm:'sha256',revision:null,reason:'workspace has no Git metadata',sha256:digest(JSON.stringify([...inputs].sort())),files:Object.fromEntries([...inputs].sort())},counts:{files:files.length,modules:files.filter(f=>f.path.endsWith('.js')).length,levels:levels.length,models:models.length,bytes:files.reduce((n,f)=>n+f.size,0)},levels,models,omissions:['authoring server/APIs, editors and review entry points','inspector datasets/query switch and preview F shortcut','frame/CPU/GPU timing HUD, timestamp queries/readbacks and sampling','unused development world loader and diagnostic console warnings'],validation:{moduleSyntax:'passed',moduleClosure:'passed',assetClosure:'passed',productionBoundary:'passed',separateTests:'not requested or run'},files};
+ const manifest={owner,version,generatedAt:new Date().toISOString(),entry:'index.html',directEntry:'site/play/index.html',documentRoot:'docs',siteBase:'relative to entry/module; domain root or arbitrary project prefix',inputIdentity:{algorithm:'sha256',revision:null,reason:'workspace has no Git metadata',sha256:digest(JSON.stringify([...inputs].sort())),files:Object.fromEntries([...inputs].sort())},counts:{files:files.length,modules:files.filter(f=>f.path.endsWith('.js')).length,levels:levels.length,models:models.length,bytes:files.reduce((n,f)=>n+f.size,0)},levels,models,omissions:['authoring server/APIs, editors and review entry points','inspector datasets/query switch and preview F shortcut','unused development world loader and diagnostic console warnings'],preserved:['bottom-bar FPS/frame/CPU/GPU readout and asynchronous GPU timing'],validation:{moduleSyntax:'passed',moduleClosure:'passed',assetClosure:'passed',productionBoundary:'passed',separateTests:'not requested or run'},files};
  const pending=path.join(ROOT,'build/deployment/pending.json');
  try{await lstat(pending);throw new Error('Unfinished deployment journal exists; inspect before refreshing');}catch(e){if(e.code!=='ENOENT')throw e;}
  await writeFile(pending,JSON.stringify({owner,files},null,2)+'\n',{flag:'wx'});

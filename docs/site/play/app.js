@@ -21,6 +21,7 @@ import {CameraViews} from './camera-views.js';
 import {UnitHighlight} from './unit-highlight.js';
 import {LevelConditions,applyPlayLighting} from './conditions.js';
 import {EntranceMarkers} from './entrance-markers.js';
+import {FramePerformance} from './performance.js';
 import {ScreenshotCamera} from './screenshot-camera.js';
 import {beginPreparationFade} from './critter-lifecycle.js';
 import {loadGraphicsOptions,saveGraphicsOptions,GRAPHICS_DEFAULTS} from './graphics-options.js';
@@ -28,6 +29,7 @@ import {loadGraphicsOptions,saveGraphicsOptions,GRAPHICS_DEFAULTS} from './graph
 const canvas=document.getElementById('world'),overlay=document.getElementById('placement-overlay'),hint=document.getElementById('placement-hint');
 const conditions=new LevelConditions();
 let graphics=loadGraphicsOptions();
+const performanceReadout=new FramePerformance(document.getElementById('performance-readout'));
 const entrances=new EntranceMarkers(document.getElementById('entrance-overlay'));
 const config=PLAY_CONFIG,session=new PlaySession(config),shots=new ShotEffects(),damage=new DamageEffects(),arcs=new ArcEffects();
 const highlight=new UnitHighlight({canvas,list:document.getElementById('unit-list'),overlay:document.getElementById('unit-highlight-overlay'),defences:config.defences});
@@ -60,10 +62,10 @@ function syncCombatEffects(){
 }
 function updateHighlight(){highlight.update({world:loader?.world,camera:renderer?.camera,units:session.units,preparing:session.preparing,busy:busy||Boolean(error),paused:session.paused});}
 function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();}
-function fail(cause){error=cause?.message??String(cause);busy=false;loop?.stop();paint();}
+function fail(cause){error=cause?.message??String(cause);busy=false;performanceReadout.setRunning(false,'Error');renderer?.setTimingActive(false);loop?.stop();paint();}
 function cameraState(){const c=renderer?.camera,active=cameraViews?.active;if(active){const v=active.saved;return {id:loader.world.level.id,target:Array.from(v.subarray(0,3)),yaw:v[3],pitch:v[4],radius:v[5]};}return c&&loader?.world?{id:loader.world.level.id,target:[...c.target],yaw:c.yaw,pitch:c.pitch,radius:c.radius}:null;}
 function refreshPlacement(){overlayKey='';hover=null;const unit=session.units.find(unit=>unit.id===selectedId);eligible=unit&&rules&&session.phase==='deploy'?rules.eligibleCells(unit.variant,session.placements,unit.id,unit.model):[];drawOverlay();}
-function runLoop(){const photo=screenshotCamera?.active,transition=levelFadePending&&damage.hasCritterRemains,running=!disposed&&!error&&!document.hidden&&((photo&&session.paused)||transition||(!busy&&!frozen()));if(running)loop?.start();else loop?.stop();}
+function runLoop(){const photo=screenshotCamera?.active,transition=levelFadePending&&damage.hasCritterRemains,running=!disposed&&!error&&!document.hidden&&((photo&&session.paused)||transition||(!busy&&!frozen()));performanceReadout.setRunning(running&&!photo&&!transition,session.paused?'Paused':'Idle');renderer?.setTimingActive(running&&!photo&&!transition);if(running)loop?.start();else loop?.stop();}
 async function rebuild(candidate=session.fork(),points){
  if(disposed)return false;
  const placementKey=JSON.stringify(candidate.placements);
@@ -112,7 +114,7 @@ function finishSettlement(){
  });
 }
 async function initialize(){
- renderer=new WorldRenderer(canvas,fail,{modelLightCapacity:playCapacity(config).modelLights,strictModelLights:true});await renderer.init();if(disposed){renderer.device?.destroy();return;}
+ renderer=new WorldRenderer(canvas,fail,{modelLightCapacity:playCapacity(config).modelLights,strictModelLights:true,gpuTiming:true});await renderer.init();if(disposed){renderer.device?.destroy();return;}
  renderer.setGraphicsOptions(graphics);
  const effectsPrepared=await renderer.prepareDeathEffects();if(!effectsPrepared||disposed)return;renderer.camera.pathModeEnabled=false;
  actionCamera=new ActionCamera(renderer.camera);droneCamera=new DroneCamera(renderer.camera);cameraViews=new CameraViews(actionCamera,droneCamera);screenshotCamera=new ScreenshotCamera(renderer.camera);
@@ -127,17 +129,18 @@ async function initialize(){
     if(!damage.hasCritterRemains){levelFadePending=false;rebuild().catch(fail);}return;
    }
    if(busy||frozen())return;
+   const frameStarted=performance.now();
    const wasSettling=session.phase==='settling';
    engine.advance(dt,session.phase==='wave'?combatStep:preparationStep);shots.prepare();if(engine.firing.arcs.states.length)arcs.prepare();plasmaLinks?.prepare();
    if(renderer.camera.dragging||renderer.camera.keys.size)takeCameraControl();
    cameraViews.advance(dt,{engine,phase:session.phase,paused:session.paused});
    
    lastCameraPhase=session.phase;
-   renderer.render(dt,engine.time);
+   const renderStarted=performance.now();renderer.render(dt,engine.time);const cpuRenderMs=performance.now()-renderStarted;
    drawOverlay();updateHighlight();
    if(wasSettling&&session.advanceSettlement(dt))finishSettlement();
    if(engine.time-lastUI>.2){lastUI=engine.time;paint();}
-   
+   performanceReadout.sample(loop.clock.unscaledDeltaSeconds,performance.now()-frameStarted,renderer.gpuTimer?.read(),cpuRenderMs);
   }catch(cause){fail(cause);}
  });
  loader=new SceneLoader({
@@ -175,7 +178,7 @@ async function initialize(){
  });
  sceneResize?.disconnect();sceneResize=new ResizeObserver(()=>{
   if(!renderer?.world)return;
-  
+  performanceReadout.reset();performanceReadout.paint();
   // Panel transitions change the viewport during a camera move. Keep its pose;
   // the director fits the new aspect on the next frame without a hard reset.
   if(session.phase==='title')frameTitle(renderer.camera);

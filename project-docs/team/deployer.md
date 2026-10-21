@@ -14,6 +14,8 @@ Prepare the current game in the repository-root `docs/` directory so it can be s
 
 `docs/` is exclusively generated hosting output. The packager clears it before writing a fresh deployment. Only runtime HTML, CSS, JavaScript and required assets belong there. Keep all project notes, Markdown/text documents, review evidence and debug files in `project-docs/`, and packaging manifests/logs in `build/deployment/`. Do not copy them into `docs/`.
 
+**Keep the bottom-bar FPS, frame interval, CPU and GPU data in every deployment**, as explicitly requested by the user. Preserve its HTML/CSS, `FramePerformance`, CPU sampling and asynchronous GPU timestamp support, including pending/unsupported/paused states. This readout is approved player UI and is exempt from debug stripping. Continue removing inspector datasets, inspect query switches, developer controls and unrelated diagnostics.
+
 The hosted game must work with `docs/` as the document root, including a repository URL prefix. It must not require the development server or `/api/` endpoints. Preserve gameplay, graphics options, ordinary controls and player-facing error handling.
 
 ## No testing by default

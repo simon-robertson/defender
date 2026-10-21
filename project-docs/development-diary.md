@@ -2,6 +2,8 @@
 
 ## 21 October 2026
 
+- Retained the requested FPS/frame/CPU/GPU footer in static deployments by preserving the existing performance module, styles and CPU/asynchronous GPU timing. Other inspector datasets and developer switches remain stripped. Updated current deployment instructions and rebuilt `docs/`; no tests or browser checks run.
+
 - User requests clearing `docs/` and rebuilding it without development/debug files. Moved project documentation and evidence to `project-docs/`, reserved `docs/` for generated static game files, and moved packaging metadata to `build/deployment/`. Updated the packager to clean the output on each deployment, the development documentation reader and current instructions. Rebuilt the package; no tests or browser checks requested or run.
 
 - Simplified [deployment instructions](team/deployer.md) at the user’s request after the first packaging task expanded into unwanted testing. Future deployments run the existing packager to refresh `docs/index.html` and `docs/site/`, then finish. Tests, browser/GPU checks, playthroughs, preview servers, new validation tooling and evidence reports are opt-in only. Updated the contributor instructions, design doc, project brief and team notes. Documentation-only change; no deployment refresh or tests run.

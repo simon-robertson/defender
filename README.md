@@ -71,4 +71,4 @@ The engine runs from a shared `requestAnimationFrame` loop with delta seconds. W
 
 ## Static deployment
 
-Run `bun run deploy:local` to clear and rebuild `docs/` for GitHub Pages. The game entry is `docs/index.html`; `docs/site/` holds its runtime files and assets. Project documentation lives in `project-docs/` and packaging metadata in `build/deployment/`, outside the published directory. Deployment does not run tests or browser checks, or commit, push or publish.
+Run `bun run deploy:local` to clear and rebuild `docs/` for GitHub Pages. The game entry is `docs/index.html`; `docs/site/` holds its runtime files and assets. Project documentation lives in `project-docs/` and packaging metadata in `build/deployment/`, outside the published directory. Deployments retain the bottom-bar FPS/frame/CPU/GPU readout. Deployment does not run tests or browser checks, or commit, push or publish.

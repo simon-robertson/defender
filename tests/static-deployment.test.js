@@ -30,5 +30,5 @@ test('output symlinks are refused before reading or overwriting their targets',(
 }));
 test('source changes that invalidate stripping boundaries fail closed',async()=>{
  const source=await Bun.file(new URL('../play/app.js',import.meta.url)).text();
- expect(()=>productionSource('play/app.js',source.replace(',gpuTiming:true',',gpuTiming:false'))).toThrow('Packaging boundary changed');
+ expect(()=>productionSource('play/app.js',source.replace("renderer.inspect=new URLSearchParams(location.search).has('inspect');",''))).toThrow('Packaging boundary changed');
 });

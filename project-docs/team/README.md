@@ -1,5 +1,7 @@
 # Development team
 
+**Combat effects in planar water, 21 October (implemented for review):** pooled muzzle/Arc/plasma/thrust/explosion/smoke effects now draw in the mirrored capture with its own hardware depth and water-plane clipping. Shared effect buffers except fixed mirrored smoke ordering; no additional pass/texture. Pipelines prepare during player loading. Cache refresh covers animation and expiry. Reflected bloom/shockwaves remain separate. Local package/commit updated; no tests/browser/GPU checks, player reload or remote push; appearance and GPU correctness/cost are unverified. Preserve the critter cyclic roster. [Engine/resource notes](../engine.md).
+
 **Dark loading viewport, 21 October (implemented):** renderer loading clears and player viewport CSS now match GUI charcoal `#15171a`; loading no longer reuses the olive scene background. Local package rebuilt, with no tests/browser checks or player reload. Local commit only; remote pushes remain forbidden.
 
 **Critter cyclic roster, 21 October (latest user constraint):** preserve the intentional cyclic-buffer rotation across land critters, birds and fish for performance. The consecutive-turn escape override from `758e448` has been removed; one thinker and at most 512 BFS expansions per advance remain. Escape requests may replace roaming jobs only on their own scheduled turns. That remaining behaviour is unverified, and the intermittent stall's cause is unconfirmed. GUI changes remain. Local package/correction commit updated; no tests/browser checks, player reload or remote push.

@@ -1,5 +1,6 @@
 import {geometry} from './shaders.js';
 import {specializeLocalLights} from './shot-shaders.js';
+import {hasReflectionEffects} from './reflection-effects.js';
 
 // One horizontal plane per scene. Geometry/instances/shadows belong to the
 // renderer. Pipelines/frame are lazy application resources; half-resolution
@@ -33,7 +34,7 @@ export function waterInView(bounds,vp){
 }
 export class PlanarReflection {
  constructor(renderer,buffers){
-  const d=this.device=renderer.device;this.frame=new Float32Array(92);this.bytes=0;this.valid=false;
+  const d=this.device=renderer.device;this.frame=new Float32Array(92);this.bytes=0;this.valid=false;this.hadEffects=false;
   this.uniform=d.createBuffer({label:'Mirrored water camera',size:368,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});
   this.cameraGroup=d.createBindGroup({layout:renderer.cameraLayout,entries:[{binding:0,resource:{buffer:this.uniform}}]});
   const module=d.createShaderModule({label:'Planar water reflection',code:specializeLocalLights(geometry,renderer.localLightCapacity)});
@@ -47,14 +48,18 @@ export class PlanarReflection {
   this.color=texture('rgba8unorm');this.depth=texture('depth32float');this.view=this.color.createView();this.pass.colorAttachments[0].view=this.view;this.pass.depthStencilAttachment.view=this.depth.createView();this.bytes=w*h*8;return true;
  }
  render(encoder,renderer,height,changed){
-  if(this.valid&&!changed)return 0;
+  const effects=hasReflectionEffects(renderer);
+  // Refresh throughout animation and once after the last particle disappears.
+  if(this.valid&&!changed&&!effects&&!this.hadEffects)return 0;
+  if(effects)renderer.ensureReflectionEffects();
   reflectedFrame(this.frame,renderer.frameData,height);this.frame[64]=this.width;this.frame[65]=this.height;this.frame[66]=1/this.width;this.frame[67]=1/this.height;
   this.device.queue.writeBuffer(this.uniform,0,this.frame);
   const pass=encoder.beginRenderPass(this.pass);pass.setBindGroup(0,this.cameraGroup);pass.setBindGroup(1,renderer.lightGroup);pass.setPipeline(this.pipeline);let draws=0;
   for(const draw of renderer.draws)if(draw.visibleCount){pass.setVertexBuffer(0,draw.vertices);pass.setVertexBuffer(1,draw.instances);pass.setIndexBuffer(draw.indices,'uint32');pass.drawIndexed(draw.indexCount,draw.visibleCount);draws++;}
   if(renderer.damageCubeCount){pass.setPipeline(renderer.damageReflectionPipeline);pass.setVertexBuffer(0,renderer.damageCubeBuffer);pass.draw(36,renderer.damageCubeCount);draws++;}
-  pass.end();this.valid=true;return draws;
+  if(effects)draws+=renderer.reflectionEffects.draw(pass,renderer,this.frame);
+  pass.end();this.valid=true;this.hadEffects=effects;return draws;
  }
- clearTargets(){this.color?.destroy();this.depth?.destroy();this.color=this.depth=this.view=null;this.width=this.height=this.bytes=0;this.valid=false;}
+ clearTargets(){this.color?.destroy();this.depth?.destroy();this.color=this.depth=this.view=null;this.width=this.height=this.bytes=0;this.valid=false;this.hadEffects=false;}
  dispose(){this.clearTargets();this.uniform.destroy();}
 }

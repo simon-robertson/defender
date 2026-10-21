@@ -1,5 +1,6 @@
 import {settlePipelineFields} from './pipeline-preparation.js';
 import {PlanarReflection,waterPlane,waterInView} from './planar-reflection.js';
+import {ReflectionEffects} from './reflection-effects.js';
 import {ZoneVista,hasZoneVista} from './zone-vista.js';
 import {GPUFrameTimer,requestRenderDevice} from './gpu-frame-timer.js';
 import {Camera} from './camera.js';
@@ -39,7 +40,7 @@ export class WorldRenderer {
   if(!Number.isInteger(modelLightCapacity)||modelLightCapacity<1||modelLightCapacity>MAX_SUPPORTED_MODEL_LIGHTS)throw new Error('Unsupported renderer model-light capacity.');
   if(!Number.isFinite(renderScale)||renderScale<=0||renderScale>1)throw new Error('Renderer scale must be greater than zero and at most one.');
   this.renderScale=renderScale;
-  this.modelLightCapacity=modelLightCapacity;this.localLightCapacity=MAX_LOCAL_LIGHTS+modelLightCapacity-MAX_MODEL_LIGHTS;this.strictModelLights=strictModelLights;this.gpuTiming=gpuTiming;
+  this.modelLightCapacity=modelLightCapacity;this.localLightCapacity=MAX_LOCAL_LIGHTS+modelLightCapacity-MAX_MODEL_LIGHTS;this.strictModelLights=strictModelLights;this.gpuTiming=gpuTiming;this.reflectionEffects=null;
   this.waterReflections=waterReflections;this.reflectionsEnabled=true;this.bloomEnabled=true;this.planar=null;this.visibleEmitters=0;this.waterHeight=null;this.waterBounds=null;this.lastDamageSolidRevision=-1;this.deathEffectsPrepared=false;this.deathEffectsPreparation=null;
   this.canvas=canvas;this.onError=onError;this.draws=[];this.drawMap=new Map();this.frameData=new Float32Array(92);this.localLightData=new Float32Array(4+this.localLightCapacity*8);
   this.localLightCount=this.localLightUploadBytes=this.missileLightCount=0;this.hadTransientLights=false;this.modelLights=null;this.bloom=null;
@@ -266,11 +267,15 @@ export class WorldRenderer {
   this.damageParticleBuffer=d.createBuffer({size:MAX_DAMAGE_PARTICLES*DAMAGE_PARTICLE_FLOATS*4,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST});this.damageBytes+=this.damageParticleBuffer.size;
   if(asyncCreate)return this.damageParticleReady=settlePipelineFields(this,['damageSmokePipeline','damageBlastPipeline']);
  }
+ ensureReflectionEffects(asyncCreate=false){
+  if(!this.reflectionEffects){this.reflectionEffects=new ReflectionEffects(this,asyncCreate);this.effectBytes+=this.reflectionEffects.bytes;}
+  return this.reflectionEffects.ready;
+ }
  async prepareDeathEffects(){
   if(this.deathEffectsPreparation)return this.deathEffectsPreparation;
   if(this.disposed)return false;
   this.deathEffectsPreparation=(async()=>{
-   const pending=[this.ensureDamageCubes(true),this.ensureDamageParticles(true),this.ensureShockwavePipeline(true)];
+   const pending=[this.ensureDamageCubes(true),this.ensureDamageParticles(true),this.ensureShockwavePipeline(true),this.ensureReflectionEffects(true)];
    this.bloodDecals??=new BloodDecals(this.device,this.cameraLayout,this.lightingLayout,this.localLightCapacity,true);
    pending.push(settlePipelineFields(this.bloodDecals,['pipeline']));
    this.bloom??=new BloomPasses(this.device,this.cameraLayout,this.screenLayout,this.lightingLayout,this.sampler,this.format,this.localLightCapacity,true);
@@ -552,5 +557,5 @@ export class WorldRenderer {
   if(this.shotEffects)this.shotEffects.reset();this.localLightData.fill(0);this.localLightUploadBytes=0;if(this.shotUniform)this.device?.queue.writeBuffer(this.shotUniform,0,this.localLightData);
   if(this.ready&&!this.failed&&!this.disposed){const encoder=this.device.createCommandEncoder();this.clearPass.colorAttachments[0].view=this.context.getCurrentTexture().createView();encoder.beginRenderPass(this.clearPass).end();this.submitBuffers[0]=encoder.finish();this.device.queue.submit(this.submitBuffers);this.submitBuffers[0]=null;}
  }
- dispose(){if(this.disposed)return;this.gpuTimer?.dispose();this.bloom?.dispose();this.bloom=null;this.planar?.dispose();this.planar=null;this.disposed=true;this.resizeObserver?.disconnect();this.clearGeometry();this.clearShockwaveTarget();this.world=null;this.shotEffects=this.damageEffects=this.arcEffects=null;this.camera.dispose();for(const t of this.targets||[])t.destroy();this.shadow?.destroy();this.uniform?.destroy();this.shotUniform?.destroy();this.emptyArcLights?.destroy();this.shotInstances?.destroy();this.damageCubeBuffer?.destroy();this.damageParticleBuffer?.destroy();this.shockwaveUniform?.destroy();this.device?.destroy();}
+ dispose(){if(this.disposed)return;this.gpuTimer?.dispose();this.bloom?.dispose();this.bloom=null;this.planar?.dispose();this.planar=null;this.reflectionEffects?.dispose();this.reflectionEffects=null;this.disposed=true;this.resizeObserver?.disconnect();this.clearGeometry();this.clearShockwaveTarget();this.world=null;this.shotEffects=this.damageEffects=this.arcEffects=null;this.camera.dispose();for(const t of this.targets||[])t.destroy();this.shadow?.destroy();this.uniform?.destroy();this.shotUniform?.destroy();this.emptyArcLights?.destroy();this.shotInstances?.destroy();this.damageCubeBuffer?.destroy();this.damageParticleBuffer?.destroy();this.shockwaveUniform?.destroy();this.device?.destroy();}
 }

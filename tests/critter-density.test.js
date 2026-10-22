@@ -7,11 +7,11 @@ import {hasFishWater,FISH_MODEL} from '../shared/fish-habitat.js';
 import {pathBoxUnion} from '../shared/routes.js';
 const library=new Map();
 
-test('all sixteen levels double land wildlife with separated supported routeside seeds',async()=>{
+test('all sixteen levels retain nine land/bird actors with separated supported routeside seeds',async()=>{
  const rows=[];
  for(const {id} of PLAY_CONFIG.levels){
   const source=await Bun.file(`assets/levels/${id}.json`).json(),level=composePlayLevel(source),actors=wildlifeActorsForLevel(level);
-  expect(actors.filter(a=>a.kind==='ground')).toHaveLength(9);expect(actors.filter(a=>a.kind==='bird')).toHaveLength(3);
+  expect(actors.filter(a=>a.kind==='ground')).toHaveLength(7);expect(actors.filter(a=>a.kind==='bird')).toHaveLength(2);
   for(const id of new Set([...level.placements.map(p=>p.model),...actors.map(a=>a.model),...(hasFishWater(level)?[FISH_MODEL]:[])]))if(!library.has(id))library.set(id,await Bun.file(`assets/models/${id}.json`).json());
   const world=buildWorld(level,library,{actors,includeFish:true}),wildlife=new WildlifePreview(world,()=>{},actors);
   try{
@@ -22,10 +22,10 @@ test('all sixteen levels double land wildlife with separated supported routeside
     for(const other of ground.slice(i+1))expect(Math.hypot(s.x-other.x,s.z-other.z)).toBeGreaterThanOrEqual(s.radius+other.radius+2-1e-6);
    }
    const extra=ground.slice(3),near=extra.filter(s=>paths.some(([x,,z])=>Math.hypot(s.x-(x+.5)*24,s.z-(z+.5)*24)<=48)).length;
-   expect(near).toBeGreaterThanOrEqual(4);
+   expect(near).toBeGreaterThanOrEqual(2);
    const states=wildlife.states.slice();for(let i=0;i<180;i++)wildlife.advance(1/30);
    expect(states.some(s=>s.travelled>0)).toBe(true);expect(wildlife.states.every(s=>Number.isFinite(s.x+s.y+s.z))).toBe(true);
-   rows.push({id,ground:ground.length,birds:3,fish:wildlife.fish.states.length,additionalNearRoute:near});
+   rows.push({id,ground:ground.length,birds:2,fish:wildlife.fish.states.length,additionalNearRoute:near});
   }finally{wildlife.dispose();disposeWorld(world);}
  }
  console.log(JSON.stringify({densitySurvey:rows}));

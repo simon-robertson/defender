@@ -31,7 +31,7 @@ export function wildlifeActorsForLevel(levelOrId){
  if(isNonCombatPreview(level)&&level.previewWildlife===undefined)return EMPTY;
  if(level?.previewWildlife===undefined)return id==='moss-04'?A4_ROSTER:ROSTERS[previewLevelForId(id)?.zone]??EMPTY;
  const zone=level.zone,config=level.previewWildlife;
- if(!IDS[zone]||!config||!Array.isArray(config.habitats)||![3,9].includes(config.habitats.length)||!Array.isArray(config.perches)||config.perches.length!==3)throw new Error('A preview requires three or nine ground wildlife seeds and three bird perches.');
+ if(!IDS[zone]||!config||!Array.isArray(config.habitats)||![3,7,9].includes(config.habitats.length)||!Array.isArray(config.perches)||![2,3].includes(config.perches.length))throw new Error('A preview requires three, seven or nine ground wildlife seeds and two or three bird perches.');
  for(const box of config.habitats)if(!Array.isArray(box)||box.length!==2||box.some((n,i)=>!Number.isInteger(n)||n<0||n>=level.size[i]))throw new Error('Invalid authored wildlife habitat.');
  if(config.habitatPoints!==undefined){
   if(!Array.isArray(config.habitatPoints)||config.habitatPoints.length!==config.habitats.length)throw new Error('Invalid authored wildlife habitat points.');

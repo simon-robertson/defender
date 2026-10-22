@@ -26,12 +26,12 @@ test('fish model is a deterministic matte articulated cosmetic asset',async()=>{
  const model=fishModel();validateModel(model);expect(model).toEqual(await Bun.file('assets/models/wildlife-fish.json').json());
  expect(model.role).toBe('scenery');expect(model.materials.every(m=>m.emission===0&&m.reflectiveness===0)).toBe(true);
  expect(model.variants.base.parts.map(p=>p.id)).toEqual(['body','tail']);expect(model.variants.base.parts[1].parent).toBe('body');
- const f=fixture();expect(f.fish.states).toHaveLength(3);expect(f.fish.states.every(s=>!('health'in s))).toBe(true);f.dispose();
+ const f=fixture();expect(f.fish.states).toHaveLength(2);expect(f.fish.states.every(s=>!('health'in s))).toBe(true);f.dispose();
 });
 test('shallow and isolated water are empty; separate usable pools own separate schools',()=>{
  const shallow=fixture({depth:4});expect(shallow.world.fishHabitat).toBeNull();expect(shallow.fish.states).toHaveLength(0);expect(shallow.fish.events.byteLength).toBe(0);shallow.dispose();
  const tiny=fixture({tiny:true});expect(tiny.fish.states).toHaveLength(0);tiny.dispose();
- const f=fixture({split:true});expect(f.fish.states).toHaveLength(6);expect(f.world.fishHabitat.pools).toHaveLength(2);
+ const f=fixture({split:true});expect(f.fish.states).toHaveLength(5);expect(f.world.fishHabitat.pools).toHaveLength(2);
  const s=f.fish.states[0],other=f.fish.states.find(a=>a.waterBody!==s.waterBody);
  // Impact on the left bank is close enough to fish across a dry divider,
  // but only water-connected fish may react. Bank nodes need not be swimmable.
@@ -78,7 +78,7 @@ test('actual deep pools load fish, retain them through wave preparation, and kee
  try{
   for(const index of [1,3,7,8,11,14]){
    const level=PLAY_CONFIG.levels[index],world=await loadPlayWorld(level.id,{wave:level.waves[0]}),engine=new PlayEngine(world,{config:PLAY_CONFIG,wave:level.waves[0]}),states=engine.wildlife.fish.states;
-   expect(states.length).toBe(3);engine.startWave();
+   expect(states.length).toBe(2);engine.startWave();
    for(let i=0;i<360;i++)engine.advance(1/30);
    expect(states.every(s=>s.journeysCompleted>1)).toBe(true);expect(engine.enemies.states.every(s=>!s.id.startsWith('wildlife-'))).toBe(true);
    while(engine.running)engine.advance(1/30);

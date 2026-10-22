@@ -118,10 +118,15 @@ export function buildWorld(level,models,{actors=[],includeFish=false}={}){
   world.visibility.setDefences(level,models,rigs);
   world.fishHabitat=includeFish&&models.has(FISH_MODEL)?fishHabitat(world):null;world.fishActors=[];
   if(world.fishHabitat){
-   const schools=world.fishHabitat.pools,pool=addWorldRigPool(world,models.get(FISH_MODEL),'base',schools.length*3);
-   for(const school of schools)for(let i=0;i<3;i++){
-    const index=world.fishActors.length,id=`wildlife-fish-${index+1}`,node=school.nodes[Math.floor((i+.5)*school.nodes.length/3)];
-    world.fishActors.push({id,node,index});actorRigs.set(id,pool.rigs[index]);for(const entry of pool.entries)entry.activeIndices.push(index);
+   const schools=world.fishHabitat.pools,population=Math.round(schools.length*3*.75),pool=addWorldRigPool(world,models.get(FISH_MODEL),'base',population);
+   // Round the combined population, then share it across certified pools.
+   // One pool keeps two fish; two pools retain five rather than only four.
+   for(let schoolIndex=0;schoolIndex<schools.length;schoolIndex++){
+    const school=schools[schoolIndex],count=Math.round((schoolIndex+1)*3*.75)-Math.round(schoolIndex*3*.75);
+    for(let i=0;i<count;i++){
+     const index=world.fishActors.length,id=`wildlife-fish-${index+1}`,node=school.nodes[Math.floor((i+.5)*school.nodes.length/count)];
+     world.fishActors.push({id,node,index});actorRigs.set(id,pool.rigs[index]);for(const entry of pool.entries)entry.activeIndices.push(index);
+    }
    }
    world.quads+=pool.entries.reduce((n,e)=>n+e.mesh.quads.length*e.activeIndices.length,0);
   }

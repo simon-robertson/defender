@@ -6,7 +6,8 @@ export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=34,DRONE_CAMERA_ACCELERA
 const DRIFT_SPEED=.65,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_SPEED/DRIFT_RADIUS,JERK=48;
 const TICK=1/120,PLAN_SECONDS=.8,R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),HEIGHTS=Object.freeze([120,184,152]);
 const COMPOSITION_SUBJECTS=12,COMPOSITION_ENEMIES=8,LOW_HEIGHTS=Object.freeze([40,56]);
-const ACTIVITY_SLOTS=24,ACTIVITY_RADIUS=60,ACTIVITY_SECONDS=3;
+const ACTIVITY_SLOTS=24,ACTIVITY_RADIUS=60,ACTIVITY_SECONDS=5,SCENE_RADIUS=84,SCENE_HOLD=4,CHALLENGE_SECONDS=1.2;
+const FOCUS_PRIORITY=Object.freeze({none:-1,enemy:0,defence:1,anticipation:2,combat:3});
 function put(out,x,y,z,k=0){out[k]=x;out[k+1]=y;out[k+2]=z;}
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const angle=(a,b)=>Math.atan2(Math.sin(a-b),Math.cos(a-b));
@@ -33,13 +34,13 @@ export class DroneCamera {
   this.velocity=new Float64Array(3);this.acceleration=new Float64Array(3);this.desiredVelocity=new Float64Array(3);this.driftAnchor=new Float64Array(3);this.drifting=false;this.driftPhase=0;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;this.saved=new Float64Array(6);this.position=new Float64Array(3);this.focus=new Float64Array(3);this.look=new Float64Array(3);this.goal=new Float64Array(3);this.route=new Float64Array(9);this.scratch=new Float64Array(6);this.lastBattle=new Float64Array(3);
   this.compositionStates=new Array(COMPOSITION_SUBJECTS).fill(null);this.compositionBounds=new Float64Array(COMPOSITION_SUBJECTS*6);this.projectedSubjects=new Float64Array(COMPOSITION_SUBJECTS*4);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
   this.subject=null;this.subjectSince=0;this.engineTime=null;this.phase=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;
-  this.activity=new Float64Array(ACTIVITY_SLOTS*5);this.activityFocus=new Float64Array(3);this.activitySlot=-1;this.focusKind='enemy';this.interest=null;this.nextSubjectAt=0;
+  this.activity=new Float64Array(ACTIVITY_SLOTS*5);this.activityWeights=new Float64Array(ACTIVITY_SLOTS);this.activityFocus=new Float64Array(3);this.candidateFocus=new Float64Array(3);this.challengeFocus=new Float64Array(3);this.activitySlot=-1;this.focusKind='none';this.interest=null;this.nextSubjectAt=0;this.challengeKind=null;this.challengeSince=0;this.forecastAt=-Infinity;
   this.routeLength=this.routeIndex=0;this.goalDuration=10;this.fov=64;this.yaw=this.pitch=this.panRoll=0;this.quality=0;this.visible=this.holding=false;this.battleAt=-Infinity;this.cruiseY=224;this.shotBand=-1;this.seed=1;
  }
  bind(world){
   this.leave();this.anticipation.reset();this.obstacles?.dispose();this.obstacles=null;this.obstacleEngine=null;this.emergency=false;this.airLanes=null;this.airborneFloor=null;this.world=world??null;this.water=null;
   this.subject=null;this.engineTime=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;this.battleAt=-Infinity;this.routeLength=this.routeIndex=0;this.focus.fill(0);this.velocity.fill(0);this.acceleration.fill(0);this.desiredVelocity.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;
-  this.activity.fill(0);this.activitySlot=-1;this.focusKind='enemy';this.interest=null;this.nextSubjectAt=0;
+  this.resetFocus();
   this.compositionStates.fill(null);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
   if(!world)return;
   const field=new TerrainField(world.level);this.water=new Float32Array(world.level.size[0]*world.level.size[1]);
@@ -52,9 +53,10 @@ export class DroneCamera {
   if(!this.active)return;
   this.anticipation.reset();
   const c=this.camera;c.mode='overview';c.target.set(this.saved.subarray(0,3));c.yaw=this.saved[3];c.pitch=this.saved[4];c.radius=this.saved[5];c.roll=0;c.setControlsEnabled(true);c.invalidate();
-  this.active=false;this.subject=null;this.compositionStates.fill(null);this.compositionCount=0;this.compositionEngine=null;this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.flinch=this.panRoll=0;this.holding=false;this.engineTime=null;this.accumulator=0;this.routeLength=this.routeIndex=0;
+  this.active=false;this.resetFocus();this.compositionStates.fill(null);this.compositionCount=0;this.compositionEngine=null;this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.flinch=this.panRoll=0;this.holding=false;this.engineTime=null;this.accumulator=0;this.routeLength=this.routeIndex=0;
  }
- refresh(){this.leave();this.anticipation.reset();this.obstacles?.dispose();this.obstacles=null;this.obstacleEngine=null;this.airLanes=null;}
+ refresh(){this.leave();this.resetFocus();this.anticipation.reset();this.obstacles?.dispose();this.obstacles=null;this.obstacleEngine=null;this.airLanes=null;}
+ resetFocus(){this.activity.fill(0);this.activityWeights.fill(0);this.activitySlot=-1;this.focusKind='none';this.subject=this.interest=this.challengeKind=null;this.nextSubjectAt=0;this.subjectSince=-Infinity;this.forecastAt=-Infinity;}
  validSubject(target){return target?.phase==='active'&&target.health?.alive!==false;}
  noteActivity(x,y,z,at,weight=1){
   if(!this.world||!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z)||!Number.isFinite(at))return;
@@ -64,42 +66,83 @@ export class DroneCamera {
    if(events[k+3]>0&&age>=0&&age<ACTIVITY_SECONDS&&(events[k]-x)**2+(events[k+2]-z)**2<ACTIVITY_RADIUS**2){slot=k;matched=true;break;}
    if(events[k+4]<oldest||events[k+3]===0){oldest=events[k+4];slot=k;}
   }
-  const retained=matched?events[slot+3]*Math.exp(-(at-events[slot+4])):0;
+  const retained=matched?events[slot+3]*Math.exp(-(at-events[slot+4])/2):0;
   const total=retained+weight;
   events[slot]=(events[slot]*retained+x*weight)/total;events[slot+1]=(events[slot+1]*retained+y*weight)/total;events[slot+2]=(events[slot+2]*retained+z*weight)/total;events[slot+3]=Math.min(24,total);events[slot+4]=at;
  }
+ // Neighbouring impact cells form one encounter. A shot cadence, kill or
+ // recycled activity slot is not a new filming destination.
+ sampleActivity(x,z,out){
+  let total=0,px=0,py=0,pz=0;
+  for(let n=0;n<ACTIVITY_SLOTS;n++){
+   const k=n*5,d=(this.activity[k]-x)**2+(this.activity[k+2]-z)**2;
+   if(!this.activityWeights[n]||d>=SCENE_RADIUS**2)continue;
+   const weight=this.activityWeights[n]*(1-d/SCENE_RADIUS**2);total+=weight;
+   px+=this.activity[k]*weight;py+=this.activity[k+1]*weight;pz+=this.activity[k+2]*weight;
+  }
+  if(total)put(out,px/total,py/total,pz/total);return total;
+ }
+ localSubject(targets){
+  if(this.validSubject(this.subject)&&(this.subject.x-this.activityFocus[0])**2+(this.subject.z-this.activityFocus[2])**2<=SCENE_RADIUS**2)return;
+  this.subject=null;let nearest=SCENE_RADIUS**2;
+  for(const target of targets)if(this.validSubject(target)){const d=(target.x-this.activityFocus[0])**2+(target.z-this.activityFocus[2])**2;if(d<nearest){nearest=d;this.subject=target;}}
+ }
  chooseSubject(engine){
   if(this.time<this.nextSubjectAt)return;this.nextSubjectAt=this.time+.3;
-  const targets=engine.enemies?.activeTargets??EMPTY,guns=engine.firing?.states??EMPTY,events=this.activity;
-  let slot=-1,score=.12,best=null,interest=null,kind='enemy';
-  for(let k=0;k<events.length;k+=5){
-   const age=engine.time-events[k+4];if(!events[k+3]||age<0||age>=ACTIVITY_SECONDS)continue;
-   // Recent real impacts dominate; travel cost is only a small tie breaker.
-   const value=events[k+3]*Math.exp(-age)*(k===this.activitySlot?1.2:1)/(1+Math.hypot(events[k]-this.position[0],events[k+2]-this.position[2])*.0005);
-   if(value>score){score=value;slot=k;}
+  const targets=engine.enemies?.activeTargets??EMPTY,guns=engine.firing?.states??EMPTY,events=this.activity,point=this.candidateFocus;
+  for(let n=0;n<ACTIVITY_SLOTS;n++){const k=n*5,age=engine.time-events[k+4];this.activityWeights[n]=age>=0&&age<ACTIVITY_SECONDS?events[k+3]*Math.exp(-age/2):0;}
+  const currentScore=this.focusKind==='combat'?this.sampleActivity(this.activityFocus[0],this.activityFocus[2],point):0;
+  const cx=point[0],cy=point[1],cz=point[2];
+  let slot=-1,score=.15,bx=0,by=0,bz=0,target=null,interest=null,kind='none';
+  for(let n=0;n<ACTIVITY_SLOTS;n++){
+   if(!this.activityWeights[n])continue;
+   const k=n*5,value=this.sampleActivity(events[k],events[k+2],point);
+   if(value>score){score=value;slot=k;bx=point[0];by=point[1];bz=point[2];}
   }
-  if(slot>=0){
-   kind='combat';put(this.activityFocus,events[slot],events[slot+1],events[slot+2]);let nearest=ACTIVITY_RADIUS**2;
-   for(const target of targets)if(this.validSubject(target)){const d=(target.x-events[slot])**2+(target.z-events[slot+2])**2;if(d<nearest){nearest=d;best=target;}}
-  }else if(this.anticipation.active){kind='anticipation';best=this.anticipation.target;}
+  if(slot>=0)kind='combat';
+  else if(this.anticipation.active){kind='anticipation';target=this.anticipation.target;[bx,by,bz]=this.anticipation.focus;}
   else{
-   // A defence expecting an encounter is useful context before idle walkers.
    let nearest=Infinity;
-   for(const gun of guns)for(const target of targets)if(this.validSubject(target)){const d=(target.x-gun.x)**2+(target.z-gun.z)**2;if(d<nearest){nearest=d;interest=gun;}}
-   if(interest)kind='defence';
-   else{let distance=Infinity;for(const target of targets)if(this.validSubject(target)){const d=(target.x-this.position[0])**2+(target.z-this.position[2])**2;if(d<distance){distance=d;best=target;}}}
+   for(const gun of guns)for(const enemy of targets)if(this.validSubject(enemy)){const d=(enemy.x-gun.x)**2+(enemy.z-gun.z)**2;if(d<nearest){nearest=d;interest=gun;}}
+   if(interest){kind='defence';bx=interest.x;by=(interest.rig?.root[13]??this.world.level.pathHeight)+18;bz=interest.z;}
+   else{
+    target=this.validSubject(this.subject)?this.subject:null;
+    if(!target){let distance=Infinity;for(const enemy of targets)if(this.validSubject(enemy)){const d=(enemy.x-this.position[0])**2+(enemy.z-this.position[2])**2;if(d<distance){distance=d;target=enemy;}}}
+    if(target){kind='enemy';bx=target.aimX??target.x;by=target.aimY??target.y??this.world.level.pathHeight+8;bz=target.aimZ??target.z;}
+   }
   }
-  if(kind!==this.focusKind||slot!==this.activitySlot){this.goalSince=-Infinity;}
-  if(kind!==this.focusKind||slot!==this.activitySlot||best!==this.subject||interest!==this.interest){this.subjectSince=this.time;this.planIn=0;}
-  this.focusKind=kind;this.activitySlot=slot;this.subject=best;this.interest=interest;
+  const sameArea=(bx-this.activityFocus[0])**2+(bz-this.activityFocus[2])**2<=SCENE_RADIUS**2;
+  const live=this.focusKind==='combat'?currentScore>.15:this.focusKind==='anticipation'?(this.validSubject(this.subject)||this.subject?.phase==='scheduled')&&engine.time<=this.forecastAt+1.5:this.focusKind==='defence'?guns.includes(this.interest):this.validSubject(this.subject);
+  // Keep a quiet beat between volleys. Another battle must be substantially
+  // stronger for a sustained interval before it can take the camera away.
+  const holdCombat=this.focusKind==='combat'&&live&&(kind!=='combat'||sameArea||this.time-this.subjectSince<SCENE_HOLD||score<currentScore*1.65+.4);
+  const holdOther=this.focusKind!=='none'&&live&&kind!=='combat'&&(FOCUS_PRIORITY[kind]<FOCUS_PRIORITY[this.focusKind]||this.time-this.subjectSince<SCENE_HOLD||kind===this.focusKind&&sameArea);
+  if(kind==='none'||holdCombat||holdOther){
+   this.challengeKind=null;
+   if(this.focusKind==='combat'){if(currentScore>.15)put(this.activityFocus,cx,cy,cz);this.localSubject(targets);}
+   return;
+  }
+  const immediate=this.focusKind==='none'||kind==='combat'&&this.focusKind!=='combat';
+  if(!immediate){
+   if(this.challengeKind!==kind||(bx-this.challengeFocus[0])**2+(bz-this.challengeFocus[2])**2>60**2){this.challengeKind=kind;put(this.challengeFocus,bx,by,bz);this.challengeSince=this.time;return;}
+   if(this.time-this.challengeSince<CHALLENGE_SECONDS)return;
+  }
+  this.focusKind=kind;this.activitySlot=slot;this.subject=target;this.interest=interest;this.subjectSince=this.time;this.challengeKind=null;
+  this.forecastAt=kind==='anticipation'?this.anticipation.at:-Infinity;put(this.activityFocus,bx,by,bz);
+  if(kind==='combat')this.localSubject(targets);
+  // Reconsider composition without discarding a still-readable flight route.
+  this.planIn=0;
  }
- compose(engine){
-  if(this.focusKind==='combat'){this.focus.set(this.activityFocus);return;}
-  if(this.focusKind==='anticipation'){this.focus.set(this.anticipation.focus);return;}
-  if(this.focusKind==='defence'&&this.interest){const gun=this.interest;put(this.focus,gun.x,(gun.rig?.root[13]??this.world.level.pathHeight)+18,gun.z);return;}
-  const s=this.subject;if(!this.validSubject(s))return;
-  this.focus[0]=s.aimX??s.x;this.focus[1]=s.aimY??s.y??this.world.level.pathHeight+8;this.focus[2]=s.aimZ??s.z;
-  for(const gun of engine.firing?.states??EMPTY)if(gun.target===s&&gun.lineOfSight&&Math.hypot(gun.x-this.focus[0],gun.z-this.focus[2])<100){this.focus[0]=this.focus[0]*.9+gun.x*.1;this.focus[1]=this.focus[1]*.9+((gun.rig?.root[13]??this.world.level.pathHeight)+18)*.1;this.focus[2]=this.focus[2]*.9+gun.z*.1;break;}
+ compose(engine,dt=0){
+  if(this.focusKind==='none')return;
+  let x=this.activityFocus[0],y=this.activityFocus[1],z=this.activityFocus[2];
+  if(this.focusKind==='defence'&&this.interest){x=this.interest.x;y=(this.interest.rig?.root[13]??this.world.level.pathHeight)+18;z=this.interest.z;}
+  else if(this.focusKind==='enemy'&&this.validSubject(this.subject)){x=this.subject.aimX??this.subject.x;y=this.subject.aimY??this.subject.y??this.world.level.pathHeight+8;z=this.subject.aimZ??this.subject.z;}
+  if(!dt){put(this.focus,x,y,z);return;}
+  const dx=x-this.focus[0],dy=y-this.focus[1],dz=z-this.focus[2],distance=Math.hypot(dx,dy,dz);
+  if(distance<1.5)return;
+  const blend=Math.min(1-Math.exp(-1.6*dt),40*dt/distance);
+  this.focus[0]+=dx*blend;this.focus[1]+=dy*blend;this.focus[2]+=dz*blend;
  }
  staticClear(ax,ay,az,bx,by,bz){
   const w=this.world;if(!w)return false;
@@ -122,7 +165,7 @@ export class DroneCamera {
  columnClear(x,y,z){return this.clear(x,y,z,x,this.cruiseY,z);}
  separation(x,y,z){
   for(const target of this.obstacleEngine?.activeTargets??EMPTY){if(!this.validSubject(target))continue;const horizontal=Math.hypot(x-target.x,z-target.z),vertical=Math.abs(y-(target.aimY??target.y));if(Math.hypot(horizontal,vertical)<150||horizontal<132&&vertical<112)return false;}
-  if(this.anticipation.active){const f=this.anticipation.point,h=Math.hypot(x-f[0],z-f[2]),v=Math.abs(y-f[1]);if(Math.hypot(h,v)<150||h<132&&v<112)return false;}
+  if(this.focusKind==='anticipation'&&this.anticipation.active&&this.anticipation.target===this.subject){const f=this.anticipation.point,h=Math.hypot(x-f[0],z-f[2]),v=Math.abs(y-f[1]);if(Math.hypot(h,v)<150||h<132&&v<112)return false;}
   return true;
  }
  shotQuality(x,y,z){
@@ -292,7 +335,7 @@ export class DroneCamera {
   }
   if(best===Infinity)return false;
   this.emergency=false;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=this.time+24;this.shotBand=-1;this.position.set([sx,this.cruiseY,sz]);this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.accumulator=this.panRoll=0;this.heldFor=0;this.subject=null;this.chooseSubject(engine);this.compose(engine);
-  if(!this.subject&&this.focusKind==='enemy'){if(Number.isFinite(this.battleAt))this.focus.set(this.lastBattle);else{const box=this.world.level.path[0];this.focus.set([(box[0]+.5)*24,this.world.level.pathHeight+8,(box[2]+.5)*24]);}}
+  if(this.focusKind==='none'){if(Number.isFinite(this.battleAt))this.focus.set(this.lastBattle);else{const box=this.world.level.path[0];this.focus.set([(box[0]+.5)*24,this.world.level.pathHeight+8,(box[2]+.5)*24]);}}
   this.look.set(this.focus);this.yaw=Math.atan2(sx-this.look[0],sz-this.look[2]);this.pitch=clamp(Math.atan2(this.position[1]-this.look[1],Math.hypot(sx-this.look[0],sz-this.look[2])),-1.35,1.35);
   const c=this.camera;this.saved.set(c.target);this.saved[3]=c.yaw;this.saved[4]=c.pitch;this.saved[5]=c.radius;this.fov=64;
   this.active=true;this.engineTime=engine.time;this.planIn=PLAN_SECONDS;this.goalSince=-Infinity;this.vantage();c.setControlsEnabled(false);this.apply();return true;
@@ -365,7 +408,7 @@ export class DroneCamera {
   this.pitchVelocity=clamp(this.pitchVelocity,-Math.sqrt(2*1.2*Math.max(0,this.pitch+1.35)),Math.sqrt(2*1.2*Math.max(0,1.35-this.pitch)));
   this.yaw+=this.yawVelocity*dt;this.pitch=clamp(this.pitch+this.pitchVelocity*dt,-1.35,1.35);this.panRoll+=(clamp(-this.yawVelocity*.012,-.018,.018)-this.panRoll)*(1-Math.exp(-5*dt));
   const distance=Math.hypot(dx,dy,dz),aspect=clamp((this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000),.6,2.5);let radius=25;
-  for(const gun of engine.firing?.states??EMPTY)if(gun.target===this.subject&&gun.lineOfSight)radius=Math.max(radius,Math.hypot(gun.x-this.focus[0],gun.z-this.focus[2])*.6+18);
+  for(const gun of engine.firing?.states??EMPTY)if(this.validSubject(gun.target)&&gun.lineOfSight&&Math.hypot(gun.target.x-this.focus[0],gun.target.z-this.focus[2])<SCENE_RADIUS)radius=Math.max(radius,Math.hypot(gun.x-this.focus[0],gun.z-this.focus[2])*.6+18);
   const desired=clamp(2*Math.atan(radius/Math.min(1,aspect)/Math.max(distance,1))*180/Math.PI+12,DRONE_CAMERA_MIN_FOV,76);const fovRate=clamp((desired-this.fov)*1.1,-9,9);this.fovVelocity+=clamp((fovRate-this.fovVelocity)*(1-Math.exp(-5*dt)),-12*dt,12*dt);this.fovVelocity=clamp(this.fovVelocity,-Math.sqrt(24*Math.max(0,this.fov-DRONE_CAMERA_MIN_FOV)),Math.sqrt(24*Math.max(0,76-this.fov)));this.fov=clamp(this.fov+this.fovVelocity*dt,DRONE_CAMERA_MIN_FOV,76);
 
  }
@@ -382,11 +425,11 @@ export class DroneCamera {
    put(this.route,p[0],this.cruiseY,p[2]);this.routeLength=1;this.routeIndex=0;this.goal.set(this.route.subarray(0,3));this.emergency=true;this.lowShot=this.lowArrived=false;this.holding=false;this.heldFor=0;this.goalSince=this.time;
   }
   while(this.accumulator>1e-12){const step=Math.min(TICK,this.accumulator);this.accumulator-=step;this.time+=step;
-   if(phase==='wave'){this.anticipation.update(engine,this.world,this.position);this.chooseSubject(engine);this.compose(engine);this.planIn-=step;if(this.planIn<=0){this.vantage();this.planIn=PLAN_SECONDS;}}
+   if(phase==='wave'){this.anticipation.update(engine,this.world,this.position);this.chooseSubject(engine);this.compose(engine,step);this.planIn-=step;if(this.planIn<=0){this.vantage();this.planIn=PLAN_SECONDS;}}
    this.move(step);this.heldFor=this.holding&&this.speed<2?this.heldFor+step:0;this.aim(step,engine);
   }
   this.apply();return true;
  }
- stats(){return {anticipation:this.anticipation.stats(),enabled:this.enabled,active:this.active,time:this.time,subject:this.subject?.id??null,focusKind:this.focusKind,position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),drifting:this.drifting,blockedMoves:this.blockedMoves,yawVelocity:this.yawVelocity,pitchVelocity:this.pitchVelocity,fovVelocity:this.fovVelocity,travelled:this.travelled,plans:this.plans,holding:this.holding,heldFor:this.heldFor,relocations:this.relocations,quality:this.quality,composition:this.composition,compositionReframes:this.compositionReframes,compositionSubjects:this.compositionCount,lowShot:this.lowShot,lowArrived:this.lowArrived,lowPlans:this.lowPlans,lowShots:this.lowShots,lowPendingUntil:Number.isFinite(this.lowPendingUntil)?this.lowPendingUntil:null,nextLowAt:this.nextLowAt,visible:this.visible,fov:this.fov,pitch:this.pitch,panRoll:this.panRoll,flinch:this.flinch,explosions:this.explosions,routeLength:this.routeLength,routeIndex:this.routeIndex,goalDuration:this.goalDuration,emergency:this.emergency,airborneFloor:this.airborneFloor,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,cruiseY:this.cruiseY,planningBytes:this.activity.byteLength+this.activityFocus.byteLength+this.velocity.byteLength+this.acceleration.byteLength+this.desiredVelocity.byteLength+this.driftAnchor.byteLength+this.anticipation.byteLength+this.saved.byteLength+this.position.byteLength+this.focus.byteLength+this.look.byteLength+this.goal.byteLength+this.route.byteLength+this.scratch.byteLength+this.lastBattle.byteLength+this.compositionBounds.byteLength+this.projectedSubjects.byteLength+(this.water?.byteLength??0)+(this.airLanes?.byteLength??0)+(this.obstacles?.byteLength??0)};}
+ stats(){return {anticipation:this.anticipation.stats(),enabled:this.enabled,active:this.active,time:this.time,subject:this.subject?.id??null,focusKind:this.focusKind,position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),drifting:this.drifting,blockedMoves:this.blockedMoves,yawVelocity:this.yawVelocity,pitchVelocity:this.pitchVelocity,fovVelocity:this.fovVelocity,travelled:this.travelled,plans:this.plans,holding:this.holding,heldFor:this.heldFor,relocations:this.relocations,quality:this.quality,composition:this.composition,compositionReframes:this.compositionReframes,compositionSubjects:this.compositionCount,lowShot:this.lowShot,lowArrived:this.lowArrived,lowPlans:this.lowPlans,lowShots:this.lowShots,lowPendingUntil:Number.isFinite(this.lowPendingUntil)?this.lowPendingUntil:null,nextLowAt:this.nextLowAt,visible:this.visible,fov:this.fov,pitch:this.pitch,panRoll:this.panRoll,flinch:this.flinch,explosions:this.explosions,routeLength:this.routeLength,routeIndex:this.routeIndex,goalDuration:this.goalDuration,emergency:this.emergency,airborneFloor:this.airborneFloor,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,cruiseY:this.cruiseY,planningBytes:this.activityWeights.byteLength+this.candidateFocus.byteLength+this.challengeFocus.byteLength+this.activity.byteLength+this.activityFocus.byteLength+this.velocity.byteLength+this.acceleration.byteLength+this.desiredVelocity.byteLength+this.driftAnchor.byteLength+this.anticipation.byteLength+this.saved.byteLength+this.position.byteLength+this.focus.byteLength+this.look.byteLength+this.goal.byteLength+this.route.byteLength+this.scratch.byteLength+this.lastBattle.byteLength+this.compositionBounds.byteLength+this.projectedSubjects.byteLength+(this.water?.byteLength??0)+(this.airLanes?.byteLength??0)+(this.obstacles?.byteLength??0)};}
  dispose(){this.bind(null);this.camera=null;}
 }

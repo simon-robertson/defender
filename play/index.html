@@ -20,8 +20,9 @@
         <div class="title-rule"><i></i><span>ZONES A–D</span><i></i></div>
         <p class="title-zone">FOUR ZONES · ONE CAMPAIGN</p>
         <div class="title-route" aria-label="Four zones"><span>A</span><b></b><span>B</span><b></b><span>C</span><b></b><span>D</span></div>
-        <p class="development-preview"><strong>Development Preview</strong><small>Saves are disabled for now</small></p>
-        <button type="button" class="primary title-play" data-action="play"><span class="play-chevron" aria-hidden="true">▶</span> NEW GAME</button>
+        <p class="development-preview"><strong>Development Preview</strong><small id="save-status" role="status">Progress saves after each level on this device.</small></p>
+        <button type="button" id="continue-button" class="primary title-play" data-action="continue" hidden>CONTINUE</button>
+        <button type="button" id="new-game-button" class="primary title-play" data-action="play"><span class="play-chevron" aria-hidden="true">▶</span> NEW GAME</button>
         <fieldset class="graphics-options"><legend>GRAPHICS</legend>
           <label><span>Critters</span><input type="checkbox" role="switch" data-graphics="critters" checked><span class="graphics-state" aria-hidden="true"></span></label>
           <label><span>Reflections</span><input type="checkbox" role="switch" data-graphics="reflections" checked><span class="graphics-state" aria-hidden="true"></span></label>

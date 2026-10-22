@@ -10,6 +10,7 @@ import {emitMissileImpact} from '../game/missile-impact.js';
 import {TURRET_MUZZLES} from '../shared/arsenal.js';
 import {PLAY_CONFIG,playCapacity} from './config.js';
 import {PlaySession} from './session.js';
+import {ProgressStore} from './progress.js';
 import {loadPlayWorld,disposePlayWorld,PlayEngine} from './engine.js';
 import {createPlacementRules} from './placement.js';
 import {renderUI} from './ui.js';
@@ -30,6 +31,8 @@ let graphics=loadGraphicsOptions();
 const performanceReadout=new FramePerformance(document.getElementById('performance-readout'));
 const entrances=new EntranceMarkers(document.getElementById('entrance-overlay'));
 const config=PLAY_CONFIG,session=new PlaySession(config),shots=new ShotEffects(),damage=new DamageEffects(),arcs=new ArcEffects();
+const progress=new ProgressStore(config);
+let savedGame=null,progressLoaded=false,savingProgress=false,saveError='';
 const highlight=new UnitHighlight({canvas,list:document.getElementById('unit-list'),overlay:document.getElementById('unit-highlight-overlay'),defences:config.defences});
 const combatStep={combat:true},preparationStep={combat:false};
 let renderer,loader,loop,engine,rules,actionCamera,droneCamera,cameraViews,screenshotCamera,plasmaLinks=null,plasmaOwner=null,plasmaConnections=[],sceneResize,pendingSpec,safeSeeds,lastCameraPhase='title',titleView=null,selectedId=null,hover=null,eligible=[],busy=true,error='',notice='',lastUI=-Infinity,lastDiagnostics=-Infinity,diagnosticsPending=false,disposed=false;
@@ -37,7 +40,7 @@ const frozen=()=>session.paused||['defeat','complete'].includes(session.phase);
 function snapshot(stats=engine?.stats()){
  const state=session.snapshot();
  for(const unit of state.units){const weapon=unit.deployed&&engine?.firing.states.find(weapon=>weapon.id===unit.id);if(weapon){unit.stats={...unit.stats,strength:weapon.strength};unit.strengthIncrease=weapon.strengthIncrease??0;}}
- return {...state,graphics,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
+ return {...state,graphics,savedGame:savedGame?{area:savedGame.level.zone+config.levels.slice(0,savedGame.levelIndex+1).filter(level=>level.zone===savedGame.level.zone).length,completedWaves:savedGame.completedWaves}:null,savingProgress,saveError,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
  levelName:loader?.world?.level?.name??(session.levelIndex?'The Broadwater Garden':'The Limestone Orchard'),
  enemiesRemaining:stats?.active??0,spawned:stats?.spawned??0,totalEnemies:session.wave.spawns.length,
  placementHint:hover&&session.phase==='deploy'?hint.textContent:config.defences[session.units.find(unit=>unit.id===selectedId)?.model]?.kind==='enhancer'?'Place beside a defence: edge-sharing squares gain 25% strength. Diagonals do not.':undefined};}
@@ -94,10 +97,23 @@ async function commitArrangement(candidate,{selectNextAfter=null}={}){
 function onComplete(waveId){
  if(session.beginSettling(waveId)){selectedId=null;paint();}
 }
+async function saveCheckpoint(){
+ savingProgress=true;const completedWaves=session.completedWaves;
+ try{
+  if(session.phase==='complete'){await progress.clear();savedGame=null;}
+  else savedGame=await progress.save(session);
+  saveError='';
+  if(session.preparing&&session.completedWaves===completedWaves&&notice.startsWith('Wave complete'))notice+=' · Progress saved.';
+ }catch{
+  saveError='Progress could not be saved on this device. The previous checkpoint is kept.';
+  notice=saveError;
+ }finally{savingProgress=false;if(!disposed)paint();}
+}
 function finishSettlement(){
  const levelId=session.level.id,waveId=session.wave.id;
  if(!session.finishWave(waveId))return;
  notice=`Wave complete · +${config.waveReward} tokens${session.waveIndex===0&&session.phase!=='complete'?' · Redeploy your defences on the new landscape.':''}`;
+ if(session.phase==='complete'||session.level.id!==levelId)void saveCheckpoint();
  selectedId=null;busy=session.phase!=='complete'&&session.level.id!==levelId;paint();
  // Release only after the current fixed simulation tick has returned.
  queueMicrotask(()=>{
@@ -115,6 +131,10 @@ function finishSettlement(){
  });
 }
 async function initialize(){
+ if(!progressLoaded){
+  try{savedGame=await progress.load();}catch{saveError='Saved progress could not be loaded on this device.';}
+  progressLoaded=true;
+ }
  renderer=new WorldRenderer(canvas,fail,{modelLightCapacity:playCapacity(config).modelLights,strictModelLights:true,gpuTiming:true,renderScale:.5});renderer.inspect=new URLSearchParams(location.search).has('inspect');await renderer.init();if(disposed){renderer.device?.destroy();return;}
  renderer.setGraphicsOptions(graphics);
  const effectsPrepared=await renderer.prepareDeathEffects();if(!effectsPrepared||disposed)return;renderer.camera.pathModeEnabled=false;
@@ -198,6 +218,10 @@ document.addEventListener('click',async event=>{
  if(disposed||busy)return;
  try{
   if(action==='retry-load'){if(loader)await rebuild(pendingSpec?.candidate??session.fork(),pendingSpec?.points);else{renderer?.dispose();busy=true;error='';paint();await initialize();}return;}
+  if(action==='continue'){
+   if(session.phase!=='title'||error||!savedGame||savingProgress)return;
+   cameraViews?.reset();conditions.reset();selectedId=null;notice='Resumed from the last completed level.';await rebuild(savedGame.fork());return;
+  }
   if(action==='title'||action==='play'||action==='retry'){
    if(action!=='title')cameraViews?.reset();
    conditions.reset();const candidate=new PlaySession(config);candidate.reset(action==='title'?'title':'loadout');selectedId=null;notice='';await rebuild(candidate);return;

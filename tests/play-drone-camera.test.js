@@ -121,3 +121,15 @@ test('native battles at 30/60/120 Hz preserve combat outcomes and swept static/a
   expect(results[0]).toEqual(expected);expect(results[0]).toEqual(results[1]);expect(results[1]).toEqual(results[2]);
  }
 }),90000);
+
+test('edge arrivals open with more board context while retaining the real action anchor',()=>{
+ for(const [x,z]of [[470,192],[10,192],[240,8],[240,376]]){
+  const f=basic(),d=f.drone;f.subject.x=f.subject.aimX=x;f.subject.z=f.subject.aimZ=z;
+  try{
+   d.setEnabled(true);d.sync('wave',f.engine);const opening=d.currentFrame().board;
+   const previous=d.framing.evaluate(d.orientShot(...d.position,d.director.intent.focus,64),d.director,d.aspect,true,'survey').board;
+   expect(opening).toBeGreaterThan(previous+.08);expect(d.sceneInView()).toBe(true);expect(d.position[0]).toBe(f.world.width/2);expect(d.position[2]).toBe(f.world.length/2);expect(d.position[1]).toBeGreaterThanOrEqual(d.cruiseY);
+   advance(f,3.5);d.compose(f.engine);expect(Array.from(d.focus)).toEqual(Array.from(d.director.intent.focus));
+  }finally{d.dispose();}
+ }
+});

@@ -10,7 +10,7 @@ export class DroneCamera extends DroneFlight {
  constructor(camera,options={}){
   super(camera,options);this.director=new BattleDirector();this.framing=new BattleFraming();this.candidates=Array.from({length:144},()=>({x:0,y:0,z:0,score:-Infinity,adjustment:0,certified:false,action:0,global:0,board:0}));
   this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.plannedVersion=-1;this.quality=this.levelInView=0;this.visible=this.holding=false;this.engineTime=null;this.subject=null;this.focusKind='none';this.phase=null;
-  this.openingUntil=0;this.plannedOpening=false;
+  this.openingUntil=0;this.plannedOpening=false;this.openingFocus=new Float64Array(3);
  }
  bind(world){super.bind(world);this.director?.reset();this.framing?.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.plannedVersion=-1;this.planIn=0;this.engineTime=null;this.subject=null;this.focusKind='none';this.openingUntil=0;this.plannedOpening=false;}
  refresh(){this.leave();this.director.reset();this.obstacles?.dispose();this.obstacles=this.obstacleEngine=null;this.engineTime=null;this.plannedVersion=-1;}
@@ -20,7 +20,20 @@ export class DroneCamera extends DroneFlight {
   if(this.active&&Number.isFinite(x+y+z)){const distance=Math.hypot(x-this.position[0],y-this.position[1],z-this.position[2]);if(distance<90){this.flinch=Math.min(.5,this.flinch+(1-distance/90)*.35);this.explosions++;}}
  }
  chooseSubject(engine){const changed=this.director.update(engine,this.world);this.subject=this.director.intent.subject;this.focusKind=this.director.intent.kind;if(changed)this.planIn=0;return changed;}
- compose(_engine,dt=0){const f=this.director.intent.focus;if(!dt){this.focus.set(f);return;}const distance=Math.hypot(f[0]-this.focus[0],f[1]-this.focus[1],f[2]-this.focus[2]),blend=Math.min(1-Math.exp(-3.2*dt),80*dt/(distance||1));for(let axis=0;axis<3;axis++)this.focus[axis]+=(f[axis]-this.focus[axis])*blend;}
+ compose(_engine,dt=0){let f=this.director.intent.focus;
+  if(this.world&&this.time<this.openingUntil){
+   const t=clamp(1-(this.openingUntil-this.time)/OPENING_SECONDS,0,1),o=this.openingFocus;
+   let blend=.15+.85*t*t*(3-2*t);
+   // Start toward the board centre, but retain the real action anchor in the
+   // shot on tall, wide or narrow-aspect levels. No scene/collision rules change.
+   for(let attempt=0;attempt<18;attempt++){
+    o[0]=this.world.width/2+(f[0]-this.world.width/2)*blend;o[1]=f[1];o[2]=this.world.length/2+(f[2]-this.world.length/2)*blend;
+    const pose=this.orientShot(...this.position,o,64),q=projectBattlePoint(pose,...this.director.intent.anchor,this.aspect,this.framing.point);
+    if(blend===1||q[2]>20&&Math.abs(q[0])<.88&&Math.abs(q[1])<.85)break;blend=Math.min(1,blend+.05);
+   }
+   f=o;
+  }
+  if(!dt){this.focus.set(f);return;}const distance=Math.hypot(f[0]-this.focus[0],f[1]-this.focus[1],f[2]-this.focus[2]),blend=Math.min(1-Math.exp(-3.2*dt),80*dt/(distance||1));for(let axis=0;axis<3;axis++)this.focus[axis]+=(f[axis]-this.focus[axis])*blend;}
  actionLineClear(x,y,z){
   const d=this.director;if(!d.count)return true;let total=0,visible=0,checked=0;
   // A weighted centre can fall inside scenery. Inspect real participants.
@@ -75,13 +88,12 @@ export class DroneCamera extends DroneFlight {
   return false;
  }
  enter(engine){
-  if(!this.world)return false;this.prepareObstacles(engine);this.director.nextScan=-Infinity;this.chooseSubject(engine);this.compose(engine);
-  this.openingUntil=this.time+OPENING_SECONDS;
+  if(!this.world)return false;this.prepareObstacles(engine);this.director.nextScan=-Infinity;this.openingUntil=this.time+OPENING_SECONDS;this.chooseSubject(engine);
   // Raise the central start if a live actor occupies its first height. Never
   // fall back to an edge station or a lower opening.
   const x=this.world.width/2,z=this.world.length/2;let found=false;
   for(let lift=0;lift<=128;lift+=32){const y=this.cruiseY+lift;if(this.clear(x,y,z,x,y,z)){this.position.set([x,y,z]);found=true;break;}}if(!found)return false;
-  this.goal.set(this.position);this.routeLength=this.routeIndex=0;this.goalSince=this.time;this.plannedVersion=this.director.intent.version;this.plannedOpening=true;this.holding=true;this.targetFov=64;
+  this.goal.set(this.position);this.routeLength=this.routeIndex=0;this.goalSince=this.time;this.plannedVersion=this.director.intent.version;this.plannedOpening=true;this.holding=true;this.targetFov=64;this.compose(engine);
   const c=this.camera;this.saved.set(c.target);this.saved[3]=c.yaw;this.saved[4]=c.pitch;this.saved[5]=c.radius;
   this.active=true;this.engineTime=engine.time;this.accumulator=0;this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.heldFor=this.panRoll=0;this.look.set(this.focus);
   const pose=this.orientShot(...this.position,this.focus,this.targetFov);this.yaw=pose.yaw;this.pitch=pose.pitch;this.fov=this.targetFov;const frame=this.currentFrame();this.quality=frame.action;this.levelInView=frame.board;this.visible=frame.primary&&frame.action>=.55;this.planIn=PLAN_SECONDS;c.setControlsEnabled(false);this.apply();return true;

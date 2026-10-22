@@ -188,7 +188,7 @@ fn shadeWater(uv:vec2<f32>,pixel:vec2<i32>,depth:f32,bedDepth:f32,base:vec3<f32>
    }
   }else{reflected=reflection(world,normal,true);}
   // Raised reflection floor keeps scenery readable from the high game camera.
-  let fresnel=.25+.75*pow(1-clamp(dot(normal,toEye(world)),0,1),5);
+  let fresnel=.4+.6*pow(1-clamp(dot(normal,toEye(world)),0,1),5);
   color=mix(color,reflected.rgb,reflected.a*frame.waterColor.a*fresnel);
  }
  return color;

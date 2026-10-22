@@ -10,4 +10,4 @@ export const MISSILE_PHASE=Object.freeze({FREE:0,LOADED:1,BOOST:2,COAST:3,HOMING
 // existing eased turn before terminal cutoff; boost/coast retain their tuning.
 export const MISSILE_FLIGHT=Object.freeze({boostSpeed:64,boostSeconds:.5,coastSeconds:.4,coastGravity:40,coastTurn:Math.PI*2,cruiseSpeed:180,acceleration:630,homingTurn:Math.PI*240/180,maxAge:8,stepSeconds:1/120,maxFrameSeconds:1,lastPositionRadius:1,terminalCutoffRadius:22});
 const rule=(magazine,gap,reload)=>Object.freeze({magazine,gap,reload,cycle:Object.freeze({shotsPerBurst:1,shotIntervalSeconds:0,cooldownSeconds:gap,delivery:'projectile',projectile:Object.freeze({speedUnitsPerSecond:MISSILE_FLIGHT.cruiseSpeed})})});
-export const MISSILE_FIRING=Object.freeze({base:rule(2,1,4),upgrade1:rule(4,1,4.5),upgrade2:rule(6,1,5)});
+export const MISSILE_FIRING=Object.freeze({base:rule(2,2,4),upgrade1:rule(4,2,4.5),upgrade2:rule(6,2,5)});

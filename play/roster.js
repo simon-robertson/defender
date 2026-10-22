@@ -3,8 +3,18 @@ export {groupRosterUnits} from './roster-order.js';
 
 /** Keep the same groups, rows and controls alive across ordinary UI updates. */
 export class RosterGroups {
- constructor(list){this.list=list;this.groups=new Map();}
+ constructor(list){this.list=list;this.groups=new Map();this.order=[];}
  sync(units,rows){
+  // Stats, tiers and selection update existing rows before sync. Regroup only
+  // when ownership/order/row identity changes, avoiding per-paint Maps/arrays.
+  let changed=this.order.length!==units.length;
+  if(!changed)for(let i=0;i<units.length;i++){
+   const unit=units[i],previous=this.order[i];
+   if(previous.id!==unit.id||previous.model!==(unit.model??'turret-study')||previous.row!==rows.get(unit.id).row){changed=true;break;}
+  }
+  if(!changed)return;
+  this.order.length=units.length;
+  for(let i=0;i<units.length;i++){const unit=units[i];this.order[i]={id:unit.id,model:unit.model??'turret-study',row:rows.get(unit.id).row};}
   const live=new Set();let groupIndex=0;
   for(const group of groupRosterUnits(units)){
    live.add(group.model);let entry=this.groups.get(group.model);

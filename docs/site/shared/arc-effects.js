@@ -6,6 +6,9 @@ export const ARC_TRUNK_SEGMENTS=32;
 export const ARC_LIGHT_SEGMENTS=8;
 export const MAX_ARC_SPARKS=96;
 export const ARC_SPARKS_PER_HIT=6;
+// Packed channel records use the colour triplet for their shared tangent;
+// spark records retain ordinary RGB. Both share the existing 12-float stride.
+export const ARC_CHANNEL_KIND=-1;
 export const ARC_INSTANCE_FLOATS=12;
 export const MAX_ARC_INSTANCES=MAX_ARC_STRIKES*ARC_TRUNK_SEGMENTS+MAX_ARC_SPARKS;
 export const ARC_LIGHT_BOUNDS_OFFSET=8+ARC_LIGHT_SEGMENTS*8;

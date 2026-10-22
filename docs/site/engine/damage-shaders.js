@@ -31,8 +31,6 @@ fn debrisPosition(index:u32)->vec3<f32>{
 @vertex fn debrisShadow(i:DebrisInput,@builtin(vertex_index) index:u32)->@builtin(position) vec4<f32>{
  return frame.lightVP*mat4x4<f32>(i.a,i.b,i.c,i.d)*vec4<f32>(debrisPosition(index),1);
 }
-@fragment fn debrisDepth(){}
-@fragment fn debrisShadowDepth(){}
 `;
 
 export const damageParticles=uniforms+bloomSettings+`

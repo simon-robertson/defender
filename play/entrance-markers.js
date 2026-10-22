@@ -13,13 +13,15 @@ export function pathEntrances(level){
 }
 const NS='http://www.w3.org/2000/svg';
 export class EntranceMarkers {
- constructor(overlay){this.overlay=overlay;this.level=null;this.entries=[];this.key='';this.started=false;overlay.style.pointerEvents='none';}
+ constructor(overlay){this.overlay=overlay;this.level=null;this.entries=[];this.view=new Float64Array(16);this.width=this.height=-1;this.started=false;overlay.style.pointerEvents='none';}
  update(world,camera,phase,width,height){
-  if(world?.level!==this.level){this.level=world?.level??null;this.entries=this.level?pathEntrances(this.level):[];this.key='';this.started=false;}
+  if(world?.level!==this.level){this.level=world?.level??null;this.entries=this.level?pathEntrances(this.level):[];this.width=this.height=-1;this.started=false;}
   if(phase==='wave'||phase==='settling')this.started=true;
   const show=!this.started&&this.entries.length&&['loadout','deploy'].includes(phase)&&camera?.mode==='overview';
   if(show)this.overlay.removeAttribute('hidden');else this.overlay.setAttribute('hidden','');this.overlay.style.display=show?'':'none';if(!show)return;
-  const m=camera.vp,key=[...m,width,height].join('|');if(key===this.key)return;this.key=key;
+  const m=camera.vp;let changed=width!==this.width||height!==this.height;
+  if(!changed)for(let i=0;i<16;i++)if(this.view[i]!==m[i]){changed=true;break;}
+  if(!changed)return;this.view.set(m);this.width=width;this.height=height;
   this.overlay.setAttribute('viewBox',`0 0 ${width} ${height}`);this.overlay.setAttribute('role','img');this.overlay.setAttribute('aria-label',`${this.entries.length} enemy path ${this.entries.length===1?'entrance':'entrances'}`);
   const project=(x,y,z)=>{const w=m[3]*x+m[7]*y+m[11]*z+m[15];return [(m[0]*x+m[4]*y+m[8]*z+m[12])/w*width/2+width/2,height/2-(m[1]*x+m[5]*y+m[9]*z+m[13])/w*height/2];};
   const node=(tag,attributes)=>{const n=this.overlay.ownerDocument.createElementNS(NS,tag);for(const [key,value]of Object.entries(attributes))n.setAttribute(key,value);return n;},fragment=this.overlay.ownerDocument.createDocumentFragment();
@@ -35,5 +37,5 @@ export class EntranceMarkers {
   });
   this.overlay.replaceChildren(fragment);
  }
- dispose(){this.overlay.replaceChildren();this.level=null;this.entries=[];this.key='';}
+ dispose(){this.overlay.replaceChildren();this.level=null;this.entries=[];this.width=this.height=-1;}
 }

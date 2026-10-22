@@ -7,11 +7,12 @@ const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 export class WaterImpacts {
  constructor(random=Math.random){
   this.random=random;this.heights=null;this.levels=[];this.visibility=null;this.cols=this.rows=0;
-  this.impacts=Array.from({length:MAX_WATER_IMPACTS},()=>({active:false,age:0,x:0,y:0,z:0,power:0,seed:0,crown:false}));
+  this.impacts=Array.from({length:MAX_WATER_IMPACTS},()=>({active:false,age:0,x:0,y:0,z:0,power:0,rootPower:0,radiusSpeed:0,inverseWidth:0,seed:0,crown:false}));
   this.drops=Array.from({length:MAX_WATER_DROPS},()=>({active:false,age:0,x:0,y:0,z:0,vx:0,vy:0,vz:0,radius:0,life:0,seed:0}));
   this.contact=new Float64Array(5);this.reset();
  }
  reset(keepWorld=false){
+  this.revision=(this.revision??0)+1;
   for(const p of this.impacts)p.active=false;for(const p of this.drops)p.active=false;
   this.count=this.activeDrops=this.entries=this.droppedImpacts=this.droppedDrops=this.particleCount=0;
   if(!keepWorld){this.heights=null;this.levels.length=0;this.visibility=null;this.cols=this.rows=0;}
@@ -35,7 +36,7 @@ export class WaterImpacts {
   if(!event&&crown)for(const p of this.impacts)if(!p.crown&&(!event||p.age>event.age))event=p;
   if(!event){this.droppedImpacts++;return null;}
   if(!event.active)this.count++;
-  event.active=true;event.age=0;event.x=x;event.y=y;event.z=z;event.power=power;event.seed=this.random()*Math.PI*2;event.crown=crown;return event;
+  event.active=true;event.age=0;event.x=x;event.y=y;event.z=z;event.power=power;event.rootPower=Math.sqrt(power);event.radiusSpeed=9+2*event.rootPower;event.inverseWidth=1/(1.25+.35*event.rootPower);this.revision++;event.seed=this.random()*Math.PI*2;event.crown=crown;return event;
  }
  impact(x,y,z,size,fallSpeed,vx=0,vz=0){
   this.entries++;
@@ -52,6 +53,7 @@ export class WaterImpacts {
  }
  advance(dt){
   if(!Number.isFinite(dt)||dt<0)throw new Error('Invalid water impact delta.');if(!dt)return;
+  if(this.count)this.revision++;
   if(this.count)for(const p of this.impacts)if(p.active){p.age+=dt;if(p.age>=WATER_IMPACT.rippleSeconds){p.active=false;this.count--;}}
   if(!this.activeDrops)return;
   const steps=Math.min(120,Math.max(1,Math.ceil(dt*120))),step=dt/steps,drag=Math.exp(-1.5*step);
@@ -73,16 +75,22 @@ export class WaterImpacts {
  // allocation; age follows the same paused/slow-motion clock as the splash.
  writeRipples(out){
   let count=0;
-  for(const p of this.impacts)if(p.active){const k=4+count++*8;out[k]=p.x;out[k+1]=p.y;out[k+2]=p.z;out[k+3]=p.age;out[k+4]=p.power;out[k+5]=out[k+6]=out[k+7]=0;}
+  for(const p of this.impacts)if(p.active){
+   const k=4+count++*8,u=p.age/WATER_IMPACT.rippleSeconds,start=clamp(p.age/.12,0,1),fade=(1-u)**1.5*start*start*(3-2*start);
+   out[k]=p.x;out[k+1]=p.y;out[k+2]=p.z;out[k+3]=p.age;
+   // Radius, reciprocal width and derivative amplitude are uniform over the
+   // whole ring. Compute them once here rather than in every water pixel.
+   out[k+4]=.8+p.radiusSpeed*p.age;out[k+5]=p.inverseWidth;out[k+6]=.16*p.rootPower*fade*p.inverseWidth;out[k+7]=0;
+  }
   out[0]=count;return count;
  }
  prepare(emit){
   this.particleCount=0;
   if(!this.count&&!this.activeDrops)return;
   for(const p of this.impacts)if(p.active){
-   const u=p.age/WATER_IMPACT.rippleSeconds,radius=.8+(9+2*Math.sqrt(p.power))*p.age,alpha=.12*Math.sqrt(p.power)*(1-u)**1.5;
+   const u=p.age/WATER_IMPACT.rippleSeconds,radius=.8+p.radiusSpeed*p.age,alpha=.12*p.rootPower*(1-u)**1.5;
    emit(p.x,p.y+.12,p.z,radius,.55,.69,.7,alpha,2,p.seed,u,p.y);this.particleCount++;
-   if(p.crown&&p.age<WATER_IMPACT.crownSeconds){const c=p.age/WATER_IMPACT.crownSeconds,r=(2+6*c)*Math.sqrt(p.power),height=Math.max(.25,10*Math.sqrt(p.power)*Math.sin(c*Math.PI));emit(p.x,p.y+height*.5,p.z,r,.72,.8,.78,.95*(1-c),3,p.seed,c,height/(r*2));this.particleCount++;}
+   if(p.crown&&p.age<WATER_IMPACT.crownSeconds){const c=p.age/WATER_IMPACT.crownSeconds,r=(2+6*c)*p.rootPower,height=Math.max(.25,10*p.rootPower*Math.sin(c*Math.PI));emit(p.x,p.y+height*.5,p.z,r,.72,.8,.78,.95*(1-c),3,p.seed,c,height/(r*2));this.particleCount++;}
   }
   for(const p of this.drops)if(p.active){emit(p.x,p.y,p.z,p.radius,.52,.67,.7,.94,4,p.seed,clamp(Math.abs(p.vy)/18,1,1.8),0);this.particleCount++;}
  }

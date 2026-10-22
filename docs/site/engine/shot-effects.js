@@ -42,9 +42,9 @@ export class ShotEffects {
    for(let n=0;n<6;n++){
     let slot=-1;for(let i=0;i<MAX_SHOT_SPARKS;i++)if(this.sparkBirth[i]===-Infinity){slot=i;break;}
     if(slot<0){this.droppedSparks++;continue;}
-    const k=slot*8,angle=this.random()*Math.PI*2,spread=5+this.random()*12,speed=10+this.random()*16;
+    const k=slot*8,angle=this.random()*Math.PI*2,spread=5+this.random()*12,speed=10+this.random()*16,cos=Math.cos(angle),sin=Math.sin(angle);
     this.sparkBirth[slot]=at;this.sparks[k]=p[0];this.sparks[k+1]=p[1];this.sparks[k+2]=p[2];
-    for(let axis=0;axis<3;axis++)this.sparks[k+3+axis]=-matrix[8+axis]*speed+matrix[axis]*Math.cos(angle)*spread+matrix[4+axis]*Math.sin(angle)*spread;
+    for(let axis=0;axis<3;axis++)this.sparks[k+3+axis]=-matrix[8+axis]*speed+matrix[axis]*cos*spread+matrix[4+axis]*sin*spread;
     this.sparks[k+6]=.22+this.random()*.24;this.sparks[k+7]=this.random();
    }
   }

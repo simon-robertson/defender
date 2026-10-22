@@ -219,8 +219,8 @@ export class DamageEffects {
   }
   this.smokeCount=this.blastCount=this.particleCount=this.lightCount=this.shockwaveCount=this.missileBlastCount=this.launchSmokeCount=0;this.lightData[0]=0;
   // Reused insertion-sort storage; the tiny smoke pool blends back to front.
-  for(let i=0;i<this.smoke.length&&this.activeSmoke;i++){
-   const p=this.smoke[i];if(!p.active)continue;
+  for(let i=0,remaining=this.activeSmoke;i<this.smoke.length&&remaining;i++){
+   const p=this.smoke[i];if(!p.active)continue;remaining--;
    const x=p.x+p.vx*p.age,y=p.y+p.rise*p.age,z=p.z+p.vz*p.age,m=viewProjection;
    // Current camera clip depth works in both overview and perspective modes;
    // radial distance orders off-axis particles incorrectly in an overview.

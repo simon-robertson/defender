@@ -1,14 +1,23 @@
-import {MAX_ARC_PRIMARY_STRIKES,MAX_ARC_STRIKES,ARC_TRUNK_SEGMENTS,MAX_ARC_SPARKS,ARC_SPARKS_PER_HIT,ARC_INSTANCE_FLOATS,MAX_ARC_INSTANCES,ARC_LIGHT_FLOATS,ARC_SECONDS,ARC_SPARK_SECONDS,ARC_SPARK_FLIGHT_SECONDS,ARC_SPARK_REST_SECONDS,ARC_SPARK_GRAVITY,ARC_RESTRIKE_AT,ARC_WIDTH,ARC_CHAIN_WIDTH_SCALE,ARC_LIGHT_RADIUS,ARC_LIGHT_STRENGTH} from '../shared/arc-effects.js';
+import {MAX_ARC_PRIMARY_STRIKES,MAX_ARC_STRIKES,ARC_TRUNK_SEGMENTS,MAX_ARC_SPARKS,ARC_SPARKS_PER_HIT,ARC_INSTANCE_FLOATS,ARC_CHANNEL_KIND,MAX_ARC_INSTANCES,ARC_LIGHT_FLOATS,ARC_SECONDS,ARC_SPARK_SECONDS,ARC_SPARK_FLIGHT_SECONDS,ARC_SPARK_REST_SECONDS,ARC_SPARK_GRAVITY,ARC_RESTRIKE_AT,ARC_WIDTH,ARC_CHAIN_WIDTH_SCALE,ARC_LIGHT_RADIUS,ARC_LIGHT_STRENGTH} from '../shared/arc-effects.js';
 import {sweepScenery,debrisSupport} from './debris-collision.js';
 import {packTubeLightBounds} from './tube-light-bounds.js';
 
 const NODES=ARC_TRUNK_SEGMENTS+1,TAU=Math.PI*2;
+// These interpolation coefficients depend only on the fixed node index. Retain
+// double precision and the original arithmetic so every strike uses the same
+// shape/RNG sequence without recomputing sine and neighbour indices per frame.
+const nodeParameters=new Float64Array(NODES*5);
+for(let node=0;node<NODES;node++){
+ const k=node*5,t=node<=4?node/4:(node-4)/(ARC_TRUNK_SEGMENTS-4),coarse=Math.floor(node/4)*4;
+ nodeParameters[k]=t;nodeParameters[k+1]=Math.sin(t*Math.PI);
+ nodeParameters[k+2]=coarse*2;nodeParameters[k+3]=Math.min(ARC_TRUNK_SEGMENTS,coarse+4)*2;nodeParameters[k+4]=(node-coarse)/4;
+}
 // Coordinate copies and optional live bone references occupy fixed slots. No
 // shot/frame objects, timers or slices; old strikes replace, excess sparks drop.
 export class ArcEffects {
  constructor(random=Math.random){
   this.random=random;this.time=0;this.visibility=null;this.strikeCount=this.sparkCount=this.groundedCount=this.instanceCount=this.lightCount=0;
-  this.replacedStrikes=this.droppedSparks=0;this.liveUntil=-Infinity;this.needsCleanup=false;
+  this.replacedStrikes=this.droppedSparks=0;this.needsCleanup=false;
   this.birth=new Float64Array(MAX_ARC_STRIKES).fill(-Infinity);this.secondary=new Uint8Array(MAX_ARC_STRIKES);this.droppedChainStrikes=0;
   this.ends=new Float64Array(MAX_ARC_STRIKES*6);this.shape=new Float32Array(MAX_ARC_STRIKES*NODES*2);
   this.points=new Float64Array(NODES*3);this.contact=new Float64Array(5);
@@ -20,7 +29,7 @@ export class ArcEffects {
  setWorld(world){this.reset();this.visibility=world?.visibility??null;}
  reset(preserveTime=false){
   if(!preserveTime){this.time=0;this.visibility=null;}this.strikeCount=this.sparkCount=this.groundedCount=this.instanceCount=this.lightCount=0;this.replacedStrikes=this.droppedSparks=0;
-  this.birth.fill(-Infinity);this.secondary.fill(0);this.droppedChainStrikes=0;this.sparkBirth.fill(-Infinity);this.sparkRest.fill(-Infinity);this.attachments.fill(null);this.sourceAttachments.fill(null);this.lightData.fill(0);this.liveUntil=-Infinity;this.needsCleanup=false;
+  this.birth.fill(-Infinity);this.secondary.fill(0);this.droppedChainStrikes=0;this.sparkBirth.fill(-Infinity);this.sparkRest.fill(-Infinity);this.attachments.fill(null);this.sourceAttachments.fill(null);this.lightData.fill(0);this.needsCleanup=false;
  }
  advance(deltaSeconds){
   if(!Number.isFinite(deltaSeconds)||deltaSeconds<0)throw new Error('Arc delta must be finite and non-negative.');
@@ -63,7 +72,7 @@ export class ArcEffects {
    if(Number.isFinite(ground)&&this.sparks[k+1]<ground+radius)this.sparks[k+1]=ground+radius+.002;
    if(age>0)this.stepSpark(spark,age,at);
   }
-  this.liveUntil=Math.max(this.liveUntil,at+ARC_SPARK_SECONDS);this.needsCleanup=true;return true;
+  this.needsCleanup=true;return true;
  }
  stepSpark(slot,deltaSeconds,startTime){
   const endTime=startTime+deltaSeconds,rest=this.sparkRest[slot];
@@ -94,15 +103,15 @@ export class ArcEffects {
   }
   if(endTime-this.sparkBirth[slot]>=ARC_SPARK_FLIGHT_SECONDS)this.sparkBirth[slot]=-Infinity;
  }
- instance(ax,ay,az,bx,by,bz,width,alpha,kind=0){
+ instance(ax,ay,az,bx,by,bz,width,alpha,kind=0,r=.56,g=.74,b=1){
   const data=this.instanceData,k=this.instanceCount++*ARC_INSTANCE_FLOATS;
   data[k]=ax;data[k+1]=ay;data[k+2]=az;data[k+3]=width;data[k+4]=bx;data[k+5]=by;data[k+6]=bz;data[k+7]=alpha;
-  data[k+8]=.56;data[k+9]=.74;data[k+10]=1;data[k+11]=kind;return k;
+  data[k+8]=r;data[k+9]=g;data[k+10]=b;data[k+11]=kind;return k;
  }
- lightSegment(k,a,b,radiusScale=1,strengthScale=1){
+ lightSegment(k,a,b){
   const p=this.points,l=this.lightData;
-  l[k]=p[a];l[k+1]=p[a+1];l[k+2]=p[a+2];l[k+3]=radiusScale;
-  l[k+4]=p[b];l[k+5]=p[b+1];l[k+6]=p[b+2];l[k+7]=strengthScale;
+  l[k]=p[a];l[k+1]=p[a+1];l[k+2]=p[a+2];l[k+3]=1;
+  l[k+4]=p[b];l[k+5]=p[b+1];l[k+6]=p[b+2];l[k+7]=1;
  }
  prepare(){
   this.strikeCount=this.sparkCount=this.groundedCount=this.instanceCount=this.lightCount=0;this.lightData[0]=0;if(!this.needsCleanup)return;
@@ -126,9 +135,9 @@ export class ArcEffects {
    // four existing spans make this escape; no detached source or extra branch.
    const horizontal=Math.hypot(dx,dz),escapeX=ax+(this.secondary[slot]?dx*.12:(horizontal>1e-6?dx/horizontal:1)*4),escapeY=ay+(this.secondary[slot]?dy*.12:2),escapeZ=az+(this.secondary[slot]?dz*.12:(horizontal>1e-6?dz/horizontal:0)*4);
    for(let node=0;node<NODES;node++){
-    const k=node*3;if(node<=4){const t=node/4;p[k]=ax+(escapeX-ax)*t;p[k+1]=ay+(escapeY-ay)*t;p[k+2]=az+(escapeZ-az)*t;continue;}
-    const t=(node-4)/(ARC_TRUNK_SEGMENTS-4),envelope=Math.sin(t*Math.PI),coarse=Math.floor(node/4)*4,next=Math.min(ARC_TRUNK_SEGMENTS,coarse+4),part=(node-coarse)/4;
-    const smoothX=this.shape[shape+coarse*2]*(1-part)+this.shape[shape+next*2]*part,smoothY=this.shape[shape+coarse*2+1]*(1-part)+this.shape[shape+next*2+1]*part;
+    const k=node*3,parameter=node*5,t=nodeParameters[parameter];if(node<=4){p[k]=ax+(escapeX-ax)*t;p[k+1]=ay+(escapeY-ay)*t;p[k+2]=az+(escapeZ-az)*t;continue;}
+    const envelope=nodeParameters[parameter+1],coarse=nodeParameters[parameter+2],next=nodeParameters[parameter+3],part=nodeParameters[parameter+4];
+    const smoothX=this.shape[shape+coarse]*(1-part)+this.shape[shape+next]*part,smoothY=this.shape[shape+coarse+1]*(1-part)+this.shape[shape+next+1]*part;
     const a=(smoothX+this.shape[shape+node*2]*.33*(restrike?-1:1))*amplitude*envelope,b=(smoothY+this.shape[shape+node*2+1]*.33*(restrike?-1:1))*amplitude*envelope;
     p[k]=escapeX+(this.ends[e+3]-escapeX)*t+ux*a+vx*b;p[k+1]=escapeY+(this.ends[e+4]-escapeY)*t+uy*a+vy*b;p[k+2]=escapeZ+(this.ends[e+5]-escapeZ)*t+uz*a+vz*b;
    }
@@ -136,12 +145,10 @@ export class ArcEffects {
    p[0]=ax;p[1]=ay;p[2]=az;for(let axis=0;axis<3;axis++)p[ARC_TRUNK_SEGMENTS*3+axis]=this.ends[e+3+axis];
    const light=4+this.lightCount++*ARC_LIGHT_FLOATS,l=this.lightData;
    l[light]=.43;l[light+1]=.66;l[light+2]=1;l[light+3]=ARC_LIGHT_RADIUS;l[light+4]=ARC_LIGHT_STRENGTH*strength;l[light+5]=8;l[light+6]=l[light+7]=0;
+   const width=ARC_WIDTH*(this.secondary[slot]?ARC_CHAIN_WIDTH_SCALE:1)*(.8+.2*fade),alpha=Math.sqrt(strength);
+   // One shared tangent makes neighbouring ribbon edges identical.
    for(let segment=0;segment<ARC_TRUNK_SEGMENTS;segment++){
-    const a=segment*3,b=a+3,k=this.instance(p[a],p[a+1],p[a+2],p[b],p[b+1],p[b+2],ARC_WIDTH*(this.secondary[slot]?ARC_CHAIN_WIDTH_SCALE:1)*(.8+.2*fade),Math.sqrt(strength),-1);
-    // Joined channels use the colour triplet for a common strand tangent.
-    // The shader supplies their fixed blue/white colour. Every span then
-    // widens along the same side vector, sharing its exact edge with the next.
-    this.instanceData[k+8]=tx;this.instanceData[k+9]=ty;this.instanceData[k+10]=tz;
+    const a=segment*3,b=a+3;this.instance(p[a],p[a+1],p[a+2],p[b],p[b+1],p[b+2],width,alpha,ARC_CHANNEL_KIND,tx,ty,tz);
    }
    for(let segment=0;segment<8;segment++)this.lightSegment(light+8+segment*8,segment*12,(segment+1)*12);
    packTubeLightBounds(l,light);
@@ -150,9 +157,8 @@ export class ArcEffects {
   this.lightData[0]=this.lightCount;
   for(let slot=0;slot<MAX_ARC_SPARKS;slot++){
    const age=this.time-this.sparkBirth[slot];if(age<0||age>=ARC_SPARK_SECONDS)continue;
-   const k=slot*8,s=this.sparks,rest=this.sparkRest[slot],grounded=rest!==-Infinity,fade=grounded?Math.max(0,1-(this.time-rest)/ARC_SPARK_REST_SECONDS):1,heat=Math.min(1,age/.5),width=s[k+6];
-   const at=grounded?this.instance(s[k]-width*.3,s[k+1],s[k+2],s[k]+width*.3,s[k+1],s[k+2],width,fade*fade*s[k+7],1):this.instance(s[k]-s[k+3]*.018,s[k+1]-s[k+4]*.018,s[k+2]-s[k+5]*.018,s[k],s[k+1],s[k+2],width,s[k+7],1);
-   this.instanceData[at+8]=1;this.instanceData[at+9]=.95-.5*heat;this.instanceData[at+10]=.5-.46*heat;
+   const k=slot*8,s=this.sparks,rest=this.sparkRest[slot],grounded=rest!==-Infinity,fade=grounded?Math.max(0,1-(this.time-rest)/ARC_SPARK_REST_SECONDS):1,heat=Math.min(1,age/.5),width=s[k+6],green=.95-.5*heat,blue=.5-.46*heat;
+   if(grounded)this.instance(s[k]-width*.3,s[k+1],s[k+2],s[k]+width*.3,s[k+1],s[k+2],width,fade*fade*s[k+7],1,1,green,blue);else this.instance(s[k]-s[k+3]*.018,s[k+1]-s[k+4]*.018,s[k+2]-s[k+5]*.018,s[k],s[k+1],s[k+2],width,s[k+7],1,1,green,blue);
    this.sparkCount++;if(grounded)this.groundedCount++;
   }
  }

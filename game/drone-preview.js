@@ -145,7 +145,7 @@ export class DronePreview {
   for(let i=0;i<BASE.weapon.shotsPerBurst;i++){
    const at=start+i*BASE.weapon.shotIntervalSeconds;if(!this.prediction(target,at,q))break;
    const horizontal=Math.hypot(q[0]-x,q[1]-z),pitch=Math.atan2(q[3]-(y-4),Math.hypot(q[2]-x,q[4]-z)+3);
-   if(horizontal>state.maxRange||horizontal<24||!state.pitch.reachable(pitch)||!this.targetHullClear(target,x,y,z,q[0],q[1],i?lastX:q[0],i?lastZ:q[1])||!this.stationSight(x,y,z,q[2],q[3],q[4],pitch))break;
+   if(horizontal>state.maxRange||horizontal<24||!state.pitch.reachable(pitch)||!this.targetHullClear(target,x,y,z,q[0],q[1],i?lastX:q[0],i?lastZ:q[1])||!this.stationSight(state,x,y,z,q[2],q[3],q[4],pitch))break;
    lastX=q[0];lastZ=q[1];rounds++;
   }
   out[0]=arrival;out[1]=start;out[2]=start+rounds*BASE.weapon.shotIntervalSeconds;out[3]=rounds;out[4]=rounds*4-start*.6-Math.max(0,y-(state.ground+9+T.lift))*.025;
@@ -250,7 +250,7 @@ export class DronePreview {
   }
   return best;
  }
- stationSight(x,y,z,tx,ty,tz,pitch){
+ stationSight(state,x,y,z,tx,ty,tz,pitch){
   const yaw=Math.atan2(-(tx-x),-(tz-z)),c=Math.cos(yaw),s=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
   for(let i=0;i<M.muzzles.length;i++){
    const muzzle=M.muzzles[i],dx=muzzle[0]-12,dy=muzzle[1]-5,dz=muzzle[2]-9;
@@ -299,7 +299,7 @@ export class DronePreview {
    const at=first+i*BASE.weapon.shotIntervalSeconds;if(at>=exit)break;
    target.path.sample(target.distance+target.movement.speed*at,p);
    const horizontal=Math.hypot(p[0]-state.x,p[1]-state.z),pitch=Math.atan2(target.aimY-(state.y-4),horizontal+3);
-   if(horizontal>state.maxRange||!state.pitch.reachable(pitch)||!this.stationSight(state.x,state.y,state.z,p[0],target.aimY,p[1],pitch))break;
+   if(horizontal>state.maxRange||!state.pitch.reachable(pitch)||!this.stationSight(state,state.x,state.y,state.z,p[0],target.aimY,p[1],pitch))break;
    rounds++;
   }
   return rounds*state.strength;

@@ -35,6 +35,20 @@ function fixture({turn=0,count=1,intruder=null}={}){
 function until(f,condition,seconds=30,dt=.01){for(let i=0;i<seconds/dt&&!condition();i++)f.firing.advance(dt);expect(condition()).toBe(true);}
 function point(m,p){return [m[0]*p[0]+m[4]*p[1]+m[8]*p[2]+m[12],m[1]*p[0]+m[5]*p[1]+m[9]*p[2]+m[13],m[2]*p[0]+m[6]*p[1]+m[10]*p[2]+m[14]];}
 
+test('station sight checks exclude the requesting drone and retain obstruction rejection',()=>{
+ const f=fixture({count:2});try{
+  const queries=[];f.world.visibility.clear=(...args)=>{queries.push(args);return true;};
+  for(const state of f.controller.states){
+   queries.length=0;
+   expect(f.controller.stationSight(state,132,80,132,132,34.5,84,0)).toBe(true);
+   expect(queries).toHaveLength(M.muzzles.length);
+   for(const query of queries){expect(query.every((value,i)=>i===6||Number.isFinite(value))).toBe(true);expect(query[6]).toBe(state.id);}
+  }
+  f.world.visibility.clear=()=>false;
+  expect(f.controller.stationSight(f.state,132,80,132,132,34.5,84,0)).toBe(false);
+ }finally{f.dispose();}
+});
+
 test('base timing is independent and a settled twin-gun burst applies ten single 10HP rounds with five-second cooldown',()=>{
  const f=fixture();try{
   expect(DRONE_TUNING.base.rechargeSeconds).toBe(10);expect(DRONE_TUNING.upgrade1).toBeNull();expect(DRONE_TUNING.upgrade2).toBeNull();
@@ -268,7 +282,7 @@ test('the actual A1 fleet navigates, attacks ground and air, returns/recharges a
  const firing=new DefencePreview(world,()=>{},()=>.5,(variant,matrix,at,muzzles)=>{
   const state=firing.drones.states.find(s=>s.gunMatrix===matrix),target=state.target;
   expect(muzzles).toBe(M.muzzles);expect(state.lastShotDamage).toBe(10);expect(state.targetDistance).toBeLessThanOrEqual(T.maxRange);expect(Math.abs(state.aimError)).toBeLessThanOrEqual(T.aimTolerance);expect(Math.abs(state.pitchError)).toBeLessThanOrEqual(T.aimTolerance);
-  for(const muzzle of muzzles){const p=point(matrix,muzzle);expect(world.visibility.clear(p[0],p[1],p[2],target.aimX,target.aimY,target.aimZ)).toBe(true);}
+  for(const muzzle of muzzles){const p=point(matrix,muzzle);expect(world.visibility.clear(p[0],p[1],p[2],target.aimX,target.aimY,target.aimZ,state.id)).toBe(true);}
  },enemies.states,(target,strength)=>{hits.add(target.model);const applied=enemies.takeHit(target,strength);if(!target.health.alive&&firing.drones.states.some(s=>s.plannedTarget===target&&s.speed>1))deathsDuringTravel++;return applied;}),drones=firing.drones,nav=drones.navigation;drones.setWildlife(wildlife.states,wildlife.defences);
  try{
   expect(drones.states).toHaveLength(2);expect(nav.count).toBe(5412);expect(firing.enhancers.bindings).toEqual([]);

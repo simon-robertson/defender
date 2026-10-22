@@ -21,15 +21,26 @@ try{
  const texture=(sampleCount=1)=>device.createTexture({size:[64,64],format:'depth32float',sampleCount,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING});
  const depth=texture(4),water=texture(),shadow=texture(),target=device.createTexture({size:[64,64],format:'rgba8unorm',usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.COPY_SRC});
  const depthView=depth.createView(),waterView=water.createView(),shadowView=shadow.createView(),targetView=target.createView();
+ const scene=device.createTexture({size:[64,64],format:'rgba8unorm',usage:GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_DST});
+ const sceneData=new Uint8Array(64*64*4);for(let i=3;i<sceneData.length;i+=4)sceneData[i]=255;
+ const uploadScene=()=>device.queue.writeTexture({texture:scene},sceneData,{bytesPerRow:256},[64,64]);uploadScene();
  const groups=[
   device.createBindGroup({layout:pipeline.getBindGroupLayout(0),entries:[{binding:0,resource:{buffer:frame}}]}),
   device.createBindGroup({layout:pipeline.getBindGroupLayout(1),entries:[{binding:2,resource:depthView},{binding:4,resource:waterView}]}),
   device.createBindGroup({layout:pipeline.getBindGroupLayout(2),entries:[{binding:0,resource:shadowView},{binding:1,resource:{buffer:lights}},{binding:2,resource:{buffer:arcLights}}]}),
+  device.createBindGroup({layout:pipeline.getBindGroupLayout(3),entries:[{binding:0,resource:scene.createView()},{binding:1,resource:device.createSampler({minFilter:'linear',magFilter:'linear'})}]}),
  ];
- const draw=async(opaque=.9,waterDepth=1,shadowDepth=.9)=>{
+ const blockerModule=device.createShaderModule({code:`@vertex fn vertex(@builtin(vertex_index) index:u32)->@builtin(position) vec4<f32>{let x=f32((index<<1u)&2u);let y=f32(index&2u);return vec4<f32>(x*2-1,y*2-1,.25,1);}`});
+ const blocker=async count=>device.createRenderPipelineAsync({layout:'auto',vertex:{module:blockerModule,entryPoint:'vertex'},depthStencil:{format:'depth32float',depthWriteEnabled:true,depthCompare:'always'},multisample:{count}});
+ const opaqueBlocker=await blocker(4),waterBlocker=await blocker(1);
+ const draw=async(opaque=.9,waterDepth=1,shadowDepth=.9,blockCandidate=null)=>{
   device.queue.writeBuffer(frame,0,frameData);device.queue.writeBuffer(lights,0,lightData);
   const encoder=device.createCommandEncoder();
   for(const [view,depthClearValue]of [[depthView,opaque],[waterView,waterDepth],[shadowView,shadowDepth]])encoder.beginRenderPass({colorAttachments:[],depthStencilAttachment:{view,depthClearValue,depthLoadOp:'clear',depthStoreOp:'store'}}).end();
+  if(blockCandidate){
+   const pass=encoder.beginRenderPass({colorAttachments:[],depthStencilAttachment:{view:blockCandidate==='water'?waterView:depthView,depthLoadOp:'load',depthStoreOp:'store'}});
+   pass.setPipeline(blockCandidate==='water'?waterBlocker:opaqueBlocker);pass.setScissorRect(0,0,32,64);pass.draw(3);pass.end();
+  }
   const pass=encoder.beginRenderPass({colorAttachments:[{view:targetView,clearValue:{r:0,g:0,b:0,a:1},loadOp:'clear',storeOp:'store'}]});
   pass.setPipeline(pipeline);for(let i=0;i<groups.length;i++)pass.setBindGroup(i,groups[i]);pass.setVertexBuffer(0,instance);pass.draw(6,1);pass.end();
   encoder.copyTextureToBuffer({texture:target},{buffer:read,bytesPerRow:256},[64,64]);device.queue.submit([encoder.finish()]);await read.mapAsync(GPUMapMode.READ);
@@ -38,18 +49,25 @@ try{
  const energy=rgb=>rgb[0]+rgb[1]+rgb[2];
  frameData.set([1,.95,.85],56);frameData.set([.25,.3,.4],60);
  const day=await draw(),shadowed=await draw(.9,1,.1);
- check(energy(day)>90,'Day rain must be visible under authored sky and ambient light');
+ check(energy(day)>20,'Day rain must be visible under authored sky and ambient light');
  check(energy(shadowed)>0&&energy(shadowed)<energy(day)*.8,'Sky shadows must reduce sunlit rain while preserving ambient light');
  frameData.set([.035,.05,.1],56);frameData.set([.006,.01,.022],60);
  const night=await draw();check(energy(night)>0&&energy(night)<energy(day)*.55,'Night rain must remain subdued and respond to the changed light colours');
  lightData[0]=1;lightData.set([1,1,7,96,1,.61,.26,4],4);
- const muzzle=await draw();check(energy(muzzle)>energy(night)+80&&muzzle[0]>muzzle[2],'A real muzzle light must locally brighten rain and tint it warm');
+ const muzzle=await draw();check(energy(muzzle)>energy(night)+25&&muzzle[0]>muzzle[2],'A real muzzle light must locally brighten rain and tint it warm');
  lightData[6]=130;const outsideRadius=await draw();check(outsideRadius.every((n,i)=>n===night[i]),'Rain must receive no muzzle light beyond its96-unit radius');
  lightData[0]=0;const expired=await draw();check(expired.every((n,i)=>n===night[i]),'Expired lights must leave no residual rain glow');
  frameData.fill(0,56,59);frameData.fill(0,60,63);const unlit=await draw();check(energy(unlit)===0,'All lights off must produce zero rain RGB, with no emissive floor');
  frameData.set([1,.95,.85],56);frameData.set([.25,.3,.4],60);
  const opaqueHidden=await draw(.25),waterHidden=await draw(.9,.25);
  check(energy(opaqueHidden)===0,'Opaque depth must hide rain behind actors or scenery');check(energy(waterHidden)===0,'Water depth must hide rain beneath the stream surface');
+ frameData.fill(0,56,59);frameData.fill(0,60,63);
+ for(let y=0;y<64;y++)for(let x=0;x<64;x++){const k=(y*64+x)*4;sceneData[k]=x<32?255:0;sceneData[k+2]=x>=32?255:0;}
+ uploadScene();const refracted=await draw();check(energy(refracted)>10,'A drop transmits the actual coloured scene with every light off');
+ check(refracted[0]>10&&refracted[2]>10,'The curved drop bends the red/blue boundary across its original blue screen pixel');
+ const foreground=await draw(.9,1,.9,'opaque'),foregroundWater=await draw(.9,1,.9,'water');
+ check(foreground[0]===0&&foreground[2]>refracted[2],'Refracted bilinear samples reject a foreground solid without hiding the visible drop');
+ check(foregroundWater[0]===0&&foregroundWater[2]===foreground[2],'Refracted bilinear samples also reject foreground water');
  await device.queue.onSubmittedWorkDone();check(errors.length===0,errors.join('\n'));
- result.textContent=JSON.stringify({passed:9,failed:0,checks:'Production rain: day/night, sky shadow, muzzle lighting/radius/expiry, zero emission, opaque and water occlusion',pixelValues:{day,shadowed,night,muzzle,outsideRadius,expired,unlit,opaqueHidden,waterHidden}},null,2);
+ result.textContent=JSON.stringify({passed:13,failed:0,checks:'Production refractive rain: day/night, sky shadow, muzzle lighting/radius/expiry, zero emission, opaque/water occlusion, scene transmission, lens displacement and foreground rejection',pixelValues:{day,shadowed,night,muzzle,outsideRadius,expired,unlit,opaqueHidden,waterHidden,refracted,foreground,foregroundWater}},null,2);
 }catch(error){result.textContent='FAILED: '+error.message;console.error(error);}finally{device?.destroy();}

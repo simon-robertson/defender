@@ -1,17 +1,31 @@
 import {test,expect} from 'bun:test';
-import {LevelConditions,applyPlayLighting,PLAY_NIGHT_LIGHTING,PLAY_DAYLIGHT,PLAY_AFTERNOON_SUN_SCALE,PLAY_EVENING_LIGHT_ELEVATION} from '../play/conditions.js';
+import {LevelConditions,applyPlayLighting,PLAY_NIGHT_LIGHTING,PLAY_DAYLIGHT,PLAY_AFTERNOON_SUN_SCALE,PLAY_EVENING_LIGHT_ELEVATION,PLAY_WEATHER_CHANCE} from '../play/conditions.js';
 import {levelLighting} from '../engine/environment.js';
 import {composePlayLevel,loadPlayWorld,disposePlayWorld,PlayEngine} from '../play/engine.js';
 import {PLAY_CONFIG} from '../play/config.js';
 import {levelWeather} from '../shared/weather.js';
 
-test('each zone advances through stable day, afternoon, evening and night with clear weather and no random draws',()=>{
+test('weather rolls at 33 percent only on supported enabled level entries and remains stable across waves',()=>{
+ let draws=0,sample=.329999;const choices=new LevelConditions(()=>{draws++;return sample;});
+ for(const zone of ['A','C']){
+  choices.reset();const wet=choices.forLevel('test-01',{zone});expect(wet.weather).toBe(true);const count=draws;
+  for(let wave=0;wave<4;wave++)expect(choices.forLevel('test-01',{zone})).toBe(wet);expect(draws).toBe(count);
+  sample=.33;expect(choices.forLevel('test-02',{zone}).weather).toBe(false);sample=.329999;
+ }
+ const count=draws;for(const zone of ['B','D']){choices.reset();expect(choices.forLevel('test-01',{zone}).weather).toBe(false);}
+ choices.reset();expect(choices.forLevel('test-01',{zone:'A',weather:false}).weather).toBe(false);expect(draws).toBe(count);
+ expect(choices.forLevel('test-01',{zone:'A',weather:true}).weather).toBe(true);expect(draws).toBe(count+1);
+ let selected=0;for(let i=0;i<1000;i++){const roll=new LevelConditions(()=>(i+.5)/1000);if(roll.forLevel('moss-01',{zone:'A'}).weather)selected++;}
+ expect(selected).toBe(330);expect(PLAY_WEATHER_CHANCE).toBe(.33);
+});
+
+test('each zone retains stable authored daylight when weather is disabled, with no random draws',()=>{
  const random=Math.random;Math.random=()=>{throw new Error('Level conditions must not draw randomness.');};
  try{
   const choices=new LevelConditions();
   for(const level of PLAY_CONFIG.levels){
-   const condition=choices.forLevel(level.id);expect(condition).toEqual(PLAY_DAYLIGHT[Number(level.id.slice(-2))-1]);expect(Object.isFrozen(condition)).toBe(true);
-   for(const wave of level.waves)expect(choices.forLevel(level.id)).toBe(condition);
+   const condition=choices.forLevel(level.id,{zone:level.zone,weather:false});expect(condition).toEqual(PLAY_DAYLIGHT[Number(level.id.slice(-2))-1]);expect(Object.isFrozen(condition)).toBe(true);
+   for(const wave of level.waves)expect(choices.forLevel(level.id,{zone:level.zone,weather:false})).toBe(condition);
   }
   choices.reset();expect(choices.forLevel(PLAY_CONFIG.levels[0].id)).toEqual(PLAY_DAYLIGHT[0]);
  }finally{Math.random=random;}
@@ -24,7 +38,7 @@ test('play composition changes only weather on a clone, retains authored time an
   expect(levelWeather(level).enabled).toBe(weather);expect(level.environment.timeOfDay).toBe(source.environment.timeOfDay);
   expect(level.environment.sky).toEqual(source.environment.sky);expect(JSON.stringify(source)).toBe(before);
  }
- const b={...source,zone:'B'};expect(levelWeather(composePlayLevel(b,[],{conditions:{night:false,weather:true}})).enabled).toBe(false);
+ for(const zone of ['B','D']){const clear={...source,zone};expect(levelWeather(composePlayLevel(clear,[],{conditions:{night:false,weather:true}})).enabled).toBe(false);}
  expect(composePlayLevel(source).environment).toEqual(source.environment);
  const calls=[],renderer={setLightingColors:(...args)=>calls.push(args)};
  applyPlayLighting(renderer,{night:false});expect(calls).toHaveLength(0);

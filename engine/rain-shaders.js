@@ -35,12 +35,16 @@ export const rainParticles=uniforms+`
 @group(1) @binding(4) var waterDepth:texture_depth_2d;
 ${waterDepthRead}
 @group(2) @binding(0) var shadowMap:texture_depth_2d;
+@group(3) @binding(0) var rainScene:texture_2d<f32>;
+@group(3) @binding(1) var rainSampler:sampler;
 `+shadowVisibility+shotLighting(2,true)+rainLighting+`
 struct RainInput { @location(0) column:vec4<f32>, @location(1) shape:vec4<f32> };
 struct RainVertex {
  @builtin(position) clip:vec4<f32>, @location(0) uv:vec2<f32>,
  @location(1) world:vec3<f32>, @location(2) @interpolate(flat) limits:vec2<f32>,
- @location(3) @interpolate(flat) alphaScale:f32
+ @location(3) @interpolate(flat) alphaScale:f32,
+ @location(4) @interpolate(flat) screenSide:vec2<f32>,
+ @location(5) @interpolate(flat) screenTail:vec2<f32>
 };
 @vertex fn vertex(i:RainInput,@builtin(vertex_index) index:u32)->RainVertex{
  let corners=array<vec2<f32>,6>(vec2(-1,0),vec2(1,0),vec2(-1,1),vec2(-1,1),vec2(1,0),vec2(1,1));
@@ -53,24 +57,49 @@ struct RainVertex {
  var widthScale=1.0;
  if(centreClip.w>0&&sideClip.w>0){
   let pixels=length((sideClip.xy/sideClip.w-centreClip.xy/centreClip.w)*frame.viewport.xy);
-  widthScale=max(1,1.25/max(pixels,.0001));
+  widthScale=max(1,2.0/max(pixels,.0001));
  }
- // Keep subpixel streaks stable in overview. Compensated alpha preserves their
- // coverage instead of adding an emissive or camera-distance brightness floor.
+ // Keep subpixel lenses stable in overview, softening their alpha as the
+ // silhouette widens rather than adding a camera-distance light source.
  let world=centre+tail*(min(i.shape.x,ceiling-tip)*corner.y)+side*corner.x*i.shape.y*.5*widthScale;
- var o:RainVertex;o.clip=frame.vp*vec4<f32>(world,1);o.uv=corner;o.world=world;o.limits=i.shape.zw;o.alphaScale=1/widthScale;return o;
+ let tailClip=frame.vp*vec4<f32>(centre+tail,1);
+ let screenSide=(sideClip.xy*centreClip.w-centreClip.xy*sideClip.w)*vec2<f32>(1,-1)*frame.viewport.xy;
+ let screenTail=(tailClip.xy*centreClip.w-centreClip.xy*tailClip.w)*vec2<f32>(1,-1)*frame.viewport.xy;
+ var o:RainVertex;o.clip=frame.vp*vec4<f32>(world,1);o.uv=corner;o.world=world;o.limits=i.shape.zw;o.alphaScale=1/sqrt(widthScale);
+ o.screenSide=screenSide/max(length(screenSide),.0001);o.screenTail=screenTail/max(length(screenTail),.0001);return o;
 }
 fn rainSrgb(c:vec3<f32>)->vec3<f32>{return select(1.055*pow(max(c,vec3<f32>(0)),vec3<f32>(1.0/2.4))-.055,12.92*c,c<=vec3<f32>(.0031308));}
+fn rainLinear(c:vec3<f32>)->vec3<f32>{return select(pow((c+.055)/1.055,vec3<f32>(2.4)),c/12.92,c<=vec3<f32>(.04045));}
+fn rainSampleUV(uv:vec2<f32>,candidate:vec2<f32>,depth:f32)->vec2<f32>{
+ // Reject the complete bilinear footprint when a foreground solid or water
+ // would be pulled over the drop. Screen edges fall back to the original ray.
+ let footprint=vec2<i32>(floor(candidate*frame.viewport.xy-.5));
+ if(any(footprint<vec2<i32>(0))||any(footprint+1>=vec2<i32>(frame.viewport.xy))){return uv;}
+ for(var y=0;y<2;y++){for(var x=0;x<2;x++){
+  let p=footprint+vec2<i32>(x,y);if(visibleWaterDepth(p)<depth){return uv;}
+  for(var sample=0;sample<4;sample++){if(textureLoad(depthMap,p,sample)<depth){return uv;}}
+ }}return candidate;
+}
 @fragment fn fragment(i:RainVertex)->@location(0) vec4<f32>{
  if(i.world.x<0||i.world.z<0||i.world.x>i.limits.x||i.world.z>i.limits.y){discard;}
  let pixel=vec2<i32>(i.clip.xy);var coverage=0.0;
  for(var sample=0;sample<4;sample++){coverage+=select(0.0,.25,i.clip.z<=textureLoad(depthMap,pixel,sample));}
  if(coverage==0||visibleWaterDepth(pixel)<i.clip.z){discard;}
- let edge=1-smoothstep(.15,1,abs(i.uv.x));let ends=smoothstep(0,.12,i.uv.y)*(1-smoothstep(.7,1,i.uv.y));
+ // A rounded lower bead stretches into a narrow tail. Its curved normal acts
+ // as an intentionally strong water lens instead of a white painted streak.
+ let profile=.25+.75*sqrt(max(0,1-pow((i.uv.y-.38)/.64,2)))*(1-.45*i.uv.y);
+ let across=i.uv.x/profile;let edge=1-smoothstep(.6,1,abs(across));
+ let ends=smoothstep(0,.12,i.uv.y)*(1-smoothstep(.75,1,i.uv.y));
  let alpha=edge*ends*${RAIN_OPACITY}*coverage*i.alphaScale;if(alpha<.003){discard;}
+ let normal=normalize(vec3<f32>(across,(i.uv.y-.38)*.55,sqrt(max(.02,1-across*across))));
+ let bent=refract(vec3<f32>(0,0,-1),normal,1.0/1.333);
+ let uv=i.clip.xy*frame.viewport.zw;
+ let offset=(i.screenSide*bent.x+i.screenTail*bent.y)*32.0*frame.viewport.zw;
+ let sampleUV=rainSampleUV(uv,uv+offset,i.clip.z);
+ let transmitted=rainLinear(textureSampleLevel(rainScene,rainSampler,sampleUV,0).rgb);
  let view=toEye(i.world);let lighting=rainIllumination(i.world,view,visibility(i.world,frame.sun.xyz));
- // Neutral white droplets inherit the actual light colour. Alpha blending
- // retains the scene beneath them, including through each streak's soft edges.
- return vec4<f32>(rainSrgb(clamp(lighting,vec3<f32>(0),vec3<f32>(1))),alpha);
+ let rim=.0204+.9796*pow(1-normal.z,5);
+ let color=transmitted*(1-rim)+lighting*(.08+rim*2.4);
+ return vec4<f32>(rainSrgb(clamp(color,vec3<f32>(0),vec3<f32>(1))),alpha);
 }
 `;

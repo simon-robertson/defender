@@ -24,21 +24,21 @@ import {MAX_ARC_STRIKES,ARC_LIGHT_FLOATS} from '../shared/arc-effects.js';
 
 const DEPTH='Initial camera depth',SHADOW='Shadow map',OPAQUE='Visible opaque surfaces',WATER='Nearest water surface',DISPLAY='Water, reflections and display';
 function mockRenderer(options={}){
- const descriptors=new Map(),globals={GPUBufferUsage:{COPY_DST:8,INDEX:16,VERTEX:32,UNIFORM:64,STORAGE:128},GPUShaderStage:{VERTEX:1,FRAGMENT:2},GPUTextureUsage:{RENDER_ATTACHMENT:1,TEXTURE_BINDING:2},devicePixelRatio:1};
+ const descriptors=new Map(),globals={GPUBufferUsage:{COPY_DST:8,INDEX:16,VERTEX:32,UNIFORM:64,STORAGE:128},GPUShaderStage:{VERTEX:1,FRAGMENT:2},GPUTextureUsage:{RENDER_ATTACHMENT:1,TEXTURE_BINDING:2,COPY_SRC:4,COPY_DST:8},devicePixelRatio:1};
  for(const [key,value] of Object.entries(globals)){descriptors.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{configurable:true,value});}
- const allocated=[],writes=[],passes=[],submissions=[],textures=[];
+ const allocated=[],writes=[],passes=[],submissions=[],textures=[],copies=[];
  const device={features:new Set(),limits:{maxTextureDimension2D:4096},createBuffer({size,usage}){const buffer={size,usage,data:new Uint8Array(size),destroyCalls:0,destroy(){this.destroyCalls++;}};allocated.push(buffer);return buffer;},
   createTexture(){const texture={destroyCalls:0,createView(){return {texture};},destroy(){this.destroyCalls++;}};textures.push(texture);return texture;},createBindGroup:descriptor=>descriptor,
   createShaderModule:descriptor=>({...descriptor,getCompilationInfo:async()=>({messages:[]})}),createBindGroupLayout:descriptor=>descriptor,createPipelineLayout:descriptor=>descriptor,createRenderPipeline:descriptor=>descriptor,createRenderPipelineAsync:async descriptor=>descriptor,
   queue:{writeBuffer(buffer,offset,data,dataOffset=0,size){if(buffer.destroyCalls)throw new Error('Stale buffer upload.');const stride=data.BYTES_PER_ELEMENT,start=dataOffset*stride,length=size===undefined?data.byteLength-start:size*stride;buffer.data.set(new Uint8Array(data.buffer,data.byteOffset+start,length),offset);writes.push({buffer,offset,bytes:length});},submit(buffers){submissions.push(buffers);}},
-  createCommandEncoder(){return {beginRenderPass(descriptor){const record={label:descriptor.label,descriptor,indexed:[],direct:[]};passes.push(record);let instances,pipeline;return {setPipeline(value){pipeline=value;},setBindGroup(){},setVertexBuffer(slot,buffer){if(slot===1)instances=buffer;},setIndexBuffer(){},draw(...args){record.direct.push({pipeline,args});},drawIndexed(indexCount,instanceCount){record.indexed.push({instances,indexCount,instanceCount});},end(){}};},finish(){return {};}};},destroy(){}};
+  createCommandEncoder(){return {copyTextureToTexture(source,target,size){copies.push({source:{...source},target:{...target},size:[...size],afterPasses:passes.length});},beginRenderPass(descriptor){const record={label:descriptor.label,descriptor,indexed:[],direct:[]};passes.push(record);let instances,pipeline;return {setPipeline(value){pipeline=value;},setBindGroup(){},setVertexBuffer(slot,buffer){if(slot===1)instances=buffer;},setIndexBuffer(){},draw(...args){record.direct.push({pipeline,args});},drawIndexed(indexCount,instanceCount){record.indexed.push({instances,indexCount,instanceCount});},end(){}};},finish(){return {};}};},destroy(){}};
  const canvas={width:960,height:640,clientWidth:960,clientHeight:640,dataset:{},addEventListener(){},focus(){}};
  const r=new WorldRenderer(canvas,message=>{throw new Error(message);},{waterReflections:'ssr',...options});r.device=device;r.context={getCurrentTexture:()=>({createView:()=>({})})};r.ready=true;
  r.uniform=device.createBuffer({size:368,usage:64});const effects=new ShotEffects(()=>.5);r.setShotEffects(effects);r.shotUniform=device.createBuffer({size:r.localLightData.byteLength,usage:64});r.shotInstances=device.createBuffer({size:effects.instanceData.byteLength,usage:32});
  r.emptyArcLights=device.createBuffer({size:ARC_EMPTY_LIGHT_BYTES,usage:128});r.bindLocalLights();
  let cameraUpdates=0;const update=r.camera.update.bind(r.camera);r.camera.update=aspect=>{cameraUpdates++;update(aspect);};
- const reset=()=>{writes.length=0;passes.length=0;cameraUpdates=0;};
- return {r,effects,allocated,writes,passes,submissions,textures,reset,get cameraUpdates(){return cameraUpdates;},cleanup(){r.dispose();for(const [key,descriptor] of descriptors){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}};
+ const reset=()=>{writes.length=0;passes.length=0;copies.length=0;cameraUpdates=0;};
+ return {r,effects,allocated,writes,passes,submissions,textures,copies,reset,get cameraUpdates(){return cameraUpdates;},cleanup(){r.dispose();for(const [key,descriptor] of descriptors){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}};
 }
 function smallWorld(){
  const level=newLevel('render-test');level.size=[3,2];level.environment=defaultEnvironment();level.path=[[0,0,0],[1,0,0]];level.terrain.boxes=[{box:[2,1],ground:4,water:12}];
@@ -47,6 +47,45 @@ function smallWorld(){
 }
 const labels=f=>f.passes.map(pass=>pass.label);
 const BLOOM=['Selective bloom emitters','Selective bloom horizontal','Selective bloom vertical'];
+
+test('rain captures completed combat display before lensing, reuses its image and releases on resize/off/unload',()=>{
+ const f=mockRenderer(),r=f.r,w=smallWorld(),presentation={createView:()=>({})};r.context.getCurrentTexture=()=>presentation;
+ let lastPass;r.gpuTimer={reset(){},begin(encoder,pass){lastPass=pass;},end(){},submitted(){},dispose(){}};
+ try{
+  r.camera.overviewFov=60;r.setWorld(w);r.render(0,0);expect(r.frameData[71]).toBe(1);expect(r.rainRefraction).toBeUndefined();expect(f.copies).toHaveLength(0);
+  r.setWeather(true);f.effects.emit(identity(),[[0,0,0],[2,0,0]],0);f.effects.prepare();f.reset();r.render(0,0);
+  const rain=r.rainRefraction,capture=rain.texture,group=rain.group;
+  expect(rain.bytes).toBe(960*640*4);expect(lastPass).toBe(rain.pass);expect(f.copies).toHaveLength(1);
+  expect(f.copies[0].source.texture).toBe(presentation);expect(f.copies[0].target.texture).toBe(capture);
+  const index=labels(f).indexOf(DISPLAY);expect(f.passes[index].direct.some(call=>call.pipeline===r.shotPipeline)).toBe(true);
+  expect(f.copies[0].afterPasses).toBe(index+1);expect(labels(f).at(-1)).toBe('Refractive rain');
+  expect(f.passes.at(-1).descriptor.colorAttachments[0].loadOp).toBe('load');expect(f.passes.at(-1).direct[0].args).toEqual([6,r.rain.count]);
+  f.reset();r.render(0,0);expect(rain.texture).toBe(capture);expect(rain.group).toBe(group);expect(f.copies).toHaveLength(1);
+  r.setDamageEffects({prepare(){},cubeCount:0,cubeRevision:0,particleCount:0,lightCount:0,shockwaveCount:1,shockwaveData:new Float32Array(8)});f.reset();r.render(0,0);
+  expect(f.copies[0].source.texture).toBe(r.shockwaveTarget);expect(lastPass).toBe(r.shockwavePass);expect(labels(f).slice(-2)).toEqual(['Refractive rain','Explosion shockwave refraction']);
+  r.setDamageEffects(null);r.canvas.clientWidth=1000;r.render(0,0);expect(capture.destroyCalls).toBe(1);expect(rain.bytes).toBe(1000*640*4);
+  const resized=rain.texture;r.setWeather(false);expect(resized.destroyCalls).toBe(1);expect(rain.bytes).toBe(0);f.reset();r.render(0,0);expect(f.copies).toHaveLength(0);expect(labels(f)).not.toContain('Refractive rain');expect(lastPass).toBe(r.displayPass);
+  r.setWeather(true);r.render(0,0);const final=rain.texture;r.clearWorld();expect(final.destroyCalls).toBe(1);expect(rain.group).toBeNull();expect(rain.bytes).toBe(0);
+ }finally{f.cleanup();disposeWorld(w);}
+ expect(f.textures.every(texture=>texture.destroyCalls===1)).toBe(true);
+});
+
+test('moving rain reuses a static dry scene capture and refreshes camera, options, combat and expiry',()=>{
+ const f=mockRenderer(),r=f.r,level=newLevel('rain-cache');level.size=[3,2];level.environment=defaultEnvironment();const world=buildWorld(level,new Map());
+ try{
+  r.setWorld(world);r.setWeather(true);r.render(0,0);expect(f.copies).toHaveLength(1);const capture=r.rainRefraction.texture;
+  f.reset();r.render(.1,.1);expect(r.rain.phase).toBeGreaterThan(0);expect(f.copies).toHaveLength(0);expect(labels(f)).toEqual([DISPLAY,'Refractive rain']);expect(r.rainRefraction.texture).toBe(capture);
+  r.requestDraw();f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
+  r.setGraphicsOptions({reflections:false});f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
+  f.reset();r.render(0,.1);expect(f.copies).toHaveLength(0);
+  f.effects.emit(identity(),[[0,0,0],[2,0,0]],0);f.effects.prepare();f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
+  f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
+  f.effects.reset();f.effects.prepare();f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
+  f.reset();r.render(.1,.2);expect(f.copies).toHaveLength(0);
+  r.setLightingColors('#102030','#405060');f.reset();r.render(0,.2);expect(f.copies).toHaveLength(1);
+  r.setWeather(false);expect(capture.destroyCalls).toBe(1);expect(r.rainRefraction.valid).toBe(false);
+ }finally{f.cleanup();disposeWorld(world);}
+});
 
 test('graphics options default on, validate atomically and leave geometry caches intact',()=>{
  const f=mockRenderer(),r=f.r,w=smallWorld();
@@ -142,7 +181,7 @@ test('render invalidation refreshes only dependent passes for lights, camera, po
   r.setLightingColors('#708ABA','#263754','#263754');render();expect(labels(f)).toEqual([OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);expect(f.writes.find(write=>write.buffer===r.uniform).bytes).toBe(368);
   r.camera.yaw+=.1;r.requestDraw();render();expect(labels(f)).toEqual([DEPTH,OPAQUE,WATER,DISPLAY]);expect(f.cameraUpdates).toBe(1);
   const matrix=identity();matrix[12]=2;r.updateInstance('movable',1,matrix);render();expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);expect(r.lastTransformUploads).toBe(1);expect(r.lastTransformUploadBytes).toBe(64);
-  r.setWeather(true);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);
+  r.setWeather(true);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,DISPLAY,'Refractive rain']);expect(f.cameraUpdates).toBe(0);
   r.setWeather(false);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);
   r.setLighting({...world.level.environment.sky,direction:[-.3,1,-.4]});render();expect(labels(f)).toEqual([SHADOW,OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);
   r.canvas.clientWidth=1000;render();expect(labels(f)).toEqual([DEPTH,OPAQUE,WATER,DISPLAY]);expect(f.cameraUpdates).toBe(1);
@@ -439,7 +478,7 @@ test('selective bloom caches steady emission, invalidates visibility and release
   r.setLightingColors('#101828','#05080C');render();expect(labels(f)).toEqual([OPAQUE,...BLOOM,DISPLAY]);
   r.requestDraw();render();expect(labels(f)).toEqual([DEPTH,OPAQUE,...BLOOM,DISPLAY]);
   const rig=new PoseRig(world.rigs.get('turret'),r.updateInstance.bind(r));rig.setRotation('head',0,.2,0);rig.update();render();expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,...BLOOM,DISPLAY]);
-  r.setWeather(true);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,...BLOOM,DISPLAY]);r.setWeather(false);render();
+  r.setWeather(true);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,...BLOOM,DISPLAY,'Refractive rain']);r.setWeather(false);render();
   expect(b.first).toBe(first);expect(b.second).toBe(second);expect(b.extractPass).toBe(sourceDescriptor);
   r.canvas.clientWidth=963;r.canvas.clientHeight=641;render();expect(b.width).toBe(241);expect(b.height).toBe(161);expect(b.bytes).toBe(241*161*16);expect(b.settingsData[0]).toBe(Math.fround(963/241));expect(b.settingsData[1]).toBe(Math.fround(641/161));expect(first.destroyCalls).toBe(1);expect(second.destroyCalls).toBe(1);expect(b.settings).toBe(settings);
   const replacement=b.first;r.clearWorld();expect(replacement.destroyCalls).toBe(1);expect(b.bytes).toBe(0);expect(b.active).toBe(false);expect(b.passes).toBe(0);expect(settings.destroyCalls).toBe(0);

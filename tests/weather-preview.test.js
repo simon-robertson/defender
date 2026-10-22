@@ -6,13 +6,14 @@ import {WorldRenderer} from '../engine/renderer.js';
 import {buildWorld,disposeWorld} from '../engine/world.js';
 import {PoseRig} from '../engine/rig.js';
 import {ShotEffects} from '../engine/shot-effects.js';
-import {DogPreview,DOG_PREVIEW_ACTORS} from '../game/dog-preview.js';
+import {EnemyPreview,DOG_PREVIEW_ACTORS} from '../game/enemy-preview.js';
 import {TURRET_MUZZLES,TURRET_RECOIL,TURRET_PITCH} from '../shared/arsenal.js';
 
 async function fixture(zone,enabled=true){
  const id={A:'moss-01',B:'ochre-01',C:'ice-01',D:'plum-01'}[zone];
- const level=await Bun.file(new URL(`../docs/landscape-reset-2026-10-18/previous-levels/${id}.json`,import.meta.url)).json();
- if(zone!=='B')level.environment.weather={enabled};
+ const level=await Bun.file(new URL(`../project-docs/level-rebuild-2026-10-18/previous-levels/${id}.json`,import.meta.url)).json();
+ level.id='weather-'+id; // Isolate weather from catalogue vista rendering.
+ level.environment.weather={enabled:enabled&&['A','C'].includes(zone)};
  const actors=zone==='A'?DOG_PREVIEW_ACTORS:[],ids=[...new Set([...level.placements.map(p=>p.model),...actors.map(p=>p.model)])];
  const models=new Map(await Promise.all(ids.map(async id=>[id,await Bun.file(new URL(`../assets/models/${id}.json`,import.meta.url)).json()])));
  const source=JSON.stringify(level),world=buildWorld(level,models,{actors});
@@ -21,17 +22,18 @@ async function fixture(zone,enabled=true){
 }
 
 function withBufferUsage(run){
- const descriptor=Object.getOwnPropertyDescriptor(globalThis,'GPUBufferUsage');
- if(!descriptor)Object.defineProperty(globalThis,'GPUBufferUsage',{configurable:true,value:{COPY_DST:8,INDEX:16,VERTEX:32,UNIFORM:64,STORAGE:128}});
- try{return run();}finally{if(!descriptor)delete globalThis.GPUBufferUsage;}
+ const previous=new Map(),values={GPUBufferUsage:{COPY_DST:8,INDEX:16,VERTEX:32,UNIFORM:64,STORAGE:128},GPUShaderStage:{VERTEX:1,FRAGMENT:2},GPUTextureUsage:{RENDER_ATTACHMENT:1,TEXTURE_BINDING:2,COPY_SRC:4,COPY_DST:8}};
+ for(const [name,value]of Object.entries(values)){previous.set(name,Object.getOwnPropertyDescriptor(globalThis,name));Object.defineProperty(globalThis,name,{configurable:true,value});}
+ try{return run();}finally{for(const [name,value]of previous){if(value)Object.defineProperty(globalThis,name,value);else delete globalThis[name];}}
 }
 
 function rendererFixture(){
  const allocated=[],writes=[],modules=[],pipelines=[],draws=[];
  const device={destroyed:false,limits:{maxTextureDimension2D:4096},
+ createBindGroupLayout:descriptor=>descriptor,createTexture:()=>({createView:()=>({}),destroy(){}}),
  createShaderModule(descriptor){modules.push(descriptor);return descriptor;},createPipelineLayout(descriptor){return descriptor;},
  createRenderPipeline(descriptor){pipelines.push(descriptor);return descriptor;},
- createCommandEncoder(){return {beginComputePass(){throw new Error('Weather must not dispatch compute.');},beginRenderPass(){let pipeline;return {setPipeline(value){pipeline=value;},setBindGroup(){},setVertexBuffer(){},setIndexBuffer(){},draw(...args){draws.push({pipeline,args});},drawIndexed(...args){draws.push({pipeline,args});},end(){}};},finish(){return {};}};},
+ createCommandEncoder(){return {copyTextureToTexture(){},beginComputePass(){throw new Error('Weather must not dispatch compute.');},beginRenderPass(){let pipeline;return {setPipeline(value){pipeline=value;},setBindGroup(){},setVertexBuffer(){},setIndexBuffer(){},draw(...args){draws.push({pipeline,args});},drawIndexed(...args){draws.push({pipeline,args});},end(){}};},finish(){return {};}};},
  createBindGroup(descriptor){return descriptor;},createBuffer({size,usage}){
   const buffer={size,usage,data:new Uint8Array(size),destroyCalls:0,destroy(){if(this.destroyCalls++)throw new Error('GPU buffer destroyed twice.');}};
   allocated.push(buffer);return buffer;
@@ -41,7 +43,7 @@ function rendererFixture(){
   buffer.data.set(new Uint8Array(data.buffer,data.byteOffset+start,length),offset);writes.push(buffer);
  },submit(){}},destroy(){this.destroyed=true;}};
  const canvas={width:960,height:640,clientWidth:960,clientHeight:640,dataset:{},addEventListener(){},focus(){}};
- const renderer=new WorldRenderer(canvas,message=>{throw new Error(message);});renderer.device=device;renderer.format='rgba8unorm';renderer.targets=[];renderer.context={getCurrentTexture:()=>({createView:()=>({})})};
+ const renderer=new WorldRenderer(canvas,message=>{throw new Error(message);},{waterReflections:'ssr'});renderer.device=device;renderer.format='rgba8unorm';renderer.targets=[];renderer.context={getCurrentTexture:()=>({createView:()=>({})})};
  // Bloom has its own renderer/GPU checks; isolate weather setup and work here.
  renderer.bloom={active:false,draws:0,render(){},clearTargets(){},dispose(){}};
  const effects=new ShotEffects(()=>.5);renderer.setShotEffects(effects);
@@ -55,12 +57,12 @@ const snapshotPoses=world=>world.entries.map(entry=>entry.transforms.map(matrix=
 const cameraState=c=>({mode:c.mode,yaw:c.yaw,pitch:c.pitch,radius:c.radius,position:Array.from(c.position),target:Array.from(c.target),eye:Array.from(c.eye),keys:[...c.keys],vp:Array.from(c.vp)});
 const activeBytes=renderer=>[...renderer.sceneBuffers].reduce((total,buffer)=>total+buffer.size,0);
 
-for(const zone of ['A','C','D'])test(`${zone} weather toggles restore buffers without resetting source, animated poses, camera, lighting or time`,async()=>{
+for(const zone of ['A','C'])test(`${zone} weather toggles restore buffers without resetting source, animated poses, camera, lighting or time`,async()=>{
  const {world,level,source}=await fixture(zone);
  withBufferUsage(()=>{
   const {renderer:r,allocated,writes,effects}=rendererFixture();let dogs;
   try{
-   r.setWorld(world);const update=r.updateInstance.bind(r);dogs=new DogPreview(world,update);dogs.advance(.37);
+   r.setWorld(world);const update=r.updateInstance.bind(r);dogs=new EnemyPreview(world,update,null,zone==='A'?DOG_PREVIEW_ACTORS:[]);dogs.advance(.37);
    const rigData=[...world.rigs.values()].find(rig=>rig.model==='turret-study'),rig=new PoseRig(rigData,update);
    rig.setRotation('head',0,.72,0);rig.setRotation(TURRET_PITCH.part,-.3,0,0);rig.setTranslation(TURRET_RECOIL.part,0,0,.6);rig.update();
    effects.emit(rigData.instances.find(instance=>instance.part===TURRET_RECOIL.part).matrix,TURRET_MUZZLES.base,0);effects.advance(.01);effects.prepare();
@@ -105,8 +107,8 @@ for(const zone of ['A','C','D'])test(`${zone} weather toggles restore buffers wi
  });
 });
 
-test('unassigned B weather requests and invalid toggle input do not mutate or allocate a scene',async()=>{
- for(const zone of ['B']){
+test('unassigned B and D weather requests and invalid toggle input do not mutate or allocate a scene',async()=>{
+ for(const zone of ['B','D']){
   const {world,level,source}=await fixture(zone);
   withBufferUsage(()=>{
    const {renderer:r,allocated,writes}=rendererFixture();
@@ -136,7 +138,7 @@ for(const zone of ['A','B','C','D'])test(`${zone} authored-off rendering perform
    for(let frame=0;frame<5;frame++)r.render(1/60,frame/60);
    expect(allocated.length).toBe(coldCount);expect([...r.sceneBuffers]).toEqual(coldBuffers);expect(modules.length).toBe(0);expect(pipelines.length).toBe(0);
    expect(writes.every(buffer=>buffer===r.uniform||buffer===r.shotUniform)).toBe(true);expect(draws.some(draw=>draw.pipeline?.label?.startsWith('Lit '))).toBe(false);
-   if(zone!=='B'){
+   if(['A','C'].includes(zone)){
     expect(r.setWeather(true)).toBe(true);expect(modules.length).toBe(1);expect(pipelines.length).toBe(1);
     const field=r.rain??r.snow??r.leaves,seed=r.rainInstances??r.snowInstances??r.leafInstances,pipeline=pipelines[0];
     expect(seed.usage&GPUBufferUsage.STORAGE).toBe(0);expect(r.sceneBuffers.size).toBe(coldBuffers.length+1);
@@ -176,7 +178,7 @@ test('renderer initialisation compiles only scene/shot pipelines until weather i
   expect(r.rainPipeline).toBeUndefined();expect(r.snowPipeline).toBeUndefined();expect(r.leafPipeline).toBeUndefined();
   const rain=r.ensureWeatherPipeline('rain');expect(modules.length).toBe(4);expect(pipelines.length).toBe(7);expect(r.ensureWeatherPipeline('rain')).toBe(rain);expect(pipelines.length).toBe(7);
   r.ensureWeatherPipeline('snow');r.ensureWeatherPipeline('leaves');expect(modules.length).toBe(6);expect(pipelines.length).toBe(9);
-  expect(allocated.length).toBe(4); // Frame, point-light, shot-instance and empty Arc-light buffers.
+  expect(allocated.length).toBe(5); // Frame, ripple, point-light, shot-instance and empty Arc-light buffers.
  }finally{
   r.dispose();for(const [name,descriptor] of previous){if(descriptor)Object.defineProperty(globalThis,name,descriptor);else delete globalThis[name];}
  }

@@ -70,6 +70,21 @@ test('development drag rotates path view without translating; wheel cannot chang
  send('pointermove',{clientX:230,clientY:9000});expect(c.pitch).toBe(1.54);send('pointerup');send('pointermove',{clientX:500,clientY:500});expect(c.pitch).toBe(1.54);
  send('wheel',{deltaY:400});expect(c.radius).toBe(radius);c.keys.add('w');send('blur');expect(c.keys.size).toBe(0);
 });
+test('preview can use 60 degree orbit and path views with reversible zoom and valid world reconstruction',()=>{
+ const {c}=camera();c.overviewFov=c.pathFov=60;
+ for(const aspect of [.75,1.5,2.4]){
+  c.update(aspect);expect(c.mode).toBe('overview');expect(c.isPerspective).toBe(true);
+  expect(2*Math.atan(1/c.projection[5])*180/Math.PI).toBeCloseTo(60,5);
+  const distance=Math.hypot(...c.eye.map((v,i)=>v-c.target[i])),target=[...c.target],radius=c.radius;
+  c.radius*=.5;c.update(aspect);expect(Math.hypot(...c.eye.map((v,i)=>v-c.target[i]))).toBeCloseTo(distance*.5,4);
+  c.radius=radius;c.update(aspect);c.toggleMode(()=>.5);c.update(aspect);
+  expect(c.fieldOfView).toBe(60);expect(2*Math.atan(1/c.projection[5])*180/Math.PI).toBeCloseTo(60,5);
+  const product=new Float32Array(16);multiply(product,c.vp,c.inverse);for(let i=0;i<16;i++)expect(product[i]).toBeCloseTo(i%5===0?1:0,3);
+  c.toggleMode();c.update(aspect);expect([...c.target]).toEqual(target);expect(c.radius).toBe(radius);
+ }
+ c.overviewFov=null;c.update(1.5);expect(c.isPerspective).toBe(false);expect(c.projection[15]).toBe(1);
+});
+
 test('80 degree perspective maps WebGPU near/far depth and camera inverse reconstructs world points',()=>{
  const p=new Float32Array(16);perspective(p,80*Math.PI/180,1.5,.1,2200);
  expect(2*Math.atan(1/p[5])*180/Math.PI).toBeCloseTo(80,5);for(const [z,expected]of [[-.1,0],[-2200,1]]){const clip=transform(p,[0,0,z,1]);expect(clip[2]/clip[3]).toBeCloseTo(expected,6);}

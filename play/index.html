@@ -23,15 +23,22 @@
         <p class="development-preview"><strong>Development Preview</strong><small id="save-status" role="status">Progress saves after each level on this device.</small></p>
         <button type="button" id="continue-button" class="primary title-play" data-action="continue" hidden>CONTINUE</button>
         <button type="button" id="new-game-button" class="primary title-play" data-action="play"><span class="play-chevron" aria-hidden="true">▶</span> NEW GAME</button>
-        <fieldset class="graphics-options"><legend>GRAPHICS</legend>
-          <label><span>Critters</span><input type="checkbox" role="switch" data-graphics="critters" checked><span class="graphics-state" aria-hidden="true"></span></label>
-          <label><span>Reflections</span><input type="checkbox" role="switch" data-graphics="reflections" checked><span class="graphics-state" aria-hidden="true"></span></label>
-          <label><span>Bloom</span><input type="checkbox" role="switch" data-graphics="bloom" checked><span class="graphics-state" aria-hidden="true"></span></label>
-        </fieldset>
+        <button type="button" id="options-button" class="quiet wide title-options" data-action="options" aria-haspopup="dialog">OPTIONS</button>
         <div class="title-spec"><span><strong id="title-areas">16</strong> AREAS</span><span><strong id="title-waves">64</strong> WAVES</span><span><strong id="title-misses">10</strong> MISS LIMIT</span></div>
       </div>
       <div class="title-field-note"><span class="signal-dot"></span> TOWER DEFENCE <span class="field-line"></span> ZONES A–D</div>
     </section>
+    <div id="options-screen" class="screen-overlay" hidden><section class="dialog options-dialog" role="dialog" aria-modal="true" aria-labelledby="options-heading">
+      <p class="eyebrow">GAME SETTINGS</p><h2 id="options-heading">OPTIONS</h2>
+      <fieldset class="graphics-options"><legend>GRAPHICS</legend>
+        <label><span>Critters</span><input type="checkbox" role="switch" data-graphics="critters" checked><span class="graphics-state" aria-hidden="true"></span></label>
+        <label><span>Reflections</span><input type="checkbox" role="switch" data-graphics="reflections" checked><span class="graphics-state" aria-hidden="true"></span></label>
+        <label><span>Bloom</span><input type="checkbox" role="switch" data-graphics="bloom" checked><span class="graphics-state" aria-hidden="true"></span></label>
+        <label><span>Weather</span><input type="checkbox" role="switch" data-graphics="weather" checked aria-describedby="weather-option-note"><span class="graphics-state" aria-hidden="true"></span></label>
+      </fieldset>
+      <p id="weather-option-note" class="options-note">Rain and snow may appear when entering an area. Your options are saved on this device.</p>
+      <button type="button" class="primary wide" data-action="close-options">DONE</button>
+    </section></div>
     <header id="hud" hidden>
       <div class="level-identity"><button class="brand-mark" type="button" data-action="title" aria-label="Return to title" title="Return to title"><svg aria-hidden="true"><use href="#mark-path"/></svg></button><div><p class="eyebrow" id="level-label">ZONE A · AREA 1</p><h1 id="level-name">Limestone Orchard</h1></div></div>
       <div class="run-stats" aria-label="Run progress">

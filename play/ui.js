@@ -3,13 +3,13 @@ import {RosterGroups} from './roster.js';
 // Presentation only: the play session owns state, prices and all actions.
 // Buttons expose data-action and optional data-unit for app-level delegation.
 const $=id=>document.getElementById(id);
-const refs=Object.fromEntries(['hud','title-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
+const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
 const rows=new Map(),shopRows=new Map();
 const roster=new RosterGroups(refs['unit-list']);
 let previewKey='';
 let previousPhase=null,previousModal=null,pendingFocus=null,currentActions=new Set(['play']);
 const waveActions=['title','pause'];
-const phaseActions={title:['play','continue'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['retry','title'],complete:['retry','title']};
+const phaseActions={title:['play','continue','options'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['retry','title'],complete:['retry','title']};
 const setText=(node,value)=>{const text=String(value??'');if(node.textContent!==text)node.textContent=text;};
 const show=(node,visible)=>{if(node.hidden===visible)node.hidden=!visible;};
 const count=value=>Number.isFinite(value)?Math.max(0,value):0;
@@ -54,7 +54,7 @@ function updateInventory(snapshot,locked){
   return units;
 }
 
-function focusable(root){return [...root.querySelectorAll('button:not(:disabled),[tabindex="0"]')].filter(node=>!node.closest('[hidden]'));}
+function focusable(root){return [...root.querySelectorAll('button:not(:disabled),input:not(:disabled),[tabindex="0"]')].filter(node=>!node.closest('[hidden]'));}
 
 function updateShop(snapshot,locked){
  const catalogue=snapshot.shop??[{model:'turret-study',name:'Twin-barrel gun',cost:snapshot.costs?.buy??1,available:true}];
@@ -101,17 +101,18 @@ export function renderUI(snapshot={}){
   const phase=snapshot.phase??'title',busy=Boolean(snapshot.busy),error=Boolean(snapshot.error),activeWave=phase==='wave'||phase==='settling',settling=phase==='settling',paused=Boolean(snapshot.paused)&&activeWave;
   const screenshot=paused&&Boolean(snapshot.screenshotMode);
   const prep=phase==='loadout'||phase==='deploy',result=phase==='defeat'||phase==='complete',locked=busy||paused||error;
-  const active=document.activeElement,oldAction=active?.dataset?.action,oldUnit=active?.dataset?.unit,canvasActive=active===$('world');
+  const active=document.activeElement,oldAction=active?.dataset?.action,oldUnit=active?.dataset?.unit,oldGraphics=active?.dataset?.graphics,canvasActive=active===$('world');
   if(canvasActive&&!busy)pendingFocus=null;
-  if(busy&&oldAction)pendingFocus={action:oldAction,unit:oldUnit};
+  if(busy&&(oldAction||oldGraphics))pendingFocus={action:oldAction,unit:oldUnit,graphics:oldGraphics};
   document.body.dataset.phase=phase;document.body.dataset.paused=String(paused);document.body.dataset.screenshot=String(screenshot);$('play-shell').setAttribute('aria-busy',String(busy));
   const droneActive=Boolean(snapshot.droneCameraActive),droneEnabled=Boolean(snapshot.droneCameraEnabled),filming=droneActive&&!screenshot;
   const canvasLabel=screenshot?'Paused screenshot camera. W/S move forward/backward, A/D strafe, drag to rotate. Backspace restores the paused view.':droneActive?'Flying drone action camera. The drone follows the battle from low and high viewpoints.':phase==='title'?'Fixed scenery view of woodland ruins, trees and limestone paths.':'Defence landscape. Camera framing is automatic.';
   if($('world').getAttribute('aria-label')!==canvasLabel)$('world').setAttribute('aria-label',canvasLabel);
   show(refs['title-screen'],phase==='title');show(refs.hud,phase!=='title');show(refs['prepare-panel'],prep);show(refs['wave-preview'],prep);show(refs['board-footer'],phase!=='title');
+  show(refs['options-screen'],phase==='title'&&snapshot.optionsOpen&&!error);
   show(refs['pause-screen'],paused&&!screenshot&&!error);show(refs['result-screen'],result&&!error);show(refs['error-screen'],error);show(refs.loading,busy&&!error);
-  const modal=error?refs['error-screen']:paused&&!screenshot?refs['pause-screen']:result?refs['result-screen']:null;
-  currentActions=new Set(screenshot?[]:error?['retry-load','title']:busy?[]:paused?['resume','title']:(phaseActions[phase]??[]));
+  const modal=error?refs['error-screen']:phase==='title'&&snapshot.optionsOpen?refs['options-screen']:paused&&!screenshot?refs['pause-screen']:result?refs['result-screen']:null;
+  currentActions=new Set(screenshot?[]:error?['retry-load','title']:busy?[]:modal===refs['options-screen']?['close-options']:paused?['resume','title']:(phaseActions[phase]??[]));
   if(!snapshot.savedGame||snapshot.savingProgress)currentActions.delete('continue');
   show($('continue-button'),Boolean(snapshot.savedGame));
   setText($('continue-button'),`CONTINUE · ${snapshot.savedGame?.area??''}`);
@@ -166,7 +167,8 @@ export function renderUI(snapshot={}){
   const hiddenActive=active?.closest?.('[hidden]')||active?.disabled||!active?.isConnected;
   if((modal&&modal!==previousModal)||(!canvasActive&&(hiddenActive||previousPhase===null||(!busy&&pendingFocus)))){
     let target;
-    if(modal)target=focusable(modal)[0];
+    if(modal){const controls=focusable(modal);target=(pendingFocus?.graphics&&controls.find(node=>node.dataset.graphics===pendingFocus.graphics))||controls[0];}
+    else if(previousModal===refs['options-screen'])target=$('options-button');
     else{
       const identity=!busy&&pendingFocus?pendingFocus:{action:oldAction,unit:oldUnit};
       if(identity.action)target=[...document.querySelectorAll('[data-action]')].find(node=>node.dataset.action===identity.action&&node.dataset.unit===identity.unit&&!node.disabled&&!node.closest('[hidden]'));

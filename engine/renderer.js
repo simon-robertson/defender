@@ -11,6 +11,7 @@ import {shotParticles,specializeLocalLights} from './shot-shaders.js';
 import {ModelLights} from './model-lights.js';
 import {BloomPasses} from './bloom.js';
 import {RainField,RAIN_INSTANCE_FLOATS} from './rain.js';
+import {RainRefraction} from './rain-refraction.js';
 import {rainParticles} from './rain-shaders.js';
 import {SnowField,SNOW_INSTANCE_FLOATS} from './snow.js';
 import {snowParticles} from './snow-shaders.js';
@@ -83,7 +84,7 @@ export class WorldRenderer {
   const d=this.device=await requestRenderDevice(adapter,this.gpuTiming);d.addEventListener('uncapturederror',e=>this.fail(e.error.message));
   if(this.gpuTiming)this.gpuTimer=new GPUFrameTimer(d);
   d.lost.then(info=>{if(!this.disposed)this.fail(`Graphics device lost: ${info.message}. Reload to reconnect.`);});
-  this.context=this.canvas.getContext('webgpu');this.format=navigator.gpu.getPreferredCanvasFormat();this.context.configure({device:d,format:this.format,alphaMode:'opaque'});
+  this.context=this.canvas.getContext('webgpu');this.format=navigator.gpu.getPreferredCanvasFormat();this.context.configure({device:d,format:this.format,alphaMode:'opaque',usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.COPY_SRC});
   const modules=[geometry,composite,shotParticles(uniforms)].map(code=>d.createShaderModule({code:specializeLocalLights(code,this.localLightCapacity)}));
   for(const module of modules){const info=await module.getCompilationInfo();const errors=info.messages.filter(m=>m.type==='error');if(errors.length)throw new Error(errors.map(m=>m.message).join('\n'));}
   const cameraLayout=this.cameraLayout=d.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}}]});
@@ -226,6 +227,7 @@ export class WorldRenderer {
  }
  destroySceneBuffer(buffer){if(this.sceneBuffers.delete(buffer)){buffer.destroy();this.destroyedSceneBuffers++;}}
  clearWeather(){
+  this.rainRefraction?.clearTargets();
   this.destroySceneBuffer(this.rainInstances);this.destroySceneBuffer(this.snowInstances);this.destroySceneBuffer(this.leafInstances);
   this.rain?.dispose();this.rain=null;this.rainInstances=null;this.rainBytes=0;
   this.snow?.dispose();this.snow=null;this.snowInstances=null;this.snowBytes=0;
@@ -237,9 +239,10 @@ export class WorldRenderer {
   const key=type==='rain'?'rainPipeline':type==='snow'?'snowPipeline':'leafPipeline';
   if(this[key])return this[key];
   const code=type==='rain'?rainParticles:type==='snow'?snowParticles:leafParticles;
+  if(type==='rain')this.rainRefraction??=new RainRefraction(this.device,this.format);
   const floats=type==='rain'?RAIN_INSTANCE_FLOATS:type==='snow'?SNOW_INSTANCE_FLOATS:LEAF_INSTANCE_FLOATS;
   const module=this.device.createShaderModule({label:type+' weather',code:specializeLocalLights(code,this.localLightCapacity)});
-  return this[key]=this.device.createRenderPipeline({label:'Lit '+type+' weather',layout:this.device.createPipelineLayout({bindGroupLayouts:[this.cameraLayout,this.screenLayout,this.lightingLayout]}),
+  return this[key]=this.device.createRenderPipeline({label:'Lit '+type+' weather',layout:this.device.createPipelineLayout({bindGroupLayouts:type==='rain'?[this.cameraLayout,this.screenLayout,this.lightingLayout,this.rainRefraction.layout]:[this.cameraLayout,this.screenLayout,this.lightingLayout]}),
    vertex:{module,entryPoint:'vertex',buffers:[{arrayStride:floats*4,stepMode:'instance',attributes:Array.from({length:floats/4},(_,shaderLocation)=>({shaderLocation,offset:shaderLocation*16,format:'float32x4'}))}]},
    fragment:{module,entryPoint:'fragment',targets:[{format:this.format,blend:{color:{srcFactor:'src-alpha',dstFactor:'one-minus-src-alpha',operation:'add'},alpha:{srcFactor:'zero',dstFactor:'one',operation:'add'}}}]},
    primitive:{topology:'triangle-list',cullMode:'none'}});
@@ -299,7 +302,7 @@ export class WorldRenderer {
   this.shockwaveCount=Math.min(this.damageEffects?.shockwaveCount??0,MAX_BLASTS);if(!this.shockwaveCount&&!this.deathEffectsPrepared)return;
   const d=this.device;this.ensureShockwavePipeline();
   if(!this.shockwaveTarget){
-   this.shockwaveTarget=d.createTexture({label:'Complete display before refraction',size:[width,height],format:this.format,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING});this.shockwaveView=this.shockwaveTarget.createView();this.shockwaveTargetBytes=width*height*4;
+   this.shockwaveTarget=d.createTexture({label:'Complete display before refraction',size:[width,height],format:this.format,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING|GPUTextureUsage.COPY_SRC});this.shockwaveView=this.shockwaveTarget.createView();this.shockwaveTargetBytes=width*height*4;
    this.shockwaveGroup=d.createBindGroup({layout:this.shockwaveLayout,entries:[{binding:0,resource:this.shockwaveView},{binding:1,resource:this.sampler},{binding:2,resource:this.depthView},{binding:3,resource:this.waterDepthView},{binding:4,resource:{buffer:this.shockwaveUniform}}]});
   }
   if(!this.shockwaveCount)return;
@@ -461,6 +464,7 @@ export class WorldRenderer {
  }
  resize(w,h){
   this.gpuTimer?.reset();
+  this.rainRefraction?.clearTargets();
   this.clearShockwaveTarget();this.bloom?.clearTargets();
   for(const texture of this.targets||[])texture.destroy();const d=this.device;
   const texture=(format,sampleCount)=>d.createTexture({size:[w,h],format,sampleCount,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING});
@@ -495,7 +499,7 @@ export class WorldRenderer {
   const f=this.frameData,c=this.camera;
   const cameraUpdated=this.cameraDirty;
   if(cameraUpdated){c.update(w/h);f.set(c.vp);f.set(c.inverse,32);f.set(c.eye,48);
-   const pitchCos=Math.cos(c.pitch);f[64]=w;f[65]=h;f[66]=1/w;f[67]=1/h;f[68]=Math.sin(c.yaw)*pitchCos;f[69]=Math.sin(c.pitch);f[70]=Math.cos(c.yaw)*pitchCos;f[71]=c.mode==='path'||c.mode==='live'?1:0;
+   const pitchCos=Math.cos(c.pitch);f[64]=w;f[65]=h;f[66]=1/w;f[67]=1/h;f[68]=Math.sin(c.yaw)*pitchCos;f[69]=Math.sin(c.pitch);f[70]=Math.cos(c.yaw)*pitchCos;f[71]=c.isPerspective?1:0;
   }
   this.damageEffects?.prepare?.(c.vp);this.prepareDamage();this.prepareWaterRipples();this.mergeLocalLights();this.prepareArcs();this.preparePlasmaLinks();this.prepareMissileThrust();
   const reflections=this.reflectionsEnabled&&this.ssr;
@@ -507,8 +511,8 @@ export class WorldRenderer {
   this.prepareShockwaves(w,h);
   f[72]=reflections?1:0;f[73]=c.near;f[74]=c.far;f[75]=this.vista?1:0;f[76]=this.deltaSeconds;f[77]=this.elapsedSeconds;f[78]=(this.elapsedSeconds*this.world.waterMaterial.rippleSpeed*Math.PI*2)%(Math.PI*2);f[79]=this.leaves?.count?this.leaves.phase:this.snow?.count?this.snow.phase:this.rain?.phase??0;
   if(cameraUpdated||this.uniformDirty)this.device.queue.writeBuffer(this.uniform,0,f);else this.device.queue.writeBuffer(this.uniform,288,f,72,8);
-  this.cameraDirty=false;this.uniformDirty=false;this.flushInstances();
-  const encoder=this.device.createCommandEncoder(),timing=this.gpuTimer?.begin(encoder,this.shockwaveCount?this.shockwavePass:this.displayPass),renderEncoder=this.gpuTimer?.renderEncoder?.(encoder,timing)??encoder;
+  const displayUniformChanged=this.uniformDirty;this.cameraDirty=false;this.uniformDirty=false;this.flushInstances();
+  const encoder=this.device.createCommandEncoder(),timing=this.gpuTimer?.begin(encoder,this.shockwaveCount?this.shockwavePass:this.rain?.count?this.rainRefraction.pass:this.displayPass),renderEncoder=this.gpuTimer?.renderEncoder?.(encoder,timing)??encoder;
   const depthUpdated=this.depthDirty,opaqueUpdated=this.dirty,shadowUpdated=this.shadowDirty,waterUpdated=this.waterDirty;this.lastDrawCalls=1;
   this.lastDrawCalls+=this.vista?.render(renderEncoder,this.cameraGroup,cameraUpdated||this.vistaLightingDirty)??0;this.vistaLightingDirty=false;
   if(depthUpdated){this.lastDrawCalls+=this.geometryPass(renderEncoder.beginRenderPass(this.depthPass),this.depthPipeline,this.damageDepthPipeline);this.depthDirty=false;}
@@ -529,10 +533,9 @@ export class WorldRenderer {
    if(!this.bloom&&(this.visibleEmitters||effects?.flashCount||this.damageEffects?.blastCount||this.arcEffects?.strikeCount||this.plasmaLinks?.instanceCount||this.missileThrust?.instanceCount))this.bloom=new BloomPasses(this.device,this.cameraLayout,this.screenLayout,this.lightingLayout,this.sampler,this.format,this.localLightCapacity);
    this.bloom?.render(renderEncoder,this,w,h,opaqueUpdated,waterUpdated);this.lastDrawCalls+=this.bloom?.draws??0;
   }
-  const finalSceneView=this.context.getCurrentTexture().createView();
+  const presentation=this.context.getCurrentTexture(),finalSceneView=presentation.createView();
   this.displayPass.colorAttachments[0].view=this.shockwaveCount?this.shockwaveView:finalSceneView;
   const display=renderEncoder.beginRenderPass(this.displayPass);display.setPipeline(this.bloom?.active?this.bloom.compositePipeline:this.screenPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setBindGroup(2,this.lightGroup);if(this.bloom?.active)display.setBindGroup(3,this.bloom.firstGroup);display.draw(3);
-  if(this.rain?.count){display.setPipeline(this.rainPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setBindGroup(2,this.lightGroup);display.setVertexBuffer(0,this.rainInstances);display.draw(6,this.rain.count);this.lastDrawCalls++;}
   if(this.snow?.count){display.setPipeline(this.snowPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setBindGroup(2,this.lightGroup);display.setVertexBuffer(0,this.snowInstances);display.draw(6,this.snow.count);this.lastDrawCalls++;}
   if(this.leaves?.count){display.setPipeline(this.leafPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setBindGroup(2,this.lightGroup);display.setVertexBuffer(0,this.leafInstances);display.draw(6,this.leaves.count);this.lastDrawCalls++;}
   if(this.damageParticleCount){
@@ -545,10 +548,15 @@ export class WorldRenderer {
   if(this.missileThrust?.instanceCount){display.setPipeline(this.shotPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setVertexBuffer(0,this.missileThrustInstances);display.draw(6,this.missileThrust.instanceCount);this.lastDrawCalls++;}
   if(this.arcEffects?.instanceCount){display.setPipeline(this.arcPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setVertexBuffer(0,this.arcInstances);display.draw(6,this.arcEffects.instanceCount);this.lastDrawCalls++;}
   if(this.plasmaLinks?.instanceCount){display.setPipeline(this.arcPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setVertexBuffer(0,this.plasmaInstances);display.draw(6,this.plasmaLinks.instanceCount);this.lastDrawCalls++;}display.end();
+  if(this.rain?.count){
+   const sceneChanged=cameraUpdated||opaqueUpdated||waterUpdated||displayUniformChanged||this.bloom?.draws>0;
+   const moving=Boolean(this.waterDraw||effects?.instanceCount||this.damageParticleCount||this.missileThrust?.instanceCount||this.arcEffects?.instanceCount||this.plasmaLinks?.instanceCount);
+   this.rainRefraction.render(encoder,this,this.shockwaveCount?this.shockwaveTarget:presentation,this.displayPass.colorAttachments[0].view,w,h,renderEncoder,sceneChanged,moving);this.lastDrawCalls++;
+  }
   if(this.shockwaveCount){this.shockwavePass.colorAttachments[0].view=finalSceneView;const wave=renderEncoder.beginRenderPass(this.shockwavePass);wave.setPipeline(this.shockwavePipeline);wave.setBindGroup(0,this.cameraGroup);wave.setBindGroup(1,this.shockwaveGroup);wave.draw(3);wave.end();this.lastDrawCalls++;}
   this.gpuTimer?.end(encoder,timing);
   this.submitBuffers[0]=encoder.finish();this.device.queue.submit(this.submitBuffers);this.submitBuffers[0]=null;this.gpuTimer?.submitted(timing);this.frames++;this.lastSubmitMs=performance.now()-start;
-  if(this.inspect&&inspectFrame){canvas.dataset.inspection=JSON.stringify({frames:this.frames,deltaSeconds:this.deltaSeconds,elapsedSeconds:this.elapsedSeconds,waterPhase:f[78],rainCount:this.rain?.count??0,rainBytes:this.rainBytes??0,rainPhase:this.rain?.phase??0,rainTime:this.rain?.time??0,snowCount:this.snow?.count??0,snowBytes:this.snowBytes??0,snowPhase:this.snow?.phase??0,snowTime:this.snow?.time??0,snowCycleSeconds:this.snow?.cycleSeconds??0,leafCount:this.leaves?.count??0,leafBytes:this.leafBytes??0,leafPhase:this.leaves?.phase??0,leafTime:this.leaves?.time??0,leafCycleSeconds:this.leaves?.cycleSeconds??0,drawGroups:this.draws.length+(this.waterDraw?1:0),drawCalls:this.lastDrawCalls,geometryBytes:this.bytes,transformBytes:this.transformBytes,visibilityBytes:this.visibilityBytes,transformUploads:this.lastTransformUploads,transformUploadBytes:this.lastTransformUploadBytes,sceneBuffers:this.sceneBuffers.size,createdSceneBuffers:this.createdSceneBuffers,destroyedSceneBuffers:this.destroyedSceneBuffers,targetBytes:this.targetBytes,visibleEmitters:this.visibleEmitters,reflectionsEnabled:this.reflectionsEnabled,bloomEnabled:this.bloomEnabled,waterReflections:this.waterReflections,planarActive:!!wantsPlanar,planarDraws:this.planarDraws,planarBytes:this.planar?.bytes??0,vistaActive:!!this.vista,vistaGeometryBytes:this.vista?.geometryBytes??0,vistaTargetBytes:this.vista?.targetBytes??0,effectBytes:this.effectBytes,missileThrustBytes:this.missileThrustBytes,missileThrustInstances:this.missileThrust?.instanceCount??0,missileThrustUploadBytes:this.missileThrustUploadBytes,missileLights:this.missileLightCount,missileLightCPUBytes:this.missileThrust?.lightData?.byteLength??0,localLightUploadBytes:this.localLightUploadBytes,plasmaBytes:this.plasmaBytes,plasmaLinks:this.plasmaLinks?.linkCount??0,plasmaTime:this.plasmaLinks?.time??0,plasmaOverflow:this.plasmaLinks?.overflow??0,plasmaInstances:this.plasmaLinks?.instanceCount??0,plasmaLights:this.plasmaLightCount,plasmaUploadBytes:this.plasmaUploadBytes,plasmaLightBytes:this.plasmaLightBuffer?.size??0,plasmaCPUBytes:this.plasmaLinks?.byteLength??0,plasmaMergeBytes:this.plasmaLightData?.byteLength??0,arcBytes:this.arcBytes,arcLightBytes:this.arcLightBuffer?.size??0,arcBindingBytes:this.emptyArcLights?.size??0,arcStrikes:this.arcEffects?.strikeCount??0,arcSparks:this.arcEffects?.sparkCount??0,arcGrounded:this.arcEffects?.groundedCount??0,arcInstances:this.arcEffects?.instanceCount??0,arcLights:this.arcLightCount,arcUploads:this.arcUploads,arcUploadBytes:this.arcUploadBytes,shotLights:effects?.lightCount??0,localLights:this.localLightCount??0,bloomActive:this.bloom?.active??false,bloomPasses:this.bloom?.passes??0,bloomDraws:this.bloom?.draws??0,bloomBytes:this.bloom?.bytes??0,bloomSettingsBytes:this.bloom?.settings.size??0,modelLights:this.modelLights?.count??0,authoredModelLights:this.modelLights?.authoredCount??0,modelLightOverflow:this.modelLights?.overflow??0,modelLightBytes:this.modelLights?.byteLength??0,localLightUniformBytes:this.localLightData.byteLength,deathEffectsPrepared:this.deathEffectsPrepared,damageCubes:this.damageCubeCount,damageParticles:this.damageParticleCount,damageBytes:this.damageBytes,shockwaveCount:this.shockwaveCount,shockwaveBytes:this.shockwaveBytes,shockwaveTargetBytes:this.shockwaveTargetBytes,shotInstances:effects?.instanceCount??0,droppedSparks:effects?.droppedSparks??0,replacedFlashes:effects?.replacedFlashes??0,cpuSubmitMs:this.lastSubmitMs,gpuFrameTiming:this.gpuTimer?.read()??null,cameraUpdated,depthUpdated,shadowUpdated,opaqueUpdated,waterUpdated,mode:c.mode,yaw:c.yaw,pitch:c.pitch,radius:c.radius,target:Array.from(c.target),eye:Array.from(c.eye),fov:c.mode==='path'?80:c.mode==='live'?c.fov:null,groundHeight:c.mode==='path'?c.groundHeight(c.eye[0],c.eye[2]):null});}
+  if(this.inspect&&inspectFrame){canvas.dataset.inspection=JSON.stringify({frames:this.frames,deltaSeconds:this.deltaSeconds,elapsedSeconds:this.elapsedSeconds,waterPhase:f[78],rainCount:this.rain?.count??0,rainBytes:this.rainBytes??0,rainRefractionBytes:this.rainRefraction?.bytes??0,rainPhase:this.rain?.phase??0,rainTime:this.rain?.time??0,snowCount:this.snow?.count??0,snowBytes:this.snowBytes??0,snowPhase:this.snow?.phase??0,snowTime:this.snow?.time??0,snowCycleSeconds:this.snow?.cycleSeconds??0,leafCount:this.leaves?.count??0,leafBytes:this.leafBytes??0,leafPhase:this.leaves?.phase??0,leafTime:this.leaves?.time??0,leafCycleSeconds:this.leaves?.cycleSeconds??0,drawGroups:this.draws.length+(this.waterDraw?1:0),drawCalls:this.lastDrawCalls,geometryBytes:this.bytes,transformBytes:this.transformBytes,visibilityBytes:this.visibilityBytes,transformUploads:this.lastTransformUploads,transformUploadBytes:this.lastTransformUploadBytes,sceneBuffers:this.sceneBuffers.size,createdSceneBuffers:this.createdSceneBuffers,destroyedSceneBuffers:this.destroyedSceneBuffers,targetBytes:this.targetBytes,visibleEmitters:this.visibleEmitters,reflectionsEnabled:this.reflectionsEnabled,bloomEnabled:this.bloomEnabled,waterReflections:this.waterReflections,planarActive:!!wantsPlanar,planarDraws:this.planarDraws,planarBytes:this.planar?.bytes??0,vistaActive:!!this.vista,vistaGeometryBytes:this.vista?.geometryBytes??0,vistaTargetBytes:this.vista?.targetBytes??0,effectBytes:this.effectBytes,missileThrustBytes:this.missileThrustBytes,missileThrustInstances:this.missileThrust?.instanceCount??0,missileThrustUploadBytes:this.missileThrustUploadBytes,missileLights:this.missileLightCount,missileLightCPUBytes:this.missileThrust?.lightData?.byteLength??0,localLightUploadBytes:this.localLightUploadBytes,plasmaBytes:this.plasmaBytes,plasmaLinks:this.plasmaLinks?.linkCount??0,plasmaTime:this.plasmaLinks?.time??0,plasmaOverflow:this.plasmaLinks?.overflow??0,plasmaInstances:this.plasmaLinks?.instanceCount??0,plasmaLights:this.plasmaLightCount,plasmaUploadBytes:this.plasmaUploadBytes,plasmaLightBytes:this.plasmaLightBuffer?.size??0,plasmaCPUBytes:this.plasmaLinks?.byteLength??0,plasmaMergeBytes:this.plasmaLightData?.byteLength??0,arcBytes:this.arcBytes,arcLightBytes:this.arcLightBuffer?.size??0,arcBindingBytes:this.emptyArcLights?.size??0,arcStrikes:this.arcEffects?.strikeCount??0,arcSparks:this.arcEffects?.sparkCount??0,arcGrounded:this.arcEffects?.groundedCount??0,arcInstances:this.arcEffects?.instanceCount??0,arcLights:this.arcLightCount,arcUploads:this.arcUploads,arcUploadBytes:this.arcUploadBytes,shotLights:effects?.lightCount??0,localLights:this.localLightCount??0,bloomActive:this.bloom?.active??false,bloomPasses:this.bloom?.passes??0,bloomDraws:this.bloom?.draws??0,bloomBytes:this.bloom?.bytes??0,bloomSettingsBytes:this.bloom?.settings.size??0,modelLights:this.modelLights?.count??0,authoredModelLights:this.modelLights?.authoredCount??0,modelLightOverflow:this.modelLights?.overflow??0,modelLightBytes:this.modelLights?.byteLength??0,localLightUniformBytes:this.localLightData.byteLength,deathEffectsPrepared:this.deathEffectsPrepared,damageCubes:this.damageCubeCount,damageParticles:this.damageParticleCount,damageBytes:this.damageBytes,shockwaveCount:this.shockwaveCount,shockwaveBytes:this.shockwaveBytes,shockwaveTargetBytes:this.shockwaveTargetBytes,shotInstances:effects?.instanceCount??0,droppedSparks:effects?.droppedSparks??0,replacedFlashes:effects?.replacedFlashes??0,cpuSubmitMs:this.lastSubmitMs,gpuFrameTiming:this.gpuTimer?.read()??null,cameraUpdated,depthUpdated,shadowUpdated,opaqueUpdated,waterUpdated,mode:c.mode,yaw:c.yaw,pitch:c.pitch,radius:c.radius,target:Array.from(c.target),eye:Array.from(c.eye),fov:c.fieldOfView,groundHeight:c.mode==='path'?c.groundHeight(c.eye[0],c.eye[2]):null});}
  }
 
  clearGeometry(){this.lastWaterRipples=null;this.lastWaterRippleRevision=null;this.gpuTimer?.reset();this.planar?.clearTargets();this.visibleEmitters=0;this.waterHeight=this.waterBounds=null;this.vista?.dispose();this.vista=null;this.screenGroup=null;this.clearMissileThrust();this.clearPlasmaLinks(false);this.clearArcResources();this.bloom?.clearTargets();this.modelLights?.dispose();this.modelLights=null;for(const buffer of this.sceneBuffers){buffer.destroy();this.destroyedSceneBuffers++;}this.sceneBuffers.clear();this.clearWeather();this.waterDraw=null;this.draws.length=0;this.drawMap.clear();this.bytes=0;this.transformBytes=0;this.visibilityBytes=0;this.lastTransformUploads=0;this.lastTransformUploadBytes=0;}

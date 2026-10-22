@@ -10,6 +10,7 @@ export class Camera {
     this.view=new Float32Array(16);this.projection=new Float32Array(16);this.vp=new Float32Array(16);this.inverse=new Float32Array(16);
     this.keys=new Set();this.yaw=2.45;this.pitch=.68;this.radius=150;this.width=336;this.length=240;
     this.mode='overview';this.freeFly=false;this.fov=73;this.roll=0;this.pathModeEnabled=true;this.controlsEnabled=true;this.position=new Float64Array(3);this.overview=new Float64Array(6);this.frameGoal=new Float64Array(4);this.pathBounds=null;this.near=.1;this.far=2200;
+    this.overviewFov=null;this.pathFov=PATH_CAMERA_FOV;
     this.dragging=false;this.listeners=[];let pan=false,lx=0,ly=0;
     const listen=(target,type,handler,options)=>{target.addEventListener(type,handler,options);this.listeners.push({target,type,handler,options});};
     listen(canvas,'contextmenu',e=>e.preventDefault());
@@ -90,15 +91,18 @@ export class Camera {
   frame(width=this.width,length=this.length){this.mode='overview';this.keys.clear();this.dragging=false;this.width=width;this.length=length;this.yaw=2.45;this.pitch=.68;
     const goal=this.overviewFrame(this.frameGoal);this.target.set(goal.subarray(0,3));this.radius=goal[3];this.onModeChange?.(this.mode);this.invalidate();
   }
+  get isPerspective(){return this.mode==='path'||this.mode==='live'||this.mode==='overview'&&this.overviewFov!==null;}
+  get fieldOfView(){return this.mode==='path'?this.pathFov:this.mode==='live'?this.fov:this.overviewFov;}
   update(aspect){
-    const c=Math.cos(this.pitch),s=Math.sin(this.pitch),sx=Math.sin(this.yaw)*c,sz=Math.cos(this.yaw)*c,perspectiveMode=this.mode==='path'||this.mode==='live';
-    if(perspectiveMode){
+    const c=Math.cos(this.pitch),s=Math.sin(this.pitch),sx=Math.sin(this.yaw)*c,sz=Math.cos(this.yaw)*c;
+    if(this.mode==='path'||this.mode==='live'){
       this.eye.set(this.position);this.target[0]=this.eye[0]-sx;this.target[1]=this.eye[1]-s;this.target[2]=this.eye[2]-sz;
-      perspective(this.projection,(this.mode==='live'?this.fov:PATH_CAMERA_FOV)*Math.PI/180,aspect,this.near,this.far);
     }else{
-      this.eye[0]=this.target[0]+sx*900;this.eye[1]=this.target[1]+s*900;this.eye[2]=this.target[2]+sz*900;
-      ortho(this.projection,-this.radius*aspect,this.radius*aspect,-this.radius,this.radius,this.near,this.far);
+      const distance=this.overviewFov===null?900:this.radius/Math.tan(this.overviewFov*Math.PI/360);
+      this.eye[0]=this.target[0]+sx*distance;this.eye[1]=this.target[1]+s*distance;this.eye[2]=this.target[2]+sz*distance;
     }
+    if(this.isPerspective)perspective(this.projection,this.fieldOfView*Math.PI/180,aspect,this.near,this.far);
+    else ortho(this.projection,-this.radius*aspect,this.radius*aspect,-this.radius,this.radius,this.near,this.far);
     lookAt(this.view,this.eye,this.target);
     if(this.mode==='live'&&this.roll){const cr=Math.cos(this.roll),sr=Math.sin(this.roll);for(let col=0;col<16;col+=4){const x=this.view[col],y=this.view[col+1];this.view[col]=cr*x+sr*y;this.view[col+1]=-sr*x+cr*y;}}
     multiply(this.vp,this.projection,this.view);

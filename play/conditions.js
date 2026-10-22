@@ -1,5 +1,7 @@
-// Each zone repeats a deterministic four-level daylight progression; weather stays clear.
+// Daylight is authored; supported weather is selected once on level entry.
 import {levelLighting} from '../engine/environment.js';
+import {ZONE_WEATHER} from '../shared/weather.js';
+export const PLAY_WEATHER_CHANCE=.33;
 export const PLAY_NIGHT_LIGHTING=Object.freeze({color:'#708ABA',ambient:'#263754'});
 export const PLAY_AFTERNOON_SUN_SCALE=1.35;
 export const PLAY_EVENING_LIGHT_ELEVATION=12;
@@ -12,9 +14,16 @@ export const PLAY_DAYLIGHT=Object.freeze([
  Object.freeze({period:'night',timeOfDay:22,night:true,weather:false}),
 ]);
 export class LevelConditions {
- constructor(){this.reset();}
- reset(){this.levelId=null;this.value=null;}
- forLevel(levelId){if(this.levelId!==levelId){this.levelId=levelId;const index=Number(levelId.slice(-2))-1;this.value=PLAY_DAYLIGHT[index]??PLAY_DAYLIGHT[0];}return this.value;}
+ constructor(random=Math.random){this.random=random;this.reset();}
+ reset(){this.levelId=null;this.value=null;this.weatherEnabled=null;this.zone=null;}
+ forLevel(levelId,{zone,weather=true}={}){
+  if(this.levelId!==levelId||this.weatherEnabled!==weather||this.zone!==zone){
+   this.levelId=levelId;this.weatherEnabled=weather;this.zone=zone;
+   const index=Number(levelId.slice(-2))-1,daylight=PLAY_DAYLIGHT[index]??PLAY_DAYLIGHT[0];
+   const wet=Boolean(weather&&ZONE_WEATHER[zone])&&this.random()<PLAY_WEATHER_CHANCE;
+   this.value=wet?Object.freeze({...daylight,weather:true}):daylight;
+  }return this.value;
+ }
 }
 export function applyPlayLighting(renderer,conditions){
  if(conditions?.period==='late-afternoon'){

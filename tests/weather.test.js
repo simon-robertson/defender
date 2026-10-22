@@ -20,9 +20,9 @@ test('each level opts into its zone weather; legacy clear and missing settings s
  level.environment.weather='clear';expect(levelWeather(level).enabled).toBe(false);
  level.zone='C';expect(ZONE_WEATHER.C).toBe('snow');expect(levelWeather(level)).toEqual({type:'snow',enabled:false});
  for(const enabled of [true,false]){level.environment.weather={enabled};expect(levelWeather(level)).toEqual({type:'snow',enabled});expect(validateLevel(level)).toBe(level);}
- level.zone='D';expect(ZONE_WEATHER.D).toBe('leaves');
- for(const enabled of [true,false]){level.environment.weather={enabled};expect(levelWeather(level)).toEqual({type:'leaves',enabled});expect(validateLevel(level)).toBe(level);}
- level.environment.weather='clear';expect(levelWeather(level)).toEqual({type:'leaves',enabled:false});
+ level.zone='D';expect(ZONE_WEATHER.D).toBeNull();level.environment.weather={enabled:false};expect(levelWeather(level)).toEqual({type:'clear',enabled:false});
+ level.environment.weather={enabled:true};expect(()=>validateLevel(level)).toThrow('not been assigned');
+ level.environment.weather='clear';expect(levelWeather(level)).toEqual({type:'clear',enabled:false});
  level.zone='B';expect(ZONE_WEATHER.B).toBeNull();expect(levelWeather(level)).toEqual({type:'clear',enabled:false});level.environment.weather={enabled:true};expect(()=>validateLevel(level)).toThrow('not been assigned');level.environment.weather={enabled:false};expect(()=>validateLevel(level)).not.toThrow();
  for(const weather of ['rain','fog',true,false,null,[],{}, {enabled:1},{enabled:'true'},{enabled:true,type:'rain'}]){level.zone='A';level.environment.weather=weather;expect(()=>validateLevel(level)).toThrow('Weather');}
 });
@@ -52,9 +52,9 @@ test('settled snow replaces only flat exposed path edges with matte patches and 
  expect(terrainGeometry({...level,environment:{...level.environment,weather:'clear'}})).toEqual(dry);
 });
 
-test('leaf litter preserves flat paving coverage, exposed edges and a predominantly purple palette',()=>{
- const level=zonePreviewLevel('D'),palette=structuredClone(TERRAIN_MATERIALS.D);level.environment.weather.enabled=true;expect(levelWeather(level)).toEqual({type:'leaves',enabled:true});
- const leafy=terrainGeometry(level);level.environment.weather={enabled:false};const dry=terrainGeometry(level);
+test('legacy leaf surface primitives preserve coverage without enabling Area D weather',()=>{
+ const level=zonePreviewLevel('D'),palette=structuredClone(TERRAIN_MATERIALS.D);expect(levelWeather(level)).toEqual({type:'clear',enabled:false});
+ const leafy=terrainGeometry(level,{type:'leaves',enabled:true}),dry=terrainGeometry(level);
  const route=new Set(level.path.map(([x,,z])=>x+','+z)),pathFace=q=>pathTop(q,level,route);
  expect(leafy.water).toEqual(dry.water);expect(TERRAIN_MATERIALS.D).toEqual(palette);
  expect(outsidePath(leafy.ground,pathFace)).toEqual(outsidePath(dry.ground,pathFace));

@@ -30,7 +30,7 @@ const inspectionSampler=new InspectionSampler();
 const NIGHT_LIGHTING=Object.freeze({color:'#708ABA',ambient:'#263754'});
 let renderer,loop,scenes,firing,enemies,wildlife,plasmaLinks=null,plasmaConnections=[],night=false,lastUnload=null,enemyResets=0;
 const profileFor=previewLevelForId;
-function fail(message){loop?.stop();status.hidden=true;error.hidden=false;error.textContent=message;console.error(message);}
+function fail(cause){loop?.stop();status.hidden=true;error.hidden=false;error.textContent=cause instanceof Error?cause.message:cause;console.error(cause);}
 function readyControls(ready){
  lightingButton.disabled=frameButton.disabled=timeButton.disabled=!ready;
  const hasPath=Boolean(scenes?.world&&levelRoutes(scenes.world.level).some(route=>route.path.length));
@@ -58,7 +58,7 @@ function toggleTime(){
 }
 function toggleWeather(){
  if(!scenes?.world||scenes.loading||renderer.failed)return;
- try{renderer.setWeather(!scenes.world.weather.enabled);updateWeatherControl();reportLifecycle('weather-preview');}catch(e){fail(e.message);}
+ try{renderer.setWeather(!scenes.world.weather.enabled);updateWeatherControl();reportLifecycle('weather-preview');}catch(e){fail(e);}
 }
 function reportLifecycle(phase){
  if(!renderer.inspect)return;
@@ -97,6 +97,7 @@ function updateLevelControls(phase,id){
 }
 try{
  renderer=new WorldRenderer(document.getElementById('world'),fail);renderer.inspect=new URLSearchParams(location.search).has('inspect');
+ renderer.camera.overviewFov=renderer.camera.pathFov=renderer.camera.fov=60;
  renderer.camera.onModeChange=updateCameraControls;
  cameraButton.addEventListener('click',()=>renderer.camera.toggleMode());lightingButton.addEventListener('click',toggleLighting);frameButton.addEventListener('click',()=>renderer.camera.frame());
  weatherButton.addEventListener('click',toggleWeather);timeButton.addEventListener('click',toggleTime);
@@ -151,7 +152,7 @@ try{
 
 
   }
- }catch(e){fail(e.message);}});
+ }catch(e){fail(e);}});
  scenes=new SceneLoader({
   load:(id,options)=>loadWorld(id,{...options,actors:actorsForPreview}),discard:disposeWorld,
   release:world=>{
@@ -180,7 +181,7 @@ try{
  Object.defineProperty(window,'defenderPreview',{value:{renderer,get world(){return scenes.world;},get firing(){return firing;},get enemies(){return enemies;},get wildlife(){return wildlife;},get dogs(){return scenes.currentId==='moss-01'?enemies:null;},get stats(){return {frames:renderer.frames,zone:scenes.world?.level.zone,level:profileFor(scenes.currentId)?.number??null,currentId:scenes.currentId,requestedId:selection.profile.level,requestedZone:selection.profile.zone,requestedLevel:selection.profile.number,loading:scenes.loading,loads:scenes.loads,unloads:scenes.unloads,drawGroups:renderer.draws.length+(renderer.waterDraw?1:0),deltaSeconds:renderer.deltaSeconds,elapsedSeconds:renderer.elapsedSeconds,drawCalls:renderer.lastDrawCalls,quads:scenes.world?.quads,uniqueQuads:scenes.world?.uniqueQuads,geometryBytes:renderer.bytes,sceneBuffers:renderer.sceneBuffers.size,targetBytes:renderer.targetBytes,cpuSubmitMs:renderer.lastSubmitMs};}}});
  for(const button of zoneButtons)button.disabled=false;
  await scenes.switchTo(selection.profile.level);
-}catch(e){scenes?.dispose();renderer?.dispose();fail(e.message);}
+}catch(e){scenes?.dispose();renderer?.dispose();fail(e);}
 const resume=()=>{if(scenes?.world&&!scenes.loading&&!renderer?.failed&&!document.hidden)loop?.start();};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){loop?.stop();renderer?.camera.keys.clear();}else resume();});
 window.addEventListener('pagehide',event=>{loop?.stop();renderer?.camera.keys.clear();if(!event.persisted){scenes?.dispose();scenes?.barrier.catch(()=>{});renderer?.dispose();}});

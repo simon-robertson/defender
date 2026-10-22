@@ -14,7 +14,7 @@ import {ProgressStore} from './progress.js';
 import {loadPlayWorld,disposePlayWorld,PlayEngine} from './engine.js';
 import {createPlacementRules} from './placement.js';
 import {renderUI} from './ui.js';
-import {frameTitle} from './presentation.js';
+import {frameTitle,createTitleSession} from './presentation.js';
 import {ActionCamera} from './action-camera.js';
 import {DroneCamera} from './drone-camera.js';
 import {CameraViews} from './camera-views.js';
@@ -74,7 +74,7 @@ async function rebuild(candidate=session.fork(),points){
   if(rules&&loader.world?.level.id===candidate.level.id){const prepared=rules.prepare(candidate.placements);if(!prepared.valid){notice=prepared.reason;busy=false;paint();return false;}points=prepared.wildlifePoints;}
   else if(safeSeeds?.id===candidate.level.id&&safeSeeds.key===placementKey)points=safeSeeds.points;
  }
- const camera=cameraState();pendingSpec={candidate,points,camera,critters:graphics.critters,conditions:candidate.phase==='title'?null:conditions.forLevel(candidate.level.id)};busy=true;error='';paint();
+ const camera=cameraState();pendingSpec={candidate,points,camera,critters:graphics.critters,conditions:conditions.forLevel(candidate.level.id)};busy=true;error='';paint();
  return loader.switchTo(candidate.level.id,{force:true});
 }
 function validateArrangement(candidate){
@@ -198,7 +198,7 @@ async function initialize(){
   else renderer.requestDraw();
   if(!loop.running)renderer.render(0,engine?.time??0);drawOverlay();updateHighlight();
  });sceneResize.observe(document.getElementById('scene'));
- await rebuild();
+ await rebuild(createTitleSession(config,savedGame));
 }
 
 document.addEventListener('change',async event=>{
@@ -219,7 +219,7 @@ document.addEventListener('click',async event=>{
   }
   if(action==='title'||action==='play'||action==='retry'){
    if(action!=='title')cameraViews?.reset();
-   conditions.reset();const candidate=new PlaySession(config);candidate.reset(action==='title'?'title':'loadout');selectedId=null;notice='';await rebuild(candidate);return;
+   conditions.reset();const candidate=action==='title'?createTitleSession(config,savedGame):new PlaySession(config);if(action!=='title')candidate.reset('loadout');selectedId=null;notice='';await rebuild(candidate);return;
   }
   if(error)return;
   if(action==='pause'||action==='resume'){session.pause(action==='pause');paint();runLoop();return;}

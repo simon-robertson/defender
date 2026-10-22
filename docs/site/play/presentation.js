@@ -1,3 +1,12 @@
+import {PlaySession} from './session.js';
+
+// Show the checkpoint landscape without adopting or changing the saved run.
+export function createTitleSession(config,savedGame=null){
+ const title=new PlaySession(config);
+ if(savedGame)title.levelIndex=savedGame.levelIndex;
+ return title;
+}
+
 // Fill the title viewport with landscape, including wide and portrait windows.
 // The orthographic corner rays intersect a flat rectangle at path height.
 export function frameTitle(camera){

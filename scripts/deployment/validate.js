@@ -20,7 +20,7 @@ try{
   for(const file of manifest.files){
    const response=await native(new URL(prefix+file.path.slice('docs/'.length),server.url));assert.equal(response.status,200,file.path);
    const type=response.headers.get('content-type');assert.ok(type,file.path);
-   assert.ok(file.path.endsWith('.js')?/javascript/.test(type):file.path.endsWith('.json')?/json/.test(type):file.path.endsWith('.css')?/css/.test(type):/html/.test(type),file.path+': '+type);
+   assert.ok(file.path.endsWith('.js')?/javascript/.test(type):file.path.endsWith('.json')?/json/.test(type):file.path.endsWith('.css')?/css/.test(type):file.path.endsWith('.ogg')?type==='audio/ogg':file.path.endsWith('.wav')?type==='audio/wav':/html/.test(type),file.path+': '+type);
    assert.equal(createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex'),file.sha256);
   }
   assert.equal((await native(new URL(prefix+'site/play',server.url),{redirect:'manual'})).status,301);

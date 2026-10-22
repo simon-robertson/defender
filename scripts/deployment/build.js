@@ -8,6 +8,8 @@ import {playSceneCapacity,composePlayLevel} from '../../play/engine.js';
 import {wildlifeActorsForLevel} from '../../game/wildlife-preview.js';
 import {createMissileActors} from '../../game/missile-preview.js';
 import {FISH_MODEL,hasFishWater} from '../../shared/fish-habitat.js';
+import {AUDIO_ASSETS} from '../../shared/audio-assets.js';
+import {gatherAudioAssets} from './audio.js';
 
 export const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 const digest=data=>createHash('sha256').update(data).digest('hex');
@@ -62,9 +64,11 @@ export async function gather(){
   // No nonliteral imports or unaccounted runtime resource mechanisms allowed.
   if((s.match(/\bimport\s*\(/g)||[]).length!==scanner.scanImports(s).filter(d=>d.kind==='dynamic-import').length)throw new Error('Unresolved dynamic import: '+file);
   if(/\bfetch\s*\(/.test(s)&&file!=='play/engine.js')throw new Error('Unaccounted fetch: '+file);
-  if(/new\s+(?:Worker|Image|Audio)|\.src\s*=|new\s+URL\s*\(/.test(s)&&!['play/engine.js','play/ui.js'].includes(file))throw new Error('Unaccounted resource: '+file);
+  if(/new\s+(?:Worker|Image|Audio)\b|\.src\s*=|new\s+URL\s*\(/.test(s)&&!['play/engine.js','play/ui.js','shared/audio-assets.js'].includes(file))throw new Error('Unaccounted resource: '+file);
  }
  await module('play/app.js');
+ const audio=await gatherAudioAssets(AUDIO_ASSETS,input);
+ for(const file of audio)add('docs/site/'+file.source,file.data,file.source,'manifest-owned mono delivery audio');
  const levels=PLAY_CONFIG.levels.map(l=>l.id),models=new Set();
  for(const id of levels){
   const file=`assets/levels/${id}.json`,raw=await input(file),level=composePlayLevel(JSON.parse(raw));
@@ -90,8 +94,8 @@ export async function gather(){
  const forbidden=/\/api\/|localhost|127\.0\.0\.1|dataset\.(?:play|inspection|firing)|diagnosticsPending|\?inspect|console\.(?:log|debug|info|warn)|defenderPreview/;
  for(const [file,{data}]of outputs)if(/\.(?:js|html|css)$/.test(file)&&forbidden.test(data.toString()))throw new Error('Production boundary leak: '+file+' '+data.toString().match(forbidden)[0]);
  // Include build recipe identity as well as every transitive source/asset.
- for(const recipe of ['scripts/deployment/build.js','scripts/deployment/serve.js','scripts/deployment/validate.js','package.json'])await input(recipe);
- return {outputs,inputs,levels,models:[...models].sort()};
+ for(const recipe of ['scripts/deployment/build.js','scripts/deployment/audio.js','scripts/deployment/serve.js','scripts/deployment/validate.js','package.json'])await input(recipe);
+ return {outputs,inputs,levels,audio:audio.map(file=>file.source),models:[...models].sort()};
 }
 async function noSymlinks(file,root=ROOT){let current=root;for(const segment of file.split('/')){current=path.join(current,segment);try{if((await lstat(current)).isSymbolicLink())throw new Error('Symlink in output: '+current);}catch(e){if(e.code!=='ENOENT')throw e;}}}
 export async function preflight(outputs,previous,root=ROOT){
@@ -108,13 +112,13 @@ export async function preflight(outputs,previous,root=ROOT){
  return owned;
 }
 export async function build(){
- const gathered=await gather(),{outputs,inputs,levels,models}=gathered;
+ const gathered=await gather(),{outputs,inputs,levels,models,audio}=gathered;
  await noSymlinks('docs');
  await noSymlinks(manifestPath);
  await mkdir(path.join(ROOT,'build/deployment'),{recursive:true});
  for(const [file,hash]of inputs)if(digest(await readFile(path.join(ROOT,file)))!==hash)throw new Error('Input changed during build: '+file);
  const files=[...outputs].sort(([a],[b])=>a.localeCompare(b)).map(([file,v])=>({path:file,source:v.source,sourceSha256:inputs.get(v.source),transformation:v.transformation,size:v.data.length,sha256:digest(v.data)}));
- const manifest={owner,version,generatedAt:new Date().toISOString(),entry:'index.html',directEntry:'site/play/index.html',documentRoot:'docs',siteBase:'relative to entry/module; domain root or arbitrary project prefix',inputIdentity:{algorithm:'sha256',revision:null,reason:'workspace has no Git metadata',sha256:digest(JSON.stringify([...inputs].sort())),files:Object.fromEntries([...inputs].sort())},counts:{files:files.length,modules:files.filter(f=>f.path.endsWith('.js')).length,levels:levels.length,models:models.length,bytes:files.reduce((n,f)=>n+f.size,0)},levels,models,omissions:['authoring server/APIs, editors and review entry points','inspector datasets/query switch and preview F shortcut','unused development world loader and diagnostic console warnings'],preserved:['bottom-bar FPS/frame/CPU/GPU readout and asynchronous GPU timing'],validation:{moduleSyntax:'passed',moduleClosure:'passed',assetClosure:'passed',productionBoundary:'passed',separateTests:'not requested or run'},files};
+ const manifest={owner,version,generatedAt:new Date().toISOString(),entry:'index.html',directEntry:'site/play/index.html',documentRoot:'docs',siteBase:'relative to entry/module; domain root or arbitrary project prefix',inputIdentity:{algorithm:'sha256',revision:null,reason:'workspace has no Git metadata',sha256:digest(JSON.stringify([...inputs].sort())),files:Object.fromEntries([...inputs].sort())},counts:{files:files.length,modules:files.filter(f=>f.path.endsWith('.js')).length,levels:levels.length,models:models.length,audio:audio.length,bytes:files.reduce((n,f)=>n+f.size,0)},levels,models,audio,omissions:['authoring server/APIs, editors and review entry points','inspector datasets/query switch and preview F shortcut','unused development world loader and diagnostic console warnings'],preserved:['bottom-bar FPS/frame/CPU/GPU readout and asynchronous GPU timing'],validation:{moduleSyntax:'passed',moduleClosure:'passed',assetClosure:'passed',productionBoundary:'passed',separateTests:'not requested or run'},files};
  const pending=path.join(ROOT,'build/deployment/pending.json');
  try{await lstat(pending);throw new Error('Unfinished deployment journal exists; inspect before refreshing');}catch(e){if(e.code!=='ENOENT')throw e;}
  await writeFile(pending,JSON.stringify({owner,files},null,2)+'\n',{flag:'wx'});

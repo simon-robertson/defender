@@ -1,5 +1,7 @@
 # Deployer
 
+**Audio ownership, 22 October:** include every primary/fallback declared by `shared/audio-assets.js` under `docs/site/assets/audio/`. Packager tracks hashes/ownership, checks filenames and mono Ogg Opus/WAV headers, and fails before output deletion for missing/invalid files. Runtime URLs must retain the repository prefix. Serve Ogg as `audio/ogg` and WAV as `audio/wav`; keep authoring masters, diagnostics and external tools out. Manifest is currently empty; no production sound cues are approved/assigned. This process update does not request a deployment. [Activation and delivery evidence](../research/web-audio-implementation-2026-10-22/activation.md).
+
 Established 21 October 2026. **Current policy: keep deployments simple.** The user explicitly requested this simplification after the first deployment took too long. This policy supersedes the former deployment testing and evidence checklist.
 
 ## What “deploy the game” means

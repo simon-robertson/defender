@@ -11,6 +11,7 @@ import {TURRET_MUZZLES} from '../shared/arsenal.js';
 import {PLAY_CONFIG,playCapacity} from './config.js';
 import {PlaySession} from './session.js';
 import {ProgressStore} from './progress.js';
+import {AudioPlayer} from './audio.js';
 import {loadPlayWorld,disposePlayWorld,PlayEngine} from './engine.js';
 import {createPlacementRules} from './placement.js';
 import {renderUI} from './ui.js';
@@ -31,7 +32,7 @@ let graphics=loadGraphicsOptions(),optionsOpen=false,leaveOpen=false;
 const performanceReadout=new FramePerformance(document.getElementById('performance-readout'));
 const entrances=new EntranceMarkers(document.getElementById('entrance-overlay'));
 const config=PLAY_CONFIG,session=new PlaySession(config),shots=new ShotEffects(),damage=new DamageEffects(),arcs=new ArcEffects();
-const progress=new ProgressStore(config);
+const progress=new ProgressStore(config),audio=new AudioPlayer();
 let savedGame=null,progressLoaded=false,savingProgress=false,saveError='';
 const highlight=new UnitHighlight({canvas,list:document.getElementById('unit-list'),overlay:document.getElementById('unit-highlight-overlay'),defences:config.defences});
 const combatStep={combat:true},preparationStep={combat:false};
@@ -65,7 +66,7 @@ function updateHighlight(){highlight.update({world:loader?.world,camera:renderer
 function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();diagnostics(state,stats);}
 // Keep the review dataset available by default. Cosmetic-only frame updates
 // share the normal five-Hz cadence; actions and lifecycle changes publish now.
-function diagnostics(state,stats,force=true){const now=performance.now();if(!force&&now-lastDiagnostics<200){diagnosticsPending=true;return;}lastDiagnostics=now;diagnosticsPending=false;stats??=engine?.stats();state??=snapshot(stats);canvas.dataset.play=JSON.stringify({wildlife:{enabled:loader?.world?.playCritters!==false,actors:engine?.wildlife.states.length??0,planningBytes:engine?.wildlife.planningBytes??0},fish:engine?.wildlife.fish.stats()??null,...state,levelId:session.level.id,engine:stats??null,placements:session.placements,
+function diagnostics(state,stats,force=true){const now=performance.now();if(!force&&now-lastDiagnostics<200){diagnosticsPending=true;return;}lastDiagnostics=now;diagnosticsPending=false;stats??=engine?.stats();state??=snapshot(stats);canvas.dataset.play=JSON.stringify({wildlife:{enabled:loader?.world?.playCritters!==false,actors:engine?.wildlife.states.length??0,planningBytes:engine?.wildlife.planningBytes??0},fish:engine?.wildlife.fish.stats()??null,...state,levelId:session.level.id,engine:stats??null,placements:session.placements,audio:{state:audio.state,error:audio.lastError},
  enhancers:{generators:engine?.firing.enhancers.states??[],links:plasmaLinks?.linkCount??0,overflow:plasmaLinks?.overflow??0,connections:plasmaConnections},volumeSmoke:{steps:renderer?.volumeSmoke?.steps??16,trails:renderer?.volumeSmoke?.count??0,dropped:renderer?.volumeSmoke?.dropped??0},damage:{time:damage.time,activeCubes:damage.activeCubes},performance:performanceReadout.stats(),conditions:loader?.world?.playConditions??null,guns:engine?.firing.turrets.states.map(g=>({id:g.id,variant:g.variant,x:g.x,z:g.z,target:g.target?.id??null,reservation:g.reservation?.id??null,shots:g.cycle.shots,lastShotTarget:g.lastShotTargetId,secondsSinceShot:Number.isFinite(g.cycle.lastShotAt)?g.cycle.time-g.cycle.lastShotAt:null,cooldownRemaining:Math.max(0,g.cycle.readyAt-g.cycle.time),burstRemaining:g.cycle.remaining,lineOfSight:g.lineOfSight,yawError:g.aimError,pitchError:g.pitchError}))??[],loads:loader?.loads??0,unloads:loader?.unloads??0,camera:renderer?.camera?{mode:renderer.camera.mode,fov:renderer.camera.fov,roll:renderer.camera.roll,position:[...renderer.camera.position],radius:renderer.camera.radius,target:[...renderer.camera.target],controlsEnabled:renderer.camera.controlsEnabled}:null,actionCamera:actionCamera?.stats()??null,droneCamera:droneCamera?.stats()??null,
  eligible:eligible.filter(cell=>cell.valid).map(cell=>cell.box),errors:error?[error]:[]});}
 function fail(cause){error=cause?.message??String(cause);busy=false;performanceReadout.setRunning(false,'Error');renderer?.setTimingActive(false);loop?.stop();paint();}
@@ -229,12 +230,12 @@ document.addEventListener('click',async event=>{
   if(action==='continue'){
    optionsOpen=false;
    if(!['title','defeat'].includes(session.phase)||error||!savedGame||savingProgress)return;
-   cameraViews?.reset();conditions.reset();selectedId=null;notice='Resumed from the last completed level.';await rebuild(savedGame.fork());return;
+   audio.startFromGesture();cameraViews?.reset();conditions.reset();selectedId=null;notice='Resumed from the last completed level.';await rebuild(savedGame.fork());return;
   }
   if(action==='title'||action==='confirm-title'||action==='play'||action==='retry'){
    optionsOpen=false;
    const toTitle=action==='title'||action==='confirm-title';leaveOpen=false;
-   if(!toTitle)cameraViews?.reset();
+   if(!toTitle){audio.startFromGesture();cameraViews?.reset();}
    conditions.reset();const candidate=toTitle?createTitleSession(config,savedGame):new PlaySession(config);if(!toTitle)candidate.reset('loadout');selectedId=null;notice='';await rebuild(candidate);return;
   }
   if(error)return;
@@ -309,5 +310,5 @@ document.addEventListener('keydown',event=>{
 },true);
 document.addEventListener('visibilitychange',()=>{screenshotCamera?.clearInput();renderer?.camera.keys.clear();runLoop();});
 window.addEventListener('blur',()=>screenshotCamera?.clearInput());
-window.addEventListener('pagehide',()=>{disposed=true;screenshotCamera?.dispose();loop?.stop();sceneResize?.disconnect();highlight.dispose();entrances.dispose();droneCamera?.dispose();actionCamera?.bind(null);loader?.dispose();renderer?.dispose();});
+window.addEventListener('pagehide',()=>{disposed=true;audio.dispose();screenshotCamera?.dispose();loop?.stop();sceneResize?.disconnect();highlight.dispose();entrances.dispose();droneCamera?.dispose();actionCamera?.bind(null);loader?.dispose();renderer?.dispose();});
 paint();initialize().catch(fail);

@@ -5,8 +5,10 @@ import {canonicalModel,upgradeModel} from './shared/model.js';
 import {validateLevel,upgradeLevel} from './shared/level.js';
 import {serveDocs,PUBLIC_CSP} from './server/docs.js';
 import {cameraStudyStore} from './server/camera-study.js';
+import {audioResponder} from './server/audio.js';
 
 const root=import.meta.dir, assetRoot=process.env.DEFENDER_ASSET_ROOT || join(root,'assets');
+const serveAudio=audioResponder(assetRoot);
 const docsRoot=process.env.DEFENDER_DOCS_ROOT || join(root,'project-docs');
 const cameraStudy=cameraStudyStore(join(docsRoot,'drone-camera-study','shots'));
 for(const kind of ['models','levels'])await mkdir(join(assetRoot,kind),{recursive:true});
@@ -54,6 +56,7 @@ export const server=Bun.serve({hostname:'127.0.0.1',port:Number(process.env.PORT
       }
       if(request.method!=='GET'&&request.method!=='HEAD')return new Response('Method not allowed',{status:405});
       const pathname=decodeURIComponent(url.pathname),relative=pathname==='/'?'tools/index.html':/^\/(game|play)\/?$/.test(pathname)?pathname.split('/')[1]+'/index.html':pathname.slice(1);
+      const audio=await serveAudio(request,pathname);if(audio)return audio;
       const document=await serveDocs(request,pathname,docsRoot,root);if(document)return document;
       if(!/^(tools|shared|engine|game|play)\//.test(relative))return new Response('Not found',{status:404});
       const filePath=resolve(root,relative);

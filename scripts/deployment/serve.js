@@ -2,6 +2,7 @@
 import {stat,realpath} from 'node:fs/promises';
 import path from 'node:path';
 import {ROOT} from './build.js';
+import {audioMimeType} from '../../shared/audio-assets.js';
 export function staticServer({port=4287,onRequest=()=>{}}={}){
  const root=path.join(ROOT,'docs');
  return Bun.serve({hostname:'127.0.0.1',port,async fetch(request){
@@ -21,7 +22,7 @@ export function staticServer({port=4287,onRequest=()=>{}}={}){
    }
    const resolved=await realpath(file);if(!resolved.startsWith(root+path.sep))throw new Error('Outside root');
    const data=Bun.file(file);if(!await data.exists())throw new Error('Missing');
-   onRequest({path:url.pathname,status:200});return new Response(data,{headers:{'Cache-Control':'no-store'}});
+   onRequest({path:url.pathname,status:200});return new Response(data,{headers:{'Cache-Control':'no-store',...(/\.(ogg|wav)$/.test(file)?{'Content-Type':audioMimeType(file)}:{})}});
   }catch{onRequest({path:url.pathname,status:404});return new Response('Not found',{status:404});}
  }});
 }

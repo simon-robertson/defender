@@ -18,6 +18,7 @@ import {ENEMY_STATS} from '../shared/enemy.js';
 import {ArcEffects} from '../engine/arc-effects.js';
 import {ARC_EMPTY_LIGHT_BYTES,ARC_LIGHT_BYTES,ARC_SECONDS,ARC_SPARK_SECONDS} from '../shared/arc-effects.js';
 import {MAX_MISSILE_LIGHTS,MAX_MISSILE_THRUST_INSTANCES,MISSILE_THRUST_FLOATS} from '../shared/missile-flight.js';
+import {VOLUME_FLOATS} from '../engine/volume-trail-field.js';
 import {PlasmaLinks} from '../engine/plasma-links.js';
 import {MAX_PLASMA_LINKS,PLASMA_INSTANCE_BYTES,COMBINED_TUBE_LIGHT_BYTES} from '../shared/plasma-links.js';
 import {MAX_ARC_STRIKES,ARC_LIGHT_FLOATS} from '../shared/arc-effects.js';
@@ -755,6 +756,29 @@ test('disposing while volume pipelines compile releases fixed buffers and preven
   r.dispose();for(const resolve of pending)resolve({});expect(await ready).toBe(false);expect(smoke.active).toBe(false);expect(smoke.ready).toBe(false);expect(await r.prepareVolumeSmoke()).toBe(false);
  }finally{f.cleanup();}
  expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
+});
+
+test('volume packets reuse frozen geometry and mirror ordering without repeating path preparation',async()=>{
+ const f=mockRenderer({waterReflections:'planar'}),r=f.r,w=smallWorld();
+ try{
+  const smoke=await r.prepareVolumeSmoke();r.setWorld(w);
+  smoke.sample(1,8,30,8,0);smoke.sample(2,50,60,20,0);smoke.sample(1,12,33,8,.1);smoke.sample(2,53,61,20,.1);smoke.expire(.3);
+  const pack=smoke.pack.bind(smoke);let packs=0;smoke.pack=(...args)=>{packs++;return pack(...args);};
+  r.render(0,.3);expect(packs).toBe(1);expect(labels(f)).toContain('Volume smoke in planar water');
+  const expected=new Float32Array(smoke.reflectedData.length);pack(expected,smoke.reflectedEye);expect(smoke.reflectedData.slice(0,smoke.count*VOLUME_FLOATS)).toEqual(expected.slice(0,smoke.count*VOLUME_FLOATS));
+  f.reset();r.render(0,.3);expect(packs).toBe(1);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(false);
+  r.camera.yaw+=.3;r.requestDraw();r.render(0,.3);expect(packs).toBe(2);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(true);
+  smoke.enabled=false;smoke.expire(.4);r.render(0,.4);expect(packs).toBe(2);smoke.enabled=true;r.render(0,.4);expect(packs).toBe(3);
+  smoke.sample(1,15,34,8,.35);r.render(0,.4);expect(packs).toBe(4);
+ }finally{f.cleanup();disposeWorld(w);}
+});
+test('volume prepared during asynchronous compilation uploads its unchanged packets when ready',async()=>{
+ const f=mockRenderer(),r=f.r,w=smallWorld(),pending=[];
+ try{
+  r.device.createRenderPipelineAsync=()=>new Promise(resolve=>pending.push(resolve));const ready=r.prepareVolumeSmoke(),smoke=r.volumeSmoke;await Promise.resolve();r.setWorld(w);
+  smoke.sample(1,8,30,8,0);smoke.sample(1,12,33,8,.1);r.render(0,.1);expect(smoke.count).toBe(1);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(false);
+  for(const resolve of pending)resolve({});await ready;f.reset();r.render(0,.1);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(true);
+ }finally{f.cleanup();disposeWorld(w);}
 });
 
 test('volume compilation failure rejects loading and destroys its buffers',async()=>{

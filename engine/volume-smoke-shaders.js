@@ -22,8 +22,11 @@ export function volumeSmokeShader(reflected=false){
   for(var b=0u;b<8u;b++){
    if(b*8u>=count-1u){break;}let box=trails[index].blocks[b];if(any(p<box.lo.xyz)||any(p>box.hi.xyz)){continue;}
    for(var n=b*8u;n<min(count-1u,b*8u+8u);n++){
-    let a=trails[index].points[n];let c=trails[index].points[n+1u];let axis=c.xyz-a.xyz;let u=clamp(dot(p-a.xyz,axis)/max(dot(axis,axis),.0001),0,1);let age=mix(a.w,c.w,u);let radius=3.2*(1+age*.9);let d=length(p-mix(a.xyz,c.xyz,u))/radius;
-    value=max(value,pow(max(0,1-d*d),2)*pow(max(0,1-age*.5),1.3));
+    let a=trails[index].points[n];let c=trails[index].points[n+1u];let axis=c.xyz-a.xyz;let u=clamp(dot(p-a.xyz,axis)/max(dot(axis,axis),.0001),0,1);let age=mix(a.w,c.w,u);let radius=3.2*(1+age*.9);let offset=p-mix(a.xyz,c.xyz,u);let d2=dot(offset,offset)/(radius*radius);
+    // The radial kernel uses squared distance: avoid sqrt followed by a square,
+    // and reject empty support before evaluating the fractional age power.
+    if(d2>=1){continue;}let radial=1-d2;
+    value=max(value,radial*radial*pow(max(0,1-age*.5),1.3));
    }
   }
   if(value<=0){return 0;}let q=p*.32-vec3(0,settings.x*.6,0);let noise=noise3(q)*.7+noise3(q*2.13+vec3(17.1))*.3;
@@ -37,13 +40,14 @@ export function volumeSmokeShader(reflected=false){
   let start=max(0,max(lo.x,max(lo.y,lo.z)));var end=min(hi.x,min(hi.y,hi.z));
   ${reflected?'let depths=vec4<f32>(textureLoad(reflectedDepth,pixel,0));':'let depths=vec4<f32>(textureLoad(depthMap,pixel,0),textureLoad(depthMap,pixel,1),textureLoad(depthMap,pixel,2),textureLoad(depthMap,pixel,3));'}
   let opaque=max(max(depths.x,depths.y),max(depths.z,depths.w));end=min(end,dot(unproject(i.clip.xy,opaque)-origin,direction));if(end<=start){discard;}
+  ${reflected?'':'let waterZ=visibleWaterDepth(pixel);'}
   let steps=u32(settings.y);let stepSize=(end-start)/f32(steps);let jitter=hash3(vec3<f32>(floor(i.clip.xy),7));var transmittance=1.0;var weighted=vec3<f32>(0);var weight=0.0;
   for(var s=0u;s<32u;s++){
    if(s>=steps||transmittance<.015){break;}let p=origin+direction*(start+(f32(s)+.25+.5*jitter)*stepSize);
    ${reflected?'if(p.y<frame.timing.w+.025){continue;}':''}
    let clip=frame.vp*vec4<f32>(p,1);let coverage=dot(select(vec4<f32>(0),vec4<f32>(.25),depths>=vec4<f32>(clip.z/clip.w)),vec4<f32>(1));
    var d=density(i.index,p)*coverage;
-   ${reflected?'':'if(visibleWaterDepth(pixel)<clip.z/clip.w){d*=.3;}'}
+   ${reflected?'':'if(waterZ<clip.z/clip.w){d*=.3;}'}
    let alpha=1-exp(-d*stepSize*.24);let contribution=transmittance*alpha;weighted+=p*contribution;weight+=contribution;transmittance*=1-alpha;
   }
   if(weight<.003){discard;}let centre=weighted/weight;let normal=normalize(frame.sun.xyz-direction*.35);let selfShadow=exp(-density(i.index,centre+frame.sun.xyz*4)*1.2);

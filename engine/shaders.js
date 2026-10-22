@@ -1,5 +1,6 @@
 import {bloomCompositeBindings,bloomCompositeAdd} from './bloom-shaders.js';
 import {waterDepthRead} from './water-depth.js';
+import {waterImpactRipples} from './water-ripple-shaders.js';
 import {shotLighting} from './shot-shaders.js';
 export const uniforms=`
 struct Frame {
@@ -90,6 +91,7 @@ ${waterDepthRead}
 @group(1) @binding(5) var waterNormal:texture_2d<f32>;
 @group(1) @binding(6) var vistaMap:texture_2d<f32>;
 @group(1) @binding(7) var planarMap:texture_2d<f32>;
+${waterImpactRipples}
 @group(2) @binding(0) var shadowMap:texture_depth_2d;
 `+shadowVisibility+shotLighting(2,true)+`
 @vertex fn vertex(@builtin(vertex_index) index:u32)->@builtin(position) vec4<f32>{
@@ -144,12 +146,12 @@ fn breezeNormal(world:vec3<f32>)->vec3<f32>{
  let a=dot(p,wind)*.448799-phase;
  let b=dot(p,cross)*.785398-phase*2+1.3;
  let c=dot(p,fine)*1.256637-phase*3+2.1;
- let slope=(wind*cos(a)+cross*(.35*cos(b))+fine*(.15*cos(c)))*frame.waterProperties.w;
+ let slope=(wind*cos(a)+cross*(.35*cos(b))+fine*(.15*cos(c)))*frame.waterProperties.w+impactSlope(world);
  return normalize(vec3<f32>(slope.x,1,slope.y));
 }
-fn refractedBed(uv:vec2<f32>,world:vec3<f32>,bedDepth:f32,base:vec3<f32>)->vec3<f32>{
+fn refractedBed(uv:vec2<f32>,world:vec3<f32>,bedDepth:f32,base:vec3<f32>,normal:vec3<f32>)->vec3<f32>{
  if(bedDepth>=1||frame.waterProperties.z<=0||frame.waterProperties.x>=1){return base;}
- let bed=worldAt(uv,bedDepth);let ray=refract(-toEye(world),breezeNormal(world),1.0/1.333);
+ let bed=worldAt(uv,bedDepth);let ray=refract(-toEye(world),normal,1.0/1.333);
  let travel=clamp((world.y-bed.y)/max(.15,-ray.y),0,60);
  let clip=frame.vp*vec4<f32>(world+ray*travel,1);
  if(clip.w<=0||clip.z<0||clip.z>clip.w){return base;}
@@ -170,11 +172,11 @@ fn shadeWater(uv:vec2<f32>,pixel:vec2<i32>,depth:f32,bedDepth:f32,base:vec3<f32>
  let world=worldAt(uv,depth);let n=normalize(textureLoad(waterNormal,pixel,0).xyz*2-1);
  let light=visibility(world,n);let diffuse=max(dot(n,frame.sun.xyz),0);
  let illumination=frame.ambient.rgb*frame.sunColor.w+frame.sunColor.rgb*diffuse*frame.sun.w*light+muzzleLighting(world,n);
- let tint=frame.waterColor.rgb*illumination;var transmitted=base;
- if(n.y>.9){transmitted=refractedBed(uv,world,bedDepth,base);}
+ let tint=frame.waterColor.rgb*illumination;var transmitted=base;let normal=breezeNormal(world);
+ if(n.y>.9){transmitted=refractedBed(uv,world,bedDepth,base,normal);}
  var color=mix(transmitted,tint,frame.waterProperties.x);
  if(n.y>.9&&frame.waterColor.a>0&&frame.options.x>.5){
-  let normal=breezeNormal(world);var reflected=vec4<f32>(0);
+  var reflected=vec4<f32>(0);
   if(frame.waterMotion.w>.5){
    let projected=frame.vp*vec4<f32>(world+vec3<f32>(normal.x,0,normal.z)*6,1);
    let reflectedUV=projected.xy/projected.w*vec2<f32>(.5,-.5)+.5;

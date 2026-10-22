@@ -20,6 +20,7 @@ import {LEAF_INSTANCE_FLOATS} from '../shared/leaf-effects.js';
 import {terrainGeometry} from './world.js';
 import {damageCubes,damageParticles} from './damage-shaders.js';
 import {shockwaveRefraction} from './shockwave-shaders.js';
+import {WATER_RIPPLE_FLOATS} from '../shared/water-impact.js';
 import {MAX_DAMAGE_CUBES,MAX_BLASTS,MAX_DAMAGE_PARTICLES,MAX_DAMAGE_LIGHTS,DAMAGE_CUBE_FLOATS,DAMAGE_PARTICLE_FLOATS,SHOCKWAVE_FLOATS} from '../shared/damage-effects.js';
 import {MAX_LOCAL_LIGHTS,MAX_SHOT_LIGHTS,MAX_SHOT_INSTANCES,SHOT_INSTANCE_FLOATS} from '../shared/shot-effects.js';
 import {arcParticles} from './arc-shaders.js';
@@ -47,6 +48,7 @@ export class WorldRenderer {
   this.plasmaLinks=null;this.plasmaInstances=null;this.plasmaLightBuffer=null;this.plasmaLightData=null;this.plasmaBytes=this.plasmaLightCount=this.plasmaUploadBytes=this.plasmaMergedCount=0;
   this.missileThrust=null;this.missileThrustInstances=null;this.missileThrustBytes=this.missileThrustUploadBytes=0;
   this.damageCubeCount=0;this.damageParticleCount=0;this.damageBytes=0;this.lastDamageCubeRevision=-1;
+  this.waterRippleData=new Float32Array(WATER_RIPPLE_FLOATS);this.hadWaterRipples=false;
   this.shockwaveCount=0;this.shockwaveBytes=0;this.shockwaveTargetBytes=0;this.shockwaveData=new Float32Array(4+MAX_BLASTS*SHOCKWAVE_FLOATS);
   this.sceneBuffers=new Set();this.createdSceneBuffers=0;this.destroyedSceneBuffers=0;
   this.lightView=new Float32Array(16);this.lightProjection=new Float32Array(16);this.lightVP=new Float32Array(16);
@@ -86,14 +88,15 @@ export class WorldRenderer {
   for(const module of modules){const info=await module.getCompilationInfo();const errors=info.messages.filter(m=>m.type==='error');if(errors.length)throw new Error(errors.map(m=>m.message).join('\n'));}
   const cameraLayout=this.cameraLayout=d.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}}]});
   const lightingLayout=this.lightingLayout=d.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth'}},{binding:1,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}},{binding:2,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'read-only-storage',minBindingSize:ARC_EMPTY_LIGHT_BYTES}}]});
-  this.screenLayout=d.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:1,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:2,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth',multisampled:true}},{binding:3,visibility:GPUShaderStage.FRAGMENT,sampler:{type:'filtering'}},{binding:4,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth'}},{binding:5,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:6,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:7,visibility:GPUShaderStage.FRAGMENT,texture:{}}]});
+  this.screenLayout=d.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:1,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:2,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth',multisampled:true}},{binding:3,visibility:GPUShaderStage.FRAGMENT,sampler:{type:'filtering'}},{binding:4,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth'}},{binding:5,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:6,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:7,visibility:GPUShaderStage.FRAGMENT,texture:{}},{binding:8,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}}]});
+  this.waterRippleUniform=d.createBuffer({label:'Bounded water impact ripples',size:this.waterRippleData.byteLength,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});
   this.uniform=d.createBuffer({size:368,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});this.cameraGroup=d.createBindGroup({layout:cameraLayout,entries:[{binding:0,resource:{buffer:this.uniform}}]});
   this.shotUniform=d.createBuffer({size:this.localLightData.byteLength,usage:GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST});
   // A zero-initialised one-record binding keeps ordinary scenes independent of
   // ArcEffects pools and lazy full-size GPU resources. Count zero skips all work.
   this.emptyArcLights=d.createBuffer({label:'Inactive arc-light binding',size:ARC_EMPTY_LIGHT_BYTES,usage:GPUBufferUsage.STORAGE});
   this.shotInstances=d.createBuffer({size:MAX_SHOT_INSTANCES*SHOT_INSTANCE_FLOATS*4,usage:GPUBufferUsage.VERTEX|GPUBufferUsage.COPY_DST});
-  this.effectBytes=this.shotUniform.size+this.shotInstances.size;
+  this.effectBytes=this.shotUniform.size+this.shotInstances.size+this.waterRippleUniform.size;
   const depthLayout=d.createPipelineLayout({bindGroupLayouts:[cameraLayout]}),colorLayout=d.createPipelineLayout({bindGroupLayouts:[cameraLayout,lightingLayout]}),screenLayout=d.createPipelineLayout({bindGroupLayouts:[cameraLayout,this.screenLayout,lightingLayout]});
   const primitive={topology:'triangle-list',cullMode:'back'};
   [this.depthPipeline,this.shadowPipeline,this.colorPipeline,this.screenPipeline,this.waterPipeline,this.shotPipeline]=await Promise.all([
@@ -316,6 +319,12 @@ export class WorldRenderer {
   this.damageParticleCount=effects.particleCount;
   if(effects.particleCount){this.ensureDamageParticles();this.device.queue.writeBuffer(this.damageParticleBuffer,0,effects.particleData,0,effects.particleCount*DAMAGE_PARTICLE_FLOATS);}
  }
+ prepareWaterRipples(){
+  const data=this.waterRippleData;data[0]=0;
+  const count=this.waterDraw?(this.damageEffects?.waterImpacts?.writeRipples(data)??0):0;
+  if(count||this.hadWaterRipples)this.device.queue.writeBuffer(this.waterRippleUniform,0,data,0,count?4+count*8:4);
+  this.hadWaterRipples=count>0;
+ }
  mergeLocalLights(){
   this.localLightUploadBytes=0;
   const models=this.modelLights,modelChanged=models?.prepare()??false,modelCount=models?.count??0;
@@ -465,7 +474,7 @@ export class WorldRenderer {
   this.targetBytes=w*h*(4*4*3+4*2)+(this.waterDraw?w*h:1)*8+2048*2048*4;
  }
  bindScreen(){
-  this.screenGroup=this.device.createBindGroup({layout:this.screenLayout,entries:[{binding:0,resource:this.resolvedColorView},{binding:1,resource:this.resolvedNormalView},{binding:2,resource:this.depthView},{binding:3,resource:this.sampler},{binding:4,resource:this.waterDepthView},{binding:5,resource:this.waterNormalView},{binding:6,resource:this.vista?.view??this.resolvedColorView},{binding:7,resource:this.planar?.view??this.resolvedColorView}]});
+  this.screenGroup=this.device.createBindGroup({layout:this.screenLayout,entries:[{binding:0,resource:this.resolvedColorView},{binding:1,resource:this.resolvedNormalView},{binding:2,resource:this.depthView},{binding:3,resource:this.sampler},{binding:4,resource:this.waterDepthView},{binding:5,resource:this.waterNormalView},{binding:6,resource:this.vista?.view??this.resolvedColorView},{binding:7,resource:this.planar?.view??this.resolvedColorView},{binding:8,resource:{buffer:this.waterRippleUniform}}]});
  }
  geometryPass(pass,pipeline,damagePipeline,end=true){pass.setPipeline(pipeline);pass.setBindGroup(0,this.cameraGroup);let count=0;
   for(let i=0;i<this.draws.length;i++){const g=this.draws[i];if(!g.visibleCount)continue;pass.setVertexBuffer(0,g.vertices);pass.setVertexBuffer(1,g.instances);pass.setIndexBuffer(g.indices,'uint32');pass.drawIndexed(g.indexCount,g.visibleCount);count++;}
@@ -486,7 +495,7 @@ export class WorldRenderer {
   if(cameraUpdated){c.update(w/h);f.set(c.vp);f.set(c.inverse,32);f.set(c.eye,48);
    f[64]=w;f[65]=h;f[66]=1/w;f[67]=1/h;f[68]=Math.sin(c.yaw)*Math.cos(c.pitch);f[69]=Math.sin(c.pitch);f[70]=Math.cos(c.yaw)*Math.cos(c.pitch);f[71]=c.mode==='path'||c.mode==='live'?1:0;
   }
-  this.damageEffects?.prepare?.(c.vp);this.prepareDamage();this.mergeLocalLights();this.prepareArcs();this.preparePlasmaLinks();this.prepareMissileThrust();
+  this.damageEffects?.prepare?.(c.vp);this.prepareDamage();this.prepareWaterRipples();this.mergeLocalLights();this.prepareArcs();this.preparePlasmaLinks();this.prepareMissileThrust();
   const reflections=this.reflectionsEnabled&&this.ssr;
   const wantsPlanar=this.waterReflections==='planar'&&this.waterDraw&&this.waterHeight!==null&&reflections&&c.eye[1]>this.waterHeight&&waterInView(this.waterBounds,c.vp);
   if(wantsPlanar){if(!this.planar)this.planar=new PlanarReflection(this,vertexBuffers);if(this.planar.resize(w,h))this.screenGroup=null;}
@@ -550,5 +559,5 @@ export class WorldRenderer {
   delete this.canvas.dataset.inspection;delete this.canvas.dataset.firing;
   if(this.ready&&!this.failed&&!this.disposed){const encoder=this.device.createCommandEncoder();this.clearPass.colorAttachments[0].view=this.context.getCurrentTexture().createView();encoder.beginRenderPass(this.clearPass).end();this.submitBuffers[0]=encoder.finish();this.device.queue.submit(this.submitBuffers);this.submitBuffers[0]=null;}
  }
- dispose(){if(this.disposed)return;this.gpuTimer?.dispose();this.bloom?.dispose();this.bloom=null;this.planar?.dispose();this.planar=null;this.reflectionEffects?.dispose();this.reflectionEffects=null;this.disposed=true;this.resizeObserver?.disconnect();this.clearGeometry();this.clearShockwaveTarget();this.world=null;this.shotEffects=this.damageEffects=this.arcEffects=null;this.camera.dispose();for(const t of this.targets||[])t.destroy();this.shadow?.destroy();this.uniform?.destroy();this.shotUniform?.destroy();this.emptyArcLights?.destroy();this.shotInstances?.destroy();this.damageCubeBuffer?.destroy();this.damageParticleBuffer?.destroy();this.shockwaveUniform?.destroy();this.device?.destroy();}
+ dispose(){if(this.disposed)return;this.gpuTimer?.dispose();this.bloom?.dispose();this.bloom=null;this.planar?.dispose();this.planar=null;this.reflectionEffects?.dispose();this.reflectionEffects=null;this.disposed=true;this.resizeObserver?.disconnect();this.clearGeometry();this.clearShockwaveTarget();this.world=null;this.shotEffects=this.damageEffects=this.arcEffects=null;this.camera.dispose();for(const t of this.targets||[])t.destroy();this.shadow?.destroy();this.uniform?.destroy();this.waterRippleUniform?.destroy();this.shotUniform?.destroy();this.emptyArcLights?.destroy();this.shotInstances?.destroy();this.damageCubeBuffer?.destroy();this.damageParticleBuffer?.destroy();this.shockwaveUniform?.destroy();this.device?.destroy();}
 }

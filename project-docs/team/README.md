@@ -1,5 +1,7 @@
 # Development team
 
+**Audio workbench, 22 October:** user authorises host-installed Homebrew `opus-tools` and beginning offline tooling, with mono-only sound assets and a fuller sound-design direction using generators, filters and modulation. Initial Bun recipe/WAV/Ogg/decoded-inspection/audition pipeline and layered transient study are available; ten focused checks pass. Keep external encoder binaries out of the repository and all audio out of game/deployment pending integration work. [Commands and limits](../../audio/README.md).
+
 **Combat effects in planar water, 21 October (implemented for review):** pooled muzzle/Arc/plasma/thrust/explosion/smoke effects now draw in the mirrored capture with its own hardware depth and water-plane clipping. Shared effect buffers except fixed mirrored smoke ordering; no additional pass/texture. Pipelines prepare during player loading. Cache refresh covers animation and expiry. Reflected bloom/shockwaves remain separate. Local package/commit updated; no tests/browser/GPU checks, player reload or remote push; appearance and GPU correctness/cost are unverified. Preserve the critter cyclic roster. [Engine/resource notes](../engine.md).
 
 **Dark loading viewport, 21 October (implemented):** renderer loading clears and player viewport CSS now match GUI charcoal `#15171a`; loading no longer reuses the olive scene background. Local package rebuilt, with no tests/browser checks or player reload. Local commit only; remote pushes remain forbidden.

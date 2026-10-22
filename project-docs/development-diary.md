@@ -2,6 +2,8 @@
 
 ## 22 October 2026
 
+- User confirms the initial examples play and directs richer sound quality after the simple transient sounded too 8-bit. Added offline swept resonant low/high/bandpass filters (W3C EQ Cookbook), exponential decay/pitch glides, sine pitch/amplitude modulators and a layered filtered-noise/low-impulse transient study. All output stays mono; original diagnostics retained for comparison. Ten targeted audio checks pass (75 assertions), including actual three-file Ogg round trips, filter-band response and bounded modulation. No claim of perceptual approval, runtime audio or performance gain.
+
 - User specifies mono/single-channel sound assets. Recorded the requirement and made authoring reject stereo; converted the diagnostic loop to mono. Runtime panning remains a separate future choice.
 
 - Installed user-authorised `opus-tools` using Homebrew outside the repository. Available binaries are `/opt/homebrew/bin/{opusenc,opusdec,opusinfo}`; encoder/decoder0.2 use libopus1.6.1. Homebrew managed its dependencies, including OpenSSL4 and a CA-certificate update. Recorded host-tool preference and commands in AGENTS/audio guide.

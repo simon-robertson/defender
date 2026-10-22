@@ -51,7 +51,7 @@ export async function buildAudio(recipePath=join(root,'audio/diagnostics.json'),
    const waveform=new Array(512).fill(0);for(let i=0;i<samples.length;i++){const bin=Math.min(511,Math.floor(i/samples.length*512));waveform[bin]=Math.max(waveform[bin],Math.abs(samples[i]));}
    entries.push({...entry,waveform});
   }
-  const sources={};for(const file of ['pcm.js','build.js','review.js'])sources[file]=hash(await readFile(new URL(file,import.meta.url)));
+  const sources={};for(const file of ['pcm.js','dsp.js','build.js','review.js'])sources[file]=hash(await readFile(new URL(file,import.meta.url)));
   const manifest={version:1,pipelineVersion:1,sources,createdAt:new Date().toISOString(),recipeFile:relative(root,resolve(recipePath)),recipeSha256:hash(recipeBytes),tools,entries};
   await writeFile(join(staging,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');await writeFile(join(staging,'recipes.json'),recipeBytes);await writeFile(join(staging,'review.html'),reviewPage(entries));
   const name=new Date().toISOString().replace(/[:.]/g,'-')+'-'+staging.slice(-6),output=join(outputRoot,name);await rename(staging,output);

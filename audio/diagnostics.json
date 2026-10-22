@@ -2,6 +2,105 @@
   "version": 1,
   "recipes": [
     {
+      "id": "layered-transient-study",
+      "name": "Layered transient study",
+      "purpose": "Sound-design study: filtered air, resonant body, a restrained low impulse and modulated tail. Awaiting listening review.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.9,
+      "seed": 724187,
+      "gain": 0.7,
+      "fadeIn": 0.0005,
+      "fadeOut": 0.12,
+      "layers": [
+        {
+          "start": 0,
+          "attack": 0.001,
+          "release": 0.03,
+          "pan": 0,
+          "type": "noise",
+          "gain": 0.7,
+          "duration": 0.12,
+          "decay": 0.024,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 180,
+              "q": 0.7
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 11000,
+              "endCutoff": 2600,
+              "q": 0.75
+            }
+          ]
+        },
+        {
+          "start": 0,
+          "attack": 0.001,
+          "release": 0.03,
+          "pan": 0,
+          "type": "noise",
+          "gain": 0.55,
+          "duration": 0.36,
+          "decay": 0.09,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 920,
+              "endCutoff": 430,
+              "q": 1.8
+            }
+          ]
+        },
+        {
+          "start": 0,
+          "attack": 0.001,
+          "release": 0.03,
+          "pan": 0,
+          "type": "sine",
+          "gain": 0.38,
+          "duration": 0.28,
+          "frequency": 115,
+          "endFrequency": 48,
+          "pitchCurve": "exponential",
+          "decay": 0.07,
+          "pitchMod": {
+            "rateHz": 31,
+            "depthCents": 14
+          }
+        },
+        {
+          "start": 0.015,
+          "attack": 0.008,
+          "release": 0.16,
+          "pan": 0,
+          "type": "noise",
+          "gain": 0.24,
+          "duration": 0.75,
+          "decay": 0.17,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 140,
+              "q": 0.7
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 1900,
+              "endCutoff": 400,
+              "q": 0.8
+            }
+          ],
+          "amplitudeMod": {
+            "rateHz": 23,
+            "depth": 0.4
+          }
+        }
+      ]
+    },
+    {
       "id": "diagnostic-transient",
       "name": "Diagnostic transient",
       "purpose": "Encoder and waveform check; not an approved game effect.",

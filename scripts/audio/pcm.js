@@ -1,3 +1,4 @@
+import {Biquad} from './dsp.js';
 // Offline authoring only. Nothing in this module is loaded by the game.
 const MAX_SECONDS=30, MAX_SAMPLES=48000*MAX_SECONDS;
 function number(value,min,max,label){if(!Number.isFinite(value)||value<min||value>max)throw new Error(`${label} must be ${min}..${max}`);return value;}
@@ -15,13 +16,23 @@ export function validateRecipe(recipe){
  if(recipe.loop!==undefined){keys(recipe.loop,['startFrame','endFrame'],'loop');if(!Number.isInteger(recipe.loop.startFrame)||!Number.isInteger(recipe.loop.endFrame)||recipe.loop.startFrame<0||recipe.loop.endFrame>frames||recipe.loop.endFrame-recipe.loop.startFrame<2)throw new Error('Invalid loop frames');}
  if(!Array.isArray(recipe.layers)||!recipe.layers.length||recipe.layers.length>16)throw new Error('Use 1..16 layers');
  for(const layer of recipe.layers){
-  keys(layer,['type','gain','start','duration','frequency','endFrequency','attack','release','cutoff','pan'],'layer');
+  keys(layer,['type','gain','start','duration','frequency','endFrequency','attack','release','cutoff','pan','decay','pitchCurve','filters','pitchMod','amplitudeMod'],'layer');
   if(!['sine','triangle','noise'].includes(layer.type))throw new Error('Unknown layer type');
   number(layer.gain,0,1,'layer gain');number(layer.start,0,recipe.duration,'layer start');number(layer.duration,.001,recipe.duration-layer.start,'layer duration');
   number(layer.attack,0,layer.duration/2,'attack');number(layer.release,0,layer.duration/2,'release');number(layer.pan,0,0,'pan');
-  if(layer.pan!==0)throw new Error('Mono layers must have zero pan');
   if(layer.type!=='noise'){number(layer.frequency,1,recipe.sampleRate/4,'frequency');number(layer.endFrequency,1,recipe.sampleRate/4,'endFrequency');}
   if(layer.cutoff!==undefined)number(layer.cutoff,10,recipe.sampleRate/2,'cutoff');
+  if(layer.decay!==undefined)number(layer.decay,.001,30,'decay');
+  if(layer.pitchCurve!==undefined&&!['linear','exponential'].includes(layer.pitchCurve))throw new Error('Unknown pitch curve');
+  if(layer.filters!==undefined){
+   if(!Array.isArray(layer.filters)||layer.filters.length>4)throw new Error('Use up to four filters per layer');
+   for(const filter of layer.filters){keys(filter,['type','cutoff','endCutoff','q'],'filter');if(!['lowpass','highpass','bandpass'].includes(filter.type))throw new Error('Unknown filter type');number(filter.cutoff,10,20000,'filter cutoff');if(filter.endCutoff!==undefined)number(filter.endCutoff,10,20000,'filter endCutoff');number(filter.q,.1,10,'filter q');}
+  }
+  if(layer.pitchMod!==undefined){
+   keys(layer.pitchMod,['rateHz','depthCents'],'pitchMod');if(layer.type==='noise')throw new Error('Pitch modulation requires a tonal generator');number(layer.pitchMod.rateHz,.1,1000,'pitch modulation rate');number(layer.pitchMod.depthCents,0,1200,'pitch modulation depth');
+   if(Math.max(layer.frequency,layer.endFrequency)*2**(layer.pitchMod.depthCents/1200)>recipe.sampleRate/4)throw new Error('Modulated pitch exceeds generator limit');
+  }
+  if(layer.amplitudeMod!==undefined){keys(layer.amplitudeMod,['rateHz','depth'],'amplitudeMod');number(layer.amplitudeMod.rateHz,.1,4000,'amplitude modulation rate');number(layer.amplitudeMod.depth,0,1,'amplitude modulation depth');}
  }
  return recipe;
 }
@@ -33,14 +44,21 @@ export function renderRecipe(recipe){
  for(const layer of recipe.layers){
   const start=Math.round(layer.start*rate),length=Math.min(Math.round(layer.duration*rate),frames-start),alpha=layer.cutoff===undefined?1:1-Math.exp(-2*Math.PI*layer.cutoff/rate);
   let phase=0,filtered=0;
-  
+  const filters=(layer.filters??[]).map(spec=>({spec,dsp:new Biquad(spec.type,spec.cutoff,spec.q,rate)}));
   for(let i=0;i<length;i++){
+   const time=i/rate,fraction=i/Math.max(1,length-1);
    let value;
-   if(layer.type==='noise')value=noise();else{value=layer.type==='sine'?Math.sin(phase*2*Math.PI):1-4*Math.abs(phase-.5);const fraction=i/Math.max(1,length-1);phase=(phase+(layer.frequency+(layer.endFrequency-layer.frequency)*fraction)/rate)%1;}
-   filtered+=alpha*(value-filtered);
-   const attack=layer.attack*rate,release=layer.release*rate,envelope=Math.min(1,attack?i/attack:1,release?(length-1-i)/release:1),offset=(start+i)*recipe.channels;
-   const mixed=filtered*layer.gain*envelope;
-   samples[offset]+=mixed;
+   if(layer.type==='noise')value=noise();else{
+    value=layer.type==='sine'?Math.sin(phase*2*Math.PI):1-4*Math.abs(phase-.5);
+    let frequency=layer.pitchCurve==='exponential'?layer.frequency*(layer.endFrequency/layer.frequency)**fraction:layer.frequency+(layer.endFrequency-layer.frequency)*fraction;
+    if(layer.pitchMod)frequency*=2**(Math.sin(2*Math.PI*layer.pitchMod.rateHz*time)*layer.pitchMod.depthCents/1200);
+    phase=(phase+frequency/rate)%1;
+   }
+   filtered+=alpha*(value-filtered);value=filtered;
+   for(const {spec,dsp}of filters){if(spec.endCutoff!==undefined)dsp.configure(spec.cutoff*(spec.endCutoff/spec.cutoff)**fraction,spec.q);value=dsp.process(value);}
+   const attack=layer.attack*rate,release=layer.release*rate,envelope=Math.min(1,attack?i/attack:1,release?(length-1-i)/release:1)*(layer.decay?Math.exp(-time/layer.decay):1);
+   if(layer.amplitudeMod)value*=1-layer.amplitudeMod.depth+layer.amplitudeMod.depth*(.5+.5*Math.sin(2*Math.PI*layer.amplitudeMod.rateHz*time));
+   samples[start+i]+=value*layer.gain*envelope;
   }
  }
  for(let i=0;i<frames;i++){

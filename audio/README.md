@@ -44,6 +44,22 @@ Builds go to unique, ignored `build/audio/<timestamp>-<suffix>/` folders; `build
 
 Use `--wav-only` for synthesis checks without host encoders. Failed builds clean their staging directory and leave the latest successful pointer alone. Builds preserve older snapshots; remove unneeded directories manually. Before adopting real sound assets, retain approved lossless masters as source assets or in agreed durable authoring storage; ignored diagnostic output is not the final asset archive. Nothing is copied to `assets/` or `docs/` automatically.
 
+## Sound direction and richer synthesis
+
+The user confirmed playback works but found the original diagnostic transient too 8-bit. Aim for detailed, fuller, natural/material-based sound design using layered generators, filtered noise, resonances, modulation and shaped transients. Synthesis is an authoring method, not a chiptune style requirement. All output remains mono. Final perceived quality is determined by listening review.
+
+The first card, **Layered transient study**, combines a broad filtered-noise attack, a swept resonant noise body, a restrained low impulse and a modulated filtered tail. The original transient remains a comparison and the periodic tone remains a loop test. Neither defines the final game sound palette.
+
+Additional optional per-layer controls:
+
+- `filters`: up to four cascaded `{type, cutoff, endCutoff?, q}` filters. Types are `lowpass`, `highpass` and constant-peak `bandpass`; cutoff 10–20,000 Hz and Q 0.1–10. Optional endCutoff sweeps logarithmically across the layer. Coefficients use the [W3C Audio EQ Cookbook](https://www.w3.org/TR/audio-eq-cookbook/).
+- `decay`: exponential amplitude time constant in seconds, combined with attack/release.
+- `pitchCurve`: `linear` (default) or `exponential` frequency glide.
+- `pitchMod`: `{rateHz, depthCents}` sine pitch modulation for tonal generators.
+- `amplitudeMod`: `{rateHz, depth}` sine amplitude modulation for any layer.
+
+These modules render offline into the same cached-sample delivery format. Their oscillators/filter updates do not add game-frame or audio-thread work. Extreme modulation, resonant sweeps and triangle harmonics need listening/aliasing review; validation bounds parameters and rejects clipping, not every undesirable timbre. Imported recorded layers, richer modulation routing and loop crossfade editing are future additions when sound design calls for them.
+
 ## Recipe version 1
 
 Use `diagnostics.json` as an example. A bundle has `version: 1` and 1–32 unique recipes. Each recipe declares id, name, purpose, seed, sampleRate, channels, duration, gain, fadeIn, fadeOut and 1–16 layers. Unknown fields are rejected to catch typos.
@@ -62,6 +78,6 @@ The complete sequence checks Ogg/Opus headers, runs `opusinfo`, decodes with `op
 bun test tests/audio-authoring.test.js
 ```
 
-Seven focused checks cover seeded reproducibility, PCM24 and odd-byte padding, periodic boundaries, schema/work bounds/clipping, HTML escaping, actual host encoding/decoding and confined GET/HEAD-only loopback serving. The external encoder integration skips if the host toolchain is absent; use `audio:doctor` to require it explicitly. Loopback permission is needed for the HTTP check.
+Ten focused checks cover seeded reproducibility, PCM24 and odd-byte padding, periodic boundaries, schema/work bounds/clipping, HTML escaping, actual host encoding/decoding and confined GET/HEAD-only loopback serving, independently measured filter pass/stop-band response, swept synthesis and invalid modulation controls. The external encoder integration skips if the host toolchain is absent; use `audio:doctor` to require it explicitly. Loopback permission is needed for the HTTP check.
 
 Next: author a small weapon/UI sound palette for listening, add imported-layer editing/filters/crossfade only where useful, then implement and profile the bounded native runtime candidate from the [audio research](../project-docs/research/web-audio-implementation-2026-10-22/README.md). No final sound identity, game audio implementation, cross-browser loop quality or performance result is claimed by this tooling.

@@ -1,0 +1,104 @@
+{
+  "runtime": "Bun 1.4.2",
+  "method": "Isolated actual DamageEffects.prepare plus ReflectionEffects.prepareSmoke, eight measured alternating batches of 100 iterations after one warmup batch. Frozen synthetic native-format two-second histories; GPU writes stubbed. Ordinary and trail capacity fixed at384+768. Main/mirrored depth axes oppose each other; full-bank case deliberately forces reverse insertion for both sorts. Not whole-frame, browser CPU or GPU timing.",
+  "capacity": {
+    "ordinary": 384,
+    "trails": 768,
+    "total": 1152
+  },
+  "results": [
+    {
+      "scenario": "one-full-trail",
+      "trails": 1,
+      "trailParticles": 96,
+      "ordinaryParticles": 0,
+      "activeParticles": 96,
+      "mainMedianMS": 0.005577920000000027,
+      "mainAndMirrorMedianMS": 0.012714579999999991,
+      "batches": {
+        "main": [
+          0.005731249999999992,
+          0.005558750000000004,
+          0.005561669999999986,
+          0.005595420000000005,
+          0.005567090000000014,
+          0.005570419999999992,
+          0.005577920000000027,
+          0.005599580000000017
+        ],
+        "main-and-mirror": [
+          0.02316291999999999,
+          0.012966250000000023,
+          0.012714579999999991,
+          0.01267209000000001,
+          0.013820419999999984,
+          0.012663329999999995,
+          0.01269207999999999,
+          0.012655829999999995
+        ]
+      }
+    },
+    {
+      "scenario": "eight-full-trails",
+      "trails": 8,
+      "trailParticles": 768,
+      "ordinaryParticles": 0,
+      "activeParticles": 768,
+      "mainMedianMS": 0.21525999999999954,
+      "mainAndMirrorMedianMS": 0.5908395799999999,
+      "batches": {
+        "main": [
+          0.20620915999999995,
+          0.20620042000000013,
+          0.21730624999999976,
+          0.21723333000000025,
+          0.2147870800000004,
+          0.21525999999999954,
+          0.21990415999999982,
+          0.20747582999999964
+        ],
+        "main-and-mirror": [
+          0.6103737499999999,
+          0.5842325000000003,
+          0.5911824999999999,
+          0.5908395799999999,
+          0.6028387500000002,
+          0.589353329999999,
+          0.58153458,
+          0.5853437499999995
+        ]
+      }
+    },
+    {
+      "scenario": "full-bank-adversarial",
+      "trails": 8,
+      "trailParticles": 768,
+      "ordinaryParticles": 384,
+      "activeParticles": 1152,
+      "mainMedianMS": 0.4616133299999979,
+      "mainAndMirrorMedianMS": 1.3153558299999986,
+      "batches": {
+        "main": [
+          0.46205625000000056,
+          0.4715766699999995,
+          0.4525837500000012,
+          0.46320625000000065,
+          0.4613366700000006,
+          0.4616133299999979,
+          0.45239665999999945,
+          0.4549225000000024
+        ],
+        "main-and-mirror": [
+          1.317768749999999,
+          1.3541208300000016,
+          1.3153558299999986,
+          1.3151229100000001,
+          1.3187920800000006,
+          1.3101374999999984,
+          1.315302499999998,
+          1.29521209
+        ]
+      }
+    }
+  ]
+}

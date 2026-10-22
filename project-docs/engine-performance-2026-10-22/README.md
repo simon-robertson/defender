@@ -1,5 +1,7 @@
 # Engine performance follow-up — 22 October 2026
 
+**Retired later on 22 October:** the user rejected volumetric missile smoke for GPU cost. [Particle trails are restored](../particle-missile-trails-2026-10-22/README.md), including removal of the live volume modules and comparison tool URL below. These measurements remain historical evidence. The CPU reproduction script now loads both original and revised implementations from their recorded Git revisions.
+
 The user reports increased GPU usage and authorises a CPU/GPU/shader review. This pass finds useful CPU preparation/cache savings, but **does not demonstrate a GPU speedup**. The accepted 16-sample volumetric missile trails have a measurable GPU cost; their samples, density, lighting, lifetime and reflections remain intact. No deployment, remote push or active-player reload was performed. The parent task owns the local commit.
 
 ## Retained changes

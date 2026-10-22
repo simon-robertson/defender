@@ -1,5 +1,5 @@
 import {ENEMY_STATS} from '../shared/enemy.js';
-import {MAX_DEBRIS,MAX_DAMAGE_CUBES,MAX_SMOKE,MAX_BLASTS,MAX_DAMAGE_LIGHTS,MAX_DAMAGE_PARTICLES,DAMAGE_CUBE_FLOATS,DAMAGE_PARTICLE_FLOATS,SHOCKWAVE_FLOATS,MISSILE_IMPACT_EFFECT,MISSILE_IMPACT_SMOKE,MISSILE_LAUNCH_SMOKE,MISSILE_TRAIL_SMOKE} from '../shared/damage-effects.js';
+import {MAX_DEBRIS,MAX_DAMAGE_CUBES,MAX_SMOKE,MAX_EFFECT_SMOKE,MAX_TRAIL_SMOKE,MAX_BLASTS,MAX_DAMAGE_LIGHTS,MAX_DAMAGE_PARTICLES,DAMAGE_CUBE_FLOATS,DAMAGE_PARTICLE_FLOATS,SHOCKWAVE_FLOATS,MISSILE_IMPACT_EFFECT,MISSILE_IMPACT_SMOKE,MISSILE_LAUNCH_SMOKE,MISSILE_TRAIL_SMOKE} from '../shared/damage-effects.js';
 import {sweepScenery,debrisSupport} from './debris-collision.js';
 import {WaterImpacts} from './water-impact.js';
 import {WATER_IMPACT} from '../shared/water-impact.js';
@@ -48,7 +48,7 @@ export class DamageEffects {
   this.shockwaveData=new Float32Array(MAX_BLASTS*SHOCKWAVE_FLOATS);this.shockwaveCount=0;
   this.smokeOrder=new Uint16Array(MAX_SMOKE);this.smokeDepth=new Float64Array(MAX_SMOKE);this.contact=new Float64Array(6);
   this.cubeCount=this.smokeCount=this.blastCount=this.particleCount=this.lightCount=0;this.cubeRevision=0;this.cubesDirty=false;this.activeCubes=this.activeSmoke=this.activeBlasts=0;this.droppedCubes=this.droppedSmoke=this.replacedBlasts=0;
-  this.missileImpacts=this.launches=this.droppedMissileBlasts=this.droppedLaunchSmoke=this.missileBlastCount=this.launchSmokeCount=0;
+  this.trailCursor=this.recycledTrailSmoke=0;this.missileImpacts=this.launches=this.droppedMissileBlasts=this.droppedLaunchSmoke=this.missileBlastCount=this.launchSmokeCount=0;
  }
  reset(keepWorld=false){
   this.time=0;this.waterImpacts?.reset(keepWorld);this.waterParticleCount=0;
@@ -61,7 +61,7 @@ export class DamageEffects {
   this.cubeCount=this.smokeCount=this.blastCount=this.particleCount=this.lightCount=0;this.lightData.fill(0);
   this.shockwaveCount=0;this.shockwaveData.fill(0);
   this.droppedCubes=this.droppedSmoke=this.replacedBlasts=0;this.cubeRevision++;this.cubesDirty=false;
-  this.missileImpacts=this.launches=this.droppedMissileBlasts=this.droppedLaunchSmoke=this.missileBlastCount=this.launchSmokeCount=0;
+  this.trailCursor=this.recycledTrailSmoke=0;this.missileImpacts=this.launches=this.droppedMissileBlasts=this.droppedLaunchSmoke=this.missileBlastCount=this.launchSmokeCount=0;
  }
  markCubeDirty(){this.cubesDirty=true;}
  setWorld(world,states){
@@ -108,7 +108,7 @@ export class DamageEffects {
  burstSmoke(x,y,z,rule,impact){
   const rng=this.random;let emitted=0;
   for(let i=0;i<rule.count;i++){
-   let p=null;for(const candidate of this.smoke)if(!candidate.active){p=candidate;break;}
+   let p=null;for(let slot=0;slot<MAX_EFFECT_SMOKE;slot++){const candidate=this.smoke[slot];if(!candidate.active){p=candidate;break;}}
    if(!p){const dropped=rule.count-i;this.droppedSmoke+=dropped;if(!impact)this.droppedLaunchSmoke+=dropped;break;}
    const angle=(i+rng())/rule.count*Math.PI*2,spread=.4+rng()*1.1,speed=rule.minOutSpeed+rng()*(rule.maxOutSpeed-rule.minOutSpeed),dx=Math.cos(angle),dz=Math.sin(angle);
    p.active=true;p.launch=!impact;p.impact=impact;p.trail=false;p.age=0;p.life=rule.minLife+rng()*(rule.maxLife-rule.minLife);
@@ -118,12 +118,13 @@ export class DamageEffects {
   }
   return emitted;
  }
- missileTrail(x,y,z){
-  if(!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z))throw new Error('Invalid missile trail origin.');
-  let p=null;for(const candidate of this.smoke)if(!candidate.active){p=candidate;break;}
-  if(!p){this.droppedSmoke++;return false;}
-  const rule=MISSILE_TRAIL_SMOKE;p.active=true;p.launch=p.impact=false;p.trail=true;p.age=0;p.life=rule.life;
-  p.x=x;p.y=y;p.z=z;p.vx=p.vz=0;p.rise=rule.rise;p.radius=rule.radius;p.seed=this.random()*6.28;this.activeSmoke++;return true;
+ missileTrail(x,y,z,age=0){
+  if(!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z)||!Number.isFinite(age)||age<0)throw new Error('Invalid missile trail origin/age.');
+  const rule=MISSILE_TRAIL_SMOKE;if(age>=rule.life)return false;
+  const p=this.smoke[MAX_EFFECT_SMOKE+this.trailCursor];this.trailCursor=(this.trailCursor+1)%MAX_TRAIL_SMOKE;
+  if(p.active)this.recycledTrailSmoke++;else this.activeSmoke++;
+  p.active=true;p.launch=p.impact=false;p.trail=true;p.age=age;p.life=rule.life;
+  p.x=x;p.y=y;p.z=z;p.vx=p.vz=0;p.rise=rule.rise;p.radius=rule.radius;p.seed=this.random()*6.28;return true;
  }
  explode(state){
   let emitter=null;for(const candidate of this.emitters)if(candidate.state===state){emitter=candidate;break;}if(!emitter)return;
@@ -157,7 +158,7 @@ export class DamageEffects {
    // Never replay an unbounded backlog after a stalled frame.
    emitter.carry+=Math.min(deltaSeconds,settings.life)*settings.rate;
    while(emitter.carry>=1){
-    emitter.carry--;let p=null;for(const candidate of this.smoke)if(!candidate.active){p=candidate;break;}
+    emitter.carry--;let p=null;for(let slot=0;slot<MAX_EFFECT_SMOKE;slot++){const candidate=this.smoke[slot];if(!candidate.active){p=candidate;break;}}
     if(!p){this.droppedSmoke++;continue;}
     const age=emitter.carry/settings.rate,rng=this.random;
     p.active=true;p.launch=p.trail=p.impact=false;p.age=age;p.life=settings.life;p.x=origin[0];p.y=origin[1];p.z=origin[2];
@@ -220,7 +221,7 @@ export class DamageEffects {
    this.cubeRevision++;this.cubesDirty=false;
   }
   this.smokeCount=this.blastCount=this.particleCount=this.lightCount=this.shockwaveCount=this.missileBlastCount=this.launchSmokeCount=0;this.lightData[0]=0;
-  // Reused insertion-sort storage; the tiny smoke pool blends back to front.
+  // Reused bounded sort storage; ordinary smoke and trails blend back to front.
   for(let i=0,remaining=this.activeSmoke;i<this.smoke.length&&remaining;i++){
    const p=this.smoke[i];if(!p.active)continue;remaining--;
    const x=p.x+p.vx*p.age,y=p.y+p.rise*p.age,z=p.z+p.vz*p.age,m=viewProjection;

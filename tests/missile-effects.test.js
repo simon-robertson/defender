@@ -3,7 +3,7 @@ import {DamageEffects} from '../engine/damage-effects.js';
 import {Health} from '../engine/health.js';
 import {meshQuads} from '../shared/mesher.js';
 import {identity} from '../shared/math.js';
-import {MAX_SMOKE,MAX_BLASTS,MAX_DAMAGE_PARTICLES,MISSILE_BLAST_PARTICLES,MISSILE_IMPACT_EFFECT,MISSILE_LAUNCH_SMOKE} from '../shared/damage-effects.js';
+import {MAX_SMOKE,MAX_EFFECT_SMOKE,MAX_TRAIL_SMOKE,MAX_BLASTS,MAX_DAMAGE_PARTICLES,MISSILE_BLAST_PARTICLES,MISSILE_IMPACT_EFFECT,MISSILE_IMPACT_SMOKE,MISSILE_LAUNCH_SMOKE} from '../shared/damage-effects.js';
 
 function fixture(enemies=true){
  const visibility={bounds:new Float32Array([-1000,0,-1000,1000,24,1000]),escape:new Uint32Array([1]),nodeCount:1};
@@ -89,10 +89,10 @@ test('launch smoke is immediately visible around the mouth and drifts outward an
 test('launch and damage smoke share bounded storage without eviction or colour leaking on slot reuse',()=>{
  const {effects,state}=fixture();state.health.takeDamage(151);effects.emitSmoke(.25);
  const first=effects.smoke[0],second=effects.smoke[1],ages=[first.age,second.age];expect(first.launch).toBe(false);expect(second.launch).toBe(false);
- let emitted=0;for(let i=0;i<MAX_SMOKE/MISSILE_LAUNCH_SMOKE.count;i++)emitted+=effects.launchSmoke(0,38,0);
- expect(emitted).toBe(MAX_SMOKE-2);expect(effects.droppedLaunchSmoke).toBe(2);expect(effects.launchSmoke(0,38,0)).toBe(0);expect(effects.droppedLaunchSmoke).toBe(10);
+ let emitted=0;for(let i=0;i<MAX_EFFECT_SMOKE/MISSILE_LAUNCH_SMOKE.count;i++)emitted+=effects.launchSmoke(0,38,0);
+ expect(emitted).toBe(MAX_EFFECT_SMOKE-2);expect(effects.droppedLaunchSmoke).toBe(2);expect(effects.launchSmoke(0,38,0)).toBe(0);expect(effects.droppedLaunchSmoke).toBe(10);
  expect([first.age,second.age]).toEqual(ages);expect(first.launch).toBe(false);expect(second.launch).toBe(false);
- effects.prepare();expect(effects.smokeCount).toBe(MAX_SMOKE);expect(effects.launchSmokeCount).toBe(MAX_SMOKE-2);expect(effects.particleCount).toBeLessThanOrEqual(MAX_DAMAGE_PARTICLES);
+ effects.prepare();expect(effects.smokeCount).toBe(MAX_EFFECT_SMOKE);expect(effects.launchSmokeCount).toBe(MAX_EFFECT_SMOKE-2);expect(effects.particleCount).toBeLessThanOrEqual(MAX_DAMAGE_PARTICLES);
  effects.advance(2);effects.emitSmoke(.125);effects.prepare();expect(effects.smokeCount).toBe(1);expect(effects.launchSmokeCount).toBe(0);expect(effects.smoke[0]).toBe(first);
  expect(effects.particleData[4]).toBeCloseTo(.04,6);expect(effects.particleData[5]).toBeCloseTo(.045,6);expect(effects.particleData[6]).toBeCloseTo(.05,6);
  state.health.takeDamage(300);effects.explode(state);effects.emitSmoke(1);expect(effects.activeSmoke).toBe(1);expect(effects.smoke[0].launch).toBe(false);
@@ -110,22 +110,22 @@ test('missile effect reset reuses every pool and payload, including a scene with
  expect(Object.isFrozen(MISSILE_LAUNCH_SMOKE)).toBe(true);
 });
 
-test('attack smoke uses bounded shared storage, fades after cutoff and clears its colour on reuse',()=>{
+test('attack smoke uses its reserved ring, fades after cutoff and clears its colour on reset',()=>{
  const {effects}=fixture(false),storage=effects.particleData;
  expect(effects.missileTrail(10,80,30)).toBe(true);effects.prepare();expect(effects.smokeCount).toBe(1);expect(effects.launchSmokeCount).toBe(0);
  const radius=storage[3],opacity=storage[7];expect(radius).toBeGreaterThan(1);expect(opacity).toBeGreaterThan(.3);
  effects.advance(.4);effects.prepare();expect(storage[3]).toBeGreaterThan(radius);expect(storage[7]).toBeLessThan(opacity);expect(storage[1]).toBeGreaterThan(80);
- for(let i=1;i<MAX_SMOKE;i++)expect(effects.missileTrail(i,80,30)).toBe(true);
- expect(effects.missileTrail(0,80,30)).toBe(false);expect(effects.activeSmoke).toBe(MAX_SMOKE);expect(effects.droppedSmoke).toBe(1);
+ for(let i=1;i<MAX_TRAIL_SMOKE;i++)expect(effects.missileTrail(i,80,30)).toBe(true);
+ expect(effects.missileTrail(0,80,30)).toBe(true);expect(effects.activeSmoke).toBe(MAX_TRAIL_SMOKE);expect(effects.recycledTrailSmoke).toBe(1);expect(effects.droppedSmoke).toBe(0);
  effects.advance(2);effects.prepare();expect(effects.smokeCount).toBe(0);effects.launchSmoke(10,24,30);effects.prepare();expect(effects.launchSmokeCount).toBe(MISSILE_LAUNCH_SMOKE.count);
  effects.reset();expect(effects.smoke.every(p=>!p.active&&!p.trail)).toBe(true);expect(effects.particleData).toBe(storage);
 });
 
 test('simultaneous missile bursts stay bounded and pause holds all payloads exactly',()=>{
  const {effects}=fixture(false);
- for(let i=0;i<MAX_SMOKE;i++)effects.missileTrail(i,80,0);
+ for(let i=0;i<MAX_TRAIL_SMOKE;i++)effects.missileTrail(i,80,0);
  for(let i=0;i<MAX_BLASTS;i++)effects.missileImpact(i*20,24,0);
- effects.advance(.1);effects.prepare();expect(effects.particleCount).toBe(MAX_SMOKE+MAX_BLASTS*MISSILE_BLAST_PARTICLES);
+ effects.advance(.1);effects.prepare();expect(effects.particleCount).toBe(MAX_TRAIL_SMOKE+MAX_BLASTS*(MISSILE_BLAST_PARTICLES+MISSILE_IMPACT_SMOKE.count));
  const data=effects.particleData.slice(),light=effects.lightData.slice();effects.advance(0);effects.prepare();expect(effects.particleData).toEqual(data);expect(effects.lightData).toEqual(light);
  effects.advance(3);effects.prepare();expect(effects.particleCount).toBe(0);
  effects.launchSmoke(0,24,0);expect(effects.smoke.filter(p=>p.active).every(p=>p.launch&&!p.impact)).toBe(true);

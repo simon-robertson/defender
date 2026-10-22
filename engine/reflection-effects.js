@@ -55,7 +55,7 @@ function reflectedDamage(){
 }
 
 export function hasReflectionEffects(renderer){
- return !!(renderer.volumeSmoke?.active||renderer.shotEffects?.instanceCount||renderer.damageEffects?.smokeCount||renderer.damageEffects?.blastCount||renderer.arcEffects?.instanceCount||renderer.plasmaLinks?.instanceCount||renderer.missileThrust?.instanceCount);
+ return !!(renderer.shotEffects?.instanceCount||renderer.damageEffects?.smokeCount||renderer.damageEffects?.blastCount||renderer.arcEffects?.instanceCount||renderer.plasmaLinks?.instanceCount||renderer.missileThrust?.instanceCount);
 }
 
 // Application-owned pipelines and bounded smoke ordering scratch. Every other

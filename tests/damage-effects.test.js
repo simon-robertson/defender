@@ -3,7 +3,7 @@ import {DamageEffects,debrisPalette} from '../engine/damage-effects.js';
 import {sweepScenery,debrisSupport} from '../engine/debris-collision.js';
 import {Health} from '../engine/health.js';
 import {ENEMY_STATS,defineEnemyStats} from '../shared/enemy.js';
-import {MAX_DEBRIS,MAX_SMOKE,MAX_BLASTS} from '../shared/damage-effects.js';
+import {MAX_DEBRIS,MAX_SMOKE,MAX_EFFECT_SMOKE,MAX_TRAIL_SMOKE,MAX_BLASTS} from '../shared/damage-effects.js';
 import {meshQuads} from '../shared/mesher.js';
 import {SceneryVisibility} from '../engine/visibility.js';
 import {newLevel} from '../shared/level.js';
@@ -156,7 +156,7 @@ test('resting debris can sit on scenery tops and low stream beds without treatin
 test('pool exhaustion is bounded, reset releases scene references and inactive effects perform no collision work',()=>{
  const {effects,state}=fixture(),arrays=[effects.cubeData,effects.particleData,effects.lightData],pool=effects.cubes;
  for(let i=0;i<10;i++)effects.explode(state);effects.prepare();expect(effects.cubeCount).toBe(MAX_DEBRIS);expect(effects.blastCount).toBe(MAX_BLASTS);expect(effects.droppedCubes).toBe(48);expect(effects.replacedBlasts).toBe(6);
- state.health.takeDamage(151);for(let i=0;i<MAX_SMOKE;i++)effects.emitSmoke(1);effects.prepare();expect(effects.smokeCount).toBe(MAX_SMOKE);expect(effects.droppedSmoke).toBeGreaterThan(0);
+ state.health.takeDamage(151);for(let i=0;i<MAX_EFFECT_SMOKE;i++)effects.emitSmoke(1);effects.prepare();expect(effects.smokeCount).toBe(MAX_EFFECT_SMOKE);expect(effects.droppedSmoke).toBeGreaterThan(0);
  effects.reset();expect(effects.visibility).toBeNull();expect(effects.emitters).toHaveLength(0);expect(effects.cubes.every(p=>!p.active&&p.config===null)).toBe(true);
  effects.advance(100);effects.prepare();expect(effects.cubeCount+effects.smokeCount+effects.blastCount+effects.lightCount).toBe(0);expect(effects.cubes).toBe(pool);expect([effects.cubeData,effects.particleData,effects.lightData]).toEqual(arrays);
 });
@@ -172,4 +172,17 @@ test('every enemy death light ends thirty percent sooner with the same peak, rad
   }
   effects.advance(.15);effects.prepare();expect(effects.blastCount).toBe(0);expect(effects.shockwaveCount).toBe(1);expect(effects.cubeCount).toBe(config.debrisCount);
  }
+});
+
+test('dense trail ring cannot consume ordinary smoke capacity and recycles oldest puffs',()=>{
+ const effects=new DamageEffects(()=>.5),storage=effects.particleData;
+ for(let i=0;i<MAX_TRAIL_SMOKE+10;i++)expect(effects.missileTrail(i,30,0,.25)).toBe(true);
+ expect(effects.activeSmoke).toBe(MAX_TRAIL_SMOKE);expect(effects.recycledTrailSmoke).toBe(10);expect(effects.droppedSmoke).toBe(0);
+ expect(effects.smoke[MAX_EFFECT_SMOKE].x).toBe(MAX_TRAIL_SMOKE);expect(effects.smoke[MAX_EFFECT_SMOKE].age).toBe(.25);
+ for(let i=0;i<48;i++)effects.launchSmoke(0,30,0);
+ expect(effects.smoke.slice(0,MAX_EFFECT_SMOKE).every(p=>p.active&&!p.trail)).toBe(true);expect(effects.activeSmoke).toBe(MAX_SMOKE);expect(effects.droppedLaunchSmoke).toBe(0);
+ effects.prepare();expect(effects.smokeCount).toBe(MAX_SMOKE);expect(effects.particleData).toBe(storage);
+ effects.missileTrail(999,30,0);expect(effects.activeSmoke).toBe(MAX_SMOKE);expect(effects.droppedLaunchSmoke).toBe(0);expect(effects.recycledTrailSmoke).toBe(11);
+ effects.advance(2);effects.prepare();expect(effects.activeSmoke).toBe(0);expect(effects.smokeCount).toBe(0);
+ effects.reset();expect(effects.trailCursor).toBe(0);expect(effects.recycledTrailSmoke).toBe(0);expect(effects.missileTrail(0,0,0,2)).toBe(false);
 });

@@ -99,12 +99,12 @@ try{
   if(shortcut?.kind==='zone'){e.preventDefault();requestZone(shortcut.zone);}
   else if(shortcut?.kind==='level'&&previewLevelsForZone(selection.profile.zone).some(profile=>profile.number===shortcut.number)){e.preventDefault();requestLevel(shortcut.number);}
  });
- readyControls(false);await renderer.init();await renderer.prepareVolumeSmoke();
+ readyControls(false);await renderer.init();
  const effects=new ShotEffects(),damage=new DamageEffects();let arcEffects=null;
  const onPoseChange=renderer.updateInstance.bind(renderer),onShot=(variant,matrix,at,muzzles=TURRET_MUZZLES[variant])=>effects.emit(matrix,muzzles,at);
  function resetEnemies(){
   if(!scenes?.world||scenes.loading||renderer.failed||(!enemies?.states.length&&!firing?.missiles.states.length&&!firing?.drones.states.length))return false;
-  renderer.volumeSmoke.reset();renderer.volumeSmoke.expire(damage.time);damage.reset(true);wildlife?.clearFearEvents();arcEffects?.reset(true);const shotTime=effects.time;effects.reset();effects.time=shotTime;firing.resetTargets();enemies.reset();
+  damage.reset(true);wildlife?.clearFearEvents();arcEffects?.reset(true);const shotTime=effects.time;effects.reset();effects.time=shotTime;firing.resetTargets();enemies.reset();
   for(const state of enemies.states)renderer.setActorVisible(state.id,true);
   enemyResets++;inspectionSampler.reset();reportLifecycle('enemies-reset');return true;
  }
@@ -115,7 +115,7 @@ try{
  },onHit=(target,strength,vx,vy,vz)=>enemies.takeHit(target,strength,vx,vy,vz);
  const missileEffects={
   onImpact:(x,y,z,nx,ny,nz)=>emitMissileImpact(damage,wildlife,x,y,z,nx,ny,nz),
-  onTrail:(x,y,z,id,lag)=>renderer.volumeSmoke.sample(id,x,y,z,damage.time-lag),onLaunch:(x,y,z)=>damage.launchSmoke(x,y,z),
+  onTrail:(x,y,z,lag)=>damage.missileTrail(x,y,z,lag),onLaunch:(x,y,z)=>damage.launchSmoke(x,y,z),
  };
  const onArcShot=(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint)=>arcEffects.emit(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint);
  loop=new FrameLoop((deltaSeconds,elapsedSeconds)=>{try{
@@ -123,7 +123,7 @@ try{
   const noncombat=isNonCombatPreview(scenes.world.level),hasArcs=firing.arcs.states.length>0;
   const inspectFrame=renderer.inspect&&inspectionSampler.advance(loop.clock.unscaledDeltaSeconds);
   if(noncombat)wildlife?.advance(deltaSeconds);
-  else{effects.advance(deltaSeconds);if(hasArcs)arcEffects.advance(deltaSeconds);plasmaLinks?.advance(deltaSeconds);damage.advance(deltaSeconds);renderer.volumeSmoke.expire(damage.time);enemies?.advance(deltaSeconds);wildlife?.advance(deltaSeconds);firing.advance(deltaSeconds);damage.emitSmoke(deltaSeconds);effects.prepare();if(hasArcs)arcEffects.prepare();plasmaLinks?.prepare();}
+  else{effects.advance(deltaSeconds);if(hasArcs)arcEffects.advance(deltaSeconds);plasmaLinks?.advance(deltaSeconds);damage.advance(deltaSeconds);enemies?.advance(deltaSeconds);wildlife?.advance(deltaSeconds);firing.advance(deltaSeconds);damage.emitSmoke(deltaSeconds);effects.prepare();if(hasArcs)arcEffects.prepare();plasmaLinks?.prepare();}
   renderer.render(deltaSeconds,elapsedSeconds,inspectFrame);
   if(inspectFrame){
    renderer.canvas.dataset.enhancers=JSON.stringify({generators:firing.enhancers.states.map(s=>({id:s.id,model:s.model,variant:s.variant,active:s.active,recipientIds:s.recipientIds})),plasma:{time:plasmaLinks?.time??0,links:plasmaLinks?.linkCount??0,lights:plasmaLinks?.lightCount??0,instances:plasmaLinks?.instanceCount??0,overflow:plasmaLinks?.overflow??0,connections:plasmaConnections.map(link=>({sourceId:link.sourceId,targetId:link.targetId,source:Array.from(link.source),target:Array.from(link.target)}))}});

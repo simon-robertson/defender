@@ -1,0 +1,40 @@
+{
+  "baseline": "4c2d309f7fdd7be4a7776fff4c0587531d622905",
+  "modifiedSourceSha256": {
+    "engine/damage-effects.js": "a203eb8ac2a5650b997bdf9b86f3b904f3ed87f8e0db91f41ef72b86c807c8af",
+    "engine/missile-flight.js": "8edf7ef8e1cbf9e00263a347b7a54ac39c9e0a6c62a21d7866fd891550292a12",
+    "engine/planar-reflection.js": "9a8451e8e7a03e301d86f3a5de74060ba87ea9ff1969c8639df3bc3adae2bdc6",
+    "engine/reflection-effects.js": "c331cb63bc7ee968d8af3f57988d4ff5bd9fe66b6deea9e788b40e0284a9c37f",
+    "engine/renderer.js": "0b11505fb5dfdd3659b07ea0aa35c10150899fa22c2faf45244007b92ee0a22c",
+    "game/app.js": "f51956e4e9fe94e692c8b94c97a62dc748602e6cdb89ddf0d203d5babaed58eb",
+    "play/app.js": "4a6ddbddbe1b67f27d3fb8337505619e94ec49d5239c8e95579918e0b3bd94e4",
+    "project-docs/engine-performance-2026-10-22/audit.js": "5c125c931e74ba1b28c657c54329d351cd4487b57d8c46be3b27503371eb9aab",
+    "shared/damage-effects.js": "057901e56ae820d04a9700ee41ea8482794f51e1460b0f19c46d06a61eb75755",
+    "tests/damage-effects.test.js": "1bc2a1b54004c78303f5adfff01472c139771d8e438005c0bb6722194c5bc732",
+    "tests/missile-effects.test.js": "ebf2d257c58c3faeca5b62574eab1b37315d16f152741b1b56f7240163250194",
+    "tests/missile-flight.test.js": "f9b0ae414436905170c71fc3153967e4a8d16275a286e080abcc167d22c42d7a",
+    "tests/planar-reflection.test.js": "c2a0d07b914c31633512ccf6d0d3202cb15735528be7fac391e1d376c071ff87",
+    "tests/renderer.test.js": "e10a89339be8bac269c61b2273070c31eb48663fed9d2a5c417bb896f2397870",
+    "tools/campaign-review.js": "c719483e0585520757ab904a43d7fa8f572937bcf9d7dbb02d5aa6eded513659",
+    "tools/latest-todo-review.js": "01c3024a122e7dcbe60c8b9e7f856a05853437af3043b29803f4192359c79a68",
+    "tools/missile-review.js": "7ecd37111554ea3f1a48e426aab5cc6fa52d48293687601546d382addccc3759"
+  },
+  "removed": [
+    "engine/volume-smoke-shaders.js",
+    "engine/volume-smoke.js",
+    "engine/volume-trail-field.js",
+    "tests/volume-trail-field.test.js",
+    "tools/missile-volume-review.html",
+    "tools/missile-volume-review.js",
+    "tools/volume-performance-reference.js"
+  ],
+  "checks": {
+    "pass": 106,
+    "knownExistingFlightFailures": 3,
+    "unmodifiedBaselineReproduced": 3,
+    "readOnlyGatherModules": 116,
+    "readOnlyGatherVolumeModules": 0,
+    "browserWarningsErrors": 0
+  },
+  "baselineFailureEvidence": "Fresh git archive HEAD under /tmp/defender-particle-baseline.IJ7iRL: tests/missile-flight.test.js filtered to the three old failures. Expected gap1 received2; expected deadlines2 received4; expected ammo3 received2."
+}

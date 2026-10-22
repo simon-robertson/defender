@@ -1,6 +1,7 @@
 import {execFileSync} from 'node:child_process';
 import {writeFileSync} from 'node:fs';
-import {VolumeTrailField,VOLUME_TRAILS,VOLUME_FLOATS} from '../../engine/volume-trail-field.js';
+const afterRevision='7cb9582',afterSource=execFileSync('git',['show',afterRevision+':engine/volume-trail-field.js'],{encoding:'utf8'}).replace("'../shared/missile-flight.js'",JSON.stringify(new URL('../../shared/missile-flight.js',import.meta.url).href));
+const {VolumeTrailField,VOLUME_TRAILS,VOLUME_FLOATS}=await import('data:text/javascript;base64,'+Buffer.from(afterSource).toString('base64'));
 const revision='3136e67',source=execFileSync('git',['show',revision+':engine/volume-trail-field.js'],{encoding:'utf8'}).replace("'../shared/missile-flight.js'",JSON.stringify(new URL('../../shared/missile-flight.js',import.meta.url).href));
 const {VolumeTrailField:Before}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 const eye=[10,220,40],mirror=[10,-180,40],results=[];
@@ -19,5 +20,5 @@ for(const count of [1,8,36,VOLUME_TRAILS]){
  }
  results.push({trails:count,pointsPerTrail:64,exactMainAndMirrorPackets:true,beforeMedianMS:median(batches.before),afterMedianMS:median(batches.after),batches});
 }
-const report={revision,method:'Bun isolated CPU path packing, original two complete packs versus one complete pack plus sort/copy, eight measured alternating batches of 300 iterations after warmup. 64 native-format points per synthetic path; not whole-frame or browser CPU timing.',results};
+const report={revision,afterRevision,method:'Bun isolated CPU path packing, original two complete packs versus one complete pack plus sort/copy, eight measured alternating batches of 300 iterations after warmup. 64 native-format points per synthetic path; not whole-frame or browser CPU timing.',results};
 writeFileSync(new URL('cpu-audit.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

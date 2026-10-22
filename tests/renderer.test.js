@@ -2,7 +2,7 @@
 // Current landscape sources are exercised by landscape-preview-runtime.test.js.
 import {MAX_MODEL_LIGHTS} from '../shared/model-lights.js';
 import {MAX_LOCAL_LIGHTS} from '../shared/shot-effects.js';
-import {MAX_DAMAGE_CUBES,MAX_DAMAGE_PARTICLES,DAMAGE_CUBE_FLOATS,DAMAGE_PARTICLE_FLOATS} from '../shared/damage-effects.js';
+import {MAX_DAMAGE_CUBES,MAX_DAMAGE_PARTICLES,MAX_SMOKE,DAMAGE_CUBE_FLOATS,DAMAGE_PARTICLE_FLOATS} from '../shared/damage-effects.js';
 import {test,expect} from 'bun:test';
 import {WorldRenderer} from '../engine/renderer.js';
 import {buildWorld,disposeWorld} from '../engine/world.js';
@@ -18,7 +18,6 @@ import {ENEMY_STATS} from '../shared/enemy.js';
 import {ArcEffects} from '../engine/arc-effects.js';
 import {ARC_EMPTY_LIGHT_BYTES,ARC_LIGHT_BYTES,ARC_SECONDS,ARC_SPARK_SECONDS} from '../shared/arc-effects.js';
 import {MAX_MISSILE_LIGHTS,MAX_MISSILE_THRUST_INSTANCES,MISSILE_THRUST_FLOATS} from '../shared/missile-flight.js';
-import {VOLUME_FLOATS} from '../engine/volume-trail-field.js';
 import {PlasmaLinks} from '../engine/plasma-links.js';
 import {MAX_PLASMA_LINKS,PLASMA_INSTANCE_BYTES,COMBINED_TUBE_LIGHT_BYTES} from '../shared/plasma-links.js';
 import {MAX_ARC_STRIKES,ARC_LIGHT_FLOATS} from '../shared/arc-effects.js';
@@ -735,57 +734,15 @@ test('disposing during effect preparation prevents a late ready state and releas
  }finally{f.cleanup();}
 });
 
-test('production volume smoke prepares once at 16 samples and resets across worlds without allocating again',async()=>{
- const f=mockRenderer({waterReflections:'planar'}),r=f.r,w=smallWorld();
+test('dense particle trails reuse main and mirrored smoke draws without a volume pass',async()=>{
+ const f=mockRenderer({waterReflections:'planar'}),r=f.r,w=smallWorld(),damage=new DamageEffects(()=>.5);
  try{
-  const [smoke,again]=await Promise.all([r.prepareVolumeSmoke(),r.prepareVolumeSmoke()]);expect(smoke).toBe(again);expect(smoke).toBe(r.volumeSmoke);expect(smoke.steps).toBe(16);expect(smoke.ready).toBe(true);
-  r.setWorld(w);smoke.sample(1,24,30,24,0);smoke.sample(1,28,32,24,.1);smoke.expire(.2);r.render(0,.2);
-  expect(smoke.count).toBe(1);expect(labels(f)).toContain('Volume smoke in planar water');
-  const display=f.passes.find(p=>p.label===DISPLAY);expect(display.direct.some(call=>call.pipeline===smoke.pipeline&&call.args[1]===1)).toBe(true);
-  const buffers=f.allocated.length;f.reset();smoke.expire(2.2);r.render(0,2.2);expect(labels(f)).not.toContain('Volume smoke in planar water');expect(labels(f)).toContain('Planar water reflection');
-  f.reset();r.render(0,2.2);expect(labels(f)).not.toContain('Planar water reflection');
-  r.clearWorld();expect(smoke.count).toBe(0);expect(smoke.trails.every(t=>t.id===null)).toBe(true);expect(smoke.reflectedGroup).toBeNull();expect(smoke.lastDepth).toBeNull();expect(smoke.time).toBe(0);expect(f.allocated.length).toBe(buffers);
+  await r.prepareDeathEffects();r.setWorld(w);damage.setWorld(w,[]);r.setDamageEffects(damage);
+  for(let i=0;i<100;i++)damage.missileTrail(24+i*.1,30,24,i/100);r.render(0,1);
+  expect(damage.smokeCount).toBe(100);expect(r.damageParticleBuffer.size).toBe(MAX_DAMAGE_PARTICLES*DAMAGE_PARTICLE_FLOATS*4);expect(r.reflectionEffects.smokeBuffer.size).toBe(MAX_SMOKE*DAMAGE_PARTICLE_FLOATS*4);
+  expect(labels(f)).toContain('Planar water reflection');expect(labels(f).some(label=>label.includes('Volume'))).toBe(false);
+  const mirror=f.passes.find(p=>p.label==='Planar water reflection');expect(mirror.direct.some(call=>call.pipeline.label==='Mirrored sorted smoke'&&call.args[1]===100)).toBe(true);
+  expect(mirror.descriptor.depthStencilAttachment.depthStoreOp).toBe('discard');
+  const buffers=f.allocated.length;damage.advance(2);r.render(0,3);expect(damage.smokeCount).toBe(0);expect(f.allocated.length).toBe(buffers);
  }finally{f.cleanup();disposeWorld(w);}
- expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
-});
-test('disposing while volume pipelines compile releases fixed buffers and prevents later activation',async()=>{
- const f=mockRenderer(),r=f.r,pending=[];
- try{
-  r.device.createRenderPipelineAsync=()=>new Promise(resolve=>pending.push(resolve));
-  const ready=r.prepareVolumeSmoke(),smoke=r.volumeSmoke;await Promise.resolve();expect(pending).toHaveLength(2);
-  r.dispose();for(const resolve of pending)resolve({});expect(await ready).toBe(false);expect(smoke.active).toBe(false);expect(smoke.ready).toBe(false);expect(await r.prepareVolumeSmoke()).toBe(false);
- }finally{f.cleanup();}
- expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
-});
-
-test('volume packets reuse frozen geometry and mirror ordering without repeating path preparation',async()=>{
- const f=mockRenderer({waterReflections:'planar'}),r=f.r,w=smallWorld();
- try{
-  const smoke=await r.prepareVolumeSmoke();r.setWorld(w);
-  smoke.sample(1,8,30,8,0);smoke.sample(2,50,60,20,0);smoke.sample(1,12,33,8,.1);smoke.sample(2,53,61,20,.1);smoke.expire(.3);
-  const pack=smoke.pack.bind(smoke);let packs=0;smoke.pack=(...args)=>{packs++;return pack(...args);};
-  r.render(0,.3);expect(packs).toBe(1);expect(labels(f)).toContain('Volume smoke in planar water');
-  const expected=new Float32Array(smoke.reflectedData.length);pack(expected,smoke.reflectedEye);expect(smoke.reflectedData.slice(0,smoke.count*VOLUME_FLOATS)).toEqual(expected.slice(0,smoke.count*VOLUME_FLOATS));
-  f.reset();r.render(0,.3);expect(packs).toBe(1);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(false);
-  r.camera.yaw+=.3;r.requestDraw();r.render(0,.3);expect(packs).toBe(2);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(true);
-  smoke.enabled=false;smoke.expire(.4);r.render(0,.4);expect(packs).toBe(2);smoke.enabled=true;r.render(0,.4);expect(packs).toBe(3);
-  smoke.sample(1,15,34,8,.35);r.render(0,.4);expect(packs).toBe(4);
- }finally{f.cleanup();disposeWorld(w);}
-});
-test('volume prepared during asynchronous compilation uploads its unchanged packets when ready',async()=>{
- const f=mockRenderer(),r=f.r,w=smallWorld(),pending=[];
- try{
-  r.device.createRenderPipelineAsync=()=>new Promise(resolve=>pending.push(resolve));const ready=r.prepareVolumeSmoke(),smoke=r.volumeSmoke;await Promise.resolve();r.setWorld(w);
-  smoke.sample(1,8,30,8,0);smoke.sample(1,12,33,8,.1);r.render(0,.1);expect(smoke.count).toBe(1);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(false);
-  for(const resolve of pending)resolve({});await ready;f.reset();r.render(0,.1);expect(f.writes.some(write=>write.buffer===smoke.buffer)).toBe(true);
- }finally{f.cleanup();disposeWorld(w);}
-});
-
-test('volume compilation failure rejects loading and destroys its buffers',async()=>{
- const f=mockRenderer(),r=f.r;
- try{
-  r.device.createRenderPipelineAsync=async()=>{throw new Error('Volume pipeline failed');};
-  await expect(r.prepareVolumeSmoke()).rejects.toThrow('Volume pipeline failed');expect(r.volumeSmoke.ready).toBe(false);expect(r.volumeSmoke.disposed).toBe(true);expect(r.volumeSmoke.active).toBe(false);
- }finally{f.cleanup();}
- expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
 });

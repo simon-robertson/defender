@@ -67,7 +67,7 @@ function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error||lea
 // Keep the review dataset available by default. Cosmetic-only frame updates
 // share the normal five-Hz cadence; actions and lifecycle changes publish now.
 function diagnostics(state,stats,force=true){const now=performance.now();if(!force&&now-lastDiagnostics<200){diagnosticsPending=true;return;}lastDiagnostics=now;diagnosticsPending=false;stats??=engine?.stats();state??=snapshot(stats);canvas.dataset.play=JSON.stringify({wildlife:{enabled:loader?.world?.playCritters!==false,actors:engine?.wildlife.states.length??0,planningBytes:engine?.wildlife.planningBytes??0},fish:engine?.wildlife.fish.stats()??null,...state,levelId:session.level.id,engine:stats??null,placements:session.placements,audio:{state:audio.state,error:audio.lastError},
- enhancers:{generators:engine?.firing.enhancers.states??[],links:plasmaLinks?.linkCount??0,overflow:plasmaLinks?.overflow??0,connections:plasmaConnections},volumeSmoke:{steps:renderer?.volumeSmoke?.steps??16,trails:renderer?.volumeSmoke?.count??0,dropped:renderer?.volumeSmoke?.dropped??0},damage:{time:damage.time,activeCubes:damage.activeCubes},performance:performanceReadout.stats(),conditions:loader?.world?.playConditions??null,guns:engine?.firing.turrets.states.map(g=>({id:g.id,variant:g.variant,x:g.x,z:g.z,target:g.target?.id??null,reservation:g.reservation?.id??null,shots:g.cycle.shots,lastShotTarget:g.lastShotTargetId,secondsSinceShot:Number.isFinite(g.cycle.lastShotAt)?g.cycle.time-g.cycle.lastShotAt:null,cooldownRemaining:Math.max(0,g.cycle.readyAt-g.cycle.time),burstRemaining:g.cycle.remaining,lineOfSight:g.lineOfSight,yawError:g.aimError,pitchError:g.pitchError}))??[],loads:loader?.loads??0,unloads:loader?.unloads??0,camera:renderer?.camera?{mode:renderer.camera.mode,fov:renderer.camera.fov,roll:renderer.camera.roll,position:[...renderer.camera.position],radius:renderer.camera.radius,target:[...renderer.camera.target],controlsEnabled:renderer.camera.controlsEnabled}:null,actionCamera:actionCamera?.stats()??null,droneCamera:droneCamera?.stats()??null,
+ enhancers:{generators:engine?.firing.enhancers.states??[],links:plasmaLinks?.linkCount??0,overflow:plasmaLinks?.overflow??0,connections:plasmaConnections},damage:{time:damage.time,activeCubes:damage.activeCubes},performance:performanceReadout.stats(),conditions:loader?.world?.playConditions??null,guns:engine?.firing.turrets.states.map(g=>({id:g.id,variant:g.variant,x:g.x,z:g.z,target:g.target?.id??null,reservation:g.reservation?.id??null,shots:g.cycle.shots,lastShotTarget:g.lastShotTargetId,secondsSinceShot:Number.isFinite(g.cycle.lastShotAt)?g.cycle.time-g.cycle.lastShotAt:null,cooldownRemaining:Math.max(0,g.cycle.readyAt-g.cycle.time),burstRemaining:g.cycle.remaining,lineOfSight:g.lineOfSight,yawError:g.aimError,pitchError:g.pitchError}))??[],loads:loader?.loads??0,unloads:loader?.unloads??0,camera:renderer?.camera?{mode:renderer.camera.mode,fov:renderer.camera.fov,roll:renderer.camera.roll,position:[...renderer.camera.position],radius:renderer.camera.radius,target:[...renderer.camera.target],controlsEnabled:renderer.camera.controlsEnabled}:null,actionCamera:actionCamera?.stats()??null,droneCamera:droneCamera?.stats()??null,
  eligible:eligible.filter(cell=>cell.valid).map(cell=>cell.box),errors:error?[error]:[]});}
 function fail(cause){error=cause?.message??String(cause);busy=false;performanceReadout.setRunning(false,'Error');renderer?.setTimingActive(false);loop?.stop();paint();}
 function cameraState(){const c=renderer?.camera,active=cameraViews?.active;if(active){const v=active.saved;return {id:loader.world.level.id,target:Array.from(v.subarray(0,3)),yaw:v[3],pitch:v[4],radius:v[5]};}return c&&loader?.world?{id:loader.world.level.id,target:[...c.target],yaw:c.yaw,pitch:c.pitch,radius:c.radius}:null;}
@@ -124,7 +124,7 @@ function finishSettlement(){
     rebuild().catch(fail);
    }
    else{
-    engine.prepareWave(session.wave);renderer.volumeSmoke.reset();renderer.volumeSmoke.expire(engine.time);cameraViews.refresh();shots.reset();arcs.setWorld(loader.world);damage.setWorld(loader.world,engine.enemies.states);syncCombatEffects();
+    engine.prepareWave(session.wave);cameraViews.refresh();shots.reset();arcs.setWorld(loader.world);damage.setWorld(loader.world,engine.enemies.states);syncCombatEffects();
     shots.time=arcs.time=engine.time;refreshPlacement();paint();runLoop();
    }
   }catch(cause){fail(cause);}
@@ -137,7 +137,7 @@ async function initialize(){
  }
  renderer=new WorldRenderer(canvas,fail,{modelLightCapacity:playCapacity(config).modelLights,strictModelLights:true,gpuTiming:true,renderScale:.5});renderer.inspect=new URLSearchParams(location.search).has('inspect');await renderer.init();if(disposed){renderer.device?.destroy();return;}
  renderer.setGraphicsOptions(graphics);
- const [effectsPrepared,volumePrepared]=await Promise.all([renderer.prepareDeathEffects(),renderer.prepareVolumeSmoke()]);if(!effectsPrepared||!volumePrepared||disposed)return;renderer.camera.pathModeEnabled=false;
+ const effectsPrepared=await renderer.prepareDeathEffects();if(!effectsPrepared||disposed)return;renderer.camera.pathModeEnabled=false;
  actionCamera=new ActionCamera(renderer.camera);droneCamera=new DroneCamera(renderer.camera);cameraViews=new CameraViews(actionCamera,droneCamera);screenshotCamera=new ScreenshotCamera(renderer.camera);
  loop=new FrameLoop(dt=>{
   try{
@@ -175,11 +175,11 @@ async function initialize(){
    engine=new PlayEngine(world,{config,wave:spec.candidate.wave,
     onPoseChange:(...args)=>renderer.updateInstance(...args),onVisible:(...args)=>renderer.setActorVisible(...args),
     onDeploymentsChanged:world=>{renderer.syncRuntimeInstances(world);syncCombatEffects();},
-    onStep:dt=>{shots.advance(dt);damage.advance(dt);renderer.volumeSmoke.expire(engine.time);if(engine?.firing.arcs.states.length)arcs.advance(dt);plasmaLinks?.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},
+    onStep:dt=>{shots.advance(dt);damage.advance(dt);if(engine?.firing.arcs.states.length)arcs.advance(dt);plasmaLinks?.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},
     onShot:(variant,matrix,at)=>{shots.emit(matrix,TURRET_MUZZLES[variant],at);actionCamera.noteShot(matrix,at);},
     onBulletImpact:(point,normal,at)=>{shots.impact(point,normal,at);cameraViews.noteActivity(point[0],point[1],point[2],at,1);},
     onArcShot:(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint)=>{arcs.emit(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint);actionCamera.note(source[0],source[1],source[2],0,at);cameraViews.noteActivity(point[0],point[1],point[2],at,2);},
-    missileEffects:{onTrail:(x,y,z,id,lag)=>renderer.volumeSmoke.sample(id,x,y,z,engine.time-lag),onLaunch:(x,y,z)=>{damage.launchSmoke(x,y,z);actionCamera.note(x,y,z,0,engine.time);},onImpact:(x,y,z,nx,ny,nz)=>{emitMissileImpact(damage,world.playCritters?engine.wildlife:null,x,y,z,nx,ny,nz);cameraViews.noteExplosion({x,y,z},engine.time);}},
+    missileEffects:{onTrail:(x,y,z,lag)=>damage.missileTrail(x,y,z,lag),onLaunch:(x,y,z)=>{damage.launchSmoke(x,y,z);actionCamera.note(x,y,z,0,engine.time);},onImpact:(x,y,z,nx,ny,nz)=>{emitMissileImpact(damage,world.playCritters?engine.wildlife:null,x,y,z,nx,ny,nz);cameraViews.noteExplosion({x,y,z},engine.time);}},
     onDeath:(id,state)=>{session.resolve(id,'killed');actionCamera.noteDeath(state,engine.time);cameraViews.noteExplosion(state,engine.time);const blast=damage.explode(state);if(blast&&world.playCritters){engine.wildlife.spookExplosion(blast.x,blast.y,blast.z,blast.config.frightRadius);}},
     onEscape:id=>{session.resolve(id,'escaped');if(session.phase==='defeat'){engine.stopWave();queueMicrotask(()=>{paint();runLoop();});}},
     onWaveComplete:()=>onComplete(engine.wave.id),

@@ -1,6 +1,6 @@
 import {test,expect} from 'bun:test';
 import {Camera} from '../engine/camera.js';
-import {DroneCamera,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MIN_FOV,DRONE_CAMERA_MAX_FILM_PITCH} from '../play/drone-camera.js';
+import {DroneCamera,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MIN_FOV,DRONE_CAMERA_MAX_FILM_PITCH,DRONE_CAMERA_BOARD_MARGIN} from '../play/drone-camera.js';
 import {SceneryVisibility} from '../engine/visibility.js';
 import {PLAY_CONFIG} from '../play/config.js';
 import {legacyPlayConfig} from './helpers/legacy-play-config.js';
@@ -19,6 +19,66 @@ function basic(){
 }
 function advance(f,seconds,hz=60,phase='wave'){for(let i=0;i<seconds*hz;i++){f.engine.time+=1/hz;f.drone.advance(1/hz,{engine:f.engine,phase});}}
 const viewPitch=(position,focus)=>Math.atan2(position[1]-focus[1],Math.hypot(position[0]-focus[0],position[2]-focus[2]));
+
+test('board coverage favours an inward view from outside an edge over looking out at that edge',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  d.focus.set([48,32,192]);
+  for(const aspect of [.5,1.5,3]){
+   f.c.canvas.clientWidth=1000*aspect;f.c.canvas.clientHeight=1000;
+   const inward=d.boardCoverage(-144,144,192),outward=d.boardCoverage(240,144,192);
+   expect(inward).toBeGreaterThan(outward+.12);expect(inward).toBeLessThanOrEqual(1);expect(outward).toBeGreaterThanOrEqual(0);
+  }
+  expect(d.boardCoverage(48,200,192)).toBe(0);
+ }finally{d.dispose();}
+});
+
+test('board coverage agrees with independent viewport and board samples through the production camera',()=>{
+ const f=basic(),d=f.drone,c=f.c;
+ try{
+  d.focus.set([48,32,192]);
+  for(const aspect of [.5,1.5,3])for(const position of [[-144,144,192],[240,144,192],[48,200,-144]]){
+   c.canvas.clientWidth=1000*aspect;c.canvas.clientHeight=1000;c.mode='live';c.position.set(position);c.fov=d.fov;c.roll=0;
+   c.yaw=Math.atan2(position[0]-d.focus[0],position[2]-d.focus[2]);c.pitch=viewPitch(position,d.focus);c.update(aspect);
+   const transform=(m,x,y,z,w)=>[0,1,2,3].map(r=>m[r]*x+m[4+r]*y+m[8+r]*z+m[12+r]*w);
+   let board=0,screen=0;const cols=64,rows=48;
+   for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
+    const projected=transform(c.vp,(col+.5)/cols*f.world.width,24,(row+.5)/rows*f.world.length,1);
+    if(projected[3]>0&&Math.abs(projected[0])<=projected[3]&&Math.abs(projected[1])<=projected[3]&&projected[2]>=0&&projected[2]<=projected[3])board++;
+    const sx=(col+.5)/cols*2-1,sy=(row+.5)/rows*2-1,near=transform(c.inverse,sx,sy,0,1),far=transform(c.inverse,sx,sy,1,1);
+    for(let axis=0;axis<3;axis++){near[axis]/=near[3];far[axis]/=far[3];}
+    const t=(24-near[1])/(far[1]-near[1]),x=near[0]+(far[0]-near[0])*t,z=near[2]+(far[2]-near[2])*t;
+    if(t>=0&&t<=1&&x>=0&&x<=f.world.width&&z>=0&&z<=f.world.length)screen++;
+   }
+   expect(Math.abs(d.boardCoverage(...position)-(board*.65+screen*.35)/(cols*rows))).toBeLessThan(.025);
+  }
+ }finally{d.dispose();}
+});
+
+test('an edge-only shot deliberately reframes toward more board and holds the chosen route',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  f.subject.x=f.subject.aimX=48;d.setEnabled(true);d.sync('wave',f.engine);d.focus.set([48,32,192]);d.position.set([240,144,192]);d.routeLength=d.routeIndex=0;d.heldFor=3.5;d.time=10;
+  const focus=Array.from(d.focus),before=d.boardCoverage(...d.position);expect(d.shotQuality(...d.position)).toBe(1);expect(d.vantage()).toBe(true);
+  const goal=Array.from(d.goal);expect(d.boardCoverage(...goal)).toBeGreaterThanOrEqual(before+.12);expect(d.contextReframes).toBe(1);
+  expect(goal[0]<0||goal[0]>f.world.width||goal[2]<0||goal[2]>f.world.length).toBe(true);
+  expect(d.shotQuality(...goal)).toBeGreaterThanOrEqual(.86);expect(d.viewFits(...goal)).toBe(true);expect(d.columnClear(...goal)).toBe(true);expect(Array.from(d.focus)).toEqual(focus);
+  for(let n=0;n<3;n++){d.time+=.8;d.vantage();expect(Array.from(d.goal)).toEqual(goal);}
+  for(let n=0;n<4000&&d.routeIndex<d.routeLength;n++){
+   const before=Array.from(d.position);d.move(1/120);
+   expect(d.staticClear(...before,...d.position)).toBe(true);expect(viewPitch(d.position,d.focus)).toBeLessThanOrEqual(DRONE_CAMERA_MAX_FILM_PITCH);
+  }
+  expect(d.routeIndex).toBe(d.routeLength);
+ }finally{d.dispose();}
+});
+
+test('similar board coverage cannot trigger repeated context repositioning',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  d.setEnabled(true);d.sync('wave',f.engine);d.position.set([24,144,192]);d.focus.set([240,32,192]);d.routeLength=d.routeIndex=0;d.heldFor=3.5;d.boardCoverage=()=>.5;
+  expect(d.vantage()).toBe(true);expect(d.holding).toBe(true);expect(d.contextReframes).toBe(0);expect(d.routeLength).toBe(0);
+ }finally{d.dispose();}
+});
 
 test('opening looks toward the actual area of interest from outside its steep-view footprint',()=>{
  const f=basic(),d=f.drone;
@@ -94,11 +154,12 @@ test('swept flight rejects a wall between clear endpoints and uses a continuous 
  f.world.visibility.bounds.set([240,60,180,260,90,205]);expect(d.staticClear(250,44,192,250,44,192)).toBe(true);expect(d.columnClear(250,44,192)).toBe(false);d.position.set([150,44,192]);expect(d.routeTo(250,44,192)).toBe(false);
 });
 
-test('water, raised terrain and world edges remain outside the camera hull',()=>{
+test('water, raised terrain and the extended flight perimeter remain outside the camera hull',()=>{
  const world=scene({terrain:{defaultHeight:24,boxes:[{box:[5,5],ground:4,water:24},{box:[6,5],ground:68,water:0}]}}),d=new DroneCamera(camera());d.bind(world);
  expect(d.staticClear(132,25,132,132,25,132)).toBe(false);expect(d.staticClear(132,28,132,132,28,132)).toBe(true);
  expect(d.staticClear(132,50,132,180,50,132)).toBe(false);expect(d.staticClear(132,75,132,180,75,132)).toBe(true);
- expect(d.staticClear(DRONE_CAMERA_RADIUS-1,100,100,20,100,100)).toBe(false);d.dispose();
+ expect(d.staticClear(-100,100,100,20,100,100)).toBe(true);
+ expect(d.staticClear(DRONE_CAMERA_RADIUS-DRONE_CAMERA_BOARD_MARGIN-1,100,100,20,100,100)).toBe(false);d.dispose();
 });
 
 test('stable subjects retain mostly high flight with occasional safe low shots and broad gimbal aiming',()=>{

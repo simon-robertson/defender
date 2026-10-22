@@ -4,12 +4,14 @@ import {DroneObstacles} from '../engine/drone-obstacles.js';
 
 export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=34,DRONE_CAMERA_ACCELERATION=24,DRONE_CAMERA_MIN_FOV=2*Math.atan(Math.tan(42*Math.PI/360)/.8)*180/Math.PI;
 export const DRONE_CAMERA_MAX_FILM_PITCH=Math.PI/4;
+export const DRONE_CAMERA_BOARD_MARGIN=240;
 const MIN_STANDOFF=168,PREFERRED_STANDOFF=192,VIEW_SLOPE=Math.tan(38*Math.PI/180),MAX_VIEW_SLOPE=Math.tan(DRONE_CAMERA_MAX_FILM_PITCH);
 const DRIFT_SPEED=.65,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_SPEED/DRIFT_RADIUS,JERK=48;
 const TICK=1/120,PLAN_SECONDS=.8,R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),HEIGHTS=Object.freeze([120,184,152]);
 const COMPOSITION_SUBJECTS=12,COMPOSITION_ENEMIES=8,LOW_HEIGHTS=Object.freeze([40,56]);
 const ACTIVITY_SLOTS=24,ACTIVITY_RADIUS=60,ACTIVITY_SECONDS=5,SCENE_RADIUS=84,SCENE_HOLD=4,CHALLENGE_SECONDS=1.2;
 const FOCUS_PRIORITY=Object.freeze({none:-1,enemy:0,defence:1,anticipation:2,combat:3});
+function clipDistance(points,k,plane,near,far){const depth=points[k+2];return plane<4?depth+(plane&1?-1:1)*points[k+(plane>>1)]:plane===4?depth-near:far-depth;}
 function put(out,x,y,z,k=0){out[k]=x;out[k+1]=y;out[k+2]=z;}
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const angle=(a,b)=>Math.atan2(Math.sin(a-b),Math.cos(a-b));
@@ -35,6 +37,7 @@ export class DroneCamera {
   this.camera=camera;this.anticipation=new CameraAnticipation({speed:34,standoff:PREFERRED_STANDOFF});this.world=null;this.obstacles=null;this.obstacleEngine=null;this.emergency=false;this.airLanes=null;this.airborneFloor=null;this.water=null;this.enabled=this.active=false;
   this.velocity=new Float64Array(3);this.acceleration=new Float64Array(3);this.desiredVelocity=new Float64Array(3);this.driftAnchor=new Float64Array(3);this.drifting=false;this.driftPhase=0;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;this.saved=new Float64Array(6);this.position=new Float64Array(3);this.focus=new Float64Array(3);this.look=new Float64Array(3);this.goal=new Float64Array(3);this.route=new Float64Array(9);this.scratch=new Float64Array(6);this.lastBattle=new Float64Array(3);
   this.compositionStates=new Array(COMPOSITION_SUBJECTS).fill(null);this.compositionBounds=new Float64Array(COMPOSITION_SUBJECTS*6);this.projectedSubjects=new Float64Array(COMPOSITION_SUBJECTS*4);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
+  this.boardClipA=new Float64Array(80);this.boardClipB=new Float64Array(80);this.levelInView=this.contextReframes=0;
   this.subject=null;this.subjectSince=0;this.engineTime=null;this.phase=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;
   this.activity=new Float64Array(ACTIVITY_SLOTS*5);this.activityWeights=new Float64Array(ACTIVITY_SLOTS);this.activityFocus=new Float64Array(3);this.candidateFocus=new Float64Array(3);this.challengeFocus=new Float64Array(3);this.activitySlot=-1;this.focusKind='none';this.interest=null;this.nextSubjectAt=0;this.challengeKind=null;this.challengeSince=0;this.forecastAt=-Infinity;
   this.routeLength=this.routeIndex=0;this.goalDuration=10;this.fov=64;this.yaw=this.pitch=this.panRoll=0;this.quality=0;this.visible=this.holding=false;this.battleAt=-Infinity;this.cruiseY=224;this.shotBand=-1;this.seed=1;
@@ -44,6 +47,7 @@ export class DroneCamera {
   this.subject=null;this.engineTime=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;this.battleAt=-Infinity;this.routeLength=this.routeIndex=0;this.focus.fill(0);this.velocity.fill(0);this.acceleration.fill(0);this.desiredVelocity.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;
   this.resetFocus();
   this.compositionStates.fill(null);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
+  this.levelInView=this.contextReframes=0;
   if(!world)return;
   const field=new TerrainField(world.level);this.water=new Float32Array(world.level.size[0]*world.level.size[1]);
   for(let z=0;z<world.level.size[1];z++)for(let x=0;x<world.level.size[0];x++)this.water[z*world.level.size[0]+x]=field.height(x*24,z*24,true);
@@ -148,7 +152,7 @@ export class DroneCamera {
  }
  staticClear(ax,ay,az,bx,by,bz){
   const w=this.world;if(!w)return false;
-  if(Math.min(ax,bx)<R||Math.min(az,bz)<R||Math.max(ax,bx)>w.width-R||Math.max(az,bz)>w.length-R)return false;
+  if(Math.min(ax,bx)<R-DRONE_CAMERA_BOARD_MARGIN||Math.min(az,bz)<R-DRONE_CAMERA_BOARD_MARGIN||Math.max(ax,bx)>w.width+DRONE_CAMERA_BOARD_MARGIN-R||Math.max(az,bz)>w.length+DRONE_CAMERA_BOARD_MARGIN-R)return false;
   const tree=w.visibility;if(!tree?.bounds)return false;
   for(let node=0;node<tree.nodeCount;){
    if(hits(tree.bounds,node*6,ax,ay,az,bx,by,bz)){if(tree.escape[node]===node+1)return false;node++;}else node=tree.escape[node];
@@ -233,6 +237,34 @@ export class DroneCamera {
   }
   return clipping*.8+pairs/weights*.7+worst*.3+Math.max(0,.45-(right-left))*.12;
  }
+ boardCoverage(x,y,z){
+  const f=this.focus,dx=f[0]-x,dy=f[1]-y,dz=f[2]-z,h=Math.hypot(dx,dz),distance=Math.hypot(dx,dy,dz);
+  if(h<1||distance<1||!this.world)return 0;
+  const width=this.world.width,length=this.world.length,ground=this.world.level.pathHeight,rx=-dz/h,rz=dx/h,ux=-dx*dy/(distance*h),uy=h/distance,uz=-dz*dy/(distance*h),fx=dx/distance,fy=dy/distance,fz=dz/distance,tan=Math.tan(this.fov*Math.PI/360),aspect=Math.max(.01,(this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000)),near=this.camera.near??.1,far=this.camera.far??2200;
+  let points=this.boardClipA,out=this.boardClipB,count=4;
+  // Clip the board plane in homogeneous view coordinates, carrying its world
+  // coordinates along. No ray traces, render targets or per-plan allocations.
+  for(let n=0;n<4;n++){
+   const k=n*5,wx=n===1||n===2?width:0,wz=n>=2?length:0,ax=wx-x,ay=ground-y,az=wz-z;
+   points[k]=(ax*rx+az*rz)/(tan*aspect);points[k+1]=(ax*ux+ay*uy+az*uz)/tan;points[k+2]=ax*fx+ay*fy+az*fz;points[k+3]=wx;points[k+4]=wz;
+  }
+  for(let plane=0;plane<6;plane++){
+   let size=0,previous=(count-1)*5,a=clipDistance(points,previous,plane,near,far);
+   for(let n=0;n<count;n++){
+    const k=n*5,b=clipDistance(points,k,plane,near,far);
+    if((a>=0)!==(b>=0)){const t=a/(a-b);for(let axis=0;axis<5;axis++)out[size*5+axis]=points[previous+axis]+(points[k+axis]-points[previous+axis])*t;size++;}
+    if(b>=0){for(let axis=0;axis<5;axis++)out[size*5+axis]=points[k+axis];size++;}
+    previous=k;a=b;
+   }
+   if(size<3)return 0;
+   const swap=points;points=out;out=swap;count=size;
+  }
+  let screenArea=0,worldArea=0;
+  for(let n=0;n<count;n++){const a=n*5,b=((n+1)%count)*5;screenArea+=(points[a]*points[b+1]-points[b]*points[a+1])/(points[a+2]*points[b+2]);worldArea+=points[a+3]*points[b+4]-points[b+3]*points[a+4];}
+  // Prefer seeing more of the actual level, with a secondary preference for
+  // filling the viewport with board rather than scenery beyond its edge.
+  return clamp(Math.abs(worldArea)/(2*width*length)*.65+Math.abs(screenArea)/8*.35,0,1);
+ }
  altitude(layer){return this.airborneFloor===null?this.world.level.pathHeight+HEIGHTS[layer]:Math.max(this.world.level.pathHeight+HEIGHTS[layer],this.airborneFloor+(layer===1?48:layer===2?24:0));}
  viewDistance(y){return Math.max(PREFERRED_STANDOFF,Math.max(0,y-this.focus[1])/VIEW_SLOPE+16);}
  viewFits(x,y,z,margin=0){return Math.hypot(x-this.focus[0],z-this.focus[2])>=Math.max(MIN_STANDOFF,Math.max(0,y-this.focus[1])/MAX_VIEW_SLOPE)+margin;}
@@ -259,11 +291,11 @@ export class DroneCamera {
  vantage(){
   if(this.emergency&&this.routeIndex<this.routeLength)return true;
   this.gatherComposition();
-  const p=this.position,f=this.focus,d=Math.hypot(p[0]-f[0],p[2]-f[2]);this.quality=this.shotQuality(p[0],p[1],p[2]);this.composition=this.compositionCost(p[0],p[1],p[2]);this.visible=this.quality>=.8;this.plans++;
+  const p=this.position,f=this.focus,d=Math.hypot(p[0]-f[0],p[2]-f[2]);this.quality=this.shotQuality(p[0],p[1],p[2]);this.composition=this.compositionCost(p[0],p[1],p[2]);this.levelInView=this.boardCoverage(...p);this.visible=this.quality>=.8;this.plans++;
   const safe=this.clear(p[0],p[1],p[2],p[0],p[1],p[2])&&this.separation(p[0],p[1],p[2]),usable=this.quality>=.84&&this.viewFits(...p)&&d<=this.viewDistance(p[1])+72&&p[1]>=(this.lowShot?this.world.level.pathHeight+32:this.altitude(0))&&safe;
   // A readable shot gets a short hold, then a fresh angle even for a still
   // subject. Keep the selected journey committed until arrival.
-  const band=Math.floor(this.time/9)%3,settled=usable&&this.routeIndex>=this.routeLength,timed=settled&&this.heldFor>=this.shotSeconds,unstack=settled&&this.heldFor>=2.5&&this.composition>.22,relocate=timed||unstack;
+  const band=Math.floor(this.time/9)%3,settled=usable&&this.routeIndex>=this.routeLength,timed=settled&&this.heldFor>=this.shotSeconds,unstack=settled&&this.heldFor>=2.5&&this.composition>.22,broaden=settled&&this.heldFor>=3&&this.levelInView<.65,relocate=timed||unstack||broaden;
   // Subject changes can prevent a wave from ever accumulating several timed
   // holds. Offer an occasional low view on the simulation clock instead, and
   // retain its intent briefly if an encounter changes during the approach.
@@ -277,21 +309,23 @@ export class DroneCamera {
   // Usually 72 high candidates; an occasional low opportunity also tries 48
   // low ones. A blocked low opportunity falls back to the normal high profile.
   for(let layer=0;layer<(lowOpportunity?5:3);layer++)for(let i=0;i<24;i++){
-   const low=layer>=3,a=this.seed+i*Math.PI/12,y=low?this.world.level.pathHeight+LOW_HEIGHTS[layer-3]:this.altitude(layer),span=this.viewDistance(y)+(layer===1?16:0),x=clamp(f[0]+Math.sin(a)*span,R+1,this.world.width-R-1),z=clamp(f[2]+Math.cos(a)*span,R+1,this.world.length-R-1);
+   const low=layer>=3,a=this.seed+i*Math.PI/12,y=low?this.world.level.pathHeight+LOW_HEIGHTS[layer-3]:this.altitude(layer),span=this.viewDistance(y)+(layer===1?16:0),x=clamp(f[0]+Math.sin(a)*span,R+1-DRONE_CAMERA_BOARD_MARGIN,this.world.width+DRONE_CAMERA_BOARD_MARGIN-R-1),z=clamp(f[2]+Math.cos(a)*span,R+1-DRONE_CAMERA_BOARD_MARGIN,this.world.length+DRONE_CAMERA_BOARD_MARGIN-R-1);
    const horizontal=Math.hypot(x-f[0],z-f[2]);if(!this.viewFits(x,y,z,8)||!this.separation(x,y,z)||!this.columnClear(x,y,z))continue;
    // A low descent is itself a fresh perspective; favor a nearby safe column
    // instead of requiring another long orbit before it can reach the ground.
    if(relocate&&!low&&(Math.hypot(x-p[0],z-p[2])<64||Math.abs(angle(Math.atan2(x-f[0],z-f[2]),Math.atan2(p[0]-f[0],p[2]-f[2])))<.4))continue;
    const quality=this.shotQuality(x,y,z);if(quality<.86)continue;
    const composition=this.compositionCost(x,y,z);if(unstack&&!timed&&composition>this.composition-.08)continue;
-   const preferredAngle=low?Math.atan2(p[0]-f[0],p[2]-f[2]):desiredAngle,score=(timed?Math.abs(angle(Math.atan2(x-f[0],z-f[2]),preferredAngle))*90:0)+Math.hypot(x-p[0],y-p[1],z-p[2])*.42+this.viewTravelCost(x,y,z)+Math.abs(y-desiredY)*1.2+(1-quality)*100+Math.abs(horizontal-span)*.2+composition*220;
+   const coverage=this.boardCoverage(x,y,z);
+   if(broaden&&!timed&&!unstack&&(coverage<this.levelInView+.12||composition>this.composition+.04||quality<this.quality-.04))continue;
+   const preferredAngle=low?Math.atan2(p[0]-f[0],p[2]-f[2]):desiredAngle,score=(timed?Math.abs(angle(Math.atan2(x-f[0],z-f[2]),preferredAngle))*90:0)+Math.hypot(x-p[0],y-p[1],z-p[2])*.42+this.viewTravelCost(x,y,z)+Math.abs(y-desiredY)*1.2+(1-quality)*100+Math.abs(horizontal-span)*.2+composition*220-coverage*190;
    if(score<best){best=score;bx=x;by=y;bz=z;selectedLow=low;}
   }
   if(best<Infinity&&this.routeTo(bx,by,bz)){
    let length=0,ax=p[0],ay=p[1],az=p[2];for(let n=0;n<this.routeLength;n++){const k=n*3;length+=Math.hypot(this.route[k]-ax,this.route[k+1]-ay,this.route[k+2]-az);ax=this.route[k];ay=this.route[k+1];az=this.route[k+2];}
    // Climb/cruise/descent may exceed the old ten-second commitment. Bound the
    // lease by this finite route's length with time for smooth turns/braking.
-   this.goalDuration=Math.max(10,length/DRONE_CAMERA_SPEED*1.6+6);put(this.goal,bx,by,bz);this.goalSince=this.time;this.heldFor=0;this.shotBand=band;this.lowShot=selectedLow;this.lowArrived=false;if(selectedLow)this.lowPlans++;if(unstack&&!timed)this.compositionReframes++;if(timed){this.relocations++;this.shotSeconds=5+this.random()*3;}return true;
+   this.goalDuration=Math.max(10,length/DRONE_CAMERA_SPEED*1.6+6);put(this.goal,bx,by,bz);this.goalSince=this.time;this.heldFor=0;this.shotBand=band;this.lowShot=selectedLow;this.lowArrived=false;if(selectedLow)this.lowPlans++;if(unstack&&!timed)this.compositionReframes++;if(broaden&&!timed&&!unstack)this.contextReframes++;if(timed){this.relocations++;this.shotSeconds=5+this.random()*3;}return true;
   }
   if(usable){this.holding=true;return true;}
   // A blocked view or encroaching actor can request a safe vertical retreat.
@@ -336,8 +370,9 @@ export class DroneCamera {
   if(this.focusKind==='none'&&Number.isFinite(this.battleAt))this.focus.set(this.lastBattle);
   const startAngle=this.seed+this.entries++*2.399963229728653,spread=Math.min(this.world.width,this.world.length)*.12,ax=this.world.width*.5+Math.sin(startAngle)*spread,az=this.world.length*.5+Math.cos(startAngle)*spread;
   let best=Infinity,sx=0,sz=0;
-  for(let region=0;region<2&&best===Infinity;region++){
-   for(let z=12;z<this.world.length;z+=24)for(let x=12;x<this.world.width;x+=24){
+  for(let region=0;region<3&&best===Infinity;region++){
+   const margin=region===2?DRONE_CAMERA_BOARD_MARGIN:0;
+   for(let z=12-margin;z<this.world.length+margin;z+=24)for(let x=12-margin;x<this.world.width+margin;x+=24){
     if(region===0&&(x<this.world.width*.25||x>this.world.width*.75||z<this.world.length*.25||z>this.world.length*.75))continue;
     if(!this.viewFits(x,this.cruiseY,z,16)||!this.clear(x,this.cruiseY,z,x,this.cruiseY,z)||!this.separation(x,this.cruiseY,z))continue;
     const quality=this.shotQuality(x,this.cruiseY,z),score=(x-ax)**2+(z-az)**2+(1-quality)*100000;
@@ -440,6 +475,6 @@ export class DroneCamera {
   }
   this.apply();return true;
  }
- stats(){return {anticipation:this.anticipation.stats(),enabled:this.enabled,active:this.active,time:this.time,subject:this.subject?.id??null,focusKind:this.focusKind,position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),drifting:this.drifting,blockedMoves:this.blockedMoves,yawVelocity:this.yawVelocity,pitchVelocity:this.pitchVelocity,fovVelocity:this.fovVelocity,travelled:this.travelled,plans:this.plans,holding:this.holding,heldFor:this.heldFor,relocations:this.relocations,quality:this.quality,composition:this.composition,compositionReframes:this.compositionReframes,compositionSubjects:this.compositionCount,lowShot:this.lowShot,lowArrived:this.lowArrived,lowPlans:this.lowPlans,lowShots:this.lowShots,lowPendingUntil:Number.isFinite(this.lowPendingUntil)?this.lowPendingUntil:null,nextLowAt:this.nextLowAt,visible:this.visible,fov:this.fov,pitch:this.pitch,panRoll:this.panRoll,flinch:this.flinch,explosions:this.explosions,routeLength:this.routeLength,routeIndex:this.routeIndex,goalDuration:this.goalDuration,emergency:this.emergency,airborneFloor:this.airborneFloor,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,cruiseY:this.cruiseY,planningBytes:this.activityWeights.byteLength+this.candidateFocus.byteLength+this.challengeFocus.byteLength+this.activity.byteLength+this.activityFocus.byteLength+this.velocity.byteLength+this.acceleration.byteLength+this.desiredVelocity.byteLength+this.driftAnchor.byteLength+this.anticipation.byteLength+this.saved.byteLength+this.position.byteLength+this.focus.byteLength+this.look.byteLength+this.goal.byteLength+this.route.byteLength+this.scratch.byteLength+this.lastBattle.byteLength+this.compositionBounds.byteLength+this.projectedSubjects.byteLength+(this.water?.byteLength??0)+(this.airLanes?.byteLength??0)+(this.obstacles?.byteLength??0)};}
+ stats(){return {anticipation:this.anticipation.stats(),enabled:this.enabled,active:this.active,time:this.time,subject:this.subject?.id??null,focusKind:this.focusKind,position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),drifting:this.drifting,blockedMoves:this.blockedMoves,yawVelocity:this.yawVelocity,pitchVelocity:this.pitchVelocity,fovVelocity:this.fovVelocity,travelled:this.travelled,plans:this.plans,holding:this.holding,heldFor:this.heldFor,relocations:this.relocations,quality:this.quality,composition:this.composition,levelInView:this.levelInView,contextReframes:this.contextReframes,compositionReframes:this.compositionReframes,compositionSubjects:this.compositionCount,lowShot:this.lowShot,lowArrived:this.lowArrived,lowPlans:this.lowPlans,lowShots:this.lowShots,lowPendingUntil:Number.isFinite(this.lowPendingUntil)?this.lowPendingUntil:null,nextLowAt:this.nextLowAt,visible:this.visible,fov:this.fov,pitch:this.pitch,panRoll:this.panRoll,flinch:this.flinch,explosions:this.explosions,routeLength:this.routeLength,routeIndex:this.routeIndex,goalDuration:this.goalDuration,emergency:this.emergency,airborneFloor:this.airborneFloor,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,cruiseY:this.cruiseY,planningBytes:this.boardClipA.byteLength+this.boardClipB.byteLength+this.activityWeights.byteLength+this.candidateFocus.byteLength+this.challengeFocus.byteLength+this.activity.byteLength+this.activityFocus.byteLength+this.velocity.byteLength+this.acceleration.byteLength+this.desiredVelocity.byteLength+this.driftAnchor.byteLength+this.anticipation.byteLength+this.saved.byteLength+this.position.byteLength+this.focus.byteLength+this.look.byteLength+this.goal.byteLength+this.route.byteLength+this.scratch.byteLength+this.lastBattle.byteLength+this.compositionBounds.byteLength+this.projectedSubjects.byteLength+(this.water?.byteLength??0)+(this.airLanes?.byteLength??0)+(this.obstacles?.byteLength??0)};}
  dispose(){this.bind(null);this.camera=null;}
 }

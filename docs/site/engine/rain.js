@@ -4,7 +4,7 @@ import {TerrainField} from '../shared/terrain.js';
 // Provisional visual tuning, not a hardware/frame-rate budget. Larger authored
 // levels share this finite capacity; density decreases once the pool is full.
 export const MAX_RAIN_DROPS=4096,RAIN_DROPS_PER_BOX=10,RAIN_INSTANCE_FLOATS=8;
-export const RAIN_HEIGHT=72,RAIN_SPEED=120,RAIN_LENGTH=6.2,RAIN_WIDTH=.48,RAIN_OPACITY=.55;
+export const RAIN_HEIGHT=72,RAIN_SPEED=120,RAIN_LENGTH=3.8,RAIN_WIDTH=.64,RAIN_OPACITY=.8;
 
 // Exact upward column query over the static visibility BVH. Only construction
 // calls this: falling drops then reuse the sampled roof/ground height forever.

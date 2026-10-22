@@ -1,5 +1,5 @@
-// Weather type belongs to the zone. Levels only opt in or out. B stays clear.
-export const ZONE_WEATHER=Object.freeze({A:'rain',B:null,C:'snow',D:'leaves'});
+// Weather type belongs to the zone. B and D stay clear.
+export const ZONE_WEATHER=Object.freeze({A:'rain',B:null,C:'snow',D:null});
 export const WET_PATH_REFLECTIVENESS=.4;
 export const WET_MORTAR_REFLECTIVENESS=.1;
 

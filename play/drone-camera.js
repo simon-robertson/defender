@@ -8,7 +8,7 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),TICK=1/120,PLAN_SECONDS=.8;
 // certifies and executes a continuous safe journey. Combat is read-only.
 export class DroneCamera extends DroneFlight {
  constructor(camera,options={}){
-  super(camera,options);this.director=new BattleDirector();this.framing=new BattleFraming();this.candidates=Array.from({length:96},()=>({x:0,y:0,z:0,score:-Infinity,action:0,board:0}));
+  super(camera,options);this.director=new BattleDirector();this.framing=new BattleFraming();this.candidates=Array.from({length:144},()=>({x:0,y:0,z:0,score:-Infinity,adjustment:0,certified:false,action:0,global:0,board:0}));
   this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.plannedVersion=-1;this.quality=this.levelInView=0;this.visible=this.holding=false;this.engineTime=null;this.subject=null;this.focusKind='none';this.phase=null;
  }
  bind(world){super.bind(world);this.director?.reset();this.framing?.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.plannedVersion=-1;this.planIn=0;this.engineTime=null;this.subject=null;this.focusKind='none';}
@@ -26,29 +26,48 @@ export class DroneCamera extends DroneFlight {
   for(let i=0;i<d.count&&checked<12;i++){const p=d.subjects[i];if(p.area!==d.intent.area)continue;checked++;total+=p.weight;if(this.world.visibility.clear(x,y,z,p.x,p.y,p.z,p.kind===1?p.state.id:undefined))visible+=p.weight;}
   return !total||visible/total>=.4;
  }
- currentFrame(){const p=this.framing.pose;p.x=this.position[0];p.y=this.position[1];p.z=this.position[2];p.yaw=this.yaw;p.pitch=this.pitch;p.fov=this.fov;return this.framing.evaluate(p,this.director,this.aspect);}
+ currentFrame(){const p=this.framing.pose;p.x=this.position[0];p.y=this.position[1];p.z=this.position[2];p.yaw=this.yaw;p.pitch=this.pitch;p.fov=this.fov;return this.framing.evaluate(p,this.director,this.aspect,true);}
  get aspect(){return Math.max(.2,(this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000));}
  sceneInView(){const p=this.framing.pose;p.x=this.position[0];p.y=this.position[1];p.z=this.position[2];p.yaw=this.yaw;p.pitch=this.pitch;p.fov=this.fov;const q=projectBattlePoint(p,...this.director.intent.anchor,this.aspect,this.framing.point);return q[2]>20&&Math.abs(q[0])<.88&&Math.abs(q[1])<.85;}
  planShot(initial=false){
   const d=this.director,intent=d.intent,profile=BATTLE_SHOTS[intent.style],focus=intent.focus,p=this.position,changed=intent.version!==this.plannedVersion;
-  this.plans++;this.targetFov=profile.fov;
+  this.plans++;this.targetFov=profile.fov;let currentScore=0,currentBoard=0,currentGlobal=0,readable=false;
   if(!initial){
    const result=this.currentFrame();this.quality=result.action;this.levelInView=result.board;this.visible=result.primary&&result.action>=.55;
    const safe=this.staticClear(...p,...p)&&this.obstacles.pointClear(...p,DRONE_CAMERA_RADIUS,1);
-   // Commit readable views and journeys. No rotating height band or timed orbit.
-   if(!changed&&safe&&this.visible&&this.actionLineClear(...p)){this.holding=this.routeIndex>=this.routeLength;return true;}
+   // Finish accepted journeys. A locally readable view may still miss the
+   // wider battle; only a material coverage gain can dislodge that shot.
    if(!changed&&this.routeIndex<this.routeLength&&this.time-this.goalSince<this.goalDuration&&this.clear(...this.goal,...this.goal))return true;
+   readable=safe&&this.visible;currentScore=result.score;currentBoard=result.board;currentGlobal=result.global;
+   const wide=intent.style==='survey'||intent.style==='overview',missingContext=wide&&(result.board<profile.board*.85||result.global<.85);
+   if(!changed&&readable&&(!missingContext||this.time-this.goalSince<2.4)){this.holding=true;return true;}
   }
-  let count=0;
-  for(let height=0;height<2;height++)for(let span=0;span<2;span++)for(let angle=0;angle<24;angle++){
-   const a=this.seed+angle*Math.PI/12,range=profile.range+intent.radius*.25+span*52,y=this.world.level.pathHeight+profile.height+height*(intent.style==='dramatic'?16:32),x=clamp(focus[0]+Math.sin(a)*range,-236,this.world.width+236),z=clamp(focus[2]+Math.cos(a)*range,-236,this.world.length+236),pose=this.framing.orient(x,y,z,focus,profile.fov),candidate=this.candidates[count++];
-   candidate.x=x;candidate.y=y;candidate.z=z;candidate.score=-Infinity;if(pose.pitch<-.35||pose.pitch>.8)continue;
+  let count=0;const ranges=this.framing.searchRanges(d,this.aspect);
+  // Short radii admit interior stations; steeper views and scene-sized radii
+  // admit high coverage. No edge, centre or altitude is a required destination.
+  for(let elevation=0;elevation<3;elevation++)for(let span=0;span<3;span++)for(let angle=0;angle<16;angle++){
+   const a=this.seed+angle*Math.PI/8,range=ranges[span],pitch=elevation===0?(intent.style==='dramatic'?.05:.22):elevation===1?.5:.76,y=Math.max(this.world.level.pathHeight+26,focus[1]+Math.tan(pitch)*range),x=clamp(focus[0]+Math.sin(a)*range,-236,this.world.width+236),z=clamp(focus[2]+Math.cos(a)*range,-236,this.world.length+236),pose=this.framing.orient(x,y,z,focus,profile.fov),candidate=this.candidates[count++];
+   candidate.x=x;candidate.y=y;candidate.z=z;candidate.score=-Infinity;candidate.certified=false;if(pose.pitch<-.35||pose.pitch>.8)continue;
    const result=this.framing.evaluate(pose,d,this.aspect);if(!result.primary||result.action<.45)continue;
-   candidate.action=result.action;candidate.board=result.board;candidate.score=result.score-(initial?0:Math.hypot(x-p[0],y-p[1],z-p[2])*.0006);
+   if(!changed&&readable&&(result.score<currentScore+.05||result.board<currentBoard+.1&&result.global<currentGlobal+.15))continue;
+   candidate.action=result.action;candidate.global=result.global;candidate.board=result.board;
+   // Cosmetic randomness chooses among similarly useful openings, rather than
+   // merely rotating a fine angle grid around the same winning viewpoint.
+   candidate.adjustment=initial?this.random()*.055:-Math.min(.08,Math.hypot(x-p[0],y-p[1],z-p[2])*.00015);candidate.score=result.score+candidate.adjustment;
   }
-  for(let attempt=0;attempt<24;attempt++){
-   let best=null;for(let i=0;i<count;i++)if(this.candidates[i].score>(best?.score??-Infinity))best=this.candidates[i];if(!best)break;
-   const {x,y,z}=best;best.score=-Infinity;if(!this.columnClear(x,y,z)||!this.actionLineClear(x,y,z))continue;if(!initial&&!this.routeTo(x,y,z))continue;
+  let inspected=0;
+  for(let attempt=0;attempt<count+24;attempt++){
+   let best=null;for(let i=0;i<count;i++){const c=this.candidates[i];if((inspected<24||c.certified)&&c.score>(best?.score??-Infinity))best=c;}if(!best)break;
+   const {x,y,z}=best;
+   if(!best.certified){
+    best.certified=true;
+    if(!this.columnClear(x,y,z)||!this.actionLineClear(x,y,z)){best.score=-Infinity;continue;}
+    inspected++;
+    const result=this.framing.evaluate(this.framing.orient(x,y,z,focus,profile.fov),d,this.aspect,true);
+    if(result.action<.55||!changed&&readable&&(result.score<currentScore+.05||result.board<currentBoard+.1&&result.global<currentGlobal+.15)){best.score=-Infinity;continue;}
+    best.action=result.action;best.global=result.global;best.board=result.board;best.score=result.score+best.adjustment;continue;
+   }
+   best.score=-Infinity;if(!initial&&!this.routeTo(x,y,z))continue;
    this.goal.set([x,y,z]);this.goalSince=this.time;this.goalDuration=Math.max(10,Math.hypot(x-p[0],y-p[1],z-p[2])/DRONE_CAMERA_SPEED*1.8+6);this.plannedVersion=intent.version;this.holding=false;
    if(initial){this.position.set(this.goal);this.routeLength=this.routeIndex=0;this.quality=best.action;this.levelInView=best.board;this.visible=best.action>=.55;}else this.relocations++;return true;
   }

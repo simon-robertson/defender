@@ -3,7 +3,7 @@ import {Camera} from '../engine/camera.js';
 import {DroneCamera,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MIN_FOV} from '../play/drone-camera.js';
 import {SceneryVisibility} from '../engine/visibility.js';
 import {STUDY_SCENARIOS} from '../tools/camera-study-scenarios.js';
-import {createStudyScene,advanceStudyScene,describeStudyScene} from '../tools/camera-study-scene.js';
+import {createStudyScene,advanceStudyScene,describeStudyScene,seededRandom} from '../tools/camera-study-scene.js';
 const camera=()=>new Camera({clientWidth:1500,clientHeight:1000,addEventListener(){},focus(){}},()=>{});
 function basic(){
  const level={id:'camera-fixture',size:[20,16],path:[[0,0,8],[1,0,8]],pathHeight:24,terrain:{defaultHeight:24,boxes:[]},placements:[]},world={level,width:480,length:384,rigs:new Map(),actors:new Map(),visibility:new SceneryVisibility(level,new Map())},c=camera();c.setLevel(level);const drone=new DroneCamera(c,{random:()=>.35});drone.bind(world);
@@ -26,6 +26,43 @@ test('a calm survey is wider than a dominant fight, and low dramatic shots are n
  try{d.setEnabled(true);d.sync('wave',f.engine);expect(d.director.intent.style).toBe('survey');expect(d.targetFov).toBe(64);
  f.engine.firing.states=[{id:'gun',x:265,z:192,model:'turret-study',target:f.subject,lineOfSight:true,cycle:{time:1,lastShotAt:1}}];f.engine.time=1;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('battle');d.compose(f.engine);d.planShot();expect(d.targetFov).toBe(56);
  d.director.exposure=6.1;f.engine.time=1.4;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('dramatic');expect(d.planShot()).toBe(true);expect(d.goal[1]).toBeLessThanOrEqual(f.world.level.pathHeight+42);expect(d.staticClear(...d.goal,...d.goal)).toBe(true);expect(d.director.intent.subject).toBe(f.subject);
+ }finally{d.dispose();}
+});
+test('equally useful openings vary across the board rather than jittering around one station',()=>{
+ const positions=[];
+ for(const seed of [17,97,177,257,337,417]){
+  const f=basic(),d=f.drone;d.random=seededRandom(seed);
+  try{d.setEnabled(true);d.sync('wave',f.engine);const frame=d.currentFrame();expect(frame.action).toBe(1);expect(frame.board).toBeGreaterThan(.45);expect(d.columnClear(...d.position)).toBe(true);positions.push([...d.position]);}finally{d.dispose();}
+ }
+ expect(Math.max(...positions.flatMap(a=>positions.map(b=>Math.hypot(a[0]-b[0],a[2]-b[2]))))).toBeGreaterThan(250);
+});
+test('an enclosed fight selects a clear interior station when surrounding terrain hides exterior shots',()=>{
+ const f=basic(),d=f.drone,level=f.world.level;
+ for(let z=2;z<=13;z++)for(let x=4;x<=15;x++)if(x===4||x===15||z===2||z===13)level.terrain.boxes.push({box:[x,z],ground:220,water:0});
+ f.world.visibility=new SceneryVisibility(level,new Map());d.bind(f.world);
+ f.engine.firing.states=[{id:'gun',x:265,z:192,target:f.subject,lineOfSight:true,cycle:{time:0,lastShotAt:0}}];
+ try{d.setEnabled(true);d.sync('wave',f.engine);expect(d.active).toBe(true);expect(d.position[0]).toBeGreaterThan(120);expect(d.position[0]).toBeLessThan(360);expect(d.position[2]).toBeGreaterThan(96);expect(d.position[2]).toBeLessThan(288);expect(d.currentFrame().action).toBe(1);expect(d.columnClear(...d.position)).toBe(true);}finally{d.dispose();}
+});
+test('ridges between active fronts select a high coverage station before any flight',()=>{
+ const f=basic(),d=f.drone;
+ const targets=[f.subject,...[[80,70],[400,70],[80,314],[400,314]].map(([x,z],i)=>({...f.subject,id:`other-${i}`,x,z,aimX:x,aimZ:z}))];
+ f.engine.enemies.activeTargets=targets;f.engine.firing.states=targets.map((target,i)=>({id:`gun-${i}`,x:target.x+25,z:target.z,target,lineOfSight:true,cycle:{time:0,lastShotAt:0}}));
+ try{
+  d.setEnabled(true);d.sync('wave',f.engine);const openAltitude=d.position[1];expect(d.currentFrame().global).toBeGreaterThan(.85);
+  for(let z=4;z<=11;z++)for(let x=6;x<=13;x++)if(x===6||x===13||z===4||z===11)f.world.level.terrain.boxes.push({box:[x,z],ground:100,water:0});
+  f.world.visibility=new SceneryVisibility(f.world.level,new Map());d.bind(f.world);d.sync('wave',f.engine);
+  expect(d.director.intent.style).toBe('overview');expect(d.currentFrame().global).toBeGreaterThan(.85);expect(d.position[1]).toBeGreaterThan(openAltitude+100);expect(d.position[1]-f.world.level.pathHeight).toBeGreaterThan(150);expect(d.pitch).toBeLessThanOrEqual(.8);
+ }finally{d.dispose();}
+});
+test('a readable local shot yields to substantially better coverage of the same wide battle',()=>{
+ const f=basic(),d=f.drone;
+ const targets=[f.subject,...[[80,70],[400,70],[80,314],[400,314]].map(([x,z],i)=>({...f.subject,id:`other-${i}`,x,z,aimX:x,aimZ:z}))];
+ f.engine.enemies.activeTargets=targets;f.engine.firing.states=targets.map((target,i)=>({id:`gun-${i}`,x:target.x+25,z:target.z,target,lineOfSight:true,cycle:{time:0,lastShotAt:0}}));
+ try{
+  d.setEnabled(true);d.sync('wave',f.engine);d.position.set([240,80,300]);const pose=d.framing.orient(...d.position,d.focus,d.fov);d.yaw=pose.yaw;d.pitch=pose.pitch;d.routeIndex=d.routeLength=0;d.goalSince=d.time-3;
+  const before={...d.currentFrame()};expect(before.action).toBe(1);expect(before.global).toBeLessThan(.85);const relocations=d.relocations;
+  expect(d.planShot()).toBe(true);expect(d.relocations).toBe(relocations+1);
+  const after=d.framing.evaluate(d.framing.orient(...d.goal,d.focus,d.targetFov),d.director,d.aspect,true);expect(after.global).toBeGreaterThan(before.global+.15);expect(after.action).toBe(1);
  }finally{d.dispose();}
 });
 test('swept flight rejects an intervening wall and retains continuous high detours',()=>{
@@ -61,9 +98,9 @@ test('native battles at 30/60/120 Hz preserve combat outcomes and swept static/a
   const baseline=await createStudyScene(STUDY_SCENARIOS.find(s=>s.id===id));let expected;try{await advanceStudyScene(baseline,100,{yieldControl:async()=>{}});expected=[baseline.engine.enemies.killed,baseline.engine.enemies.escaped,baseline.engine.firing.shots,baseline.engine.steps];}finally{baseline.dispose();}
   const results=[];
   for(const hz of [30,60,120]){
-   const recipe=STUDY_SCENARIOS.find(s=>s.id===id);let d;const scene=await createStudyScene(recipe,{onActivity:(kind,x,y,z,at,w)=>{if(kind!=='shot')d?.noteActivity(x,y,z,at,w);}}),c=camera();d=new DroneCamera(c,{random:()=>.35});d.bind(scene.world);d.setEnabled(true);d.sync('wave',scene.engine);let shown=0,frames=0,low=0;
-   try{while(scene.engine.running&&scene.engine.time<100){const old=[...d.position];scene.engine.advance(1/hz);d.advance(1/hz,{engine:scene.engine,phase:'wave'});frames++;if(d.sceneInView())shown++;if(d.position[1]<scene.world.level.pathHeight+70)low++;expect(d.staticClear(...old,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS,0)).toBe(true);expect([...d.position,...d.focus,d.yaw,d.pitch,d.fov].every(Number.isFinite)).toBe(true);}
-   results.push([scene.engine.enemies.killed,scene.engine.enemies.escaped,scene.engine.firing.shots,scene.engine.steps]);expect(shown/frames).toBeGreaterThan(.55);console.log({scenario:id,hz,shown:shown/frames,low:low/frames,travel:d.travelled,blocked:d.blockedMoves});
+   const recipe=STUDY_SCENARIOS.find(s=>s.id===id);let d;const scene=await createStudyScene(recipe,{onActivity:(kind,x,y,z,at,w)=>{if(kind!=='shot')d?.noteActivity(x,y,z,at,w);}}),c=camera();d=new DroneCamera(c,{random:()=>.35});d.bind(scene.world);d.setEnabled(true);d.sync('wave',scene.engine);let shown=0,frames=0,low=0,high=0,interior=0,maxAltitude=0;
+   try{while(scene.engine.running&&scene.engine.time<100){const old=[...d.position];scene.engine.advance(1/hz);d.advance(1/hz,{engine:scene.engine,phase:'wave'});frames++;if(d.sceneInView())shown++;if(d.position[1]<scene.world.level.pathHeight+70)low++;if(d.position[1]>scene.world.level.pathHeight+150)high++;if(d.position[0]>scene.world.width*.25&&d.position[0]<scene.world.width*.75&&d.position[2]>scene.world.length*.25&&d.position[2]<scene.world.length*.75)interior++;maxAltitude=Math.max(maxAltitude,d.position[1]-scene.world.level.pathHeight);expect(d.staticClear(...old,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS,0)).toBe(true);expect([...d.position,...d.focus,d.yaw,d.pitch,d.fov].every(Number.isFinite)).toBe(true);}
+   results.push([scene.engine.enemies.killed,scene.engine.enemies.escaped,scene.engine.firing.shots,scene.engine.steps]);expect(shown/frames).toBeGreaterThan(.55);console.log({scenario:id,hz,shown:shown/frames,low:low/frames,high:high/frames,interior:interior/frames,maxAltitude,travel:d.travelled,blocked:d.blockedMoves});
    }finally{d.dispose();scene.dispose();}
   }
   expect(results[0]).toEqual(expected);expect(results[0]).toEqual(results[1]);expect(results[1]).toEqual(results[2]);

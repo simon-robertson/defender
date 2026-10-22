@@ -10,7 +10,7 @@ export class BattleDirector {
   this.areas=Array.from({length:MAX_AREAS},()=>({x:0,y:0,z:0,weight:0,action:0,danger:0,count:0,enemy:null}));
   this.intent={anchor:new Float64Array(3),focus:new Float64Array(3),kind:'survey',style:'survey',version:0,subject:null,area:-1,radius:0,weight:0,action:0,danger:0,busyAreas:0,reason:'opening'};this.reset();
  }
- reset(){for(const p of this.subjects)p.state=null;for(const a of this.areas)a.enemy=null;this.events.fill(0);this.count=this.areaCount=0;this.nextScan=-Infinity;this.exposure=0;this.since=-Infinity;this.challengeSince=0;this.challengeX=this.challengeZ=Infinity;this.shotIndex=0;this.intent.version=0;this.intent.kind=this.intent.style='survey';this.intent.area=-1;this.intent.subject=null;this.intent.weight=this.intent.action=this.intent.danger=this.intent.busyAreas=0;}
+ reset(){for(const p of this.subjects)p.state=null;for(const a of this.areas)a.enemy=null;this.events.fill(0);this.count=this.areaCount=0;this.nextScan=-Infinity;this.exposure=0;this.since=-Infinity;this.challengeSince=0;this.challengeX=this.challengeZ=Infinity;this.shotIndex=0;this.wideSince=-Infinity;this.intent.version=0;this.intent.kind=this.intent.style='survey';this.intent.area=-1;this.intent.subject=null;this.intent.weight=this.intent.action=this.intent.danger=this.intent.busyAreas=0;}
  note(x,y,z,at,weight=1){
   if(![x,y,z,at,weight].every(Number.isFinite)||weight<=0)return;
   let slot=0;for(let k=0;k<this.events.length;k+=5){if(this.events[k+3]&&at-this.events[k+4]<3&&Math.hypot(this.events[k]-x,this.events[k+2]-z)<36){slot=k;break;}if(this.events[k+4]<this.events[slot+4]||!this.events[k+3])slot=k;}
@@ -64,7 +64,11 @@ export class BattleDirector {
   let changed=newArea||kind!==intent.kind;
   if(changed){this.exposure=0;this.since=now;this.shotIndex=0;}
   else if(this.exposure>=6){this.shotIndex++;this.exposure=0;changed=true;reason='new perspective';}
-  const dominant=a&&a.action>=totalAction*.7;
+  const dominant=a&&a.action>=totalAction*.7,spread=kind==='combat'&&busy>1&&!dominant;
+  if(spread){if(!Number.isFinite(this.wideSince))this.wideSince=now;}else this.wideSince=-Infinity;
+  // New fronts can warrant coverage before the current local shot expires.
+  // Confirm the spread and retain a minimum readable hold before widening.
+  if(!changed&&spread&&intent.style!=='overview'&&now-this.wideSince>=.7&&this.exposure>=1.8){changed=true;this.shotIndex=0;reason='wider battle';}
   const desiredStyle=kind==='danger'?'danger':kind==='survey'||kind==='approach'?'survey':busy>1&&!dominant?(this.shotIndex%2?'battle':'overview'):['battle','dramatic','overview'][this.shotIndex%3];
   const style=changed?desiredStyle:intent.style;
   if(changed){intent.version++;intent.reason=reason;}

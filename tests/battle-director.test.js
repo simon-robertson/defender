@@ -36,6 +36,12 @@ test('a dominant battle gets dramatic and overview shots only after genuine scre
 test('empty scenes keep one calm establishing intention instead of generating endless new shots',()=>{
  const f=fixture();f.engine.enemies.activeTargets=[];f.engine.firing.states=[];f.d.update(f.engine,world);const version=f.d.intent.version;for(let n=1;n<12;n++)tick(f,n*.35,{seen:false});expect(f.d.intent.version).toBe(version);expect(f.d.intent.style).toBe('survey');
 });
+test('sustained additional fronts widen a local shot without erasing the scene exposure used for handovers',()=>{
+ const f=fixture(),rightGun=f.engine.firing.states.pop();f.d.update(f.engine,world);expect(f.d.intent.style).toBe('battle');
+ f.engine.firing.states.push(rightGun);tick(f,.35);expect(f.d.intent.style).toBe('battle');
+ for(let n=2;n<=7;n++)tick(f,n*.35);
+ expect(f.d.intent.subject).toBe(f.left);expect(f.d.intent.style).toBe('overview');expect(f.d.intent.reason).toBe('wider battle');expect(f.d.exposure).toBeGreaterThan(1.8);
+});
 test('projection agrees with the real game camera, including upward and exterior views',()=>{
  const c=new Camera({clientWidth:860,clientHeight:484,addEventListener(){},focus(){}},()=>{}),out=new Float64Array(3);
  for(const pose of [{x:500,y:90,z:230,yaw:1.2,pitch:.3,fov:56},{x:-15,y:49,z:298,yaw:5.05,pitch:.004,fov:56},{x:204,y:39,z:280,yaw:.27,pitch:-.09,fov:56}]){

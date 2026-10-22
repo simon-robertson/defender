@@ -20,17 +20,13 @@ Prepare the current game in the repository-root `docs/` directory so it can be s
 
 The hosted game must work with `docs/` as the document root, including a repository URL prefix. It must not require the development server or `/api/` endpoints. Preserve gameplay, graphics options, ordinary controls and player-facing error handling.
 
-## No testing by default
+## Proportionate testing
 
-A deployment request does **not** request tests, browser verification or a gameplay review. Unless the user explicitly asks:
+**User clarification, 22 October 2026:** the earlier “do not test” instruction applied only to its specific task. It is not a general restriction and does not carry into later tasks.
 
-- Do not run test suites, `check:deployment`, standalone validators, campaign replays or GPU checks.
-- Do not launch a preview server, open a browser, play waves, capture screenshots or exercise graphics options.
-- Do not create new tests, validation tools, reports or evidence checklists, or delegate deployment reviews.
+Run tests and validation appropriate to the change unless the current task explicitly asks to skip them. Use targeted automated tests for logic changes and browser/GPU checks when they resolve relevant visual or rendering concerns. A packaging-only request should remain focused; a full campaign replay or exhaustive review is not automatically necessary.
 
-The existing packager's built-in file/path safeguards may run normally. They do not imply a separate validation task. Do not delay completion for missing test or browser evidence. If packaging fails, fix the concrete packaging problem within scope; explain any unresolved failure briefly.
-
-`bun run preview:deployment` and `bun run check:deployment` remain optional tools for an explicit preview or validation request, respectively. Neither is part of the default deployment command.
+The packager's built-in safeguards may run normally. Preserve the user's active game session and use a separate session for browser checks when needed. Keep development evidence outside `docs/` and avoid unnecessary reports or validation tooling.
 
 ## Preserve existing work
 
@@ -45,4 +41,4 @@ Apply deployment adaptations to delivery copies through the existing packager. P
 - Existing ownership record: `build/deployment/manifest.json`.
 - Packaging command: `bun run deploy:local` (`scripts/deployment/build.js`).
 
-The first local package was prepared on 21 October 2026. It has not been committed, pushed or published by this deployment task. Previous testing requirements are retired; historical results do not impose work on future deployments.
+The first local package was prepared on 21 October 2026. It has not been committed, pushed or published by this deployment task. Historical results do not mandate repeating every check on future deployments; follow the proportionate testing policy above.

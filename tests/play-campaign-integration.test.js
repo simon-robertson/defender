@@ -31,11 +31,11 @@ test('each zone loads only its own enemy geometry with affordable defence pools 
    expect(capacity.maxOwnedUnits).toBe((zi+1)*32);expect(new Set(Object.keys(capacity.maxWaveEnemiesBySpecies))).toEqual(species);
    requests.length=0;let world,engine;
    try{
-    world=await loadPlayWorld(level.id,{wave,conditions:{night:false,weather:false}});
+    world=await loadPlayWorld(level.id,{wave,conditions:{night:false}});
     expect(new Set(world.playEnemyPools.keys())).toEqual(species);
     for(const id of Object.keys(PLAY_CONFIG.enemies))expect(requests.includes('/api/models/'+id)).toBe(species.has(id));
     for(const [key,pool]of world.playDefencePools)expect(pool.rigs.length).toBe(capacity.maxOwnedByFamily[key.split(':')[0]]);
-    expect(world.playConditions).toEqual({night:false,weather:false});expect(world.level.environment.weather.enabled).toBe(false);
+    expect(world.playConditions).toEqual({night:false});
     engine=new PlayEngine(world,{wave});engine.startWave();engine.advance(1);
     expect(engine.enemies.spawned).toBeGreaterThan(0);
     for(const state of engine.enemies.states.filter(s=>s.phase==='active'))for(const bone of state.rig.bones)expect([...bone.instance.matrix].every(Number.isFinite)).toBe(true);

@@ -24,7 +24,7 @@ Snapshot: **20 October 2026**. These lists describe implemented features, includ
 - **Automatic cameras:** scenic title view, path-focused preparation overview with full-landscape fallback, and the default aerial Drone action camera during combat/settling. View changes are immediate; manual pan/zoom and camera selectors are disabled in the player UI.
 - **Scene-aware Drone filming:** higher/farther viewpoints, varied safe openings, predictive encounter framing, continuous eased travel, survey drift, gimbal/zoom changes and fresh angles. Swept clearance avoids terrain, scenery, canopy and live actors; the camera is cosmetic and cannot affect combat.
 - **Pause and run screens:** pause/resume with P, frozen simulation/camera footage, loading/error handling, defeat, campaign completion and retry/title flows.
-- **Fixed level lighting progression:** each zone's four levels repeat day, late afternoon, early evening and night. Late-afternoon sunlight is brighter; conditions persist through the level's waves. Campaign weather is currently off.
+- **Fixed level lighting progression:** each zone's four levels repeat day, late afternoon, early evening and night. Late-afternoon sunlight is brighter; conditions persist through the level's waves.
 - **Autonomous ground critters:** zone-specific hares, lizards and beetles choose reachable destinations, hop/scuttle around scenery and defence envelopes, avoid one another and reserve destinations. Spawn/relocation checks require connected usable roaming ground.
 - **Autonomous birds:** supported tree/cactus perches, destination reservations, folded/flapping wings and clearance-tested take-off, flight and landing journeys. Wildlife can cross enemy paths.
 - **Wildlife fright and escape:** nearby enemies and explosions trigger bounded fleeing behaviour, with safe ground routes or bird departures, followed by a return to normal activity.
@@ -34,7 +34,7 @@ Snapshot: **20 October 2026**. These lists describe implemented features, includ
 - **Live performance HUD:** rolling FPS, frame interval, synchronous CPU app time and asynchronously sampled GPU render time, with explicit unsupported/pending/paused states where appropriate.
 - **Preview only — combat drones:** autonomous take-off, route-aware firing positions, twin-gun bursts, separate endurance/recharge/weapon timers and return/landing. Predictive avoidance accounts for scenery, terrain, defences, enemies, wildlife and other drones, with stable yielding at crossings and a level body steered by tilting fans.
 - **Preview only — power generators:** base generators enhance attacking defences in edge-adjacent same-height boxes by 25%, applying the strongest bonus once. Active recipients receive animated green plasma connections. Generator upgrade models exist; upgraded activation rules are not part of the campaign.
-- **Preview/developer controls:** shared model/combat/landscape studies, level switching, reset, slow motion, night/weather overrides and inspection diagnostics alongside the separate player game.
+- **Preview/developer controls:** shared model/combat/landscape studies, level switching, reset, slow motion, night lighting controls and inspection diagnostics alongside the separate player game.
 
 ## Rendering techniques and features
 
@@ -57,7 +57,6 @@ Snapshot: **20 October 2026**. These lists describe implemented features, includ
 - **Lit solid debris and persistent remains:** instanced model-coloured fragments participate in opaque, depth and shadow passes. Gravity, swept collision, supported resting, water drag and matched ordered-coverage fading provide consistent flight and cleanup.
 - **Debris/water impact rendering:** splash crowns, weighted droplets and paired expanding water-tinted rings, clipped to the relevant visible water surface. Submerged fragments lose momentum and sink.
 - **Refractive explosion shockwaves:** temporary screen-space distortion of the composed scene, including water and existing effects, with opaque/water depth protecting foreground objects.
-- **Optional zone weather rendering:** lit instanced rain, snow and autumn leaves, with wet-path reflection, snowy path treatment or leaf litter when enabled in previews. The campaign currently keeps weather disabled.
 - **DOM/SVG game interface:** borderless adjoining panels, model-derived portraits, sharp text/icons, entrance overlays and projected range/highlight indicators, separate from scene post-processing.
 - **Cached passes and bounded resources:** unchanged opaque/depth/shadow/vista results are reused; water/effects can animate independently. Effect pools, lazy GPU resources, reused buffers and explicit scene teardown limit unnecessary work and retained allocations.
 - **Asynchronous GPU profiling:** optional timestamp queries cover the actual first-to-final production render-pass span, with bounded readbacks and no render-loop wait. CPU submission/app timings remain separately measured.

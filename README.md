@@ -65,7 +65,7 @@ Zone A includes Dog/Roller/Moth, B Walker/Dune Tread/Twin Fan, C Tripod/Ray, and
 
 Each zone also has three cosmetic ground critters and three birds, with autonomous destinations and one scheduled wildlife decision per frame. Ground animals can cross paths and flee nearby living enemies or explosions; birds relocate between supported trees. Small turret identity panels glow and illuminate nearby surfaces. [Wildlife behaviour](project-docs/wildlife.md), [model lighting](project-docs/engine.md#emissive-turret-accent-lights).
 
-All levels currently start with **weather off**. The muzzle-driven weather shockwave experiment has been removed; enemy death shockwaves remain enabled. The author checkbox and preview **Weather: On/Off** button retain optional rain (A), snow (C), and purple/rust leaves (D), including their path-edge treatments; B stays clear. Disabled weather has no particle simulation or rendering work. [Weather details](project-docs/weather.md). The engine now batches instance uploads, caches stride contacts and refreshes only the render passes affected by a change. [Maintenance notes](project-docs/engine-maintenance.md).
+Weather rendering and its controls have been removed. The engine batches instance uploads, caches stride contacts and refreshes only the render passes affected by a change. [Maintenance notes](project-docs/engine-maintenance.md).
 
 The engine runs from a shared `requestAnimationFrame` loop with delta seconds. Water now has translucency, visible bed geometry, refraction and animated ripple glints. All player defences sit at enemy path height; scenery may still use mounds.
 

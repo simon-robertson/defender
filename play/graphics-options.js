@@ -1,4 +1,4 @@
-export const GRAPHICS_DEFAULTS=Object.freeze({critters:true,reflections:true,bloom:true,weather:true});
+export const GRAPHICS_DEFAULTS=Object.freeze({critters:true,reflections:true,bloom:true});
 export const GRAPHICS_STORAGE_KEY='defender.graphics.v1';
 export function graphicsOptions(value){
  return Object.fromEntries(Object.keys(GRAPHICS_DEFAULTS).map(key=>[key,typeof value?.[key]==='boolean'?value[key]:true]));

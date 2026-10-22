@@ -1,7 +1,6 @@
 import {FISH_MODEL,hasFishWater} from '../shared/fish-habitat.js';
 import {buildWorld,disposeWorld,addWorldRigPool} from '../engine/world.js';
 import {validateLevel} from '../shared/level.js';
-import {ZONE_WEATHER} from '../shared/weather.js';
 import {TerrainField,placementY} from '../shared/terrain.js';
 import {placementMatrix,partMatrices,multiply} from '../shared/math.js';
 import {TurretPreview,holdGunAcquisition} from '../game/turret-preview.js';
@@ -31,7 +30,7 @@ function configuredWave(config,wave,levelId=null){
 }
 export function composePlayLevel(source,placements=[],{wildlifePoints,models,conditions}={}){
  const level=structuredClone(source);
- if(conditions){level.environment={...level.environment,...(Number.isFinite(conditions.timeOfDay)?{timeOfDay:conditions.timeOfDay}:{}),weather:{enabled:Boolean(conditions.weather&&ZONE_WEATHER[level.zone])}};}
+ if(Number.isFinite(conditions?.timeOfDay))level.environment={...level.environment,timeOfDay:conditions.timeOfDay};
  delete level.previewMode;delete level.previewActors;delete level.actorRoutes;
  // Current A1's approved drone test remains an immutable preview source.
  level.placements=level.placements.filter(p=>models?models.get(p.model)?.role==='scenery':!['turret-study','arc-spire','missile-launcher','power-generator','drone-defence'].includes(p.model));

@@ -24,7 +24,7 @@ test('square production layouts retain generous completely empty deployment grou
    expect(terrain.flatBox(tower.box[0],tower.box[2])).toBe(24);
    expect(level.path.some(([x,,z])=>Math.hypot(x-tower.box[0],z-tower.box[2])<2)).toBe(true);
   }
-  expect(level.environment.weather.enabled).toBe(false);
+
  }
  expect(routes.size).toBe(4);
 });

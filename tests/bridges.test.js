@@ -11,7 +11,6 @@ import {debrisSupport,sweepScenery} from '../engine/debris-collision.js';
 import {actorsForPreview} from '../game/preview-actors.js';
 import {EnemyPreview} from '../game/enemy-preview.js';
 import {DefencePreview} from '../game/defence-preview.js';
-import {RainField} from '../engine/rain.js';
 
 function crossing(){
  const level=newLevel('bridge-test');level.size=[4,3];level.previewMode='layout';level.path=[[0,0,1],[1,0,1],[2,0,1],[3,0,1]];
@@ -70,10 +69,10 @@ test('wooden deck and natural terrain exactly match an independent solid-cell su
  const reverse=crossing();reverse.path=reverse.path.map(([x,y,z])=>[z,y,x]);reverse.size=[3,4];reverse.terrain.boxes=reverse.terrain.boxes.map(b=>({...b,box:b.box.toReversed()}));reverse.bridges[0].boxes=reverse.bridges[0].boxes.map(b=>b.toReversed());expect(()=>validateLevel(reverse)).not.toThrow();expect(bridgeQuads(reverse).filter(q=>q.axis===1&&q.sign===1).reduce((n,q)=>n+q.width*q.height,0)).toBe(1152);
 });
 
-test('weather rebuild preserves the exact water mesh and matte nonemissive wood without stone or soil on the deck',()=>{
- const level=crossing(),before=JSON.stringify(level),dry=terrainGeometry(level,{enabled:false,type:'rain'}),wet=terrainGeometry(level,{enabled:true,type:'rain'});
- expect(wet.water.vertices).toEqual(dry.water.vertices);expect(wet.water.indices).toEqual(dry.water.indices);expect(BRIDGE_MATERIALS.every(m=>m.emission===0&&m.reflectiveness===0&&!m.castsLight)).toBe(true);
- for(const mesh of [dry.ground,wet.ground])for(let i=0;i<mesh.quads.length;i++){
+test('bridge geometry preserves matte nonemissive wood without stone or soil on the deck',()=>{
+ const level=crossing(),before=JSON.stringify(level),dry=terrainGeometry(level);
+ expect(BRIDGE_MATERIALS.every(m=>m.emission===0&&m.reflectiveness===0&&!m.castsLight)).toBe(true);
+ for(const mesh of [dry.ground])for(let i=0;i<mesh.quads.length;i++){
   const q=mesh.quads[i];if(q.axis!==1||q.sign!==1||q.origin[1]!==24||q.origin[0]<24||q.origin[0]>=72||q.origin[2]<24||q.origin[2]>=48)continue;
   for(let vertex=i*44;vertex<(i+1)*44;vertex+=11){expect(mesh.vertices[vertex+9]).toBe(0);expect(mesh.vertices[vertex+10]).toBe(0);}
   expect(q.material).toBeGreaterThanOrEqual(21);
@@ -85,16 +84,13 @@ test('weather rebuild preserves the exact water mesh and matte nonemissive wood 
  const changed=structuredClone(level);changed.bridges=[];changed.path=[];const withoutDeck=meshes.scene(changed);expect(withoutDeck.some(entry=>entry.key.startsWith('bridge-'))).toBe(false);expect(meshes.bridge).toBeNull();expect(bankTop(withoutDeck)).toBe(true);
 });
 
-test('bridge top supports path camera, off-line ground clearance, debris and rain while preserving an open under-deck gap',()=>{
+test('bridge top supports path camera, off-line ground clearance, debris while preserving an open under-deck gap',()=>{
  const level=crossing(),world=buildWorld(level,new Map()),visibility=world.visibility,clearance=new EnemyImpactClearance(world),camera=new Camera({addEventListener(){},focus(){},clientWidth:1200,clientHeight:800},()=>{});
  try{
   expect(visibility.blocked(36,25,36,36,22,36)).toBe(true);expect(visibility.blocked(36,22,36,60,22,36)).toBe(false);expect(visibility.blocked(36,24.01,36,60,24.01,36)).toBe(false);
   expect(debrisSupport(visibility,36,36,1,30)).toBe(24);const hit=new Float64Array(5);expect(sweepScenery(visibility,36,30,36,0,-12,0,1,hit)).toBe(true);expect(hit[2]).toBe(1);expect(hit[4]).toBe(24);
   expect(clearance.clear([30,24,30,42,44,42])).toBe(true);expect(clearance.heights[1+1*level.size[0]]).toBe(24);
   camera.setLevel(level);expect(camera.toggleMode(()=>.3)).toBe(true);expect(camera.position[1]).toBe(24+PATH_CAMERA_HEIGHT);expect(camera.groundHeight(36,36)).toBe(24);
-  const rainy={...world,weather:{type:'rain',enabled:true}},rain=new RainField(rainy);let deckDrops=0;
-  for(let i=0;i<rain.instanceData.length;i+=8){const x=rain.instanceData[i],z=rain.instanceData[i+1];if(x>=24&&x<72&&z>=24&&z<48){expect(rain.instanceData[i+2]).toBe(24);deckDrops++;}}
-  expect(deckDrops).toBeGreaterThan(0);rain.dispose();
   expect(actorsForPreview(level)).toEqual([]);const enemy=new EnemyPreview(world,()=>{}),defences=new DefencePreview(world,()=>{});expect(enemy.states).toEqual([]);expect(defences.states).toEqual([]);expect(defences.missiles.pool).toBeNull();enemy.dispose();defences.dispose();
  }finally{camera.clearLevel();clearance.dispose();disposeWorld(world);}
  expect(camera.groundHeights).toBeNull();expect(visibility.bounds).toBeNull();

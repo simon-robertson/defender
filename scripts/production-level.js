@@ -18,7 +18,7 @@ export function productionLevel(zone){
   if(x!==endX&&z!==endZ)throw new Error('Route segments must be orthogonal.');
   while(x!==endX||z!==endZ){x+=Math.sign(endX-x);z+=Math.sign(endZ-z);level.path.push([x,0,z]);}
  }
- level.environment={timeOfDay:10.5,weather:{enabled:false},sky:{direction:[-.65,1,-.45],color:profile.sky,intensity:.88,ambient:profile.ambient,ambientIntensity:.48}};
+ level.environment={timeOfDay:10.5,sky:{direction:[-.65,1,-.45],color:profile.sky,intensity:.88,ambient:profile.ambient,ambientIntensity:.48}};
  level.waterMaterial={...defaultWaterMaterial(),...(zone==='A'?{}:{color:profile.water})};
  const terrain=new TerrainField(level);
  for(const [x,z,ground,surface] of layout.water)terrain.setBox(x,z,ground,surface);

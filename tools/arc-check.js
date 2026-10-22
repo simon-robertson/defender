@@ -2,9 +2,6 @@
 import {geometry,composite,compositeBloom,uniforms} from '/engine/shaders.js';
 import {shotLighting} from '/engine/shot-shaders.js';
 import {arcParticles} from '/engine/arc-shaders.js';
-import {rainParticles,rainLighting} from '/engine/rain-shaders.js';
-import {snowParticles} from '/engine/snow-shaders.js';
-import {leafParticles,leafLighting} from '/engine/leaf-shaders.js';
 import {damageCubes,damageParticles} from '/engine/damage-shaders.js';
 import {ArcEffects} from '/engine/arc-effects.js';
 import {ARC_LIGHT_BYTES,ARC_EMPTY_LIGHT_BYTES,ARC_LIGHT_FLOATS,ARC_LIGHT_STRENGTH,ARC_TRUNK_SEGMENTS} from '/shared/arc-effects.js';
@@ -16,15 +13,13 @@ try{
  device.addEventListener('uncapturederror',event=>errors.push(event.error.message));
  const check=(condition,label)=>{if(!condition)throw new Error(label);checks.push(label);};
  const shader=async(code,label)=>{const module=device.createShaderModule({label,code});const errors=(await module.getCompilationInfo()).messages.filter(m=>m.type==='error');if(errors.length)throw new Error(label+': '+errors.map(m=>m.message).join('\n'));return module;};
- for(const [label,code]of [['opaque',geometry],['water and SSR',composite],['bloom display',compositeBloom],['rain',rainParticles],['snow',snowParticles],['leaves',leafParticles],['debris',damageCubes],['smoke and blast',damageParticles]]){await shader(code,label);check(true,label+' production module compiles with tube lighting');}
- const numeric=await shader(uniforms+shotLighting(0,true)+rainLighting+`fn visibility(world:vec3<f32>,normal:vec3<f32>)->f32{return 1;}`+leafLighting+`
+ for(const [label,code]of [['opaque',geometry],['water and SSR',composite],['bloom display',compositeBloom],['debris',damageCubes],['smoke and blast',damageParticles]]){await shader(code,label);check(true,label+' production module compiles with tube lighting');}
+ const numeric=await shader(uniforms+shotLighting(0,true)+`
  struct Sample {position:vec4<f32>,normal:vec4<f32>};
  @group(1) @binding(0) var<storage,read> samples:array<Sample>;
  @group(1) @binding(1) var<storage,read_write> values:array<vec4<f32>>;
  @compute @workgroup_size(1) fn main(@builtin(global_invocation_id) id:vec3<u32>){
   let s=samples[id.x];var value=muzzleLighting(s.position.xyz,s.normal.xyz);
-  if(s.normal.w==1){value=rainMuzzleLighting(s.position.xyz,s.normal.xyz);}
-  if(s.normal.w==2){value=leafMuzzleLighting(s.position.xyz,s.normal.xyz);}
   values[id.x]=vec4<f32>(value,1);
  }`,'Production local material responses');
  const compute=await device.createComputePipelineAsync({layout:'auto',compute:{module:numeric,entryPoint:'main'}});
@@ -46,8 +41,6 @@ try{
  const split=await run();check([0,1,2].every(i=>close(split[i],lit[i])),'Splitting one tube at a joint does not multiply its brightness');
  arcData[0]=2;arcData.set(arcData.slice(4,4+ARC_LIGHT_FLOATS),4+ARC_LIGHT_FLOATS);const doubled=await run();check([0,1,2].every(i=>close(doubled[i],lit[i]*2)),'Independent strikes add their light');
  arcData[0]=1;arcData[9]=1;
- sampleData[7]=1;sampleData[6]=1;sampleData[5]=0;const scatter=await run();check(close(scatter[0],lit[0]*.28),'Rain and snow use their production scattering response along the tube');
- sampleData[7]=2;sampleData[5]=-1;sampleData[6]=0;const leaf=await run();check(close(leaf[0],lit[0]),'Tumbling leaves receive tube light on their reverse side');
  sampleData[7]=0;sampleData[5]=1;pointData[0]=1;pointData.set([0,4,0,48,1,.61,.26,10],4);
  const mixed=await run();arcData[0]=0;const point=await run();check([0,1,2].every(i=>close(mixed[i],lit[i]+point[i])),'Existing point lights and new tube lights combine without replacing either');
  check(point[0]>point[1]&&point[1]>point[2]&&point[0]>0,'Existing point light colour and contribution are preserved');pointData.fill(0);

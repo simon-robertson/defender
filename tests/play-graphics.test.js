@@ -9,13 +9,13 @@ test('graphics default on, restore only valid booleans and tolerate unavailable 
  expect(loadGraphicsOptions({getItem:()=>null})).toEqual(GRAPHICS_DEFAULTS);
  expect(loadGraphicsOptions({getItem:()=>'{broken'})).toEqual(GRAPHICS_DEFAULTS);
  expect(loadGraphicsOptions({getItem(){throw new Error('Storage blocked');}})).toEqual(GRAPHICS_DEFAULTS);
- expect(graphicsOptions({critters:false,reflections:'false',bloom:null,extra:false})).toEqual({critters:false,reflections:true,bloom:true,weather:true});
- expect(loadGraphicsOptions({getItem:()=>'{"critters":false,"reflections":true,"bloom":false}'})).toEqual({critters:false,reflections:true,bloom:false,weather:true});
+ expect(graphicsOptions({critters:false,reflections:'false',bloom:null,extra:false})).toEqual({critters:false,reflections:true,bloom:true});
+ expect(loadGraphicsOptions({getItem:()=>'{"critters":false,"reflections":true,"bloom":false}'})).toEqual({critters:false,reflections:true,bloom:false});
  const values=new Map(),storage={getItem:key=>values.get(key),setItem:(key,value)=>values.set(key,value)};
- const selected={critters:false,reflections:false,bloom:false,weather:false};saveGraphicsOptions(selected,storage);
+ const selected={critters:false,reflections:false,bloom:false};saveGraphicsOptions(selected,storage);
  expect(values.has(GRAPHICS_STORAGE_KEY)).toBe(true);expect(loadGraphicsOptions(storage)).toEqual(selected);
  expect(()=>saveGraphicsOptions(selected,{setItem(){throw new Error('Storage blocked');}})).not.toThrow();
- expect(GRAPHICS_DEFAULTS).toEqual({critters:true,reflections:true,bloom:true,weather:true});
+ expect(GRAPHICS_DEFAULTS).toEqual({critters:true,reflections:true,bloom:true});
 });
 
 test('critters off omits all wildlife assets, fish, navigation and ticks while combat/deployment remain usable',async()=>{

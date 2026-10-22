@@ -2,9 +2,6 @@
 import {geometry,composite,compositeBloom,uniforms} from '/engine/shaders.js';
 import {shotLighting} from '/engine/shot-shaders.js';
 import {arcParticles} from '/engine/arc-shaders.js';
-import {rainParticles,rainLighting} from '/engine/rain-shaders.js';
-import {snowParticles} from '/engine/snow-shaders.js';
-import {leafParticles,leafLighting} from '/engine/leaf-shaders.js';
 import {damageCubes,damageParticles} from '/engine/damage-shaders.js';
 import {ArcEffects} from '/engine/arc-effects.js';
 import {PlasmaLinks} from '/engine/plasma-links.js';
@@ -18,9 +15,9 @@ try{
  device.addEventListener('uncapturederror',event=>errors.push(event.error.message));
  const check=(condition,label)=>{if(!condition)throw new Error(label);checks.push(label);};
  const shader=async(code,label)=>{const module=device.createShaderModule({label,code});const errors=(await module.getCompilationInfo()).messages.filter(m=>m.type==='error');if(errors.length)throw new Error(label+': '+errors.map(m=>m.message).join('\n'));return module;};
- for(const [label,code]of [['opaque',geometry],['water and SSR',composite],['bloom display',compositeBloom],['rain',rainParticles],['snow',snowParticles],['leaves',leafParticles],['debris',damageCubes],['smoke and blast',damageParticles]]){await shader(code,label);check(true,label+' production module compiles with tube lighting');}
+ for(const [label,code]of [['opaque',geometry],['water and SSR',composite],['bloom display',compositeBloom],['debris',damageCubes],['smoke and blast',damageParticles]]){await shader(code,label);check(true,label+' production module compiles with tube lighting');}
  const litCode=shotLighting(0,true).replace('let segment=light.segments[segmentIndex];','atomicAdd(&work.segments,1u);let segment=light.segments[segmentIndex];');
- const numeric=await shader(uniforms+litCode+rainLighting+`fn visibility(world:vec3<f32>,normal:vec3<f32>)->f32{return 1;}`+leafLighting+`
+ const numeric=await shader(uniforms+litCode+`
  struct Work {segments:atomic<u32>};
  @group(1) @binding(2) var<storage,read_write> work:Work;
  struct Sample {position:vec4<f32>,normal:vec4<f32>};
@@ -28,8 +25,6 @@ try{
  @group(1) @binding(1) var<storage,read_write> values:array<vec4<f32>>;
  @compute @workgroup_size(1) fn main(@builtin(global_invocation_id) id:vec3<u32>){
   let s=samples[id.x];var value=muzzleLighting(s.position.xyz,s.normal.xyz);
-  if(s.normal.w==1){value=rainMuzzleLighting(s.position.xyz,s.normal.xyz);}
-  if(s.normal.w==2){value=leafMuzzleLighting(s.position.xyz,s.normal.xyz);}
   values[id.x]=vec4<f32>(value,1);
  }`,'Production local material responses');
  const compute=await device.createComputePipelineAsync({layout:'auto',compute:{module:numeric,entryPoint:'main'}});
@@ -52,8 +47,6 @@ try{
  const split=await run();check([0,1,2].every(i=>close(split[i],lit[i])),'Splitting one tube at a joint does not multiply its brightness');
  arcData[0]=2;arcData.set(arcData.slice(4,4+ARC_LIGHT_FLOATS),4+ARC_LIGHT_FLOATS);const doubled=await run();check([0,1,2].every(i=>close(doubled[i],lit[i]*2)),'Independent strikes add their light');
  arcData[0]=1;arcData[9]=1;
- sampleData[7]=1;sampleData[6]=1;sampleData[5]=0;const scatter=await run();check(close(scatter[0],lit[0]*.28),'Rain and snow use their production scattering response along the tube');
- sampleData[7]=2;sampleData[5]=-1;sampleData[6]=0;const leaf=await run();check(close(leaf[0],lit[0]),'Tumbling leaves receive tube light on their reverse side');
  sampleData[7]=0;sampleData[5]=1;pointData[0]=1;pointData.set([0,4,0,48,1,.61,.26,10],4);
  const mixed=await run();arcData[0]=0;const point=await run();check([0,1,2].every(i=>close(mixed[i],lit[i]+point[i])),'Existing point lights and new tube lights combine without replacing either');
  check(point[0]>point[1]&&point[1]>point[2]&&point[0]>0,'Existing point light colour and contribution are preserved');pointData.fill(0);
@@ -65,8 +58,6 @@ try{
  const plasma=new PlasmaLinks();plasma.setLinks([{source:[-60,5,0],target:[60,5,0]}]);plasma.advance(.3);plasma.prepare();arcData.fill(0);arcData.set(plasma.lightData);
  const green=await run();readbacks.plasmaMiddle=Array.from(green.slice(0,3));
  check(green[1]>0&&green[1]>green[0]*5&&green[1]>green[2]*3,'Actual plasma illuminates its middle in green although both anchors are beyond the light radius');
- sampleData[7]=1;sampleData[5]=0;sampleData[6]=1;const greenRain=await run();check(greenRain[1]>greenRain[0]*5,'Rain and snow receive green plasma scattering');
- sampleData[7]=2;sampleData[5]=-1;sampleData[6]=0;const greenLeaf=await run();check(close(greenLeaf[1],green[1]),'Leaf reverse faces receive the same green tube illumination');
  sampleData[7]=0;sampleData[5]=1;arcData.fill(0);arcData[0]=MAX_TUBE_LIGHTS;arcData.set(plasma.lightData.slice(4,4+ARC_LIGHT_FLOATS),4+(MAX_TUBE_LIGHTS-1)*ARC_LIGHT_FLOATS);
  const finalTube=await run();check(close(finalTube[1],green[1]),'The final reserved plasma slot contributes after every combat Arc slot');
  arcData.fill(0);arcData[0]=MAX_TUBE_LIGHTS;

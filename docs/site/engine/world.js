@@ -10,8 +10,7 @@ import {meshPart,meshQuads} from '../shared/mesher.js';
 import {identity,placementMatrix,partMatrices,multiply} from '../shared/math.js';
 import {TERRAIN_MATERIALS,modelForZone} from '../shared/zone-style.js';
 import {SceneryVisibility} from './visibility.js';
-import {levelWeather,WET_PATH_REFLECTIVENESS,WET_MORTAR_REFLECTIVENESS} from '../shared/weather.js';
-import {pathSurfaceQuads,pathShoulderQuads,PATH_SHOULDER_MATERIALS,PUDDLE_MATERIALS,SNOW_MATERIALS,LEAF_MATERIALS} from '../shared/path-surface.js';
+import {pathSurfaceQuads,pathShoulderQuads,PATH_SHOULDER_MATERIALS} from '../shared/path-surface.js';
 
 // Load-time colour patches across several boxes. The old per-box colour cycle
 // produced a checkerboard on broad deployment courts; keep those surfaces quiet.
@@ -23,14 +22,8 @@ function groundMaterial(bx,bz){
 }
 
 // Surface replacement, never a path decal on top of an existing ground face.
-export function terrainGeometry(level,weather=levelWeather(level)){
-  const basePalette=TERRAIN_MATERIALS[level.zone];
-  const raining=weather.enabled&&weather.type==='rain';
-  const snowing=weather.enabled&&weather.type==='snow';
-  const leaves=weather.enabled&&weather.type==='leaves';
-  // Pool patches replace the existing flat path surface, so depth coverage and
-  // terrain height remain unchanged. All model materials stay matte.
-  const terrainPalette=raining?[...basePalette.map((material,i)=>i>=6&&i<=9?{...material,reflectiveness:i===9?WET_MORTAR_REFLECTIVENESS:WET_PATH_REFLECTIVENESS}:material),...PUDDLE_MATERIALS]:snowing?[...basePalette,...SNOW_MATERIALS]:leaves?[...basePalette,...LEAF_MATERIALS]:[...basePalette];
+export function terrainGeometry(level){
+  const terrainPalette=[...TERRAIN_MATERIALS[level.zone]];
   const shoulderMaterialStart=terrainPalette.length;terrainPalette.push(...PATH_SHOULDER_MATERIALS);
   const bridgeMaterialStart=terrainPalette.length;terrainPalette.push(...BRIDGE_MATERIALS);
   const field=new TerrainField(level),route=field.path,quads=[],waterQuads=[],shoulderCells=new Int8Array(24*24);
@@ -46,7 +39,7 @@ export function terrainGeometry(level,weather=levelWeather(level)){
           // Bed colour patches are real non-overlapping face materials, at the authored ground height.
           for(let iz=0;iz<24;iz+=4)for(let ix=0;ix<24;ix+=4)quads.push({origin:[x+ix,y,z+iz],axis:1,sign:1,width:4,height:4,material:12+((bx*31+bz*7+ix*3+iz*11+(ix*iz)/16)%7)%4});
         }else if(route.has(bx+','+bz)){
-          quads.push(...pathSurfaceQuads(route,bx,bz,y,snowing?'snow':leaves?'leaves':raining));
+          quads.push(...pathSurfaceQuads(bx,bz,y));
         }else{
           const material=groundMaterial(bx,bz);
           const shoulder=y===level.pathHeight?pathShoulderQuads(shoulderRoute,bx,bz,y,material,shoulderMaterialStart,shoulderCells):null;
@@ -83,7 +76,7 @@ export function buildWorld(level,models,{actors=[],includeFish=false}={}){
   if(isNonCombatPreview(level)&&actors.some(actor=>models.get(actor.model).role!=='scenery'))throw new Error('Landscape and layout previews only support cosmetic scenery actors.');
   const styledModels=new Map([...models].map(([id,model])=>[id,modelForZone(model,level.zone)]));
   const field=new TerrainField(level),route=field.path;
-  const weather=levelWeather(level),terrain=terrainGeometry(level,weather),waterMaterial=validateWaterMaterial(level.waterMaterial??defaultWaterMaterial());
+  const terrain=terrainGeometry(level),waterMaterial=validateWaterMaterial(level.waterMaterial??defaultWaterMaterial());
   const entries=[{key:'ground',mesh:terrain.ground,transforms:[identity()]}],groups=new Map(),rigs=new Map(),actorRigs=new Map(),bindPoses=new Map();
   const addRig=(p,root,target)=>{
     const model=styledModels.get(p.model),parts=model.variants[p.variant].parts,poseKey=p.model+':'+p.variant,instances=[];
@@ -112,7 +105,7 @@ export function buildWorld(level,models,{actors=[],includeFish=false}={}){
   // initial root/pose before the first rendered frame; source layouts stay intact.
   for(const actor of actors)addRig(actor,identity(),actorRigs);
   entries.push(...groups.values());
-  const world={level,entries,rigs,actors:actorRigs,visibility:new SceneryVisibility(level,models),weather,assetIds:[...models.keys()],water:{key:'water',mesh:terrain.water,transforms:[identity()]},waterMaterial,width:level.size[0]*24,length:level.size[1]*24,
+  const world={level,entries,rigs,actors:actorRigs,visibility:new SceneryVisibility(level,models),assetIds:[...models.keys()],water:{key:'water',mesh:terrain.water,transforms:[identity()]},waterMaterial,width:level.size[0]*24,length:level.size[1]*24,
     quads:terrain.water.quads.length+entries.reduce((n,e)=>n+e.mesh.quads.length*e.transforms.length,0),
     uniqueQuads:terrain.water.quads.length+entries.reduce((n,e)=>n+e.mesh.quads.length,0)};
   world.visibility.setDefences(level,models,rigs);
@@ -147,5 +140,5 @@ export function disposeWorld(world){
  if(!world)return;
  world.visibility?.dispose();world.visibility=null;
  world.entries.length=0;world.rigs.clear();world.actors?.clear();world.assetIds.length=0;
- world.onDebrisWaterImpact=null;world.fishHabitat=null;world.fishActors?.splice(0);world.level=null;world.water=null;world.waterMaterial=null;world.weather=null;world.quads=world.uniqueQuads=0;
+ world.onDebrisWaterImpact=null;world.fishHabitat=null;world.fishActors?.splice(0);world.level=null;world.water=null;world.waterMaterial=null;world.quads=world.uniqueQuads=0;
 }

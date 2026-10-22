@@ -26,19 +26,19 @@ const DEPTH='Initial camera depth',SHADOW='Shadow map',OPAQUE='Visible opaque su
 function mockRenderer(options={}){
  const descriptors=new Map(),globals={GPUBufferUsage:{COPY_DST:8,INDEX:16,VERTEX:32,UNIFORM:64,STORAGE:128},GPUShaderStage:{VERTEX:1,FRAGMENT:2},GPUTextureUsage:{RENDER_ATTACHMENT:1,TEXTURE_BINDING:2,COPY_SRC:4,COPY_DST:8},devicePixelRatio:1};
  for(const [key,value] of Object.entries(globals)){descriptors.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{configurable:true,value});}
- const allocated=[],writes=[],passes=[],submissions=[],textures=[],copies=[];
+ const allocated=[],writes=[],passes=[],submissions=[],textures=[];
  const device={features:new Set(),limits:{maxTextureDimension2D:4096},createBuffer({size,usage}){const buffer={size,usage,data:new Uint8Array(size),destroyCalls:0,destroy(){this.destroyCalls++;}};allocated.push(buffer);return buffer;},
   createTexture(){const texture={destroyCalls:0,createView(){return {texture};},destroy(){this.destroyCalls++;}};textures.push(texture);return texture;},createBindGroup:descriptor=>descriptor,
   createShaderModule:descriptor=>({...descriptor,getCompilationInfo:async()=>({messages:[]})}),createBindGroupLayout:descriptor=>descriptor,createPipelineLayout:descriptor=>descriptor,createRenderPipeline:descriptor=>descriptor,createRenderPipelineAsync:async descriptor=>descriptor,
   queue:{writeBuffer(buffer,offset,data,dataOffset=0,size){if(buffer.destroyCalls)throw new Error('Stale buffer upload.');const stride=data.BYTES_PER_ELEMENT,start=dataOffset*stride,length=size===undefined?data.byteLength-start:size*stride;buffer.data.set(new Uint8Array(data.buffer,data.byteOffset+start,length),offset);writes.push({buffer,offset,bytes:length});},submit(buffers){submissions.push(buffers);}},
-  createCommandEncoder(){return {copyTextureToTexture(source,target,size){copies.push({source:{...source},target:{...target},size:[...size],afterPasses:passes.length});},beginRenderPass(descriptor){const record={label:descriptor.label,descriptor,indexed:[],direct:[]};passes.push(record);let instances,pipeline;return {setPipeline(value){pipeline=value;},setBindGroup(){},setVertexBuffer(slot,buffer){if(slot===1)instances=buffer;},setIndexBuffer(){},draw(...args){record.direct.push({pipeline,args});},drawIndexed(indexCount,instanceCount){record.indexed.push({instances,indexCount,instanceCount});},end(){}};},finish(){return {};}};},destroy(){}};
+  createCommandEncoder(){return {beginRenderPass(descriptor){const record={label:descriptor.label,descriptor,indexed:[],direct:[]};passes.push(record);let instances,pipeline;return {setPipeline(value){pipeline=value;},setBindGroup(){},setVertexBuffer(slot,buffer){if(slot===1)instances=buffer;},setIndexBuffer(){},draw(...args){record.direct.push({pipeline,args});},drawIndexed(indexCount,instanceCount){record.indexed.push({instances,indexCount,instanceCount});},end(){}};},finish(){return {};}};},destroy(){}};
  const canvas={width:960,height:640,clientWidth:960,clientHeight:640,dataset:{},addEventListener(){},focus(){}};
  const r=new WorldRenderer(canvas,message=>{throw new Error(message);},{waterReflections:'ssr',...options});r.device=device;r.context={getCurrentTexture:()=>({createView:()=>({})})};r.ready=true;
  r.uniform=device.createBuffer({size:368,usage:64});const effects=new ShotEffects(()=>.5);r.setShotEffects(effects);r.shotUniform=device.createBuffer({size:r.localLightData.byteLength,usage:64});r.shotInstances=device.createBuffer({size:effects.instanceData.byteLength,usage:32});
  r.emptyArcLights=device.createBuffer({size:ARC_EMPTY_LIGHT_BYTES,usage:128});r.bindLocalLights();
  let cameraUpdates=0;const update=r.camera.update.bind(r.camera);r.camera.update=aspect=>{cameraUpdates++;update(aspect);};
- const reset=()=>{writes.length=0;passes.length=0;copies.length=0;cameraUpdates=0;};
- return {r,effects,allocated,writes,passes,submissions,textures,copies,reset,get cameraUpdates(){return cameraUpdates;},cleanup(){r.dispose();for(const [key,descriptor] of descriptors){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}};
+ const reset=()=>{writes.length=0;passes.length=0;cameraUpdates=0;};
+ return {r,effects,allocated,writes,passes,submissions,textures,reset,get cameraUpdates(){return cameraUpdates;},cleanup(){r.dispose();for(const [key,descriptor] of descriptors){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}};
 }
 function smallWorld(){
  const level=newLevel('render-test');level.size=[3,2];level.environment=defaultEnvironment();level.path=[[0,0,0],[1,0,0]];level.terrain.boxes=[{box:[2,1],ground:4,water:12}];
@@ -47,45 +47,6 @@ function smallWorld(){
 }
 const labels=f=>f.passes.map(pass=>pass.label);
 const BLOOM=['Selective bloom emitters','Selective bloom horizontal','Selective bloom vertical'];
-
-test('rain captures completed combat display before lensing, reuses its image and releases on resize/off/unload',()=>{
- const f=mockRenderer(),r=f.r,w=smallWorld(),presentation={createView:()=>({})};r.context.getCurrentTexture=()=>presentation;
- let lastPass;r.gpuTimer={reset(){},begin(encoder,pass){lastPass=pass;},end(){},submitted(){},dispose(){}};
- try{
-  r.camera.overviewFov=60;r.setWorld(w);r.render(0,0);expect(r.frameData[71]).toBe(1);expect(r.rainRefraction).toBeUndefined();expect(f.copies).toHaveLength(0);
-  r.setWeather(true);f.effects.emit(identity(),[[0,0,0],[2,0,0]],0);f.effects.prepare();f.reset();r.render(0,0);
-  const rain=r.rainRefraction,capture=rain.texture,group=rain.group;
-  expect(rain.bytes).toBe(960*640*4);expect(lastPass).toBe(rain.pass);expect(f.copies).toHaveLength(1);
-  expect(f.copies[0].source.texture).toBe(presentation);expect(f.copies[0].target.texture).toBe(capture);
-  const index=labels(f).indexOf(DISPLAY);expect(f.passes[index].direct.some(call=>call.pipeline===r.shotPipeline)).toBe(true);
-  expect(f.copies[0].afterPasses).toBe(index+1);expect(labels(f).at(-1)).toBe('Refractive rain');
-  expect(f.passes.at(-1).descriptor.colorAttachments[0].loadOp).toBe('load');expect(f.passes.at(-1).direct[0].args).toEqual([6,r.rain.count]);
-  f.reset();r.render(0,0);expect(rain.texture).toBe(capture);expect(rain.group).toBe(group);expect(f.copies).toHaveLength(1);
-  r.setDamageEffects({prepare(){},cubeCount:0,cubeRevision:0,particleCount:0,lightCount:0,shockwaveCount:1,shockwaveData:new Float32Array(8)});f.reset();r.render(0,0);
-  expect(f.copies[0].source.texture).toBe(r.shockwaveTarget);expect(lastPass).toBe(r.shockwavePass);expect(labels(f).slice(-2)).toEqual(['Refractive rain','Explosion shockwave refraction']);
-  r.setDamageEffects(null);r.canvas.clientWidth=1000;r.render(0,0);expect(capture.destroyCalls).toBe(1);expect(rain.bytes).toBe(1000*640*4);
-  const resized=rain.texture;r.setWeather(false);expect(resized.destroyCalls).toBe(1);expect(rain.bytes).toBe(0);f.reset();r.render(0,0);expect(f.copies).toHaveLength(0);expect(labels(f)).not.toContain('Refractive rain');expect(lastPass).toBe(r.displayPass);
-  r.setWeather(true);r.render(0,0);const final=rain.texture;r.clearWorld();expect(final.destroyCalls).toBe(1);expect(rain.group).toBeNull();expect(rain.bytes).toBe(0);
- }finally{f.cleanup();disposeWorld(w);}
- expect(f.textures.every(texture=>texture.destroyCalls===1)).toBe(true);
-});
-
-test('moving rain reuses a static dry scene capture and refreshes camera, options, combat and expiry',()=>{
- const f=mockRenderer(),r=f.r,level=newLevel('rain-cache');level.size=[3,2];level.environment=defaultEnvironment();const world=buildWorld(level,new Map());
- try{
-  r.setWorld(world);r.setWeather(true);r.render(0,0);expect(f.copies).toHaveLength(1);const capture=r.rainRefraction.texture;
-  f.reset();r.render(.1,.1);expect(r.rain.phase).toBeGreaterThan(0);expect(f.copies).toHaveLength(0);expect(labels(f)).toEqual([DISPLAY,'Refractive rain']);expect(r.rainRefraction.texture).toBe(capture);
-  r.requestDraw();f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
-  r.setGraphicsOptions({reflections:false});f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
-  f.reset();r.render(0,.1);expect(f.copies).toHaveLength(0);
-  f.effects.emit(identity(),[[0,0,0],[2,0,0]],0);f.effects.prepare();f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
-  f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
-  f.effects.reset();f.effects.prepare();f.reset();r.render(0,.1);expect(f.copies).toHaveLength(1);
-  f.reset();r.render(.1,.2);expect(f.copies).toHaveLength(0);
-  r.setLightingColors('#102030','#405060');f.reset();r.render(0,.2);expect(f.copies).toHaveLength(1);
-  r.setWeather(false);expect(capture.destroyCalls).toBe(1);expect(r.rainRefraction.valid).toBe(false);
- }finally{f.cleanup();disposeWorld(world);}
-});
 
 test('graphics options default on, validate atomically and leave geometry caches intact',()=>{
  const f=mockRenderer(),r=f.r,w=smallWorld();
@@ -170,7 +131,7 @@ test('enemy debris uses the shared opaque/depth/shadow passes and retires withou
  }finally{f.cleanup();disposeWorld(world);}
 });
 
-test('render invalidation refreshes only dependent passes for lights, camera, poses, weather and resize',()=>{
+test('render invalidation refreshes only dependent passes for lights, camera, poses and resize',()=>{
  const f=mockRenderer(),r=f.r,world=smallWorld();let elapsed=0;const render=()=>{f.reset();r.render(1/60,elapsed+=1/60);};
  try{
   r.setWorld(world);render();expect(r.bloom).toBeNull();expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,WATER,DISPLAY]);expect(f.cameraUpdates).toBe(1);
@@ -181,8 +142,6 @@ test('render invalidation refreshes only dependent passes for lights, camera, po
   r.setLightingColors('#708ABA','#263754','#263754');render();expect(labels(f)).toEqual([OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);expect(f.writes.find(write=>write.buffer===r.uniform).bytes).toBe(368);
   r.camera.yaw+=.1;r.requestDraw();render();expect(labels(f)).toEqual([DEPTH,OPAQUE,WATER,DISPLAY]);expect(f.cameraUpdates).toBe(1);
   const matrix=identity();matrix[12]=2;r.updateInstance('movable',1,matrix);render();expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);expect(r.lastTransformUploads).toBe(1);expect(r.lastTransformUploadBytes).toBe(64);
-  r.setWeather(true);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,DISPLAY,'Refractive rain']);expect(f.cameraUpdates).toBe(0);
-  r.setWeather(false);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);
   r.setLighting({...world.level.environment.sky,direction:[-.3,1,-.4]});render();expect(labels(f)).toEqual([SHADOW,OPAQUE,DISPLAY]);expect(f.cameraUpdates).toBe(0);
   r.canvas.clientWidth=1000;render();expect(labels(f)).toEqual([DEPTH,OPAQUE,WATER,DISPLAY]);expect(f.cameraUpdates).toBe(1);
   r.clearWorld();r.setWorld(world);render();expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,WATER,DISPLAY]);expect(f.cameraUpdates).toBe(1);
@@ -240,8 +199,8 @@ test('actor visibility compacts instance slots without geometry allocation and p
   const gpu=new Float32Array(draw.instances.data.buffer);expect(gpu[12]).toBe(10);expect(gpu[28]).toBe(30);expect(Array.from(draw.indexToSlot)).toEqual([0,-1,1]);
   f.reset();const matrix=identity();matrix[12]=99;r.updateInstance('movable',1,matrix);r.render(1/60,2/60);
   expect(labels(f)).toEqual([DISPLAY]);expect(r.lastTransformUploads).toBe(0);expect(draw.transforms[28]).toBe(99);expect(gpu[28]).toBe(30);
-  // Ground replacements must neither restore a dead actor nor reset mappings.
-  r.setWeather(true);r.render(1/60,3/60);r.setWeather(false);r.render(1/60,4/60);expect(draw.visibleCount).toBe(2);expect(draw.indexToSlot).toBe(maps[0]);expect(draw.slotToIndex).toBe(maps[1]);expect(draw.packedTransforms).toBe(packed);
+  // Idle frames preserve compacted visibility and its storage.
+  r.render(1/60,3/60);r.render(1/60,4/60);expect(draw.visibleCount).toBe(2);expect(draw.indexToSlot).toBe(maps[0]);expect(draw.slotToIndex).toBe(maps[1]);expect(draw.packedTransforms).toBe(packed);
   f.reset();expect(r.setActorVisible('actor-1',true)).toBe(true);expect(r.setActorVisible('actor-1',true)).toBe(false);r.render(1/60,5/60);
   expect(draw.visibleCount).toBe(3);expect(gpu[44]).toBe(99);expect(draw.indexToSlot[1]).toBe(2);expect(r.lastTransformUploadBytes).toBe(64);
   // Hiding every actor removes the group's draw from depth, colour and shadows.
@@ -249,8 +208,8 @@ test('actor visibility compacts instance slots without geometry allocation and p
   expect(draw.visibleCount).toBe(0);for(const pass of f.passes)expect(pass.indexed.some(call=>call.instances===draw.instances)).toBe(false);expect(r.lastTransformUploads).toBe(0);expect(r.lastDrawCalls).toBe(4);
   for(const index of [1,0,2])r.setActorVisible('actor-'+index,true);matrix[12]=42;r.updateInstance('movable',0,matrix);r.render(1/60,7/60);
   expect(draw.visibleCount).toBe(3);expect(gpu[draw.indexToSlot[0]*16+12]).toBe(42);expect(gpu[draw.indexToSlot[1]*16+12]).toBe(99);expect(gpu[draw.indexToSlot[2]*16+12]).toBe(30);
-  // Weather allocated its own approved replacements; visibility itself did not.
-  expect(f.allocated.length-allocated).toBe(5);expect(buffers.filter(buffer=>buffer!==buffers[0]&&buffer!==buffers[1]).every(buffer=>r.sceneBuffers.has(buffer))).toBe(true);
+  // Visibility reuses all original scene buffers.
+  expect(f.allocated.length-allocated).toBe(0);expect(buffers.every(buffer=>r.sceneBuffers.has(buffer))).toBe(true);
   expect(()=>r.setActorVisible('missing',false)).toThrow('Unknown runtime actor');expect(()=>r.setActorVisible('actor-0',0)).toThrow('boolean');
   r.updateInstance('movable',0,matrix);r.setActorVisible('actor-0',false);r.clearWorld();expect(r.visibilityBytes).toBe(0);expect(draw.instances.destroyCalls).toBe(1);expect(()=>r.setActorVisible('actor-0',true)).toThrow('Unknown runtime actor');
   r.setWorld(world);r.render(1/60,0);expect(r.drawMap.get('movable').visibleCount).toBe(3);expect(Array.from(r.drawMap.get('movable').indexToSlot)).toEqual([0,1,2]);
@@ -388,7 +347,7 @@ test('authored model lights follow lit rig parts, preserve idle passes and merge
   f.reset();r.mergeLocalLights();expect(r.localLightCount).toBe(21);expect(f.writes.find(w=>w.buffer===r.shotUniform).bytes).toBe(688);expect(Array.from(r.localLightData.slice(4,68))).toEqual(Array.from(shot.lightData.slice(4,68)));expect(Array.from(r.localLightData.slice(68,100))).toEqual(Array.from(damage.lightData.slice(4,36)));expect(Array.from(r.localLightData.slice(100,172))).toEqual(Array.from(data.slice(4,76)));
   shot.lightCount=damage.lightCount=0;r.mergeLocalLights();expect(r.localLightCount).toBe(9);expect(Array.from(r.localLightData.slice(4,76))).toEqual(Array.from(data.slice(4,76)));f.reset();r.mergeLocalLights();expect(f.writes).toHaveLength(0);
   expect(f.allocated.length).toBe(allocated);expect(lights.data).toBe(data);r.damageEffects=null;
-  r.setWeather(true);r.setWeather(false);expect(r.modelLights).toBe(lights);expect(lights.sources).toBe(sources);
+  expect(r.modelLights).toBe(lights);expect(lights.sources).toBe(sources);
   r.clearWorld();expect(lights.data).toBeNull();expect(sources).toHaveLength(0);expect(r.modelLights).toBeNull();expect(r.localLightCount).toBe(0);expect(new Float32Array(r.shotUniform.data.buffer).every(v=>v===0)).toBe(true);
   r.setWorld(world);r.render(1/60,0);expect(r.modelLights.count).toBe(9);expect(r.modelLights).not.toBe(lights);
  }finally{f.cleanup();disposeWorld(world);}
@@ -473,12 +432,11 @@ test('selective bloom caches steady emission, invalidates visibility and release
   r.setGraphicsOptions({bloom:false});render();expect(labels(f)).toEqual([DISPLAY]);expect(b.active).toBe(false);
   r.setGraphicsOptions({bloom:true});render();expect(labels(f)).toEqual([...BLOOM,DISPLAY]);expect(b.active).toBe(true);
   render();expect(labels(f)).toEqual([DISPLAY]);expect(f.allocated.length).toBe(buffers);expect(f.textures.length).toBe(textures);
-  // Lighting, camera, weather tessellation and posed geometry all affect source
+  // Lighting, camera and posed geometry all affect source
   // visibility/colour. The expensive geometry dependency rules stay unchanged.
   r.setLightingColors('#101828','#05080C');render();expect(labels(f)).toEqual([OPAQUE,...BLOOM,DISPLAY]);
   r.requestDraw();render();expect(labels(f)).toEqual([DEPTH,OPAQUE,...BLOOM,DISPLAY]);
   const rig=new PoseRig(world.rigs.get('turret'),r.updateInstance.bind(r));rig.setRotation('head',0,.2,0);rig.update();render();expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,...BLOOM,DISPLAY]);
-  r.setWeather(true);render();expect(labels(f)).toEqual([DEPTH,OPAQUE,...BLOOM,DISPLAY,'Refractive rain']);r.setWeather(false);render();
   expect(b.first).toBe(first);expect(b.second).toBe(second);expect(b.extractPass).toBe(sourceDescriptor);
   r.canvas.clientWidth=963;r.canvas.clientHeight=641;render();expect(b.width).toBe(241);expect(b.height).toBe(161);expect(b.bytes).toBe(241*161*16);expect(b.settingsData[0]).toBe(Math.fround(963/241));expect(b.settingsData[1]).toBe(Math.fround(641/161));expect(first.destroyCalls).toBe(1);expect(second.destroyCalls).toBe(1);expect(b.settings).toBe(settings);
   const replacement=b.first;r.clearWorld();expect(replacement.destroyCalls).toBe(1);expect(b.bytes).toBe(0);expect(b.active).toBe(false);expect(b.passes).toBe(0);expect(settings.destroyCalls).toBe(0);
@@ -646,7 +604,6 @@ test('a separately sized player renderer retains72 authored lights, specializes 
   for(const actor of actors)r.setActorVisible(actor.id,false);r.mergeLocalLights();expect(r.modelLights.count).toBe(48);
   for(const actor of actors)r.setActorVisible(actor.id,true);r.mergeLocalLights();expect(r.modelLights.count).toBe(72);
   r.ensureDamageCubes();r.ensureDamageParticles();expect(r.damageColorPipeline.fragment.module.code).toContain('array<ShotLight,120>');expect(r.damageSmokePipeline.fragment.module.code).toContain('shotLights.count.x),120u');
-  const weather=r.ensureWeatherPipeline('rain');expect(weather.fragment.module.code).toContain('array<ShotLight,120>');expect(weather.fragment.module.code).not.toContain('shotLights.count.x),77u');
   f.effects.lightCount=8;r.damageEffects={lightCount:4,lightData:new Float32Array(36)};r.missileThrust={lightCount:36,lightData:new Float32Array(292)};
   f.reset();r.mergeLocalLights();expect(r.localLightCount).toBe(120);expect(r.localLightUploadBytes).toBe(3856);expect(f.writes.find(w=>w.buffer===r.shotUniform).bytes).toBe(3856);
   r.damageEffects=r.missileThrust=null;r.clearWorld();expect(r.modelLights).toBeNull();expect(new Float32Array(r.shotUniform.data.buffer).every(n=>n===0)).toBe(true);

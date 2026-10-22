@@ -61,7 +61,7 @@ function sample(row,enemies,world,time,defences=[]){
 function rowFor(wave,mode){return {wave:wave.id,mode,samples:0,actorPoses:0,counts:{static:0,defence:0,enemy:0},examples:new Map(),staticCache:new Map(),minY:{}};}
 function result(row){const {examples,staticCache,...rest}=row;return {...rest,examples:[...examples.values()].slice(0,40),uniqueOverlaps:examples.size};}
 async function unopposed(level,wave){
- const world=await loadPlayWorld(level.id,{wave,config:PLAY_CONFIG,conditions:{night:false,weather:false}}),row=rowFor(wave,'unopposed'),enemies=new PlayEnemies(world,{config:PLAY_CONFIG,wave});
+ const world=await loadPlayWorld(level.id,{wave,config:PLAY_CONFIG,conditions:{night:false}}),row=rowFor(wave,'unopposed'),enemies=new PlayEnemies(world,{config:PLAY_CONFIG,wave});
  try{
   enemies.prepare();enemies.spawnDue(0);let nextSample=0;
   while(!enemies.complete&&enemies.time<180){
@@ -73,7 +73,7 @@ async function unopposed(level,wave){
  }finally{enemies.dispose();disposePlayWorld(world);}
 }
 async function mixed(level,wave,placements){
- const world=await loadPlayWorld(level.id,{wave,config:PLAY_CONFIG,placements,conditions:{night:false,weather:false}}),row=rowFor(wave,'actual-mixed-combat'),engine=new PlayEngine(world,{config:PLAY_CONFIG,wave});
+ const world=await loadPlayWorld(level.id,{wave,config:PLAY_CONFIG,placements,conditions:{night:false}}),row=rowFor(wave,'actual-mixed-combat'),engine=new PlayEngine(world,{config:PLAY_CONFIG,wave});
  try{
   engine.startWave();sample(row,engine.enemies,world,0,[...world.rigs].filter(([,r])=>r.role==='defence').map(([id,r])=>({id,...posed(r)})));
   while(engine.running&&engine.waveTime<180){engine.advance(1/hz);const defences=[...world.rigs].filter(([,r])=>r.role==='defence').map(([id,r])=>({id,...posed(r)}));sample(row,engine.enemies,world,engine.waveTime,defences);}

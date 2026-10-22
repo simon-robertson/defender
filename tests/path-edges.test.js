@@ -101,18 +101,18 @@ test('terrain integration stops at water and height changes without altering pav
   expect(actual.ground.quads.filter(within)).toEqual(plain.ground.quads.filter(within));
  }
  const route=routeOf([[2,2]]);
- expect(actual.ground.quads.filter(q=>isTop(q)&&inRoute(q,route))).toEqual(pathSurfaceQuads(route,2,2,24,false));
+ expect(actual.ground.quads.filter(q=>isTop(q)&&inRoute(q,route))).toEqual(pathSurfaceQuads(2,2,24));
  expect(actual.ground.quads.filter(q=>isTop(q)&&Math.floor(q.origin[0]/24)===2&&Math.floor(q.origin[2]/24)===3).length).toBeGreaterThan(1);
  expect(JSON.stringify(level)).toBe(source);
 });
 
-test('all eight saved previews retain exact terrain coverage, flat dry routes and defence supports across weather toggles',async()=>{
+test('all eight saved previews retain exact terrain coverage, flat dry routes and defence supports',async()=>{
  // Soil-vs-stone cell masks recorded before the brown/grey palette correction:
  // colour partitions can merge differently, but the accepted footprint/chips cannot move.
  const acceptedMasks={A:'2ecbd80d79116b6bea542e14a8621340d3b4a36789f6c64e98e5d55d9fac0fe6',B:'b51de431a0fb36ad42e5948f1e7964078f0429345b5b782e27e710bab2867dff',C:'0d1444da1f0d9373a530ff1d129a071ca5b9762c40eb7917da47afded4044a2f',D:'28d6006c160852e1227cd1b56bd5097ad2d127f9f7f6d8f771a1251bd34c9d0a'};
  for(const prefix of ['moss','ochre','ice','plum'])for(const number of ['01','02']){
-  const level=await Bun.file(new URL(`../docs/landscape-reset-2026-10-18/previous-levels/${prefix}-${number}.json`,import.meta.url)).json(),source=JSON.stringify(level);
-  const dry=terrainGeometry(level,{type:'clear',enabled:false}),field=new TerrainField(level),route=new Set(level.path.map(([x,,z])=>x+','+z));
+  const level=await Bun.file(new URL(`../project-docs/level-rebuild-2026-10-18/previous-levels/${prefix}-${number}.json`,import.meta.url)).json(),source=JSON.stringify(level);
+  const dry=terrainGeometry(level),field=new TerrainField(level),route=new Set(level.path.map(([x,,z])=>x+','+z));
   const width=level.size[0]*24,length=level.size[1]*24,coverage=new Uint8Array(width*length),shoulderMask=new Uint8Array(width*length);let wrongHeight=0,overlaps=0;
   const shades=new Uint32Array(5);
   for(const q of dry.ground.quads){
@@ -128,10 +128,6 @@ test('all eight saved previews retain exact terrain coverage, flat dry routes an
   expect(shades.every(count=>count>0)).toBe(true);expect(shades[0]).toBeGreaterThan(shades[1]);expect(shades[0]).toBeGreaterThan(shades[2]);
   for(const [bx,,bz]of level.path)expect(field.flatBox(bx,bz)).toBe(level.pathHeight);
   for(const placement of level.placements)if(placement.model==='turret-study'||placement.model==='arc-spire')expect(placementY(level,placement,field)).toBe(level.pathHeight);
-  const weather={A:'rain',B:'clear',C:'snow',D:'leaves'}[level.zone],wet=terrainGeometry(level,{type:weather,enabled:weather!=='clear'});
-  expect(wet.water).toEqual(dry.water);
-  expect(resolvedQuads(wet.ground,q=>!isTop(q)||!inRoute(q,route))).toEqual(resolvedQuads(dry.ground,q=>!isTop(q)||!inRoute(q,route)));
-  expect(terrainGeometry(level,{type:'clear',enabled:false})).toEqual(dry);
   expect(JSON.stringify(level)).toBe(source);
  }
 });

@@ -28,7 +28,7 @@ export async function validateLandscape(info,level=landscapeFor(info.zone,info.n
  const models=new Map();for(const id of new Set(level.placements.map(p=>p.model))){const model=await modelFor(id);if(model.role!=='scenery'||id.startsWith('wildlife-')||model.materials.some(m=>m.emission!==0||m.reflectiveness!==0))throw new Error(`Unapproved baseline model/material ${id}`);models.set(id,model);}
  assertLevelFootprint(level);validateLevel(level,models);
  if(level.previewMode!=='landscape'||level.routes!==undefined||level.actorRoutes!==undefined)throw new Error('Landscape preview must contain no routes.');
- if(level.path.length||level.environment.weather.enabled)throw new Error('Baseline must have no route and weather must default off.');
+ if(level.path.length)throw new Error('Baseline must have no route.');
  if(sha256(snapshotText(level))!==info.sha256)throw new Error('Canonical landscape mismatch.');
  const fresh=landscapeFor(info.zone,info.number);
  if(fresh===level||fresh.placements===level.placements||fresh.terrain===level.terrain||fresh.placements[0]===level.placements[0]||snapshotText(fresh)!==snapshotText(level))throw new Error('Landscape factory must return independent, identical data.');

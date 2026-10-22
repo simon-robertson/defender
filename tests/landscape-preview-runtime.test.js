@@ -126,7 +126,7 @@ test('the fifteen remaining noncombat previews request only scenery and cosmetic
      for(const x of [6,7]){expect(terrain.flatBox(x,6)).toBeNull();expect(terrain.height(x*24+12,6*24+12)).toBe(17);expect(terrain.height(x*24+12,6*24+12,true)).toBe(20);}
     }else if(profile.level==='ochre-04'){expect(world.level.bridges).toEqual([{id:'basin-crossing',boxes:[[2,4],[3,4],[4,4],[5,4],[6,4],[7,4]]}]);}else expect(world.level.bridges).toBeUndefined();
    }
-   expect(world.level.actorRoutes).toBeUndefined();expect(world.level.environment.weather.enabled).toBe(false);
+   expect(world.level.actorRoutes).toBeUndefined();
    expect(world.level.placements.length).toBeGreaterThan(0);expect(world.actors.size).toBe(12+world.fishActors.length);expect(world.assetIds).toEqual([...new Set([...world.level.placements.map(p=>p.model),...wildlifeActorsForLevel(world.level).map(a=>a.model),...(hasFishWater(world.level)?['wildlife-fish']:[])])]);
    for(const id of world.assetIds)expect(cache.get(`../assets/models/${id}.json`).role).toBe('scenery');
    expect(requested.slice(firstRequest).filter(url=>url.includes('/models/')).map(url=>url.split('/').at(-1))).toEqual(world.assetIds);

@@ -128,7 +128,7 @@ test('mixed zone loads request only assigned combat and cosmetic assets, includi
   const turrets=new TurretPreview(world,()=>{},()=>.5,null,preview.states.length?preview.states:null);
   for(let frame=0;frame<6;frame++){preview.advance(1/60);wildlife.advance(1/60);turrets.advance(1/60);}
   for(const state of turrets.states)expect(state.target===null||preview.states.includes(state.target)).toBe(true);
-  expect(world.level.zone).toBe(zone);expect(world.weather.enabled).toBe(false);
+  expect(world.level.zone).toBe(zone);
   const targets=turrets.targets;turrets.dispose();wildlife.dispose();preview.dispose();disposeWorld(world);expect(world.actors.size).toBe(0);expect(wildlife.states).toHaveLength(0);if(targets)expect(targets).toHaveLength(0);
  }
  }finally{globalThis.fetch=originalFetch;}

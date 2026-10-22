@@ -7,16 +7,13 @@ import {MAX_LOCAL_LIGHTS} from '/shared/shot-effects.js';
 import {MODEL_LIGHT_RADIUS,MODEL_LIGHT_STRENGTH} from '/shared/model-lights.js';
 import {shotLighting,shotParticles} from '/engine/shot-shaders.js';
 import {geometry,composite,uniforms} from '/engine/shaders.js';
-import {rainParticles} from '/engine/rain-shaders.js';
-import {snowParticles} from '/engine/snow-shaders.js';
-import {leafParticles} from '/engine/leaf-shaders.js';
 import {damageCubes,damageParticles} from '/engine/damage-shaders.js';
 const output=document.getElementById('result');let device;
 try{
  device=await(await navigator.gpu.requestAdapter()).requestDevice();const errors=[],checks=[],readbacks={};device.addEventListener('uncapturederror',event=>errors.push(event.error.message));
  const check=(condition,label)=>{if(!condition)throw new Error(label);checks.push(label);};
  const shader=async(code,label)=>{const module=device.createShaderModule({label,code});const errors=(await module.getCompilationInfo()).messages.filter(m=>m.type==='error');if(errors.length)throw new Error(label+': '+errors.map(m=>m.message).join('\n'));return module;};
- for(const [label,code] of [['opaque models',geometry],['water and SSR',composite],['muzzle particles',shotParticles(uniforms)],['rain',rainParticles],['snow',snowParticles],['leaves',leafParticles],['debris',damageCubes],['smoke and blast',damageParticles]]){await shader(code,label);check(true,label+' compiles with expanded light capacity');}
+ for(const [label,code] of [['opaque models',geometry],['water and SSR',composite],['muzzle particles',shotParticles(uniforms)],['debris',damageCubes],['smoke and blast',damageParticles]]){await shader(code,label);check(true,label+' compiles with expanded light capacity');}
  const module=await shader(shotLighting(0)+`
  struct Sample {position:vec4<f32>,normal:vec4<f32>};
  @group(1) @binding(0) var<storage,read> samples:array<Sample>;

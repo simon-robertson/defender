@@ -16,7 +16,7 @@ const controls=['variant','zone','night','reset'],width=8*BOX_SIZE,length=6*BOX_
 const floorMaterials=[{color:'#A5A49A',emission:0,reflectiveness:0}];
 const floorMesh=meshQuads([{origin:[0,0,0],axis:1,sign:1,width:length,height:width,material:0}],floorMaterials);
 const emptyWater=meshQuads([],floorMaterials),meshes=new Map(),bounds=new Map(),stats=new Map();
-const environment={timeOfDay:12,weather:{enabled:false},sky:{direction:[-.65,1,-.45],color:'#FFF8EB',intensity:.88,ambient:'#C9CFCB',ambientIntensity:.48}};
+const environment={timeOfDay:12,sky:{direction:[-.65,1,-.45],color:'#FFF8EB',intensity:.88,ambient:'#C9CFCB',ambientIntensity:.48}};
 const controller=new AbortController();
 let model=null,missile=null,missileMesh=null,world=null,ready=false,disposed=false,night=false,selection='all',zone='A',loop;
 
@@ -80,7 +80,7 @@ function buildReviewWorld(){
  entries.push({key:'guided-missile:base:body',mesh:missileMesh,transforms:missileTransforms});
  // Only these camera/light metadata fields are consumed by WorldRenderer.
  const level={size:[width/BOX_SIZE,length/BOX_SIZE],path:[],terrain:{defaultHeight:0,boxes:[]},environment};
- return {level,entries,actors:new Map(),rigs:new Map(),assetIds:['missile-launcher','guided-missile'],weather:{enabled:false,type:null},
+ return {level,entries,actors:new Map(),rigs:new Map(),assetIds:['missile-launcher','guided-missile'],
   width,length,water:{key:'water',mesh:emptyWater,transforms:[identity()]},waterMaterial:defaultWaterMaterial()};
 }
 function applyLighting(){
@@ -122,7 +122,7 @@ function inspect(){
   bloomActive:renderer.bloom?.active??false,bloomBytes:renderer.bloom?.bytes??0,sceneBuffers:renderer.sceneBuffers.size,
   createdSceneBuffers:renderer.createdSceneBuffers,destroyedSceneBuffers:renderer.destroyedSceneBuffers,geometryBytes:renderer.bytes,
   drawGroups:renderer.draws.length,frames:renderer.frames,camera:{yaw:renderer.camera.yaw,pitch:renderer.camera.pitch,radius:renderer.camera.radius},
-  weatherEnabled:false,actors:0};
+  actors:0};
  $('review-diagnostics').textContent=JSON.stringify(diagnostics);
  const count=lights?.count??0;
  $('review-status').textContent=lights?.overflow?`${count} panel lights · ${lights.overflow} exceed preview capacity`:'WebGPU ready · Loaded missile models';

@@ -1,19 +1,6 @@
 import {BOX_SIZE} from './grid.js';
-import {LEAF_COLORS,leafColorIndex} from './leaf-effects.js';
 
-export const PUDDLE_MATERIAL_START=16;
-export const PUDDLE_REFLECTIVENESS=.85;
-// A thin collected-water tint retains subdued paving variation underneath.
-export const PUDDLE_MATERIALS=Object.freeze(['#829DA8','#88A3AD','#7D98A4','#78939E'].map(color=>Object.freeze({color,emission:0,reflectiveness:PUDDLE_REFLECTIVENESS})));
-// Different weather palettes occupy the same appended terrain slots. Settled
-// snow covers the paving pattern, with matte, gently varied compacted patches.
-export const SNOW_MATERIAL_START=16;
-export const SNOW_MATERIALS=Object.freeze(['#E5E8E3','#EEF0EA','#D6DEDA'].map(color=>Object.freeze({color,emission:0,reflectiveness:0})));
-export const LEAF_MATERIAL_START=16;
-export const LEAF_MATERIALS=Object.freeze(LEAF_COLORS.map(color=>Object.freeze({color,emission:0,reflectiveness:0})));
-
-// Dedicated matte soil/stone colours, appended after the active weather slots.
-// Keeping these separate leaves stream beds, banks and zone ground unchanged.
+// Matte soil and stone shoulders use separate appended material slots.
 export const PATH_SHOULDER_MAX_WIDTH=4;
 export const PATH_SHOULDER_MATERIALS=Object.freeze(['#76583F','#876A50','#654B37','#929292','#737373'].map(color=>Object.freeze({color,emission:0,reflectiveness:0})));
 
@@ -49,15 +36,6 @@ function slabMaterials(x,z){
  }
  return materials;
 }
-function edgeWidth(along,plane,axis){
- const salt=Math.imul(plane+37,15731)^Math.imul(axis+1,789221);
- const shifted=along+hash(0,salt)*24,segment=Math.floor(shifted/24),t=shifted-segment*24;
- const run=18+hash(segment,salt)*4;
- if(t>=run)return 0;
- const end=Math.min(1,t/3,(run-t)/3),taper=end*end*(3-2*end);
- return Math.max(0,(2.1+hash(segment,salt^0x297a2d39)*1.8)*taper+.35*Math.sin(along*.73+hash(segment,salt)*6));
-}
-
 // Two unequal runs per 20 units give coherent 6–14-unit contours, independent
 // of chunk boundaries. Occasional zero-width runs leave real ground breaks.
 function shoulderWidth(along,plane,axis){
@@ -81,7 +59,7 @@ function shoulderMaterial(x,z){
 
 // Replace a dry, non-route box's complete top, never overlay a shoulder on it.
 // The caller checks terrain height/water; null keeps distant tops as one quad.
-// The explicit material offset must follow the caller's base/weather palette.
+// The explicit material offset must follow the caller's base palette.
 // Optional scratch belongs to one terrain build and is reused across boxes.
 export function pathShoulderQuads(route,bx,bz,y,ground,materialStart,cells=new Int8Array(BOX_SIZE*BOX_SIZE)){
  if(!Number.isInteger(materialStart)||materialStart<16||materialStart+PATH_SHOULDER_MATERIALS.length>128)throw new Error('Path shoulders require an explicit appended material offset.');
@@ -115,45 +93,15 @@ export function pathShoulderQuads(route,bx,bz,y,ground,materialStart,cells=new I
  return quads;
 }
 
-// A pointed, staggered leaf on a half-unit surface grid, with one colour per
-// leaf and gaps between leaves. This is an effect surface, not a model voxel.
-function leafLitterMaterial(x,z){
- const tx=Math.floor(x/2),tz=Math.floor(z/2);
- if(hash(tx^0x73ac,tz)<.14)return -1;
- let u=Math.floor((x-tx*2)*2),v=Math.floor((z-tz*2)*2);
- const turns=Math.floor(hash(tx^0x21af,tz)*4);
- for(let i=0;i<turns;i++){const next=3-v;v=u;u=next;}
- if(!((u===1&&v===0)||((v===1||v===2)&&(u===1||u===2))||(u===2&&v===3)))return -1;
- return LEAF_MATERIAL_START+leafColorIndex(hash(tx^0x56bd,tz));
-}
-
-// Only route topology, not the order of its boxes, determines exposed banks.
-// Weather patches replace ground faces at path height; never overlay them.
-// Boolean true retains the original rain caller contract.
-export function pathSurfaceQuads(route,bx,bz,y,surface){
- const x=bx*BOX_SIZE,z=bz*BOX_SIZE,quads=[];
- const stone=slabMaterials(x,z);
- const west=!route.has((bx-1)+','+bz),east=!route.has((bx+1)+','+bz),north=!route.has(bx+','+(bz-1)),south=!route.has(bx+','+(bz+1));
- const step=surface==='leaves'?.5:1,side=BOX_SIZE/step,cells=new Uint8Array(side*side);
- for(let iz=0;iz<side;iz++)for(let ix=0;ix<side;ix++){
-  const unitX=Math.floor(ix*step),unitZ=Math.floor(iz*step);
-  let material=stone[unitZ*BOX_SIZE+unitX];
-  const px=(ix+.5)*step,pz=(iz+.5)*step;
-  const pooled=surface&&((west&&px<edgeWidth(z+pz,x,0))||(east&&BOX_SIZE-px<edgeWidth(z+pz,x+BOX_SIZE,0))||
-   (north&&pz<edgeWidth(x+px,z,1))||(south&&BOX_SIZE-pz<edgeWidth(x+px,z+BOX_SIZE,1)));
-  if(pooled){
-   if(surface==='leaves'){const leaf=leafLitterMaterial(x+px,z+pz);if(leaf>=0)material=leaf;}
-   else material=surface==='snow'?SNOW_MATERIAL_START+Math.floor(hash(Math.floor((x+ix)/6),Math.floor((z+iz)/6))*SNOW_MATERIALS.length):PUDDLE_MATERIAL_START+material-6;
-  }
-  cells[iz*side+ix]=material;
- }
- // Merge equal cells once on load. No extra draw group or runtime mask needed.
- for(let iz=0;iz<side;iz++)for(let ix=0;ix<side;ix++){
-  const material=cells[iz*side+ix];if(!material)continue;
-  let dx=1,dz=1;while(ix+dx<side&&cells[iz*side+ix+dx]===material)dx++;
-  rows:while(iz+dz<side){for(let k=0;k<dx;k++)if(cells[(iz+dz)*side+ix+k]!==material)break rows;dz++;}
-  for(let j=0;j<dz;j++)cells.fill(0,(iz+j)*side+ix,(iz+j)*side+ix+dx);
-  quads.push({origin:[x+ix*step,y,z+iz*step],axis:1,sign:1,width:dz*step,height:dx*step,material});
+// Partition dry flagstones once on load; merge equal cells without overlays.
+export function pathSurfaceQuads(bx,bz,y){
+ const x=bx*BOX_SIZE,z=bz*BOX_SIZE,quads=[],cells=slabMaterials(x,z);
+ for(let iz=0;iz<BOX_SIZE;iz++)for(let ix=0;ix<BOX_SIZE;ix++){
+  const material=cells[iz*BOX_SIZE+ix];if(!material)continue;
+  let dx=1,dz=1;while(ix+dx<BOX_SIZE&&cells[iz*BOX_SIZE+ix+dx]===material)dx++;
+  rows:while(iz+dz<BOX_SIZE){for(let k=0;k<dx;k++)if(cells[(iz+dz)*BOX_SIZE+ix+k]!==material)break rows;dz++;}
+  for(let j=0;j<dz;j++)cells.fill(0,(iz+j)*BOX_SIZE+ix,(iz+j)*BOX_SIZE+ix+dx);
+  quads.push({origin:[x+ix,y,z+iz],axis:1,sign:1,width:dz,height:dx,material});
  }
  return quads;
 }

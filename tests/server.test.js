@@ -93,7 +93,7 @@ test('engine entry point and detail/environment metadata round-trip without expo
  expect((await fetch(origin+'/assets/levels/moss-01.json')).status).toBe(404);
  const model=newModel('small-prop');model.colorMode='authored';model.variants.base.parts[0].voxels=[[12,0,12,0]];expect((await put('models',model)).status).toBe(200);
  const level=newLevel('small-props');level.placements=[-4,4].map((x,i)=>({id:'p'+i,model:model.id,variant:'base',box:[1,0,1],turn:0,kind:'detail',offset:[x,0,0]}));
- level.environment={timeOfDay:10.5,weather:'clear',sky:{direction:[-1,1,-1],color:'#FFF2D9',intensity:.88,ambient:'#B8C8C1',ambientIntensity:.48}};
+ level.environment={timeOfDay:10.5,sky:{direction:[-1,1,-1],color:'#FFF2D9',intensity:.88,ambient:'#B8C8C1',ambientIntensity:.48}};
  const saved=await put('levels',level);expect(saved.status).toBe(200);expect((await saved.json()).asset).toEqual(level);
  const loaded=await(await fetch(origin+'/api/levels/small-props')).json();expect(loaded.asset).toEqual(level);
 });
@@ -103,24 +103,4 @@ test('water settings persist and elevated player defences are rejected before sa
  const created=await(await put('levels',level)).json();expect(created.asset.waterMaterial).toEqual(defaultWaterMaterial());
  level.terrain.boxes=[{box:[1,1],ground:32,water:0}];const bad=await put('levels',level,created.revision);expect(bad.status).toBe(400);expect((await bad.json()).error).toContain('enemy path height');
  const saved=await(await fetch(origin+'/api/levels/water-and-defence')).json();expect(saved.asset.terrain.boxes).toEqual([]);
-});
-
-test('the per-level weather switch round-trips and rejects unsupported zone weather',async()=>{
- const level=newLevel('rain-setting');level.environment=defaultEnvironment();level.environment.weather={enabled:true};
- const created=await put('levels',level);expect(created.status).toBe(200);const saved=await created.json();
- expect((await(await fetch(origin+'/api/levels/rain-setting')).json()).asset.environment.weather).toEqual({enabled:true});
- const bad=structuredClone(level);bad.zone='B';expect((await put('levels',bad,saved.revision)).status).toBe(400);
- bad.zone='A';bad.environment.weather={enabled:true,type:'fog'};expect((await put('levels',bad,saved.revision)).status).toBe(400);
- level.environment.weather={enabled:false};const disabled=await put('levels',level,saved.revision);expect(disabled.status).toBe(200);
- expect((await(await fetch(origin+'/api/levels/rain-setting')).json()).asset.environment.weather).toEqual({enabled:false});
- const snow=newLevel('snow-setting');snow.zone='C';snow.environment=defaultEnvironment();snow.environment.weather={enabled:true};
- const snowSaved=await put('levels',snow);expect(snowSaved.status).toBe(200);const snowRevision=(await snowSaved.json()).revision;
- expect((await(await fetch(origin+'/api/levels/snow-setting')).json()).asset.environment.weather).toEqual({enabled:true});
- snow.environment.weather.enabled=false;expect((await put('levels',snow,snowRevision)).status).toBe(200);
- expect((await(await fetch(origin+'/api/levels/snow-setting')).json()).asset.environment.weather).toEqual({enabled:false});
- const leaves=newLevel('leaf-setting');leaves.zone='D';leaves.environment=defaultEnvironment();leaves.environment.weather={enabled:true};
- const leafSaved=await put('levels',leaves);expect(leafSaved.status).toBe(200);const leafRevision=(await leafSaved.json()).revision;
- expect((await(await fetch(origin+'/api/levels/leaf-setting')).json()).asset.environment.weather).toEqual({enabled:true});
- leaves.environment.weather.enabled=false;expect((await put('levels',leaves,leafRevision)).status).toBe(200);
- expect((await(await fetch(origin+'/api/levels/leaf-setting')).json()).asset.environment.weather).toEqual({enabled:false});
 });

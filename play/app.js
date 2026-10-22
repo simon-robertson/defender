@@ -79,7 +79,7 @@ async function rebuild(candidate=session.fork(),points){
   if(rules&&loader.world?.level.id===candidate.level.id){const prepared=rules.prepare(candidate.placements);if(!prepared.valid){notice=prepared.reason;busy=false;paint();return false;}points=prepared.wildlifePoints;}
   else if(safeSeeds?.id===candidate.level.id&&safeSeeds.key===placementKey)points=safeSeeds.points;
  }
- const camera=cameraState();pendingSpec={candidate,points,camera,critters:graphics.critters,conditions:conditions.forLevel(candidate.level.id,{zone:candidate.level.zone,weather:graphics.weather})};busy=true;error='';paint();
+ const camera=cameraState();pendingSpec={candidate,points,camera,critters:graphics.critters,conditions:conditions.forLevel(candidate.level.id)};busy=true;error='';paint();
  return loader.switchTo(candidate.level.id,{force:true});
 }
 function validateArrangement(candidate){
@@ -213,10 +213,6 @@ document.addEventListener('change',async event=>{
  try{
   if(key==='critters')await rebuild();
   else{
-   if(key==='weather'){
-    const value=conditions.forLevel(session.level.id,{zone:session.level.zone,weather:graphics.weather});
-    renderer.setWeather(value.weather);loader.world.playConditions=value;pendingSpec.conditions=value;
-   }
    paint();runLoop();
   }
  }catch(cause){fail(cause);}

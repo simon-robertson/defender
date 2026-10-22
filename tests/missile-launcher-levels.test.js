@@ -24,7 +24,7 @@ test('legacy missile factories retain paired study routes, sites and environment
   const {id,name,placements,...environment}=level,{id:oldId,name:oldName,placements:oldPlacements,...oldEnvironment}=original;
   expect(environment).toEqual(oldEnvironment);
   expect(placements.filter(placement=>placement.model!=='missile-launcher')).toEqual(oldPlacements.filter(placement=>placement.model!=='turret-study'));
-  expect(level.environment.weather.enabled).toBe(false);
+
  }
 });
 test('saved missile levels reproduce their current individual landscape-first carves',async()=>{

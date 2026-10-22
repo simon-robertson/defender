@@ -61,10 +61,9 @@ test('camera inverse reconstructs clip coordinates across orbit, pan and zoom',(
   for(let i=0;i<16;i++)expect(result[i]).toBeCloseTo(i%5===0?1:0,4);
  }
 });
-test('fixed level environment rejects malformed lighting and unsupported weather',()=>{
+test('fixed level environment rejects malformed lighting',()=>{
  const level=firstLevel();level.environment.sky.direction=[0,0,0];expect(()=>validateLevel(level)).toThrow('direction');
  level.environment=firstLevel().environment;level.environment.timeOfDay=NaN;expect(()=>validateLevel(level)).toThrow('Time');
- level.environment=firstLevel().environment;level.environment.weather='fog';expect(()=>validateLevel(level)).toThrow('clear');
 });
 test('current A1–A4 and B1–B4 sources match their preview generators and historical model bounds stay clean',async()=>{
  for(const [zone,prefix]of [['A','moss'],['B','ochre']])for(const number of [1,2,3,4]){const saved=await Bun.file(new URL(`../assets/levels/${prefix}-0${number}.json`,import.meta.url)).json();expect(saved).toEqual(await currentPreviewFor(zone,number));}

@@ -2,15 +2,14 @@ import {validId,VARIANTS,ZONES} from './model.js';
 import {validateWaterMaterial} from './water.js';
 import {BOX_SIZE} from './grid.js';
 import {newTerrain,validateTerrain,TerrainField,placementY,setPathHeight} from './terrain.js';
-import {levelWeather} from './weather.js';
 import {validateRoutes,pathBoxUnion,routePath} from './routes.js';
 import {ENEMY_STATS} from './enemy.js';
 import {isNonCombatPreview} from './preview-mode.js';
 import {validateBridges} from './bridges.js';
 export const LEVEL_VERSION=4;
 // The existing Zone A daylight, also used when an editor draft first opts into
-// fixed environment settings. No dynamic time/weather system is implied.
-export const defaultEnvironment=()=>({timeOfDay:10.5,weather:{enabled:false},sky:{direction:[-.65,1,-.45],color:'#FFF2D9',intensity:.88,ambient:'#B8C8C1',ambientIntensity:.48}});
+// fixed environment settings. Lighting is fixed while a level is active.
+export const defaultEnvironment=()=>({timeOfDay:10.5,sky:{direction:[-.65,1,-.45],color:'#FFF2D9',intensity:.88,ambient:'#B8C8C1',ambientIntensity:.48}});
 export function newLevel(id='untitled-level') {return {schema:'defender.level',version:LEVEL_VERSION,id,name:'Untitled level',zone:'A',size:[12,8],waves:5,placements:[],path:[],pathHeight:BOX_SIZE,terrain:newTerrain()};}
 const check=(ok,message)=>{if(!ok)throw new Error(message);};
 const int=(n,min,max)=>Number.isInteger(n)&&n>=min&&n<=max;
@@ -28,7 +27,6 @@ export function validateLevel(level,models=null) {
     check(Array.isArray(level.previewActors)&&level.previewActors.length<=16384,'Combat previews require an explicit bounded actor roster.');
   }else check(level.previewActors===undefined,'Explicit combat actors require combat preview mode.');
   validateTerrain(level);check(int(level.pathHeight,1,256),'Path height must be a whole unit from 1–256.');validateBridges(level);if(level.waterMaterial!==undefined)validateWaterMaterial(level.waterMaterial);const terrain=new TerrainField(level);
-  levelWeather(level);
   if(level.environment){const e=level.environment,s=e.sky;
     check(Number.isFinite(e.timeOfDay)&&e.timeOfDay>=0&&e.timeOfDay<24,'Time of day must be in [0,24).');
     check(s&&Array.isArray(s.direction)&&s.direction.length===3&&s.direction.every(Number.isFinite)&&s.direction[1]>0,'Sky light direction must point above the horizon.');

@@ -3,7 +3,7 @@ import {sweepScenery} from './debris-collision.js';
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 
 // World binding and event allocation happen outside the particle loop. Surface
-// queries use a retained height grid; no weather field or fluid solver is needed.
+// queries use a retained height grid; no fluid solver is needed.
 export class WaterImpacts {
  constructor(random=Math.random){
   this.random=random;this.heights=null;this.levels=[];this.visibility=null;this.cols=this.rows=0;

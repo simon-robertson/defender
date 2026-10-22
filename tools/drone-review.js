@@ -23,7 +23,7 @@ $('pitch').min=Math.round(DRONE_MODEL.gunPitchMin/radians);$('pitch').max=Math.r
 const floorMaterials=[{color:'#A5A49A',emission:0,reflectiveness:0}];
 const floorMesh=meshQuads([{origin:[0,0,0],axis:1,sign:1,width:length,height:width,material:0}],floorMaterials);
 const emptyWater=meshQuads([],floorMaterials),meshes=new Map(),bounds=new Map(),stats=new Map(),motion=new Map();
-const environment={timeOfDay:12,weather:{enabled:false},sky:{direction:[-.65,1,-.45],color:'#FFF8EB',intensity:.88,ambient:'#C9CFCB',ambientIntensity:.48}};
+const environment={timeOfDay:12,sky:{direction:[-.65,1,-.45],color:'#FFF8EB',intensity:.88,ambient:'#C9CFCB',ambientIntensity:.48}};
 const controller=new AbortController(),gpuErrors=[];
 // Stable pose values: docked means pad hover; hover means elevated flight inspection.
 let model=null,styledModel=null,cachedZone=null,world=null,ready=false,disposed=false,transitioning=false,night=false,selection='all',zone='A',poseMode='docked',animating=false;
@@ -95,7 +95,7 @@ function buildReviewWorld(){
   motion.set(variant,rig);rigs.set(variant,rig);
  }
  const level={size:[width/BOX_SIZE,length/BOX_SIZE],path:[],terrain:{defaultHeight:0,boxes:[]},environment};
- return {level,entries,actors:new Map(),rigs,assetIds:['drone-defence'],weather:{enabled:false,type:null},
+ return {level,entries,actors:new Map(),rigs,assetIds:['drone-defence'],
   width,length,water:{key:'water',mesh:emptyWater,transforms:[identity()]},waterMaterial:defaultWaterMaterial()};
 }
 function updatePose(){
@@ -175,7 +175,7 @@ function inspect(){
   bloomActive:renderer.bloom?.active??false,bloomBytes:renderer.bloom?.bytes??0,sceneBuffers:renderer.sceneBuffers.size,
   createdSceneBuffers:renderer.createdSceneBuffers,destroyedSceneBuffers:renderer.destroyedSceneBuffers,geometryBytes:renderer.bytes,
   transformBytes:renderer.transformBytes,transformUploads:renderer.lastTransformUploads,transformUploadBytes:renderer.lastTransformUploadBytes,
-  drawGroups:renderer.draws.length,frames:renderer.frames,loopRunning:loop.running,camera:{yaw:renderer.camera.yaw,pitch:renderer.camera.pitch,radius:renderer.camera.radius},weatherEnabled:false,combatActors:0});
+  drawGroups:renderer.draws.length,frames:renderer.frames,loopRunning:loop.running,camera:{yaw:renderer.camera.yaw,pitch:renderer.camera.pitch,radius:renderer.camera.radius},combatActors:0});
  $('review-status').textContent=lights?.overflow?`${lights.count} lights · ${lights.overflow} exceed capacity`:`Ready · ${lights?.count??0} panel lights · ${poseMode==='hover'?'Flight inspection':'Pad hover'}`;
 }
 function runRebuild(recolour){showModels(recolour).catch(error=>{if(!disposed)fail(error.message);});}

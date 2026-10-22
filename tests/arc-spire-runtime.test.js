@@ -28,7 +28,7 @@ test('Arc Spire studies load only their actors, preserve movement, and keep wild
     expect(world.assetIds.includes('turret-study')).toBe(false);
     for(const candidate of ['dog','walker','spider'])expect(world.assetIds.includes(candidate)).toBe(candidate===enemy);
     expect(requests.filter(url=>url.startsWith('/api/models/')).length).toBe(new Set(world.assetIds).size);
-    expect(world.weather.enabled).toBe(false);
+
     expect(enemies.states).toHaveLength(roster.length);expect(wildlife.states).toHaveLength(6);
     expect(DEFENCE_STATS['arc-spire'].base.strength).toBeGreaterThan(0);expect(turrets.states).toHaveLength(0);
     const defences=[...world.rigs.values()].filter(r=>r.role==='defence');

@@ -21,7 +21,7 @@ import {isNonCombatPreview} from '/shared/preview-mode.js';
 const status=document.getElementById('status'),error=document.getElementById('error');
 const cameraButton=document.getElementById('camera-mode'),lightingButton=document.getElementById('lighting-mode'),frameButton=document.getElementById('frame'),controls=document.getElementById('camera-controls');
 const zoneButtons=[...document.querySelectorAll('[data-zone-key]')];
-const weatherButton=document.getElementById('weather-mode'),timeButton=document.getElementById('time-mode');
+const timeButton=document.getElementById('time-mode');
 const levelControls=document.getElementById('level-controls'),levelButtonsHost=document.getElementById('level-buttons'),levelSummary=document.getElementById('level-selection-status');
 const selection=new PreviewSelection(),levelButtons=new Map();
 const initialLevel=previewLevelForId(new URLSearchParams(location.search).get('level'));
@@ -35,7 +35,7 @@ function readyControls(ready){
  lightingButton.disabled=frameButton.disabled=timeButton.disabled=!ready;
  const hasPath=Boolean(scenes?.world&&levelRoutes(scenes.world.level).some(route=>route.path.length));
  cameraButton.disabled=!ready||!hasPath;cameraButton.title=hasPath?'Enter path view (F)':'Path view unavailable: this landscape has no enemy path.';
- updateCameraControls(renderer?.camera.mode??'overview');updateWeatherControl(ready);
+ updateCameraControls(renderer?.camera.mode??'overview');
 }
 function updateCameraControls(mode){
  const path=mode==='path',noncombat=isNonCombatPreview(scenes?.world?.level),hasPath=Boolean(scenes?.world&&levelRoutes(scenes.world.level).some(route=>route.path.length));
@@ -44,21 +44,11 @@ function updateCameraControls(mode){
  controls.innerHTML=view+(noncombat?'':'<i></i><span><b>R</b> reset enemies</span>')+'<i></i><span><b>T</b> slow motion</span>';
  renderer?.canvas.setAttribute('aria-label',path?'Path view. WASD to move, drag to look, F to return to overview.':'3D landscape preview. Drag to orbit, right drag or WASD to pan, scroll to zoom.'+(hasPath?' F to enter path view.':''));
 }
-function updateWeatherControl(ready=true){
- const weather=scenes?.world?.weather,supported=weather?.type==='rain'||weather?.type==='snow'||weather?.type==='leaves';
- weatherButton.disabled=!ready||!supported;weatherButton.setAttribute('aria-pressed',String(supported&&weather.enabled));
- weatherButton.textContent='Weather: '+(!supported?'None':weather.enabled?'On':'Off');
- weatherButton.title=supported?'Toggle weather for this preview only. Saved level settings are unchanged.':'No weather effect is assigned to this zone.';
-}
 function toggleTime(){
  if(!loop||!scenes?.world||scenes.loading||renderer.failed)return false;
  const slow=loop.clock.timeScale===1;loop.clock.setTimeScale(slow ? .1 : 1);
  timeButton.querySelector('span').textContent=slow?'Time: 0.1×':'Time: 1×';timeButton.setAttribute('aria-pressed',String(slow));
  timeButton.title=slow?'Return to normal speed (T)':'Slow preview to 0.1× speed (T)';return true;
-}
-function toggleWeather(){
- if(!scenes?.world||scenes.loading||renderer.failed)return;
- try{renderer.setWeather(!scenes.world.weather.enabled);updateWeatherControl();reportLifecycle('weather-preview');}catch(e){fail(e);}
 }
 function reportLifecycle(phase){
  if(!renderer.inspect)return;
@@ -100,7 +90,7 @@ try{
  renderer.camera.overviewFov=renderer.camera.pathFov=renderer.camera.fov=60;
  renderer.camera.onModeChange=updateCameraControls;
  cameraButton.addEventListener('click',()=>renderer.camera.toggleMode());lightingButton.addEventListener('click',toggleLighting);frameButton.addEventListener('click',()=>renderer.camera.frame());
- weatherButton.addEventListener('click',toggleWeather);timeButton.addEventListener('click',toggleTime);
+ timeButton.addEventListener('click',toggleTime);
  zoneButtons.forEach((button,index)=>button.addEventListener('click',()=>requestZone(ZONE_PREVIEWS[index].zone)));
  document.addEventListener('keydown',e=>{
   if(e.repeat||e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey||e.target?.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName))return;

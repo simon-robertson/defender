@@ -24,7 +24,7 @@ test('legacy Arc Spire factories retain paired study routes, sites and environme
   const {id,name,placements,...environment}=level,{id:oldId,name:oldName,placements:oldPlacements,...oldEnvironment}=original;
   expect(environment).toEqual(oldEnvironment);
   expect(placements.filter(placement=>placement.model!=='arc-spire')).toEqual(oldPlacements.filter(placement=>placement.model!=='turret-study'));
-  expect(level.environment.weather.enabled).toBe(false);
+
  }
 });
 test('saved Arc Spire levels reproduce their current individual landscape-first carves',async()=>{

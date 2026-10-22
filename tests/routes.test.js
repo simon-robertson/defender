@@ -40,11 +40,11 @@ test('route validation rejects ambiguous crossings, splits, reverse edges, repea
  ];for(const modify of cases){const level=source();modify(level);expect(()=>validateLevel(level)).toThrow();}
  const bad=source();bad.terrain.boxes=[{box:[4,2],ground:4,water:12}];expect(()=>validateLevel(bad)).toThrow('flat and dry');
 });
-test('terrain protects the entire route union and paves shared tails exactly once with optional weather',()=>{
+test('terrain protects the entire route union and paves shared tails exactly once',()=>{
  const level=source(),field=new TerrainField(level);expect(field.paint(4,2,'water',8).protectedCount).toBe(1);expect(field.paint(1,4,'raise').protectedCount).toBe(1);
  setPathHeight(level,25);for(const box of pathBoxUnion(level))expect(new TerrainField(level).flatBox(box[0],box[2])).toBe(25);expect(new TerrainField(level).flatBox(0,0)).toBe(24);validateLevel(level);
- for(const zone of ['A','C','D'])for(const enabled of [false,true]){
-  level.zone=zone;level.environment={timeOfDay:10,weather:{enabled},sky:{direction:[0,1,0],color:'#ffffff',intensity:1,ambient:'#ffffff',ambientIntensity:1}};
+ for(const zone of ['A','B','C','D']){
+  level.zone=zone;level.environment={timeOfDay:10,sky:{direction:[0,1,0],color:'#ffffff',intensity:1,ambient:'#ffffff',ambientIntensity:1}};
   const {ground}=terrainGeometry(level),coverage=new Uint8Array(level.size[0]*level.size[1]*48*48),width=level.size[0]*48;
   for(const q of ground.quads)if(q.axis===1&&q.sign===1)for(let z=q.origin[2]*2;z<(q.origin[2]+q.width)*2;z++)for(let x=q.origin[0]*2;x<(q.origin[0]+q.height)*2;x++)coverage[z*width+x]++;
   expect(coverage.every(count=>count===1)).toBe(true);

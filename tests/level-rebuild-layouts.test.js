@@ -16,7 +16,7 @@ const selected=Object.entries(LEVEL_LAYOUTS).filter(([id,definition])=>(!process
 for(const [id,definition]of selected)test(`${id}: reproducible carve, useful supported sites, actual movement and combat`,async()=>{
  const {level,manifest,models,sites}=await carveLevel(id),source=await Bun.file(new URL(`../docs/landscape-reset-2026-10-18/previous-levels/${id}.json`,import.meta.url)).text(),before=landscapeFor(definition.zone,definition.number),field=new TerrainField(level),routes=levelRoutes(level),path=new Set(pathBoxUnion(level).map(([x,,z])=>`${x},${z}`));
  expect(JSON.parse(source)).toEqual(level);expect(manifest.baseline.sha256).toBe(LANDSCAPE_INFO[id].sha256);
- expect(level.terrain).toEqual(before.terrain);expect(level.size).toEqual(before.size);expect(level.environment).toEqual(before.environment);expect(level.waterMaterial).toEqual(before.waterMaterial);expect(level.environment.weather.enabled).toBe(false);
+ expect(level.terrain).toEqual(before.terrain);expect(level.size).toEqual(before.size);expect(level.environment).toEqual(before.environment);expect(level.waterMaterial).toEqual(before.waterMaterial);
  expect(manifest.moved).toEqual([]);expect(manifest.terrainChanged).toBe(false);
  const originals=new Map(before.placements.map(p=>[p.id,p])),removed=new Set(manifest.removed.map(p=>p.id)),retained=level.placements.filter(p=>originals.has(p.id));
  expect(removed.size).toBe(manifest.removed.length);expect(retained.length+removed.size).toBe(before.placements.length);expect(retained.length).toBe(manifest.retainedPlacements);

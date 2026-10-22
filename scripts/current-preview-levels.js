@@ -25,6 +25,8 @@ export async function currentPreviewFor(zone,number){
   :zone==='D'
   ?(await (await import('./d-path-carving.js')).carvePlum(profile.level)).level
   :fixedLandscapeFor(zone,number);
+ // Keep only supported environment settings from the frozen authoring sources.
+ level.environment={timeOfDay:level.environment.timeOfDay,sky:level.environment.sky};
  // Current water review supersedes the archived materials, not the landscapes.
  level.waterMaterial=defaultWaterMaterial();
  await denserWildlife(level);

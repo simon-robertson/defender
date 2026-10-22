@@ -18,7 +18,7 @@ export const ARC_SPARK_REST_SECONDS=.35;
 export const ARC_SPARK_SECONDS=ARC_SPARK_FLIGHT_SECONDS+ARC_SPARK_REST_SECONDS;
 export const ARC_SPARK_GRAVITY=90;
 export const ARC_RESTRIKE_AT=.045;
-export const ARC_WIDTH=.9;
+export const ARC_WIDTH=1.1;
 // A weaker enemy-to-enemy jump retains 70% of the primary channel width.
 export const ARC_CHAIN_WIDTH_SCALE=.7;
 export const ARC_LIGHT_RADIUS=18;

@@ -9,7 +9,7 @@ test('strike joins exact endpoints with one thicker unbranched channel, stronger
  const effects=new ArcEffects(random());expect(effects.emit(source,impact,normal,0)).toBe(true);effects.prepare();
  expect(effects.strikeCount).toBe(1);expect(effects.lightCount).toBe(1);expect(effects.sparkCount).toBe(6);
  expect(effects.instanceCount-effects.sparkCount).toBe(ARC_TRUNK_SEGMENTS);
- expect(ARC_WIDTH).toBe(.9);expect(ARC_LIGHT_STRENGTH).toBe(4.8);expect(effects.instanceData[3]).toBeCloseTo(.9);expect(effects.lightData[8]).toBeCloseTo(4.8);
+ expect(ARC_WIDTH).toBe(1.1);expect(ARC_LIGHT_STRENGTH).toBe(4.8);expect(effects.instanceData[3]).toBeCloseTo(1.1);expect(effects.lightData[8]).toBeCloseTo(4.8);
  expect(Array.from(effects.instanceData.slice(0,3))).toEqual(source);
  const last=(ARC_TRUNK_SEGMENTS-1)*ARC_INSTANCE_FLOATS;
  expect(Array.from(effects.instanceData.slice(last+4,last+7))).toEqual(impact);

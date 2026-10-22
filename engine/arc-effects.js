@@ -137,7 +137,11 @@ export class ArcEffects {
    const light=4+this.lightCount++*ARC_LIGHT_FLOATS,l=this.lightData;
    l[light]=.43;l[light+1]=.66;l[light+2]=1;l[light+3]=ARC_LIGHT_RADIUS;l[light+4]=ARC_LIGHT_STRENGTH*strength;l[light+5]=8;l[light+6]=l[light+7]=0;
    for(let segment=0;segment<ARC_TRUNK_SEGMENTS;segment++){
-    const a=segment*3,b=a+3;this.instance(p[a],p[a+1],p[a+2],p[b],p[b+1],p[b+2],ARC_WIDTH*(this.secondary[slot]?ARC_CHAIN_WIDTH_SCALE:1)*(.8+.2*fade),strength);
+    const a=segment*3,b=a+3,k=this.instance(p[a],p[a+1],p[a+2],p[b],p[b+1],p[b+2],ARC_WIDTH*(this.secondary[slot]?ARC_CHAIN_WIDTH_SCALE:1)*(.8+.2*fade),Math.sqrt(strength),-1);
+    // Joined channels use the colour triplet for a common strand tangent.
+    // The shader supplies their fixed blue/white colour. Every span then
+    // widens along the same side vector, sharing its exact edge with the next.
+    this.instanceData[k+8]=tx;this.instanceData[k+9]=ty;this.instanceData[k+10]=tz;
    }
    for(let segment=0;segment<8;segment++)this.lightSegment(light+8+segment*8,segment*12,(segment+1)*12);
    packTubeLightBounds(l,light);

@@ -1,8 +1,9 @@
 import {waterDepthRead} from './water-depth.js';
 import {bloomSettings} from './bloom-shaders.js';
 
-// Narrow camera-facing capsules join into one procedural channel. Endpoints are
-// world-space geometry; source and impact are not screen-space glow billboards.
+// Combat channels (kind -1) are a continuous, shared-edge ribbon. A common
+// strand tangent occupies their otherwise constant colour triplet. Sparks and
+// plasma retain their original camera-facing capsules and colour payloads.
 export const arcParticles=frameUniforms=>frameUniforms+bloomSettings+`
 @group(1) @binding(2) var depthMap:texture_depth_multisampled_2d;
 @group(1) @binding(4) var waterDepth:texture_depth_2d;
@@ -24,19 +25,28 @@ struct ArcVertex {
   else if(a.z<.00001){start=mix(start,end,clamp((.00001-a.z)/(b.z-a.z),0.0,1.0));}
   else if(b.z<.00001){end=mix(start,end,clamp((.00001-a.z)/(b.z-a.z),0.0,1.0));}
  }
- let delta=end-start;let span=length(delta);let direction=delta/max(span,.00001);let view=toEye((start+end)*.5);
- var side=cross(direction,view);if(dot(side,side)<.00001){side=cross(vec3<f32>(0,1,0),view);}
+ let delta=end-start;let span=length(delta);let direction=delta/max(span,.00001);let joined=i.colorKind.w<-.5;
+ var view=toEye((start+end)*.5);var tangent=direction;
+ // A fixed camera direction and whole-strand tangent make neighbouring edge
+ // vertices identical, including under perspective and in mirrored water.
+ if(joined){tangent=i.colorKind.rgb;view=frame.viewDirection.xyz;}
+ var side=cross(tangent,view);if(dot(side,side)<.00001){side=cross(vec3<f32>(0,1,0),view);}
  if(dot(side,side)<.00001){side=vec3<f32>(1,0,0);}side=normalize(side);
- let halfWidth=i.startWidth.w;let world=mix(start,end,(corner.x+1)*.5)+direction*corner.x*halfWidth+side*corner.y*halfWidth;
- var o:ArcVertex;o.clip=frame.vp*vec4<f32>(world,1);o.uv=vec2<f32>(corner.x*(span*.5+halfWidth),corner.y*halfWidth);o.lengths=vec2<f32>(span*.5,halfWidth);o.colorAlpha=vec4<f32>(i.colorKind.rgb,i.endAlpha.w);o.kind=i.colorKind.w;
+ let halfWidth=i.startWidth.w;let cap=select(halfWidth,0.0,joined);let world=mix(start,end,(corner.x+1)*.5)+direction*corner.x*cap+side*corner.y*halfWidth;
+ var o:ArcVertex;o.clip=frame.vp*vec4<f32>(world,1);o.uv=vec2<f32>(corner.x*(span*.5+cap),corner.y*halfWidth);o.lengths=vec2<f32>(span*.5,halfWidth);o.colorAlpha=vec4<f32>(select(i.colorKind.rgb,vec3<f32>(.56,.74,1),joined),i.endAlpha.w);o.kind=i.colorKind.w;
  if(hidden){o.clip=vec4<f32>(2,2,2,1);}return o;
 }
 fn arcColor(i:ArcVertex,pixel:vec2<i32>)->vec4<f32>{
- let outside=vec2<f32>(max(abs(i.uv.x)-i.lengths.x,0.0),i.uv.y);let distance=length(outside)/max(i.lengths.y,.0001);
+ let outside=vec2<f32>(max(abs(i.uv.x)-i.lengths.x,0.0),i.uv.y);var distance=length(outside)/max(i.lengths.y,.0001);
+ // No per-span end cap or longitudinal fade: additive round caps were doubling
+ // the brightness at every node, making the channel look like dotted beads.
+ if(i.kind<-.5){distance=abs(i.uv.y)/max(i.lengths.y,.0001);}
  if(distance>=1){discard;}
  var coverage=0.0;for(var sample=0;sample<4;sample++){coverage+=select(0.0,.25,i.clip.z<=textureLoad(depthMap,pixel,sample));}
  if(visibleWaterDepth(pixel)<i.clip.z){coverage*=.3;}
- let core=1-smoothstep(.18,.55,distance);let alpha=pow(max(0.0,1-distance),1.25)*i.colorAlpha.a*coverage;
+ var core=1-smoothstep(.18,.55,distance);var profile=pow(max(0.0,1-distance),1.25);
+ if(i.kind<-.5){core=1-smoothstep(.28,.72,distance);profile=1-smoothstep(.3,1.0,distance);}
+ let alpha=profile*i.colorAlpha.a*coverage;
  if(alpha<.003){discard;}
  var hotCore=select(vec3<f32>(.96,.985,1),min(vec3<f32>(1),i.colorAlpha.rgb+vec3<f32>(0,.16,.2)),i.kind>.5);
  if(i.kind>1.5){hotCore=vec3<f32>(.82,1,.88);}

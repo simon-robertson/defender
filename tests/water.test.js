@@ -9,7 +9,7 @@ import {newModel} from '../shared/model.js';
 import {terrainStudy} from '../scripts/seed.js';
 
 test('water material is explicit, bounded and survives level serialization',()=>{
- const l=firstLevel();expect(l.waterMaterial.reflectiveness).toBe(.85);expect(l.waterMaterial.type).toBe('water');expect(validateWaterMaterial(JSON.parse(JSON.stringify(l.waterMaterial)))).toEqual(defaultWaterMaterial());
+ const l=firstLevel();expect(l.waterMaterial.reflectiveness).toBe(1);expect(l.waterMaterial.type).toBe('water');expect(validateWaterMaterial(JSON.parse(JSON.stringify(l.waterMaterial)))).toEqual(defaultWaterMaterial());
  for(const key of ['opacity','absorption','refraction','rippleStrength','emission','reflectiveness']){const m=defaultWaterMaterial();m[key]=-1;expect(()=>validateWaterMaterial(m)).toThrow();m[key]=NaN;expect(()=>validateWaterMaterial(m)).toThrow();m[key]=1.1;expect(()=>validateWaterMaterial(m)).toThrow();}
  l.waterMaterial.rippleSpeed=-1;expect(()=>validateLevel(l)).toThrow('speed');
 });

@@ -2,7 +2,7 @@ import {test,expect} from 'bun:test';
 import {WaterImpacts} from '../engine/water-impact.js';
 import {DamageEffects} from '../engine/damage-effects.js';
 import {ENEMY_STATS} from '../shared/enemy.js';
-import {MAX_WATER_IMPACTS,MAX_WATER_DROPS,MAX_WATER_PARTICLES} from '../shared/water-impact.js';
+import {MAX_WATER_IMPACTS,MAX_WATER_DROPS,MAX_WATER_PARTICLES,WATER_RIPPLE_FLOATS} from '../shared/water-impact.js';
 import {MAX_DAMAGE_PARTICLES} from '../shared/damage-effects.js';
 function world(bridge=false){
  const bounds=bridge?[-100,0,-100,100,1,100,0,12,0,24,14,24]:[-100,0,-100,100,1,100];
@@ -40,6 +40,17 @@ test('water clocks pause exactly, reset retains optional bindings and disposal d
  const grid=d.waterImpacts.heights;d.reset(true);expect(d.waterImpacts.heights).toBe(grid);expect(d.waterImpacts.count).toBe(0);d.reset();expect(d.waterImpacts.heights).toBeNull();expect(d.waterImpacts.visibility).toBeNull();
  d.setWorld({visibility:world().visibility},[]);expect(d.waterImpacts.heights).toBeNull();
  const dry=new DamageEffects();dry.setWorld({visibility:world().visibility},[]);expect(dry.waterImpacts).toBeNull();
+});
+test('impact rings have a visible refractive shoulder and fade while expanding in the retained buffer',()=>{
+ const w=new WaterImpacts(()=>.5),packed=new Float32Array(WATER_RIPPLE_FLOATS);w.setWorld(world());w.ripple(12,10,12,1,true);w.advance(.2);
+ expect(w.writeRipples(packed)).toBe(1);expect(Array.from(packed.slice(4,7))).toEqual([12,10,12]);
+ // Evaluate a crest shoulder from the coefficients sent to the water shader.
+ const q=Math.PI/6,gradient=Math.exp(-q*q*.5)*(-q*Math.cos(q*3)-3*Math.sin(q*3)),slope=Math.min(.4,Math.abs(gradient*packed[10]));
+ expect(slope).toBeGreaterThan(.35);
+ let opacity=0;w.prepare((_x,_y,_z,_r,_red,_green,_blue,alpha,kind)=>{if(kind===2)opacity=alpha;});expect(opacity).toBeGreaterThan(.18);
+ const before=packed.slice(),radius=packed[8],strength=packed[10];w.advance(0);w.writeRipples(packed);expect(packed).toEqual(before);
+ w.advance(.4);w.writeRipples(packed);expect(packed[8]).toBeGreaterThan(radius);expect(packed[10]).toBeLessThan(strength);
+ w.advance(3);expect(w.writeRipples(packed)).toBe(0);expect(packed[0]).toBe(0);
 });
 test('surface crossing remains single and downward at30/60/120Hz including a long frame',()=>{
  for(const hz of [30,60,120]){const d=new DamageEffects(()=>.5);d.setWorld(world(),[]);const p=cube(d);for(let i=0;i<hz/2;i++)d.advance(1/hz);expect(d.waterImpacts.entries).toBe(1);expect(p.waterEntered).toBe(true);expect(p.y).toBeGreaterThan(1);}

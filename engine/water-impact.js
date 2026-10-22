@@ -80,7 +80,7 @@ export class WaterImpacts {
    out[k]=p.x;out[k+1]=p.y;out[k+2]=p.z;out[k+3]=p.age;
    // Radius, reciprocal width and derivative amplitude are uniform over the
    // whole ring. Compute them once here rather than in every water pixel.
-   out[k+4]=.8+p.radiusSpeed*p.age;out[k+5]=p.inverseWidth;out[k+6]=.16*p.rootPower*fade*p.inverseWidth;out[k+7]=0;
+   out[k+4]=.8+p.radiusSpeed*p.age;out[k+5]=p.inverseWidth;out[k+6]=.32*p.rootPower*fade*p.inverseWidth;out[k+7]=0;
   }
   out[0]=count;return count;
  }
@@ -88,7 +88,7 @@ export class WaterImpacts {
   this.particleCount=0;
   if(!this.count&&!this.activeDrops)return;
   for(const p of this.impacts)if(p.active){
-   const u=p.age/WATER_IMPACT.rippleSeconds,radius=.8+p.radiusSpeed*p.age,alpha=.12*p.rootPower*(1-u)**1.5;
+   const u=p.age/WATER_IMPACT.rippleSeconds,radius=.8+p.radiusSpeed*p.age,alpha=.24*p.rootPower*(1-u)**1.5;
    emit(p.x,p.y+.12,p.z,radius,.55,.69,.7,alpha,2,p.seed,u,p.y);this.particleCount++;
    if(p.crown&&p.age<WATER_IMPACT.crownSeconds){const c=p.age/WATER_IMPACT.crownSeconds,r=(2+6*c)*p.rootPower,height=Math.max(.25,10*p.rootPower*Math.sin(c*Math.PI));emit(p.x,p.y+height*.5,p.z,r,.72,.8,.78,.95*(1-c),3,p.seed,c,height/(r*2));this.particleCount++;}
   }

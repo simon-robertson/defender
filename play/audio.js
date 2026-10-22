@@ -7,28 +7,30 @@ const clamp=value=>Math.max(-1,Math.min(1,value));
 // single-use, so their creation is capped rather than claimed allocation-free.
 export class AudioPlayer {
  constructor(scope=globalThis){
-  this.scope=scope;this.volume=loadSoundLevel(scope);this.assets=AUDIO_ASSETS;this.context=null;this.disposed=false;this.lastError='';this.ready=false;this.loading=null;this.abort=null;this.enabled=false;
+  this.scope=scope;this.volume=loadSoundLevel(scope);this.assets=AUDIO_ASSETS;this.context=null;this.disposed=false;this.lastError='';this.ready=false;this.loading=null;this.abort=null;this.enabled=false;this.generation=0;
   this.buffers=[];this.voices=[];this.master=null;this.queue=new Float64Array(AUDIO_QUEUE*4);this.queued=0;this.admissions=new Float64Array(AUDIO_ADMISSIONS);this.admissions.fill(-Infinity);this.admission=0;this.take=0;this.played=0;this.dropped=0;this.active=0;this.nextSpatial=0;
   this.onFailure=error=>{if(!this.disposed)this.lastError=error?.message??String(error);};
  }
- get state(){return this.context?.state??(this.disposed?'closed':'uninitialised');}
+ get state(){return this.context?.state??(this.disposed||this.volume===0?'closed':'uninitialised');}
  startFromGesture(){
-  if(this.disposed)return;
+  if(this.disposed||this.volume===0)return;
   try{
    if(!this.context){const Context=this.scope.AudioContext??this.scope.webkitAudioContext;if(!Context)return;this.context=new Context({latencyHint:'interactive'});}
    this.lastError='';
    // Invoke resume inside the genuine input handler, before any await/fetch.
-   if(this.context.state!=='running')this.context.resume().catch(this.onFailure);
-   if(!this.ready&&!this.loading&&this.context.createGain)this.prepare().catch(this.onFailure);
+   const context=this.context,generation=this.generation;
+   if(context.state!=='running')context.resume().catch(error=>{if(this.context===context)this.onFailure(error);});
+   if(!this.ready&&!this.loading&&context.createGain)this.prepare().catch(error=>{if(this.generation===generation)this.onFailure(error);});
   }catch(error){this.onFailure(error);}
  }
  async prepare(){
   const context=this.context,abort=new AbortController();this.abort=abort;
-  this.loading=(async()=>{
+  const task=(async()=>{
    const buffers=[];
    for(const asset of this.assets){
     let buffer;
     try{buffer=await this.load(asset.id,false,context,abort.signal);}catch(error){if(abort.signal.aborted||!asset.fallback)throw error;buffer=await this.load(asset.id,true,context,abort.signal);}
+    if(abort.signal.aborted||this.context!==context)return;
     if(buffer.numberOfChannels!==1)throw new Error('Expected mono game audio: '+asset.id);
     buffers.push(buffer);
    }
@@ -42,13 +44,14 @@ export class AudioPlayer {
    }
    this.buffers=buffers;this.ready=buffers.length>0;
   })();
-  try{await this.loading;}finally{this.loading=null;if(this.abort===abort)this.abort=null;}
+  this.loading=task;
+  try{await task;}finally{if(this.loading===task)this.loading=null;if(this.abort===abort)this.abort=null;}
  }
  async load(id,fallback,context,signal){
   const response=await this.scope.fetch(audioAssetURL(id,fallback),{signal});if(!response.ok)throw new Error('Audio load failed: '+id+' ('+response.status+')');
   return context.decodeAudioData(await response.arrayBuffer());
  }
- setVolume(value){this.volume=soundLevel(value);if(this.master)this.master.gain.setTargetAtTime(this.volume,this.context.currentTime,.015);saveSoundLevel(this.volume,this.scope);}
+ setVolume(value){this.volume=soundLevel(value);if(this.volume===0)this.shutdown();else if(this.master)this.master.gain.setTargetAtTime(this.volume,this.context.currentTime,.015);saveSoundLevel(this.volume,this.scope);}
  setActive(active){if(this.enabled===active)return;this.enabled=active;if(!active)this.stop();}
  stop(){
   this.queued=0;this.nextSpatial=0;
@@ -94,9 +97,10 @@ export class AudioPlayer {
   }
   this.queued=0;
  }
- dispose(){
-  if(this.disposed)return;this.disposed=true;this.abort?.abort();this.stop();const context=this.context;this.context=null;this.scope=null;this.buffers=[];this.ready=false;
+ shutdown(){
+  this.generation++;this.abort?.abort();this.abort=null;this.loading=null;this.stop();const context=this.context;this.context=null;this.buffers=[];this.ready=false;this.admissions.fill(-Infinity);this.admission=0;
   for(const voice of this.voices){voice.gain.disconnect();voice.pan.disconnect();}this.voices=[];this.master?.disconnect();this.master=null;
-  try{if(context&&context.state!=='closed')context.close().catch(this.onFailure);}catch{/* Device teardown must never prevent leaving the game. */}
+  try{if(context&&context.state!=='closed')context.close().catch(()=>{});}catch{/* Device teardown must never prevent leaving the game. */}
  }
+ dispose(){if(this.disposed)return;this.disposed=true;this.shutdown();this.scope=null;}
 }

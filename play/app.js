@@ -231,7 +231,7 @@ document.addEventListener('click',async event=>{
   if(action==='cancel-leave'){leaveOpen=false;paint();runLoop();return;}
   if(action==='title'&&session.phase!=='title'&&session.phase!=='complete'&&!error){leaveOpen=true;screenshotCamera?.leave();renderer?.camera.keys.clear();paint();runLoop();return;}
   if(action==='confirm-title')leaveOpen=false;
-  if(action==='options'||action==='close-options'){if(session.phase!=='title'||error)return;optionsOpen=action==='options';paint();return;}
+  if(action==='options'||action==='close-options'){if(session.phase!=='title'||error)return;optionsOpen=action==='options';if(action==='close-options')audio.startFromGesture();paint();return;}
   if(action==='retry-load'){leaveOpen=false;if(loader)await rebuild(pendingSpec?.candidate??session.fork(),pendingSpec?.points);else{renderer?.dispose();busy=true;error='';paint();await initialize();}return;}
   if(action==='continue'){
    optionsOpen=false;

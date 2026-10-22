@@ -69,7 +69,7 @@ test('late shots never replay, pause clears pending voices and old ended events 
  f.audio.enqueue(0,0,0,1);f.audio.advance(1,f.camera);expect(f.sources).toHaveLength(1);f.audio.setActive(true);f.audio.enqueue(0,0,0,1);f.audio.advance(1,f.camera);f.end(old);expect(f.audio.active).toBe(1);expect(f.audio.voices[0].source).toBe(f.sources[1]);f.audio.dispose();
 });
 test('dispose during decoding cannot create a late graph or retain a sound bank',async()=>{
- const f=mixerFixture();let finish;f.audio.startFromGesture();f.audio.context.decodeAudioData=()=>new Promise(resolve=>finish=resolve);await Promise.resolve();await Promise.resolve();const pending=f.audio.loading;f.audio.dispose();finish({numberOfChannels:1});await expect(pending).rejects.toThrow();expect(f.graphs).toHaveLength(0);expect(f.audio.ready).toBe(false);
+ const f=mixerFixture();let finish;f.audio.startFromGesture();f.audio.context.decodeAudioData=()=>new Promise(resolve=>finish=resolve);await Promise.resolve();await Promise.resolve();const pending=f.audio.loading;f.audio.dispose();finish({numberOfChannels:1});await pending;expect(f.graphs).toHaveLength(0);expect(f.audio.ready).toBe(false);
 });
 
 test('sound level defaults to 80%, is stored safely, and updates the master including mute',async()=>{
@@ -77,6 +77,12 @@ test('sound level defaults to 80%, is stored safely, and updates the master incl
  expect(loadSoundLevel({})).toBe(.8);for(const raw of ['broken','null','"loud"'])expect(loadSoundLevel({localStorage:{getItem:()=>raw}})).toBe(.8);
  expect(loadSoundLevel({localStorage:{getItem:()=>'0.35'}})).toBe(.35);expect(soundLevel(-2)).toBe(0);expect(soundLevel(2)).toBe(1);
  const f=await readyMixer(),saved=[];expect(f.audio.volume).toBe(.8);expect(f.audio.master.gain.value).toBe(.8);f.audio.scope.localStorage={setItem:(...args)=>saved.push(args)};
- f.audio.setVolume(.25);expect(f.audio.master.gain.value).toBe(.25);expect(saved.at(-1)).toEqual([SOUND_LEVEL_KEY,'0.25']);f.audio.setVolume(0);expect(f.audio.master.gain.value).toBe(0);
- f.audio.scope.localStorage={setItem(){throw Error('Blocked');}};expect(()=>f.audio.setVolume(.6)).not.toThrow();expect(f.audio.master.gain.value).toBe(.6);f.audio.dispose();
+ f.audio.setVolume(.25);expect(f.audio.master.gain.value).toBe(.25);expect(saved.at(-1)).toEqual([SOUND_LEVEL_KEY,'0.25']);f.audio.setVolume(0);expect(f.audio.master).toBeNull();expect(f.audio.context).toBeNull();expect(f.audio.state).toBe('closed');
+ f.audio.scope.localStorage={setItem(){throw Error('Blocked');}};expect(()=>f.audio.setVolume(.6)).not.toThrow();expect(f.audio.context).toBeNull();f.audio.startFromGesture();await f.audio.loading;expect(f.audio.master.gain.value).toBe(.6);f.audio.dispose();
+});
+
+test('zero volume shuts down the device and buffers; Done can restart only above zero',async()=>{
+ const f=await readyMixer();f.audio.enqueue(0,0,0,0);f.audio.advance(0,f.camera);const context=f.audio.context;f.audio.setVolume(0);expect(context.state).toBe('closed');expect(f.audio.active).toBe(0);expect(f.audio.buffers).toEqual([]);expect(f.audio.voices).toEqual([]);expect(f.audio.loading).toBeNull();
+ f.audio.startFromGesture();expect(f.audio.context).toBeNull();f.audio.setVolume(.8);expect(f.audio.context).toBeNull();f.audio.startFromGesture();await f.audio.loading;expect(f.audio.context).not.toBe(context);expect(f.audio.state).toBe('running');expect(f.audio.ready).toBe(true);f.audio.dispose();
+ const done=handlerFixture('close-options');await done.call();expect(done.records).toEqual(['context','resume']);done.audio.dispose();
 });

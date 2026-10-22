@@ -4,13 +4,14 @@ import {packTubeLightBounds} from './tube-light-bounds.js';
 
 const NODES=ARC_TRUNK_SEGMENTS+1,TAU=Math.PI*2;
 // These interpolation coefficients depend only on the fixed node index. Retain
-// double precision and the original arithmetic so every strike uses the same
-// shape/RNG sequence without recomputing sine and neighbour indices per frame.
-const nodeParameters=new Float64Array(NODES*5);
+// double precision; per-strike noise supplies the contour without new random
+// draws, sine evaluations or neighbour-index work during frame preparation.
+const nodeParameters=new Float64Array(NODES*6);
 for(let node=0;node<NODES;node++){
- const k=node*5,t=node<=4?node/4:(node-4)/(ARC_TRUNK_SEGMENTS-4),coarse=Math.floor(node/4)*4;
+ const k=node*6,t=node<=4?node/4:(node-4)/(ARC_TRUNK_SEGMENTS-4),coarse=Math.floor(node/4)*4;
  nodeParameters[k]=t;nodeParameters[k+1]=Math.sin(t*Math.PI);
  nodeParameters[k+2]=coarse*2;nodeParameters[k+3]=Math.min(ARC_TRUNK_SEGMENTS,coarse+4)*2;nodeParameters[k+4]=(node-coarse)/4;
+ nodeParameters[k+5]=Math.sin(t*TAU);
 }
 // Coordinate copies and optional live bone references occupy fixed slots. No
 // shot/frame objects, timers or slices; old strikes replace, excess sparks drop.
@@ -130,15 +131,17 @@ export class ArcEffects {
    // One brief dip followed by a weaker restrike; shape stays stable between
    // those events rather than generating noisy random geometry every frame.
    const pulse=age<.033?1:age<ARC_RESTRIKE_AT?.25:Math.max(0,.78*(1-(age-ARC_RESTRIKE_AT)/(ARC_SECONDS-ARC_RESTRIKE_AT)));
-   const strength=pulse*(.9+.1*Math.cos(age*310+slot)),amplitude=Math.min(1.8,length*.045);
+   // The first four noise pairs are unused by the fixed terminal escape.
+   // Give every hit its own broad bends and pulse phase, including slot reuse.
+   const strength=pulse*(.9+.1*Math.cos(age*310+this.shape[shape+6]*Math.PI)),amplitude=Math.min(1.8,length*.045),bend=Math.min(4,length*.06);
    // Leave the actual terminal top upward/outward before descending. The first
    // four existing spans make this escape; no detached source or extra branch.
    const horizontal=Math.hypot(dx,dz),escapeX=ax+(this.secondary[slot]?dx*.12:(horizontal>1e-6?dx/horizontal:1)*4),escapeY=ay+(this.secondary[slot]?dy*.12:2),escapeZ=az+(this.secondary[slot]?dz*.12:(horizontal>1e-6?dz/horizontal:0)*4);
    for(let node=0;node<NODES;node++){
-    const k=node*3,parameter=node*5,t=nodeParameters[parameter];if(node<=4){p[k]=ax+(escapeX-ax)*t;p[k+1]=ay+(escapeY-ay)*t;p[k+2]=az+(escapeZ-az)*t;continue;}
+    const k=node*3,parameter=node*6,t=nodeParameters[parameter];if(node<=4){p[k]=ax+(escapeX-ax)*t;p[k+1]=ay+(escapeY-ay)*t;p[k+2]=az+(escapeZ-az)*t;continue;}
     const envelope=nodeParameters[parameter+1],coarse=nodeParameters[parameter+2],next=nodeParameters[parameter+3],part=nodeParameters[parameter+4];
     const smoothX=this.shape[shape+coarse]*(1-part)+this.shape[shape+next]*part,smoothY=this.shape[shape+coarse+1]*(1-part)+this.shape[shape+next+1]*part;
-    const a=(smoothX+this.shape[shape+node*2]*.33*(restrike?-1:1))*amplitude*envelope,b=(smoothY+this.shape[shape+node*2+1]*.33*(restrike?-1:1))*amplitude*envelope;
+    const second=nodeParameters[parameter+5],a=(smoothX+this.shape[shape+node*2]*.33*(restrike?-1:1))*amplitude*envelope+(this.shape[shape]*envelope+this.shape[shape+2]*second*.5)*bend,b=(smoothY+this.shape[shape+node*2+1]*.33*(restrike?-1:1))*amplitude*envelope+(this.shape[shape+1]*envelope+this.shape[shape+3]*second*.5)*bend;
     p[k]=escapeX+(this.ends[e+3]-escapeX)*t+ux*a+vx*b;p[k+1]=escapeY+(this.ends[e+4]-escapeY)*t+uy*a+vy*b;p[k+2]=escapeZ+(this.ends[e+5]-escapeZ)*t+uz*a+vz*b;
    }
    // Exact source/hit attachment, independent of trigonometric endpoint error.

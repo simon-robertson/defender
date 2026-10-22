@@ -9,7 +9,7 @@ test('strike joins exact endpoints with one thicker unbranched channel, stronger
  const effects=new ArcEffects(random());expect(effects.emit(source,impact,normal,0)).toBe(true);effects.prepare();
  expect(effects.strikeCount).toBe(1);expect(effects.lightCount).toBe(1);expect(effects.sparkCount).toBe(6);
  expect(effects.instanceCount-effects.sparkCount).toBe(ARC_TRUNK_SEGMENTS);
- expect(ARC_WIDTH).toBe(1.1);expect(ARC_LIGHT_STRENGTH).toBe(4.8);expect(effects.instanceData[3]).toBeCloseTo(1.1);expect(effects.lightData[8]).toBeCloseTo(4.8);
+ expect(ARC_WIDTH).toBe(1.1);expect(ARC_LIGHT_STRENGTH).toBe(9.6);expect(effects.instanceData[3]).toBeCloseTo(1.1);expect(effects.lightData[8]).toBeGreaterThanOrEqual(ARC_LIGHT_STRENGTH*.8-1e-6);expect(effects.lightData[8]).toBeLessThanOrEqual(ARC_LIGHT_STRENGTH);
  expect(Array.from(effects.instanceData.slice(0,3))).toEqual(source);
  const last=(ARC_TRUNK_SEGMENTS-1)*ARC_INSTANCE_FLOATS;
  expect(Array.from(effects.instanceData.slice(last+4,last+7))).toEqual(impact);
@@ -57,6 +57,16 @@ test('shape is deterministic at equal elapsed time, with finite vertical and coi
  const c=new ArcEffects(random());expect(c.emit(source,source,normal,0)).toBe(false);c.emit([0,0,0],[0,60,0],[0,-1,0],0);c.prepare();
  expect(Array.from(c.instanceData).every(Number.isFinite)).toBe(true);expect(Array.from(c.lightData).every(Number.isFinite)).toBe(true);
  expect(()=>c.advance(-1)).toThrow();expect(()=>c.advance(NaN)).toThrow();
+});
+test('repeated hits in the same slot get distinct broad contours and pulse phases without frame randomness',()=>{
+ let calls=0;const next=random(),e=new ArcEffects(()=>{calls++;return next();}),means=[],strengths=[];
+ for(let shot=0;shot<10;shot++){
+  expect(e.emit(source,impact,normal,e.time)).toBe(true);const draws=calls;e.prepare();const trunk=e.instanceData.slice(0,ARC_TRUNK_SEGMENTS*ARC_INSTANCE_FLOATS);e.prepare();expect(e.instanceData.slice(0,trunk.length)).toEqual(trunk);expect(calls).toBe(draws);
+  expect([...trunk.slice(0,3)]).toEqual(source);const last=(ARC_TRUNK_SEGMENTS-1)*ARC_INSTANCE_FLOATS;expect([...trunk.slice(last+4,last+7)]).toEqual(impact);
+  let mean=0;for(let segment=5;segment<ARC_TRUNK_SEGMENTS;segment++)mean+=trunk[segment*ARC_INSTANCE_FLOATS+2];means.push(mean/(ARC_TRUNK_SEGMENTS-5));strengths.push(e.lightData[8]);
+  e.advance(ARC_SECONDS+.001);
+ }
+ expect(Math.max(...means)-Math.min(...means)).toBeGreaterThan(2.5);expect(new Set(strengths).size).toBe(10);
 });
 test('coarse tube segment endpoints follow the same visible trunk and do not encode endpoint point lights',()=>{
  const effects=new ArcEffects(random());effects.emit(source,impact,normal,0);effects.prepare();

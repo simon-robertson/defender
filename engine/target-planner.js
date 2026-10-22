@@ -211,7 +211,7 @@ export class TargetPlanner {
    best=-1;for(let i=0;i<count;i++)if(this.better(i,best,state))best=i;
   }
   let chosen=best;
-  const emergency=best>=0&&this.exitEmergency(state,this.candidates[best])&&(currentIndex<0||!this.exitEmergency(state,current)||this.timeToExit(this.candidates[best])<this.timeToExit(current)-.1);
+  const emergency=best>=0&&this.exitEmergency(state,this.candidates[best])&&(state.reservation&&state.reservation!==this.candidates[best]||currentIndex<0||!this.exitEmergency(state,current)||this.timeToExit(this.candidates[best])<this.timeToExit(current)-.1);
   if(emergency){
    // The scheduled thinker already validated this target's real shot geometry.
    // Future promises, bursts and acquisition grace cannot retain a lower lock.

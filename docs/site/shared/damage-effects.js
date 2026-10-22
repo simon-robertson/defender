@@ -1,22 +1,9 @@
 // Bounded visual-preview pools. Enemy configuration chooses a smaller burst.
 export const MAX_DEBRIS=192,MAX_SMOKE=384,MAX_BLASTS=4,MAX_DAMAGE_LIGHTS=4;
-// Nine ground animals, three birds and at most four three-fish schools. Each animal
-// can die once per wave. Reserve their storage so enemy bursts cannot evict it.
-export const MAX_CRITTERS=24,CRITTER_FRAGMENTS=16,CRITTER_SPRAY=32;
-export const MAX_CRITTER_DEBRIS=MAX_CRITTERS*(CRITTER_FRAGMENTS+CRITTER_SPRAY),MAX_DAMAGE_CUBES=MAX_DEBRIS+MAX_CRITTER_DEBRIS;
-export const CRITTER_GIB=Object.freeze({enemyRadius:33.6,missileRadius:72,fadeSeconds:2,gravity:60,settleSeconds:Infinity,maxFlightSeconds:6,coreImpulse:112,edgeImpulse:32});
-// Bounded game impulse in world units/s. The lethal-radius edge still has a
-// substantial kick; the core is finite instead of an inverse-square singularity.
-export function critterShockwaveImpulse(distance,radius){
- if(!Number.isFinite(distance)||distance<0||!Number.isFinite(radius)||radius<=0)throw new Error('Invalid critter shockwave distance or radius.');
- const remaining=1-Math.min(1,distance/radius);
- return CRITTER_GIB.edgeImpulse+(CRITTER_GIB.coreImpulse-CRITTER_GIB.edgeImpulse)*remaining*remaining;
-}
+export const MAX_DAMAGE_CUBES=MAX_DEBRIS;
 import {MAX_WATER_PARTICLES} from './water-impact.js';
 export const MISSILE_BLAST_PARTICLES=9;
 export const MAX_DAMAGE_PARTICLES=MAX_SMOKE+MAX_BLASTS*MISSILE_BLAST_PARTICLES+MAX_WATER_PARTICLES;
-// Small physical separation from the contacted scenery face, in world units.
-export const BLOOD_DECAL_OFFSET=.08;
 export const DAMAGE_CUBE_FLOATS=20,DAMAGE_PARTICLE_FLOATS=12;
 export const SHOCKWAVE_FLOATS=8;
 

@@ -10,7 +10,7 @@ import {ModelLights} from '../engine/model-lights.js';
 import {DamageEffects} from '../engine/damage-effects.js';
 import {ENEMY_IMPACT} from '../engine/enemy-impact.js';
 import {emitMissileImpact} from '../game/missile-impact.js';
-import {MAX_BLASTS,MISSILE_IMPACT_EFFECT,CRITTER_GIB} from '../shared/damage-effects.js';
+import {MAX_BLASTS,MISSILE_IMPACT_EFFECT} from '../shared/damage-effects.js';
 
 const sources=new Map();
 async function fixture(zone,mixed=false){
@@ -120,23 +120,3 @@ test('silo lights survive missile visibility changes and stay within the existin
  }
 });
 
-test('missile contacts gib ground and perched/flying birds within 72 units despite a full blast pool, retaining the 48 unit fright event',async()=>{
- expect(CRITTER_GIB.missileRadius).toBe(72);expect(MISSILE_IMPACT_EFFECT.frightRadius).toBe(48);
- for(const mode of ['ground','perched','flying']){
-  const f=await fixture('A'),p=f.wildlife,s=p.states[mode==='ground'?0:3],events=p.explosions;
-  try{
-   if(mode==='flying'){
-    for(let frame=0;frame<6000&&!s.flight;frame++)p.advance(1/60);
-    expect(s.flight).toBe(true);p.moveBird(s,s.duration*.25);
-   }else s.readyAt=p.time+60;
-   for(let i=0;i<MAX_BLASTS;i++)f.damage.explode(f.enemies.states[0]);
-   const x=s.x+CRITTER_GIB.missileRadius,y=s.y+s.centerOffset,z=s.z,thinks=p.thinkCount,before=s.spooks;
-   expect(emitMissileImpact(f.damage,p,x+.001,y,z,0,1,0)).toBeNull();expect(s.dead).toBe(false);
-   expect(emitMissileImpact(f.damage,p,x,y,z,0,1,0)).toBeNull();expect(f.damage.droppedMissileBlasts).toBe(2);expect(s.dead).toBe(true);
-   expect(p.explosionEvents).toBe(2);expect(p.thinkCount).toBe(thinks);expect(Array.from(events.subarray(5,9))).toEqual([x,y,z,MISSILE_IMPACT_EFFECT.frightRadius]);
-   const position=[s.x,s.y,s.z],bursts=f.damage.critterBursts;p.thinker=p.states.indexOf(s);p.advance(.000001);
-   expect(p.thinkCount).toBe(thinks);expect(s.frightened).toBe(false);expect(s.spooks).toBe(before);expect([s.x,s.y,s.z]).toEqual(position);expect(p.explosions).toBe(events);
-   emitMissileImpact(f.damage,p,x,y,z,0,1,0);expect(f.damage.critterBursts).toBe(bursts);
-  }finally{f.dispose();}
- }
-});

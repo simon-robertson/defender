@@ -2,7 +2,6 @@ import {WorldRenderer} from '../engine/renderer.js';
 import {DamageEffects} from '../engine/damage-effects.js';
 import {PLAY_CONFIG,playCapacity} from '../play/config.js';
 import {loadPlayWorld,disposePlayWorld,PlayEngine} from '../play/engine.js';
-import {CRITTER_GIB} from '../shared/damage-effects.js';
 const $=id=>document.getElementById(id),runs=[],errors=[];let r,world,e,busy=false;
 function report(){ $('result').textContent=JSON.stringify({runs,errors},null,2);}
 async function run(prepared){if(busy)return;busy=true;$('status').textContent='Measuring…';try{
@@ -13,7 +12,7 @@ async function run(prepared){if(busy)return;busy=true;$('status').textContent='M
  const setupStart=performance.now();if(prepared){if(!r.prepareDeathEffects)throw new Error('Prepared effect path not implemented');await r.prepareDeathEffects();}
  const setupMs=performance.now()-setupStart,wave=PLAY_CONFIG.levels[0].waves[0];
  world=await loadPlayWorld('moss-01',{config:PLAY_CONFIG,wave,placements:[]});r.setWorld(world);const damage=new DamageEffects(()=>.5);r.setDamageEffects(damage);
- e=new PlayEngine(world,{config:PLAY_CONFIG,wave,onPoseChange:(...args)=>r.updateInstance(...args),onVisible:(...args)=>r.setActorVisible(...args),onStep:dt=>damage.advance(dt),onDeath:(_id,state)=>{const b=damage.explode(state);if(b){e.wildlife.gibExplosion(b.x,b.y,b.z,CRITTER_GIB.enemyRadius,damage);e.wildlife.spookExplosion(b.x,b.y,b.z,b.config.frightRadius);}}});damage.setWorld(world,e.enemies.states);e.startWave();
+ e=new PlayEngine(world,{config:PLAY_CONFIG,wave,onPoseChange:(...args)=>r.updateInstance(...args),onVisible:(...args)=>r.setActorVisible(...args),onStep:dt=>damage.advance(dt),onDeath:(_id,state)=>{const b=damage.explode(state);if(b){e.wildlife.spookExplosion(b.x,b.y,b.z,b.config.frightRadius);}}});damage.setWorld(world,e.enemies.states);e.startWave();
  for(let f=0;f<5;f++){r.render(0,e.time);await d.queue.onSubmittedWorkDone();await new Promise(requestAnimationFrame);}
  const deaths=[];
  for(let death=0;death<3;death++){

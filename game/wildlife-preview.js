@@ -1,4 +1,3 @@
-import {debrisPalette} from '../engine/damage-effects.js';
 import {FishPreview} from './fish-preview.js';
 import {MISSILE_LAUNCHER_SOCKETS,GUIDED_MISSILE_MODEL} from '../shared/missile-model.js';
 import {PoseRig} from '../engine/rig.js';
@@ -178,10 +177,8 @@ function arcEscapes(s,x0,y0,z0,x1,y1,z1,ceiling,start){
 // incremental BFS job is resumed on its owner's next cyclic-roster turn.
 // Fear handling must retain this intentional performance/fairness schedule.
 export class WildlifePreview {
- constructor(world,onPoseChange,actors=wildlifeActorsForLevel(world.level),onVisible=()=>{}){
-  this.onVisible=onVisible;this.gibCount=0;
+ constructor(world,onPoseChange,actors=wildlifeActorsForLevel(world.level)){
   this.fish=new FishPreview(world,onPoseChange);world.onDebrisWaterImpact=this.fish.states.length?this.fish.spookWaterImpact.bind(this.fish):null;this.states=[];this.time=0;this.updatedParts=0;this.thinkCount=0;this.lastThinkId=null;this.lastThinkWork=0;this.thinker=0;this.world=world;this.defences=null;this.nav=null;this.perches=[];this.treePerches=[];this.bounds=new Float64Array(6);this.planningBytes=0;this.threatSources=EMPTY;this.explosions=new Float64Array(EXPLOSION_SLOTS*5);this.explosionCursor=0;this.spookCount=0;
-  for(const s of this.fish.states){s.dead=false;s.gibPalette=debrisPalette(world,world.actors.get(s.id));}
   if(!Array.isArray(actors)||actors.length>12)throw new Error('Invalid cosmetic actor collection.');if(!actors.length)return;
   const field=new TerrainField(world.level),actorIds=new Set();this.defences=defenceBounds(world);let groundRadius=0,groundHeight=0,birdData=null,birdEnvelope=null;
   for(const actor of actors){
@@ -189,7 +186,7 @@ export class WildlifePreview {
    const data=world.actors.get(actor.id);if(!data||data.model!==actor.model||data.variant!==actor.variant)throw new Error('Wildlife runtime actor is missing.');
    const bird=actor.kind==='bird',envelope=modelEnvelope(data,bird),rig=new PoseRig(data,onPoseChange),hop=actor.model.includes('-hare-')?HARE_HOP_HEIGHT:0;
    if(bird&&(rig.bones.length!==3||!rig.byId.has('body')||!rig.byId.has('wing-l')||!rig.byId.has('wing-r')))throw new Error('Wildlife bird wing rig is missing.');
-   const s={id:actor.id,model:actor.model,kind:actor.kind,rig,dead:false,gibPalette:world.entries?debrisPalette(world,data):null,radius:envelope.radius,height:envelope.height,hop,random:hash(world.level.id+actor.id),phase:bird?'perched':'idle',flight:false,x:0,y:0,z:0,yaw:0,wing:FOLD,homeX:0,homeY:0,homeZ:0,readyAt:1+actor.offset*.35,thinkCount:0,frightened:false,fleeUntil:0,spooks:0,fleeJourneys:0,lastSpookKind:null,threatKind:null,threatX:0,threatY:0,threatZ:0,centerOffset:bird?3:envelope.height*.5,journeys:0,journeysCompleted:0,groundComponent:-1,destinationX:0,destinationY:0,destinationZ:0,targetPerch:null,travelled:0,hopSpan:HARE_HOP_SPAN,node:-1,edgeNode:-1,goalNode:-1,route:bird?null:new Uint32Array(WAYPOINTS),routeLength:0,routeIndex:0,blockedFor:0,speed:hop?HARE_SPEED:actor.model.includes('lizard')?6:4,fleeSpeed:bird?66:hop?30:actor.model.includes('lizard')?24:12,perch:-1,goalPerch:-1,fromX:0,fromY:0,fromZ:0,fromYaw:0,fromWing:FOLD,flightTime:0,duration:0,ceiling:0};
+   const s={id:actor.id,model:actor.model,kind:actor.kind,rig,radius:envelope.radius,height:envelope.height,hop,random:hash(world.level.id+actor.id),phase:bird?'perched':'idle',flight:false,x:0,y:0,z:0,yaw:0,wing:FOLD,homeX:0,homeY:0,homeZ:0,readyAt:1+actor.offset*.35,thinkCount:0,frightened:false,fleeUntil:0,spooks:0,fleeJourneys:0,lastSpookKind:null,threatKind:null,threatX:0,threatY:0,threatZ:0,centerOffset:bird?3:envelope.height*.5,journeys:0,journeysCompleted:0,groundComponent:-1,destinationX:0,destinationY:0,destinationZ:0,targetPerch:null,travelled:0,hopSpan:HARE_HOP_SPAN,node:-1,edgeNode:-1,goalNode:-1,route:bird?null:new Uint32Array(WAYPOINTS),routeLength:0,routeIndex:0,blockedFor:0,speed:hop?HARE_SPEED:actor.model.includes('lizard')?6:4,fleeSpeed:bird?66:hop?30:actor.model.includes('lizard')?24:12,perch:-1,goalPerch:-1,fromX:0,fromY:0,fromZ:0,fromYaw:0,fromWing:FOLD,flightTime:0,duration:0,ceiling:0};
    if(bird){birdData=data;birdEnvelope=envelope;}else{
     if(!Array.isArray(actor.habitat)||actor.habitat.length!==2||actor.habitat.some((v,i)=>!Number.isInteger(v)||v<0||v>=world.level.size[i]))throw new Error('Invalid wildlife habitat.');
     const [bx,bz]=actor.habitat,y=field.flatBox(bx,bz);if(y===null)throw new Error('Wildlife habitat must be flat and dry.');
@@ -217,7 +214,6 @@ export class WildlifePreview {
   const nav=grounds.length?navigation(world,new TerrainField(world.level),defences,Math.max(...grounds.map(s=>s.radius)),Math.max(...grounds.map(s=>s.height+s.hop))):null,reroute=[],respawn=[];
   const edge=(a,b)=>a===b||nav.offsets.some((offset,d)=>a+offset===b&&(nav.edges[a]&(1<<d)));
   for(const s of this.states){
-   if(s.dead){respawn.push({state:s});continue;}
    bounds.set([s.x-s.radius,s.y,s.z-s.radius,s.x+s.radius,s.y+s.height,s.z+s.radius]);
    if(!boxClear(bounds,world,defences)){respawn.push({state:s});continue;}
    if(s.kind==='bird'){
@@ -269,7 +265,7 @@ export class WildlifePreview {
  commitDeployment(plan){
   this.nav=plan.nav;this.defences=plan.defences;
   for(const {state:s,node,perch}of plan.respawn){
-   s.dead=false;this.onVisible(s.id,true);s.frightened=false;s.fleeUntil=0;s.blockedFor=0;s.readyAt=this.time+.2;
+   s.frightened=false;s.fleeUntil=0;s.blockedFor=0;s.readyAt=this.time+.2;
    if(s.kind==='ground'){
     s.node=node;s.edgeNode=s.goalNode=-1;s.routeLength=s.routeIndex=0;s.routeInterrupted=false;s.phase='idle';s.x=(node%this.nav.cols+.5)*STEP;s.z=(Math.floor(node/this.nav.cols)+.5)*STEP;s.y=this.nav.heights[node];
    }else{
@@ -308,7 +304,7 @@ export class WildlifePreview {
   }
  }
  occupied(s,x,z,bird=false,perch=-1){
-  for(const other of this.states)if(other!==s&&!other.dead&&other.kind===s.kind){
+  for(const other of this.states)if(other!==s&&other.kind===s.kind){
    if(bird){const id=this.perches[perch].id;if(this.perches[other.perch]?.id===id||this.perches[other.goalPerch]?.id===id)return true;}
    else{
     const radius=s.radius+other.radius+2;if((x-other.x)**2+(z-other.z)**2<radius*radius)return true;
@@ -317,28 +313,7 @@ export class WildlifePreview {
   }
   return false;
  }
- // Blast lethality is immediate and independent of the one-animal fear
- // thinker. Centres use current 3D animated-root positions, never nav nodes.
- gibExplosion(x,y,z,radius,damage){
-  if(!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z)||!Number.isFinite(radius)||radius<=0)throw new Error('Invalid critter blast.');
-  if(!this.world)return 0;let count=0;
-  for(const s of this.states)count+=this.gibIfNear(s,x,y,z,radius,damage);
-  for(const s of this.fish.states)count+=this.gibIfNear(s,x,y,z,radius,damage);
-  this.gibCount+=count;return count;
- }
- gibIfNear(s,x,y,z,radius,damage){
-  if(s.dead||(s.x-x)**2+(s.y+(s.centerOffset??2)-y)**2+(s.z-z)**2>radius*radius)return 0;
-  damage.gibCritter(s,s.gibPalette,x,y,z,radius);s.dead=true;s.frightened=false;s.flight=false;s.phase='dead';s.goalNode=s.goalPerch=s.edgeNode=-1;s.routeLength=s.routeIndex=0;
-  if(this.nav?.owner===s)this.nav.owner=null;
-  this.onVisible(s.id,false);return 1;
- }
- prepareCritterRun(){
-  if(this.states.some(s=>s.dead)){
-   const plan=this.prepareDeployment(this.world);if(!plan.valid)throw new Error(plan.reason);this.commitDeployment(plan);
-  }
-  for(const s of this.fish.states)if(s.dead){this.fish.respawn(s);this.onVisible(s.id,true);}
-  this.explosions?.fill(0);this.fish.events.fill(0);
- }
+ clearFearEvents(){this.explosions?.fill(0);this.fish.events.fill(0);}
  get explosionEvents(){return this.spookCount;}
  setThreatSources(enemies){
   if(!Array.isArray(enemies))throw new Error('Wildlife threats must be an existing enemy-state array.');this.threatSources=enemies;
@@ -443,7 +418,7 @@ export class WildlifePreview {
  }
  clearMotion(s,x,z){
   const dx=x-s.x,dz=z-s.z,length=dx*dx+dz*dz;
-  for(const other of this.states)if(other!==s&&!other.dead&&other.kind==='ground'){
+  for(const other of this.states)if(other!==s&&other.kind==='ground'){
    const t=length?Math.max(0,Math.min(1,((other.x-s.x)*dx+(other.z-s.z)*dz)/length)):0,r=s.radius+other.radius+.25;
    if((s.x+dx*t-other.x)**2+(s.z+dz*t-other.z)**2<r*r)return false;
   }
@@ -482,13 +457,13 @@ export class WildlifePreview {
   if(!Number.isFinite(deltaSeconds)||deltaSeconds<0)throw new Error('Invalid wildlife delta.');this.updatedParts=0;this.lastThinkWork=0;
   if(!deltaSeconds)return;this.fish.advance(deltaSeconds);this.updatedParts+=this.fish.updatedParts;const thinkers=this.states.length+this.fish.states.length;if(!thinkers)return;this.time+=deltaSeconds;
   const turn=this.thinker;this.thinker=(this.thinker+1)%thinkers;
-  for(const s of this.states){if(s.dead)continue;const scared=Math.max(0,Math.min(deltaSeconds,s.fleeUntil-(this.time-deltaSeconds))),motionDelta=deltaSeconds+scared*((s.kind==='bird'?FLEE_BOOST:s.fleeSpeed/s.speed)-1);s.frightened=s.fleeUntil>this.time;if(s.kind==='ground')this.moveGround(s,motionDelta);else this.moveBird(s,motionDelta);this.writePose(s);}
+  for(const s of this.states){const scared=Math.max(0,Math.min(deltaSeconds,s.fleeUntil-(this.time-deltaSeconds))),motionDelta=deltaSeconds+scared*((s.kind==='bird'?FLEE_BOOST:s.fleeSpeed/s.speed)-1);s.frightened=s.fleeUntil>this.time;if(s.kind==='ground')this.moveGround(s,motionDelta);else this.moveBird(s,motionDelta);this.writePose(s);}
   if(turn>=this.states.length){this.fish.think(turn-this.states.length);this.thinkCount++;this.lastThinkId=this.fish.states[turn-this.states.length].id;return;}
-  const s=this.states[turn];if(s.dead)return;this.thinkCount++;s.thinkCount++;this.lastThinkId=s.id;this.threatCheck(s);this.writePose(s);
+  const s=this.states[turn];this.thinkCount++;s.thinkCount++;this.lastThinkId=s.id;this.threatCheck(s);this.writePose(s);
   if(this.time>=s.readyAt&&(s.phase==='idle'||s.phase==='planning'||s.phase==='perched'||s.phase==='startled')){if(s.kind==='ground')this.thinkGround(s);else this.thinkBird(s);}
  }
  dispose(){
   if(this.world)this.world.onDebrisWaterImpact=null;this.fish.dispose();
-  for(const s of this.states){s.route=null;s.rig=null;}this.states.length=0;this.nav=null;this.defences=null;this.world=null;this.perches.length=0;this.treePerches.length=0;this.bounds=null;this.updatedParts=0;this.time=0;this.thinkCount=0;this.lastThinkId=null;this.lastThinkWork=0;this.planningBytes=0;this.threatSources=EMPTY;this.explosions=null;this.explosionCursor=0;this.spookCount=0;this.onVisible=null;
+  for(const s of this.states){s.route=null;s.rig=null;}this.states.length=0;this.nav=null;this.defences=null;this.world=null;this.perches.length=0;this.treePerches.length=0;this.bounds=null;this.updatedParts=0;this.time=0;this.thinkCount=0;this.lastThinkId=null;this.lastThinkWork=0;this.planningBytes=0;this.threatSources=EMPTY;this.explosions=null;this.explosionCursor=0;this.spookCount=0;
  }
 }

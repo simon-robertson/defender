@@ -5,11 +5,9 @@ import {shotLighting} from './shot-shaders.js';
 
 // Procedural solid cube vertices share the exact model fragment lighting. CPU
 // instances contain rigid world matrices with uniform scale and linear colour.
-export const damageCubes=geometry
- .replace('@location(4) reflectiveness:f32\n};','@location(4) reflectiveness:f32, @location(5) @interpolate(flat) fade:f32\n};')
- .replace('@fragment fn fragment(i:Vertex)->Surface {','@fragment fn fragment(i:Vertex)->Surface { debrisFade(i.clip.xy,i.fade);')+`
+export const damageCubes=geometry+`
 @fragment fn debrisReflection(i:Vertex)->@location(0) vec4<f32>{
- debrisFade(i.clip.xy,i.fade);if(i.world.y<frame.timing.w+.025){discard;}
+ if(i.world.y<frame.timing.w+.025){discard;}
  return vec4<f32>(shadeSurface(i).color.rgb,1);
 }
 struct DebrisInput {
@@ -28,47 +26,13 @@ fn debrisPosition(index:u32)->vec3<f32>{
 @vertex fn debrisVertex(i:DebrisInput,@builtin(vertex_index) index:u32)->Vertex{
  let model=mat4x4<f32>(i.a,i.b,i.c,i.d);let world=model*vec4<f32>(debrisPosition(index),1);
  var o:Vertex;o.clip=frame.vp*world;o.world=world.xyz;o.normal=(model*vec4<f32>(debrisNormal(index/6u),0)).xyz;
- o.color=i.color.rgb;o.emission=0;o.reflectiveness=0;o.fade=1-i.color.a;return o;
+ o.color=i.color.rgb;o.emission=0;o.reflectiveness=0;return o;
 }
-struct DebrisShadowVertex { @builtin(position) clip:vec4<f32>, @location(0) @interpolate(flat) fade:f32 };
-@vertex fn debrisShadow(i:DebrisInput,@builtin(vertex_index) index:u32)->DebrisShadowVertex{
- var o:DebrisShadowVertex;o.clip=frame.lightVP*mat4x4<f32>(i.a,i.b,i.c,i.d)*vec4<f32>(debrisPosition(index),1);o.fade=1-i.color.a;return o;
+@vertex fn debrisShadow(i:DebrisInput,@builtin(vertex_index) index:u32)->@builtin(position) vec4<f32>{
+ return frame.lightVP*mat4x4<f32>(i.a,i.b,i.c,i.d)*vec4<f32>(debrisPosition(index),1);
 }
-// Ordered coverage fade preserves depth, shadows and SSR without adding a
-// transparent geometry pass. Identical camera-depth/colour masks avoid holes.
-fn debrisFade(pixel:vec2<f32>,fade:f32){
- let pattern=array<f32,16>(0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5);
- let p=vec2<u32>(pixel)%vec2<u32>(4);if(fade<=(pattern[p.y*4u+p.x]+.5)/16){discard;}
-}
-@fragment fn debrisDepth(i:Vertex){debrisFade(i.clip.xy,i.fade);}
-@fragment fn debrisShadowDepth(i:DebrisShadowVertex){debrisFade(i.clip.xy,i.fade);}
-`;
-
-// Marks use ordinary lit geometry, but never enter camera/shadow depth.
-// Alpha is actual opacity here, not the debris ordered-coverage mask.
-export const bloodDecals=geometry
- .replace('@location(4) reflectiveness:f32\n};','@location(4) reflectiveness:f32, @location(5) @interpolate(flat) opacity:f32\n};')
- .replace('@fragment fn fragment(i:Vertex)->Surface {','fn bloodSurface(i:Vertex)->Surface {')+`
-struct BloodInput {
- @location(0) a:vec4<f32>, @location(1) b:vec4<f32>, @location(2) c:vec4<f32>,
- @location(3) d:vec4<f32>, @location(4) color:vec4<f32>
-};
-// Twelve irregular triangles make a flat, texture-free blood impact mark.
-fn bloodPosition(index:u32,seed:f32)->vec3<f32>{
- if(index%3u==0u){return vec3<f32>(0);}
- let corner=index/3u+index%3u-1u;let angle=-f32(corner)*6.2831853/12;
- let radius=.7+.3*fract(sin(f32(corner%12u)*17.17+seed)*43758.5453);
- return vec3<f32>(cos(angle)*radius,0,sin(angle)*radius);
-}
-@vertex fn bloodVertex(i:BloodInput,@builtin(vertex_index) index:u32)->Vertex{
- let model=mat4x4<f32>(i.a,i.b,i.c,i.d);
- let world=model*vec4<f32>(bloodPosition(index,i.d.x*.17+i.d.z*.31),1);
- var o:Vertex;o.clip=frame.vp*world;o.world=world.xyz;o.normal=i.b.xyz;
- o.color=i.color.rgb;o.emission=0;o.reflectiveness=0;o.opacity=3-i.color.a;return o;
-}
-@fragment fn bloodFragment(i:Vertex)->Surface{
- var o=bloodSurface(i);o.color.a=i.opacity;o.normal.a=i.opacity;return o;
-}
+@fragment fn debrisDepth(){}
+@fragment fn debrisShadowDepth(){}
 `;
 
 export const damageParticles=uniforms+bloomSettings+`

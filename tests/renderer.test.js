@@ -108,10 +108,10 @@ test('bloom off skips lazy setup, extraction, blur and composite without suppres
 test('disabled bloom retains asynchronous death preparation but allocates no bloom images at load or resize',async()=>{
  const f=mockRenderer(),r=f.r,w=smallWorld();let pipelines=0;const create=r.device.createRenderPipelineAsync;r.device.createRenderPipelineAsync=async descriptor=>{pipelines++;return create(descriptor);};
  try{
-  r.setGraphicsOptions({bloom:false});await r.prepareDeathEffects();expect(pipelines).toBe(14);expect(r.deathEffectsPrepared).toBe(true);
+  r.setGraphicsOptions({bloom:false});await r.prepareDeathEffects();expect(pipelines).toBe(13);expect(r.deathEffectsPrepared).toBe(true);
   const b=r.bloom;b.ensureTargets=()=>{throw new Error('Disabled bloom allocated images');};b.render=()=>{throw new Error('Disabled bloom rendered');};
   r.setWorld(w);r.render(0,0);r.canvas.clientWidth=1000;f.reset();r.render(0,1);
-  expect(b.bytes).toBe(0);expect(b.first).toBeNull();expect(labels(f)).not.toContain(BLOOM[0]);expect(pipelines).toBe(14);
+  expect(b.bytes).toBe(0);expect(b.first).toBeNull();expect(labels(f)).not.toContain(BLOOM[0]);expect(pipelines).toBe(13);
  }finally{f.cleanup();disposeWorld(w);}
  expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);expect(f.textures.every(t=>t.destroyCalls===1)).toBe(true);
 });
@@ -666,16 +666,6 @@ test('production GPU timing surrounds every submitted pass including vista, bloo
  }finally{damage.reset();f.cleanup();disposeWorld(world);}expect(record).toContain('dispose');
 });
 
-test('decal-only fade and removal refresh colour without depth or sky shadow work',()=>{
- const f=mockRenderer(),r=f.r,w=smallWorld(),d={cubeCount:1,decalCount:1,cubeRevision:1,solidCubeRevision:0,decalRevision:1,cubeData:new Float32Array(20),particleCount:0,lightCount:0};
- try{
-  r.setDamageEffects(d);r.setWorld(w);r.render(0,0);f.reset();d.cubeRevision++;d.decalRevision++;d.cubeData[19]=2.5;r.render(0,0);
-  expect(labels(f)).toEqual([OPAQUE,DISPLAY]);expect(f.writes.filter(x=>x.buffer===r.damageCubeBuffer)).toHaveLength(1);
-  f.reset();d.cubeRevision++;d.decalRevision++;d.cubeCount=d.decalCount=0;r.render(0,0);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);
-  f.reset();d.cubeRevision++;d.solidCubeRevision++;d.cubeCount=1;r.render(0,0);expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,DISPLAY]);
- }finally{f.cleanup();disposeWorld(w);}
-});
-
 test('hidden emission disables bloom while visible material emission without a model light still enables it',async()=>{
  const dog=await Bun.file(new URL('../assets/models/dog.json',import.meta.url)).json(),level=newLevel('hidden-emission');level.size=[3,2];level.environment=defaultEnvironment();
  const w=buildWorld(level,new Map([[dog.id,dog]]),{actors:[{id:'dog',model:dog.id,variant:'base',initiallyHidden:true}]}),f=mockRenderer(),r=f.r;
@@ -712,29 +702,19 @@ test('dry scenes use tiny inactive water bindings and skip the empty water pass,
  }finally{f.cleanup();disposeWorld(wet);disposeWorld(dry);}
 });
 
-test('actual preparation blood fade keeps renderer depth and shadow caches intact through expiry',()=>{
- const f=mockRenderer(),r=f.r,w=smallWorld(),d=new DamageEffects(()=>.5);
- try{
-  d.setWorld(w,[]);const p=d.cubes[0];Object.assign(p,{active:true,critter:true,decal:true,resting:true,config:{settleSeconds:Infinity},nx:0,ny:1,nz:0,sx:2,sz:2,x:24,y:24.08,z:24,r:.5,g:0,b:0,fade:1,fadeStart:null});d.activeCubes=1;d.markCubeDirty(true);
-  r.setDamageEffects(d);r.setWorld(w);r.render(0,0);expect(r.damageDecalCount).toBe(1);const solids=d.solidCubeRevision;
-  d.endCritterRun();d.advance(.5);f.reset();r.render(0,.5);expect(d.solidCubeRevision).toBe(solids);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);
-  d.advance(2);f.reset();r.render(0,2.5);expect(d.solidCubeRevision).toBe(solids);expect(r.damageDecalCount).toBe(0);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);
- }finally{d.reset();f.cleanup();disposeWorld(w);}
-});
-
-test('play effect preparation awaits asynchronous pipelines once and leaves first destruction and decals allocation-free',async()=>{
- const f=mockRenderer(),r=f.r,w=smallWorld(),d={cubeCount:0,decalCount:0,cubeRevision:0,solidCubeRevision:0,cubeData:new Float32Array(20),particleCount:0,particleData:new Float32Array(48),lightCount:0,shockwaveCount:0,shockwaveData:new Float32Array(8),blastCount:0,smokeCount:0};
+test('play effect preparation awaits asynchronous pipelines once and leaves first destruction allocation-free',async()=>{
+ const f=mockRenderer(),r=f.r,w=smallWorld(),d={cubeCount:0,cubeRevision:0,cubeData:new Float32Array(20),particleCount:0,particleData:new Float32Array(48),lightCount:0,shockwaveCount:0,shockwaveData:new Float32Array(8),blastCount:0,smokeCount:0};
  const device=r.device;let asyncPipelines=0;const createAsync=device.createRenderPipelineAsync;device.createRenderPipelineAsync=async descriptor=>{asyncPipelines++;return createAsync(descriptor);};
  try{
   device.createRenderPipeline=()=>{throw new Error('Synchronous compilation during loading');};
-  await Promise.all([r.prepareDeathEffects(),r.prepareDeathEffects()]);expect(asyncPipelines).toBe(14);expect(r.deathEffectsPrepared).toBe(true);
-  expect(r.damageDepthPipeline.then).toBeUndefined();expect(r.shockwavePipeline.then).toBeUndefined();expect(r.bloodDecals.pipeline.then).toBeUndefined();expect(r.bloom.blastPipeline.then).toBeUndefined();
+  await Promise.all([r.prepareDeathEffects(),r.prepareDeathEffects()]);expect(asyncPipelines).toBe(13);expect(r.deathEffectsPrepared).toBe(true);
+  expect(r.damageDepthPipeline.then).toBeUndefined();expect(r.shockwavePipeline.then).toBeUndefined();expect(r.bloom.blastPipeline.then).toBeUndefined();
   r.setWorld(w);r.setDamageEffects(d);r.render(0,0);expect(r.bloom.active).toBe(false);expect(labels(f)).not.toContain('Explosion shockwave refraction');
-  const buffers=f.allocated.length,textures=f.textures.length;d.cubeCount=1;d.cubeRevision++;d.solidCubeRevision++;d.particleCount=d.blastCount=d.shockwaveCount=1;f.reset();r.render(0,.01);
+  const buffers=f.allocated.length,textures=f.textures.length;d.cubeCount=1;d.cubeRevision++;d.particleCount=d.blastCount=d.shockwaveCount=1;f.reset();r.render(0,.01);
   expect(f.allocated.length).toBe(buffers);expect(f.textures.length).toBe(textures);expect(labels(f)).toContain('Explosion shockwave refraction');
-  d.blastCount=d.particleCount=d.shockwaveCount=0;d.decalCount=1;d.cubeRevision++;d.solidCubeRevision++;f.reset();r.render(0,.02);expect(f.allocated.length).toBe(buffers);expect(f.textures.length).toBe(textures);expect(r.damageDecalCount).toBe(1);
-  r.canvas.clientWidth=1000;d.cubeCount=d.decalCount=0;d.cubeRevision++;r.render(0,.03);const resized=f.textures.length;
-  d.blastCount=d.shockwaveCount=d.particleCount=1;r.render(0,.04);expect(f.textures.length).toBe(resized);expect(asyncPipelines).toBe(14);
+  d.blastCount=d.particleCount=d.shockwaveCount=0;
+  r.canvas.clientWidth=1000;d.cubeCount=0;d.cubeRevision++;r.render(0,.03);const resized=f.textures.length;
+  d.blastCount=d.shockwaveCount=d.particleCount=1;r.render(0,.04);expect(f.textures.length).toBe(resized);expect(asyncPipelines).toBe(13);
  }finally{f.cleanup();disposeWorld(w);}
  expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);expect(f.textures.every(t=>t.destroyCalls===1)).toBe(true);
 });

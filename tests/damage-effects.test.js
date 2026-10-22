@@ -145,39 +145,6 @@ test('pool exhaustion is bounded, reset releases scene references and inactive e
  effects.advance(100);effects.prepare();expect(effects.cubeCount+effects.smokeCount+effects.blastCount+effects.lightCount).toBe(0);expect(effects.cubes).toBe(pool);expect([effects.cubeData,effects.particleData,effects.lightData]).toEqual(arrays);
 });
 
-test('decal fade, quick-start removal and scene rebinding preserve solid depth/shadow revision',()=>{
- const {effects,world}=fixture(),palette=new Float32Array([.3,.2,.1,1]);
- effects.gibCritter({x:0,y:25,z:0},palette,-10,25,0);
- const mark=effects.cubes.find(p=>p.active&&p.spray);
- for(const p of effects.cubes)if(p!==mark)p.active=false;effects.activeCubes=1;
- expect(effects.splat(mark,new Float64Array([0,0,1,0,24,0]))).toBe(true);
- effects.prepare();expect(effects.cubeCount).toBe(1);expect(effects.decalCount).toBe(1);
- const buffer=effects.cubeData,solidRevision=effects.solidCubeRevision,decalRevision=effects.decalRevision,cubeRevision=effects.cubeRevision;
- effects.advance(5);effects.prepare();expect(effects.cubeRevision).toBe(cubeRevision);
- effects.setWorld(world,[],{keepCritters:true});effects.prepare();
- expect(effects.solidCubeRevision).toBe(solidRevision);expect(effects.decalRevision).toBeGreaterThan(decalRevision);expect(effects.decalCount).toBe(1);
- effects.endCritterRun();effects.advance(.5);effects.prepare();
- expect(effects.solidCubeRevision).toBe(solidRevision);expect(effects.cubeData[19]).toBeCloseTo(2.25);expect(effects.decalRevision).toBeGreaterThan(decalRevision);
- const beforeClear=effects.decalRevision;effects.beginCritterRun();effects.prepare();
- expect(effects.cubeCount).toBe(0);expect(effects.solidCubeRevision).toBe(solidRevision);expect(effects.decalRevision).toBeGreaterThan(beforeClear);expect(effects.cubeData).toBe(buffer);
- effects.reset();effects.prepare();expect(effects.solidCubeRevision).toBe(solidRevision);
-});
-
-test('moving, fading, converting and removing solids advance their own revision while decal expiry does not',()=>{
- const {effects,state}=fixture();effects.explode(state);effects.prepare();
- const initial=effects.solidCubeRevision;effects.advance(1/120);effects.prepare();expect(effects.solidCubeRevision).toBeGreaterThan(initial);
- const moving=effects.solidCubeRevision;effects.reset(true);effects.prepare();expect(effects.solidCubeRevision).toBeGreaterThan(moving);
- const palette=new Float32Array([.3,.2,.1,1]);effects.gibCritter({x:0,y:25,z:0},palette,-10,25,0);
- const mark=effects.cubes.find(p=>p.active&&p.spray);for(const p of effects.cubes)if(p!==mark)p.active=false;effects.activeCubes=1;
- effects.prepare();const solid=effects.solidCubeRevision,decal=effects.decalRevision;
- expect(effects.splat(mark,new Float64Array([0,0,1,0,24,0]))).toBe(true);effects.prepare();
- expect(effects.solidCubeRevision).toBeGreaterThan(solid);expect(effects.decalRevision).toBeGreaterThan(decal);expect(effects.cubeCount-effects.decalCount).toBe(0);
- const converted=effects.solidCubeRevision;effects.endCritterRun();effects.advance(2);effects.prepare();expect(effects.cubeCount).toBe(0);expect(effects.solidCubeRevision).toBe(converted);
- effects.beginCritterRun();effects.gibCritter({x:0,y:25,z:0},palette,-10,25,0);for(const p of effects.cubes)if(p.active)p.resting=true;
- effects.prepare();const spawned=effects.solidCubeRevision;effects.endCritterRun();
- effects.advance(.5);effects.prepare();expect(effects.solidCubeRevision).toBeGreaterThan(spawned);expect(effects.cubeData[19]).toBeCloseTo(.25);
-});
-
 test('every enemy death light ends thirty percent sooner with the same peak, radius and independent blast/debris lifetime',()=>{
  for(const model of Object.keys(ENEMY_STATS)){
   const {effects,state}=fixture(model),config=ENEMY_STATS[model].explosion;

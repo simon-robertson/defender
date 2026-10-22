@@ -164,7 +164,7 @@ export class DroneObstacles {
   if(this.disposed)return;if(!Number.isFinite(dt)||dt<0)throw new Error('Invalid drone obstacle delta.');
   this.updates++;this.activeActors=this.activeParts=0;
   for(let i=0;i<this.records.length;i++){
-   const r=this.records[i],s=r.state,k=i*6;this.active[i]=s?.health?.alive===false||s?.dead?0:1;this.entranceActive[i]=0;
+   const r=this.records[i],s=r.state,k=i*6;this.active[i]=s?.health?.alive===false?0:1;this.entranceActive[i]=0;
    if(!this.active[i]){r.seen=false;continue;}this.activeActors++;this.activeParts+=r.count;empty(this.actorCurrent,k);
    for(let p=r.first;p<r.first+r.count;p++){transformed(this.current,p*6,this.localBounds,this.localIndices[p]*6,this.matrices[p]);union(this.actorCurrent,k,this.current,p*6);}
    transformed(this.predicted,k,this.poseEnvelope,k,r.root);
@@ -225,14 +225,14 @@ export class DroneObstacles {
   this.queries++;this.lastBlockedId=null;if(this.disposed)return true;
   const start=Math.max(0,Math.min(this.predictionSeconds,startSeconds)),end=Math.max(start,Math.min(this.predictionSeconds,endSeconds)),b=this.bounds;
   b[0]=Math.min(ax,bx)-radius;b[1]=Math.min(ay,by)-halfHeight;b[2]=Math.min(az,bz)-radius;b[3]=Math.max(ax,bx)+radius;b[4]=Math.max(ay,by)+above;b[5]=Math.max(az,bz)+radius;
-  for(let i=0;i<this.records.length;i++)if(this.active[i]){const r=this.records[i];if(r.state?.health?.alive===false||r.state?.dead)continue;this.actorTests++;if(this.recordTimedOverlap(r,i,start,end)){this.lastBlockedId=r.id;return false;}}
+  for(let i=0;i<this.records.length;i++)if(this.active[i]){const r=this.records[i];if(r.state?.health?.alive===false)continue;this.actorTests++;if(this.recordTimedOverlap(r,i,start,end)){this.lastBlockedId=r.id;return false;}}
   return true;
  }
  clearBox(bounds,predictSeconds=0){
   this.queries++;this.lastBlockedId=null;if(this.disposed)return true;
   const future=predictSeconds>0;
   for(let i=0;i<this.records.length;i++)if(this.active[i]){
-   const r=this.records[i];if(r.state?.health?.alive===false||r.state?.dead)continue;this.actorTests++;
+   const r=this.records[i];if(r.state?.health?.alive===false)continue;this.actorTests++;
    if(future&&this.entranceActive[i]&&overlap(bounds,this.entrancePredicted,i*6)){this.lastBlockedId=r.id;return false;}
    const envelope=future||r.kind==='defence';
    if(!overlap(bounds,envelope?this.predicted:this.actorCurrent,i*6))continue;

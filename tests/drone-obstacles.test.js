@@ -239,9 +239,3 @@ test('actual A1 enemy and wildlife poses remain enclosed throughout moving fligh
  }finally{obstacles.dispose();wildlife.dispose();enemies.dispose();disposeWorld(scene);}
 });
 
-test('gibbed cosmetic wildlife releases current and predicted drone clearance immediately and on update',()=>{
- const source=data([part('body',[[11,0,11],[12,2,12]])],{role:'scenery',y:24}),hare={id:'hare',kind:'ground',x:60,y:24,z:60,radius:3,height:3,hop:1.2,phase:'hop',speed:20,fleeSpeed:30,frightened:false,dead:false};
- const obstacles=new DroneObstacles(world([['hare',source]]));obstacles.setWildlife([hare]);expect(obstacles.pointClear(60,25,60,1)).toBe(false);
- hare.dead=true;expect(obstacles.pointClear(60,25,60,1)).toBe(true);expect(obstacles.clearSegment(20,25,60,100,25,60,1,.8)).toBe(true);obstacles.update(.1);expect(obstacles.inspect().activeActors).toBe(0);
- hare.dead=false;obstacles.update(.1);expect(obstacles.pointClear(60,25,60,1)).toBe(false);obstacles.dispose();
-});

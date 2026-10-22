@@ -162,7 +162,7 @@ export class PlayEngine {
   validatePlayConfig(config);wave=configuredWave(config,wave);this.world=world;this.config=config;this.wave=wave;this.time=this.waveTime=this.accumulator=this.steps=this.lastSteps=0;this.running=false;this.disposed=false;this.completed=false;this.onPoseChange=onPoseChange;this.onShot=onShot;this.onWaveComplete=onWaveComplete;this.onStep=onStep;this.onAfterStep=onAfterStep;this.continuing=()=>this.running;this.onDeploymentsChanged=onDeploymentsChanged;this.enemyCallbacks={onPoseChange,onVisible,onDeath,onEscape};
   this.combatCallbacks={onPoseChange,onVisible,onBulletImpact:onBulletImpact?((point,normal)=>onBulletImpact(point,normal,this.time)):null,onShot:(variant,matrix)=>this.onShot(variant,matrix,this.time),onArcShot:(from,to,normal,_at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint)=>onArcShot(from,to,normal,this.time,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint),missileEffects,onHit:(target,strength,vx,vy,vz)=>this.enemies.takeHit(target,strength,vx,vy,vz)};
   this.enemies=new PlayEnemies(world,{config,wave,onPoseChange,onVisible,onDeath,onEscape});
-  this.wildlife=new WildlifePreview(world,onPoseChange,world.playCritters===false?[]:wildlifeActorsForLevel(world.level),onVisible);this.wildlife.setThreatSources(this.enemies.activeTargets);
+  this.wildlife=new WildlifePreview(world,onPoseChange,world.playCritters===false?[]:wildlifeActorsForLevel(world.level));this.wildlife.setThreatSources(this.enemies.activeTargets);
   this.makeGuns();this.capacity=playCapacity(config);
  }
  makeGuns(){
@@ -180,7 +180,7 @@ export class PlayEngine {
   for(const state of this.enemies.states)this.enemyCallbacks.onVisible(state.id,false);
   this.firing.dispose();this.enemies.dispose();assignWave(this.world,wave);this.wave=wave;
   this.enemies=new PlayEnemies(this.world,{config:this.config,wave,...this.enemyCallbacks});this.wildlife.setThreatSources(this.enemies.activeTargets);
-  if(this.world.playCritters!==false)this.wildlife.prepareCritterRun();this.makeGuns();this.waveTime=this.accumulator=0;this.completed=false;this.onDeploymentsChanged(this.world);return true;
+  if(this.world.playCritters!==false)this.wildlife.clearFearEvents();this.makeGuns();this.waveTime=this.accumulator=0;this.completed=false;this.onDeploymentsChanged(this.world);return true;
  }
  startWave(){if(this.disposed)throw new Error('Playable engine is disposed.');if(this.running)return false;this.stopWave();this.enemies.prepare();this.makeGuns();this.waveTime=0;this.completed=false;this.running=true;this.enemies.spawnDue(0);return true;}
  stopWave(){this.running=false;this.accumulator=0;}

@@ -1,5 +1,5 @@
 import {ENEMY_STATS} from '../shared/enemy.js';
-import {MAX_DEBRIS,MAX_CRITTER_DEBRIS,MAX_DAMAGE_CUBES,CRITTER_FRAGMENTS,CRITTER_SPRAY,CRITTER_GIB,critterShockwaveImpulse,MAX_SMOKE,MAX_BLASTS,MAX_DAMAGE_LIGHTS,MAX_DAMAGE_PARTICLES,BLOOD_DECAL_OFFSET,DAMAGE_CUBE_FLOATS,DAMAGE_PARTICLE_FLOATS,SHOCKWAVE_FLOATS,MISSILE_IMPACT_EFFECT,MISSILE_IMPACT_SMOKE,MISSILE_LAUNCH_SMOKE,MISSILE_TRAIL_SMOKE} from '../shared/damage-effects.js';
+import {MAX_DEBRIS,MAX_DAMAGE_CUBES,MAX_SMOKE,MAX_BLASTS,MAX_DAMAGE_LIGHTS,MAX_DAMAGE_PARTICLES,DAMAGE_CUBE_FLOATS,DAMAGE_PARTICLE_FLOATS,SHOCKWAVE_FLOATS,MISSILE_IMPACT_EFFECT,MISSILE_IMPACT_SMOKE,MISSILE_LAUNCH_SMOKE,MISSILE_TRAIL_SMOKE} from '../shared/damage-effects.js';
 import {sweepScenery,debrisSupport} from './debris-collision.js';
 import {WaterImpacts} from './water-impact.js';
 import {WATER_IMPACT} from '../shared/water-impact.js';
@@ -22,19 +22,11 @@ export function debrisPalette(world,actor){
 }
 
 function cubeMatrix(out,k,p){
- if(p.decal){
-  // Local X/Z span the contacted face; local Y is its outward normal.
-  const nx=p.nx,ny=p.ny,nz=p.nz,ux=ny?1:0,uy=ny?0:1,uz=0;
-  const vx=uy*nz-uz*ny,vy=uz*nx-ux*nz,vz=ux*ny-uy*nx;
-  out[k]=ux*p.sx;out[k+1]=uy*p.sx;out[k+2]=uz*p.sx;out[k+3]=0;out[k+4]=nx;out[k+5]=ny;out[k+6]=nz;out[k+7]=0;
-  out[k+8]=vx*p.sz;out[k+9]=vy*p.sz;out[k+10]=vz*p.sz;out[k+11]=0;out[k+12]=p.x;out[k+13]=p.y;out[k+14]=p.z;out[k+15]=1;
-  out[k+16]=p.r;out[k+17]=p.g;out[k+18]=p.b;out[k+19]=3-p.fade;return;
- }
  const sx=Math.sin(p.rx),cx=Math.cos(p.rx),sy=Math.sin(p.ry),cy=Math.cos(p.ry),sz=Math.sin(p.rz),cz=Math.cos(p.rz),s=p.size;
  out[k]=cz*cy*s;out[k+1]=sz*cy*s;out[k+2]=-sy*s;out[k+3]=0;
  out[k+4]=(cz*sy*sx-sz*cx)*s;out[k+5]=(sz*sy*sx+cz*cx)*s;out[k+6]=cy*sx*s;out[k+7]=0;
  out[k+8]=(cz*sy*cx+sz*sx)*s;out[k+9]=(sz*sy*cx-cz*sx)*s;out[k+10]=cy*cx*s;out[k+11]=0;
- out[k+12]=p.x;out[k+13]=p.y;out[k+14]=p.z;out[k+15]=1;out[k+16]=p.r;out[k+17]=p.g;out[k+18]=p.b;out[k+19]=1-(p.fade??1);
+ out[k+12]=p.x;out[k+13]=p.y;out[k+14]=p.z;out[k+15]=1;out[k+16]=p.r;out[k+17]=p.g;out[k+18]=p.b;out[k+19]=0;
 }
 
 // Read the current rigid-part transform, not the route point or targeting aim.
@@ -48,35 +40,32 @@ function updateOrigin(emitter){
 
 export class DamageEffects {
  constructor(random=Math.random){
-  this.critterFadeAt=this.critterFadeEndAt=null;this.critterBursts=this.droppedCritterCubes=0;this.critterCursor=MAX_DEBRIS;this.random=random;this.onWaterImpact=null;this.time=0;this.visibility=null;this.emitters=[];this.waterImpacts=null;this.waterParticleCount=0;this.emitWaterParticle=this.particle.bind(this);
-  this.cubes=Array.from({length:MAX_DAMAGE_CUBES},()=>({active:false,critter:false,spray:false,decal:false,nx:0,ny:1,nz:0,sx:0,sz:0,fade:1,fadeStart:null,fadeDuration:2,waterEntered:false,resting:false,age:0,restAge:0,x:0,y:0,z:0,vx:0,vy:0,vz:0,rx:0,ry:0,rz:0,wx:0,wy:0,wz:0,size:0,r:0,g:0,b:0,config:null}));
+  this.random=random;this.onWaterImpact=null;this.time=0;this.visibility=null;this.emitters=[];this.waterImpacts=null;this.waterParticleCount=0;this.emitWaterParticle=this.particle.bind(this);
+  this.cubes=Array.from({length:MAX_DAMAGE_CUBES},()=>({active:false,waterEntered:false,resting:false,age:0,restAge:0,x:0,y:0,z:0,vx:0,vy:0,vz:0,rx:0,ry:0,rz:0,wx:0,wy:0,wz:0,size:0,r:0,g:0,b:0,config:null}));
   this.smoke=Array.from({length:MAX_SMOKE},()=>({active:false,launch:false,trail:false,impact:false,age:0,life:0,x:0,y:0,z:0,vx:0,vz:0,rise:0,radius:0,seed:0}));
   this.blasts=Array.from({length:MAX_BLASTS},()=>({active:false,kind:null,age:0,x:0,y:0,z:0,seed:0,config:null}));
   this.cubeData=new Float32Array(MAX_DAMAGE_CUBES*DAMAGE_CUBE_FLOATS);this.particleData=new Float32Array(MAX_DAMAGE_PARTICLES*DAMAGE_PARTICLE_FLOATS);this.lightData=new Float32Array(4+MAX_DAMAGE_LIGHTS*8);
   this.shockwaveData=new Float32Array(MAX_BLASTS*SHOCKWAVE_FLOATS);this.shockwaveCount=0;
-  this.smokeOrder=new Uint16Array(MAX_SMOKE);this.smokeDepth=new Float64Array(MAX_SMOKE);this.contact=new Float64Array(6);this.splatPosition=new Float64Array(3);
-  this.decalCount=0;this.cubeCount=this.smokeCount=this.blastCount=this.particleCount=this.lightCount=0;this.cubeRevision=this.solidCubeRevision=this.decalRevision=0;this.cubesDirty=this.solidCubesDirty=this.decalsDirty=false;this.activeCubes=this.activeSmoke=this.activeBlasts=0;this.droppedCubes=this.droppedSmoke=this.replacedBlasts=0;
+  this.smokeOrder=new Uint16Array(MAX_SMOKE);this.smokeDepth=new Float64Array(MAX_SMOKE);this.contact=new Float64Array(6);
+  this.cubeCount=this.smokeCount=this.blastCount=this.particleCount=this.lightCount=0;this.cubeRevision=0;this.cubesDirty=false;this.activeCubes=this.activeSmoke=this.activeBlasts=0;this.droppedCubes=this.droppedSmoke=this.replacedBlasts=0;
   this.missileImpacts=this.launches=this.droppedMissileBlasts=this.droppedLaunchSmoke=this.missileBlastCount=this.launchSmokeCount=0;
  }
- reset(keepWorld=false,keepCritters=false){
-  const hadSolids=this.cubeCount>this.decalCount,hadDecals=this.decalCount>0;
-  if(!keepCritters)this.time=0;this.critterFadeAt=this.critterFadeEndAt=null;this.critterBursts=this.droppedCritterCubes=0;this.critterCursor=MAX_DEBRIS;
-  this.waterImpacts?.reset(keepWorld);this.waterParticleCount=0;
+ reset(keepWorld=false){
+  this.time=0;this.waterImpacts?.reset(keepWorld);this.waterParticleCount=0;
   if(keepWorld){for(const emitter of this.emitters)emitter.carry=0;}
   else{this.visibility=null;this.emitters.length=0;this.onWaterImpact=null;}
-  for(const p of this.cubes){if(keepCritters&&p.active&&p.critter)continue;p.active=false;p.config=null;p.critter=p.decal=false;p.fade=1;}for(const p of this.smoke){p.active=false;p.launch=p.trail=p.impact=false;}for(const p of this.blasts){p.active=false;p.kind=null;p.config=null;}
-  this.activeCubes=0;this.solidCubesDirty=this.decalsDirty=false;
-  if(keepCritters)for(const p of this.cubes)if(p.active){this.activeCubes++;if(p.decal)this.decalsDirty=true;else this.solidCubesDirty=true;}
-  this.activeSmoke=this.activeBlasts=0;this.decalCount=0;this.cubeCount=this.smokeCount=this.blastCount=this.particleCount=this.lightCount=0;this.lightData.fill(0);
+  for(const p of this.cubes){p.active=false;p.config=null;}
+  for(const p of this.smoke){p.active=false;p.launch=p.trail=p.impact=false;}
+  for(const p of this.blasts){p.active=false;p.kind=null;p.config=null;}
+  this.activeCubes=this.activeSmoke=this.activeBlasts=0;
+  this.cubeCount=this.smokeCount=this.blastCount=this.particleCount=this.lightCount=0;this.lightData.fill(0);
   this.shockwaveCount=0;this.shockwaveData.fill(0);
-  this.droppedCubes=this.droppedSmoke=this.replacedBlasts=0;this.cubeRevision++;if(hadSolids)this.solidCubeRevision++;if(hadDecals)this.decalRevision++;this.cubesDirty=keepCritters&&this.activeCubes>0;
+  this.droppedCubes=this.droppedSmoke=this.replacedBlasts=0;this.cubeRevision++;this.cubesDirty=false;
   this.missileImpacts=this.launches=this.droppedMissileBlasts=this.droppedLaunchSmoke=this.missileBlastCount=this.launchSmokeCount=0;
  }
- markCubeDirty(decal=false){
-  this.cubesDirty=true;if(decal)this.decalsDirty=true;else this.solidCubesDirty=true;
- }
- setWorld(world,states,{keepCritters=false}={}){
-  this.reset(false,keepCritters);this.visibility=world.visibility;this.onWaterImpact=world.onDebrisWaterImpact??null;
+ markCubeDirty(){this.cubesDirty=true;}
+ setWorld(world,states){
+  this.reset();this.visibility=world.visibility;this.onWaterImpact=world.onDebrisWaterImpact??null;
   if(world.level?.terrain?.boxes.some(box=>box.water>0)){this.waterImpacts??=new WaterImpacts(this.random);this.waterImpacts.setWorld(world);}
   if(!states.length)return;
   const palettes=new Map();
@@ -147,7 +136,7 @@ export class DamageEffects {
    // run of random choices to omit the model's pale armour entirely.
    const angle=(i+rng())/config.debrisCount*Math.PI*2,speed=config.minSpeed+rng()*(config.maxSpeed-config.minSpeed),size=config.minCubeSize+rng()*(config.maxCubeSize-config.minCubeSize),color=(paletteOffset+i*.618033988749895)%1;let k=0;
    while(k+4<palette.length&&color>palette[k+3])k+=4;
-   p.active=true;p.critter=p.decal=false;p.fade=1;p.resting=false;p.waterEntered=false;p.age=p.restAge=0;p.config=config;p.size=size;
+   p.active=true;p.resting=false;p.waterEntered=false;p.age=p.restAge=0;p.config=config;p.size=size;
    p.x=origin[0];p.y=origin[1];p.z=origin[2];
    p.vx=Math.cos(angle)*speed;p.vz=Math.sin(angle)*speed;p.vy=config.minUpSpeed+rng()*(config.maxUpSpeed-config.minUpSpeed);
    p.rx=rng()*6.28;p.ry=rng()*6.28;p.rz=rng()*6.28;p.wx=(rng()-.5)*18;p.wy=(rng()-.5)*18;p.wz=(rng()-.5)*18;
@@ -156,52 +145,6 @@ export class DamageEffects {
   this.markCubeDirty();
   // Borrowed pool entry: consumers must copy the event values immediately.
   return blast;
- }
- // These lit solid droplets remain after landing; they share swept collision
- // and water entry with ordinary debris, but never the flash/smoke/light pool.
- gibCritter(state,palette,bx,by,bz,radius=CRITTER_GIB.enemyRadius){
-  const rng=this.random,x=state.x,y=state.y+(state.centerOffset??2),z=state.z,dx=x-bx,dy=y-by,dz=z-bz,length=Math.hypot(dx,dy,dz),angle=length<1e-6?rng()*Math.PI*2:Math.atan2(dz,dx),horizontal=Math.hypot(dx,dz),ux=horizontal>1e-6?dx/horizontal:Math.cos(angle),uz=horizontal>1e-6?dz/horizontal:Math.sin(angle),uy=length>1e-6?dy/length:0,waterHeight=this.waterImpacts?.height(x,z)??0;
-  // The common 3D radial impulse represents the passing blast pressure;
-  // per-piece scatter/spin below keeps fragments from travelling as one lump.
-  const impulse=critterShockwaveImpulse(length,radius),rx=length>1e-6?dx/length:ux,ry=length>1e-6?dy/length:0,rz=length>1e-6?dz/length:uz;
-  this.critterBursts++;
-  for(let i=0;i<CRITTER_FRAGMENTS+CRITTER_SPRAY;i++){
-   let p=null,slot=this.critterCursor;for(let scanned=0;scanned<MAX_CRITTER_DEBRIS;scanned++){const candidate=this.cubes[slot];slot++;if(slot===this.cubes.length)slot=MAX_DEBRIS;if(!candidate.active){p=candidate;this.critterCursor=slot;break;}}
-   if(!p){this.droppedCritterCubes+=CRITTER_FRAGMENTS+CRITTER_SPRAY-i;break;}
-   const spray=i>=CRITTER_FRAGMENTS,spread=(rng()-.5)*1.4,co=Math.cos(spread),si=Math.sin(spread),speed=((spray?24:17)+rng()*21)*1.3,color=(i*.618033988749895)%1;let k=0;
-   while(k+4<palette.length&&color>palette[k+3])k+=4;
-   p.active=p.critter=true;p.decal=false;p.spray=spray;p.fade=1;p.fadeStart=this.critterFadeAt===null?null:this.time;p.fadeDuration=this.critterFadeAt===null?CRITTER_GIB.fadeSeconds:Math.max(0,Math.min(CRITTER_GIB.fadeSeconds,this.critterFadeEndAt-this.time));
-   p.resting=false;p.waterEntered=waterHeight>0&&y<waterHeight;p.age=p.restAge=0;p.config=CRITTER_GIB;p.size=spray?.28+rng()*.36:.65+rng()*.7;p.x=x;p.y=y;p.z=z;
-   p.vx=(ux*co-uz*si)*speed+rx*impulse;p.vy=(10+rng()*13)*1.25+uy*speed+ry*impulse;p.vz=(uz*co+ux*si)*speed+rz*impulse;p.rx=rng()*6.28;p.ry=rng()*6.28;p.rz=rng()*6.28;p.wx=(rng()-.5)*19.6;p.wy=(rng()-.5)*19.6;p.wz=(rng()-.5)*19.6;
-   p.r=spray?.32:palette[k];p.g=spray?.012:palette[k+1];p.b=spray?.008:palette[k+2];
-   if(length>1e-6){
-    const outward=(p.vx*dx+p.vy*dy+p.vz*dz)/length,correction=Math.max(0,12-outward);
-    p.vx+=dx/length*correction;p.vy+=dy/length*correction;p.vz+=dz/length*correction;
-   }
-   this.activeCubes++;
-  }
-  this.markCubeDirty();
- }
- beginCritterRun(){
-  // Preparation was already shown. Clear any unfinished old fade before a
-  // rapid next-wave start so its reserved slots cannot starve the new burst.
-  for(const p of this.cubes)if(p.active&&p.critter&&p.fadeStart!==null){this.markCubeDirty(p.decal);p.active=false;p.config=null;this.activeCubes--;}
-  this.critterFadeAt=this.critterFadeEndAt=null;
- }
- get hasCritterRemains(){return this.cubes.some(p=>p.active&&p.critter);}
- endCritterRun(){
-  if(this.critterFadeAt!==null)return;
-  this.critterFadeAt=this.time;this.critterFadeEndAt=this.time+CRITTER_GIB.fadeSeconds;
-  for(const p of this.cubes)if(p.active&&p.critter&&p.fadeStart===null){p.fadeStart=this.time;p.fadeDuration=CRITTER_GIB.fadeSeconds;}
- }
- splat(p,hit){
-  const bounds=this.visibility.bounds,k=hit[5]*6,nx=hit[1],ny=hit[2],nz=hit[3],axis=nx?0:ny?1:2;
-  const u=ny?0:1,v=axis===2?0:2,radius=1.1+p.size*1.5;
-  const coords=this.splatPosition;coords[0]=p.x;coords[1]=p.y;coords[2]=p.z;const loU=Math.max(bounds[k+u],coords[u]-radius),hiU=Math.min(bounds[k+u+3],coords[u]+radius),loV=Math.max(bounds[k+v],coords[v]-radius),hiV=Math.min(bounds[k+v+3],coords[v]+radius);
-  if(hiU<=loU||hiV<=loV)return false;
-  coords[axis]=hit[4]+(nx||ny||nz)*BLOOD_DECAL_OFFSET;coords[u]=(loU+hiU)/2;coords[v]=(loV+hiV)/2;
-  p.x=coords[0];p.y=coords[1];p.z=coords[2];p.nx=nx;p.ny=ny;p.nz=nz;p.sx=(hiU-loU)/2;p.sz=(hiV-loV)/2;
-  this.markCubeDirty();this.markCubeDirty(true);p.decal=p.resting=true;p.restAge=0;p.vx=p.vy=p.vz=p.wx=p.wy=p.wz=0;return true;
  }
  emitSmoke(deltaSeconds){
   if(!Number.isFinite(deltaSeconds)||deltaSeconds<0)throw new Error('Invalid smoke delta.');
@@ -232,17 +175,10 @@ export class DamageEffects {
   const steps=Math.min(120,Math.max(1,Math.ceil(deltaSeconds*120))),dt=deltaSeconds/steps;
   for(const p of this.cubes){
    if(!p.active)continue;
-   if(p.critter&&p.fadeStart!==null){
-    p.fade=p.fadeDuration>0?Math.max(0,1-(this.time-p.fadeStart)/p.fadeDuration):0;this.markCubeDirty(p.decal);
-    if(!p.fade){p.active=false;p.config=null;this.activeCubes--;continue;}
-   }
-   if(p.resting){p.restAge+=deltaSeconds;if(p.restAge>=p.config.settleSeconds){this.markCubeDirty(p.decal);p.active=false;p.config=null;this.activeCubes--;}continue;}
+   if(p.resting){p.restAge+=deltaSeconds;if(p.restAge>=p.config.settleSeconds){this.markCubeDirty();p.active=false;p.config=null;this.activeCubes--;}continue;}
    p.age+=deltaSeconds;
-   // An off-board critter particle has no support; freeze it out of view
-   // after six seconds, retaining bounded storage until the wave's fade.
-   if(p.critter&&p.age>=p.config.maxFlightSeconds){p.resting=true;p.vx=p.vy=p.vz=p.wx=p.wy=p.wz=0;continue;}
-   if(p.age>=p.config.maxFlightSeconds){this.markCubeDirty(p.decal);p.active=false;p.config=null;this.activeCubes--;continue;}
-   this.markCubeDirty(p.decal);
+   if(p.age>=p.config.maxFlightSeconds){this.markCubeDirty();p.active=false;p.config=null;this.activeCubes--;continue;}
+   this.markCubeDirty();
    for(let step=0;step<steps&&!p.resting;step++)this.stepCube(p,dt);
   }
  }
@@ -262,7 +198,6 @@ export class DamageEffects {
    }
    if(!solid){p.x+=dx;p.y+=dy;p.z+=dz;p.vy-=gravity*remaining;break;}
    const fraction=hit[0],nx=hit[1],ny=hit[2],nz=hit[3];p.x+=dx*fraction+nx*.001;p.y+=dy*fraction+ny*.001;p.z+=dz*fraction+nz*.001;p.vy-=gravity*remaining*fraction;
-   if(p.critter&&p.spray&&this.splat(p,hit))break;
    const normalSpeed=p.vx*nx+p.vy*ny+p.vz*nz;
    if(normalSpeed<0){
     // Inelastic rebound + friction: pieces quickly lose their launch energy.
@@ -278,16 +213,9 @@ export class DamageEffects {
  }
  prepare(viewProjection=null){
   if(this.cubesDirty){
-   // Independently invalidate depth/shadows for solids and colour for marks.
-   // Legacy tools can still request a conservative repack via cubesDirty alone.
-   const solidDirty=this.solidCubesDirty||!this.decalsDirty,decalDirty=this.decalsDirty||!this.solidCubesDirty;
-   // Solids occupy the prefix for depth/shadow/opaque draws; marks occupy
-   // the suffix for the read-only-depth decal pass. Pool order is stable,
-   // independent of the camera, and never needs a per-frame sorting allocation.
-   this.cubeCount=this.decalCount=0;
-   for(const p of this.cubes)if(p.active&&!p.decal)cubeMatrix(this.cubeData,this.cubeCount++*DAMAGE_CUBE_FLOATS,p);
-   for(const p of this.cubes)if(p.active&&p.decal){cubeMatrix(this.cubeData,this.cubeCount++*DAMAGE_CUBE_FLOATS,p);this.decalCount++;}
-   this.cubeRevision++;if(solidDirty)this.solidCubeRevision++;if(decalDirty)this.decalRevision++;this.cubesDirty=this.solidCubesDirty=this.decalsDirty=false;
+   this.cubeCount=0;
+   for(const p of this.cubes)if(p.active)cubeMatrix(this.cubeData,this.cubeCount++*DAMAGE_CUBE_FLOATS,p);
+   this.cubeRevision++;this.cubesDirty=false;
   }
   this.smokeCount=this.blastCount=this.particleCount=this.lightCount=this.shockwaveCount=this.missileBlastCount=this.launchSmokeCount=0;this.lightData[0]=0;
   // Reused insertion-sort storage; the tiny smoke pool blends back to front.

@@ -8,7 +8,6 @@ import {actorsForPreview} from '/game/preview-actors.js';
 import {emitMissileImpact} from '/game/missile-impact.js';
 import {EnemyPreview} from '/game/enemy-preview.js';
 import {WildlifePreview,wildlifeActorsForLevel} from '/game/wildlife-preview.js';
-import {CRITTER_GIB} from '/shared/damage-effects.js';
 import {ShotEffects} from '/engine/shot-effects.js';
 import {DamageEffects} from '/engine/damage-effects.js';
 import {ArcEffects} from '/engine/arc-effects.js';
@@ -114,14 +113,13 @@ try{
  const onPoseChange=renderer.updateInstance.bind(renderer),onShot=(variant,matrix,at,muzzles=TURRET_MUZZLES[variant])=>effects.emit(matrix,muzzles,at);
  function resetEnemies(){
   if(!scenes?.world||scenes.loading||renderer.failed||(!enemies?.states.length&&!firing?.missiles.states.length&&!firing?.drones.states.length))return false;
-  damage.reset(true);wildlife?.prepareCritterRun();arcEffects?.reset(true);const shotTime=effects.time;effects.reset();effects.time=shotTime;firing.resetTargets();enemies.reset();
+  damage.reset(true);wildlife?.clearFearEvents();arcEffects?.reset(true);const shotTime=effects.time;effects.reset();effects.time=shotTime;firing.resetTargets();enemies.reset();
   for(const state of enemies.states)renderer.setActorVisible(state.id,true);
   enemyResets++;inspectionSampler.reset();reportLifecycle('enemies-reset');return true;
  }
  const onEnemyDeath=(id,state)=>{
   const blast=damage.explode(state);
-  if(blast){wildlife?.gibExplosion(blast.x,blast.y,blast.z,CRITTER_GIB.enemyRadius,damage);wildlife?.spookExplosion(blast.x,blast.y,blast.z,blast.config.frightRadius);}
-  if(enemies.states.every(s=>!s.health.alive))damage.endCritterRun();
+  if(blast){wildlife?.spookExplosion(blast.x,blast.y,blast.z,blast.config.frightRadius);}
   renderer.setActorVisible(id,false);
  },onHit=(target,strength,vx,vy,vz)=>enemies.takeHit(target,strength,vx,vy,vz);
  const missileEffects={
@@ -162,7 +160,7 @@ try{
    // Drain submitted work before replacement assets are fetched/allocated.
    return renderer.device.queue.onSubmittedWorkDone();
   },
-  activate:world=>{enemyResets=0;const noncombat=isNonCombatPreview(world.level);renderer.setShotEffects(noncombat?null:effects);renderer.setDamageEffects(noncombat?null:damage);renderer.setWorld(world);enemies=new EnemyPreview(world,onPoseChange,onEnemyDeath);wildlife=new WildlifePreview(world,onPoseChange,wildlifeActorsForLevel(world.level),renderer.setActorVisible.bind(renderer));wildlife.setThreatSources(enemies.states);if(!noncombat)damage.setWorld(world,enemies.states);const hasArcs=world.level.placements.some(p=>p.model==='arc-spire');if(hasArcs)arcEffects??=new ArcEffects();renderer.setArcEffects(hasArcs?arcEffects:null);if(hasArcs)arcEffects.setWorld(world);firing=new DefencePreview(world,onPoseChange,Math.random,onShot,enemies.states.length?enemies.states:null,onHit,onArcShot,renderer.setActorVisible.bind(renderer),missileEffects);firing.drones.setWildlife(wildlife.states,wildlife.defences);renderer.setMissileThrust(firing.missiles.states.length?firing.missiles.thrust:null);plasmaConnections=createPlasmaLinks(world,firing.enhancers.states);if(plasmaConnections.length){plasmaLinks=new PlasmaLinks();plasmaLinks.setLinks(plasmaConnections);}renderer.setPlasmaLinks(plasmaLinks);applyLighting(world);loop.clock.elapsedSeconds=0;},
+  activate:world=>{enemyResets=0;const noncombat=isNonCombatPreview(world.level);renderer.setShotEffects(noncombat?null:effects);renderer.setDamageEffects(noncombat?null:damage);renderer.setWorld(world);enemies=new EnemyPreview(world,onPoseChange,onEnemyDeath);wildlife=new WildlifePreview(world,onPoseChange,wildlifeActorsForLevel(world.level));wildlife.setThreatSources(enemies.states);if(!noncombat)damage.setWorld(world,enemies.states);const hasArcs=world.level.placements.some(p=>p.model==='arc-spire');if(hasArcs)arcEffects??=new ArcEffects();renderer.setArcEffects(hasArcs?arcEffects:null);if(hasArcs)arcEffects.setWorld(world);firing=new DefencePreview(world,onPoseChange,Math.random,onShot,enemies.states.length?enemies.states:null,onHit,onArcShot,renderer.setActorVisible.bind(renderer),missileEffects);firing.drones.setWildlife(wildlife.states,wildlife.defences);renderer.setMissileThrust(firing.missiles.states.length?firing.missiles.thrust:null);plasmaConnections=createPlasmaLinks(world,firing.enhancers.states);if(plasmaConnections.length){plasmaLinks=new PlasmaLinks();plasmaLinks.setLinks(plasmaConnections);}renderer.setPlasmaLinks(plasmaLinks);applyLighting(world);loop.clock.elapsedSeconds=0;},
   onLoading:id=>{
    const profile=profileFor(id);loop.stop();readyControls(false);status.hidden=false;error.hidden=true;status.textContent=`Loading ${profile.name} · Level ${profile.number}…`;renderer.canvas.dataset.loading='true';delete renderer.canvas.dataset.zone;delete renderer.canvas.dataset.level;delete renderer.canvas.dataset.currentId;
    updateLevelControls('loading',id);reportLifecycle('loading');

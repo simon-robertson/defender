@@ -31,7 +31,7 @@ test('critters off omits all wildlife assets, fish, navigation and ticks while c
   engine.wildlife.advance=()=>{throw new Error('Disabled wildlife must not tick');};
   rules=createPlacementRules(world.playSource,world.playModels,{config:PLAY_CONFIG,critters:false});expect(rules.prepare([])).toMatchObject({valid:true,wildlifePoints:[]});
   expect(engine.updateDeployments([])).toEqual({valid:true});engine.prepareWave(level.waves[1]);engine.advance(.1,{combat:false});
-  expect(engine.startWave()).toBe(true);engine.advance(.1);expect(engine.enemies.spawned).toBeGreaterThan(0);expect(engine.wildlife.gibExplosion(0,0,0,72,{gibCritter(){throw new Error('No disabled critter can gib');}})).toBe(0);
+  expect(engine.startWave()).toBe(true);engine.advance(.1);expect(engine.enemies.spawned).toBeGreaterThan(0);
   engine.dispose();engine=null;disposePlayWorld(world);world=null;rules.dispose();rules=null;requests.length=0;
   world=await loadPlayWorld(level.id,{wave:level.waves[0]});engine=new PlayEngine(world);
   expect(world.playCritters).toBe(true);expect(engine.wildlife.states).toHaveLength(12);expect(engine.wildlife.fish.states.length).toBeGreaterThan(0);expect(requests).toContain(FISH_MODEL);expect(engine.wildlife.planningBytes).toBeGreaterThan(0);

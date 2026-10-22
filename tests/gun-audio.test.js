@@ -9,7 +9,7 @@ import {PLAY_CONFIG} from '../play/config.js';
 import {AUDIO_ASSETS} from '../shared/audio-assets.js';
 const bundle=gunTurretBundle();
 test('three gun directions each own three mono takes with controlled energy and preserved masters',async()=>{
- expect(bundle.review.groups).toHaveLength(3);expect(bundle.recipes).toHaveLength(9);expect(AUDIO_ASSETS).toEqual([]);
+ expect(bundle.review.groups).toHaveLength(3);expect(bundle.recipes).toHaveLength(9);expect(AUDIO_ASSETS.map(asset=>asset.id)).toEqual(['gun-dry-1','gun-dry-2','gun-dry-3']);
  const audit=JSON.parse(await readFile(new URL('../audio/gun-turret/audit.json',import.meta.url),'utf8'));
  for(const recipe of bundle.recipes){
   const rendered=renderRecipe(recipe);expect(recipe.channels).toBe(1);expect(rendered.analysis.peak).toBeLessThan(.8);expect(Math.abs(rendered.analysis.dc[0])).toBeLessThan(.002);

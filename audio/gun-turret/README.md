@@ -1,6 +1,6 @@
 # Gun-turret sound review — 22 October 2026
 
-**Selected: A · Dry autocannon.** The user listened in the audio preview and accepts this direction for now. Keep its three takes together for natural variation. B/C remain comparison candidates. No firing sounds have been added to gameplay; the runtime audio manifest remains empty until the integration task.
+**Selected: A · Dry autocannon.** The user listened in the audio preview and accepts this direction for now. Keep its three takes together for natural variation. B/C remain comparison candidates. The three Dry takes are now integrated into `/play/` gunfire; B/C remain authoring-only.
 
 ## The three directions
 
@@ -38,3 +38,11 @@ The user explicitly requires sounds to match their source positions on-screen an
 The actual nine-file build runs `opusinfo` and float decoding and checks exact mono rate/frame count. `audit.json` records lossless/delivery/decoded hashes, peaks, RMS/DC, tool versions and core source hashes. Built-in Chrome successfully decoded all three takes of each direction at 48 kHz; A/B singles and C's five-shot audition showed the expected status with no captured warnings/errors. User listening, rather than these numerical checks, selected A.
 
 No game combat/audio hook, asset-manifest entry, gameplay timing, deployment or remote push is changed by this review. Dense-battle sound performance and final spatial mix are not measured here.
+
+## Runtime integration
+
+`shared/audio-assets.js` owns three mono Ogg deliveries plus PCM24 WAV fallbacks under `assets/audio/`. The packager includes only those files; masters and audition tools remain development-only. `play/audio.js` resumes synchronously from genuine New Game/Continue/Resume/Start wave input, caches decoded buffers, and receives one source position per validated gun damage pulse at the transformed midpoint of the two muzzles. A persistent sound slider in title Options defaults to 80%; zero mutes the shared master.
+
+The current camera projection determines stereo balance, updated at 20 Hz while short cues remain active. Gain follows `320 / (320 + camera distance)`, multiplied by the master volume; these are provisional listening values. It uses inexpensive stereo panning, not HRTF or Doppler. Thirty-two pooled gain/pan chains bound simultaneous playback, with at most 64 single-use native source nodes admitted per rolling second and a fixed 128-cue frame queue. Events older than 80 ms are discarded; recent events preserve their simulation spacing with a maximum 92 ms scheduled delay. No game RNG is consumed. Queueing/frame bookkeeping allocates no per-shot records, but native sources necessarily allocate. Pauses, hidden pages, loading, title, errors and teardown stop/clear cues.
+
+Thirty relevant UI/audio/authoring/packaging tests pass. Native built-in Chrome A1 combat plays 27 cues with no drops or reported errors and clears three enemies without escapes; pause has zero active voices. Native title Options starts no context and restores the slider after reload. Full native audio-thread cost, dense real battle listening and Safari playback remain unmeasured. No Arc, missile or explosion cues are authored or integrated yet.

@@ -63,7 +63,7 @@ export async function gather(){
   }
   // No nonliteral imports or unaccounted runtime resource mechanisms allowed.
   if((s.match(/\bimport\s*\(/g)||[]).length!==scanner.scanImports(s).filter(d=>d.kind==='dynamic-import').length)throw new Error('Unresolved dynamic import: '+file);
-  if(/\bfetch\s*\(/.test(s)&&file!=='play/engine.js')throw new Error('Unaccounted fetch: '+file);
+  if(/\bfetch\s*\(/.test(s)&&!['play/engine.js','play/audio.js'].includes(file))throw new Error('Unaccounted fetch: '+file);
   if(/new\s+(?:Worker|Image|Audio)\b|\.src\s*=|new\s+URL\s*\(/.test(s)&&!['play/engine.js','play/ui.js','shared/audio-assets.js'].includes(file))throw new Error('Unaccounted resource: '+file);
  }
  await module('play/app.js');

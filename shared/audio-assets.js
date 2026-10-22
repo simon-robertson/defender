@@ -1,6 +1,8 @@
 // Runtime delivery manifest. Add only reviewed game cues, never authoring masters
 // or diagnostic samples. Each entry: {id, file, fallback?}; fallback is mono WAV.
-export const AUDIO_ASSETS=Object.freeze([]);
+export const AUDIO_ASSETS=Object.freeze([
+ ...[1,2,3].map(take=>Object.freeze({id:`gun-dry-${take}`,file:`gun-dry-${take}.ogg`,fallback:`gun-dry-${take}.wav`})),
+]);
 export function validateAudioAssets(assets){
  if(!Array.isArray(assets))throw new Error('Audio manifest must be an array');
  const ids=new Set(),files=new Set();

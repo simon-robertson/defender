@@ -1,5 +1,5 @@
 import {test,expect} from 'bun:test';
-import {mkdtemp,mkdir,writeFile,rm,symlink} from 'node:fs/promises';
+import {mkdtemp,mkdir,readFile,writeFile,rm,symlink} from 'node:fs/promises';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {AUDIO_ASSETS,validateAudioAssets,audioAssetURL} from '../shared/audio-assets.js';
@@ -34,7 +34,7 @@ test('development serves only declared delivery audio with MIME and GET/HEAD con
  }finally{await rm(temp,{recursive:true,force:true});}
 });
 test('production gather includes player audio modules and only manifest-listed audio',async()=>{
- const result=await gather();expect(result.outputs.has('docs/site/play/audio.js')).toBe(true);expect(result.outputs.has('docs/site/shared/audio-assets.js')).toBe(true);expect(result.audio).toEqual([]);expect(AUDIO_ASSETS).toEqual([]);expect([...result.outputs.keys()].some(p=>p.includes('diagnostic')||p.includes('masters/'))).toBe(false);
+ const result=await gather();expect(result.outputs.has('docs/site/play/audio.js')).toBe(true);expect(result.outputs.has('docs/site/shared/audio-assets.js')).toBe(true);expect(result.audio).toHaveLength(6);expect(AUDIO_ASSETS.map(asset=>asset.id)).toEqual(['gun-dry-1','gun-dry-2','gun-dry-3']);for(const asset of AUDIO_ASSETS)for(const file of [asset.file,asset.fallback])expect(result.outputs.get('docs/site/assets/audio/'+file)?.data).toEqual(await readFile(new URL('../assets/audio/'+file,import.meta.url)));expect([...result.outputs.keys()].some(p=>p.includes('diagnostic')||p.includes('masters/'))).toBe(false);
  const shipped=result.outputs.get('docs/site/shared/audio-assets.js').data.toString();expect(shipped).toContain('new URL(`../assets/audio/');
  const base='https://example.test/defender/site/shared/audio-assets.js';expect(new URL('../assets/audio/test-cue.ogg',base).href).toBe('https://example.test/defender/site/assets/audio/test-cue.ogg');
 });

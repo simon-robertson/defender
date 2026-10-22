@@ -8,7 +8,7 @@ const $=id=>document.getElementById(id);
 const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','last-wave-summary','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','resume-checkpoint-button','result-checkpoint','leave-screen','leave-checkpoint','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
 const rows=new Map(),shopRows=new Map();
 const roster=new RosterGroups(refs['unit-list']);
-let previewKey='',briefingSelection=null,briefingHover=null,briefingFocus=null,briefingEnabled=false;
+let previewKey='',briefingHover=null,briefingFocus=null,briefingEnabled=false;
 let previousPhase=null,previousModal=null,pendingFocus=null,currentActions=new Set(['play']);
 const waveActions=['title','pause'];
 const phaseActions={title:['play','continue','options'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['continue','retry','title'],complete:['retry','title']};
@@ -50,7 +50,7 @@ function updateInventory(snapshot,locked){
     show(entry.upgrade,loadout&&hasUpgrade);entry.upgrade.disabled=locked||!loadout||!unit.canUpgrade;setText(entry.upgrade,unit.upgradeAvailableFromWave>(snapshot.encounterNumber??1)?`Upgrade ${unit.nextVariant==='upgrade2'?'II':'I'} · Level ${Math.ceil(unit.upgradeAvailableFromWave/4)}`:`UPGRADE ${unit.nextVariant==='upgrade2'?'II':'I'} · ${priceLabel(unit.upgradeCost??snapshot.costs?.upgrade??1)}`);
     show(entry.undeploy,deploy&&Boolean(unit.deployed));entry.undeploy.disabled=locked||!deploy||!unit.deployed;
     show(entry.operations,(loadout&&hasUpgrade)||(deploy&&Boolean(unit.deployed)));
-    const comparison=loadout&&hasUpgrade?upgradeComparison(unit):null,key=JSON.stringify(comparison);
+    const comparison=hasUpgrade&&!entry.upgrade.disabled?upgradeComparison(unit):null,key=JSON.stringify(comparison);
     entry.hasComparison=Boolean(comparison);
     if(entry.briefing.dataset.key!==key){entry.briefing.dataset.key=key;entry.briefing.replaceChildren();if(comparison){
      const title=document.createElement('h4');title.textContent=`UPGRADE ${unit.nextVariant==='upgrade2'?'II':'I'} · CURRENT → NEXT`;
@@ -60,15 +60,15 @@ function updateInventory(snapshot,locked){
   }
   for(const[id,entry]of rows)if(!live.has(id)){entry.row.remove();entry.briefing.remove();rows.delete(id);}
   roster.sync(units,rows);
-  briefingSelection=loadout?snapshot.selectedId:null;
   briefingEnabled=loadout&&!locked&&!snapshot.leaveOpen;
   setText(refs['unit-count'],ordinal(units.length));show(refs['empty-inventory'],units.length===0);
   return units;
 }
 
+// Inspect an available upgrade on hover/focus; selection never pins its tooltip.
 // Keep comparisons outside the clipped roster without changing its row heights.
 function positionBriefing(){
- const inspected=briefingEnabled?rows.get(briefingHover??briefingFocus??briefingSelection):null;
+ const inspected=briefingEnabled?rows.get(briefingHover??briefingFocus):null;
  for(const entry of rows.values())show(entry.briefing,entry===inspected&&entry.hasComparison);
  if(!inspected?.hasComparison)return;
  const rect=inspected.row.getBoundingClientRect(),panel=refs['unit-list'].closest('.prepare-scroll')??refs['prepare-panel'],clip=panel.getBoundingClientRect();
@@ -147,7 +147,9 @@ export function renderUI(snapshot={}){
   for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||busy||screenshot;
   $('scene').inert=Boolean(modal)||busy;
   for(const button of document.querySelectorAll('button[data-action]'))button.disabled=!currentActions.has(button.dataset.action);
-  const soundLevel=$('sound-level'),volume=Math.round((snapshot.soundLevel??SOUND_LEVEL_DEFAULT)*100);soundLevel.value=String(volume);soundLevel.disabled=busy||error||phase!=='title';soundLevel.setAttribute('aria-valuetext',volume+'%');setText($('sound-level-value'),volume+'%');
+  // Audio controls remain unavailable during sound development.
+  const soundLevel=$('sound-level'),volume=Math.round((snapshot.soundLevel??SOUND_LEVEL_DEFAULT)*100);soundLevel.value=String(volume);soundLevel.disabled=true;
+  soundLevel.setAttribute('aria-valuetext',volume+'%');setText($('sound-level-value'),volume+'%');
   for(const input of document.querySelectorAll('input[data-graphics]')){input.checked=snapshot.graphics?.[input.dataset.graphics]!==false;input.disabled=busy||error||phase!=='title';}
 
   const wave=Math.max(1,snapshot.waveNumber??1),waves=Math.max(1,snapshot.wavesPerLevel??4),tokens=count(snapshot.tokens),misses=count(snapshot.misses),limit=snapshot.missLimit??10;
@@ -219,7 +221,8 @@ export function renderUI(snapshot={}){
 document.addEventListener('click',event=>{
   const button=event.target?.closest?.('button[data-action]');
   if(!button)return;
-  if(button.disabled||!currentActions.has(button.dataset.action)||button.closest('[hidden],[inert]')||(previousModal&&!previousModal.contains(button))){event.preventDefault();event.stopImmediatePropagation();}
+  if(button.disabled||!currentActions.has(button.dataset.action)||button.closest('[hidden],[inert]')||(previousModal&&!previousModal.contains(button))){event.preventDefault();event.stopImmediatePropagation();return;}
+  if(button.dataset.action==='select'){briefingHover=briefingFocus=null;positionBriefing();}
 },true);
 
 // Native buttons provide activation semantics. Only modal Tab containment
@@ -233,9 +236,9 @@ document.addEventListener('keydown',event=>{
   else if(!event.shiftKey&&(document.activeElement===last||!previousModal.contains(document.activeElement))){event.preventDefault();first.focus();}
 },true);
 
-refs['unit-list'].addEventListener('pointerover',event=>{briefingHover=event.target.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
-refs['unit-list'].addEventListener('pointerout',event=>{briefingHover=event.relatedTarget?.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
-refs['unit-list'].addEventListener('focusin',event=>{briefingFocus=event.target.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
-refs['unit-list'].addEventListener('focusout',event=>{briefingFocus=event.relatedTarget?.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
+refs['unit-list'].addEventListener('pointerover',event=>{briefingHover=event.target.closest?.('button[data-action="upgrade"]')?.dataset.unit??null;positionBriefing();});
+refs['unit-list'].addEventListener('pointerout',event=>{briefingHover=event.relatedTarget?.closest?.('button[data-action="upgrade"]')?.dataset.unit??null;positionBriefing();});
+refs['unit-list'].addEventListener('focusin',event=>{briefingFocus=event.target.closest?.('button[data-action="upgrade"]')?.dataset.unit??null;positionBriefing();});
+refs['unit-list'].addEventListener('focusout',event=>{briefingFocus=event.relatedTarget?.closest?.('button[data-action="upgrade"]')?.dataset.unit??null;positionBriefing();});
 document.addEventListener('scroll',positionBriefing,true);
 window.addEventListener('resize',positionBriefing);

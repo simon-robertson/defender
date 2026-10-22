@@ -208,7 +208,7 @@ async function initialize(){
 
 document.addEventListener('input',event=>{
  const input=event.target.closest('input[data-sound-level]');
- if(!input||disposed||busy||error||session.phase!=='title'||!optionsOpen)return;
+ if(!input||input.disabled||disposed||busy||error||session.phase!=='title'||!optionsOpen)return;
  audio.setVolume(Number(input.value)/100);const label=Math.round(audio.volume*100)+'%';document.getElementById('sound-level-value').textContent=label;input.setAttribute('aria-valuetext',label);
 });
 

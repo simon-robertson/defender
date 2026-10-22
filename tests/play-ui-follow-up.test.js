@@ -17,7 +17,7 @@ test('loading follows the requested scene: title backdrops stay clear, real star
 const positionCode=ui.slice(ui.indexOf('function positionBriefing('),ui.indexOf('function focusable('));
 function tooltipFixture(){
  const row={getBoundingClientRect:()=>({left:900,top:300,bottom:380}),closest:()=>null},briefing={hidden:true,style:{},getBoundingClientRect:()=>({width:280,height:160})},entry={row,briefing,hasComparison:true};
- const scope={rows:new Map([['gun',entry]]),briefingEnabled:true,briefingHover:null,briefingFocus:null,briefingSelection:'gun',innerHeight:720,refs:{'unit-list':{closest:()=>({getBoundingClientRect:()=>({top:200,bottom:600})})}},show:(node,visible)=>node.hidden=!visible};
+ const scope={rows:new Map([['gun',entry]]),briefingEnabled:true,briefingHover:'gun',briefingFocus:null,innerHeight:720,refs:{'unit-list':{closest:()=>({getBoundingClientRect:()=>({top:200,bottom:600})})}},show:(node,visible)=>node.hidden=!visible};
  runInNewContext(positionCode+';globalThis.position=positionBriefing;',scope);return {scope,entry};
 }
 test('comparison sits left of the row and clamps within the viewport',()=>{
@@ -28,4 +28,23 @@ test('comparisons disappear when locked, unsupported, scrolled away or covered b
  for(const change of [f=>f.scope.briefingEnabled=false,f=>f.entry.hasComparison=false,f=>f.entry.row.getBoundingClientRect=()=>({left:900,top:601,bottom:681}),f=>f.entry.row.closest=()=>({})]){
   const f=tooltipFixture();f.scope.position();change(f);f.scope.position();expect(f.entry.briefing.hidden).toBe(true);
  }
+});
+
+test('upgrade comparisons follow actual affordability, unlock and tier eligibility',()=>{
+ const disabled=ui.match(/entry\.upgrade\.disabled=[^;]+;/)[0],comparison=ui.match(/const comparison=[^;]+;/)[0];
+ const session=new PlaySession();session.reset('loadout');session.buy();
+ function inspect(locked=false){const unit=session.snapshot().units[0],entry={upgrade:{}};const scope={unit,entry,hasUpgrade:Boolean(unit.nextVariant),loadout:session.phase==='loadout',locked,upgradeComparison:()=>true};runInNewContext(disabled+comparison+';globalThis.result=comparison;',scope);return scope.result;}
+ expect(inspect()).toBe(true);expect(inspect(true)).toBeNull();session.tokens=0;expect(inspect()).toBeNull();session.tokens=1;session.upgrade(session.units[0].id);session.tokens=10;expect(inspect()).toBeNull();session.units[0].variant='upgrade2';expect(inspect()).toBeNull();
+});
+test('selection alone does not open or retain the comparison; only upgrade hover/focus does',()=>{
+ const {scope,entry}=tooltipFixture();scope.position();expect(entry.briefing.hidden).toBe(false);scope.briefingHover=null;scope.position();expect(entry.briefing.hidden).toBe(true);scope.briefingFocus='gun';scope.position();expect(entry.briefing.hidden).toBe(false);
+ const clear=ui.match(/if\(button\.dataset\.action==='select'\)\{[^}]+\}/)[0];scope.briefingHover='gun';scope.button={dataset:{action:'select'}};scope.positionBriefing=scope.position;runInNewContext(clear,scope);
+ expect(scope.briefingHover).toBeNull();expect(scope.briefingFocus).toBeNull();expect(entry.briefing.hidden).toBe(true);
+});
+
+test('the temporary sound control lock survives UI updates and rejects slider events',()=>{
+ const lock=ui.match(/soundLevel\.disabled=[^;]+;/)[0],control={disabled:false};runInNewContext(lock,{soundLevel:control});expect(control.disabled).toBe(true);
+ const code=app.slice(app.indexOf("document.addEventListener('input',event=>{"),app.indexOf("document.addEventListener('change',async event=>{"));let handler,changes=0;
+ runInNewContext(code,{document:{addEventListener:(_,fn)=>handler=fn},disposed:false,busy:false,error:'',session:{phase:'title'},optionsOpen:true,audio:{setVolume(){changes++;}}});
+ handler({target:{closest:()=>({disabled:true,value:'100'})}});expect(changes).toBe(0);
 });

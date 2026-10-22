@@ -20,6 +20,101 @@ function basic(){
 function advance(f,seconds,hz=60,phase='wave'){for(let i=0;i<seconds*hz;i++){f.engine.time+=1/hz;f.drone.advance(1/hz,{engine:f.engine,phase});}}
 const viewPitch=(position,focus)=>Math.atan2(position[1]-focus[1],Math.hypot(position[0]-focus[0],position[2]-focus[2]));
 
+function battleTick(f,at,left,right,{seen=true}={}){
+ const d=f.drone;if(seen&&d.focusKind==='combat')d.sceneExposure+=at-d.time;
+ d.time=f.engine.time=at;
+ if(left)d.noteActivity(96,32,192,at,left);if(right)d.noteActivity(384,32,192,at,right);
+ d.chooseSubject(f.engine);
+}
+test('a busier battle takes over promptly after a readable shot instead of needing a permanent 65% lead',()=>{
+ const f=basic(),d=f.drone,actor=JSON.stringify(f.subject);
+ try{
+  battleTick(f,0,3,0);
+  for(let n=1;n<=9&&d.activityFocus[0]<300;n++)battleTick(f,n*.3,3,4);
+  expect(d.focusKind).toBe('combat');expect(d.activityFocus[0]).toBeCloseTo(384,8);expect(d.time).toBeLessThanOrEqual(2.7);expect(d.sceneExposure).toBe(0);
+  expect(JSON.stringify(f.subject)).toBe(actor);
+ }finally{d.dispose();}
+});
+test('comparable simultaneous battles receive screen time instead of one area retaining the camera forever',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  battleTick(f,0,4,0);
+  for(let n=1;n<=18&&d.activityFocus[0]<300;n++)battleTick(f,n*.3,4,3.8);
+  expect(d.activityFocus[0]).toBeCloseTo(384,8);expect(d.time).toBeLessThan(5.5);
+ }finally{d.dispose();}
+});
+test('fresh fighting replaces a quiet explosion area before its remaining impact score has faded away',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  battleTick(f,0,10,0);
+  for(let n=1;n<=6&&d.activityFocus[0]<300;n++)battleTick(f,n*.3,0,1);
+  expect(d.activityFocus[0]).toBeCloseTo(384,8);expect(d.time).toBeLessThanOrEqual(1.8);
+ }finally{d.dispose();}
+});
+test('a brief remote burst does not cause a cut before the current fight can be read',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  battleTick(f,0,4,0);battleTick(f,.3,4,15);
+  for(let n=2;n<=10;n++)battleTick(f,n*.3,4,0);
+  expect(d.activityFocus[0]).toBeCloseTo(96,8);expect(d.challengeKind).toBeNull();
+ }finally{d.dispose();}
+});
+test('a fading remote burst cannot steal the camera from fresh ongoing fighting',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  battleTick(f,0,4,0);battleTick(f,.3,4,24);
+  battleTick(f,1.5,4,0);
+  expect(d.challengeKind).toBeNull();
+  for(let n=6;n<=15;n++)battleTick(f,n*.3,4,0);
+  expect(d.activityFocus[0]).toBeCloseTo(96,8);
+ }finally{d.dispose();}
+});
+test('a single ongoing fight stays ahead of idle or speculative interest regardless of shot age',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  battleTick(f,0,3,0);d.anticipation.active=true;d.anticipation.focus.set([400,40,300]);
+  for(let n=1;n<=50;n++)battleTick(f,n*.3,3,0);
+  expect(d.focusKind).toBe('combat');expect(d.activityFocus[0]).toBeCloseTo(96,8);
+ }finally{d.dispose();}
+});
+test('a long unshown approach cannot prevent a handover to another ongoing battle',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  battleTick(f,0,4,0);
+  for(let n=1;n<=30&&d.activityFocus[0]<300;n++)battleTick(f,n*.3,4,3.8,{seen:false});
+  expect(d.activityFocus[0]).toBeCloseTo(384,8);expect(d.time).toBeLessThanOrEqual(9);
+ }finally{d.dispose();}
+});
+test('shot exposure counts action in the viewport rather than elapsed off-screen travel or paused time',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  d.noteActivity(240,32,192,0,3);d.setEnabled(true);d.sync('wave',f.engine);
+  const aim=d.aim;d.yaw+=Math.PI;d.aim=()=>{};d.quality=1;advance(f,.5);expect(d.sceneExposure).toBe(0);
+  d.aim=aim;d.yaw=Math.atan2(d.position[0]-d.activityFocus[0],d.position[2]-d.activityFocus[2]);d.pitch=viewPitch(d.position,d.activityFocus);d.look.set(d.activityFocus);
+  advance(f,.5);expect(d.sceneExposure).toBeGreaterThan(.4);
+  const seen=d.sceneExposure;d.advance(3,{engine:f.engine,phase:'wave',paused:true});expect(d.sceneExposure).toBe(seen);
+ }finally{d.dispose();}
+});
+test('two live battle streams produce a readable handover at 30/60/120 Hz without repeated focus reversals',()=>{
+ for(const hz of [30,60,120]){
+  const f=basic(),d=f.drone;
+  try{
+   d.noteActivity(96,32,192,0,3);d.setEnabled(true);d.sync('wave',f.engine);
+   let nextShot=.3,switchAt=null,shownAt=null,changes=0,previousArea=96;
+   for(let frame=1;frame<=8*hz;frame++){
+    f.engine.time=frame/hz;
+    while(nextShot<=f.engine.time+1e-9){d.noteActivity(96,32,192,nextShot,3);d.noteActivity(384,32,192,nextShot,4);nextShot+=.3;}
+    const previous=Array.from(d.position);d.advance(1/hz,{engine:f.engine,phase:'wave'});
+    const area=d.activityFocus[0]>300?384:96;
+    if(area!==previousArea){changes++;previousArea=area;}
+    if(area===384){switchAt??=f.engine.time;if(d.sceneInView())shownAt??=f.engine.time;}
+    expect(d.staticClear(...previous,...d.position)).toBe(true);
+   }
+   expect(switchAt).not.toBeNull();expect(switchAt).toBeLessThan(4);expect(shownAt).not.toBeNull();expect(shownAt).toBeLessThan(6);expect(changes).toBe(1);
+  }finally{d.dispose();}
+ }
+});
+
 test('faster flight and gimbal motion reach the doubled rates without advancing actors',()=>{
  const f=basic(),d=f.drone;
  try{

@@ -13,7 +13,7 @@ const DRIFT_SPEED=.65*DRONE_CAMERA_MOTION_RATE,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_S
 const YAW_SPEED=1.1*DRONE_CAMERA_MOTION_RATE,PITCH_SPEED=.7*DRONE_CAMERA_MOTION_RATE,YAW_ACCELERATION=1.8*DRONE_CAMERA_MOTION_RATE**2,PITCH_ACCELERATION=1.2*DRONE_CAMERA_MOTION_RATE**2;
 const TICK=1/120,PLAN_SECONDS=.8,R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),HEIGHTS=Object.freeze([120,184,152]);
 const COMPOSITION_SUBJECTS=12,COMPOSITION_ENEMIES=8,LOW_HEIGHTS=Object.freeze([40,56]);
-const ACTIVITY_SLOTS=24,ACTIVITY_RADIUS=60,ACTIVITY_SECONDS=5,SCENE_RADIUS=84,SCENE_HOLD=4,CHALLENGE_SECONDS=1.2;
+const ACTIVITY_SLOTS=24,ACTIVITY_RADIUS=60,ACTIVITY_SECONDS=5,ACTIVITY_DECAY=2,SCENE_RADIUS=84,SCENE_HOLD=4,CHALLENGE_SECONDS=.6;
 const FOCUS_PRIORITY=Object.freeze({none:-1,enemy:0,defence:1,anticipation:2,combat:3});
 function clipDistance(points,k,plane,near,far){const depth=points[k+2];return plane<4?depth+(plane&1?-1:1)*points[k+(plane>>1)]:plane===4?depth-near:far-depth;}
 function put(out,x,y,z,k=0){out[k]=x;out[k+1]=y;out[k+2]=z;}
@@ -44,6 +44,7 @@ export class DroneCamera {
   this.boardClipA=new Float64Array(80);this.boardClipB=new Float64Array(80);this.levelInView=this.contextReframes=0;
   this.subject=null;this.subjectSince=0;this.engineTime=null;this.phase=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;
   this.activity=new Float64Array(ACTIVITY_SLOTS*5);this.activityWeights=new Float64Array(ACTIVITY_SLOTS);this.activityFocus=new Float64Array(3);this.candidateFocus=new Float64Array(3);this.challengeFocus=new Float64Array(3);this.activitySlot=-1;this.focusKind='none';this.interest=null;this.nextSubjectAt=0;this.challengeKind=null;this.challengeSince=0;this.forecastAt=-Infinity;
+  this.sceneExposure=0;this.latestActivityAt=-Infinity;
   this.routeLength=this.routeIndex=0;this.goalDuration=10;this.fov=64;this.yaw=this.pitch=this.panRoll=0;this.quality=0;this.visible=this.holding=false;this.battleAt=-Infinity;this.cruiseY=224;this.shotBand=-1;this.seed=1;
  }
  bind(world){
@@ -66,7 +67,7 @@ export class DroneCamera {
   this.active=false;this.resetFocus();this.compositionStates.fill(null);this.compositionCount=0;this.compositionEngine=null;this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.flinch=this.panRoll=0;this.holding=false;this.engineTime=null;this.accumulator=0;this.routeLength=this.routeIndex=0;
  }
  refresh(){this.leave();this.resetFocus();this.anticipation.reset();this.obstacles?.dispose();this.obstacles=null;this.obstacleEngine=null;this.airLanes=null;}
- resetFocus(){this.activity.fill(0);this.activityWeights.fill(0);this.activitySlot=-1;this.focusKind='none';this.subject=this.interest=this.challengeKind=null;this.nextSubjectAt=0;this.subjectSince=-Infinity;this.forecastAt=-Infinity;}
+ resetFocus(){this.activity.fill(0);this.activityWeights.fill(0);this.activitySlot=-1;this.focusKind='none';this.subject=this.interest=this.challengeKind=null;this.nextSubjectAt=0;this.subjectSince=-Infinity;this.forecastAt=-Infinity;this.sceneExposure=0;this.latestActivityAt=-Infinity;}
  validSubject(target){return target?.phase==='active'&&target.health?.alive!==false;}
  noteActivity(x,y,z,at,weight=1){
   if(!this.world||!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z)||!Number.isFinite(at))return;
@@ -76,18 +77,19 @@ export class DroneCamera {
    if(events[k+3]>0&&age>=0&&age<ACTIVITY_SECONDS&&(events[k]-x)**2+(events[k+2]-z)**2<ACTIVITY_RADIUS**2){slot=k;matched=true;break;}
    if(events[k+4]<oldest||events[k+3]===0){oldest=events[k+4];slot=k;}
   }
-  const retained=matched?events[slot+3]*Math.exp(-(at-events[slot+4])/2):0;
+  const retained=matched?events[slot+3]*Math.exp(-(at-events[slot+4])/ACTIVITY_DECAY):0;
   const total=retained+weight;
   events[slot]=(events[slot]*retained+x*weight)/total;events[slot+1]=(events[slot+1]*retained+y*weight)/total;events[slot+2]=(events[slot+2]*retained+z*weight)/total;events[slot+3]=Math.min(24,total);events[slot+4]=at;
  }
  // Neighbouring impact cells form one encounter. A shot cadence, kill or
  // recycled activity slot is not a new filming destination.
  sampleActivity(x,z,out){
-  let total=0,px=0,py=0,pz=0;
+  let total=0,px=0,py=0,pz=0;this.latestActivityAt=-Infinity;
   for(let n=0;n<ACTIVITY_SLOTS;n++){
    const k=n*5,d=(this.activity[k]-x)**2+(this.activity[k+2]-z)**2;
    if(!this.activityWeights[n]||d>=SCENE_RADIUS**2)continue;
    const weight=this.activityWeights[n]*(1-d/SCENE_RADIUS**2);total+=weight;
+   this.latestActivityAt=Math.max(this.latestActivityAt,this.activity[k+4]);
    px+=this.activity[k]*weight;py+=this.activity[k+1]*weight;pz+=this.activity[k+2]*weight;
   }
   if(total)put(out,px/total,py/total,pz/total);return total;
@@ -100,14 +102,16 @@ export class DroneCamera {
  chooseSubject(engine){
   if(this.time<this.nextSubjectAt)return;this.nextSubjectAt=this.time+.3;
   const targets=engine.enemies?.activeTargets??EMPTY,guns=engine.firing?.states??EMPTY,events=this.activity,point=this.candidateFocus;
-  for(let n=0;n<ACTIVITY_SLOTS;n++){const k=n*5,age=engine.time-events[k+4];this.activityWeights[n]=age>=0&&age<ACTIVITY_SECONDS?events[k+3]*Math.exp(-age/2):0;}
+  for(let n=0;n<ACTIVITY_SLOTS;n++){const k=n*5,age=engine.time-events[k+4];this.activityWeights[n]=age>=0&&age<ACTIVITY_SECONDS?events[k+3]*Math.exp(-age/ACTIVITY_DECAY):0;}
   const currentScore=this.focusKind==='combat'?this.sampleActivity(this.activityFocus[0],this.activityFocus[2],point):0;
-  const cx=point[0],cy=point[1],cz=point[2];
+  const cx=point[0],cy=point[1],cz=point[2],currentAt=this.latestActivityAt;
   let slot=-1,score=.15,bx=0,by=0,bz=0,target=null,interest=null,kind='none';
+  let alternate=-1,alternateScore=.15,ax=0,ay=0,az=0;
   for(let n=0;n<ACTIVITY_SLOTS;n++){
    if(!this.activityWeights[n])continue;
    const k=n*5,value=this.sampleActivity(events[k],events[k+2],point);
    if(value>score){score=value;slot=k;bx=point[0];by=point[1];bz=point[2];}
+   if(value>alternateScore&&engine.time-this.latestActivityAt<=.9&&(point[0]-this.activityFocus[0])**2+(point[2]-this.activityFocus[2])**2>SCENE_RADIUS**2){alternateScore=value;alternate=k;ax=point[0];ay=point[1];az=point[2];}
   }
   if(slot>=0)kind='combat';
   else if(this.anticipation.active){kind='anticipation';target=this.anticipation.target;[bx,by,bz]=this.anticipation.focus;}
@@ -121,11 +125,21 @@ export class DroneCamera {
     if(target){kind='enemy';bx=target.aimX??target.x;by=target.aimY??target.y??this.world.level.pathHeight+8;bz=target.aimZ??target.z;}
    }
   }
-  const sameArea=(bx-this.activityFocus[0])**2+(bz-this.activityFocus[2])**2<=SCENE_RADIUS**2;
   const live=this.focusKind==='combat'?currentScore>.15:this.focusKind==='anticipation'?(this.validSubject(this.subject)||this.subject?.phase==='scheduled')&&engine.time<=this.forecastAt+1.5:this.focusKind==='defence'?guns.includes(this.interest):this.validSubject(this.subject);
-  // Keep a quiet beat between volleys. Another battle must be substantially
-  // stronger for a sustained interval before it can take the camera away.
-  const holdCombat=this.focusKind==='combat'&&live&&(kind!=='combat'||sameArea||this.time-this.subjectSince<SCENE_HOLD||score<currentScore*1.65+.4);
+  let handover=false,confirmation=CHALLENGE_SECONDS;
+  if(this.focusKind==='combat'&&alternate>=0){
+   const quiet=engine.time-currentAt>.9,burst=alternateScore>currentScore*2+.3,unseenTooLong=this.time-this.subjectSince>=8;
+   // Count time actually seen, rather than time spent travelling toward it.
+   // An older shot yields to comparable action; a fresh burst wins sooner.
+   const older=this.sceneExposure>=5.5||unseenTooLong,ratio=quiet ? .5 : older ? .65 : this.sceneExposure>=3.5 ? .9 : 1.12;
+   const seenEnough=this.sceneExposure>=((quiet||burst) ? .6 : 1.5)||!live||unseenTooLong;
+   if(seenEnough&&alternateScore>=currentScore*ratio+.08){
+    kind='combat';slot=alternate;score=alternateScore;bx=ax;by=ay;bz=az;target=interest=null;handover=true;
+    if(quiet||burst)confirmation=.3;
+   }
+  }
+  const sameArea=(bx-this.activityFocus[0])**2+(bz-this.activityFocus[2])**2<=SCENE_RADIUS**2;
+  const holdCombat=this.focusKind==='combat'&&live&&(kind!=='combat'||sameArea||!handover);
   const holdOther=this.focusKind!=='none'&&live&&kind!=='combat'&&(FOCUS_PRIORITY[kind]<FOCUS_PRIORITY[this.focusKind]||this.time-this.subjectSince<SCENE_HOLD||kind===this.focusKind&&sameArea);
   if(kind==='none'||holdCombat||holdOther){
    this.challengeKind=null;
@@ -135,9 +149,10 @@ export class DroneCamera {
   const immediate=this.focusKind==='none'||kind==='combat'&&this.focusKind!=='combat';
   if(!immediate){
    if(this.challengeKind!==kind||(bx-this.challengeFocus[0])**2+(bz-this.challengeFocus[2])**2>60**2){this.challengeKind=kind;put(this.challengeFocus,bx,by,bz);this.challengeSince=this.time;return;}
-   if(this.time-this.challengeSince<CHALLENGE_SECONDS)return;
+   if(this.time-this.challengeSince+1e-9<confirmation)return;
   }
   this.focusKind=kind;this.activitySlot=slot;this.subject=target;this.interest=interest;this.subjectSince=this.time;this.challengeKind=null;
+  this.sceneExposure=0;
   this.forecastAt=kind==='anticipation'?this.anticipation.at:-Infinity;put(this.activityFocus,bx,by,bz);
   if(kind==='combat')this.localSubject(targets);
   // Reconsider composition without discarding a still-readable flight route.
@@ -153,6 +168,12 @@ export class DroneCamera {
   if(distance<1.5)return;
   const blend=Math.min(1-Math.exp(-1.6*DRONE_CAMERA_MOTION_RATE*dt),40*DRONE_CAMERA_MOTION_RATE*dt/distance);
   this.focus[0]+=dx*blend;this.focus[1]+=dy*blend;this.focus[2]+=dz*blend;
+ }
+ sceneInView(){
+  const dx=this.activityFocus[0]-this.position[0],dy=this.activityFocus[1]-this.position[1],dz=this.activityFocus[2]-this.position[2],sy=Math.sin(this.yaw),cy=Math.cos(this.yaw),sp=Math.sin(this.pitch),cp=Math.cos(this.pitch),depth=-dx*sy*cp-dy*sp-dz*cy*cp;
+  if(depth<=0)return false;
+  const tan=Math.tan(this.fov*Math.PI/360),aspect=(this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000);
+  return Math.abs(dx*cy-dz*sy)<depth*tan*aspect*.7&&Math.abs(-dx*sy*sp+dy*cp-dz*cy*sp)<depth*tan*.7;
  }
  staticClear(ax,ay,az,bx,by,bz){
   const w=this.world;if(!w)return false;
@@ -476,9 +497,10 @@ export class DroneCamera {
   while(this.accumulator>1e-12){const step=Math.min(TICK,this.accumulator);this.accumulator-=step;this.time+=step;
    if(phase==='wave'){this.anticipation.update(engine,this.world,this.position);this.chooseSubject(engine);this.compose(engine,step);this.planIn-=step;if(this.planIn<=0){this.vantage();this.planIn=PLAN_SECONDS;}}
    this.move(step);this.heldFor=this.holding&&this.speed<2?this.heldFor+step:0;this.aim(step,engine);
+   if(phase==='wave'&&this.focusKind==='combat'&&this.quality>=.8&&this.sceneInView())this.sceneExposure+=step;
   }
   this.apply();return true;
  }
- stats(){return {anticipation:this.anticipation.stats(),enabled:this.enabled,active:this.active,time:this.time,subject:this.subject?.id??null,focusKind:this.focusKind,position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),drifting:this.drifting,blockedMoves:this.blockedMoves,yawVelocity:this.yawVelocity,pitchVelocity:this.pitchVelocity,fovVelocity:this.fovVelocity,travelled:this.travelled,plans:this.plans,holding:this.holding,heldFor:this.heldFor,relocations:this.relocations,quality:this.quality,composition:this.composition,levelInView:this.levelInView,contextReframes:this.contextReframes,compositionReframes:this.compositionReframes,compositionSubjects:this.compositionCount,lowShot:this.lowShot,lowArrived:this.lowArrived,lowPlans:this.lowPlans,lowShots:this.lowShots,lowPendingUntil:Number.isFinite(this.lowPendingUntil)?this.lowPendingUntil:null,nextLowAt:this.nextLowAt,visible:this.visible,fov:this.fov,pitch:this.pitch,panRoll:this.panRoll,flinch:this.flinch,explosions:this.explosions,routeLength:this.routeLength,routeIndex:this.routeIndex,goalDuration:this.goalDuration,emergency:this.emergency,airborneFloor:this.airborneFloor,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,cruiseY:this.cruiseY,planningBytes:this.boardClipA.byteLength+this.boardClipB.byteLength+this.activityWeights.byteLength+this.candidateFocus.byteLength+this.challengeFocus.byteLength+this.activity.byteLength+this.activityFocus.byteLength+this.velocity.byteLength+this.acceleration.byteLength+this.desiredVelocity.byteLength+this.driftAnchor.byteLength+this.anticipation.byteLength+this.saved.byteLength+this.position.byteLength+this.focus.byteLength+this.look.byteLength+this.goal.byteLength+this.route.byteLength+this.scratch.byteLength+this.lastBattle.byteLength+this.compositionBounds.byteLength+this.projectedSubjects.byteLength+(this.water?.byteLength??0)+(this.airLanes?.byteLength??0)+(this.obstacles?.byteLength??0)};}
+ stats(){return {anticipation:this.anticipation.stats(),enabled:this.enabled,active:this.active,time:this.time,subject:this.subject?.id??null,focusKind:this.focusKind,sceneExposure:this.sceneExposure,position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),drifting:this.drifting,blockedMoves:this.blockedMoves,yawVelocity:this.yawVelocity,pitchVelocity:this.pitchVelocity,fovVelocity:this.fovVelocity,travelled:this.travelled,plans:this.plans,holding:this.holding,heldFor:this.heldFor,relocations:this.relocations,quality:this.quality,composition:this.composition,levelInView:this.levelInView,contextReframes:this.contextReframes,compositionReframes:this.compositionReframes,compositionSubjects:this.compositionCount,lowShot:this.lowShot,lowArrived:this.lowArrived,lowPlans:this.lowPlans,lowShots:this.lowShots,lowPendingUntil:Number.isFinite(this.lowPendingUntil)?this.lowPendingUntil:null,nextLowAt:this.nextLowAt,visible:this.visible,fov:this.fov,pitch:this.pitch,panRoll:this.panRoll,flinch:this.flinch,explosions:this.explosions,routeLength:this.routeLength,routeIndex:this.routeIndex,goalDuration:this.goalDuration,emergency:this.emergency,airborneFloor:this.airborneFloor,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,cruiseY:this.cruiseY,planningBytes:this.boardClipA.byteLength+this.boardClipB.byteLength+this.activityWeights.byteLength+this.candidateFocus.byteLength+this.challengeFocus.byteLength+this.activity.byteLength+this.activityFocus.byteLength+this.velocity.byteLength+this.acceleration.byteLength+this.desiredVelocity.byteLength+this.driftAnchor.byteLength+this.anticipation.byteLength+this.saved.byteLength+this.position.byteLength+this.focus.byteLength+this.look.byteLength+this.goal.byteLength+this.route.byteLength+this.scratch.byteLength+this.lastBattle.byteLength+this.compositionBounds.byteLength+this.projectedSubjects.byteLength+(this.water?.byteLength??0)+(this.airLanes?.byteLength??0)+(this.obstacles?.byteLength??0)};}
  dispose(){this.bind(null);this.camera=null;}
 }

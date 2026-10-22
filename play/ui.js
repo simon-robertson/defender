@@ -1,6 +1,7 @@
 import {checkpointDescription,upgradeComparison,waveOutcomeText} from './briefing.js';
 import {PORTRAITS} from './portraits.js';
 import {RosterGroups} from './roster.js';
+import {SOUND_LEVEL_DEFAULT} from './audio-options.js';
 // Presentation only: the play session owns state, prices and all actions.
 // Buttons expose data-action and optional data-unit for app-level delegation.
 const $=id=>document.getElementById(id);
@@ -146,7 +147,7 @@ export function renderUI(snapshot={}){
   for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||busy||screenshot;
   $('scene').inert=Boolean(modal)||busy;
   for(const button of document.querySelectorAll('button[data-action]'))button.disabled=!currentActions.has(button.dataset.action);
-  const soundLevel=$('sound-level'),volume=Math.round((snapshot.soundLevel??.8)*100);soundLevel.value=String(volume);soundLevel.disabled=busy||error||phase!=='title';soundLevel.setAttribute('aria-valuetext',volume+'%');setText($('sound-level-value'),volume+'%');
+  const soundLevel=$('sound-level'),volume=Math.round((snapshot.soundLevel??SOUND_LEVEL_DEFAULT)*100);soundLevel.value=String(volume);soundLevel.disabled=busy||error||phase!=='title';soundLevel.setAttribute('aria-valuetext',volume+'%');setText($('sound-level-value'),volume+'%');
   for(const input of document.querySelectorAll('input[data-graphics]')){input.checked=snapshot.graphics?.[input.dataset.graphics]!==false;input.disabled=busy||error||phase!=='title';}
 
   const wave=Math.max(1,snapshot.waveNumber??1),waves=Math.max(1,snapshot.wavesPerLevel??4),tokens=count(snapshot.tokens),misses=count(snapshot.misses),limit=snapshot.missLimit??10;

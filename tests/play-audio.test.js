@@ -2,13 +2,15 @@ import {test,expect} from 'bun:test';
 import {readFile} from 'node:fs/promises';
 import {runInNewContext} from 'node:vm';
 import {AudioPlayer} from '../play/audio.js';
-function fixture(){const events=[];class Context{constructor(options){events.push(['create',options]);this.state='suspended';}resume(){events.push(['resume']);this.state='running';return Promise.resolve();}close(){events.push(['close']);this.state='closed';return Promise.resolve();}}return {events,Context,audio:new AudioPlayer({AudioContext:Context})};}
+// Playback tests explicitly opt in; new players remain silent.
+const playbackPreferences={getItem:()=>'0.8'};
+function fixture(){const events=[];class Context{constructor(options){events.push(['create',options]);this.state='suspended';}resume(){events.push(['resume']);this.state='running';return Promise.resolve();}close(){events.push(['close']);this.state='closed';return Promise.resolve();}}return {events,Context,audio:new AudioPlayer({localStorage:playbackPreferences,AudioContext:Context})};}
 test('player creates no context on title load and reuses one across game starts',()=>{
  const {events,audio}=fixture();expect(audio.state).toBe('uninitialised');expect(events).toEqual([]);audio.startFromGesture();const context=audio.context;expect(events.map(e=>e[0])).toEqual(['create','resume']);expect(events[0][1]).toEqual({latencyHint:'interactive'});audio.startFromGesture();expect(audio.context).toBe(context);expect(events.length).toBe(2);context.state='suspended';audio.startFromGesture();expect(events.at(-1)[0]).toBe('resume');audio.dispose();audio.dispose();audio.startFromGesture();expect(events.filter(e=>e[0]==='close')).toHaveLength(1);expect(audio.context).toBeNull();
 });
 test('missing API, device failures and rejected resumes do not reject game startup',async()=>{
  const missing=new AudioPlayer({});expect(()=>missing.startFromGesture()).not.toThrow();expect(missing.context).toBeNull();
- const broken=new AudioPlayer({AudioContext:class{constructor(){throw new Error('Device unavailable');}}});expect(()=>broken.startFromGesture()).not.toThrow();expect(broken.lastError).toBe('Device unavailable');
+ const broken=new AudioPlayer({localStorage:playbackPreferences,AudioContext:class{constructor(){throw new Error('Device unavailable');}}});expect(()=>broken.startFromGesture()).not.toThrow();expect(broken.lastError).toBe('Device unavailable');
  const {audio}=fixture();audio.startFromGesture();audio.context.state='suspended';audio.context.resume=()=>Promise.reject(new Error('Not allowed'));audio.startFromGesture();await Promise.resolve();expect(audio.lastError).toBe('Not allowed');audio.dispose();
 });
 test('another real gesture can retry while a previous resume remains pending',()=>{
@@ -17,7 +19,7 @@ test('another real gesture can retry while a previous resume remains pending',()
 const app=await readFile(new URL('../play/app.js',import.meta.url),'utf8');
 const click=app.slice(app.indexOf("document.addEventListener('click',async event=>{"),app.indexOf('\n\nfunction project('));
 function handlerFixture(action,{saved=true,busy=false}={}){
- const records=[],audio=new AudioPlayer({AudioContext:class{constructor(){records.push('context');this.state='suspended';}resume(){records.push('resume');return Promise.resolve();}}});let handler;
+ const records=[],audio=new AudioPlayer({localStorage:playbackPreferences,AudioContext:class{constructor(){records.push('context');this.state='suspended';}resume(){records.push('resume');return Promise.resolve();}}});let handler;
  const scope={document:{addEventListener:(_,fn)=>handler=fn},disposed:false,busy,error:'',session:{phase:'title'},savedGame:saved?{fork:()=>({})}:null,savingProgress:false,audio,optionsOpen:false,leaveOpen:false,cameraViews:{reset(){}},conditions:{reset(){}},selectedId:null,notice:'',config:{},PlaySession:class{reset(){}},createTitleSession:()=>({}),rebuild:()=>{records.push('load');return Promise.resolve();},fail:error=>{throw error;},paint(){},runLoop(){}};
  runInNewContext(click,scope);
  return {records,audio,call:()=>handler({target:{closest:()=>({disabled:false,dataset:{action}})}})};
@@ -41,7 +43,7 @@ function mixerFixture({rejectOgg=false,channels=1}={}){
   createBufferSource(){const source=new Node();source.start=at=>{source.at=at;};source.stop=()=>{source.stopped=true;};sources.push(source);return source;}
   async decodeAudioData(bytes){if(rejectOgg&&bytes[0]===1)throw new Error('Codec unsupported');return {numberOfChannels:channels,take:bytes[1],duration:.38};}
  }
- const audio=new AudioPlayer({AudioContext:Context,fetch:async url=>{events.push('fetch');fetched.push(String(url));return {ok:true,arrayBuffer:async()=>Uint8Array.of(String(url).endsWith('.ogg')?1:2,Number(String(url).match(/dry-(\d)/)[1]))};}});
+ const audio=new AudioPlayer({localStorage:playbackPreferences,AudioContext:Context,fetch:async url=>{events.push('fetch');fetched.push(String(url));return {ok:true,arrayBuffer:async()=>Uint8Array.of(String(url).endsWith('.ogg')?1:2,Number(String(url).match(/dry-(\d)/)[1]))};}});
  const camera={eye:[0,0,0],vp:[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]};
  return {audio,fetched,sources,graphs,events,camera,end:source=>source.onended({target:source})};
 }
@@ -72,9 +74,9 @@ test('dispose during decoding cannot create a late graph or retain a sound bank'
  const f=mixerFixture();let finish;f.audio.startFromGesture();f.audio.context.decodeAudioData=()=>new Promise(resolve=>finish=resolve);await Promise.resolve();await Promise.resolve();const pending=f.audio.loading;f.audio.dispose();finish({numberOfChannels:1});await pending;expect(f.graphs).toHaveLength(0);expect(f.audio.ready).toBe(false);
 });
 
-test('sound level defaults to 80%, is stored safely, and updates the master including mute',async()=>{
+test('sound level defaults to 0%, is stored safely, and updates the master including mute',async()=>{
  const {SOUND_LEVEL_KEY,loadSoundLevel,soundLevel}=await import('../play/audio-options.js');
- expect(loadSoundLevel({})).toBe(.8);for(const raw of ['broken','null','"loud"'])expect(loadSoundLevel({localStorage:{getItem:()=>raw}})).toBe(.8);
+ expect(loadSoundLevel({})).toBe(0);for(const raw of ['broken','null','"loud"'])expect(loadSoundLevel({localStorage:{getItem:()=>raw}})).toBe(0);
  expect(loadSoundLevel({localStorage:{getItem:()=>'0.35'}})).toBe(.35);expect(soundLevel(-2)).toBe(0);expect(soundLevel(2)).toBe(1);
  const f=await readyMixer(),saved=[];expect(f.audio.volume).toBe(.8);expect(f.audio.master.gain.value).toBe(.8);f.audio.scope.localStorage={setItem:(...args)=>saved.push(args)};
  f.audio.setVolume(.25);expect(f.audio.master.gain.value).toBe(.25);expect(saved.at(-1)).toEqual([SOUND_LEVEL_KEY,'0.25']);f.audio.setVolume(0);expect(f.audio.master).toBeNull();expect(f.audio.context).toBeNull();expect(f.audio.state).toBe('closed');
@@ -85,4 +87,10 @@ test('zero volume shuts down the device and buffers; Done can restart only above
  const f=await readyMixer();f.audio.enqueue(0,0,0,0);f.audio.advance(0,f.camera);const context=f.audio.context;f.audio.setVolume(0);expect(context.state).toBe('closed');expect(f.audio.active).toBe(0);expect(f.audio.buffers).toEqual([]);expect(f.audio.voices).toEqual([]);expect(f.audio.loading).toBeNull();
  f.audio.startFromGesture();expect(f.audio.context).toBeNull();f.audio.setVolume(.8);expect(f.audio.context).toBeNull();f.audio.startFromGesture();await f.audio.loading;expect(f.audio.context).not.toBe(context);expect(f.audio.state).toBe('running');expect(f.audio.ready).toBe(true);f.audio.dispose();
  const done=handlerFixture('close-options');await done.call();expect(done.records).toEqual(['context','resume']);done.audio.dispose();
+});
+
+test('the default zero volume starts no device, fetch, decode or sound even after play gestures',()=>{
+ let contexts=0,fetches=0;const audio=new AudioPlayer({AudioContext:class{constructor(){contexts++;}},fetch(){fetches++;}});
+ expect(audio.volume).toBe(0);expect(audio.state).toBe('closed');audio.startFromGesture();audio.setActive(true);audio.gunShot([],[],0);audio.enqueue(0,0,0,0);audio.advance(0,{});
+ expect(contexts).toBe(0);expect(fetches).toBe(0);expect(audio.ready).toBe(false);expect(audio.loading).toBeNull();expect(audio.context).toBeNull();expect(audio.queued).toBe(0);audio.dispose();
 });

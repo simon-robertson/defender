@@ -2,6 +2,10 @@
 // Learned from the player's camera study: fights in front, arrivals behind,
 // broad calm/multiple-front views, occasional low shots, and exit pressure.
 const EMPTY=Object.freeze([]),MAX_SUBJECTS=256,MAX_AREAS=32,AREA_RADIUS=88;
+// Low shots punctuate sustained fighting after several normal perspectives.
+// Give them half the screen time of the surrounding battle/overview coverage.
+const COMBAT_STYLES=['battle','overview','battle','dramatic','overview'];
+const SHOT_SECONDS=6,DRAMATIC_SECONDS=3;
 export const battleAlive=s=>s?.phase==='active'&&s.health?.alive!==false;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export class BattleDirector {
@@ -63,13 +67,13 @@ export class BattleDirector {
   const newArea=!intent.version||selected<0&&intent.area>=0||Math.hypot((a?.x??world.width/2)-intent.anchor[0],(a?.z??world.length/2)-intent.anchor[2])>AREA_RADIUS;
   let changed=newArea||kind!==intent.kind;
   if(changed){this.exposure=0;this.since=now;this.shotIndex=0;}
-  else if(this.exposure>=6){this.shotIndex++;this.exposure=0;changed=true;reason='new perspective';}
+  else if(this.exposure>=(intent.style==='dramatic'?DRAMATIC_SECONDS:SHOT_SECONDS)){this.shotIndex++;this.exposure=0;changed=true;reason='new perspective';}
   const dominant=a&&a.action>=totalAction*.7,spread=kind==='combat'&&busy>1&&!dominant;
   if(spread){if(!Number.isFinite(this.wideSince))this.wideSince=now;}else this.wideSince=-Infinity;
   // New fronts can warrant coverage before the current local shot expires.
   // Confirm the spread and retain a minimum readable hold before widening.
   if(!changed&&spread&&intent.style!=='overview'&&now-this.wideSince>=.7&&this.exposure>=1.8){changed=true;this.shotIndex=0;reason='wider battle';}
-  const desiredStyle=kind==='danger'?'danger':kind==='survey'||kind==='approach'?'survey':busy>1&&!dominant?(this.shotIndex%2?'battle':'overview'):['battle','dramatic','overview'][this.shotIndex%3];
+  const desiredStyle=kind==='danger'?'danger':kind==='survey'||kind==='approach'?'survey':busy>1&&!dominant?(this.shotIndex%2?'battle':'overview'):COMBAT_STYLES[this.shotIndex%COMBAT_STYLES.length];
   const style=changed?desiredStyle:intent.style;
   if(changed){intent.version++;intent.reason=reason;}
   intent.kind=kind;intent.style=style;intent.area=selected;intent.busyAreas=busy;intent.action=a?.action??0;intent.danger=a?.danger??0;intent.weight=a?.weight??0;intent.subject=a?.enemy??null;

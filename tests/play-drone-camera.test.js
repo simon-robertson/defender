@@ -35,7 +35,7 @@ test('a calm survey is wider than a dominant fight, and low dramatic shots are n
  const f=basic(),d=f.drone;
  try{d.setEnabled(true);d.sync('wave',f.engine);expect(d.director.intent.style).toBe('survey');expect(d.targetFov).toBe(64);
  advance(f,3.2);const at=f.engine.time+1;f.engine.firing.states=[{id:'gun',x:265,z:192,model:'turret-study',target:f.subject,lineOfSight:true,cycle:{time:at,lastShotAt:at}}];f.engine.time=at;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('battle');d.compose(f.engine);d.planShot();expect(d.targetFov).toBe(56);
- d.director.exposure=6.1;f.engine.time+=.4;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('dramatic');expect(d.planShot()).toBe(true);expect(d.goal[1]).toBeLessThanOrEqual(f.world.level.pathHeight+42);expect(d.staticClear(...d.goal,...d.goal)).toBe(true);expect(d.director.intent.subject).toBe(f.subject);
+ for(let shot=0;shot<3;shot++){d.director.exposure=6.1;f.engine.time+=.4;d.chooseSubject(f.engine);}expect(d.director.intent.style).toBe('dramatic');expect(d.planShot()).toBe(true);expect(d.goal[1]).toBeLessThanOrEqual(f.world.level.pathHeight+42);expect(d.staticClear(...d.goal,...d.goal)).toBe(true);expect(d.director.intent.subject).toBe(f.subject);
  }finally{d.dispose();}
 });
 test('equally useful openings vary across the board rather than jittering around one station',()=>{

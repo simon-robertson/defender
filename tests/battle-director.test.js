@@ -27,11 +27,22 @@ test('exit pressure takes precedence and releases promptly after the threatening
  const f=fixture();f.d.update(f.engine,world);f.right.distance=970;for(let n=1;n<=5;n++)tick(f,n*.35);expect(f.d.intent.subject).toBe(f.right);expect(f.d.intent.style).toBe('danger');
  f.right.phase='escaped';f.right.health.alive=false;tick(f,2.1);expect(f.d.intent.subject).toBe(f.left);expect(f.d.intent.kind).toBe('combat');
 });
-test('a dominant battle gets dramatic and overview shots only after genuine screen time',()=>{
+test('a dominant battle reserves shorter dramatic shots for after several normal views and genuine screen time',()=>{
  const f=fixture();f.engine.enemies.activeTargets.pop();f.engine.firing.states.pop();f.d.update(f.engine,world);expect(f.d.intent.style).toBe('battle');
  for(let n=1;n<=18;n++)tick(f,n*.35,{seen:false});expect(f.d.intent.style).toBe('battle');
- for(let n=19;n<=37;n++)tick(f,n*.35);expect(f.d.intent.style).toBe('dramatic');
- for(let n=38;n<=56;n++)tick(f,n*.35);expect(f.d.intent.style).toBe('overview');
+ tick(f,f.engine.time+6.1);expect(f.d.intent.style).toBe('overview');
+ tick(f,f.engine.time+6.1);expect(f.d.intent.style).toBe('battle');
+ tick(f,f.engine.time+6.1);expect(f.d.intent.style).toBe('dramatic');
+ tick(f,f.engine.time+2.5);expect(f.d.intent.style).toBe('dramatic');
+ tick(f,f.engine.time+.6);expect(f.d.intent.style).toBe('overview');
+});
+test('sustained dominant fighting spends under fifteen percent of its coverage in dramatic shots',()=>{
+ const f=fixture();f.engine.enemies.activeTargets.pop();f.engine.firing.states.pop();f.d.update(f.engine,world);
+ let dramatic=0,entries=0,first=Infinity,previous=f.d.intent.style;
+ for(let n=1;n<=1200;n++){
+  tick(f,n*.1);const style=f.d.intent.style;if(style==='dramatic'){dramatic+=.1;if(previous!==style){entries++;first=Math.min(first,f.engine.time);}}previous=style;
+ }
+ expect(first).toBeGreaterThanOrEqual(18);expect(entries).toBeGreaterThan(0);expect(entries).toBeLessThanOrEqual(5);expect(dramatic/120).toBeLessThan(.15);
 });
 test('empty scenes keep one calm establishing intention instead of generating endless new shots',()=>{
  const f=fixture();f.engine.enemies.activeTargets=[];f.engine.firing.states=[];f.d.update(f.engine,world);const version=f.d.intent.version;for(let n=1;n<12;n++)tick(f,n*.35,{seen:false});expect(f.d.intent.version).toBe(version);expect(f.d.intent.style).toBe('survey');

@@ -21,6 +21,22 @@ function fixture(model='dog'){
  const effects=new DamageEffects(random());effects.setWorld(world,[state]);return {effects,state,world,actor};
 }
 
+test('missile fireball lobes keep their seeded trajectories across ages and reused blast slots',()=>{
+ const e=new DamageEffects(random()),storage=e.blasts.map(b=>b.lobes);
+ for(let shot=0;shot<8;shot++){
+  const b=e.missileImpact(20+shot,40,30),seed=b.seed;
+  for(const age of [0,.05,.2,.6]){
+   b.age=age;e.prepare();const start=(e.smokeCount+e.waterParticleCount+1)*12;
+   for(let i=0;i<8;i++){
+    const angle=seed+i*2.39996323,travel=(15+(i%3)*7)*age,k=start+i*12;
+    expect(e.particleData[k]).toBe(Math.fround(b.x+Math.cos(angle)*travel));expect(e.particleData[k+2]).toBe(Math.fround(b.z+Math.sin(angle)*travel));
+   }
+  }
+  e.advance(2);
+ }
+ expect(e.blasts.every((b,i)=>b.lobes===storage[i])).toBe(true);
+});
+
 test('enemy config doubles HP and validates enemy-specific explosion sizes and bounded debris counts',()=>{
  expect(ENEMY_STATS.dog.maxHealth).toBe(300);expect(ENEMY_STATS.dog.explosion.debrisCount).toBe(24);expect(Object.isFrozen(ENEMY_STATS.dog.explosion)).toBe(true);
  for(const debrisCount of [0,-1,1.5,MAX_DEBRIS+1,Infinity])expect(()=>defineEnemyStats({...ENEMY_STATS.dog,explosion:{...ENEMY_STATS.dog.explosion,debrisCount}})).toThrow();

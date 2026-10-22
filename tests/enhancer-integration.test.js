@@ -46,7 +46,7 @@ const enemyActors=[{id:'study-dog',model:'dog',variant:'base',distance:48}];
 const byId=preview=>new Map(preview.states.map(s=>[s.id,s]));
 
 test('the saved A1 generator boosts only the first turret actual damage and survives R without compounding',async()=>{
- const level=await Bun.file(new URL('../docs/landscape-reset-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),before=JSON.stringify(level),stats=JSON.stringify(DEFENCE_STATS),f=await fixture(level);
+ const level=await Bun.file(new URL('../project-docs/level-rebuild-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),before=JSON.stringify(level),stats=JSON.stringify(DEFENCE_STATS),f=await fixture(level);
  try{
   const generators=level.placements.filter(p=>p.model==='power-generator'),guns=level.placements.filter(p=>p.model==='turret-study');
   expect(generators).toHaveLength(1);expect(guns).toHaveLength(3);expect(f.preview.turrets.states).toHaveLength(3);

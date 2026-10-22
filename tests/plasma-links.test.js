@@ -4,6 +4,13 @@ import {PLAY_CONFIG} from '../play/config.js';
 import {MAX_PLASMA_LINKS,PLASMA_SEGMENTS,PLASMA_NODES,PLASMA_LIGHT_FLOATS,PLASMA_LIGHT_SEGMENTS,PLASMA_LIGHT_STRENGTH,PLASMA_WIDTH,PLASMA_MOTION_RATE,PLASMA_WAVE_AMPLITUDE,PLASMA_WAVE_LENGTH_RATIO} from '../shared/plasma-links.js';
 
 const link=()=>({source:new Float64Array([77,34.5,155.5]),target:new Float64Array([65,35.5,155.5])});
+test('a frozen plasma clock reuses prepared geometry while same-time replacement and reset refresh it',()=>{
+ const effects=new PlasmaLinks();effects.setLinks([link()]);const first=effects.revision,initial=effects.instanceData.slice();
+ effects.prepare();effects.advance(0);effects.prepare();expect(effects.revision).toBe(first);expect(effects.instanceData).toEqual(initial);
+ effects.setLinks([{source:[0,40,0],target:[40,40,0]}]);expect(effects.revision).toBeGreaterThan(first);expect(effects.instanceData).not.toEqual(initial);
+ const replaced=effects.instanceData.slice();effects.advance(.5);effects.prepare();const advanced=effects.revision;effects.reset();expect(effects.revision).toBeGreaterThan(advanced);expect(effects.instanceData).toEqual(replaced);
+ const reset=effects.revision;effects.prepare();expect(effects.revision).toBe(reset);effects.dispose();effects.setLinks([link()]);expect(effects.instanceData).toEqual(initial);
+});
 test('plasma capacity covers every affordable campaign generator with four neighbours',()=>{
  const waves=PLAY_CONFIG.levels.reduce((sum,level)=>sum+level.waves.length,0),budget=PLAY_CONFIG.startTokens+(waves-1)*PLAY_CONFIG.waveReward;
  expect(MAX_PLASMA_LINKS).toBeGreaterThanOrEqual(Math.floor(budget/PLAY_CONFIG.defences['power-generator'].purchaseCost)*4);

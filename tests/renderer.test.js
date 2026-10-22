@@ -108,33 +108,24 @@ test('bloom off skips lazy setup, extraction, blur and composite without suppres
 test('disabled bloom retains asynchronous death preparation but allocates no bloom images at load or resize',async()=>{
  const f=mockRenderer(),r=f.r,w=smallWorld();let pipelines=0;const create=r.device.createRenderPipelineAsync;r.device.createRenderPipelineAsync=async descriptor=>{pipelines++;return create(descriptor);};
  try{
-  r.setGraphicsOptions({bloom:false});await r.prepareDeathEffects();expect(pipelines).toBe(13);expect(r.deathEffectsPrepared).toBe(true);
+  r.setGraphicsOptions({bloom:false});await r.prepareDeathEffects();expect(pipelines).toBe(17);expect(r.deathEffectsPrepared).toBe(true);
   const b=r.bloom;b.ensureTargets=()=>{throw new Error('Disabled bloom allocated images');};b.render=()=>{throw new Error('Disabled bloom rendered');};
   r.setWorld(w);r.render(0,0);r.canvas.clientWidth=1000;f.reset();r.render(0,1);
-  expect(b.bytes).toBe(0);expect(b.first).toBeNull();expect(labels(f)).not.toContain(BLOOM[0]);expect(pipelines).toBe(13);
+  expect(b.bytes).toBe(0);expect(b.first).toBeNull();expect(labels(f)).not.toContain(BLOOM[0]);expect(pipelines).toBe(17);
  }finally{f.cleanup();disposeWorld(w);}
  expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);expect(f.textures.every(t=>t.destroyCalls===1)).toBe(true);
 });
 
-test('blood decals blend last in the cached opaque pass, never write depth/shadows and allocate no new images',()=>{
- const f=mockRenderer(),r=f.r,world=smallWorld(),damage={cubeCount:3,decalCount:2,cubeRevision:1,cubeData:new Float32Array(60),particleCount:0,lightCount:0};
+test('enemy debris uses the shared opaque/depth/shadow passes and retires without new images',()=>{
+ const f=mockRenderer(),r=f.r,world=smallWorld(),damage={cubeCount:3,cubeRevision:1,cubeData:new Float32Array(60),particleCount:0,lightCount:0};
  try{
   r.setDamageEffects(damage);r.setWorld(world);r.render(0,0);
   expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,WATER,DISPLAY]);
-  for(const label of [DEPTH,SHADOW,OPAQUE])expect(f.passes.find(p=>p.label===label).direct[0].args).toEqual([36,1]);
-  const decal=f.passes.find(p=>p.label===OPAQUE),pipeline=decal.direct[1].pipeline;
-  expect(decal.direct[1].args).toEqual([36,2,0,1]);expect(decal.descriptor.depthStencilAttachment.depthReadOnly).toBe(true);
-  expect(pipeline.depthStencil.depthWriteEnabled).toBe(false);expect(pipeline.depthStencil.depthCompare).toBe('less-equal');expect(pipeline.depthStencil.depthBias).toBeUndefined();expect(pipeline.layout.bindGroupLayouts).toHaveLength(2);
-  expect(pipeline.fragment.targets.every(t=>t.blend.color.dstFactor==='one-minus-src-alpha')).toBe(true);
-  for(const attachment of r.opaquePass.colorAttachments){expect(attachment.storeOp).toBe('discard');expect(attachment.resolveTarget).toBeDefined();}
-  expect(decal.descriptor.colorAttachments.map(a=>a.resolveTarget)).toEqual([r.resolvedColorView,r.resolvedNormalView]);
+  for(const label of [DEPTH,SHADOW,OPAQUE])expect(f.passes.find(p=>p.label===label).direct.map(call=>call.args)).toEqual([[36,3]]);
   const buffers=f.allocated.length,textures=f.textures.length;expect(r.damageBytes).toBe(MAX_DAMAGE_CUBES*DAMAGE_CUBE_FLOATS*4);
   f.reset();r.render(0,0);expect(labels(f)).toEqual([DISPLAY]);
-  // Relighting rebuilds the clean receiver colour before alpha blending; fade
-  // never accumulates over yesterday's blood or leaves it baked into the cache.
   r.setLightingColors('#708ABA','#263754','#263754');f.reset();r.render(0,0);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);
-  damage.cubeCount=damage.decalCount=0;damage.cubeRevision++;f.reset();r.render(0,0);
-  expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,DISPLAY]);expect(r.opaquePass.colorAttachments.every(a=>a.storeOp==='discard'&&a.resolveTarget)).toBe(true);
+  damage.cubeCount=0;damage.cubeRevision++;f.reset();r.render(0,0);expect(labels(f)).toEqual([DEPTH,SHADOW,OPAQUE,DISPLAY]);
   expect(f.allocated.length).toBe(buffers);expect(f.textures.length).toBe(textures);
   f.reset();r.render(0,0);expect(labels(f)).toEqual([DISPLAY]);
  }finally{f.cleanup();disposeWorld(world);}
@@ -185,7 +176,7 @@ test('instance updates batch the latest matrices into one contiguous range and n
 });
 
 test('three live dogs share thirteen instance uploads rather than uploading every part separately',async()=>{
- const level=await Bun.file(new URL('../docs/landscape-reset-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),ids=[...new Set([...level.placements.map(p=>p.model),'dog'])];
+ const level=await Bun.file(new URL('../project-docs/level-rebuild-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),ids=[...new Set([...level.placements.map(p=>p.model),'dog'])];
  const models=new Map(await Promise.all(ids.map(async id=>[id,await Bun.file(new URL(`../assets/models/${id}.json`,import.meta.url)).json()])));
  const world=buildWorld(level,models,{actors:DOG_PREVIEW_ACTORS}),f=mockRenderer(),r=f.r;let dogs,turrets;
  try{
@@ -229,7 +220,7 @@ test('actor visibility compacts instance slots without geometry allocation and p
 });
 
 test('hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources',async()=>{
- const level=await Bun.file(new URL('../docs/landscape-reset-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),ids=[...new Set([...level.placements.map(p=>p.model),'dog'])];
+ const level=await Bun.file(new URL('../project-docs/level-rebuild-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),ids=[...new Set([...level.placements.map(p=>p.model),'dog'])];
  const models=new Map(await Promise.all(ids.map(async id=>[id,await Bun.file(new URL(`../assets/models/${id}.json`,import.meta.url)).json()])));
  const world=buildWorld(level,models,{actors:DOG_PREVIEW_ACTORS}),f=mockRenderer(),r=f.r;let dogs;
  try{
@@ -244,7 +235,7 @@ test('hiding a complete dog removes all thirteen parts from camera and shadow dr
 
 test('Walker and Spider instance uploads and whole-actor removal reuse GPU geometry',async()=>{
  for(const [levelId,model,parts] of [['ochre-01','walker',7],['plum-01','spider',13]]){
-  const level=await Bun.file(new URL(`../docs/landscape-reset-2026-10-18/previous-levels/${levelId}.json`,import.meta.url)).json(),actors=previewActorsForLevel(levelId).filter(actor=>actor.model===model);
+  const level=await Bun.file(new URL(`../project-docs/level-rebuild-2026-10-18/previous-levels/${levelId}.json`,import.meta.url)).json(),actors=previewActorsForLevel(levelId).filter(actor=>actor.model===model);
   const ids=[...new Set([...level.placements.map(p=>p.model),model])];
   const models=new Map(await Promise.all(ids.map(async id=>[id,await Bun.file(new URL(`../assets/models/${id}.json`,import.meta.url)).json()])));
   const world=buildWorld(level,models,{actors}),f=mockRenderer(),r=f.r;let enemies;
@@ -380,7 +371,7 @@ test('hidden lit actors lose their lights and restore their latest logical pose 
 
 test('enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference',async()=>{
  for(const [prefix,model,eyes]of [['moss','dog',4],['ochre','walker',2],['plum','spider',1]])for(const number of ['01','02']){
-  const levelId=prefix+'-'+number,level=await Bun.file(new URL(`../docs/landscape-reset-2026-10-18/previous-levels/${levelId}.json`,import.meta.url)).json(),actors=previewActorsForLevel(levelId);
+  const levelId=prefix+'-'+number,level=await Bun.file(new URL(`../project-docs/level-rebuild-2026-10-18/previous-levels/${levelId}.json`,import.meta.url)).json(),actors=previewActorsForLevel(levelId);
   const ids=[...new Set([...level.placements.map(p=>p.model),...actors.map(actor=>actor.model)])],models=new Map(await Promise.all(ids.map(async id=>[id,await Bun.file(new URL(`../assets/models/${id}.json`,import.meta.url)).json()])));
   const world=buildWorld(level,models,{actors}),f=mockRenderer(),r=f.r;let enemies;
   try{
@@ -584,6 +575,20 @@ test('empty plasma replacement uploads one cleared light header and returns to i
  }finally{links.dispose();f.cleanup();disposeWorld(world);}
 });
 
+test('frozen plasma reuses uploads and bloom, but camera, same-time replacements and Arc expiry still refresh',()=>{
+ const f=mockRenderer(),r=f.r,world=smallWorld(),links=new PlasmaLinks(),arcs=new ArcEffects(()=>.5);
+ try{
+  r.setWorld(world);links.setLinks([{source:[12,34,12],target:[24,35,12]}]);r.setPlasmaLinks(links);r.setArcEffects(arcs);r.render(0,0);
+  const vertex=r.plasmaInstances,light=r.plasmaLightBuffer,images=f.textures.length,buffers=f.allocated.length;
+  f.reset();links.advance(0);links.prepare();r.render(0,0);expect(r.plasmaUploadBytes).toBe(0);expect(labels(f)).toEqual([DISPLAY]);expect(r.bloom.active).toBe(true);expect(f.passes[0].direct.some(call=>call.args[1]===links.instanceCount)).toBe(true);
+  r.requestDraw();f.reset();r.render(0,0);expect(r.plasmaUploadBytes).toBe(0);expect(labels(f)).toContain(BLOOM[0]);expect(f.textures.length).toBe(images);expect(f.allocated.length).toBe(buffers);
+  arcs.emit([12,40,12],[55,26,20],[-1,0,0],0);arcs.prepare();f.reset();r.render(0,0);expect(new Float32Array(light.data.buffer)[0]).toBe(2);expect(f.writes.some(w=>w.buffer===vertex)).toBe(false);expect(labels(f)).toContain(BLOOM[0]);
+  arcs.advance(ARC_SECONDS);arcs.prepare();r.render(0,0);expect(new Float32Array(light.data.buffer)[0]).toBe(1);
+  f.reset();r.render(0,0);expect(r.plasmaUploadBytes).toBe(0);expect(f.writes.some(w=>w.buffer===light)).toBe(false);
+  links.setLinks([{source:[12,34,12],target:[48,35,12]}]);f.reset();r.render(0,0);expect(f.writes.some(w=>w.buffer===vertex)).toBe(true);expect(labels(f)).toContain(BLOOM[0]);
+ }finally{links.dispose();f.cleanup();disposeWorld(world);}
+});
+
 test('inspection sampling skips JSON only while rendering and simulation still advance',()=>{
  const f=mockRenderer(),r=f.r,world=smallWorld();
  try{
@@ -707,14 +712,14 @@ test('play effect preparation awaits asynchronous pipelines once and leaves firs
  const device=r.device;let asyncPipelines=0;const createAsync=device.createRenderPipelineAsync;device.createRenderPipelineAsync=async descriptor=>{asyncPipelines++;return createAsync(descriptor);};
  try{
   device.createRenderPipeline=()=>{throw new Error('Synchronous compilation during loading');};
-  await Promise.all([r.prepareDeathEffects(),r.prepareDeathEffects()]);expect(asyncPipelines).toBe(13);expect(r.deathEffectsPrepared).toBe(true);
+  await Promise.all([r.prepareDeathEffects(),r.prepareDeathEffects()]);expect(asyncPipelines).toBe(17);expect(r.deathEffectsPrepared).toBe(true);
   expect(r.damageDepthPipeline.then).toBeUndefined();expect(r.shockwavePipeline.then).toBeUndefined();expect(r.bloom.blastPipeline.then).toBeUndefined();
   r.setWorld(w);r.setDamageEffects(d);r.render(0,0);expect(r.bloom.active).toBe(false);expect(labels(f)).not.toContain('Explosion shockwave refraction');
   const buffers=f.allocated.length,textures=f.textures.length;d.cubeCount=1;d.cubeRevision++;d.particleCount=d.blastCount=d.shockwaveCount=1;f.reset();r.render(0,.01);
   expect(f.allocated.length).toBe(buffers);expect(f.textures.length).toBe(textures);expect(labels(f)).toContain('Explosion shockwave refraction');
   d.blastCount=d.particleCount=d.shockwaveCount=0;
   r.canvas.clientWidth=1000;d.cubeCount=0;d.cubeRevision++;r.render(0,.03);const resized=f.textures.length;
-  d.blastCount=d.shockwaveCount=d.particleCount=1;r.render(0,.04);expect(f.textures.length).toBe(resized);expect(asyncPipelines).toBe(13);
+  d.blastCount=d.shockwaveCount=d.particleCount=1;r.render(0,.04);expect(f.textures.length).toBe(resized);expect(asyncPipelines).toBe(17);
  }finally{f.cleanup();disposeWorld(w);}
  expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);expect(f.textures.every(t=>t.destroyCalls===1)).toBe(true);
 });
@@ -728,7 +733,7 @@ test('failed asynchronous effect compilation rejects loading instead of declarin
 test('disposing during effect preparation prevents a late ready state and releases every allocated pool',async()=>{
  const f=mockRenderer(),r=f.r,pending=[];r.device.createRenderPipelineAsync=descriptor=>new Promise(resolve=>pending.push(()=>resolve(descriptor)));
  try{
-  const preparation=r.prepareDeathEffects();expect(pending).toHaveLength(14);r.dispose();const buffers=f.allocated.length;
+  const preparation=r.prepareDeathEffects();expect(pending).toHaveLength(17);r.dispose();const buffers=f.allocated.length;
   for(const finish of pending)finish();expect(await preparation).toBe(false);expect(r.deathEffectsPrepared).not.toBe(true);expect(f.allocated.length).toBe(buffers);expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
  }finally{f.cleanup();}
 });

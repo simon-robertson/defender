@@ -47,3 +47,12 @@ test('model light overflow is explicit, bounded and does not allocate one light 
  try{console.warn=message=>messages.push(message);lights=new ModelLights(f.entries,f.drawMap);}finally{console.warn=warn;}
  lights.prepare();expect(lights.sources).toHaveLength(MAX_MODEL_LIGHTS);expect(lights.count).toBe(MAX_MODEL_LIGHTS);expect(lights.authoredCount).toBe(MAX_MODEL_LIGHTS+3);expect(lights.overflow).toBe(3);expect(messages).toHaveLength(1);expect(messages[0]).toContain('3 unlit');expect(lights.data.byteLength).toBe(16+MAX_MODEL_LIGHTS*32);
 });
+
+test('moving one light group reuses static positions even when visibility compacts their output slots',()=>{
+ const mesh=meshQuads([quad(0,0)],palette),a=fixture(mesh,2),b=fixture(mesh),entries=[a.entries[0],{...b.entries[0],key:'static'}],draws=new Map([['panel',a.draw],['static',b.draw]]),lights=new ModelLights(entries,draws);
+ b.draw.transforms[12]=40;lights.prepare();const transforms=b.draw.transforms;let reads=0;
+ Object.defineProperty(b.draw,'transforms',{get(){reads++;return transforms;}});
+ a.draw.transforms[12]=5;lights.invalidate('panel');expect(lights.prepare()).toBe(true);expect(reads).toBe(0);expect(lights.data[4]).toBe(5.5);expect(lights.data[20]).toBe(40.5);
+ a.draw.indexToSlot=new Int32Array([-1,0]);lights.invalidate('panel');lights.prepare();expect(reads).toBe(0);expect(lights.count).toBe(2);expect(lights.data[12]).toBe(40.5);
+ transforms[12]=80;lights.invalidate('static');lights.prepare();expect(reads).toBe(1);expect(lights.data[12]).toBe(80.5);lights.dispose();expect(lights.dirtyKeys.size).toBe(0);
+});

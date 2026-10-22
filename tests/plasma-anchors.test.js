@@ -89,18 +89,18 @@ test('stale, unsupported and non-cardinal state entries cannot attach to an unre
 });
 
 test('saved A1 pair has a readable shoulder span that is independent of animation and owns no scene references',async()=>{
- const level=await Bun.file(new URL('../docs/landscape-reset-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),generators=level.placements.filter(p=>p.model==='power-generator');
+ const level=await Bun.file(new URL('../project-docs/level-rebuild-2026-10-18/previous-levels/moss-01.json',import.meta.url)).json(),generators=level.placements.filter(p=>p.model==='power-generator');
  expect(generators).toHaveLength(1);
  const generator=generators[0],recipients=level.placements.filter(p=>p.model==='turret-study'&&p.variant==='base'&&p.box[1]===generator.box[1]&&Math.abs(p.box[0]-generator.box[0])+Math.abs(p.box[2]-generator.box[2])===1);
  expect(generator.variant).toBe('base');expect(recipients).toHaveLength(1);
  const recipient=recipients[0],world=fixture([generator,recipient]),enhancers=new EnhancerPreview(world,[{id:recipient.id,model:recipient.model,variant:recipient.variant,strength:10}]);
  const links=createPlasmaLinks(world,enhancers.states),before=structuredClone(links);expect(links).toHaveLength(1);
  expect(links[0].sourceId).toBe(generator.id);expect(links[0].targetId).toBe(recipient.id);
- expect(Array.from(links[0].source)).toEqual([107.5,34.5,139]);expect(Array.from(links[0].target)).toEqual([107.5,35.5,152]);
+ expect(Array.from(links[0].source)).toEqual([77,34.5,155.5]);expect(Array.from(links[0].target)).toEqual([65,35.5,155.5]);
  const sourceRig=world.rigs.get(generator.id),targetRig=world.rigs.get(recipient.id);
- checkFace(sourceRig,sourceRig.parts.find(p=>p.id==='body'),links[0].source,0,1);
- checkFace(targetRig,targetRig.parts.find(p=>p.id==='base'),links[0].target,0,-1);
- expect(Math.hypot(...links[0].source.map((v,i)=>v-links[0].target[i]))).toBeCloseTo(Math.sqrt(170),9);
+ checkFace(sourceRig,sourceRig.parts.find(p=>p.id==='body'),links[0].source,-1,0);
+ checkFace(targetRig,targetRig.parts.find(p=>p.id==='base'),links[0].target,1,0);
+ expect(Math.hypot(...links[0].source.map((v,i)=>v-links[0].target[i]))).toBeCloseTo(Math.sqrt(145),9);
  // Head and gun matrices can yaw, pitch and recoil arbitrarily without moving
  // an endpoint. The helper intentionally reads only the fixed placement root.
  for(const instance of world.rigs.get(recipient.id).instances)if(instance.part!=='base')instance.matrix.fill(99);

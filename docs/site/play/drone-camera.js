@@ -3,6 +3,8 @@ import {TerrainField} from '../shared/terrain.js';
 import {DroneObstacles} from '../engine/drone-obstacles.js';
 
 export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=34,DRONE_CAMERA_ACCELERATION=24,DRONE_CAMERA_MIN_FOV=2*Math.atan(Math.tan(42*Math.PI/360)/.8)*180/Math.PI;
+export const DRONE_CAMERA_MAX_FILM_PITCH=Math.PI/4;
+const MIN_STANDOFF=168,PREFERRED_STANDOFF=192,VIEW_SLOPE=Math.tan(38*Math.PI/180),MAX_VIEW_SLOPE=Math.tan(DRONE_CAMERA_MAX_FILM_PITCH);
 const DRIFT_SPEED=.65,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_SPEED/DRIFT_RADIUS,JERK=48;
 const TICK=1/120,PLAN_SECONDS=.8,R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),HEIGHTS=Object.freeze([120,184,152]);
 const COMPOSITION_SUBJECTS=12,COMPOSITION_ENEMIES=8,LOW_HEIGHTS=Object.freeze([40,56]);
@@ -30,7 +32,7 @@ function hits(box,k,ax,ay,az,bx,by,bz,r=R){
 export class DroneCamera {
  constructor(camera,{random=Math.random}={}){
   this.random=random;this.entries=0;this.relocations=0;this.shotSeconds=6;
-  this.camera=camera;this.anticipation=new CameraAnticipation({speed:34,standoff:176});this.world=null;this.obstacles=null;this.obstacleEngine=null;this.emergency=false;this.airLanes=null;this.airborneFloor=null;this.water=null;this.enabled=this.active=false;
+  this.camera=camera;this.anticipation=new CameraAnticipation({speed:34,standoff:PREFERRED_STANDOFF});this.world=null;this.obstacles=null;this.obstacleEngine=null;this.emergency=false;this.airLanes=null;this.airborneFloor=null;this.water=null;this.enabled=this.active=false;
   this.velocity=new Float64Array(3);this.acceleration=new Float64Array(3);this.desiredVelocity=new Float64Array(3);this.driftAnchor=new Float64Array(3);this.drifting=false;this.driftPhase=0;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;this.saved=new Float64Array(6);this.position=new Float64Array(3);this.focus=new Float64Array(3);this.look=new Float64Array(3);this.goal=new Float64Array(3);this.route=new Float64Array(9);this.scratch=new Float64Array(6);this.lastBattle=new Float64Array(3);
   this.compositionStates=new Array(COMPOSITION_SUBJECTS).fill(null);this.compositionBounds=new Float64Array(COMPOSITION_SUBJECTS*6);this.projectedSubjects=new Float64Array(COMPOSITION_SUBJECTS*4);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
   this.subject=null;this.subjectSince=0;this.engineTime=null;this.phase=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;
@@ -232,6 +234,13 @@ export class DroneCamera {
   return clipping*.8+pairs/weights*.7+worst*.3+Math.max(0,.45-(right-left))*.12;
  }
  altitude(layer){return this.airborneFloor===null?this.world.level.pathHeight+HEIGHTS[layer]:Math.max(this.world.level.pathHeight+HEIGHTS[layer],this.airborneFloor+(layer===1?48:layer===2?24:0));}
+ viewDistance(y){return Math.max(PREFERRED_STANDOFF,Math.max(0,y-this.focus[1])/VIEW_SLOPE+16);}
+ viewFits(x,y,z,margin=0){return Math.hypot(x-this.focus[0],z-this.focus[2])>=Math.max(MIN_STANDOFF,Math.max(0,y-this.focus[1])/MAX_VIEW_SLOPE)+margin;}
+ viewTravelCost(x,y,z){
+  // Prefer approaches that skirt the action instead of flying across it.
+  const p=this.position,f=this.focus,dx=x-p[0],dz=z-p[2],t=clamp(((f[0]-p[0])*dx+(f[2]-p[2])*dz)/(dx*dx+dz*dz||1),0,1),height=p[1]+(y-p[1])*t;
+  return Math.max(0,Math.max(MIN_STANDOFF,Math.max(0,height-f[1])/MAX_VIEW_SLOPE)-Math.hypot(p[0]+dx*t-f[0],p[2]+dz*t-f[2]))*3;
+ }
  routeTo(x,y,z){
   if(this.active&&y<this.world.level.pathHeight+32)return false;
   const p=this.position;this.routeLength=this.routeIndex=0;
@@ -251,7 +260,7 @@ export class DroneCamera {
   if(this.emergency&&this.routeIndex<this.routeLength)return true;
   this.gatherComposition();
   const p=this.position,f=this.focus,d=Math.hypot(p[0]-f[0],p[2]-f[2]);this.quality=this.shotQuality(p[0],p[1],p[2]);this.composition=this.compositionCost(p[0],p[1],p[2]);this.visible=this.quality>=.8;this.plans++;
-  const safe=this.clear(p[0],p[1],p[2],p[0],p[1],p[2])&&this.separation(p[0],p[1],p[2]),usable=this.quality>=.84&&d>=148&&d<=236&&p[1]>=(this.lowShot?this.world.level.pathHeight+32:this.altitude(0))&&safe;
+  const safe=this.clear(p[0],p[1],p[2],p[0],p[1],p[2])&&this.separation(p[0],p[1],p[2]),usable=this.quality>=.84&&this.viewFits(...p)&&d<=this.viewDistance(p[1])+72&&p[1]>=(this.lowShot?this.world.level.pathHeight+32:this.altitude(0))&&safe;
   // A readable shot gets a short hold, then a fresh angle even for a still
   // subject. Keep the selected journey committed until arrival.
   const band=Math.floor(this.time/9)%3,settled=usable&&this.routeIndex>=this.routeLength,timed=settled&&this.heldFor>=this.shotSeconds,unstack=settled&&this.heldFor>=2.5&&this.composition>.22,relocate=timed||unstack;
@@ -262,20 +271,20 @@ export class DroneCamera {
   const lowOpportunity=this.time<this.lowPendingUntil,desiredY=lowOpportunity?this.world.level.pathHeight+40:this.altitude(band);
   if(usable&&!relocate&&!lowOpportunity&&this.routeIndex>=this.routeLength){this.routeLength=this.routeIndex=0;this.holding=true;return true;}
   this.holding=false;
-  if(this.routeIndex<this.routeLength&&this.time-this.goalSince<this.goalDuration&&this.shotQuality(this.goal[0],this.goal[1],this.goal[2])>=.85&&Math.hypot(this.goal[0]-f[0],this.goal[2]-f[2])<244)return true;
+  if(this.routeIndex<this.routeLength&&this.time-this.goalSince<this.goalDuration&&this.viewFits(...this.goal)&&this.shotQuality(this.goal[0],this.goal[1],this.goal[2])>=.85&&Math.hypot(this.goal[0]-f[0],this.goal[2]-f[2])<this.viewDistance(this.goal[1])+80)return true;
   let best=Infinity,bx=0,by=0,bz=0,selectedLow=false;
   const desiredAngle=Math.atan2(p[0]-f[0],p[2]-f[2])+(this.relocations%2?-1:1)*Math.PI/3;
   // Usually 72 high candidates; an occasional low opportunity also tries 48
   // low ones. A blocked low opportunity falls back to the normal high profile.
   for(let layer=0;layer<(lowOpportunity?5:3);layer++)for(let i=0;i<24;i++){
-   const low=layer>=3,a=this.seed+i*Math.PI/12,span=layer===1?192:176,x=clamp(f[0]+Math.sin(a)*span,R+1,this.world.width-R-1),z=clamp(f[2]+Math.cos(a)*span,R+1,this.world.length-R-1),y=low?this.world.level.pathHeight+LOW_HEIGHTS[layer-3]:this.altitude(layer);
-   const horizontal=Math.hypot(x-f[0],z-f[2]);if(horizontal<148||!this.separation(x,y,z)||!this.columnClear(x,y,z))continue;
+   const low=layer>=3,a=this.seed+i*Math.PI/12,y=low?this.world.level.pathHeight+LOW_HEIGHTS[layer-3]:this.altitude(layer),span=this.viewDistance(y)+(layer===1?16:0),x=clamp(f[0]+Math.sin(a)*span,R+1,this.world.width-R-1),z=clamp(f[2]+Math.cos(a)*span,R+1,this.world.length-R-1);
+   const horizontal=Math.hypot(x-f[0],z-f[2]);if(!this.viewFits(x,y,z,8)||!this.separation(x,y,z)||!this.columnClear(x,y,z))continue;
    // A low descent is itself a fresh perspective; favor a nearby safe column
    // instead of requiring another long orbit before it can reach the ground.
    if(relocate&&!low&&(Math.hypot(x-p[0],z-p[2])<64||Math.abs(angle(Math.atan2(x-f[0],z-f[2]),Math.atan2(p[0]-f[0],p[2]-f[2])))<.4))continue;
    const quality=this.shotQuality(x,y,z);if(quality<.86)continue;
    const composition=this.compositionCost(x,y,z);if(unstack&&!timed&&composition>this.composition-.08)continue;
-   const preferredAngle=low?Math.atan2(p[0]-f[0],p[2]-f[2]):desiredAngle,score=(timed?Math.abs(angle(Math.atan2(x-f[0],z-f[2]),preferredAngle))*90:0)+Math.hypot(x-p[0],y-p[1],z-p[2])*.42+Math.abs(y-desiredY)*1.2+(1-quality)*100+Math.abs(horizontal-176)*.2+composition*220;
+   const preferredAngle=low?Math.atan2(p[0]-f[0],p[2]-f[2]):desiredAngle,score=(timed?Math.abs(angle(Math.atan2(x-f[0],z-f[2]),preferredAngle))*90:0)+Math.hypot(x-p[0],y-p[1],z-p[2])*.42+this.viewTravelCost(x,y,z)+Math.abs(y-desiredY)*1.2+(1-quality)*100+Math.abs(horizontal-span)*.2+composition*220;
    if(score<best){best=score;bx=x;by=y;bz=z;selectedLow=low;}
   }
   if(best<Infinity&&this.routeTo(bx,by,bz)){
@@ -286,7 +295,7 @@ export class DroneCamera {
   }
   if(usable){this.holding=true;return true;}
   // A blocked view or encroaching actor can request a safe vertical retreat.
-  if(!usable&&p[1]<this.cruiseY-1&&this.columnClear(p[0],p[1],p[2])){put(this.route,p[0],this.cruiseY,p[2]);this.routeLength=1;this.routeIndex=0;this.goal.set(this.route.subarray(0,3));this.goalSince=this.time;this.lowShot=this.lowArrived=false;}
+  if(!usable&&(this.quality<.84||!safe)&&p[1]<this.cruiseY-1&&this.columnClear(p[0],p[1],p[2])){put(this.route,p[0],this.cruiseY,p[2]);this.routeLength=1;this.routeIndex=0;this.goal.set(this.route.subarray(0,3));this.goalSince=this.time;this.lowShot=this.lowArrived=false;}
   return false;
  }
  enter(engine){
@@ -319,23 +328,24 @@ export class DroneCamera {
    this.airLanes=new Float64Array(lanes);
   }
   // Start inside the middle half of the map, with small cosmetic variation.
-  // Only widen the search if no central station has safe sky/actor clearance.
+  // Widen if central stations lack safe clearance or a comfortable view angle.
   // Later action-driven filming retains its full range of stations.
   const initial=(engine.enemies?.activeTargets??EMPTY).find(s=>this.validSubject(s)),box=this.world.level.path[0];
   put(this.focus,initial?.aimX??initial?.x??(box[0]+.5)*24,initial?.aimY??this.world.level.pathHeight+8,initial?.aimZ??initial?.z??(box[2]+.5)*24);
+  this.nextSubjectAt=0;this.chooseSubject(engine);this.compose(engine);
+  if(this.focusKind==='none'&&Number.isFinite(this.battleAt))this.focus.set(this.lastBattle);
   const startAngle=this.seed+this.entries++*2.399963229728653,spread=Math.min(this.world.width,this.world.length)*.12,ax=this.world.width*.5+Math.sin(startAngle)*spread,az=this.world.length*.5+Math.cos(startAngle)*spread;
   let best=Infinity,sx=0,sz=0;
   for(let region=0;region<2&&best===Infinity;region++){
    for(let z=12;z<this.world.length;z+=24)for(let x=12;x<this.world.width;x+=24){
     if(region===0&&(x<this.world.width*.25||x>this.world.width*.75||z<this.world.length*.25||z>this.world.length*.75))continue;
-    if(!this.clear(x,this.cruiseY,z,x,this.cruiseY,z)||!this.separation(x,this.cruiseY,z))continue;
+    if(!this.viewFits(x,this.cruiseY,z,16)||!this.clear(x,this.cruiseY,z,x,this.cruiseY,z)||!this.separation(x,this.cruiseY,z))continue;
     const quality=this.shotQuality(x,this.cruiseY,z),score=(x-ax)**2+(z-az)**2+(1-quality)*100000;
     if(score<best){best=score;sx=x;sz=z;}
    }
   }
   if(best===Infinity)return false;
-  this.emergency=false;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=this.time+24;this.shotBand=-1;this.position.set([sx,this.cruiseY,sz]);this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.accumulator=this.panRoll=0;this.heldFor=0;this.subject=null;this.chooseSubject(engine);this.compose(engine);
-  if(this.focusKind==='none'){if(Number.isFinite(this.battleAt))this.focus.set(this.lastBattle);else{const box=this.world.level.path[0];this.focus.set([(box[0]+.5)*24,this.world.level.pathHeight+8,(box[2]+.5)*24]);}}
+  this.emergency=false;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=this.time+24;this.shotBand=-1;this.position.set([sx,this.cruiseY,sz]);this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.accumulator=this.panRoll=0;this.heldFor=0;
   this.look.set(this.focus);this.yaw=Math.atan2(sx-this.look[0],sz-this.look[2]);this.pitch=clamp(Math.atan2(this.position[1]-this.look[1],Math.hypot(sx-this.look[0],sz-this.look[2])),-1.35,1.35);
   const c=this.camera;this.saved.set(c.target);this.saved[3]=c.yaw;this.saved[4]=c.pitch;this.saved[5]=c.radius;this.fov=64;
   this.active=true;this.engineTime=engine.time;this.planIn=PLAN_SECONDS;this.goalSince=-Infinity;this.vantage();c.setControlsEnabled(false);this.apply();return true;

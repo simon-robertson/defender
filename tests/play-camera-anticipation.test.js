@@ -80,7 +80,7 @@ test('accepted A1 source and actual weapons demonstrate advance forecasting and 
     expect(anticipation.eligible(gun,x,y,z,world)).toBe(true);
     view.setEnabled(true);view.sync('wave',engine);let frames=0,forecastFrames=0,leadTravel=0,firstForecastAt=null,totalTravel=0;
     while(engine.firing.shots===0&&frames++<60*90){const old=[...view.position];engine.advance(1/60);view.advance(1/60,{engine,phase:'wave'});totalTravel+=Math.hypot(...view.position.map((v,i)=>v-old[i]));if(view.anticipation.active&&engine.firing.shots===0){forecastFrames++;firstForecastAt??=engine.time;leadTravel+=Math.hypot(...view.position.map((v,i)=>v-old[i]));}}
-    expect(engine.firing.shots).toBeGreaterThan(0);expect(forecastFrames).toBeGreaterThan(30);expect(totalTravel).toBeGreaterThan(10);if(leadTravel<10){expect(view.holding).toBe(true);expect(view.quality).toBeGreaterThanOrEqual(.84);}expect(firstForecastAt).toBeLessThan(engine.time-1);
+    expect(engine.firing.shots).toBeGreaterThan(0);expect(forecastFrames).toBeGreaterThan(30);expect(totalTravel).toBeGreaterThan(10);if(leadTravel<10){expect(view.viewFits(...view.position)).toBe(true);expect(view.quality).toBeGreaterThanOrEqual(.84);}expect(firstForecastAt).toBeLessThan(engine.time-1);
     console.log(JSON.stringify({actualCamera:Type.name,firstForecastAt,firstShotAt:engine.time,forecastFrames,leadTravel,totalTravel}));
    }finally{view.dispose();engine.dispose();disposePlayWorld(world);}
   }

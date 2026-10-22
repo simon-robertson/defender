@@ -1,6 +1,6 @@
 import {test,expect} from 'bun:test';
 import {Camera} from '../engine/camera.js';
-import {DroneCamera,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MIN_FOV} from '../play/drone-camera.js';
+import {DroneCamera,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MIN_FOV,DRONE_CAMERA_MAX_FILM_PITCH} from '../play/drone-camera.js';
 import {SceneryVisibility} from '../engine/visibility.js';
 import {PLAY_CONFIG} from '../play/config.js';
 import {legacyPlayConfig} from './helpers/legacy-play-config.js';
@@ -18,6 +18,50 @@ function basic(){
  return {world,c,drone,engine,subject};
 }
 function advance(f,seconds,hz=60,phase='wave'){for(let i=0;i<seconds*hz;i++){f.engine.time+=1/hz;f.drone.advance(1/hz,{engine:f.engine,phase});}}
+const viewPitch=(position,focus)=>Math.atan2(position[1]-focus[1],Math.hypot(position[0]-focus[0],position[2]-focus[2]));
+
+test('opening looks toward the actual area of interest from outside its steep-view footprint',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  f.engine.firing.states.push({id:'centre-gun',x:240,z:192,rig:{root:new Float64Array([1,0,0,0,0,1,0,0,0,0,1,0,240,24,192,1])}});
+  d.setEnabled(true);expect(d.sync('wave',f.engine)).toBe(true);
+  expect(d.focusKind).toBe('defence');expect(d.focus[0]).toBe(240);expect(d.focus[2]).toBe(192);
+  expect(viewPitch(d.position,d.focus)).toBeLessThanOrEqual(DRONE_CAMERA_MAX_FILM_PITCH);
+  expect(d.pitch).toBeCloseTo(viewPitch(d.position,d.focus),10);
+  expect(d.staticClear(...d.position,...d.position)).toBe(true);
+ }finally{d.dispose();}
+});
+
+test('high destinations pull back with altitude and abandon a steep but unobstructed leased goal',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  d.setEnabled(true);d.sync('wave',f.engine);d.focus.set([240,32,192]);d.airborneFloor=230;d.cruiseY=320;
+  d.position.set([240,280,200]);d.goal.set(d.position);d.route.set(d.goal);d.routeLength=1;d.routeIndex=0;d.goalSince=d.time;d.goalDuration=100;
+  const old=Array.from(d.goal);expect(d.shotQuality(...old)).toBe(1);expect(d.vantage()).toBe(true);
+  expect(Array.from(d.goal)).not.toEqual(old);expect(viewPitch(d.goal,d.focus)).toBeLessThanOrEqual(DRONE_CAMERA_MAX_FILM_PITCH);
+  expect(Math.hypot(d.goal[0]-240,d.goal[2]-192)).toBeGreaterThan(192);expect(d.columnClear(...d.goal)).toBe(true);
+  expect(d.viewDistance(300)).toBeGreaterThan(d.viewDistance(180));
+  d.position.set([24,240,192]);expect(d.viewTravelCost(456,240,192)).toBeGreaterThan(d.viewTravelCost(24,240,360));
+ }finally{d.dispose();}
+});
+
+test('an opening over a quiet field checks the remembered battle area before choosing a station',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  f.engine.enemies.activeTargets=[];d.noteExplosion({x:240,y:32,z:192},0);f.engine.time=6;
+  d.setEnabled(true);expect(d.sync('wave',f.engine)).toBe(true);expect(Array.from(d.focus)).toEqual([240,32,192]);
+  expect(viewPitch(d.position,d.focus)).toBeLessThanOrEqual(DRONE_CAMERA_MAX_FILM_PITCH);
+ }finally{d.dispose();}
+});
+
+test('a steep view alone cannot trigger a climb that would make its angle worse',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  d.setEnabled(true);d.sync('wave',f.engine);d.focus.set([240,32,192]);d.position.set([240,300,194]);d.airborneFloor=700;d.cruiseY=800;d.routeLength=d.routeIndex=0;
+  expect(d.shotQuality(...d.position)).toBe(1);expect(d.separation(...d.position)).toBe(true);
+  expect(d.vantage()).toBe(false);expect(d.routeLength).toBe(0);
+ }finally{d.dispose();}
+});
 async function actualFixture(levelIndex=0,{config=legacyPlayConfig(),waveIndex=2,empty=false,placements:customPlacements=null}={}){
  const native=globalThis.fetch;
  globalThis.fetch=async url=>{const [,kind,id]=/^\/api\/(levels|models)\/([a-z0-9-]+)$/.exec(url);return {ok:true,json:async()=>({asset:await Bun.file(new URL(`../assets/${kind}/${id}.json`,import.meta.url)).json()})};};

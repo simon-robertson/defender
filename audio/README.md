@@ -46,7 +46,7 @@ Use `--wav-only` for synthesis checks without host encoders. Failed builds clean
 
 ## Sound direction and richer synthesis
 
-The user confirmed playback works but found the original diagnostic transient too 8-bit. Aim for detailed, fuller, natural/material-based sound design using layered generators, filtered noise, resonances, modulation and shaped transients. Synthesis is an authoring method, not a chiptune style requirement. All output remains mono. Final perceived quality is determined by listening review.
+The user confirmed playback works but found the original diagnostic transient too 8-bit. Aim for detailed, fuller, natural/material-based sound design using layered generators, filtered noise, resonances, modulation and shaped transients. Synthesis is an authoring method, not a chiptune style requirement. All output remains mono. The user subsequently reviewed the layered transient and confirmed its quality is better; use it as the quality reference for subsequent sound design. This accepts the direction, not a final weapon assignment or the full sound palette.
 
 The first card, **Layered transient study**, combines a broad filtered-noise attack, a swept resonant noise body, a restrained low impulse and a modulated filtered tail. The original transient remains a comparison and the periodic tone remains a loop test. Neither defines the final game sound palette.
 

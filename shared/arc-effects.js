@@ -25,4 +25,4 @@ export const ARC_WIDTH=1.1;
 // A weaker enemy-to-enemy jump retains 70% of the primary channel width.
 export const ARC_CHAIN_WIDTH_SCALE=.7;
 export const ARC_LIGHT_RADIUS=18;
-export const ARC_LIGHT_STRENGTH=4.8;
+export const ARC_LIGHT_STRENGTH=9.6;

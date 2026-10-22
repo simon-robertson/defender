@@ -2,11 +2,15 @@ import {CameraAnticipation} from './camera-anticipation.js';
 import {TerrainField} from '../shared/terrain.js';
 import {DroneObstacles} from '../engine/drone-obstacles.js';
 
-export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=34,DRONE_CAMERA_ACCELERATION=24,DRONE_CAMERA_MIN_FOV=2*Math.atan(Math.tan(42*Math.PI/360)/.8)*180/Math.PI;
+// Scale velocity, acceleration and jerk together to preserve the eased motion
+// at twice its previous pace. Scene holds and the simulation clock stay real-time.
+export const DRONE_CAMERA_MOTION_RATE=2;
+export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=34*DRONE_CAMERA_MOTION_RATE,DRONE_CAMERA_ACCELERATION=24*DRONE_CAMERA_MOTION_RATE**2,DRONE_CAMERA_MIN_FOV=2*Math.atan(Math.tan(42*Math.PI/360)/.8)*180/Math.PI;
 export const DRONE_CAMERA_MAX_FILM_PITCH=Math.PI/4;
 export const DRONE_CAMERA_BOARD_MARGIN=240;
 const MIN_STANDOFF=168,PREFERRED_STANDOFF=192,VIEW_SLOPE=Math.tan(38*Math.PI/180),MAX_VIEW_SLOPE=Math.tan(DRONE_CAMERA_MAX_FILM_PITCH);
-const DRIFT_SPEED=.65,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_SPEED/DRIFT_RADIUS,JERK=48;
+const DRIFT_SPEED=.65*DRONE_CAMERA_MOTION_RATE,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_SPEED/DRIFT_RADIUS,JERK=48*DRONE_CAMERA_MOTION_RATE**3;
+const YAW_SPEED=1.1*DRONE_CAMERA_MOTION_RATE,PITCH_SPEED=.7*DRONE_CAMERA_MOTION_RATE,YAW_ACCELERATION=1.8*DRONE_CAMERA_MOTION_RATE**2,PITCH_ACCELERATION=1.2*DRONE_CAMERA_MOTION_RATE**2;
 const TICK=1/120,PLAN_SECONDS=.8,R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),HEIGHTS=Object.freeze([120,184,152]);
 const COMPOSITION_SUBJECTS=12,COMPOSITION_ENEMIES=8,LOW_HEIGHTS=Object.freeze([40,56]);
 const ACTIVITY_SLOTS=24,ACTIVITY_RADIUS=60,ACTIVITY_SECONDS=5,SCENE_RADIUS=84,SCENE_HOLD=4,CHALLENGE_SECONDS=1.2;
@@ -34,7 +38,7 @@ function hits(box,k,ax,ay,az,bx,by,bz,r=R){
 export class DroneCamera {
  constructor(camera,{random=Math.random}={}){
   this.random=random;this.entries=0;this.relocations=0;this.shotSeconds=6;
-  this.camera=camera;this.anticipation=new CameraAnticipation({speed:34,standoff:PREFERRED_STANDOFF});this.world=null;this.obstacles=null;this.obstacleEngine=null;this.emergency=false;this.airLanes=null;this.airborneFloor=null;this.water=null;this.enabled=this.active=false;
+  this.camera=camera;this.anticipation=new CameraAnticipation({speed:DRONE_CAMERA_SPEED,standoff:PREFERRED_STANDOFF});this.world=null;this.obstacles=null;this.obstacleEngine=null;this.emergency=false;this.airLanes=null;this.airborneFloor=null;this.water=null;this.enabled=this.active=false;
   this.velocity=new Float64Array(3);this.acceleration=new Float64Array(3);this.desiredVelocity=new Float64Array(3);this.driftAnchor=new Float64Array(3);this.drifting=false;this.driftPhase=0;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;this.saved=new Float64Array(6);this.position=new Float64Array(3);this.focus=new Float64Array(3);this.look=new Float64Array(3);this.goal=new Float64Array(3);this.route=new Float64Array(9);this.scratch=new Float64Array(6);this.lastBattle=new Float64Array(3);
   this.compositionStates=new Array(COMPOSITION_SUBJECTS).fill(null);this.compositionBounds=new Float64Array(COMPOSITION_SUBJECTS*6);this.projectedSubjects=new Float64Array(COMPOSITION_SUBJECTS*4);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
   this.boardClipA=new Float64Array(80);this.boardClipB=new Float64Array(80);this.levelInView=this.contextReframes=0;
@@ -147,7 +151,7 @@ export class DroneCamera {
   if(!dt){put(this.focus,x,y,z);return;}
   const dx=x-this.focus[0],dy=y-this.focus[1],dz=z-this.focus[2],distance=Math.hypot(dx,dy,dz);
   if(distance<1.5)return;
-  const blend=Math.min(1-Math.exp(-1.6*dt),40*dt/distance);
+  const blend=Math.min(1-Math.exp(-1.6*DRONE_CAMERA_MOTION_RATE*dt),40*DRONE_CAMERA_MOTION_RATE*dt/distance);
   this.focus[0]+=dx*blend;this.focus[1]+=dy*blend;this.focus[2]+=dz*blend;
  }
  staticClear(ax,ay,az,bx,by,bz){
@@ -399,21 +403,21 @@ export class DroneCamera {
  driftVelocity(dt){
   if(!this.drifting)this.startDrift();this.driftPhase+=DRIFT_RATE*dt;
   const p=this.position,a=this.driftAnchor,t=this.driftPhase,r=DRIFT_RADIUS,v=this.desiredVelocity;
-  v[0]=-Math.sin(t)*DRIFT_SPEED+(a[0]+Math.cos(t)*r-p[0])*.8;v[1]=(a[1]-p[1])*.8;v[2]=Math.cos(t)*DRIFT_SPEED+(a[2]+Math.sin(t)*r-p[2])*.8;
+  v[0]=-Math.sin(t)*DRIFT_SPEED+(a[0]+Math.cos(t)*r-p[0])*.8*DRONE_CAMERA_MOTION_RATE;v[1]=(a[1]-p[1])*.8*DRONE_CAMERA_MOTION_RATE;v[2]=Math.cos(t)*DRIFT_SPEED+(a[2]+Math.sin(t)*r-p[2])*.8*DRONE_CAMERA_MOTION_RATE;
  }
  move(dt){
   const p=this.position,v=this.velocity,a=this.acceleration,want=this.desiredVelocity;
   // Look through a certified high waypoint instead of stopping at each axis
   // change. Swept live gates still validate every actual, eased movement step.
-  while(this.routeIndex<this.routeLength){const k=this.routeIndex*3,d=Math.hypot(this.route[k]-p[0],this.route[k+1]-p[1],this.route[k+2]-p[2]),next=this.routeIndex+1<this.routeLength;if(d>2&&!(!next&&d<5&&this.speed<6)&&!(next&&d<8&&this.clear(p[0],p[1],p[2],this.route[k+3],this.route[k+4],this.route[k+5])))break;this.routeIndex++;}
+  while(this.routeIndex<this.routeLength){const k=this.routeIndex*3,d=Math.hypot(this.route[k]-p[0],this.route[k+1]-p[1],this.route[k+2]-p[2]),next=this.routeIndex+1<this.routeLength;if(d>2&&!(!next&&d<5&&this.speed<6*DRONE_CAMERA_MOTION_RATE)&&!(next&&d<8&&this.clear(p[0],p[1],p[2],this.route[k+3],this.route[k+4],this.route[k+5])))break;this.routeIndex++;}
   if(this.lowShot&&!this.lowArrived&&this.routeLength&&this.routeIndex>=this.routeLength&&this.goal[1]<=this.world.level.pathHeight+LOW_HEIGHTS[1]&&p[1]<=this.world.level.pathHeight+LOW_HEIGHTS[1]+6&&Math.abs(p[1]-this.goal[1])<6){this.lowArrived=true;this.lowShots++;this.lowPendingUntil=-Infinity;this.nextLowAt=Math.max(this.nextLowAt,this.time+24);}
   const travelling=this.phase==='wave'&&this.routeIndex<this.routeLength;
   if(travelling){
    this.drifting=false;const k=this.routeIndex*3,dx=this.route[k]-p[0],dy=this.route[k+1]-p[1],dz=this.route[k+2]-p[2],distance=Math.hypot(dx,dy,dz),last=this.routeIndex===this.routeLength-1;
-   let tx=dx/distance,ty=dy/distance,tz=dz/distance,desired=Math.min(DRONE_CAMERA_SPEED,Math.sqrt(20*distance));
+   let tx=dx/distance,ty=dy/distance,tz=dz/distance,desired=Math.min(DRONE_CAMERA_SPEED,Math.sqrt(20*distance)*DRONE_CAMERA_MOTION_RATE);
    if(!last){
     const nx=this.route[k+3]-this.route[k],ny=this.route[k+4]-this.route[k+1],nz=this.route[k+5]-this.route[k+2],nd=Math.hypot(nx,ny,nz),blend=clamp((12-distance)/12,0,1);
-    desired=Math.min(DRONE_CAMERA_SPEED,Math.sqrt(12*12+2*DRONE_CAMERA_ACCELERATION*Math.max(0,distance-12)));
+    desired=Math.min(DRONE_CAMERA_SPEED,Math.sqrt((12*DRONE_CAMERA_MOTION_RATE)**2+2*DRONE_CAMERA_ACCELERATION*Math.max(0,distance-12)));
     if(nd>0){tx=tx*(1-blend)+nx/nd*blend;ty=ty*(1-blend)+ny/nd*blend;tz=tz*(1-blend)+nz/nd*blend;}
    }else if(distance<12){
     // Blend into a slow sideways survey before reaching the last point. A
@@ -426,10 +430,10 @@ export class DroneCamera {
   // Keep the normal high station floor while above it. A low station or a
   // continuous climb back from one uses the lower safety floor without a snap.
   const highFloor=this.altitude(0),lowDrift=this.active&&!travelling&&p[1]<highFloor,floor=this.active?(this.lowShot||p[1]<highFloor?this.world.level.pathHeight+32:highFloor):-Infinity;
-  if(Number.isFinite(floor)&&want[1]<0)want[1]=Math.max(want[1],-Math.max(0,p[1]-floor)*.6);
+  if(Number.isFinite(floor)&&want[1]<0)want[1]=Math.max(want[1],-Math.max(0,p[1]-floor)*.6*DRONE_CAMERA_MOTION_RATE);
   // A critically damped velocity response with bounded acceleration change
   // keeps travel, braking and direction changes gradual rather than scalar snaps.
-  let ax=(want[0]-v[0])*3,ay=(want[1]-v[1])*3,az=(want[2]-v[2])*3,amount=Math.hypot(ax,ay,az),scale=amount>DRONE_CAMERA_ACCELERATION?DRONE_CAMERA_ACCELERATION/amount:1;ax*=scale;ay*=scale;az*=scale;
+  let ax=(want[0]-v[0])*3*DRONE_CAMERA_MOTION_RATE,ay=(want[1]-v[1])*3*DRONE_CAMERA_MOTION_RATE,az=(want[2]-v[2])*3*DRONE_CAMERA_MOTION_RATE,amount=Math.hypot(ax,ay,az),scale=amount>DRONE_CAMERA_ACCELERATION?DRONE_CAMERA_ACCELERATION/amount:1;ax*=scale;ay*=scale;az*=scale;
   const jx=ax-a[0],jy=ay-a[1],jz=az-a[2],jerk=Math.hypot(jx,jy,jz),fraction=jerk>JERK*dt?JERK*dt/jerk:1;a[0]+=jx*fraction;a[1]+=jy*fraction;a[2]+=jz*fraction;
   for(let i=0;i<3;i++)v[i]+=a[i]*dt;
   const speed=Math.hypot(v[0],v[1],v[2]);if(speed>DRONE_CAMERA_SPEED)for(let i=0;i<3;i++)v[i]*=DRONE_CAMERA_SPEED/speed;
@@ -446,11 +450,11 @@ export class DroneCamera {
   this.speed=Math.hypot(v[0],v[1],v[2]);
  }
  aim(dt,engine){
-  const smoothing=1-Math.exp(-3*dt);for(let i=0;i<3;i++)this.look[i]+=(this.focus[i]-this.look[i])*smoothing;
+  const smoothing=1-Math.exp(-3*DRONE_CAMERA_MOTION_RATE*dt);for(let i=0;i<3;i++)this.look[i]+=(this.focus[i]-this.look[i])*smoothing;
   const dx=this.position[0]-this.look[0],dy=this.position[1]-this.look[1],dz=this.position[2]-this.look[2],yaw=Math.atan2(dx,dz),pitch=clamp(Math.atan2(dy,Math.hypot(dx,dz)),-1.35,1.35);
-  const yawRate=clamp(angle(yaw,this.yaw)*2.4,-1.1,1.1),pitchRate=clamp((pitch-this.pitch)*1.2,-.7,.7);
-  this.yawVelocity+=clamp((yawRate-this.yawVelocity)*(1-Math.exp(-5*dt)),-1.8*dt,1.8*dt);this.pitchVelocity+=clamp((pitchRate-this.pitchVelocity)*(1-Math.exp(-5*dt)),-1.2*dt,1.2*dt);
-  this.pitchVelocity=clamp(this.pitchVelocity,-Math.sqrt(2*1.2*Math.max(0,this.pitch+1.35)),Math.sqrt(2*1.2*Math.max(0,1.35-this.pitch)));
+  const yawRate=clamp(angle(yaw,this.yaw)*2.4*DRONE_CAMERA_MOTION_RATE,-YAW_SPEED,YAW_SPEED),pitchRate=clamp((pitch-this.pitch)*1.2*DRONE_CAMERA_MOTION_RATE,-PITCH_SPEED,PITCH_SPEED);
+  this.yawVelocity+=clamp((yawRate-this.yawVelocity)*(1-Math.exp(-5*DRONE_CAMERA_MOTION_RATE*dt)),-YAW_ACCELERATION*dt,YAW_ACCELERATION*dt);this.pitchVelocity+=clamp((pitchRate-this.pitchVelocity)*(1-Math.exp(-5*DRONE_CAMERA_MOTION_RATE*dt)),-PITCH_ACCELERATION*dt,PITCH_ACCELERATION*dt);
+  this.pitchVelocity=clamp(this.pitchVelocity,-Math.sqrt(2*PITCH_ACCELERATION*Math.max(0,this.pitch+1.35)),Math.sqrt(2*PITCH_ACCELERATION*Math.max(0,1.35-this.pitch)));
   this.yaw+=this.yawVelocity*dt;this.pitch=clamp(this.pitch+this.pitchVelocity*dt,-1.35,1.35);this.panRoll+=(clamp(-this.yawVelocity*.012,-.018,.018)-this.panRoll)*(1-Math.exp(-5*dt));
   const distance=Math.hypot(dx,dy,dz),aspect=clamp((this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000),.6,2.5);let radius=25;
   for(const gun of engine.firing?.states??EMPTY)if(this.validSubject(gun.target)&&gun.lineOfSight&&Math.hypot(gun.target.x-this.focus[0],gun.target.z-this.focus[2])<SCENE_RADIUS)radius=Math.max(radius,Math.hypot(gun.x-this.focus[0],gun.z-this.focus[2])*.6+18);

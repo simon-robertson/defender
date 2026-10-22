@@ -1,6 +1,6 @@
 import {test,expect} from 'bun:test';
 import {Camera} from '../engine/camera.js';
-import {DroneCamera,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MIN_FOV,DRONE_CAMERA_MAX_FILM_PITCH,DRONE_CAMERA_BOARD_MARGIN} from '../play/drone-camera.js';
+import {DroneCamera,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MIN_FOV,DRONE_CAMERA_MAX_FILM_PITCH,DRONE_CAMERA_BOARD_MARGIN,DRONE_CAMERA_MOTION_RATE} from '../play/drone-camera.js';
 import {SceneryVisibility} from '../engine/visibility.js';
 import {PLAY_CONFIG} from '../play/config.js';
 import {legacyPlayConfig} from './helpers/legacy-play-config.js';
@@ -19,6 +19,22 @@ function basic(){
 }
 function advance(f,seconds,hz=60,phase='wave'){for(let i=0;i<seconds*hz;i++){f.engine.time+=1/hz;f.drone.advance(1/hz,{engine:f.engine,phase});}}
 const viewPitch=(position,focus)=>Math.atan2(position[1]-focus[1],Math.hypot(position[0]-focus[0],position[2]-focus[2]));
+
+test('faster flight and gimbal motion reach the doubled rates without advancing actors',()=>{
+ const f=basic(),d=f.drone;
+ try{
+  d.setEnabled(true);d.sync('wave',f.engine);const actor=JSON.stringify(f.subject);
+  d.position.set([-150,224,192]);d.velocity.fill(0);d.acceleration.fill(0);expect(d.routeTo(600,224,192)).toBe(true);
+  let fastest=0;
+  for(let n=0;n<4*120;n++){const x=d.position[0];d.move(1/120);fastest=Math.max(fastest,(d.position[0]-x)*120);expect(d.staticClear(...d.position,...d.position)).toBe(true);}
+  expect(fastest).toBeGreaterThan(65);expect(fastest).toBeLessThanOrEqual(68+1e-6);expect(d.anticipation.speed).toBe(68);
+  d.position.set([240,144,192]);d.focus.set([240,32,392]);d.look.set(d.focus);d.yaw=0;d.pitch=-1;d.yawVelocity=d.pitchVelocity=0;
+  let yaw=0,pitch=0;
+  for(let n=0;n<4*120;n++){const oldYaw=d.yaw,oldPitch=d.pitch;d.aim(1/120,f.engine);yaw=Math.max(yaw,Math.abs(d.yaw-oldYaw)*120);pitch=Math.max(pitch,Math.abs(d.pitch-oldPitch)*120);}
+  expect(yaw).toBeGreaterThan(2);expect(yaw).toBeLessThanOrEqual(2.2+1e-6);expect(pitch).toBeGreaterThan(1.25);expect(pitch).toBeLessThanOrEqual(1.4+1e-6);
+  expect(f.engine.time).toBe(0);expect(JSON.stringify(f.subject)).toBe(actor);
+ }finally{d.dispose();}
+});
 
 test('board coverage favours an inward view from outside an edge over looking out at that edge',()=>{
  const f=basic(),d=f.drone;
@@ -173,7 +189,7 @@ test('stable subjects retain mostly high flight with occasional safe low shots a
 
 test('pan, lens, flight and long-frame travel have explicit rate limits; pure camera work leaves actors untouched',()=>{
  const f=basic(),{drone:d,engine:e,subject:s}=f;d.setEnabled(true);d.sync('wave',e);const snapshot=JSON.stringify(s);let previous=d.stats();
- for(let i=0;i<180;i++){e.time+=1/60;d.advance(1/60,{engine:e,phase:'wave'});const now=d.stats();expect(Math.hypot(...d.position.map((v,j)=>v-previous.position[j]))).toBeLessThanOrEqual(DRONE_CAMERA_SPEED/60+1e-7);expect(Math.abs(now.pitch-previous.pitch)).toBeLessThanOrEqual(.8/60+1e-8);expect(Math.abs(now.fov-previous.fov)).toBeLessThanOrEqual(9/60+1e-8);previous=now;}
+ for(let i=0;i<180;i++){e.time+=1/60;d.advance(1/60,{engine:e,phase:'wave'});const now=d.stats();expect(Math.hypot(...d.position.map((v,j)=>v-previous.position[j]))).toBeLessThanOrEqual(DRONE_CAMERA_SPEED/60+1e-7);expect(Math.abs(now.pitch-previous.pitch)).toBeLessThanOrEqual(.8*DRONE_CAMERA_MOTION_RATE/60+1e-8);expect(Math.abs(now.fov-previous.fov)).toBeLessThanOrEqual(9/60+1e-8);previous=now;}
  expect(JSON.stringify(s)).toBe(snapshot);const time=d.time,p=[...d.position];e.time+=30;d.advance(30,{engine:e,phase:'wave'});expect(d.time-time).toBeCloseTo(.25,6);expect(Math.hypot(...d.position.map((v,j)=>v-p[j]))).toBeLessThanOrEqual(DRONE_CAMERA_SPEED*.25+1e-6);
  expect(()=>d.advance(-1,{engine:e,phase:'wave'})).toThrow();
 });
@@ -266,10 +282,10 @@ test('open three-leg travel eases continuously into drift with bounded actual ac
  for(let frame=0;frame<40*120;frame++){
   if(frame===5*120)d.focus.set([400,72,80]);if(frame===10*120)d.focus.set([100,160,300]);d.move(dt);d.aim(dt,f.engine);const velocity=d.position.map((value,i)=>(value-previous[i])/dt),acceleration=velocity.map((value,i)=>(value-oldVelocity[i])/dt),jerk=acceleration.map((value,i)=>(value-oldAcceleration[i])/dt),step=Math.hypot(...d.position.map((value,i)=>value-previous[i]));
   minStep=Math.min(minStep,step);maxAcceleration=Math.max(maxAcceleration,Math.hypot(...acceleration));maxJerk=Math.max(maxJerk,Math.hypot(...jerk));if(d.drifting)driftFrames++;
-  const yawRate=(d.yaw-lastYaw)/dt,pitchRate=(d.pitch-lastPitch)/dt,fovRate=(d.fov-lastFov)/dt;expect(Math.abs(yawRate-lastYawRate)/dt).toBeLessThanOrEqual(1.8+1e-6);expect(Math.abs(pitchRate-lastPitchRate)/dt).toBeLessThanOrEqual(1.2+1e-6);expect(Math.abs(fovRate-lastFovRate)/dt).toBeLessThanOrEqual(12+1e-6);expect(d.fov).toBeGreaterThanOrEqual(DRONE_CAMERA_MIN_FOV);expect(d.fov).toBeLessThanOrEqual(76);expect(d.staticClear(...previous,...d.position)).toBe(true);
+  const yawRate=(d.yaw-lastYaw)/dt,pitchRate=(d.pitch-lastPitch)/dt,fovRate=(d.fov-lastFov)/dt;expect(Math.abs(yawRate-lastYawRate)/dt).toBeLessThanOrEqual(1.8*DRONE_CAMERA_MOTION_RATE**2+1e-6);expect(Math.abs(pitchRate-lastPitchRate)/dt).toBeLessThanOrEqual(1.2*DRONE_CAMERA_MOTION_RATE**2+1e-6);expect(Math.abs(fovRate-lastFovRate)/dt).toBeLessThanOrEqual(12+1e-6);expect(d.fov).toBeGreaterThanOrEqual(DRONE_CAMERA_MIN_FOV);expect(d.fov).toBeLessThanOrEqual(76);expect(d.staticClear(...previous,...d.position)).toBe(true);
   for(let i=0;i<3;i++){previous[i]=d.position[i];oldVelocity[i]=velocity[i];oldAcceleration[i]=acceleration[i];}lastYaw=d.yaw;lastPitch=d.pitch;lastFov=d.fov;lastYawRate=yawRate;lastPitchRate=pitchRate;lastFovRate=fovRate;
  }
- expect(minStep).toBeGreaterThan(1e-9);expect(maxAcceleration).toBeLessThanOrEqual(24.01);expect(maxJerk).toBeLessThanOrEqual(48.01);expect(driftFrames).toBeGreaterThan(20*120);expect(d.blockedMoves).toBe(0);expect(Math.tan(42*Math.PI/360)/Math.tan(DRONE_CAMERA_MIN_FOV*Math.PI/360)).toBeCloseTo(.8,10);console.log(JSON.stringify({smoothMotion:{minStep,maxAcceleration,maxJerk,driftFrames,blocked:d.blockedMoves}}));
+ expect(minStep).toBeGreaterThan(1e-9);expect(maxAcceleration).toBeLessThanOrEqual(24*DRONE_CAMERA_MOTION_RATE**2+.01);expect(maxJerk).toBeLessThanOrEqual(48*DRONE_CAMERA_MOTION_RATE**3+.01);expect(driftFrames).toBeGreaterThan(20*120);expect(d.blockedMoves).toBe(0);expect(Math.tan(42*Math.PI/360)/Math.tan(DRONE_CAMERA_MIN_FOV*Math.PI/360)).toBeCloseTo(.8,10);console.log(JSON.stringify({smoothMotion:{minStep,maxAcceleration,maxJerk,driftFrames,blocked:d.blockedMoves}}));
 });
 
  test('opening stations vary across cosmetic seeds and repeated entries while staying clear',()=>{

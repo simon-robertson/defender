@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-22",
+  "scope": "Read-only inventory/arithmetic; economic ceilings are not measured battle event rates.",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "tools": {
+    "bun": "/Users/simon/.bun/bin/bun",
+    "brew": "/opt/homebrew/bin/brew",
+    "opusenc": null,
+    "opusdec": null,
+    "opusinfo": null,
+    "ffmpeg": null,
+    "ffprobe": null,
+    "oggenc": null,
+    "sox": null,
+    "afconvert": "/usr/bin/afconvert"
+  },
+  "waves": 64,
+  "budget": 128,
+  "capacity": {
+    "maxOwnedUnits": 128,
+    "maxWaveEnemies": 26,
+    "maxOwnedByFamily": {
+      "turret-study": 128,
+      "arc-spire": 64,
+      "missile-launcher": 42,
+      "power-generator": 32
+    },
+    "maxWaveEnemiesBySpecies": {
+      "dog": 6,
+      "roller": 6,
+      "moth": 6,
+      "walker": 6,
+      "dune-tread": 7,
+      "twin-fan": 8,
+      "tripod": 11,
+      "ray": 11,
+      "spider": 14,
+      "lantern": 12
+    },
+    "pooledEnemyCount": 87,
+    "modelLights": 410
+  },
+  "gunCeilings": [
+    {
+      "variant": "base",
+      "cost": 1,
+      "count": 128,
+      "shotsPerBurst": 1,
+      "periodSeconds": 1,
+      "idealShotsPerSecond": 128
+    },
+    {
+      "variant": "upgrade1",
+      "cost": 2,
+      "count": 64,
+      "shotsPerBurst": 3,
+      "periodSeconds": 1.24,
+      "idealShotsPerSecond": 154.83870967741936
+    },
+    {
+      "variant": "upgrade2",
+      "cost": 3,
+      "count": 42,
+      "shotsPerBurst": 5,
+      "periodSeconds": 1.48,
+      "idealShotsPerSecond": 141.8918918918919
+    }
+  ],
+  "illustrativeMemory": {
+    "halfSecondMono48kFloatPCM": 96000,
+    "tenSecondsStereo48kFloatPCM": 3840000,
+    "twentyHalfSecondMonoClipsAndTwoTenSecondStereoLoops": 9600000,
+    "proposedEventRing256x8Float64": 16384
+  },
+  "sourceHashes": {
+    "play/app.js": "d9cb8a4ce0b6d5c8e0eb2069810e8b2aebd40c7fd0c8d1adf0be09021f3cb507",
+    "play/engine.js": "4716a9d418e967d73126bd7941715f7bfcee1ef5cb00d84cb3aa338763cfda58",
+    "play/config.js": "d0b34da8b82e23e709601ad289820307fcc92955d2b68fa6df8c872119bdea08",
+    "engine/weapon.js": "1d59bc6c1ef7f2ae3ad32944bfd71129cbda4a2946f5a43ef44914291c4e240a",
+    "server.js": "cfdaf7aa25a9f3b5cfa069fd074cb9ad683397da2f0035e3b641182a00cb0a1d",
+    "server/docs.js": "0ba5f21522dc3aae7b95c5474d1c82b0100ca0ea159f1c5656d95bcc1ebac815",
+    "scripts/deployment/build.js": "7decdfef6c406776e61f5b8314f37f17dcb9cb77b70f672d9eb2af66067b5db2",
+    "scripts/deployment/serve.js": "356eb78b118e8097d3fe51345827d5f509ef1b849e780e6dfa051e7ec5811429",
+    "package.json": "363035fad7f702571f12e83723bed0176b94dd8f05767d8ff9870da621c536e1"
+  }
+}

@@ -1,5 +1,7 @@
 # Audio authoring and playback feasibility
 
+Follow-up, 22 October: [allocation-conscious runtime architecture and concrete Ogg production requirements](../web-audio-implementation-2026-10-22/README.md). Includes source-node lifetime, native/worklet/shared-memory trade-offs, current game event/economy audit, refreshed encoder availability and future verification gates. This document remains the original workflow research.
+
 Research only · 20 October 2026 · no audio/editor implementation, generated sounds, package installation, game reload or player-run change.
 
 **A small team-operated sound workbench plus native Web Audio should be sufficient for this game's effects.** Give the team editable synthesis/layer recipes, waveform inspection and auditioning, then render reusable samples. Retain lossless masters and use an established offline encoder for compressed delivery. A general-purpose DAW is optional for complex recordings/music; building our own codec or full DAW would add little value initially. This is an architectural recommendation, not a sound-quality or performance result.

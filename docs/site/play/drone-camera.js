@@ -1,7 +1,7 @@
-import {DroneFlight,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS} from './drone-flight.js';
+import {DroneFlight,DRONE_CAMERA_SPEED,DRONE_CAMERA_RADIUS,DRONE_CAMERA_MAX_FILM_PITCH} from './drone-flight.js';
 import {BattleDirector} from './battle-director.js';
 import {BattleFraming,BATTLE_SHOTS,projectBattlePoint} from './battle-framing.js';
-export {DRONE_CAMERA_MOTION_RATE,DRONE_CAMERA_RADIUS,DRONE_CAMERA_SPEED,DRONE_CAMERA_ACCELERATION,DRONE_CAMERA_MIN_FOV,DRONE_CAMERA_MAX_FILM_PITCH,DRONE_CAMERA_BOARD_MARGIN} from './drone-flight.js';
+export {DRONE_CAMERA_MOTION_RATE,DRONE_CAMERA_RADIUS,DRONE_CAMERA_SPEED,DRONE_CAMERA_ACCELERATION,DRONE_CAMERA_MIN_FOV,DRONE_CAMERA_MAX_FILM_PITCH,DRONE_CAMERA_BOARD_MARGIN,DRONE_CAMERA_MIN_ALTITUDE} from './drone-flight.js';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),TICK=1/120,PLAN_SECONDS=.8,OPENING_SECONDS=3;
 
 // The director chooses the story, the framer composes it, and the flight layer
@@ -30,12 +30,14 @@ export class DroneCamera extends DroneFlight {
  currentFrame(){const p=this.framing.pose;p.x=this.position[0];p.y=this.position[1];p.z=this.position[2];p.yaw=this.yaw;p.pitch=this.pitch;p.fov=this.fov;return this.framing.evaluate(p,this.director,this.aspect,true,this.time<this.openingUntil?'survey':this.director.intent.style);}
  get aspect(){return Math.max(.2,(this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000));}
  sceneInView(){const p=this.framing.pose;p.x=this.position[0];p.y=this.position[1];p.z=this.position[2];p.yaw=this.yaw;p.pitch=this.pitch;p.fov=this.fov;const q=projectBattlePoint(p,...this.director.intent.anchor,this.aspect,this.framing.point);return q[2]>20&&Math.abs(q[0])<.88&&Math.abs(q[1])<.85;}
- planShot(initial=false){
+ orientShot(x,y,z,focus,fov){const pose=this.framing.orient(x,y,z,focus,fov);pose.pitch=Math.min(pose.pitch,DRONE_CAMERA_MAX_FILM_PITCH);return pose;}
+ planShot(){
   const d=this.director,intent=d.intent,opening=this.time<this.openingUntil,style=opening?'survey':intent.style,profile=BATTLE_SHOTS[style],focus=intent.focus,p=this.position,changed=intent.version!==this.plannedVersion||opening!==this.plannedOpening;
   this.plans++;this.targetFov=profile.fov;let currentScore=0,currentBoard=0,currentGlobal=0,readable=false;
-  if(!initial){
+  {
    const result=this.currentFrame();this.quality=result.action;this.levelInView=result.board;this.visible=result.primary&&result.action>=.55;
-   const safe=this.staticClear(...p,...p)&&this.obstacles.pointClear(...p,DRONE_CAMERA_RADIUS,1);
+   const safe=p[1]>=this.minimumY&&this.staticClear(...p,...p)&&this.obstacles.pointClear(...p,DRONE_CAMERA_RADIUS,1);
+   if(opening&&safe){this.holding=true;this.plannedVersion=intent.version;this.plannedOpening=true;return true;}
    // Finish accepted journeys. A locally readable view may still miss the
    // wider battle; only a material coverage gain can dislodge that shot.
    if(!changed&&this.routeIndex<this.routeLength&&this.time-this.goalSince<this.goalDuration&&this.clear(...this.goal,...this.goal))return true;
@@ -44,17 +46,15 @@ export class DroneCamera extends DroneFlight {
    if(!changed&&readable&&(!missingContext||this.time-this.goalSince<2.4)){this.holding=true;return true;}
   }
   let count=0;const ranges=this.framing.searchRanges(d,this.aspect,style);
-  // Short radii admit interior stations; steeper views and scene-sized radii
-  // admit high coverage. No edge, centre or altitude is a required destination.
+  // All stations stay inside the board and above the altitude floor. A steeper
+  // supported angle keeps nearby action visible from these higher positions.
   for(let elevation=0;elevation<3;elevation++)for(let span=0;span<3;span++)for(let angle=0;angle<16;angle++){
-   const a=this.seed+angle*Math.PI/8,range=ranges[span],pitch=elevation===0?(style==='dramatic'?.05:.22):elevation===1?.5:.76,y=Math.max(opening?this.cruiseY:this.world.level.pathHeight+26,focus[1]+Math.tan(pitch)*range),x=clamp(focus[0]+Math.sin(a)*range,-236,this.world.width+236),z=clamp(focus[2]+Math.cos(a)*range,-236,this.world.length+236),pose=this.framing.orient(x,y,z,focus,profile.fov),candidate=this.candidates[count++];
-   candidate.x=x;candidate.y=y;candidate.z=z;candidate.score=-Infinity;candidate.certified=false;if(pose.pitch<-.35||pose.pitch>.8)continue;
+   const a=this.seed+angle*Math.PI/8,range=ranges[span],pitch=elevation===0?(style==='dramatic'?.05:.22):elevation===1?.5:.76,y=Math.max(opening?this.cruiseY:this.minimumY,focus[1]+Math.tan(pitch)*range),inset=DRONE_CAMERA_RADIUS+16,x=clamp(focus[0]+Math.sin(a)*range,inset,this.world.width-inset),z=clamp(focus[2]+Math.cos(a)*range,inset,this.world.length-inset),pose=this.orientShot(x,y,z,focus,profile.fov),candidate=this.candidates[count++];
+   candidate.x=x;candidate.y=y;candidate.z=z;candidate.score=-Infinity;candidate.certified=false;if(pose.pitch<-.35)continue;
    const result=this.framing.evaluate(pose,d,this.aspect,false,style);if(!result.primary||result.action<.45)continue;
    if(!changed&&readable&&(result.score<currentScore+.05||result.board<currentBoard+.1&&result.global<currentGlobal+.15))continue;
    candidate.action=result.action;candidate.global=result.global;candidate.board=result.board;
-   // Cosmetic randomness chooses among similarly useful openings, rather than
-   // merely rotating a fine angle grid around the same winning viewpoint.
-   candidate.adjustment=initial?this.random()*.055:-Math.min(.08,Math.hypot(x-p[0],y-p[1],z-p[2])*.00015);candidate.score=result.score+candidate.adjustment;
+   candidate.adjustment=-Math.min(.08,Math.hypot(x-p[0],y-p[1],z-p[2])*.00015);candidate.score=result.score+candidate.adjustment;
   }
   let inspected=0;
   for(let attempt=0;attempt<count+24;attempt++){
@@ -64,28 +64,27 @@ export class DroneCamera extends DroneFlight {
     best.certified=true;
     if(!this.columnClear(x,y,z)||!this.actionLineClear(x,y,z)){best.score=-Infinity;continue;}
     inspected++;
-    const result=this.framing.evaluate(this.framing.orient(x,y,z,focus,profile.fov),d,this.aspect,true,style);
+    const result=this.framing.evaluate(this.orientShot(x,y,z,focus,profile.fov),d,this.aspect,true,style);
     if(result.action<.55||!changed&&readable&&(result.score<currentScore+.05||result.board<currentBoard+.1&&result.global<currentGlobal+.15)){best.score=-Infinity;continue;}
     best.action=result.action;best.global=result.global;best.board=result.board;best.score=result.score+best.adjustment;continue;
    }
-   best.score=-Infinity;if(!initial&&!this.routeTo(x,y,z))continue;
+   best.score=-Infinity;if(!this.routeTo(x,y,z))continue;
    this.goal.set([x,y,z]);this.goalSince=this.time;this.goalDuration=Math.max(10,Math.hypot(x-p[0],y-p[1],z-p[2])/DRONE_CAMERA_SPEED*1.8+6);this.plannedVersion=intent.version;this.plannedOpening=opening;this.holding=false;
-   if(initial){this.position.set(this.goal);this.routeLength=this.routeIndex=0;this.quality=best.action;this.levelInView=best.board;this.visible=best.action>=.55;}else this.relocations++;return true;
+   this.relocations++;return true;
   }
   return false;
  }
  enter(engine){
   if(!this.world)return false;this.prepareObstacles(engine);this.director.nextScan=-Infinity;this.chooseSubject(engine);this.compose(engine);
   this.openingUntil=this.time+OPENING_SECONDS;
-  // Prefer a high establishing view, but retain a readable safe fallback for
-  // unusually enclosed scenes where no comfortable high angle can see in.
-  let found=this.planShot(true);if(!found){this.openingUntil=this.time;found=this.planShot(true);}
-  if(!found){
-   let found=false;for(let z=12;!found&&z<this.world.length;z+=24)for(let x=12;x<this.world.width;x+=24)if(this.clear(x,this.cruiseY,z,x,this.cruiseY,z)){this.position.set([x,this.cruiseY,z]);found=true;break;}if(!found)return false;
-  }
+  // Raise the central start if a live actor occupies its first height. Never
+  // fall back to an edge station or a lower opening.
+  const x=this.world.width/2,z=this.world.length/2;let found=false;
+  for(let lift=0;lift<=128;lift+=32){const y=this.cruiseY+lift;if(this.clear(x,y,z,x,y,z)){this.position.set([x,y,z]);found=true;break;}}if(!found)return false;
+  this.goal.set(this.position);this.routeLength=this.routeIndex=0;this.goalSince=this.time;this.plannedVersion=this.director.intent.version;this.plannedOpening=true;this.holding=true;this.targetFov=64;
   const c=this.camera;this.saved.set(c.target);this.saved[3]=c.yaw;this.saved[4]=c.pitch;this.saved[5]=c.radius;
   this.active=true;this.engineTime=engine.time;this.accumulator=0;this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.heldFor=this.panRoll=0;this.look.set(this.focus);
-  this.yaw=Math.atan2(this.position[0]-this.focus[0],this.position[2]-this.focus[2]);this.pitch=Math.atan2(this.position[1]-this.focus[1],Math.hypot(this.position[0]-this.focus[0],this.position[2]-this.focus[2]));this.fov=this.targetFov;this.planIn=PLAN_SECONDS;c.setControlsEnabled(false);this.apply();return true;
+  const pose=this.orientShot(...this.position,this.focus,this.targetFov);this.yaw=pose.yaw;this.pitch=pose.pitch;this.fov=this.targetFov;const frame=this.currentFrame();this.quality=frame.action;this.levelInView=frame.board;this.visible=frame.primary&&frame.action>=.55;this.planIn=PLAN_SECONDS;c.setControlsEnabled(false);this.apply();return true;
  }
  sync(phase,engine){this.phase=phase;if(!this.enabled||!['wave','settling'].includes(phase)||!this.world){const preparing=this.active&&['loadout','deploy'].includes(phase);this.leave();if(preparing)this.camera.frame();return false;}if(!this.active&&engine)this.enter(engine);return this.active;}
  advance(dt,{engine,phase,paused=false}={}){

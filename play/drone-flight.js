@@ -2,7 +2,7 @@ import {TerrainField} from '../shared/terrain.js';
 import {DroneObstacles} from '../engine/drone-obstacles.js';
 export const DRONE_CAMERA_MOTION_RATE=2;
 export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=68,DRONE_CAMERA_ACCELERATION=96,DRONE_CAMERA_MIN_FOV=52;
-export const DRONE_CAMERA_MAX_FILM_PITCH=.8,DRONE_CAMERA_BOARD_MARGIN=240;
+export const DRONE_CAMERA_MAX_FILM_PITCH=1.15,DRONE_CAMERA_BOARD_MARGIN=0,DRONE_CAMERA_MIN_ALTITUDE=120;
 const R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),DRIFT_SPEED=1.3,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_SPEED/DRIFT_RADIUS,JERK=384;
 const YAW_SPEED=2.2,PITCH_SPEED=1.4,YAW_ACCELERATION=7.2,PITCH_ACCELERATION=4.8;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -44,6 +44,7 @@ export class DroneFlight {
   if(!this.active)return;const c=this.camera;c.mode='overview';c.target.set(this.saved.subarray(0,3));c.yaw=this.saved[3];c.pitch=this.saved[4];c.radius=this.saved[5];c.roll=0;c.setControlsEnabled(true);c.invalidate();this.active=false;this.velocity.fill(0);this.acceleration.fill(0);this.routeLength=this.routeIndex=0;this.speed=0;this.drifting=false;
  }
  setEnabled(enabled){this.enabled=Boolean(enabled);if(!this.enabled)this.leave();return this.enabled;}
+ get minimumY(){return this.world.level.pathHeight+DRONE_CAMERA_MIN_ALTITUDE;}
 
  staticClear(ax,ay,az,bx,by,bz){
   const w=this.world;if(!w)return false;
@@ -75,7 +76,7 @@ export class DroneFlight {
  clear(ax,ay,az,bx,by,bz,horizon=.8){return this.staticClear(ax,ay,az,bx,by,bz)&&this.spawnClear(ax,ay,az,bx,by,bz)&&(!this.obstacles||this.obstacles.clearSegment(ax,ay,az,bx,by,bz,R,horizon));}
  columnClear(x,y,z){return this.clear(x,y,z,x,this.cruiseY,z);}
  routeTo(x,y,z){
-  if(this.active&&y<this.world.level.pathHeight+14)return false;
+  if(this.active&&y<this.minimumY)return false;
   const p=this.position;
   if(this.clear(p[0],p[1],p[2],x,y,z)){
    // Certify the sky above the whole straight corridor, preserving the escape
@@ -118,8 +119,9 @@ export class DroneFlight {
    }
    const length=Math.hypot(tx,ty,tz)||1;put(want,tx/length*desired,ty/length*desired,tz/length*desired);
   }else{this.emergency=false;this.driftVelocity(dt);}
-  // Keep a small physical floor; dramatic filming has no arbitrary high band.
-  const highFloor=this.cruiseY,lowDrift=this.active&&!travelling&&p[1]<highFloor,floor=this.active?this.world.level.pathHeight+14:-Infinity;
+  // Respect the player's altitude floor and ease off before the board edges.
+  const highFloor=this.cruiseY,lowDrift=this.active&&!travelling&&p[1]<highFloor,floor=this.active?this.minimumY:-Infinity;
+  if(this.active){want[0]=clamp(want[0],-Math.max(0,p[0]-R)*1.2,Math.max(0,this.world.width-R-p[0])*1.2);want[2]=clamp(want[2],-Math.max(0,p[2]-R)*1.2,Math.max(0,this.world.length-R-p[2])*1.2);}
   if(Number.isFinite(floor)&&want[1]<0)want[1]=Math.max(want[1],-Math.max(0,p[1]-floor)*.6*DRONE_CAMERA_MOTION_RATE);
   // A critically damped velocity response with bounded acceleration change
   // keeps travel, braking and direction changes gradual rather than scalar snaps.
@@ -141,7 +143,7 @@ export class DroneFlight {
  }
  aim(dt,engine){
   const smoothing=1-Math.exp(-3*DRONE_CAMERA_MOTION_RATE*dt);for(let i=0;i<3;i++)this.look[i]+=(this.focus[i]-this.look[i])*smoothing;
-  const dx=this.position[0]-this.look[0],dy=this.position[1]-this.look[1],dz=this.position[2]-this.look[2],yaw=Math.atan2(dx,dz),pitch=clamp(Math.atan2(dy,Math.hypot(dx,dz)),-1.35,1.35);
+  const dx=this.position[0]-this.look[0],dy=this.position[1]-this.look[1],dz=this.position[2]-this.look[2],yaw=Math.atan2(dx,dz),pitch=clamp(Math.atan2(dy,Math.hypot(dx,dz)),-1.35,DRONE_CAMERA_MAX_FILM_PITCH);
   const yawRate=clamp(angle(yaw,this.yaw)*2.4*DRONE_CAMERA_MOTION_RATE,-YAW_SPEED,YAW_SPEED),pitchRate=clamp((pitch-this.pitch)*1.2*DRONE_CAMERA_MOTION_RATE,-PITCH_SPEED,PITCH_SPEED);
   this.yawVelocity+=clamp((yawRate-this.yawVelocity)*(1-Math.exp(-5*DRONE_CAMERA_MOTION_RATE*dt)),-YAW_ACCELERATION*dt,YAW_ACCELERATION*dt);this.pitchVelocity+=clamp((pitchRate-this.pitchVelocity)*(1-Math.exp(-5*DRONE_CAMERA_MOTION_RATE*dt)),-PITCH_ACCELERATION*dt,PITCH_ACCELERATION*dt);
   this.pitchVelocity=clamp(this.pitchVelocity,-Math.sqrt(2*PITCH_ACCELERATION*Math.max(0,this.pitch+1.35)),Math.sqrt(2*PITCH_ACCELERATION*Math.max(0,1.35-this.pitch)));

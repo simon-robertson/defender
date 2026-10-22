@@ -6,6 +6,7 @@ export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=34,DRONE_CAMERA_ACCELERA
 const DRIFT_SPEED=.65,DRIFT_RADIUS=6,DRIFT_RATE=DRIFT_SPEED/DRIFT_RADIUS,JERK=48;
 const TICK=1/120,PLAN_SECONDS=.8,R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),HEIGHTS=Object.freeze([120,184,152]);
 const COMPOSITION_SUBJECTS=12,COMPOSITION_ENEMIES=8,LOW_HEIGHTS=Object.freeze([40,56]);
+const ACTIVITY_SLOTS=24,ACTIVITY_RADIUS=60,ACTIVITY_SECONDS=3;
 function put(out,x,y,z,k=0){out[k]=x;out[k+1]=y;out[k+2]=z;}
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const angle=(a,b)=>Math.atan2(Math.sin(a-b),Math.cos(a-b));
@@ -32,11 +33,13 @@ export class DroneCamera {
   this.velocity=new Float64Array(3);this.acceleration=new Float64Array(3);this.desiredVelocity=new Float64Array(3);this.driftAnchor=new Float64Array(3);this.drifting=false;this.driftPhase=0;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;this.saved=new Float64Array(6);this.position=new Float64Array(3);this.focus=new Float64Array(3);this.look=new Float64Array(3);this.goal=new Float64Array(3);this.route=new Float64Array(9);this.scratch=new Float64Array(6);this.lastBattle=new Float64Array(3);
   this.compositionStates=new Array(COMPOSITION_SUBJECTS).fill(null);this.compositionBounds=new Float64Array(COMPOSITION_SUBJECTS*6);this.projectedSubjects=new Float64Array(COMPOSITION_SUBJECTS*4);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
   this.subject=null;this.subjectSince=0;this.engineTime=null;this.phase=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;
+  this.activity=new Float64Array(ACTIVITY_SLOTS*5);this.activityFocus=new Float64Array(3);this.activitySlot=-1;this.focusKind='enemy';this.interest=null;this.nextSubjectAt=0;
   this.routeLength=this.routeIndex=0;this.goalDuration=10;this.fov=64;this.yaw=this.pitch=this.panRoll=0;this.quality=0;this.visible=this.holding=false;this.battleAt=-Infinity;this.cruiseY=224;this.shotBand=-1;this.seed=1;
  }
  bind(world){
   this.leave();this.anticipation.reset();this.obstacles?.dispose();this.obstacles=null;this.obstacleEngine=null;this.emergency=false;this.airLanes=null;this.airborneFloor=null;this.world=world??null;this.water=null;
   this.subject=null;this.engineTime=null;this.time=this.accumulator=this.speed=this.travelled=this.plans=this.planIn=this.heldFor=this.flinch=this.explosions=0;this.battleAt=-Infinity;this.routeLength=this.routeIndex=0;this.focus.fill(0);this.velocity.fill(0);this.acceleration.fill(0);this.desiredVelocity.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.blockedMoves=0;
+  this.activity.fill(0);this.activitySlot=-1;this.focusKind='enemy';this.interest=null;this.nextSubjectAt=0;
   this.compositionStates.fill(null);this.compositionCount=0;this.compositionEngine=null;this.composition=0;this.compositionReframes=0;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=24;this.lowPlans=this.lowShots=0;
   if(!world)return;
   const field=new TerrainField(world.level);this.water=new Float32Array(world.level.size[0]*world.level.size[1]);
@@ -53,21 +56,47 @@ export class DroneCamera {
  }
  refresh(){this.leave();this.anticipation.reset();this.obstacles?.dispose();this.obstacles=null;this.obstacleEngine=null;this.airLanes=null;}
  validSubject(target){return target?.phase==='active'&&target.health?.alive!==false;}
- chooseSubject(engine){
-  if(this.anticipation.active){if(this.subject!==this.anticipation.target){this.subject=this.anticipation.target;this.subjectSince=this.time;this.planIn=0;}return;}
-  if(this.validSubject(this.subject)&&this.time-this.subjectSince<7)return;
-  let best=null,score=-Infinity;
-  for(const target of engine.enemies?.activeTargets??EMPTY){
-   if(!this.validSubject(target))continue;
-   let value=target.distance/(target.path?.length||1)+(target===this.subject?.25:0)+(target.airborne?.18:0);
-   for(const gun of engine.firing?.states??EMPTY)if(gun.target===target&&gun.lineOfSight)value+=1.2;
-   value-=Math.max(0,Math.hypot(target.x-this.position[0],target.z-this.position[2])-176)*.008;
-   if(value>score){best=target;score=value;}
+ noteActivity(x,y,z,at,weight=1){
+  if(!this.world||!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z)||!Number.isFinite(at))return;
+  const events=this.activity;let slot=-1,oldest=Infinity,matched=false;
+  for(let k=0;k<events.length;k+=5){
+   const age=at-events[k+4];
+   if(events[k+3]>0&&age>=0&&age<ACTIVITY_SECONDS&&(events[k]-x)**2+(events[k+2]-z)**2<ACTIVITY_RADIUS**2){slot=k;matched=true;break;}
+   if(events[k+4]<oldest||events[k+3]===0){oldest=events[k+4];slot=k;}
   }
-  if(best!==this.subject){this.subject=best;this.subjectSince=this.time;this.planIn=0;}
+  const retained=matched?events[slot+3]*Math.exp(-(at-events[slot+4])):0;
+  const total=retained+weight;
+  events[slot]=(events[slot]*retained+x*weight)/total;events[slot+1]=(events[slot+1]*retained+y*weight)/total;events[slot+2]=(events[slot+2]*retained+z*weight)/total;events[slot+3]=Math.min(24,total);events[slot+4]=at;
+ }
+ chooseSubject(engine){
+  if(this.time<this.nextSubjectAt)return;this.nextSubjectAt=this.time+.3;
+  const targets=engine.enemies?.activeTargets??EMPTY,guns=engine.firing?.states??EMPTY,events=this.activity;
+  let slot=-1,score=.12,best=null,interest=null,kind='enemy';
+  for(let k=0;k<events.length;k+=5){
+   const age=engine.time-events[k+4];if(!events[k+3]||age<0||age>=ACTIVITY_SECONDS)continue;
+   // Recent real impacts dominate; travel cost is only a small tie breaker.
+   const value=events[k+3]*Math.exp(-age)*(k===this.activitySlot?1.2:1)/(1+Math.hypot(events[k]-this.position[0],events[k+2]-this.position[2])*.0005);
+   if(value>score){score=value;slot=k;}
+  }
+  if(slot>=0){
+   kind='combat';this.activityFocus.set(events.subarray(slot,slot+3));let nearest=ACTIVITY_RADIUS**2;
+   for(const target of targets)if(this.validSubject(target)){const d=(target.x-events[slot])**2+(target.z-events[slot+2])**2;if(d<nearest){nearest=d;best=target;}}
+  }else if(this.anticipation.active){kind='anticipation';best=this.anticipation.target;}
+  else{
+   // A defence expecting an encounter is useful context before idle walkers.
+   let nearest=Infinity;
+   for(const gun of guns)for(const target of targets)if(this.validSubject(target)){const d=(target.x-gun.x)**2+(target.z-gun.z)**2;if(d<nearest){nearest=d;interest=gun;}}
+   if(interest)kind='defence';
+   else{let distance=Infinity;for(const target of targets)if(this.validSubject(target)){const d=(target.x-this.position[0])**2+(target.z-this.position[2])**2;if(d<distance){distance=d;best=target;}}}
+  }
+  if(kind!==this.focusKind||slot!==this.activitySlot){this.goalSince=-Infinity;}
+  if(kind!==this.focusKind||slot!==this.activitySlot||best!==this.subject||interest!==this.interest){this.subjectSince=this.time;this.planIn=0;}
+  this.focusKind=kind;this.activitySlot=slot;this.subject=best;this.interest=interest;
  }
  compose(engine){
-  if(this.anticipation.active){this.focus.set(this.anticipation.focus);return;}
+  if(this.focusKind==='combat'){this.focus.set(this.activityFocus);return;}
+  if(this.focusKind==='anticipation'){this.focus.set(this.anticipation.focus);return;}
+  if(this.focusKind==='defence'&&this.interest){const gun=this.interest;put(this.focus,gun.x,(gun.rig?.root[13]??this.world.level.pathHeight)+18,gun.z);return;}
   const s=this.subject;if(!this.validSubject(s))return;
   this.focus[0]=s.aimX??s.x;this.focus[1]=s.aimY??s.y??this.world.level.pathHeight+8;this.focus[2]=s.aimZ??s.z;
   for(const gun of engine.firing?.states??EMPTY)if(gun.target===s&&gun.lineOfSight&&Math.hypot(gun.x-this.focus[0],gun.z-this.focus[2])<100){this.focus[0]=this.focus[0]*.9+gun.x*.1;this.focus[1]=this.focus[1]*.9+((gun.rig?.root[13]??this.world.level.pathHeight)+18)*.1;this.focus[2]=this.focus[2]*.9+gun.z*.1;break;}
@@ -263,7 +292,7 @@ export class DroneCamera {
   }
   if(best===Infinity)return false;
   this.emergency=false;this.lowShot=this.lowArrived=false;this.lowPendingUntil=-Infinity;this.nextLowAt=this.time+24;this.shotBand=-1;this.position.set([sx,this.cruiseY,sz]);this.velocity.fill(0);this.acceleration.fill(0);this.drifting=false;this.yawVelocity=this.pitchVelocity=this.fovVelocity=0;this.speed=this.accumulator=this.panRoll=0;this.heldFor=0;this.subject=null;this.chooseSubject(engine);this.compose(engine);
-  if(!this.subject){if(Number.isFinite(this.battleAt))this.focus.set(this.lastBattle);else{const box=this.world.level.path[0];this.focus.set([(box[0]+.5)*24,this.world.level.pathHeight+8,(box[2]+.5)*24]);}}
+  if(!this.subject&&this.focusKind==='enemy'){if(Number.isFinite(this.battleAt))this.focus.set(this.lastBattle);else{const box=this.world.level.path[0];this.focus.set([(box[0]+.5)*24,this.world.level.pathHeight+8,(box[2]+.5)*24]);}}
   this.look.set(this.focus);this.yaw=Math.atan2(sx-this.look[0],sz-this.look[2]);this.pitch=clamp(Math.atan2(this.position[1]-this.look[1],Math.hypot(sx-this.look[0],sz-this.look[2])),-1.35,1.35);
   const c=this.camera;this.saved.set(c.target);this.saved[3]=c.yaw;this.saved[4]=c.pitch;this.saved[5]=c.radius;this.fov=64;
   this.active=true;this.engineTime=engine.time;this.planIn=PLAN_SECONDS;this.goalSince=-Infinity;this.vantage();c.setControlsEnabled(false);this.apply();return true;
@@ -271,6 +300,7 @@ export class DroneCamera {
  sync(phase,engine){this.phase=phase;if(!this.enabled||!running(phase)||!this.world){const preparing=this.active&&(phase==='loadout'||phase==='deploy');this.leave();if(preparing)this.camera.frame();return false;}if(!this.active&&engine)this.enter(engine);return this.active;}
  noteExplosion(state,at=this.engineTime??0){
   if(!this.world||!state)return;const x=state.aimX??state.x,y=state.aimY??state.y,z=state.aimZ??state.z;if(!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z))return;
+  this.noteActivity(x,y,z,at,3);
   this.lastBattle.set([x,y,z]);this.battleAt=at;if(!this.active)return;
   const distance=Math.hypot(x-this.position[0],y-this.position[1],z-this.position[2]);if(distance>=90)return;this.flinch=clamp(this.flinch+(1-distance/90)*.35,0,.5);this.explosions++;
  }
@@ -352,7 +382,7 @@ export class DroneCamera {
    put(this.route,p[0],this.cruiseY,p[2]);this.routeLength=1;this.routeIndex=0;this.goal.set(this.route.subarray(0,3));this.emergency=true;this.lowShot=this.lowArrived=false;this.holding=false;this.heldFor=0;this.goalSince=this.time;
   }
   while(this.accumulator>1e-12){const step=Math.min(TICK,this.accumulator);this.accumulator-=step;this.time+=step;
-   if(phase==='wave'){if(this.anticipation.update(engine,this.world,this.position)){if(!this.anticipation.active)this.subject=null;if(!this.lowShot||this.routeIndex>=this.routeLength)this.goalSince=-Infinity;this.planIn=0;}this.chooseSubject(engine);this.compose(engine);this.planIn-=step;if(this.planIn<=0){this.vantage();this.planIn=PLAN_SECONDS;}}
+   if(phase==='wave'){this.anticipation.update(engine,this.world,this.position);this.chooseSubject(engine);this.compose(engine);this.planIn-=step;if(this.planIn<=0){this.vantage();this.planIn=PLAN_SECONDS;}}
    this.move(step);this.heldFor=this.holding&&this.speed<2?this.heldFor+step:0;this.aim(step,engine);
   }
   this.apply();return true;

@@ -24,4 +24,5 @@ export class CameraViews {
   if(!this.active)this.overview.advance(dt,state);
  }
  noteExplosion(state,at){this.drone.noteExplosion(state,at);}
+ noteActivity(x,y,z,at,weight){this.drone.noteActivity(x,y,z,at,weight);}
 }

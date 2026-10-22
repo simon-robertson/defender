@@ -1,5 +1,7 @@
 # Instructions for project contributors and AI agents
 
+**Missile cooldown doubled, 22 October:** all three silo tiers now have a two-second firing cooldown/launch gap instead of one second. Separate magazine reload times remain 4/4.5/5 seconds. Local commit and deployment refreshed; no tests or player reload, as requested. No push.
+
 **Accepted effects and cleanup, 22 October:** user accepts reduced critter density and the stronger continuous 70 ms Arc beams. Runtime cleanup caches fixed Arc interpolation coefficients, hoists beam/spark calculations, packs ripple-wide coefficients on the CPU and uploads them only on revision changes. Removes obsolete debris fragment stages and renderer flags; smoke packing stops after its active entries. Roster regrouping and overlay matrix comparisons avoid redundant UI allocations. Combat, camera policies, visual tuning, cyclic critter schedule and the performance footer/sampling are preserved. Local deployment rebuilt and changes committed; no tests, browser/GPU checks, campaign runs or measured speedup claim. No push or publication.
 
 **Shorter Arc beams, 22 October (for review):** primary and secondary Arc channels now expire after 70 ms instead of 140 ms (50% shorter). Existing beam shape/width, impact-spark lifetimes and combat values remain. Local package refreshed; no tests/browser/GPU checks or active-player reload.

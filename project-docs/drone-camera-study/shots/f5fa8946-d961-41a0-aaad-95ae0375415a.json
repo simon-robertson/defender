@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "camera": {
+    "position": [
+      259.4888915303183,
+      118.91846401267652,
+      107.97246405787996
+    ],
+    "yaw": 2.63827316339745,
+    "pitch": 0.4011718750000001,
+    "fov": 56,
+    "roll": 0,
+    "viewport": [
+      860,
+      484
+    ]
+  },
+  "scene": {
+    "version": 1,
+    "scenarioId": "patrol",
+    "levelId": "moss-01",
+    "waveId": "a1-wave-4",
+    "seconds": 24.999999999999133,
+    "placements": [],
+    "stats": {
+      "time": 24.999999999999133,
+      "waveTime": 24.999999999999133,
+      "running": true,
+      "completed": false,
+      "spawned": 8,
+      "pending": 1,
+      "active": 8,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 9,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 3000,
+      "lastSteps": 1,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410
+    },
+    "enemies": [
+      {
+        "id": "a1-wave-4-dog-1",
+        "model": "dog",
+        "routeId": "main",
+        "position": [
+          215.9999999999987,
+          23,
+          300
+        ],
+        "aim": [
+          216,
+          34.5,
+          300
+        ],
+        "health": 100,
+        "distance": 299.9999999999987,
+        "routeLength": 936,
+        "airborne": false
+      },
+      {
+        "id": "a1-wave-4-dog-2",
+        "model": "dog",
+        "routeId": "main",
+        "position": [
+          179.9999999999905,
+          23,
+          300
+        ],
+        "aim": [
+          180,
+          34.5,
+          300
+        ],
+        "health": 100,
+        "distance": 263.9999999999905,
+        "routeLength": 936,
+        "airborne": false
+      },
+      {
+        "id": "a1-wave-4-dog-3",
+        "model": "dog",
+        "routeId": "main",
+        "position": [
+          143.99999999999133,
+          23,
+          300
+        ],
+        "aim": [
+          144,
+          34.5,
+          300
+        ],
+        "health": 100,
+        "distance": 227.99999999999133,
+        "routeLength": 936,
+        "airborne": false
+      },
+      {
+        "id": "a1-wave-4-roller-4",
+        "model": "roller",
+        "routeId": "main",
+        "position": [
+          132,
+          24.09,
+          263.9999999999941
+        ],
+        "aim": [
+          132,
+          36.09000015258789,
+          264
+        ],
+        "health": 350,
+        "distance": 179.99999999999406,
+        "routeLength": 936,
+        "airborne": false
+      },
+      {
+        "id": "a1-wave-4-roller-5",
+        "model": "roller",
+        "routeId": "main",
+        "position": [
+          132,
+          24.09,
+          227.9999999999961
+        ],
+        "aim": [
+          132,
+          36.09000015258789,
+          228
+        ],
+        "health": 350,
+        "distance": 143.9999999999961,
+        "routeLength": 936,
+        "airborne": false
+      },
+      {
+        "id": "a1-wave-4-roller-6",
+        "model": "roller",
+        "routeId": "main",
+        "position": [
+          119.99999999999814,
+          24.09,
+          204
+        ],
+        "aim": [
+          120,
+          36.09000015258789,
+          204
+        ],
+        "health": 350,
+        "distance": 107.99999999999814,
+        "routeLength": 936,
+        "airborne": false
+      },
+      {
+        "id": "a1-wave-4-dog-7",
+        "model": "dog",
+        "routeId": "main",
+        "position": [
+          60.00000000000041,
+          23,
+          204
+        ],
+        "aim": [
+          60,
+          34.5,
+          204
+        ],
+        "health": 100,
+        "distance": 48.00000000000041,
+        "routeLength": 936,
+        "airborne": false
+      },
+      {
+        "id": "a1-wave-4-dog-8",
+        "model": "dog",
+        "routeId": "main",
+        "position": [
+          23.99999999999997,
+          23,
+          204
+        ],
+        "aim": [
+          24,
+          34.5,
+          204
+        ],
+        "health": 100,
+        "distance": 11.999999999999973,
+        "routeLength": 936,
+        "airborne": false
+      }
+    ],
+    "defences": [],
+    "missiles": [],
+    "activity": []
+  },
+  "verdict": "preferred",
+  "notes": "This shot works as it frames the incoming enemies and keeps a lot of the board in view while no action is happening.",
+  "id": "f5fa8946-d961-41a0-aaad-95ae0375415a",
+  "createdAt": "2026-10-22T12:41:32.917Z",
+  "image": "/docs/drone-camera-study/shots/f5fa8946-d961-41a0-aaad-95ae0375415a.png"
+}

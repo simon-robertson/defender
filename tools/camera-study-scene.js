@@ -16,7 +16,7 @@ export async function createStudyScene(recipe,hooks={}){
  const world=await loadPlayWorld(level.id,{config:PLAY_CONFIG,wave,placements:recipe.placements,critters:false,conditions:new LevelConditions().forLevel(level.id)});
  const random=seededRandom(),shots=new ShotEffects(random),damage=new DamageEffects(random),arcs=new ArcEffects(random),plasma=new PlasmaLinks(),activity=[];
  let engine;
- const note=(kind,x,y,z,weight)=>{activity.push({kind,x,y,z,weight,at:engine.time});while(activity.length>256||activity[0]?.at<engine.time-6)activity.shift();};
+ const note=(kind,x,y,z,weight)=>{activity.push({kind,x,y,z,weight,at:engine.time});hooks.onActivity?.(kind,x,y,z,engine.time,weight);while(activity.length>256||activity[0]?.at<engine.time-6)activity.shift();};
  try{
   hooks.onWorld?.(world);
   engine=new PlayEngine(world,{

@@ -1,6 +1,6 @@
 # Drone camera study
 
-Work happens on `drone-cam-logic-rebuild`. The current game director is retained while the player provides examples for a replacement.
+Work happens on `drone-cam-logic-rebuild`. The [first director rebuild](rebuild-notes.md) now uses the player's saved examples and remains on that branch for review.
 
 Start the development server with `PORT=4290 bun server.js`, then open [the study tool](http://127.0.0.1:4290/tools/camera-study.html). It runs independently of the game on port 4289, uses the production renderer and native finite combat, and never loads or writes player progress. Critters are omitted from these tactical study scenes.
 
@@ -12,4 +12,4 @@ Choose “A view I want” or “A view to avoid”, explain the reason, then Sa
 
 The local API is append-only and checks same-origin writes, record bounds and PNG headers. This development tool and its notes stay outside the generated `docs/` deployment.
 
-When examples are ready, inspect the saved PNG/JSON pairs together, derive framing and handover rules from the preferred/avoid notes, and then implement the replacement director. Static shots establish composition; use notes and different moments of the same fight to describe transitions, dwell time and priorities.
+Use **Compare rebuilt Drone** to see the director's choice for the current moment, and **Watch battle** to review its movement. **Return to manual camera** restores your preceding manual view. Time seeking returns to manual control. Save more preferred/avoid examples whenever a shot needs refinement. Static shots establish composition; use notes and different moments of the same fight to describe transitions, dwell time and priorities.

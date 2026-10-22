@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "camera": {
+    "position": [
+      296.4714506653461,
+      128.89165330558185,
+      114.75691778718911
+    ],
+    "yaw": 2.0960466008974468,
+    "pitch": 0.5967187500000017,
+    "fov": 64,
+    "roll": 0,
+    "viewport": [
+      860,
+      484
+    ]
+  },
+  "scene": {
+    "version": 1,
+    "scenarioId": "quiet",
+    "levelId": "moss-02",
+    "waveId": "a2-wave-4",
+    "seconds": 0.9999999999999989,
+    "placements": [
+      {
+        "id": "player-gun-0",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          5,
+          0,
+          5
+        ],
+        "turn": 0
+      },
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "box": [
+          8,
+          0,
+          8
+        ],
+        "turn": 0
+      }
+    ],
+    "stats": {
+      "time": 0.9999999999999989,
+      "waveTime": 0.9999999999999989,
+      "running": true,
+      "completed": false,
+      "spawned": 1,
+      "pending": 13,
+      "active": 1,
+      "killed": 0,
+      "escaped": 0,
+      "resolved": 0,
+      "total": 14,
+      "shots": 0,
+      "gunShots": 0,
+      "arcShots": 0,
+      "missileShots": 0,
+      "activeMissiles": 0,
+      "steps": 120,
+      "lastSteps": 1,
+      "backlogSeconds": 0,
+      "modelLightCapacity": 410
+    },
+    "enemies": [
+      {
+        "id": "a2-wave-4-dog-1",
+        "model": "dog",
+        "routeId": "main",
+        "position": [
+          26.00000000000001,
+          23,
+          180
+        ],
+        "aim": [
+          26,
+          34.5,
+          180
+        ],
+        "health": 240,
+        "distance": 14.00000000000001,
+        "routeLength": 984,
+        "airborne": false
+      }
+    ],
+    "defences": [
+      {
+        "id": "player-gun-0",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "position": [
+          132,
+          24,
+          132
+        ],
+        "targetId": null,
+        "lineOfSight": false
+      },
+      {
+        "id": "player-gun-1",
+        "model": "turret-study",
+        "variant": "upgrade2",
+        "position": [
+          204,
+          24,
+          204
+        ],
+        "targetId": null,
+        "lineOfSight": false
+      }
+    ],
+    "missiles": [],
+    "activity": []
+  },
+  "verdict": "preferred",
+  "notes": "This shot works because there is no action happening at the moment and a lot of the board is being displayed while things are calm.",
+  "id": "fa82f41b-b87b-4db0-afe9-92420f267650",
+  "createdAt": "2026-10-22T12:37:21.738Z",
+  "image": "/docs/drone-camera-study/shots/fa82f41b-b87b-4db0-afe9-92420f267650.png"
+}

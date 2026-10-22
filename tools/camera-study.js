@@ -1,3 +1,4 @@
+import {DroneCamera} from '../play/drone-camera.js';
 import {WorldRenderer} from '../engine/renderer.js';
 import {FrameLoop} from '../engine/clock.js';
 import {PLAY_CONFIG,playCapacity} from '../play/config.js';
@@ -7,7 +8,7 @@ import {createStudyScene,advanceStudyScene,describeStudyScene,captureStudyCamera
 
 const $=id=>document.getElementById(id),canvas=$('world');
 const renderer=new WorldRenderer(canvas,fail,{modelLightCapacity:playCapacity(PLAY_CONFIG).modelLights,strictModelLights:true,renderScale:.5});
-let scene=null,busy=true,playing=false,disposed=false,saving=false,fast=false,vertical=0,saved=[],lastPaint=0,viewAspect=16/9;
+let autoDrone=null,manualPose=null,scene=null,busy=true,playing=false,disposed=false,saving=false,fast=false,vertical=0,saved=[],lastPaint=0,viewAspect=16/9;
 const moves=new Set(),loop=new FrameLoop(frame);
 function fail(error){playing=false;$('status').textContent=`Could not complete that action: ${error?.message??error}`;}
 function busyUI(value,message='Preparing the frozen battle…'){
@@ -21,6 +22,7 @@ function resetView(){
  const horizontal=Math.cos(pitch)*distance;restoreStudyCamera(c,{position:[focus[0]+Math.sin(yaw)*horizontal,focus[1]+Math.sin(pitch)*distance,focus[2]+Math.cos(yaw)*horizontal],yaw,pitch,fov:64,roll:0});syncLens();
 }
 function sizeCanvas(){const box=canvas.parentElement.getBoundingClientRect(),width=Math.max(1,Math.min(box.width,box.height*viewAspect));canvas.style.width=width+'px';canvas.style.height=width/viewAspect+'px';renderer.requestDraw();}
+function stopDrone(){if(!autoDrone)return;autoDrone.dispose();autoDrone=null;if(manualPose)restoreStudyCamera(renderer.camera,manualPose);manualPose=null;$('drone-preview').textContent='Compare rebuilt Drone';syncLens();}
 function syncLens(){$('lens').value=String(renderer.camera.fov);$('lens-label').textContent=`${Math.round(renderer.camera.fov)}°`;}
 function populateSubjects(){
  const selected=$('subject').value,snapshot=describeStudyScene(scene);$('subject').replaceChildren(new Option('Choose an enemy or defence…',''));
@@ -33,7 +35,7 @@ function paint(){
  $('scene-counts').textContent=`${e.enemies.alive} enemies · ${e.firing.states.length+e.firing.enhancers.states.length} defences · ${e.firing.missiles.pool?.active??0} missiles`;
  $('moment').value=String(e.time);$('moment-label').textContent=`${e.time.toFixed(2)} s`;
  $('frozen-badge').textContent=playing?'LIVE PREVIEW':'FROZEN';$('play').textContent=playing?'Freeze battle':'Watch battle';$('play').disabled=!e.running||e.time>=STUDY_MAX_SECONDS;
- canvas.dataset.study=JSON.stringify({scenario:scene.recipe.id,time:e.time,playing,busy,camera:captureStudyCamera(renderer.camera),stats:e.stats()});
+ canvas.dataset.study=JSON.stringify({drone:autoDrone?.stats()??null,scenario:scene.recipe.id,time:e.time,playing,busy,camera:captureStudyCamera(renderer.camera),stats:e.stats()});
 }
 function draw(){if(scene&&!busy){renderer.requestDraw();renderer.render(0,scene.engine.time);paint();}}
 function frame(dt){
@@ -41,17 +43,18 @@ function frame(dt){
  try{
   const c=renderer.camera,step=Math.min(dt,.1);
   if(playing){scene.engine.advance(step);scene.prepare();renderer.requestDraw();if(!scene.engine.running||scene.engine.time>=STUDY_MAX_SECONDS){playing=false;populateSubjects();}}
-  if(!saving){c.advance(step*(fast?3:1));if(vertical){c.position[1]+=vertical*72*step*(fast?3:1);c.invalidate();}}
+  if(autoDrone){autoDrone.advance(step,{engine:scene.engine,phase:scene.engine.running?'wave':'settling',paused:!playing});syncLens();}
+  if(!saving&&!autoDrone){c.advance(step*(fast?3:1));if(vertical){c.position[1]+=vertical*72*step*(fast?3:1);c.invalidate();}}
   if(renderer.dirty||renderer.cameraDirty)renderer.render(0,scene.engine.time);
   if(performance.now()-lastPaint>200){lastPaint=performance.now();paint();}
  }catch(error){loop.stop();fail(error);}
 }
 async function loadScene(recipe,seconds=recipe.seconds,{pose=null,keepCamera=false}={}){
  if(busy&&scene)return;const previous=keepCamera&&scene?captureStudyCamera(renderer.camera):null;
- busyUI(true);loop.stop();
+ stopDrone();busyUI(true);loop.stop();
  try{
   if(scene){scene.engine.dispose();renderer.clearWorld();await renderer.device.queue.onSubmittedWorkDone();scene.dispose();scene=null;}
-  scene=await createStudyScene(recipe,{onWorld:world=>{renderer.setWorld(world);applyPlayLighting(renderer,world.playConditions);},onPoseChange:renderer.updateInstance.bind(renderer),onVisible:renderer.setActorVisible.bind(renderer)});
+  scene=await createStudyScene(recipe,{onActivity:(kind,x,y,z,at,weight)=>{if(kind!=='shot')autoDrone?.noteActivity(x,y,z,at,weight);},onWorld:world=>{renderer.setWorld(world);applyPlayLighting(renderer,world.playConditions);},onPoseChange:renderer.updateInstance.bind(renderer),onVisible:renderer.setActorVisible.bind(renderer)});
   renderer.setShotEffects(scene.shots);renderer.setDamageEffects(scene.damage);renderer.setArcEffects(scene.arcs);renderer.setPlasmaLinks(scene.plasma);renderer.setMissileThrust(scene.engine.firing.missiles.thrust);
   await advanceStudyScene(scene,seconds,{onProgress:time=>$('loading').textContent=`Replaying battle · ${time.toFixed(0)} / ${seconds.toFixed(0)} s`});
   renderer.camera.pathModeEnabled=false;renderer.camera.setControlsEnabled(true);
@@ -62,12 +65,12 @@ async function loadScene(recipe,seconds=recipe.seconds,{pose=null,keepCamera=fal
 }
 async function seek(seconds){
  if(!scene||busy||saving)return;
- seconds=Math.min(STUDY_MAX_SECONDS,Math.max(0,seconds));playing=false;
+ stopDrone();seconds=Math.min(STUDY_MAX_SECONDS,Math.max(0,seconds));playing=false;
  if(seconds<scene.engine.time-1e-8){await loadScene(scene.recipe,seconds,{keepCamera:true});return;}
  busyUI(true);try{await advanceStudyScene(scene,seconds);}catch(error){fail(error);}finally{busyUI(false);populateSubjects();draw();}
 }
 async function nextAction(){
- if(!scene||busy||saving)return;playing=false;busyUI(true,'Looking for the next shot or impact…');
+ if(!scene||busy||saving)return;stopDrone();playing=false;busyUI(true,'Looking for the next shot or impact…');
  try{
   const initial=scene.activity.at(-1),start=scene.engine.time;
   while(scene.engine.running&&scene.engine.time<Math.min(STUDY_MAX_SECONDS,start+20)){
@@ -97,16 +100,17 @@ async function saveShot(){
   const response=await fetch('/api/camera-study/shots',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}),result=await response.json();
   if(!response.ok)throw new Error(result.error??'The shot was not saved.');
   $('save-status').textContent=`Saved ${result.verdict==='preferred'?'preferred':'unwanted'} shot. Image, camera, scene and notes are recorded in project-docs/drone-camera-study/shots/.`;await refreshShots();
- }catch(error){$('save-status').textContent=`Not saved: ${error.message}. Your notes are still here.`;}finally{saving=false;$('save').disabled=false;$('scene-controls').disabled=$('camera-controls').disabled=false;renderer.camera.setControlsEnabled(true);paint();}
+ }catch(error){$('save-status').textContent=`Not saved: ${error.message}. Your notes are still here.`;}finally{saving=false;$('save').disabled=false;$('scene-controls').disabled=$('camera-controls').disabled=false;renderer.camera.setControlsEnabled(!autoDrone);paint();}
 }
 for(const recipe of STUDY_SCENARIOS)$('scenario').add(new Option(recipe.label,recipe.id));
 $('scenario').onchange=()=>{if(!busy&&!saving)void loadScene(STUDY_SCENARIOS.find(s=>s.id===$('scenario').value));};
 $('moment').oninput=()=>$('moment-label').textContent=`${Number($('moment').value).toFixed(2)} s`;
 $('moment').onchange=()=>seek(Number($('moment').value));$('back').onclick=()=>seek(scene.engine.time-1);$('step').onclick=()=>seek(scene.engine.time+1);$('action').onclick=nextAction;
 $('play').onclick=()=>{if(!busy&&!saving&&scene?.engine.running&&scene.engine.time<STUDY_MAX_SECONDS){playing=!playing;if(!playing)populateSubjects();paint();}};
-$('lens').oninput=()=>{renderer.camera.fov=Number($('lens').value);renderer.requestDraw();syncLens();};
-$('reset-view').onclick=()=>{resetView();canvas.focus();};$('fullscreen').onclick=()=>{if(!document.fullscreenElement)canvas.requestFullscreen().catch(fail);else document.exitFullscreen().catch(fail);};
-$('aim').onclick=()=>{const s=describeStudyScene(scene),actor=[...s.enemies,...s.defences].find(a=>a.id===$('subject').value);if(actor){aimAt(actor.aim??actor.position);canvas.focus();}};
+$('lens').oninput=()=>{const value=Number($('lens').value);stopDrone();renderer.camera.fov=value;renderer.requestDraw();syncLens();};
+$('reset-view').onclick=()=>{stopDrone();resetView();canvas.focus();};$('fullscreen').onclick=()=>{if(!document.fullscreenElement)canvas.requestFullscreen().catch(fail);else document.exitFullscreen().catch(fail);};
+$('aim').onclick=()=>{stopDrone();const s=describeStudyScene(scene),actor=[...s.enemies,...s.defences].find(a=>a.id===$('subject').value);if(actor){aimAt(actor.aim??actor.position);canvas.focus();}};
+$('drone-preview').onclick=()=>{if(busy||saving||!scene)return;if(autoDrone){stopDrone();draw();return;}manualPose=captureStudyCamera(renderer.camera);autoDrone=new DroneCamera(renderer.camera,{random:()=>.35});autoDrone.bind(scene.world);for(const e of scene.activity)if(e.kind!=='shot')autoDrone.noteActivity(e.x,e.y,e.z,e.at,e.weight);autoDrone.setEnabled(true);autoDrone.sync('wave',scene.engine);$('drone-preview').textContent='Return to manual camera';draw();};
 $('save').onclick=saveShot;$('refresh-shots').onclick=()=>refreshShots().catch(fail);
 function toggleControls(){document.body.classList.toggle('wide');$('wide').textContent=document.body.classList.contains('wide')?'Show controls · Tab':'Hide controls · Tab';renderer.requestDraw();}
 $('wide').onclick=toggleControls;
@@ -123,5 +127,5 @@ document.addEventListener('keydown',event=>{if(event.key==='Tab'&&!event.ctrlKey
 document.addEventListener('visibilitychange',()=>{clearInput();if(document.hidden){playing=false;loop.stop();}else if(!disposed&&!busy&&scene)loop.start();});
 const viewportResize=new ResizeObserver(sizeCanvas);viewportResize.observe(canvas.parentElement);
 window.addEventListener('resize',sizeCanvas);
-window.addEventListener('pagehide',()=>{disposed=true;loop.stop();viewportResize.disconnect();scene?.engine.dispose();renderer.dispose();scene?.dispose();});
+window.addEventListener('pagehide',()=>{disposed=true;loop.stop();viewportResize.disconnect();autoDrone?.dispose();scene?.engine.dispose();renderer.dispose();scene?.dispose();});
 try{busyUI(true);await renderer.init();await renderer.prepareDeathEffects();await loadScene(STUDY_SCENARIOS.find(s=>s.id==='split'));await refreshShots();}catch(error){busyUI(false);fail(error);}

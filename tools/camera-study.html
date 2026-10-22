@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Drone camera study · Defender</title><link rel="stylesheet" href="/tools/camera-study.css"></head>
+<body>
+<header><div><span class="eyebrow">DEFENDER / CAMERA STUDY</span><h1>Show me the shot.</h1></div><p>Freeze a battle. Find the view. Tell me why it works.</p><button id="wide" type="button">Hide controls · Tab</button></header>
+<main>
+ <section class="stage" aria-label="Camera composition viewport">
+  <div class="scene-bar"><strong id="scene-title">Loading scene…</strong><span id="scene-counts"></span><span id="frozen-badge">FROZEN</span></div>
+  <div class="canvas-space"><canvas id="world" tabindex="0" aria-label="Frozen battle. Drag to look, WASD to fly, Q and E to change height, Shift to move faster."></canvas><div id="loading" role="status">Preparing the renderer…</div></div>
+  <div class="flight-controls"><button type="button" data-move="w" aria-label="Move camera forward">Forward</button><button type="button" data-move="s" aria-label="Move camera back">Back</button><button type="button" data-move="a" aria-label="Move camera left">Left</button><button type="button" data-move="d" aria-label="Move camera right">Right</button><button type="button" data-move="e" aria-label="Raise camera">Up</button><button type="button" data-move="q" aria-label="Lower camera">Down</button><span>Hold to move · drag the view to look</span></div>
+  <p class="instructions"><b>WASD</b> fly · <b>Q / E</b> down / up · <b>Drag</b> look · <b>Shift</b> faster · <b>Tab</b> controls</p>
+  <output id="status" aria-live="polite">Your campaign and the current drone director are untouched.</output>
+ </section>
+ <aside aria-label="Camera study controls">
+  <fieldset id="scene-controls"><legend>1 / Choose the situation</legend><label for="scenario">Battle scenario</label><select id="scenario"></select><p id="scenario-description" class="muted"></p>
+   <label for="moment">Battle time <output id="moment-label">0.00 s</output></label><input id="moment" type="range" min="0" max="120" step="0.25" value="0"><div class="row"><button id="back" type="button">−1 s</button><button id="play" type="button">Watch battle</button><button id="step" type="button">+1 s</button></div><button id="action" type="button">Find next action</button>
+  </fieldset>
+  <fieldset id="camera-controls"><legend>2 / Frame the shot</legend><p class="muted">Click the view, then fly freely. You can go beyond the board. The battle stays frozen while you compose.</p>
+   <label for="lens">Field of view <output id="lens-label">64°</output></label><input id="lens" type="range" min="30" max="90" value="64" step="1"><div class="row"><button id="reset-view" type="button">Whole level</button><button id="fullscreen" type="button">Full screen</button></div>
+   <label for="subject">Point the camera at</label><select id="subject"><option value="">Choose an enemy or defence…</option></select><button id="aim" type="button">Aim at selected subject</button>
+  </fieldset>
+  <fieldset id="record-controls"><legend>3 / Record your direction</legend><label for="verdict">This shot is</label><select id="verdict"><option value="preferred">A view I want</option><option value="avoid">A view to avoid</option></select><label for="notes">What should the camera show, and why?</label><textarea id="notes" rows="4" maxlength="4000" placeholder="For example: keep both fronts visible, show more of the level, stay lower, or leave this fight sooner."></textarea><button id="save" class="primary" type="button">Save shot + notes</button><p class="muted">Saves the image, exact camera pose, enemies, defences, recent action and replay moment into the project for our rebuild.</p><output id="save-status" aria-live="polite"></output></fieldset>
+  <section aria-label="Recorded shots"><div class="row"><h2>Saved examples</h2><button id="refresh-shots" type="button">Refresh</button></div><p class="muted">Select an example to restore its moment and camera. Your notes stay with it.</p><div id="saved-shots"></div></section>
+ </aside>
+</main><script type="module" src="/tools/camera-study.js"></script></body></html>

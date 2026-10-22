@@ -4,9 +4,11 @@ import {createHash} from 'node:crypto';
 import {canonicalModel,upgradeModel} from './shared/model.js';
 import {validateLevel,upgradeLevel} from './shared/level.js';
 import {serveDocs,PUBLIC_CSP} from './server/docs.js';
+import {cameraStudyStore} from './server/camera-study.js';
 
 const root=import.meta.dir, assetRoot=process.env.DEFENDER_ASSET_ROOT || join(root,'assets');
 const docsRoot=process.env.DEFENDER_DOCS_ROOT || join(root,'project-docs');
+const cameraStudy=cameraStudyStore(join(docsRoot,'drone-camera-study','shots'));
 for(const kind of ['models','levels'])await mkdir(join(assetRoot,kind),{recursive:true});
 const revision=text=>createHash('sha256').update(text).digest('hex');
 const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
@@ -18,6 +20,7 @@ export const server=Bun.serve({hostname:'127.0.0.1',port:Number(process.env.PORT
     const url=new URL(request.url);const api=url.pathname.match(/^\/api\/(models|levels)(?:\/([a-z][a-z0-9-]{0,63}))?$/);
     if(!['127.0.0.1','localhost'].includes(url.hostname))return json({error:'Localhost only.'},403);
     try {
+      const study=await cameraStudy(request);if(study)return study;
       if(api){
         const [,kind,id]=api;
         if(request.method==='GET'){

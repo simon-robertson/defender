@@ -232,7 +232,7 @@ document.addEventListener('click',async event=>{
   if(action==='buy'){const bought=session.buy(button.dataset.model??'turret-study');if(bought){selectedId=bought;notice='';paint();}return;}
   if(action==='select'&&session.preparing){selectedId=id;refreshPlacement();paint();return;}
   if(action==='cancel'){selectedId=null;refreshPlacement();paint();return;}
-  if(action==='deploy'||action==='loadout'){if(session.prepare(action==='deploy'?'deploy':'loadout')){notice='';refreshPlacement();paint();}return;}
+  if(action==='deploy'||action==='loadout'){if(session.prepare(action==='deploy'?'deploy':'loadout')){if(action==='deploy')selectedId=session.nextUnplaced();notice='';refreshPlacement();paint();}return;}
   if(action==='upgrade'){
    const candidate=session.fork();if(!candidate.upgrade(id))return;
    if(candidate.units.find(unit=>unit.id===id).box)await commitArrangement(candidate);else{session.adopt(candidate);paint();}return;

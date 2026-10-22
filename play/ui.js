@@ -3,7 +3,7 @@ import {RosterGroups} from './roster.js';
 // Presentation only: the play session owns state, prices and all actions.
 // Buttons expose data-action and optional data-unit for app-level delegation.
 const $=id=>document.getElementById(id);
-const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
+const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
 const rows=new Map(),shopRows=new Map();
 const roster=new RosterGroups(refs['unit-list']);
 let previewKey='';
@@ -111,6 +111,7 @@ export function renderUI(snapshot={}){
   show(refs['title-screen'],phase==='title');show(refs.hud,phase!=='title');show(refs['prepare-panel'],prep);show(refs['wave-preview'],prep);show(refs['board-footer'],phase!=='title');
   show(refs['options-screen'],phase==='title'&&snapshot.optionsOpen&&!error);
   show(refs['pause-screen'],paused&&!screenshot&&!error);show(refs['result-screen'],result&&!error);show(refs['error-screen'],error);show(refs.loading,busy&&!error);
+  if(busy)setText(refs['loading-area'],`AREA ${snapshot.loadingArea??((snapshot.zone??'A')+(snapshot.levelNumber??1))}`);
   const modal=error?refs['error-screen']:phase==='title'&&snapshot.optionsOpen?refs['options-screen']:paused&&!screenshot?refs['pause-screen']:result?refs['result-screen']:null;
   currentActions=new Set(screenshot?[]:error?['retry-load','title']:busy?[]:modal===refs['options-screen']?['close-options']:paused?['resume','title']:(phaseActions[phase]??[]));
   if(!snapshot.savedGame||snapshot.savingProgress)currentActions.delete('continue');
@@ -118,7 +119,7 @@ export function renderUI(snapshot={}){
   setText($('continue-button'),`CONTINUE · ${snapshot.savedGame?.area??''}`);
   $('new-game-button').classList.toggle('has-checkpoint',Boolean(snapshot.savedGame));
   setText($('save-status'),snapshot.saveError||(snapshot.savingProgress?'Saving progress…':snapshot.savedGame?`Checkpoint: Area ${snapshot.savedGame.area} · ${snapshot.savedGame.completedWaves} waves cleared. New Game keeps this save until you clear a level.`:'Progress saves after each level on this device.'));
-  for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||screenshot;
+  for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||busy||screenshot;
   $('scene').inert=Boolean(modal)||busy;
   for(const button of document.querySelectorAll('button[data-action]'))button.disabled=!currentActions.has(button.dataset.action);
   for(const input of document.querySelectorAll('input[data-graphics]')){input.checked=snapshot.graphics?.[input.dataset.graphics]!==false;input.disabled=busy||error||phase!=='title';}

@@ -55,7 +55,7 @@ function reflectedDamage(){
 }
 
 export function hasReflectionEffects(renderer){
- return !!(renderer.shotEffects?.instanceCount||renderer.damageEffects?.smokeCount||renderer.damageEffects?.blastCount||renderer.arcEffects?.instanceCount||renderer.plasmaLinks?.instanceCount||renderer.missileThrust?.instanceCount);
+ return !!(renderer.shotEffects?.instanceCount||renderer.damageEffects?.smokeCount||renderer.damageEffects?.blastCount||renderer.arcEffects?.instanceCount||renderer.missileThrust?.instanceCount);
 }
 
 // Application-owned pipelines and bounded smoke ordering scratch. Every other
@@ -73,7 +73,7 @@ export class ReflectionEffects {
    fragment:{module,entryPoint:fragment,targets:[{format:'rgba8unorm',blend:{color:{srcFactor:'src-alpha',dstFactor:additive?'one':'one-minus-src-alpha',operation:'add'},alpha:{srcFactor:'one',dstFactor:'one-minus-src-alpha',operation:'add'}}}]},
    primitive:{topology:'triangle-list',cullMode:'none'},depthStencil:{format:'depth32float',depthWriteEnabled:false,depthCompare:'less-equal'}});
   this.shotPipeline=pipeline('Mirrored muzzle flashes and thrust',shots,'vertex','fragment',SHOT_INSTANCE_FLOATS,true);
-  this.arcPipeline=pipeline('Mirrored Arc and plasma',arcs,'vertex','fragment',ARC_INSTANCE_FLOATS,true);
+  this.arcPipeline=pipeline('Mirrored Arc',arcs,'vertex','fragment',ARC_INSTANCE_FLOATS,true);
   this.smokePipeline=pipeline('Mirrored sorted smoke',damage,'damageVertex','smokeFragment',DAMAGE_PARTICLE_FLOATS,false);
   this.blastPipeline=pipeline('Mirrored explosion flashes',damage,'damageVertex','blastFragment',DAMAGE_PARTICLE_FLOATS,true);
   this.smokeData=new Float32Array(MAX_SMOKE*DAMAGE_PARTICLE_FLOATS);this.smokeOrder=new Uint32Array(MAX_SMOKE);this.smokeDepth=new Float64Array(MAX_SMOKE);
@@ -99,7 +99,6 @@ export class ReflectionEffects {
   if(renderer.shotEffects?.instanceCount){pass.setPipeline(this.shotPipeline);pass.setVertexBuffer(0,renderer.shotInstances);pass.draw(6,renderer.shotEffects.instanceCount);draws++;}
   if(renderer.missileThrust?.instanceCount){pass.setPipeline(this.shotPipeline);pass.setVertexBuffer(0,renderer.missileThrustInstances);pass.draw(6,renderer.missileThrust.instanceCount);draws++;}
   if(renderer.arcEffects?.instanceCount){pass.setPipeline(this.arcPipeline);pass.setVertexBuffer(0,renderer.arcInstances);pass.draw(6,renderer.arcEffects.instanceCount);draws++;}
-  if(renderer.plasmaLinks?.instanceCount){pass.setPipeline(this.arcPipeline);pass.setVertexBuffer(0,renderer.plasmaInstances);pass.draw(6,renderer.plasmaLinks.instanceCount);draws++;}
   return draws;
  }
  dispose(){this.disposed=true;this.smokeBuffer.destroy();}

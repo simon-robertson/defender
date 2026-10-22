@@ -55,7 +55,7 @@ async function loadScene(recipe,seconds=recipe.seconds,{pose=null,keepCamera=fal
  try{
   if(scene){scene.engine.dispose();renderer.clearWorld();await renderer.device.queue.onSubmittedWorkDone();scene.dispose();scene=null;}
   scene=await createStudyScene(recipe,{onActivity:(kind,x,y,z,at,weight)=>{if(kind!=='shot')autoDrone?.noteActivity(x,y,z,at,weight);},onWorld:world=>{renderer.setWorld(world);applyPlayLighting(renderer,world.playConditions);},onPoseChange:renderer.updateInstance.bind(renderer),onVisible:renderer.setActorVisible.bind(renderer)});
-  renderer.setShotEffects(scene.shots);renderer.setDamageEffects(scene.damage);renderer.setArcEffects(scene.arcs);renderer.setPlasmaLinks(scene.plasma);renderer.setMissileThrust(scene.engine.firing.missiles.thrust);
+  renderer.setShotEffects(scene.shots);renderer.setDamageEffects(scene.damage);renderer.setArcEffects(scene.arcs);renderer.setGeneratorLights(scene.generatorLights);renderer.setMissileThrust(scene.engine.firing.missiles.thrust);
   await advanceStudyScene(scene,seconds,{onProgress:time=>$('loading').textContent=`Replaying battle · ${time.toFixed(0)} / ${seconds.toFixed(0)} s`});
   renderer.camera.pathModeEnabled=false;renderer.camera.setControlsEnabled(true);
   if(pose??previous){const savedPose=pose??previous;viewAspect=savedPose.viewport[0]/savedPose.viewport[1];sizeCanvas();restoreStudyCamera(renderer.camera,savedPose);syncLens();}else{viewAspect=16/9;sizeCanvas();resetView();}

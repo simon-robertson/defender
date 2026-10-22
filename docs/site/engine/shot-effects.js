@@ -31,6 +31,7 @@ export class ShotEffects {
  emit(matrix,sockets,at){
   const age=this.time-at;if(age<0||age>=SPARK_SECONDS)return; // Never replay expired shots after a stall.
   this.liveUntil=Math.max(this.liveUntil,at+SPARK_SECONDS);this.needsCleanup=true;
+  let search=0;
   for(let mouth=0;mouth<sockets.length;mouth++){
    const socket=sockets[mouth];
    if(age<FLASH_SECONDS){
@@ -40,7 +41,7 @@ export class ShotEffects {
    }
    this.muzzle(matrix,socket);const p=this.point;
    for(let n=0;n<6;n++){
-    let slot=-1;for(let i=0;i<MAX_SHOT_SPARKS;i++)if(this.sparkBirth[i]===-Infinity){slot=i;break;}
+    let slot=-1;for(;search<MAX_SHOT_SPARKS;search++)if(this.sparkBirth[search]===-Infinity){slot=search++;break;}
     if(slot<0){this.droppedSparks++;continue;}
     const k=slot*8,angle=this.random()*Math.PI*2,spread=5+this.random()*12,speed=10+this.random()*16,cos=Math.cos(angle),sin=Math.sin(angle);
     this.sparkBirth[slot]=at;this.sparks[k]=p[0];this.sparks[k+1]=p[1];this.sparks[k+2]=p[2];
@@ -52,8 +53,9 @@ export class ShotEffects {
  impact(point,normal,at=this.time){
   if(this.time-at<0||this.time-at>=IMPACT_SECONDS)return;
   this.liveUntil=Math.max(this.liveUntil,at+IMPACT_SECONDS);this.needsCleanup=true;
+  let search=0;
   for(let n=0;n<10;n++){
-   let slot=-1;for(let i=0;i<MAX_SHOT_SPARKS;i++)if(this.sparkBirth[i]===-Infinity){slot=i;break;}
+   let slot=-1;for(;search<MAX_SHOT_SPARKS;search++)if(this.sparkBirth[search]===-Infinity){slot=search++;break;}
    if(slot<0){this.droppedSparks++;break;}
    const k=slot*8,s=this.sparks;this.sparkBirth[slot]=at;
    for(let a=0;a<3;a++){s[k+a]=point[a]+normal[a]*.15;s[k+3+a]=normal[a]*(14+this.random()*16)+(this.random()-.5)*24;}

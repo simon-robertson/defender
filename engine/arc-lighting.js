@@ -1,5 +1,4 @@
-import {ARC_LIGHT_SEGMENTS} from '../shared/arc-effects.js';
-import {MAX_TUBE_LIGHTS} from '../shared/plasma-links.js';
+import {MAX_ARC_STRIKES,ARC_LIGHT_SEGMENTS} from '../shared/arc-effects.js';
 
 // A distinct continuous finite-segment source. Adjacent segments are one tube
 // field: strongest contribution wins within a strike; independent strikes add.
@@ -11,7 +10,7 @@ struct ArcLights { count:vec4<f32>, lights:array<ArcLight> };
 @group(${group}) @binding(2) var<storage,read> arcLights:ArcLights;
 fn arcIllumination(world:vec3<f32>,normalOrView:vec3<f32>,mode:u32)->vec3<f32>{
  var result=vec3<f32>(0);
- for(var index=0u;index<min(u32(arcLights.count.x),min(arrayLength(&arcLights.lights),${MAX_TUBE_LIGHTS}u));index++){
+ for(var index=0u;index<min(u32(arcLights.count.x),min(arrayLength(&arcLights.lights),${MAX_ARC_STRIKES}u));index++){
   let bounds=arcLights.lights[index].bounds;let fromCentre=world-bounds.xyz;
   // Zero radius retains unbounded diagnostic records; production pools always
   // pack a conservative sphere enclosing every finite segment and falloff.

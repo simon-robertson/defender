@@ -38,27 +38,26 @@ export class BloomPasses {
   this.extractPass.colorAttachments[0].view=this.firstView;this.horizontalPass.colorAttachments[0].view=this.secondView;this.verticalPass.colorAttachments[0].view=this.firstView;return true;
  }
  render(encoder,renderer,width,height,opaqueUpdated,waterUpdated){
-  this.draws=this.passes=0;const shots=renderer.shotEffects,damage=renderer.damageEffects,arcs=renderer.arcEffects,plasma=renderer.plasmaLinks,thrust=renderer.missileThrust,shot=!!shots?.flashCount,blast=!!damage?.blastCount,arc=!!arcs?.strikeCount,link=!!plasma?.instanceCount,burn=!!thrust?.instanceCount,transient=shot||blast||arc||link||burn;
+  this.draws=this.passes=0;const shots=renderer.shotEffects,damage=renderer.damageEffects,arcs=renderer.arcEffects,thrust=renderer.missileThrust,shot=!!shots?.flashCount,blast=!!damage?.blastCount,arc=!!arcs?.strikeCount,burn=!!thrust?.instanceCount,transient=shot||blast||arc||burn;
   if(!renderer.visibleEmitters&&!transient){this.active=false;this.wasTransient=false;return;}
   const wasActive=this.active,resized=this.ensureTargets(width,height);this.active=true;
   const ratioX=width/this.width,ratioY=height/this.height;
   if(this.settingsData[0]!==Math.fround(ratioX)||this.settingsData[1]!==Math.fround(ratioY)){this.settingsData[0]=ratioX;this.settingsData[1]=ratioY;this.device.queue.writeBuffer(this.settings,0,this.settingsData);}
-  const moving=shot||blast||arc||burn,linkChanged=link&&(plasma.revision===undefined||plasma.revision!==this.plasmaRevision);
-  if(!resized&&wasActive&&!opaqueUpdated&&!waterUpdated&&!moving&&!this.wasTransient&&!linkChanged)return;
-  this.wasTransient=moving;this.plasmaRevision=plasma?.revision;
+  const moving=shot||blast||arc||burn;
+  if(!resized&&wasActive&&!opaqueUpdated&&!waterUpdated&&!moving&&!this.wasTransient)return;
+  this.wasTransient=moving;
   const source=encoder.beginRenderPass(this.extractPass);source.setPipeline(this.extractPipeline);source.setBindGroup(0,renderer.cameraGroup);source.setBindGroup(1,renderer.screenGroup);source.draw(3);this.draws++;
   if(transient){source.setBindGroup(2,renderer.lightGroup);source.setBindGroup(3,this.settingsGroup);}
   if(shot){source.setPipeline(this.shotPipeline);source.setVertexBuffer(0,renderer.shotInstances);source.draw(6,shots.flashCount*2);this.draws++;}
   if(burn){source.setPipeline(this.shotPipeline);source.setVertexBuffer(0,renderer.missileThrustInstances);source.draw(6,thrust.instanceCount);this.draws++;}
   if(blast){source.setPipeline(this.blastPipeline);source.setVertexBuffer(0,renderer.damageParticleBuffer);source.draw(6,damage.blastCount,0,damage.smokeCount+(damage.waterParticleCount??0));this.draws++;}
-  if(arc||link){
+  if(arc){
    if(!this.arcPipeline){
     const module=this.device.createShaderModule({label:'Electrical channel emitter',code:arcParticles(uniforms)});
     this.arcPipeline=this.device.createRenderPipeline({label:'Reduced electrical emission',layout:this.particleLayout,vertex:{module,entryPoint:'vertex',buffers:[{arrayStride:ARC_INSTANCE_FLOATS*4,stepMode:'instance',attributes:[0,1,2].map(shaderLocation=>({shaderLocation,offset:shaderLocation*16,format:'float32x4'}))}]},fragment:{module,entryPoint:'bloomFragment',targets:this.particleTargets},primitive:{topology:'triangle-list',cullMode:'none'}});
    }
    source.setPipeline(this.arcPipeline);
    if(arc){source.setVertexBuffer(0,renderer.arcInstances);source.draw(6,arcs.instanceCount-arcs.sparkCount);this.draws++;}
-   if(link){source.setVertexBuffer(0,renderer.plasmaInstances);source.draw(6,plasma.instanceCount);this.draws++;}
   }source.end();
   const horizontal=encoder.beginRenderPass(this.horizontalPass);horizontal.setPipeline(this.horizontalPipeline);horizontal.setBindGroup(0,this.firstGroup);horizontal.draw(3);horizontal.end();
   const vertical=encoder.beginRenderPass(this.verticalPass);vertical.setPipeline(this.verticalPipeline);vertical.setBindGroup(0,this.secondGroup);vertical.draw(3);vertical.end();this.draws+=2;this.passes=3;

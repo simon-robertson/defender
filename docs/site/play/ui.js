@@ -7,7 +7,7 @@ const $=id=>document.getElementById(id);
 const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','last-wave-summary','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','resume-checkpoint-button','result-checkpoint','leave-screen','leave-checkpoint','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
 const rows=new Map(),shopRows=new Map();
 const roster=new RosterGroups(refs['unit-list']);
-let previewKey='',briefingSelection=null;
+let previewKey='',briefingSelection=null,briefingHover=null,briefingFocus=null,briefingEnabled=false;
 let previousPhase=null,previousModal=null,pendingFocus=null,currentActions=new Set(['play']);
 const waveActions=['title','pause'];
 const phaseActions={title:['play','continue','options'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['continue','retry','title'],complete:['retry','title']};
@@ -29,7 +29,7 @@ function createUnitRow(unit){
   const operations=document.createElement('div');operations.className='unit-operations';
   const upgrade=document.createElement('button');upgrade.type='button';upgrade.dataset.action='upgrade';upgrade.dataset.unit=unit.id;
   const undeploy=document.createElement('button');undeploy.type='button';undeploy.dataset.action='undeploy';undeploy.dataset.unit=unit.id;undeploy.textContent='Recall';operations.append(upgrade,undeploy);row.append(select,operations);
-  const briefing=document.createElement('div');briefing.className='upgrade-briefing';briefing.id='upgrade-briefing-'+unit.id;upgrade.setAttribute('aria-describedby',briefing.id);row.append(briefing);
+  const briefing=document.createElement('div');briefing.className='upgrade-briefing';briefing.id='upgrade-briefing-'+unit.id;briefing.hidden=true;briefing.setAttribute('role','tooltip');upgrade.setAttribute('aria-describedby',briefing.id);document.body.append(briefing);
   return {row,select,portrait,number,name,detail,operations,upgrade,undeploy,briefing};
 }
 
@@ -50,20 +50,31 @@ function updateInventory(snapshot,locked){
     show(entry.undeploy,deploy&&Boolean(unit.deployed));entry.undeploy.disabled=locked||!deploy||!unit.deployed;
     show(entry.operations,(loadout&&hasUpgrade)||(deploy&&Boolean(unit.deployed)));
     const comparison=loadout&&hasUpgrade?upgradeComparison(unit):null,key=JSON.stringify(comparison);
-    show(entry.briefing,Boolean(comparison));
+    entry.hasComparison=Boolean(comparison);
     if(entry.briefing.dataset.key!==key){entry.briefing.dataset.key=key;entry.briefing.replaceChildren();if(comparison){
      const title=document.createElement('h4');title.textContent=`UPGRADE ${unit.nextVariant==='upgrade2'?'II':'I'} · CURRENT → NEXT`;
      const list=document.createElement('dl');for(const[label,value]of comparison.rows){const name=document.createElement('dt'),detail=document.createElement('dd');name.textContent=label;detail.textContent=value;list.append(name,detail);}
      const note=document.createElement('p');note.textContent=comparison.note;entry.briefing.append(title,list,note);
     }}
   }
-  for(const[id,entry]of rows)if(!live.has(id)){entry.row.remove();rows.delete(id);}
+  for(const[id,entry]of rows)if(!live.has(id)){entry.row.remove();entry.briefing.remove();rows.delete(id);}
   roster.sync(units,rows);
-  const inspected=loadout&&!locked?rows.get(snapshot.selectedId):null;
-  if(inspected&&!inspected.briefing.hidden&&briefingSelection!==snapshot.selectedId)inspected.briefing.scrollIntoView({block:'nearest',inline:'nearest'});
   briefingSelection=loadout?snapshot.selectedId:null;
+  briefingEnabled=loadout&&!locked&&!snapshot.leaveOpen;
   setText(refs['unit-count'],ordinal(units.length));show(refs['empty-inventory'],units.length===0);
   return units;
+}
+
+// Keep comparisons outside the clipped roster without changing its row heights.
+function positionBriefing(){
+ const inspected=briefingEnabled?rows.get(briefingHover??briefingFocus??briefingSelection):null;
+ for(const entry of rows.values())show(entry.briefing,entry===inspected&&entry.hasComparison);
+ if(!inspected?.hasComparison)return;
+ const rect=inspected.row.getBoundingClientRect(),panel=refs['unit-list'].closest('.prepare-scroll')??refs['prepare-panel'],clip=panel.getBoundingClientRect();
+ if(rect.bottom<=clip.top||rect.top>=clip.bottom||inspected.row.closest('[hidden],[inert]')){show(inspected.briefing,false);return;}
+ const tooltip=inspected.briefing,box=tooltip.getBoundingClientRect();
+ tooltip.style.left=Math.max(8,rect.left-box.width-12)+'px';
+ tooltip.style.top=Math.max(8,Math.min(innerHeight-box.height-8,rect.top))+'px';
 }
 
 function focusable(root){return [...root.querySelectorAll('button:not(:disabled),input:not(:disabled),[tabindex="0"]')].filter(node=>!node.closest('[hidden]'));}
@@ -123,7 +134,7 @@ export function renderUI(snapshot={}){
   show(refs['title-screen'],phase==='title');show(refs.hud,phase!=='title');show(refs['prepare-panel'],prep);show(refs['wave-preview'],prep);show(refs['board-footer'],phase!=='title');
   show(refs['options-screen'],phase==='title'&&snapshot.optionsOpen&&!error);
   show(refs['leave-screen'],Boolean(snapshot.leaveOpen)&&!error);setText(refs['leave-checkpoint'],checkpointDescription(snapshot.savedGame,snapshot.savingProgress));
-  show(refs['pause-screen'],paused&&!screenshot&&!error&&!snapshot.leaveOpen);show(refs['result-screen'],result&&!error&&!snapshot.leaveOpen);show(refs['error-screen'],error);show(refs.loading,busy&&!error);
+  show(refs['pause-screen'],paused&&!screenshot&&!error&&!snapshot.leaveOpen);show(refs['result-screen'],result&&!error&&!snapshot.leaveOpen);show(refs['error-screen'],error);show(refs.loading,busy&&!error&&!(snapshot.loadingTitle??phase==='title'));
   if(busy)setText(refs['loading-area'],`AREA ${snapshot.loadingArea??((snapshot.zone??'A')+(snapshot.levelNumber??1))}`);
   const modal=error?refs['error-screen']:snapshot.leaveOpen?refs['leave-screen']:phase==='title'&&snapshot.optionsOpen?refs['options-screen']:paused&&!screenshot?refs['pause-screen']:result?refs['result-screen']:null;
   currentActions=new Set(screenshot?[]:error?['retry-load','title']:busy?[]:modal===refs['leave-screen']?['cancel-leave','confirm-title']:modal===refs['options-screen']?['close-options']:paused?['resume','title']:(phaseActions[phase]??[]));
@@ -135,6 +146,7 @@ export function renderUI(snapshot={}){
   for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||busy||screenshot;
   $('scene').inert=Boolean(modal)||busy;
   for(const button of document.querySelectorAll('button[data-action]'))button.disabled=!currentActions.has(button.dataset.action);
+  const soundLevel=$('sound-level'),volume=Math.round((snapshot.soundLevel??.8)*100);soundLevel.value=String(volume);soundLevel.disabled=busy||error||phase!=='title';soundLevel.setAttribute('aria-valuetext',volume+'%');setText($('sound-level-value'),volume+'%');
   for(const input of document.querySelectorAll('input[data-graphics]')){input.checked=snapshot.graphics?.[input.dataset.graphics]!==false;input.disabled=busy||error||phase!=='title';}
 
   const wave=Math.max(1,snapshot.waveNumber??1),waves=Math.max(1,snapshot.wavesPerLevel??4),tokens=count(snapshot.tokens),misses=count(snapshot.misses),limit=snapshot.missLimit??10;
@@ -197,7 +209,7 @@ export function renderUI(snapshot={}){
     if(target&&!target.disabled&&!target.closest('[hidden]'))target.focus({preventScroll:true});
     if(!busy)pendingFocus=null;
   }
-  previousPhase=phase;previousModal=modal;
+  previousPhase=phase;previousModal=modal;positionBriefing();
 }
 
 // Keep app-level delegated actions inside the visible, unlocked UI surface.
@@ -220,8 +232,9 @@ document.addEventListener('keydown',event=>{
   else if(!event.shiftKey&&(document.activeElement===last||!previousModal.contains(document.activeElement))){event.preventDefault();first.focus();}
 },true);
 
-// Keep a keyboard-inspected comparison visible within the roster scroll area.
-document.addEventListener('focusin',event=>{
- const button=event.target.closest?.('button[data-action="upgrade"]'),entry=button&&rows.get(button.dataset.unit);
- if(entry&&!entry.briefing.hidden&&!entry.row.closest('[hidden],[inert]'))entry.briefing.scrollIntoView({block:'nearest',inline:'nearest'});
-});
+refs['unit-list'].addEventListener('pointerover',event=>{briefingHover=event.target.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
+refs['unit-list'].addEventListener('pointerout',event=>{briefingHover=event.relatedTarget?.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
+refs['unit-list'].addEventListener('focusin',event=>{briefingFocus=event.target.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
+refs['unit-list'].addEventListener('focusout',event=>{briefingFocus=event.relatedTarget?.closest?.('.unit-row')?.dataset.unit??null;positionBriefing();});
+document.addEventListener('scroll',positionBriefing,true);
+window.addEventListener('resize',positionBriefing);

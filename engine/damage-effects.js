@@ -106,9 +106,9 @@ export class DamageEffects {
   this.launches++;return this.burstSmoke(x,y,z,MISSILE_LAUNCH_SMOKE,false);
  }
  burstSmoke(x,y,z,rule,impact){
-  const rng=this.random;let emitted=0;
+  const rng=this.random;let emitted=0,search=0;
   for(let i=0;i<rule.count;i++){
-   let p=null;for(let slot=0;slot<MAX_EFFECT_SMOKE;slot++){const candidate=this.smoke[slot];if(!candidate.active){p=candidate;break;}}
+   let p=null;for(;search<MAX_EFFECT_SMOKE;){const candidate=this.smoke[search++];if(!candidate.active){p=candidate;break;}}
    if(!p){const dropped=rule.count-i;this.droppedSmoke+=dropped;if(!impact)this.droppedLaunchSmoke+=dropped;break;}
    const angle=(i+rng())/rule.count*Math.PI*2,spread=.4+rng()*1.1,speed=rule.minOutSpeed+rng()*(rule.maxOutSpeed-rule.minOutSpeed),dx=Math.cos(angle),dz=Math.sin(angle);
    p.active=true;p.launch=!impact;p.impact=impact;p.trail=false;p.age=0;p.life=rule.minLife+rng()*(rule.maxLife-rule.minLife);
@@ -130,10 +130,10 @@ export class DamageEffects {
   let emitter=null;for(const candidate of this.emitters)if(candidate.state===state){emitter=candidate;break;}if(!emitter)return;
   const config=emitter.config.explosion,palette=emitter.palette,rng=this.random,paletteOffset=rng();
   updateOrigin(emitter);const origin=emitter.origin;
-  const blast=this.reserveBlast('death');
+  let search=0;const blast=this.reserveBlast('death');
   blast.age=0;blast.x=origin[0];blast.y=origin[1];blast.z=origin[2];blast.seed=rng()*6.28;blast.config=config;
   for(let i=0;i<config.debrisCount;i++){
-   let p=null;for(let slot=0;slot<MAX_DEBRIS;slot++){const candidate=this.cubes[slot];if(!candidate.active){p=candidate;break;}}
+   let p=null;for(;search<MAX_DEBRIS;){const candidate=this.cubes[search++];if(!candidate.active){p=candidate;break;}}
    if(!p){this.droppedCubes+=config.debrisCount-i;break;}
    // Spread a short burst across the weighted palette instead of allowing a
    // run of random choices to omit the model's pale armour entirely.
@@ -151,6 +151,7 @@ export class DamageEffects {
  }
  emitSmoke(deltaSeconds){
   if(!Number.isFinite(deltaSeconds)||deltaSeconds<0)throw new Error('Invalid smoke delta.');
+  let search=0;
   for(const emitter of this.emitters){
    const state=emitter.state,settings=emitter.config.smoke;
    if(!state.health.alive||state.health.current>=state.health.maximum*settings.threshold){emitter.carry=0;continue;}
@@ -158,7 +159,7 @@ export class DamageEffects {
    // Never replay an unbounded backlog after a stalled frame.
    emitter.carry+=Math.min(deltaSeconds,settings.life)*settings.rate;
    while(emitter.carry>=1){
-    emitter.carry--;let p=null;for(let slot=0;slot<MAX_EFFECT_SMOKE;slot++){const candidate=this.smoke[slot];if(!candidate.active){p=candidate;break;}}
+    emitter.carry--;let p=null;for(;search<MAX_EFFECT_SMOKE;){const candidate=this.smoke[search++];if(!candidate.active){p=candidate;break;}}
     if(!p){this.droppedSmoke++;continue;}
     const age=emitter.carry/settings.rate,rng=this.random;
     p.active=true;p.launch=p.trail=p.impact=false;p.age=age;p.life=settings.life;p.x=origin[0];p.y=origin[1];p.z=origin[2];

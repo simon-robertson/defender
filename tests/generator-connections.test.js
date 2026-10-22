@@ -1,7 +1,7 @@
 // Combat/layout regressions use the archived populated-route studies.
 // Current landscape sources are exercised by landscape-preview-runtime.test.js.
 import {test,expect} from 'bun:test';
-import {createPlasmaLinks} from '../game/plasma-links.js';
+import {createGeneratorConnections} from '../game/generator-connections.js';
 import {EnhancerPreview} from '../game/enhancer-preview.js';
 import {placementMatrix} from '../shared/math.js';
 import {newLevel} from '../shared/level.js';
@@ -13,7 +13,7 @@ const key=(x,y,z)=>`${x},${y},${z}`,occupancy=new Map();
 for(const model of sources.values())for(const variant of variants)for(const part of model.variants[variant].parts)occupancy.set(part,new Set(part.voxels.map(c=>key(c[0],c[1],c[2]))));
 function placement(id,model,x,z,variant='base',turn=0){return {id,model,variant,box:[x,0,z],turn};}
 function fixture(placements){
- const level=newLevel('plasma-links');level.size=[7,7];level.placements=placements;
+ const level=newLevel('generator-links');level.size=[7,7];level.placements=placements;
  const rigs=new Map(placements.map(p=>{
   const model=sources.get(p.model),root=placementMatrix(p.box,p.turn);root[13]=24;
   return [p.id,{model:p.model,variant:p.variant,role:model.role,root,parts:model.variants[p.variant].parts,
@@ -39,7 +39,7 @@ test('every cardinal neighbour, independent quarter turn and recipient upgrade u
  let cases=0;
  for(const model of ids.slice(1))for(const variant of variants)for(const [dx,dz]of directions)for(let sourceTurn=0;sourceTurn<4;sourceTurn++)for(let targetTurn=0;targetTurn<4;targetTurn++){
   const world=fixture([placement('generator','power-generator',3,3,'base',sourceTurn),placement('receiver',model,3+dx,3+dz,variant,targetTurn)]);
-  const links=createPlasmaLinks(world,[active('generator',['receiver'])]);expect(links).toHaveLength(1);
+  const links=createGeneratorConnections(world,[active('generator',['receiver'])]);expect(links).toHaveLength(1);
   const link=links[0],sourceRig=world.rigs.get('generator'),targetRig=world.rigs.get('receiver');
   expect(link.source).toBeInstanceOf(Float64Array);expect(link.target).toBeInstanceOf(Float64Array);
   expect(link.sourceId).toBe('generator');expect(link.targetId).toBe('receiver');expect(link.source[1]).toBe(34.5);expect(link.target[1]).toBe(35.5);
@@ -60,13 +60,13 @@ test('links follow only cached eligible enhancer recipients, once per source and
  const placements=[placement('g','power-generator',3,3),placement('north','arc-spire',3,2,'upgrade1'),placement('east','missile-launcher',4,3,'upgrade2'),placement('west','turret-study',2,3),
   placement('south','turret-study',3,4),placement('diagonal','turret-study',4,4),placement('far','turret-study',5,3),placement('empty','power-generator',0,0),placement('other','power-generator',1,3),placement('inactive','power-generator',4,2,'upgrade1')];
  const world=fixture(placements),weapons=placements.filter(p=>p.model!=='power-generator'&&p.id!=='south').map(p=>({id:p.id,model:p.model,variant:p.variant,strength:10}));
- const enhancers=new EnhancerPreview(world,weapons),before=JSON.stringify(enhancers.states),links=createPlasmaLinks(world,enhancers.states);
+ const enhancers=new EnhancerPreview(world,weapons),before=JSON.stringify(enhancers.states),links=createGeneratorConnections(world,enhancers.states);
  expect(links.map(p=>[p.sourceId,p.targetId])).toEqual([['g','north'],['g','east'],['g','west'],['other','west']]);
  expect(JSON.stringify(enhancers.states)).toBe(before);
- expect(createPlasmaLinks(world,[active('g',['west','west']),active('g',['west'])])).toHaveLength(1);
- expect(createPlasmaLinks(world,[{...active('g',['west']),active:false}])).toEqual([]);
- expect(createPlasmaLinks(world,[])).toEqual([]);
- enhancers.dispose();expect(createPlasmaLinks(world,enhancers.states)).toEqual([]);
+ expect(createGeneratorConnections(world,[active('g',['west','west']),active('g',['west'])])).toHaveLength(1);
+ expect(createGeneratorConnections(world,[{...active('g',['west']),active:false}])).toEqual([]);
+ expect(createGeneratorConnections(world,[])).toEqual([]);
+ enhancers.dispose();expect(createGeneratorConnections(world,enhancers.states)).toEqual([]);
 });
 
 test('stale, unsupported and non-cardinal state entries cannot attach to an unrelated rig or moving part',()=>{
@@ -84,7 +84,7 @@ test('stale, unsupported and non-cardinal state entries cannot attach to an unre
   if(fault==='raised-target')target.root[13]++;
   if(fault==='diagonal')target.root[14]+=24;
   if(fault==='distant')target.root[12]+=24;
-  expect(createPlasmaLinks(world,[active('g',['target'])]),fault).toEqual([]);
+  expect(createGeneratorConnections(world,[active('g',['target'])]),fault).toEqual([]);
  }
 });
 
@@ -94,7 +94,7 @@ test('saved A1 pair has a readable shoulder span that is independent of animatio
  const generator=generators[0],recipients=level.placements.filter(p=>p.model==='turret-study'&&p.variant==='base'&&p.box[1]===generator.box[1]&&Math.abs(p.box[0]-generator.box[0])+Math.abs(p.box[2]-generator.box[2])===1);
  expect(generator.variant).toBe('base');expect(recipients).toHaveLength(1);
  const recipient=recipients[0],world=fixture([generator,recipient]),enhancers=new EnhancerPreview(world,[{id:recipient.id,model:recipient.model,variant:recipient.variant,strength:10}]);
- const links=createPlasmaLinks(world,enhancers.states),before=structuredClone(links);expect(links).toHaveLength(1);
+ const links=createGeneratorConnections(world,enhancers.states),before=structuredClone(links);expect(links).toHaveLength(1);
  expect(links[0].sourceId).toBe(generator.id);expect(links[0].targetId).toBe(recipient.id);
  expect(Array.from(links[0].source)).toEqual([77,34.5,155.5]);expect(Array.from(links[0].target)).toEqual([65,35.5,155.5]);
  const sourceRig=world.rigs.get(generator.id),targetRig=world.rigs.get(recipient.id);
@@ -104,8 +104,8 @@ test('saved A1 pair has a readable shoulder span that is independent of animatio
  // Head and gun matrices can yaw, pitch and recoil arbitrarily without moving
  // an endpoint. The helper intentionally reads only the fixed placement root.
  for(const instance of world.rigs.get(recipient.id).instances)if(instance.part!=='base')instance.matrix.fill(99);
- expect(createPlasmaLinks(world,enhancers.states)).toEqual(before);
- const next=createPlasmaLinks(world,enhancers.states);expect(next[0].source).not.toBe(links[0].source);expect(next[0].target).not.toBe(links[0].target);
+ expect(createGeneratorConnections(world,enhancers.states)).toEqual(before);
+ const next=createGeneratorConnections(world,enhancers.states);expect(next[0].source).not.toBe(links[0].source);expect(next[0].target).not.toBe(links[0].target);
  expect(Object.keys(links[0])).toEqual(['source','target','sourceId','targetId']);
  enhancers.dispose();world.rigs.clear();expect(links).toEqual(before);
 });

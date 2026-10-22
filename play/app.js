@@ -4,8 +4,8 @@ import {FrameLoop} from '../engine/clock.js';
 import {ShotEffects} from '../engine/shot-effects.js';
 import {DamageEffects} from '../engine/damage-effects.js';
 import {ArcEffects} from '../engine/arc-effects.js';
-import {PlasmaLinks} from '../engine/plasma-links.js';
-import {createPlasmaLinks} from '../game/plasma-links.js';
+import {GeneratorLights} from '../engine/generator-lights.js';
+import {createGeneratorConnections} from '../game/generator-connections.js';
 import {emitMissileImpact} from '../game/missile-impact.js';
 import {TURRET_MUZZLES} from '../shared/arsenal.js';
 import {PLAY_CONFIG,playCapacity} from './config.js';
@@ -36,7 +36,7 @@ const progress=new ProgressStore(config),audio=new AudioPlayer();
 let savedGame=null,progressLoaded=false,savingProgress=false,saveError='';
 const highlight=new UnitHighlight({canvas,list:document.getElementById('unit-list'),overlay:document.getElementById('unit-highlight-overlay'),defences:config.defences});
 const combatStep={combat:true},preparationStep={combat:false};
-let renderer,loader,loop,engine,rules,actionCamera,droneCamera,cameraViews,screenshotCamera,plasmaLinks=null,plasmaOwner=null,plasmaConnections=[],sceneResize,pendingSpec,safeSeeds,lastCameraPhase='title',titleView=null,selectedId=null,hover=null,eligible=[],busy=true,error='',notice='',lastUI=-Infinity,lastDiagnostics=-Infinity,diagnosticsPending=false,disposed=false;
+let renderer,loader,loop,engine,rules,actionCamera,droneCamera,cameraViews,screenshotCamera,generatorLights=null,generatorOwner=null,generatorConnections=[],sceneResize,pendingSpec,safeSeeds,lastCameraPhase='title',titleView=null,selectedId=null,hover=null,eligible=[],busy=true,error='',notice='',lastUI=-Infinity,lastDiagnostics=-Infinity,diagnosticsPending=false,disposed=false;
 const frozen=()=>leaveOpen||session.paused||['defeat','complete'].includes(session.phase);
 function snapshot(stats=engine?.stats()){
  const state=session.snapshot(),loadingSession=pendingSpec?.candidate??session;
@@ -55,11 +55,11 @@ function syncCombatEffects(){
  if(!engine||!renderer)return;
  arcs.time=engine.time;renderer.setArcEffects(engine.firing.arcs.states.length?arcs:null);renderer.setMissileThrust(engine.firing.missiles.states.length?engine.firing.missiles.thrust:null);
  const owner=engine.firing.enhancers;
- if(plasmaOwner!==owner){
-  plasmaOwner=owner;plasmaConnections=createPlasmaLinks(engine.world,owner.states);
-  if(plasmaConnections.length){plasmaLinks??=new PlasmaLinks();plasmaLinks.time=engine.time;plasmaLinks.setLinks(plasmaConnections);}
-  else{plasmaLinks?.dispose();plasmaLinks=null;}
-  renderer.setPlasmaLinks(plasmaLinks);
+ if(generatorOwner!==owner){
+  generatorOwner=owner;generatorConnections=createGeneratorConnections(engine.world,owner.states);
+  if(generatorConnections.length){generatorLights??=new GeneratorLights();generatorLights.setLinks(generatorConnections);}
+  else{generatorLights?.dispose();generatorLights=null;}
+  renderer.setGeneratorLights(generatorLights);
  }
 }
 function updateHighlight(){highlight.update({world:loader?.world,camera:renderer?.camera,units:session.units,preparing:session.preparing,busy:busy||Boolean(error),paused:session.paused});}
@@ -67,7 +67,7 @@ function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error||lea
 // Keep the review dataset available by default. Cosmetic-only frame updates
 // share the normal five-Hz cadence; actions and lifecycle changes publish now.
 function diagnostics(state,stats,force=true){const now=performance.now();if(!force&&now-lastDiagnostics<200){diagnosticsPending=true;return;}lastDiagnostics=now;diagnosticsPending=false;stats??=engine?.stats();state??=snapshot(stats);canvas.dataset.play=JSON.stringify({wildlife:{enabled:loader?.world?.playCritters!==false,actors:engine?.wildlife.states.length??0,planningBytes:engine?.wildlife.planningBytes??0},fish:engine?.wildlife.fish.stats()??null,...state,levelId:session.level.id,engine:stats??null,placements:session.placements,audio:{state:audio.state,ready:audio.ready,volume:audio.volume,voices:audio.active,played:audio.played,dropped:audio.dropped,error:audio.lastError},
- enhancers:{generators:engine?.firing.enhancers.states??[],links:plasmaLinks?.linkCount??0,overflow:plasmaLinks?.overflow??0,connections:plasmaConnections},damage:{time:damage.time,activeCubes:damage.activeCubes},performance:performanceReadout.stats(),conditions:loader?.world?.playConditions??null,guns:engine?.firing.turrets.states.map(g=>({id:g.id,variant:g.variant,x:g.x,z:g.z,target:g.target?.id??null,reservation:g.reservation?.id??null,shots:g.cycle.shots,lastShotTarget:g.lastShotTargetId,secondsSinceShot:Number.isFinite(g.cycle.lastShotAt)?g.cycle.time-g.cycle.lastShotAt:null,cooldownRemaining:Math.max(0,g.cycle.readyAt-g.cycle.time),burstRemaining:g.cycle.remaining,lineOfSight:g.lineOfSight,yawError:g.aimError,pitchError:g.pitchError}))??[],loads:loader?.loads??0,unloads:loader?.unloads??0,camera:renderer?.camera?{mode:renderer.camera.mode,fov:renderer.camera.fov,roll:renderer.camera.roll,position:[...renderer.camera.position],radius:renderer.camera.radius,target:[...renderer.camera.target],controlsEnabled:renderer.camera.controlsEnabled}:null,actionCamera:actionCamera?.stats()??null,droneCamera:droneCamera?.stats()??null,
+ enhancers:{generators:engine?.firing.enhancers.states??[],links:generatorLights?.linkCount??0,overflow:generatorLights?.overflow??0,connections:generatorConnections},damage:{time:damage.time,activeCubes:damage.activeCubes},performance:performanceReadout.stats(),conditions:loader?.world?.playConditions??null,guns:engine?.firing.turrets.states.map(g=>({id:g.id,variant:g.variant,x:g.x,z:g.z,target:g.target?.id??null,reservation:g.reservation?.id??null,shots:g.cycle.shots,lastShotTarget:g.lastShotTargetId,secondsSinceShot:Number.isFinite(g.cycle.lastShotAt)?g.cycle.time-g.cycle.lastShotAt:null,cooldownRemaining:Math.max(0,g.cycle.readyAt-g.cycle.time),burstRemaining:g.cycle.remaining,lineOfSight:g.lineOfSight,yawError:g.aimError,pitchError:g.pitchError}))??[],loads:loader?.loads??0,unloads:loader?.unloads??0,camera:renderer?.camera?{mode:renderer.camera.mode,fov:renderer.camera.fov,roll:renderer.camera.roll,position:[...renderer.camera.position],radius:renderer.camera.radius,target:[...renderer.camera.target],controlsEnabled:renderer.camera.controlsEnabled}:null,actionCamera:actionCamera?.stats()??null,droneCamera:droneCamera?.stats()??null,
  eligible:eligible.filter(cell=>cell.valid).map(cell=>cell.box),errors:error?[error]:[]});}
 function fail(cause){audio.setActive(false);error=cause?.message??String(cause);busy=false;performanceReadout.setRunning(false,'Error');renderer?.setTimingActive(false);loop?.stop();paint();}
 function cameraState(){const c=renderer?.camera,active=cameraViews?.active;if(active){const v=active.saved;return {id:loader.world.level.id,target:Array.from(v.subarray(0,3)),yaw:v[3],pitch:v[4],radius:v[5]};}return c&&loader?.world?{id:loader.world.level.id,target:[...c.target],yaw:c.yaw,pitch:c.pitch,radius:c.radius}:null;}
@@ -148,7 +148,7 @@ async function initialize(){
    if(busy||frozen())return;
    const frameStarted=performance.now();
    const wasSettling=session.phase==='settling';
-   engine.advance(dt,session.phase==='wave'?combatStep:preparationStep);shots.prepare();if(engine.firing.arcs.states.length)arcs.prepare();plasmaLinks?.prepare();
+   engine.advance(dt,session.phase==='wave'?combatStep:preparationStep);shots.prepare();if(engine.firing.arcs.states.length)arcs.prepare();
    if(renderer.camera.dragging||renderer.camera.keys.size)takeCameraControl();
    cameraViews.advance(dt,{engine,phase:session.phase,paused:session.paused});
    
@@ -165,7 +165,7 @@ async function initialize(){
    const spec=pendingSpec,world=await loadPlayWorld(id,{signal,placements:spec.candidate.placements,wave:spec.candidate.wave,config,wildlifePoints:spec.points,conditions:spec.conditions,critters:spec.critters});world.playRequest=spec;return world;
   },
   release:async world=>{
-   loop.stop();audio.stop();screenshotCamera.leave();cameraViews.bind(null);renderer.setPlasmaLinks(null);plasmaLinks?.dispose();plasmaLinks=null;plasmaOwner=null;plasmaConnections=[];engine?.dispose();engine=null;rules?.dispose();rules=null;shots.reset();damage.reset();arcs.reset();renderer.setArcEffects(null);renderer.setMissileThrust(null);renderer.clearWorld();
+   loop.stop();audio.stop();screenshotCamera.leave();cameraViews.bind(null);renderer.setGeneratorLights(null);generatorLights?.dispose();generatorLights=null;generatorOwner=null;generatorConnections=[];engine?.dispose();engine=null;rules?.dispose();rules=null;shots.reset();damage.reset();arcs.reset();renderer.setArcEffects(null);renderer.setMissileThrust(null);renderer.clearWorld();
    await renderer.device?.queue.onSubmittedWorkDone();disposePlayWorld(world);world.playRequest=null;
   },
   discard:world=>{disposePlayWorld(world);world.playRequest=null;},
@@ -175,7 +175,7 @@ async function initialize(){
    engine=new PlayEngine(world,{config,wave:spec.candidate.wave,
     onPoseChange:(...args)=>renderer.updateInstance(...args),onVisible:(...args)=>renderer.setActorVisible(...args),
     onDeploymentsChanged:world=>{renderer.syncRuntimeInstances(world);syncCombatEffects();},
-    onStep:dt=>{shots.advance(dt);damage.advance(dt);if(engine?.firing.arcs.states.length)arcs.advance(dt);plasmaLinks?.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},
+    onStep:dt=>{shots.advance(dt);damage.advance(dt);if(engine?.firing.arcs.states.length)arcs.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},
     onShot:(variant,matrix,at)=>{shots.emit(matrix,TURRET_MUZZLES[variant],at);audio.gunShot(matrix,TURRET_MUZZLES[variant],at);actionCamera.noteShot(matrix,at);},
     onBulletImpact:(point,normal,at)=>{shots.impact(point,normal,at);cameraViews.noteActivity(point[0],point[1],point[2],at,1);},
     onArcShot:(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint)=>{arcs.emit(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint);actionCamera.note(source[0],source[1],source[2],0,at);cameraViews.noteActivity(point[0],point[1],point[2],at,2);},

@@ -18,8 +18,8 @@ import {ENEMY_STATS} from '../shared/enemy.js';
 import {ArcEffects} from '../engine/arc-effects.js';
 import {ARC_EMPTY_LIGHT_BYTES,ARC_LIGHT_BYTES,ARC_SECONDS,ARC_SPARK_SECONDS} from '../shared/arc-effects.js';
 import {MAX_MISSILE_LIGHTS,MAX_MISSILE_THRUST_INSTANCES,MISSILE_THRUST_FLOATS} from '../shared/missile-flight.js';
-import {PlasmaLinks} from '../engine/plasma-links.js';
-import {MAX_PLASMA_LINKS,PLASMA_INSTANCE_BYTES,COMBINED_TUBE_LIGHT_BYTES} from '../shared/plasma-links.js';
+import {GeneratorLights} from '../engine/generator-lights.js';
+import {MAX_GENERATOR_LIGHTS,GENERATOR_LIGHT_BYTES,GENERATOR_EMPTY_LIGHT_BYTES} from '../shared/generator-lights.js';
 import {MAX_ARC_STRIKES,ARC_LIGHT_FLOATS} from '../shared/arc-effects.js';
 
 const DEPTH='Initial camera depth',SHADOW='Shadow map',OPAQUE='Visible opaque surfaces',WATER='Nearest water surface',DISPLAY='Water, reflections and display';
@@ -35,7 +35,7 @@ function mockRenderer(options={}){
  const canvas={width:960,height:640,clientWidth:960,clientHeight:640,dataset:{},addEventListener(){},focus(){}};
  const r=new WorldRenderer(canvas,message=>{throw new Error(message);},{waterReflections:'ssr',...options});r.device=device;r.context={getCurrentTexture:()=>({createView:()=>({})})};r.ready=true;
  r.uniform=device.createBuffer({size:368,usage:64});const effects=new ShotEffects(()=>.5);r.setShotEffects(effects);r.shotUniform=device.createBuffer({size:r.localLightData.byteLength,usage:64});r.shotInstances=device.createBuffer({size:effects.instanceData.byteLength,usage:32});
- r.emptyArcLights=device.createBuffer({size:ARC_EMPTY_LIGHT_BYTES,usage:128});r.bindLocalLights();
+ r.emptyGeneratorLights=device.createBuffer({size:GENERATOR_EMPTY_LIGHT_BYTES,usage:128});r.emptyArcLights=device.createBuffer({size:ARC_EMPTY_LIGHT_BYTES,usage:128});r.bindLocalLights();
  let cameraUpdates=0;const update=r.camera.update.bind(r.camera);r.camera.update=aspect=>{cameraUpdates++;update(aspect);};
  const reset=()=>{writes.length=0;passes.length=0;cameraUpdates=0;};
  return {r,effects,allocated,writes,passes,submissions,textures,reset,get cameraUpdates(){return cameraUpdates;},cleanup(){r.dispose();for(const [key,descriptor] of descriptors){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}};
@@ -527,63 +527,43 @@ test('missile coast clears its bloom contribution while ordinary flashes and ste
  expect(f.allocated.every(buffer=>buffer.destroyCalls===1)).toBe(true);
 });
 
-test('plasma links allocate lazily, refresh colour and bloom only, and release every scene reference',()=>{
- const f=mockRenderer(),r=f.r,world=smallWorld(),links=new PlasmaLinks();
+test('generator midpoint lights allocate one static bank without Arc geometry, draws or bloom',()=>{
+ const f=mockRenderer(),r=f.r,world=smallWorld(),lights=new GeneratorLights();
  try{
-  r.setWorld(world);r.setPlasmaLinks(links);r.render(0,0);expect(r.plasmaBytes).toBe(0);expect(r.plasmaLightData).toBeNull();expect(r.arcPipeline).toBeUndefined();
-  links.setLinks([{source:[12,34,12],target:[24,35,12]}]);f.reset();r.render(0,0);
-  expect(r.arcBytes).toBe(0);expect(r.arcInstances).toBeNull();expect(r.arcLightBuffer).toBeNull();expect(r.plasmaBytes).toBe(PLASMA_INSTANCE_BYTES+COMBINED_TUBE_LIGHT_BYTES);
-  expect(r.plasmaUploadBytes).toBe(32*48+(4+ARC_LIGHT_FLOATS)*4);expect(r.plasmaLightCount).toBe(1);expect(r.lightGroup.entries[2].resource.buffer).toBe(r.plasmaLightBuffer);expect(labels(f)).toEqual([OPAQUE,...BLOOM,DISPLAY]);
-  expect(f.passes.find(p=>p.label===DISPLAY).direct.some(draw=>draw.pipeline===r.arcPipeline&&draw.args[1]===32)).toBe(true);
-  expect(f.passes.find(p=>p.label===BLOOM[0]).direct.some(draw=>draw.pipeline===r.bloom.arcPipeline&&draw.args[1]===32)).toBe(true);
-  const buffers=[r.plasmaInstances,r.plasmaLightBuffer],merged=r.plasmaLightData,count=f.allocated.length;
-  links.advance(.1);links.prepare();f.reset();r.render(.1,.1);expect(f.allocated.length).toBe(count);expect(r.plasmaLightData).toBe(merged);expect(labels(f)).toEqual([OPAQUE,...BLOOM,DISPLAY]);
-  r.setPlasmaLinks(null);expect(r.plasmaBytes).toBe(0);expect(r.plasmaLinks).toBeNull();expect(r.plasmaLightData).toBeNull();expect(buffers.every(buffer=>buffer.destroyCalls===1)).toBe(true);expect(r.lightGroup.entries[2].resource.buffer).toBe(r.emptyArcLights);
-  f.reset();r.render(0,.1);expect(r.bloom.active).toBe(false);expect(r.plasmaUploadBytes).toBe(0);
-  r.setPlasmaLinks(links);r.render(0,.1);const replacements=[r.plasmaInstances,r.plasmaLightBuffer];r.clearWorld();expect(r.plasmaLinks).toBeNull();expect(replacements.every(buffer=>buffer.destroyCalls===1)).toBe(true);expect(r.plasmaBytes).toBe(0);
- }finally{links.dispose();f.cleanup();disposeWorld(world);}
+  r.setWorld(world);r.setGeneratorLights(lights);r.render(0,0);expect(r.generatorBytes).toBe(0);expect(r.arcPipeline).toBeUndefined();
+  lights.setLinks([{source:[12,34,12],target:[24,35,12]}]);f.reset();r.render(0,0);
+  expect(r.arcBytes).toBe(0);expect(r.arcInstances).toBeNull();expect(r.arcLightBuffer).toBeNull();expect(r.generatorBytes).toBe(GENERATOR_LIGHT_BYTES);
+  expect(r.generatorUploadBytes).toBe(48);expect(r.generatorLightCount).toBe(1);expect(r.lightGroup.entries[3].resource.buffer).toBe(r.generatorLightBuffer);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);expect(r.bloom?.active??false).toBe(false);
+  const buffer=r.generatorLightBuffer,allocated=f.allocated.length;
+  f.reset();r.render(.1,.1);expect(r.generatorUploadBytes).toBe(0);expect(f.allocated.length).toBe(allocated);expect(labels(f)).toEqual([DISPLAY]);
+  r.setGeneratorLights(null);expect(buffer.destroyCalls).toBe(1);expect(r.generatorLightBuffer).toBeNull();expect(r.lightGroup.entries[3].resource.buffer).toBe(r.emptyGeneratorLights);
+  r.setGeneratorLights(lights);r.render(0,.1);const replacement=r.generatorLightBuffer;r.clearWorld();expect(replacement.destroyCalls).toBe(1);expect(r.generatorLights).toBeNull();
+ }finally{lights.dispose();f.cleanup();disposeWorld(world);}
  expect(f.allocated.every(buffer=>buffer.destroyCalls===1)).toBe(true);
 });
 
-test('all plasma links coexist with primary and secondary combat Arcs, and detached plasma cannot resurrect expired arc light',()=>{
- const f=mockRenderer(),r=f.r,world=smallWorld(),links=new PlasmaLinks(),arcs=new ArcEffects(()=>.5);
+test('full generator bank leaves primary/secondary Arc pools independent and expiry clears them',()=>{
+ const f=mockRenderer(),r=f.r,world=smallWorld(),lights=new GeneratorLights(),arcs=new ArcEffects(()=>.5);
  try{
   r.setWorld(world);r.setArcEffects(arcs);
   for(let i=0;i<MAX_ARC_STRIKES;i++)arcs.emit([12+i,40,12],[55+i,26,20],[-1,0,0],0,null,null,i>=MAX_ARC_STRIKES/2);
-  arcs.prepare();r.render(0,0);expect(r.arcLightCount).toBe(MAX_ARC_STRIKES);const arcBuffer=r.arcLightBuffer,arcBytes=r.arcBytes;
-  links.setLinks(Array.from({length:MAX_PLASMA_LINKS},(_,i)=>({source:[12,34,12+i],target:[24,35,12+i]})));r.setPlasmaLinks(links);f.reset();r.render(0,0);
-  const merged=new Float32Array(r.plasmaLightBuffer.data.buffer);expect(merged[0]).toBe(MAX_ARC_STRIKES+MAX_PLASMA_LINKS);expect(r.arcBytes).toBe(arcBytes);expect(arcs.strikeCount).toBe(MAX_ARC_STRIKES);
-  expect(merged.slice(4,4+MAX_ARC_STRIKES*ARC_LIGHT_FLOATS)).toEqual(arcs.lightData.slice(4));expect(merged.slice(4+MAX_ARC_STRIKES*ARC_LIGHT_FLOATS)).toEqual(links.lightData.slice(4));
-  // The activation frame uploads Arc before creating the merged binding;
-  // subsequent frames write only the bound combined prefix.
-  f.reset();r.render(0,0);expect(f.writes.some(write=>write.buffer===arcBuffer)).toBe(false);
-  arcs.advance(ARC_SECONDS);arcs.prepare();links.advance(ARC_SECONDS);links.prepare();r.render(ARC_SECONDS,ARC_SECONDS);expect(merged[0]).toBe(MAX_PLASMA_LINKS);expect(r.arcLightCount).toBe(0);
-  expect(new Float32Array(arcBuffer.data.buffer)[0]).toBe(MAX_ARC_STRIKES);
-  r.setPlasmaLinks(null);expect(new Float32Array(arcBuffer.data.buffer)[0]).toBe(0);expect(r.lightGroup.entries[2].resource.buffer).toBe(arcBuffer);r.render(0,ARC_SECONDS);
- }finally{links.dispose();f.cleanup();disposeWorld(world);}
+  arcs.prepare();r.render(0,0);const arcBuffer=r.arcLightBuffer,arcBytes=r.arcBytes;
+  lights.setLinks(Array.from({length:MAX_GENERATOR_LIGHTS},(_,i)=>({source:[12,34,12+i],target:[24,35,12+i]})));r.setGeneratorLights(lights);r.render(0,0);
+  expect(new Float32Array(r.generatorLightBuffer.data.buffer)[0]).toBe(MAX_GENERATOR_LIGHTS);expect(new Float32Array(arcBuffer.data.buffer)[0]).toBe(MAX_ARC_STRIKES);expect(r.arcBytes).toBe(arcBytes);expect(r.lightGroup.entries[2].resource.buffer).toBe(arcBuffer);
+  arcs.advance(ARC_SECONDS);arcs.prepare();r.render(ARC_SECONDS,ARC_SECONDS);expect(new Float32Array(arcBuffer.data.buffer)[0]).toBe(0);expect(r.generatorLightCount).toBe(MAX_GENERATOR_LIGHTS);
+  r.setGeneratorLights(null);expect(new Float32Array(arcBuffer.data.buffer)[0]).toBe(0);expect(r.lightGroup.entries[2].resource.buffer).toBe(arcBuffer);
+ }finally{lights.dispose();f.cleanup();disposeWorld(world);}
 });
 
-test('empty plasma replacement uploads one cleared light header and returns to idle work',()=>{
- const f=mockRenderer(),r=f.r,world=smallWorld(),links=new PlasmaLinks();
+test('empty or same-time generator replacements update once; camera changes reuse static storage',()=>{
+ const f=mockRenderer(),r=f.r,world=smallWorld(),lights=new GeneratorLights();
  try{
-  r.setWorld(world);links.setLinks([{source:[12,34,12],target:[24,35,12]}]);r.setPlasmaLinks(links);r.render(0,0);const lightBuffer=r.plasmaLightBuffer;
-  links.setLinks([]);f.reset();r.render(0,0);expect(new Float32Array(lightBuffer.data.buffer)[0]).toBe(0);expect(r.plasmaUploadBytes).toBe(16);expect(r.bloom.active).toBe(false);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);
-  f.reset();r.render(0,0);expect(r.plasmaUploadBytes).toBe(0);expect(labels(f)).toEqual([DISPLAY]);expect(f.writes.some(write=>write.buffer===lightBuffer)).toBe(false);
- }finally{links.dispose();f.cleanup();disposeWorld(world);}
-});
-
-test('frozen plasma reuses uploads and bloom, but camera, same-time replacements and Arc expiry still refresh',()=>{
- const f=mockRenderer(),r=f.r,world=smallWorld(),links=new PlasmaLinks(),arcs=new ArcEffects(()=>.5);
- try{
-  r.setWorld(world);links.setLinks([{source:[12,34,12],target:[24,35,12]}]);r.setPlasmaLinks(links);r.setArcEffects(arcs);r.render(0,0);
-  const vertex=r.plasmaInstances,light=r.plasmaLightBuffer,images=f.textures.length,buffers=f.allocated.length;
-  f.reset();links.advance(0);links.prepare();r.render(0,0);expect(r.plasmaUploadBytes).toBe(0);expect(labels(f)).toEqual([DISPLAY]);expect(r.bloom.active).toBe(true);expect(f.passes[0].direct.some(call=>call.args[1]===links.instanceCount)).toBe(true);
-  r.requestDraw();f.reset();r.render(0,0);expect(r.plasmaUploadBytes).toBe(0);expect(labels(f)).toContain(BLOOM[0]);expect(f.textures.length).toBe(images);expect(f.allocated.length).toBe(buffers);
-  arcs.emit([12,40,12],[55,26,20],[-1,0,0],0);arcs.prepare();f.reset();r.render(0,0);expect(new Float32Array(light.data.buffer)[0]).toBe(2);expect(f.writes.some(w=>w.buffer===vertex)).toBe(false);expect(labels(f)).toContain(BLOOM[0]);
-  arcs.advance(ARC_SECONDS);arcs.prepare();r.render(0,0);expect(new Float32Array(light.data.buffer)[0]).toBe(1);
-  f.reset();r.render(0,0);expect(r.plasmaUploadBytes).toBe(0);expect(f.writes.some(w=>w.buffer===light)).toBe(false);
-  links.setLinks([{source:[12,34,12],target:[48,35,12]}]);f.reset();r.render(0,0);expect(f.writes.some(w=>w.buffer===vertex)).toBe(true);expect(labels(f)).toContain(BLOOM[0]);
- }finally{links.dispose();f.cleanup();disposeWorld(world);}
+  r.setWorld(world);lights.setLinks([{source:[12,34,12],target:[24,35,12]}]);r.setGeneratorLights(lights);r.render(0,0);const buffer=r.generatorLightBuffer,images=f.textures.length,buffers=f.allocated.length;
+  r.requestDraw();f.reset();r.render(0,0);expect(r.generatorUploadBytes).toBe(0);expect(f.textures.length).toBe(images);expect(f.allocated.length).toBe(buffers);
+  lights.setLinks([{source:[12,34,12],target:[48,35,12]}]);f.reset();r.render(0,0);expect(r.generatorUploadBytes).toBe(48);expect(new Float32Array(buffer.data.buffer)[4]).toBe(30);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);
+  lights.setLinks([]);f.reset();r.render(0,0);expect(new Float32Array(buffer.data.buffer)[0]).toBe(0);expect(r.generatorUploadBytes).toBe(16);expect(labels(f)).toEqual([OPAQUE,DISPLAY]);
+  f.reset();r.render(0,0);expect(r.generatorUploadBytes).toBe(0);expect(labels(f)).toEqual([DISPLAY]);
+ }finally{lights.dispose();f.cleanup();disposeWorld(world);}
 });
 
 test('inspection sampling skips JSON only while rendering and simulation still advance',()=>{

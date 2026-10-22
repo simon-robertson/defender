@@ -3,8 +3,8 @@ import {loadPlayWorld,disposePlayWorld,PlayEngine,PLAY_TICK} from '../play/engin
 import {ShotEffects} from '../engine/shot-effects.js';
 import {DamageEffects} from '../engine/damage-effects.js';
 import {ArcEffects} from '../engine/arc-effects.js';
-import {PlasmaLinks} from '../engine/plasma-links.js';
-import {createPlasmaLinks} from '../game/plasma-links.js';
+import {GeneratorLights} from '../engine/generator-lights.js';
+import {createGeneratorConnections} from '../game/generator-connections.js';
 import {TURRET_MUZZLES} from '../shared/arsenal.js';
 import {emitMissileImpact} from '../game/missile-impact.js';
 import {LevelConditions} from '../play/conditions.js';
@@ -14,23 +14,23 @@ export function seededRandom(seed=20261022){return ()=>{seed=(Math.imul(seed,166
 export async function createStudyScene(recipe,hooks={}){
  const level=PLAY_CONFIG.levels[recipe.levelIndex],wave=level.waves[recipe.waveIndex];
  const world=await loadPlayWorld(level.id,{config:PLAY_CONFIG,wave,placements:recipe.placements,critters:false,conditions:new LevelConditions().forLevel(level.id)});
- const random=seededRandom(),shots=new ShotEffects(random),damage=new DamageEffects(random),arcs=new ArcEffects(random),plasma=new PlasmaLinks(),activity=[];
+ const random=seededRandom(),shots=new ShotEffects(random),damage=new DamageEffects(random),arcs=new ArcEffects(random),generatorLights=new GeneratorLights(),activity=[];
  let engine;
  const note=(kind,x,y,z,weight)=>{activity.push({kind,x,y,z,weight,at:engine.time});hooks.onActivity?.(kind,x,y,z,engine.time,weight);while(activity.length>256||activity[0]?.at<engine.time-6)activity.shift();};
  try{
   hooks.onWorld?.(world);
   engine=new PlayEngine(world,{
    config:PLAY_CONFIG,wave,onPoseChange:hooks.onPoseChange,onVisible:hooks.onVisible,
-   onStep:dt=>{shots.advance(dt);damage.advance(dt);arcs.advance(dt);plasma.advance(dt);},onAfterStep:dt=>damage.emitSmoke(dt),
+   onStep:dt=>{shots.advance(dt);damage.advance(dt);arcs.advance(dt);},onAfterStep:dt=>damage.emitSmoke(dt),
    onShot:(variant,matrix,at)=>{shots.emit(matrix,TURRET_MUZZLES[variant],at);note('shot',matrix[12],matrix[13],matrix[14],1);},
    onBulletImpact:(point,normal,at)=>{shots.impact(point,normal,at);note('impact',...point,1);},
    onArcShot:(...args)=>{arcs.emit(...args);note('arc',...args[1],2);},
    onDeath:(_id,state)=>{damage.explode(state);note('explosion',state.x,state.y,state.z,3);},
    missileEffects:{onTrail:(...a)=>damage.missileTrail(...a),onLaunch:(...a)=>damage.launchSmoke(...a),onImpact:(x,y,z,...normal)=>{emitMissileImpact(damage,null,x,y,z,...normal);note('missile',x,y,z,3);}},
   });
-  damage.setWorld(world,engine.enemies.states);arcs.setWorld(world);plasma.setLinks(createPlasmaLinks(world,engine.firing.enhancers.states));engine.startWave();
- }catch(error){engine?.dispose();plasma.dispose();disposePlayWorld(world);throw error;}
- return {recipe,world,engine,shots,damage,arcs,plasma,activity,prepare(){shots.prepare();arcs.prepare();plasma.prepare();},dispose(){engine.dispose();plasma.dispose();disposePlayWorld(world);}};
+  damage.setWorld(world,engine.enemies.states);arcs.setWorld(world);generatorLights.setLinks(createGeneratorConnections(world,engine.firing.enhancers.states));engine.startWave();
+ }catch(error){engine?.dispose();generatorLights.dispose();disposePlayWorld(world);throw error;}
+ return {recipe,world,engine,shots,damage,arcs,generatorLights,activity,prepare(){shots.prepare();arcs.prepare();},dispose(){engine.dispose();generatorLights.dispose();disposePlayWorld(world);}};
 }
 // Fixed ticks and seeded cosmetic pools make a saved moment reproducible.
 // Rewind rebuilds the scene; moving the camera never calls this function.

@@ -1,3 +1,4 @@
+import {GENERATOR_EMPTY_LIGHT_BYTES} from '/shared/generator-lights.js';
 import {ARC_EMPTY_LIGHT_BYTES} from '/shared/arc-effects.js';
 // Developer-only numeric checks of complete production smoke/blast/cube shaders.
 import {damageParticles,damageCubes} from '/engine/damage-shaders.js';
@@ -8,12 +9,13 @@ try{
  device=await(await navigator.gpu.requestAdapter()).requestDevice();const errors=[],checks=[];
  device.addEventListener('uncapturederror',event=>errors.push(event.error.message));
  const check=(condition,name)=>{if(!condition)throw new Error(name);checks.push(name);};
+ const generatorLights=device.createBuffer({size:GENERATOR_EMPTY_LIGHT_BYTES,usage:GPUBufferUsage.STORAGE});
  const arcLights=device.createBuffer({size:ARC_EMPTY_LIGHT_BYTES,usage:GPUBufferUsage.STORAGE});
  const particleModule=device.createShaderModule({code:damageParticles}),cubeModule=device.createShaderModule({code:damageCubes});
  for(const module of [particleModule,cubeModule])for(const message of(await module.getCompilationInfo()).messages)if(message.type==='error')throw new Error(message.message);
  const frameLayout=device.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.VERTEX|GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}}]});
  const screenLayout=device.createBindGroupLayout({entries:[{binding:2,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth',multisampled:true}},{binding:4,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth'}}]});
- const lightLayout=device.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth'}},{binding:1,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}},{binding:2,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'read-only-storage',minBindingSize:ARC_EMPTY_LIGHT_BYTES}}]});
+ const lightLayout=device.createBindGroupLayout({entries:[{binding:0,visibility:GPUShaderStage.FRAGMENT,texture:{sampleType:'depth'}},{binding:1,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'uniform'}},{binding:2,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'read-only-storage',minBindingSize:ARC_EMPTY_LIGHT_BYTES}},{binding:3,visibility:GPUShaderStage.FRAGMENT,buffer:{type:'read-only-storage',minBindingSize:GENERATOR_EMPTY_LIGHT_BYTES}}]});
  const layout=device.createPipelineLayout({bindGroupLayouts:[frameLayout,screenLayout,lightLayout]});
  const particleBuffers=[{arrayStride:48,stepMode:'instance',attributes:[0,1,2].map(shaderLocation=>({shaderLocation,offset:shaderLocation*16,format:'float32x4'}))}];
  const particlePipeline=(entryPoint,additive)=>device.createRenderPipelineAsync({layout,vertex:{module:particleModule,entryPoint:'damageVertex',buffers:particleBuffers},fragment:{module:particleModule,entryPoint,targets:[{format:'rgba8unorm',blend:{color:{srcFactor:'src-alpha',dstFactor:additive?'one':'one-minus-src-alpha',operation:'add'},alpha:{srcFactor:'zero',dstFactor:'one',operation:'add'}}}]},primitive:{topology:'triangle-list',cullMode:'none'}});
@@ -26,7 +28,7 @@ try{
  const texture=(format='depth32float',sampleCount=1,copy=false)=>device.createTexture({size:[64,64],format,sampleCount,usage:GPUTextureUsage.RENDER_ATTACHMENT|GPUTextureUsage.TEXTURE_BINDING|(copy?GPUTextureUsage.COPY_SRC:0)});
  const depth=texture('depth32float',4),water=texture(),shadow=texture('depth32float',1,true),target=texture('rgba8unorm',1,true),colorMS=texture('rgba8unorm',4),normalMS=texture('rgba8unorm',4),normal=texture('rgba8unorm',1,true);
  const depthView=depth.createView(),waterView=water.createView(),shadowView=shadow.createView(),targetView=target.createView(),colorView=colorMS.createView(),normalView=normalMS.createView(),resolvedNormalView=normal.createView();
- const frameGroup=device.createBindGroup({layout:frameLayout,entries:[{binding:0,resource:{buffer:frame}}]}),screenGroup=device.createBindGroup({layout:screenLayout,entries:[{binding:2,resource:depthView},{binding:4,resource:waterView}]}),lightGroup=device.createBindGroup({layout:lightLayout,entries:[{binding:0,resource:shadowView},{binding:1,resource:{buffer:lights}},{binding:2,resource:{buffer:arcLights}}]});
+ const frameGroup=device.createBindGroup({layout:frameLayout,entries:[{binding:0,resource:{buffer:frame}}]}),screenGroup=device.createBindGroup({layout:screenLayout,entries:[{binding:2,resource:depthView},{binding:4,resource:waterView}]}),lightGroup=device.createBindGroup({layout:lightLayout,entries:[{binding:0,resource:shadowView},{binding:1,resource:{buffer:lights}},{binding:2,resource:{buffer:arcLights}},{binding:3,resource:{buffer:generatorLights}}]});
  async function readPixel(encoder,source=target,depthValue=false,point=[32,32]){
   encoder.copyTextureToBuffer({texture:source,...(depthValue?{aspect:'depth-only'}:{})},{buffer:read,bytesPerRow:256},[64,64]);device.queue.submit([encoder.finish()]);await read.mapAsync(GPUMapMode.READ);
   const bytes=new Uint8Array(read.getMappedRange()),offset=point[1]*256+point[0]*4,value=depthValue?new Float32Array(bytes.buffer)[point[1]*64+point[0]]:Array.from(bytes.subarray(offset,offset+4));read.unmap();return value;

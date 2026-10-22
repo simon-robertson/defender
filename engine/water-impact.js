@@ -43,9 +43,9 @@ export class WaterImpacts {
   const rng=this.random,power=clamp(Math.pow(size/1.4,1.1)*Math.pow(Math.max(5,fallSpeed)/28,.65),.45,2);
   if(!this.ripple(x,y,z,power,true))return false;
   const rootPower=Math.sqrt(power);
-  const count=Math.round(6+power*4);
+  const count=Math.round(6+power*4);let search=0;
   for(let i=0;i<count;i++){
-   let p=null;for(const drop of this.drops)if(!drop.active){p=drop;break;}if(!p){this.droppedDrops+=count-i;break;}
+   let p=null;for(;search<this.drops.length;){const drop=this.drops[search++];if(!drop.active){p=drop;break;}}if(!p){this.droppedDrops+=count-i;break;}
    const angle=(i+rng())/count*Math.PI*2,out=(7+rng()*10)*rootPower,spread=.35+rng()*.7,cos=Math.cos(angle),sin=Math.sin(angle);
    p.active=true;p.age=0;p.x=x+cos*spread;p.y=y+.6;p.z=z+sin*spread;p.vx=cos*out+vx*.08;p.vy=(16+rng()*16)*rootPower;p.vz=sin*out+vz*.08;p.radius=(.42+rng()*.42)*rootPower;p.life=1.45;p.seed=rng()*6.28;this.activeDrops++;
   }

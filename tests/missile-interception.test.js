@@ -1,5 +1,5 @@
 import {test,expect} from 'bun:test';
-import {runEncounter,ENCOUNTERS,FLYERS} from '../docs/combat-camera-follow-up-2026-10-21/missile-encounters.mjs';
+import {runEncounter,ENCOUNTERS,FLYERS} from '../project-docs/combat-camera-follow-up-2026-10-21/missile-encounters.mjs';
 import {MissileFlightPool} from '../engine/missile-flight.js';
 
 for(const hz of [30,60,120])test(`real nearby flyers are intercepted through straight and banked flight at ${hz} Hz`,()=>{

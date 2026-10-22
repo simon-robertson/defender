@@ -41,7 +41,7 @@ export function productionSource(file,source){
  if(file==='engine/camera.js')s=s.split('\n').filter(line=>!line.includes("listen(canvas.ownerDocument??canvas,'keydown'")).join('\n');
  if(file==='engine/drone-obstacles.js')s=s.split('\n').filter(line=>!line.startsWith(' inspect(){')).join('\n');
  if(file==='game/fish-preview.js')s=s.split('\n').filter(line=>!line.startsWith(' stats(){')).join('\n');
- if(file==='engine/plasma-links.js')s=s.split('\n').filter(line=>!line.includes('console.warn(')).join('\n');
+ if(file==='engine/generator-lights.js')s=s.split('\n').filter(line=>!line.includes('console.warn(')).join('\n');
  if(file==='engine/model-lights.js')s=replace(s,'console.warn(message);','');
  return s;
 }

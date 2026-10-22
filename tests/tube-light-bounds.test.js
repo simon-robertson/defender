@@ -1,6 +1,5 @@
 import {test,expect} from 'bun:test';
 import {ArcEffects} from '../engine/arc-effects.js';
-import {PlasmaLinks} from '../engine/plasma-links.js';
 import {packTubeLightBounds} from '../engine/tube-light-bounds.js';
 import {ARC_LIGHT_BOUNDS_OFFSET,ARC_LIGHT_FLOATS} from '../shared/arc-effects.js';
 
@@ -16,12 +15,10 @@ function checkBounds(data){
   }
  }
 }
-test('bounds contain complete production plasma and moving/restriking Arc falloff volumes',()=>{
- let seed=17;const arcs=new ArcEffects(()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;}),plasma=new PlasmaLinks();
- plasma.setLinks([{source:[77,34.5,155.5],target:[65,35.5,155.5]},{source:[0,2,0],target:[0,100,0]}]);
+test('bounds contain complete production moving/restriking Arc falloff volumes',()=>{
+ let seed=17;const arcs=new ArcEffects(()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;});
  for(const age of [0,.01,.046,.12]){
   arcs.reset();arcs.emit([220,78,244],[209.5,29.09,175.88],[0,0,1],0);arcs.emit([2,2,2],[2.001,2,2],[0,1,0],0);arcs.advance(age);arcs.prepare();checkBounds(arcs.lightData);
-  plasma.time=age*1000;plasma.prepare();checkBounds(plasma.lightData);
  }
 });
 test('bounds include independently scaled segments, large Float32 coordinates and empty records',()=>{

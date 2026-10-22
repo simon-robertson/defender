@@ -377,7 +377,7 @@ export class MissileFlightPool {
  steeringJets(slot,i){
   const thrust=this.thrust,a=thrust.instanceData;
     const sign=slot.steeringJetSign,tx=slot.steerX*sign,ty=slot.steerY*sign,tz=slot.steerZ*sign;
-    for(const end of [-1,1]){const k=thrust.instanceCount++*MISSILE_THRUST_FLOATS;a[k]=slot.x+slot.dx*HALF*.65*end;a[k+1]=slot.y+slot.dy*HALF*.65*end;a[k+2]=slot.z+slot.dz*HALF*.65*end;a[k+3]=.5;
+    for(let end=-1;end<=1;end+=2){const k=thrust.instanceCount++*MISSILE_THRUST_FLOATS;a[k]=slot.x+slot.dx*HALF*.65*end;a[k+1]=slot.y+slot.dy*HALF*.65*end;a[k+2]=slot.z+slot.dz*HALF*.65*end;a[k+3]=.5;
      a[k+4]=-tx*end;a[k+5]=-ty*end;a[k+6]=-tz*end;a[k+7]=MISSILE_STEERING_JET_LENGTH;a[k+8]=1;a[k+9]=.96;a[k+10]=.9;a[k+11]=1;a[k+12]=-1;a[k+13]=this.time*53+i;a[k+14]=a[k+15]=0;
     }
  }

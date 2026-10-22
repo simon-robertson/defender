@@ -3,6 +3,7 @@ import {bloomSettings} from './bloom-shaders.js';
 import {MAX_LOCAL_LIGHTS} from '../shared/shot-effects.js';
 import {MAX_MODEL_LIGHTS,MAX_SUPPORTED_MODEL_LIGHTS} from '../shared/model-lights.js';
 import {arcLighting} from './arc-lighting.js';
+import {generatorLighting} from './generator-lighting.js';
 
 // Shader strings keep their byte-identical preview default. A separate player
 // renderer specializes both the uniform array and every light-loop bound once
@@ -13,7 +14,7 @@ export function specializeLocalLights(code,capacity=MAX_LOCAL_LIGHTS){
  return code.replaceAll(`array<ShotLight,${MAX_LOCAL_LIGHTS}>`,`array<ShotLight,${capacity}>`).replaceAll(`min(u32(shotLights.count.x),${MAX_LOCAL_LIGHTS}u)`,`min(u32(shotLights.count.x),${capacity}u)`);
 }
 
-export const shotLighting=(group,arcs=false)=>arcLighting(group,arcs)+`
+export const shotLighting=(group,arcs=false)=>arcLighting(group,arcs)+generatorLighting(group,arcs)+`
 struct ShotLight { positionRadius:vec4<f32>, colorStrength:vec4<f32> };
 struct ShotLights { count:vec4<f32>, lights:array<ShotLight,${MAX_LOCAL_LIGHTS}> };
 @group(${group}) @binding(1) var<uniform> shotLights:ShotLights;
@@ -28,7 +29,7 @@ fn muzzleLighting(world:vec3<f32>,normal:vec3<f32>)->vec3<f32>{
    // the entire falloff with radius rather than only extending its cutoff.
    result+=light.colorStrength.rgb*(light.colorStrength.w*diffuse*edge*edge/(1+relativeD2*13.824));
   }
- }return result+arcIllumination(world,normal,0u);
+ }return result+arcIllumination(world,normal,0u)+generatorIllumination(world,normal);
 }
 `;
 

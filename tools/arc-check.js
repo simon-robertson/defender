@@ -1,3 +1,4 @@
+import {GENERATOR_EMPTY_LIGHT_BYTES} from '/shared/generator-lights.js';
 // Isolated production-shader readback. Does not start the game or its clock.
 import {geometry,composite,compositeBloom,uniforms} from '/engine/shaders.js';
 import {shotLighting} from '/engine/shot-shaders.js';
@@ -25,7 +26,8 @@ try{
  const compute=await device.createComputePipelineAsync({layout:'auto',compute:{module:numeric,entryPoint:'main'}});
  const buffer=(size,usage)=>device.createBuffer({size,usage}),pointData=new Float32Array(4+MAX_LOCAL_LIGHTS*8),arcData=new Float32Array(ARC_LIGHT_BYTES/4),sampleData=new Float32Array(5*8);
  const points=buffer(pointData.byteLength,GPUBufferUsage.UNIFORM|GPUBufferUsage.COPY_DST),arcs=buffer(ARC_LIGHT_BYTES,GPUBufferUsage.STORAGE|GPUBufferUsage.COPY_DST),empty=buffer(ARC_EMPTY_LIGHT_BYTES,GPUBufferUsage.STORAGE),samples=buffer(sampleData.byteLength,GPUBufferUsage.STORAGE|GPUBufferUsage.COPY_DST),values=buffer(80,GPUBufferUsage.STORAGE|GPUBufferUsage.COPY_SRC),read=buffer(80,GPUBufferUsage.COPY_DST|GPUBufferUsage.MAP_READ);
- const lightGroup=arc=>device.createBindGroup({layout:compute.getBindGroupLayout(0),entries:[{binding:1,resource:{buffer:points}},{binding:2,resource:{buffer:arc}}]}),lg=lightGroup(arcs),emptyGroup=lightGroup(empty),sg=device.createBindGroup({layout:compute.getBindGroupLayout(1),entries:[{binding:0,resource:{buffer:samples}},{binding:1,resource:{buffer:values}}]});
+ const generatorLights=device.createBuffer({size:GENERATOR_EMPTY_LIGHT_BYTES,usage:GPUBufferUsage.STORAGE});
+ const lightGroup=arc=>device.createBindGroup({layout:compute.getBindGroupLayout(0),entries:[{binding:1,resource:{buffer:points}},{binding:2,resource:{buffer:arc}},{binding:3,resource:{buffer:generatorLights}}]}),lg=lightGroup(arcs),emptyGroup=lightGroup(empty),sg=device.createBindGroup({layout:compute.getBindGroupLayout(1),entries:[{binding:0,resource:{buffer:samples}},{binding:1,resource:{buffer:values}}]});
  const run=async(group=lg)=>{device.queue.writeBuffer(points,0,pointData);device.queue.writeBuffer(arcs,0,arcData);device.queue.writeBuffer(samples,0,sampleData);const e=device.createCommandEncoder(),p=e.beginComputePass();p.setPipeline(compute);p.setBindGroup(0,group);p.setBindGroup(1,sg);p.dispatchWorkgroups(5);p.end();e.copyBufferToBuffer(values,0,read,0,80);device.queue.submit([e.finish()]);await read.mapAsync(GPUMapMode.READ);const data=new Float32Array(read.getMappedRange()).slice();read.unmap();return data;};
  const close=(a,b)=>Math.abs(a-b)<1e-5;
  arcData[0]=1;arcData.set([.43,.66,1,18,ARC_LIGHT_STRENGTH,1,0,0,-60,5,0,1,60,5,0,1],4);

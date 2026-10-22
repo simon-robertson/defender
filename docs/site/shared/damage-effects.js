@@ -1,5 +1,8 @@
 // Bounded visual-preview pools. Enemy configuration chooses a smaller burst.
-export const MAX_DEBRIS=192,MAX_SMOKE=384,MAX_BLASTS=4,MAX_DAMAGE_LIGHTS=4;
+// Preserve all ordinary smoke slots. Trails own a separate fixed ring so
+// denser exhaust cannot displace launch, impact or wounded-enemy smoke.
+export const MAX_EFFECT_SMOKE=384,MAX_TRAIL_SMOKE=768;
+export const MAX_DEBRIS=192,MAX_SMOKE=MAX_EFFECT_SMOKE+MAX_TRAIL_SMOKE,MAX_BLASTS=4,MAX_DAMAGE_LIGHTS=4;
 export const MAX_DAMAGE_CUBES=MAX_DEBRIS;
 import {MAX_WATER_PARTICLES} from './water-impact.js';
 export const MISSILE_BLAST_PARTICLES=9;
@@ -14,4 +17,4 @@ export const MISSILE_IMPACT_EFFECT=Object.freeze({size:22,flashSeconds:.68,flash
 export const MISSILE_IMPACT_SMOKE=Object.freeze({count:9,minLife:1,maxLife:1.6,minRadius:4,maxRadius:7,minOutSpeed:10,maxOutSpeed:22,minRise:7,maxRise:14,opacity:.8,r:.12,g:.115,b:.105});
 export const MISSILE_LAUNCH_SMOKE=Object.freeze({count:8,minLife:1.3,maxLife:1.8,minRadius:4.2,maxRadius:5.2,minOutSpeed:3,maxOutSpeed:6,minRise:3,maxRise:5,opacity:.82,r:.52,g:.50,b:.46});
 
-export const MISSILE_TRAIL_SMOKE=Object.freeze({life:2,radius:3.2,rise:1.2,opacity:.9,r:.57,g:.58,b:.55});
+export const MISSILE_TRAIL_SMOKE=Object.freeze({rate:48,life:2,radius:3.2,rise:1.2,opacity:.9,r:.57,g:.58,b:.55});

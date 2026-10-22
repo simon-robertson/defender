@@ -29,13 +29,18 @@
       <div class="title-field-note"><span class="signal-dot"></span> TOWER DEFENCE <span class="field-line"></span> ZONES A–D</div>
     </section>
     <div id="options-screen" class="screen-overlay" hidden><section class="dialog options-dialog" role="dialog" aria-modal="true" aria-labelledby="options-heading">
-      <p class="eyebrow">GAME SETTINGS</p><h2 id="options-heading">OPTIONS</h2>
-      <fieldset class="graphics-options"><legend>GRAPHICS</legend>
-        <label><span>Critters</span><input type="checkbox" role="switch" data-graphics="critters" checked><span class="graphics-state" aria-hidden="true"></span></label>
-        <label><span>Reflections</span><input type="checkbox" role="switch" data-graphics="reflections" checked><span class="graphics-state" aria-hidden="true"></span></label>
-        <label><span>Bloom</span><input type="checkbox" role="switch" data-graphics="bloom" checked><span class="graphics-state" aria-hidden="true"></span></label>
+      <header class="options-header"><p class="eyebrow">GAME SETTINGS</p><h2 id="options-heading">OPTIONS</h2><p>Fine-tune your battlefield.</p></header>
+      <fieldset class="audio-options"><legend>AUDIO</legend>
+        <div class="sound-level-heading"><label for="sound-level">Sound level</label><output id="sound-level-value" for="sound-level">80%</output></div>
+        <input id="sound-level" data-sound-level type="range" min="0" max="100" step="1" value="80" aria-valuetext="80%">
+        <div class="sound-level-scale" aria-hidden="true"><span>SILENT</span><span>FULL</span></div>
       </fieldset>
-      <p class="options-note">Options are saved on this device.</p>
+      <fieldset class="graphics-options"><legend>GRAPHICS</legend>
+        <label><span class="setting-copy"><strong>Critters</strong><small>Wildlife around the battlefield</small></span><input type="checkbox" role="switch" data-graphics="critters" checked><span class="graphics-state" aria-hidden="true"></span></label>
+        <label><span class="setting-copy"><strong>Reflections</strong><small>Mirrored scenery and combat on water</small></span><input type="checkbox" role="switch" data-graphics="reflections" checked><span class="graphics-state" aria-hidden="true"></span></label>
+        <label><span class="setting-copy"><strong>Bloom</strong><small>Soft glow around lights and weapons</small></span><input type="checkbox" role="switch" data-graphics="bloom" checked><span class="graphics-state" aria-hidden="true"></span></label>
+      </fieldset>
+      <p class="options-note">Saved automatically on this device.</p>
       <button type="button" class="primary wide" data-action="close-options">DONE</button>
     </section></div>
     <header id="hud" hidden>

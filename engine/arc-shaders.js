@@ -2,8 +2,8 @@ import {waterDepthRead} from './water-depth.js';
 import {bloomSettings} from './bloom-shaders.js';
 
 // Combat channels (kind -1) are a continuous, shared-edge ribbon. A common
-// strand tangent occupies their otherwise constant colour triplet. Sparks and
-// plasma retain their original camera-facing capsules and colour payloads.
+// strand tangent occupies their otherwise constant colour triplet. Sparks
+// retain their camera-facing capsules and colour payloads.
 export const arcParticles=frameUniforms=>frameUniforms+bloomSettings+`
 @group(1) @binding(2) var depthMap:texture_depth_multisampled_2d;
 @group(1) @binding(4) var waterDepth:texture_depth_2d;
@@ -49,13 +49,12 @@ fn arcColor(i:ArcVertex,pixel:vec2<i32>)->vec4<f32>{
  let alpha=profile*i.colorAlpha.a*coverage;
  if(alpha<.003){discard;}
  var hotCore=select(vec3<f32>(.96,.985,1),min(vec3<f32>(1),i.colorAlpha.rgb+vec3<f32>(0,.16,.2)),i.kind>.5);
- if(i.kind>1.5){hotCore=vec3<f32>(.82,1,.88);}
  return vec4<f32>(mix(i.colorAlpha.rgb,hotCore,core),alpha);
 }
 @fragment fn fragment(i:ArcVertex)->@location(0) vec4<f32>{return arcColor(i,vec2<i32>(i.clip.xy));}
 @fragment fn bloomFragment(i:ArcVertex)->@location(0) vec4<f32>{
  // Small impact sparks stay crisp; only the electrical channel emits bloom.
- if(i.kind>.5&&i.kind<1.5){discard;}
+ if(i.kind>.5){discard;}
  let color=arcColor(i,vec2<i32>(i.clip.xy*bloomSettings.pixelScale.xy));return vec4<f32>(bloomLinear(color.rgb)*color.a,1);
 }
 `;

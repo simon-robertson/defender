@@ -43,7 +43,7 @@ function surface(rig,part,dx,dz,preferredY){
 // own only numeric snapshots: no rig/state references, animation updates, scene
 // searches or per-frame allocations. The caller releases them on scene unload.
 // Eligibility belongs to EnhancerPreview; this helper never discovers receivers.
-export function createPlasmaLinks(world,enhancerStates){
+export function createGeneratorConnections(world,enhancerStates){
  const links=[],seen=new Map();
  for(const state of enhancerStates){
   if(!state.active||state.model!=='power-generator')continue;

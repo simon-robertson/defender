@@ -14,6 +14,8 @@ export function reflectedFrame(out,frame,height){
  out.set(frame);
  // VP * reflection(Y=height), preserving the main projection in both cameras.
  for(let row=0;row<4;row++){out[4+row]=-frame[4+row];out[12+row]=frame[12+row]+2*height*frame[4+row];}
+ // Inverse(VP * R) = R * inverse(VP); volume rays use this mirrored inverse.
+ for(let column=0;column<4;column++)out[33+column*4]=-frame[33+column*4]+2*height*frame[35+column*4];
  out[49]=2*height-frame[49];out[69]=-frame[69];out[79]=height;
  return out;
 }
@@ -54,6 +56,7 @@ export class PlanarReflection {
   if(effects)renderer.ensureReflectionEffects();
   reflectedFrame(this.frame,renderer.frameData,height);this.frame[64]=this.width;this.frame[65]=this.height;this.frame[66]=1/this.width;this.frame[67]=1/this.height;
   this.device.queue.writeBuffer(this.uniform,0,this.frame);
+  this.pass.depthStencilAttachment.depthStoreOp=renderer.volumeSmoke?.active?'store':'discard';
   const pass=encoder.beginRenderPass(this.pass);pass.setBindGroup(0,this.cameraGroup);pass.setBindGroup(1,renderer.lightGroup);pass.setPipeline(this.pipeline);let draws=0;
   for(const draw of renderer.draws)if(draw.visibleCount){pass.setVertexBuffer(0,draw.vertices);pass.setVertexBuffer(1,draw.instances);pass.setIndexBuffer(draw.indices,'uint32');pass.drawIndexed(draw.indexCount,draw.visibleCount);draws++;}
   if(renderer.damageCubeCount){pass.setPipeline(renderer.damageReflectionPipeline);pass.setVertexBuffer(0,renderer.damageCubeBuffer);pass.draw(36,renderer.damageCubeCount);draws++;}

@@ -27,7 +27,7 @@ import {loadGraphicsOptions,saveGraphicsOptions,GRAPHICS_DEFAULTS} from './graph
 
 const canvas=document.getElementById('world'),overlay=document.getElementById('placement-overlay'),hint=document.getElementById('placement-hint');
 const conditions=new LevelConditions();
-let graphics=loadGraphicsOptions(),optionsOpen=false;
+let graphics=loadGraphicsOptions(),optionsOpen=false,leaveOpen=false;
 const performanceReadout=new FramePerformance(document.getElementById('performance-readout'));
 const entrances=new EntranceMarkers(document.getElementById('entrance-overlay'));
 const config=PLAY_CONFIG,session=new PlaySession(config),shots=new ShotEffects(),damage=new DamageEffects(),arcs=new ArcEffects();
@@ -36,11 +36,11 @@ let savedGame=null,progressLoaded=false,savingProgress=false,saveError='';
 const highlight=new UnitHighlight({canvas,list:document.getElementById('unit-list'),overlay:document.getElementById('unit-highlight-overlay'),defences:config.defences});
 const combatStep={combat:true},preparationStep={combat:false};
 let renderer,loader,loop,engine,rules,actionCamera,droneCamera,cameraViews,screenshotCamera,plasmaLinks=null,plasmaOwner=null,plasmaConnections=[],sceneResize,pendingSpec,safeSeeds,lastCameraPhase='title',titleView=null,selectedId=null,hover=null,eligible=[],busy=true,error='',notice='',lastUI=-Infinity,disposed=false;
-const frozen=()=>session.paused||['defeat','complete'].includes(session.phase);
+const frozen=()=>leaveOpen||session.paused||['defeat','complete'].includes(session.phase);
 function snapshot(stats=engine?.stats()){
- const state=session.snapshot();
+ const state=session.snapshot(),loadingSession=pendingSpec?.candidate??session;
  for(const unit of state.units){const weapon=unit.deployed&&engine?.firing.states.find(weapon=>weapon.id===unit.id);if(weapon){unit.stats={...unit.stats,strength:weapon.strength};unit.strengthIncrease=weapon.strengthIncrease??0;}}
- return {...state,graphics,optionsOpen,savedGame:savedGame?{area:savedGame.level.zone+config.levels.slice(0,savedGame.levelIndex+1).filter(level=>level.zone===savedGame.level.zone).length,completedWaves:savedGame.completedWaves}:null,savingProgress,saveError,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
+ return {...state,loadingArea:busy?loadingSession.level.zone+config.levels.slice(0,loadingSession.levelIndex+1).filter(level=>level.zone===loadingSession.level.zone).length:undefined,graphics,optionsOpen,leaveOpen,savedGame:savedGame?{area:savedGame.level.zone+config.levels.slice(0,savedGame.levelIndex+1).filter(level=>level.zone===savedGame.level.zone).length,completedWaves:savedGame.completedWaves}:null,savingProgress,saveError,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
  levelName:loader?.world?.level?.name??(session.levelIndex?'The Broadwater Garden':'The Limestone Orchard'),
  enemiesRemaining:stats?.active??0,spawned:stats?.spawned??0,totalEnemies:session.wave.spawns.length,
  placementHint:hover&&session.phase==='deploy'?hint.textContent:config.defences[session.units.find(unit=>unit.id===selectedId)?.model]?.kind==='enhancer'?'Place beside a defence: edge-sharing squares gain 25% strength. Diagonals do not.':undefined};}
@@ -62,7 +62,7 @@ function syncCombatEffects(){
  }
 }
 function updateHighlight(){highlight.update({world:loader?.world,camera:renderer?.camera,units:session.units,preparing:session.preparing,busy:busy||Boolean(error),paused:session.paused});}
-function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();}
+function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();}
 function fail(cause){error=cause?.message??String(cause);busy=false;performanceReadout.setRunning(false,'Error');renderer?.setTimingActive(false);loop?.stop();paint();}
 function cameraState(){const c=renderer?.camera,active=cameraViews?.active;if(active){const v=active.saved;return {id:loader.world.level.id,target:Array.from(v.subarray(0,3)),yaw:v[3],pitch:v[4],radius:v[5]};}return c&&loader?.world?{id:loader.world.level.id,target:[...c.target],yaw:c.yaw,pitch:c.pitch,radius:c.radius}:null;}
 function refreshPlacement(){overlayKey='';hover=null;const unit=session.units.find(unit=>unit.id===selectedId);eligible=unit&&rules&&session.phase==='deploy'?rules.eligibleCells(unit.variant,session.placements,unit.id,unit.model):[];drawOverlay();}
@@ -93,12 +93,11 @@ function onComplete(waveId){
  if(session.beginSettling(waveId)){selectedId=null;paint();}
 }
 async function saveCheckpoint(){
- savingProgress=true;const completedWaves=session.completedWaves;
+ savingProgress=true;
  try{
   if(session.phase==='complete'){await progress.clear();savedGame=null;}
   else savedGame=await progress.save(session);
   saveError='';
-  if(session.preparing&&session.completedWaves===completedWaves&&notice.startsWith('Wave complete'))notice+=' · Progress saved.';
  }catch{
   saveError='Progress could not be saved on this device. The previous checkpoint is kept.';
   notice=saveError;
@@ -107,7 +106,7 @@ async function saveCheckpoint(){
 function finishSettlement(){
  const levelId=session.level.id,waveId=session.wave.id;
  if(!session.finishWave(waveId))return;
- notice=`Wave complete · +${config.waveReward} tokens${session.waveIndex===0&&session.phase!=='complete'?' · Redeploy your defences on the new landscape.':''}`;
+ notice='';
  if(session.phase==='complete'||session.level.id!==levelId)void saveCheckpoint();
  selectedId=null;busy=session.phase!=='complete'&&session.level.id!==levelId;paint();
  // Release only after the current fixed simulation tick has returned.
@@ -119,7 +118,7 @@ function finishSettlement(){
     rebuild().catch(fail);
    }
    else{
-    engine.prepareWave(session.wave);cameraViews.refresh();shots.reset();arcs.setWorld(loader.world);damage.setWorld(loader.world,engine.enemies.states);syncCombatEffects();
+    engine.prepareWave(session.wave);renderer.volumeSmoke.reset();renderer.volumeSmoke.expire(engine.time);cameraViews.refresh();shots.reset();arcs.setWorld(loader.world);damage.setWorld(loader.world,engine.enemies.states);syncCombatEffects();
     shots.time=arcs.time=engine.time;refreshPlacement();paint();runLoop();
    }
   }catch(cause){fail(cause);}
@@ -132,7 +131,7 @@ async function initialize(){
  }
  renderer=new WorldRenderer(canvas,fail,{modelLightCapacity:playCapacity(config).modelLights,strictModelLights:true,gpuTiming:true,renderScale:.5});await renderer.init();if(disposed){renderer.device?.destroy();return;}
  renderer.setGraphicsOptions(graphics);
- const effectsPrepared=await renderer.prepareDeathEffects();if(!effectsPrepared||disposed)return;renderer.camera.pathModeEnabled=false;
+ const [effectsPrepared,volumePrepared]=await Promise.all([renderer.prepareDeathEffects(),renderer.prepareVolumeSmoke()]);if(!effectsPrepared||!volumePrepared||disposed)return;renderer.camera.pathModeEnabled=false;
  actionCamera=new ActionCamera(renderer.camera);droneCamera=new DroneCamera(renderer.camera);cameraViews=new CameraViews(actionCamera,droneCamera);screenshotCamera=new ScreenshotCamera(renderer.camera);
  loop=new FrameLoop(dt=>{
   try{
@@ -170,11 +169,11 @@ async function initialize(){
    engine=new PlayEngine(world,{config,wave:spec.candidate.wave,
     onPoseChange:(...args)=>renderer.updateInstance(...args),onVisible:(...args)=>renderer.setActorVisible(...args),
     onDeploymentsChanged:world=>{renderer.syncRuntimeInstances(world);syncCombatEffects();},
-    onStep:dt=>{shots.advance(dt);damage.advance(dt);if(engine?.firing.arcs.states.length)arcs.advance(dt);plasmaLinks?.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},
+    onStep:dt=>{shots.advance(dt);damage.advance(dt);renderer.volumeSmoke.expire(engine.time);if(engine?.firing.arcs.states.length)arcs.advance(dt);plasmaLinks?.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},
     onShot:(variant,matrix,at)=>{shots.emit(matrix,TURRET_MUZZLES[variant],at);actionCamera.noteShot(matrix,at);},
     onBulletImpact:(point,normal,at)=>{shots.impact(point,normal,at);cameraViews.noteActivity(point[0],point[1],point[2],at,1);},
     onArcShot:(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint)=>{arcs.emit(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint);actionCamera.note(source[0],source[1],source[2],0,at);cameraViews.noteActivity(point[0],point[1],point[2],at,2);},
-    missileEffects:{onTrail:(x,y,z)=>damage.missileTrail(x,y,z),onLaunch:(x,y,z)=>{damage.launchSmoke(x,y,z);actionCamera.note(x,y,z,0,engine.time);},onImpact:(x,y,z,nx,ny,nz)=>{emitMissileImpact(damage,world.playCritters?engine.wildlife:null,x,y,z,nx,ny,nz);cameraViews.noteExplosion({x,y,z},engine.time);}},
+    missileEffects:{onTrail:(x,y,z,id,lag)=>renderer.volumeSmoke.sample(id,x,y,z,engine.time-lag),onLaunch:(x,y,z)=>{damage.launchSmoke(x,y,z);actionCamera.note(x,y,z,0,engine.time);},onImpact:(x,y,z,nx,ny,nz)=>{emitMissileImpact(damage,world.playCritters?engine.wildlife:null,x,y,z,nx,ny,nz);cameraViews.noteExplosion({x,y,z},engine.time);}},
     onDeath:(id,state)=>{session.resolve(id,'killed');actionCamera.noteDeath(state,engine.time);cameraViews.noteExplosion(state,engine.time);const blast=damage.explode(state);if(blast&&world.playCritters){engine.wildlife.spookExplosion(blast.x,blast.y,blast.z,blast.config.frightRadius);}},
     onEscape:id=>{session.resolve(id,'escaped');if(session.phase==='defeat'){engine.stopWave();queueMicrotask(()=>{paint();runLoop();});}},
     onWaveComplete:()=>onComplete(engine.wave.id),
@@ -217,17 +216,21 @@ document.addEventListener('click',async event=>{
  const button=event.target.closest('[data-action]');if(!button||button.disabled)return;const action=button.dataset.action,id=button.dataset.unit;
  if(disposed||busy)return;
  try{
+  if(action==='cancel-leave'){leaveOpen=false;paint();runLoop();return;}
+  if(action==='title'&&session.phase!=='title'&&session.phase!=='complete'&&!error){leaveOpen=true;screenshotCamera?.leave();renderer?.camera.keys.clear();paint();runLoop();return;}
+  if(action==='confirm-title')leaveOpen=false;
   if(action==='options'||action==='close-options'){if(session.phase!=='title'||error)return;optionsOpen=action==='options';paint();return;}
-  if(action==='retry-load'){if(loader)await rebuild(pendingSpec?.candidate??session.fork(),pendingSpec?.points);else{renderer?.dispose();busy=true;error='';paint();await initialize();}return;}
+  if(action==='retry-load'){leaveOpen=false;if(loader)await rebuild(pendingSpec?.candidate??session.fork(),pendingSpec?.points);else{renderer?.dispose();busy=true;error='';paint();await initialize();}return;}
   if(action==='continue'){
    optionsOpen=false;
-   if(session.phase!=='title'||error||!savedGame||savingProgress)return;
+   if(!['title','defeat'].includes(session.phase)||error||!savedGame||savingProgress)return;
    cameraViews?.reset();conditions.reset();selectedId=null;notice='Resumed from the last completed level.';await rebuild(savedGame.fork());return;
   }
-  if(action==='title'||action==='play'||action==='retry'){
+  if(action==='title'||action==='confirm-title'||action==='play'||action==='retry'){
    optionsOpen=false;
-   if(action!=='title')cameraViews?.reset();
-   conditions.reset();const candidate=action==='title'?createTitleSession(config,savedGame):new PlaySession(config);if(action!=='title')candidate.reset('loadout');selectedId=null;notice='';await rebuild(candidate);return;
+   const toTitle=action==='title'||action==='confirm-title';leaveOpen=false;
+   if(!toTitle)cameraViews?.reset();
+   conditions.reset();const candidate=toTitle?createTitleSession(config,savedGame):new PlaySession(config);if(!toTitle)candidate.reset('loadout');selectedId=null;notice='';await rebuild(candidate);return;
   }
   if(error)return;
   if(action==='pause'||action==='resume'){session.pause(action==='pause');paint();runLoop();return;}
@@ -285,6 +288,7 @@ canvas.addEventListener('pointermove',event=>{if(busy||error||!loader?.world||!r
 canvas.addEventListener('pointerdown',event=>{if(event.button!==0||busy||error||!loader?.world||!rules||session.phase!=='deploy'||!selectedId)return;event.preventDefault();event.stopImmediatePropagation();canvas.focus();hover=pick(event);placeAt(hover).catch(fail);},true);
 canvas.addEventListener('pointerleave',()=>{hover=null;drawOverlay();});
 document.addEventListener('keydown',event=>{
+ if(leaveOpen){if(event.key==='Escape'&&!event.repeat){event.preventDefault();leaveOpen=false;paint();runLoop();}return;}
  if(optionsOpen&&event.key==='Escape'){event.preventDefault();optionsOpen=false;paint();return;}
  if(event.key==='Backspace'&&session.paused&&!busy&&!error&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target?.isContentEditable&&!/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName)){
   event.preventDefault();if(event.repeat)return;screenshotCamera.toggle(true);paint();if(screenshotCamera.active)canvas.focus();renderer.render(0,engine?.time??0);runLoop();return;

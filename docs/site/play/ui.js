@@ -1,15 +1,16 @@
+import {checkpointDescription,upgradeComparison,waveOutcomeText} from './briefing.js';
 import {PORTRAITS} from './portraits.js';
 import {RosterGroups} from './roster.js';
 // Presentation only: the play session owns state, prices and all actions.
 // Buttons expose data-action and optional data-unit for app-level delegation.
 const $=id=>document.getElementById(id);
-const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
+const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','last-wave-summary','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','resume-checkpoint-button','result-checkpoint','leave-screen','leave-checkpoint','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
 const rows=new Map(),shopRows=new Map();
 const roster=new RosterGroups(refs['unit-list']);
-let previewKey='';
+let previewKey='',briefingSelection=null;
 let previousPhase=null,previousModal=null,pendingFocus=null,currentActions=new Set(['play']);
 const waveActions=['title','pause'];
-const phaseActions={title:['play','continue','options'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['retry','title'],complete:['retry','title']};
+const phaseActions={title:['play','continue','options'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['continue','retry','title'],complete:['retry','title']};
 const setText=(node,value)=>{const text=String(value??'');if(node.textContent!==text)node.textContent=text;};
 const show=(node,visible)=>{if(node.hidden===visible)node.hidden=!visible;};
 const count=value=>Number.isFinite(value)?Math.max(0,value):0;
@@ -28,7 +29,8 @@ function createUnitRow(unit){
   const operations=document.createElement('div');operations.className='unit-operations';
   const upgrade=document.createElement('button');upgrade.type='button';upgrade.dataset.action='upgrade';upgrade.dataset.unit=unit.id;
   const undeploy=document.createElement('button');undeploy.type='button';undeploy.dataset.action='undeploy';undeploy.dataset.unit=unit.id;undeploy.textContent='Recall';operations.append(upgrade,undeploy);row.append(select,operations);
-  return {row,select,portrait,number,name,detail,operations,upgrade,undeploy};
+  const briefing=document.createElement('div');briefing.className='upgrade-briefing';briefing.id='upgrade-briefing-'+unit.id;upgrade.setAttribute('aria-describedby',briefing.id);row.append(briefing);
+  return {row,select,portrait,number,name,detail,operations,upgrade,undeploy,briefing};
 }
 
 function updateInventory(snapshot,locked){
@@ -47,9 +49,19 @@ function updateInventory(snapshot,locked){
     show(entry.upgrade,loadout&&hasUpgrade);entry.upgrade.disabled=locked||!loadout||!unit.canUpgrade;setText(entry.upgrade,unit.upgradeAvailableFromWave>(snapshot.encounterNumber??1)?`Upgrade ${unit.nextVariant==='upgrade2'?'II':'I'} · Level ${Math.ceil(unit.upgradeAvailableFromWave/4)}`:`UPGRADE ${unit.nextVariant==='upgrade2'?'II':'I'} · ${priceLabel(unit.upgradeCost??snapshot.costs?.upgrade??1)}`);
     show(entry.undeploy,deploy&&Boolean(unit.deployed));entry.undeploy.disabled=locked||!deploy||!unit.deployed;
     show(entry.operations,(loadout&&hasUpgrade)||(deploy&&Boolean(unit.deployed)));
+    const comparison=loadout&&hasUpgrade?upgradeComparison(unit):null,key=JSON.stringify(comparison);
+    show(entry.briefing,Boolean(comparison));
+    if(entry.briefing.dataset.key!==key){entry.briefing.dataset.key=key;entry.briefing.replaceChildren();if(comparison){
+     const title=document.createElement('h4');title.textContent=`UPGRADE ${unit.nextVariant==='upgrade2'?'II':'I'} · CURRENT → NEXT`;
+     const list=document.createElement('dl');for(const[label,value]of comparison.rows){const name=document.createElement('dt'),detail=document.createElement('dd');name.textContent=label;detail.textContent=value;list.append(name,detail);}
+     const note=document.createElement('p');note.textContent=comparison.note;entry.briefing.append(title,list,note);
+    }}
   }
   for(const[id,entry]of rows)if(!live.has(id)){entry.row.remove();rows.delete(id);}
   roster.sync(units,rows);
+  const inspected=loadout&&!locked?rows.get(snapshot.selectedId):null;
+  if(inspected&&!inspected.briefing.hidden&&briefingSelection!==snapshot.selectedId)inspected.briefing.scrollIntoView({block:'nearest',inline:'nearest'});
+  briefingSelection=loadout?snapshot.selectedId:null;
   setText(refs['unit-count'],ordinal(units.length));show(refs['empty-inventory'],units.length===0);
   return units;
 }
@@ -110,15 +122,17 @@ export function renderUI(snapshot={}){
   if($('world').getAttribute('aria-label')!==canvasLabel)$('world').setAttribute('aria-label',canvasLabel);
   show(refs['title-screen'],phase==='title');show(refs.hud,phase!=='title');show(refs['prepare-panel'],prep);show(refs['wave-preview'],prep);show(refs['board-footer'],phase!=='title');
   show(refs['options-screen'],phase==='title'&&snapshot.optionsOpen&&!error);
-  show(refs['pause-screen'],paused&&!screenshot&&!error);show(refs['result-screen'],result&&!error);show(refs['error-screen'],error);show(refs.loading,busy&&!error);
-  const modal=error?refs['error-screen']:phase==='title'&&snapshot.optionsOpen?refs['options-screen']:paused&&!screenshot?refs['pause-screen']:result?refs['result-screen']:null;
-  currentActions=new Set(screenshot?[]:error?['retry-load','title']:busy?[]:modal===refs['options-screen']?['close-options']:paused?['resume','title']:(phaseActions[phase]??[]));
+  show(refs['leave-screen'],Boolean(snapshot.leaveOpen)&&!error);setText(refs['leave-checkpoint'],checkpointDescription(snapshot.savedGame,snapshot.savingProgress));
+  show(refs['pause-screen'],paused&&!screenshot&&!error&&!snapshot.leaveOpen);show(refs['result-screen'],result&&!error&&!snapshot.leaveOpen);show(refs['error-screen'],error);show(refs.loading,busy&&!error);
+  if(busy)setText(refs['loading-area'],`AREA ${snapshot.loadingArea??((snapshot.zone??'A')+(snapshot.levelNumber??1))}`);
+  const modal=error?refs['error-screen']:snapshot.leaveOpen?refs['leave-screen']:phase==='title'&&snapshot.optionsOpen?refs['options-screen']:paused&&!screenshot?refs['pause-screen']:result?refs['result-screen']:null;
+  currentActions=new Set(screenshot?[]:error?['retry-load','title']:busy?[]:modal===refs['leave-screen']?['cancel-leave','confirm-title']:modal===refs['options-screen']?['close-options']:paused?['resume','title']:(phaseActions[phase]??[]));
   if(!snapshot.savedGame||snapshot.savingProgress)currentActions.delete('continue');
   show($('continue-button'),Boolean(snapshot.savedGame));
   setText($('continue-button'),`CONTINUE · ${snapshot.savedGame?.area??''}`);
   $('new-game-button').classList.toggle('has-checkpoint',Boolean(snapshot.savedGame));
   setText($('save-status'),snapshot.saveError||(snapshot.savingProgress?'Saving progress…':snapshot.savedGame?`Checkpoint: Area ${snapshot.savedGame.area} · ${snapshot.savedGame.completedWaves} waves cleared. New Game keeps this save until you clear a level.`:'Progress saves after each level on this device.'));
-  for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||screenshot;
+  for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||busy||screenshot;
   $('scene').inert=Boolean(modal)||busy;
   for(const button of document.querySelectorAll('button[data-action]'))button.disabled=!currentActions.has(button.dataset.action);
   for(const input of document.querySelectorAll('input[data-graphics]')){input.checked=snapshot.graphics?.[input.dataset.graphics]!==false;input.disabled=busy||error||phase!=='title';}
@@ -146,19 +160,24 @@ export function renderUI(snapshot={}){
   setText(refs['placement-hint'],snapshot.placementHint??(snapshot.selectedId?'Choose clear ground to place this defence.':'Select a defence, then choose clear ground.'));
   show(refs['deployment-count'],deploying);setText(refs['deployment-count'],`${deployed} of ${units.length} defence${units.length===1?'':'s'} deployed`);
   show(refs['deploy-button'],!deploying);show(refs['start-wave-button'],deploying);show(refs['loadout-button'],deploying);setText(refs['start-wave-button'],`START WAVE ${wave} ▶`);
-  setText(refs['preparation-note'],snapshot.saveError|| (deploying?'You can start with defences still in inventory.':'Unspent tokens carry forward.'));
+  show(refs['last-wave-summary'],prep&&Boolean(snapshot.lastWaveResult));setText(refs['last-wave-summary'],waveOutcomeText(snapshot.lastWaveResult));
+  setText(refs['preparation-note'],snapshot.saveError|| (deploying?(deployed?'You can keep other defences in inventory.':'Place at least one defence to start the wave.'):'Unspent tokens carry forward.'));
   for(const id of ['deploy-button','start-wave-button','loadout-button','cancel-button'])refs[id].disabled=locked||!currentActions.has(refs[id].dataset.action);
+  refs['start-wave-button'].disabled ||= deployed===0;
   show(refs['wave-status'],activeWave&&!paused);const remaining=count(snapshot.enemiesRemaining),spawned=count(snapshot.spawned),total=count(snapshot.totalEnemies);
   setText(refs['wave-status-text'],settling?'Wave complete · Clearing the field…':total?`${remaining} on the path · ${Math.min(spawned,total)} of ${total} arrived`:'Wave in progress');
   show(refs.notice,Boolean(snapshot.notice)&&!error&&!result);setText(refs.notice,snapshot.notice??'');
   setText(refs['board-caption'],filming?'Drone follows the action.':prep&&droneEnabled?'Drone armed for the next wave.':activeWave?'Drone follows the action.':result?(phase==='complete'?'Run complete.':'Run ended.'):deploying?'Select a defence, then click clear ground to place it.':'Build, upgrade, then deploy.');
 
   if(result){
+    show(refs['result-checkpoint'],phase==='defeat');setText(refs['result-checkpoint'],checkpointDescription(snapshot.savedGame,snapshot.savingProgress));
+    show(refs['resume-checkpoint-button'],phase==='defeat'&&Boolean(snapshot.savedGame));setText(refs['resume-checkpoint-button'],`RESUME CHECKPOINT · ${snapshot.savedGame?.area??''}`);
     const complete=phase==='complete',completed=snapshot.completedWaves??(complete?snapshot.totalWaves??64:Math.max(0,((snapshot.levelNumber??1)-1)*waves+wave-1));
     refs['result-screen'].querySelector('.result-dialog').dataset.result=phase;
     setText(refs['result-eyebrow'],complete?'CAMPAIGN COMPLETE':'GAME OVER');setText(refs['result-heading'],complete?'ALL ZONES SECURED':'LINE BREACHED');
-    setText(refs['result-description'],complete?`All ${snapshot.totalLevels??16} landscapes held across Zones A–D. Your ${snapshot.totalWaves??64}-wave run is complete.`:`${misses} enemies reached the exit. Start fresh and try another arrangement.`);
-    setText(refs['result-waves'],completed);setText(refs['result-misses'],`${misses} / ${limit}`);setText(refs['retry-button'],complete?'NEW GAME':'RETRY');setText(refs['result-emblem'],complete?'✓':'×');
+    refs['retry-button'].classList.toggle('primary',complete||!snapshot.savedGame);refs['retry-button'].classList.toggle('text-button',!complete&&Boolean(snapshot.savedGame));
+    setText(refs['result-description'],complete?`All ${snapshot.totalLevels??16} landscapes held across Zones A–D. Your ${snapshot.totalWaves??64}-wave run is complete.`:`${misses} enemies reached the exit. ${snapshot.savedGame?'Resume your checkpoint or restart the campaign from Area A1.':'Restart the campaign from Area A1 and try another arrangement.'}`);
+    setText(refs['result-waves'],completed);setText(refs['result-misses'],`${misses} / ${limit}`);setText(refs['retry-button'],complete?'NEW GAME':'RESTART CAMPAIGN');setText(refs['result-emblem'],complete?'✓':'×');
   }
   if(error)setText(refs['error-description'],typeof snapshot.error==='string'?snapshot.error:snapshot.error.message??'The landscape could not be loaded. Please try again.');
 
@@ -174,7 +193,7 @@ export function renderUI(snapshot={}){
       if(identity.action)target=[...document.querySelectorAll('[data-action]')].find(node=>node.dataset.action===identity.action&&node.dataset.unit===identity.unit&&!node.disabled&&!node.closest('[hidden]'));
       if(!target&&identity.unit){const select=rows.get(identity.unit)?.select;if(select&&!select.disabled&&!select.closest('[hidden]'))target=select;}
     }
-    if(!target)target=phase==='title'?$(snapshot.savedGame&&!snapshot.savingProgress?'continue-button':'new-game-button'):deploying?refs['start-wave-button']:prep?(refs['buy-button'].disabled?refs['deploy-button']:refs['buy-button']):refs['pause-button'];
+    if(!target)target=phase==='title'?$(snapshot.savedGame&&!snapshot.savingProgress?'continue-button':'new-game-button'):deploying?(refs['start-wave-button'].disabled?refs['loadout-button']:refs['start-wave-button']):prep?(refs['buy-button'].disabled?refs['deploy-button']:refs['buy-button']):refs['pause-button'];
     if(target&&!target.disabled&&!target.closest('[hidden]'))target.focus({preventScroll:true});
     if(!busy)pendingFocus=null;
   }
@@ -200,3 +219,9 @@ document.addEventListener('keydown',event=>{
   if(event.shiftKey&&(document.activeElement===first||!previousModal.contains(document.activeElement))){event.preventDefault();last.focus();}
   else if(!event.shiftKey&&(document.activeElement===last||!previousModal.contains(document.activeElement))){event.preventDefault();first.focus();}
 },true);
+
+// Keep a keyboard-inspected comparison visible within the roster scroll area.
+document.addEventListener('focusin',event=>{
+ const button=event.target.closest?.('button[data-action="upgrade"]'),entry=button&&rows.get(button.dataset.unit);
+ if(entry&&!entry.briefing.hidden&&!entry.row.closest('[hidden],[inert]'))entry.briefing.scrollIntoView({block:'nearest',inline:'nearest'});
+});

@@ -28,7 +28,7 @@ export class PlaySession {
  constructor(config=PLAY_CONFIG){this.config=validatePlayConfig(config);this.reset('title');}
  reset(phase='loadout'){
   this.phase=phase;this.tokens=this.config.startTokens;this.misses=0;this.levelIndex=0;this.waveIndex=0;
-  this.units=[];this.nextUnit=1;this.completedWaves=0;this.resolved=new Map();this.paused=false;this.settleRemaining=0;
+  this.units=[];this.nextUnit=1;this.completedWaves=0;this.lastWaveResult=null;this.resolved=new Map();this.paused=false;this.settleRemaining=0;
  }
  get level(){return this.config.levels[this.levelIndex];}
  get wave(){return this.level.waves[this.waveIndex];}
@@ -55,7 +55,8 @@ export class PlaySession {
  }
  undeploy(id){const unit=this.units.find(unit=>unit.id===id);if(this.phase!=='deploy'||!unit?.box)return false;unit.box=null;return true;}
  prepare(phase){if(!this.preparing||!['loadout','deploy'].includes(phase))return false;this.phase=phase;return true;}
- startWave(){if(this.phase!=='deploy')return false;this.phase='wave';this.paused=false;this.resolved.clear();return true;}
+ get canStartWave(){return this.phase==='deploy'&&this.units.some(unit=>unit.box);}
+ startWave(){if(!this.canStartWave)return false;this.phase='wave';this.paused=false;this.resolved.clear();return true;}
  resolve(id,outcome){
   if(this.phase!=='wave'||this.paused||!['killed','escaped'].includes(outcome)||this.resolved.has(id)||!this.wave.spawns.some(spawn=>spawn.id===id))return false;
   this.resolved.set(id,outcome);
@@ -76,6 +77,8 @@ export class PlaySession {
  }
  finishWave(waveId){
   if(this.phase!=='settling'||this.paused||this.settleRemaining>0||this.wave.id!==waveId||this.resolved.size!==this.wave.spawns.length)return false;
+  let escaped=0;for(const outcome of this.resolved.values())if(outcome==='escaped')escaped++;
+  this.lastWaveResult={waveId,escaped,killed:this.resolved.size-escaped,reward:this.config.waveReward};
   this.tokens+=this.config.waveReward;this.completedWaves++;this.resolved.clear();
   const next=nextEncounter(this.config.levels,this.levelIndex,this.waveIndex);
   if(next){if(next.levelIndex!==this.levelIndex)for(const unit of this.units)unit.box=null;Object.assign(this,next);this.phase='loadout';}
@@ -88,14 +91,14 @@ export class PlaySession {
   for(const spawn of this.wave.spawns){const key=spawn.model+':'+spawn.routeId;let group=groups.get(key);if(!group){const profile={...this.config.enemies[spawn.model],...this.wave.enemyOverrides?.[spawn.model]};group={model:spawn.model,name:ENEMY_NAMES[spawn.model]??spawn.model,routeId:spawn.routeId,count:0,maxHealth:profile.maxHealth,speed:profile.speed,altitude:profile.altitude,firstAt:spawn.at,lastAt:spawn.at};groups.set(key,group);}group.count++;group.lastAt=spawn.at;}
   return {splitApproaches:new Set(this.wave.spawns.map(spawn=>spawn.routeId)).size>1,name:this.wave.name??'Incoming wave',description:this.wave.description??'',groups:[...groups.values()],total:this.wave.spawns.length};
  }
- snapshot(){return {phase:this.phase,paused:this.paused,settleRemaining:this.settleRemaining,tokens:this.tokens,misses:this.misses,missLimit:this.config.missLimit,
+ snapshot(){return {lastWaveResult:this.lastWaveResult?{...this.lastWaveResult}:null,phase:this.phase,canStartWave:this.canStartWave,paused:this.paused,settleRemaining:this.settleRemaining,tokens:this.tokens,misses:this.misses,missLimit:this.config.missLimit,
   zone:this.level.zone,zoneName:ZONES[this.level.zone].name,
   levelNumber:this.config.levels.slice(0,this.levelIndex+1).filter(level=>level.zone===this.level.zone).length,
   campaignLevelNumber:this.levelIndex+1,totalLevels:this.config.levels.length,
   waveNumber:this.waveIndex+1,wavesPerLevel:this.level.waves.length,completedWaves:this.completedWaves,
   totalWaves:this.config.levels.reduce((sum,level)=>sum+level.waves.length,0),wavePreview:this.wavePreview(),
   shop:Object.entries(this.config.defences).map(([model,family])=>({model,kind:family.kind??'defence',name:DEFENCE_NAMES[model]??model,cost:family.purchaseCost,available:available(family,this.encounterNumber)&&available(family.variants.base,this.encounterNumber),availableFromWave:Math.max(family.availableFromWave??1,family.variants.base.availableFromWave??1),stats:family.variants.base.stats,firing:family.variants.base.firing})),
-  units:this.units.map((unit,i)=>{const model=unit.model??'turret-study',family=this.config.defences[model],nextVariant=this.nextVariant(unit),upgradeCost=nextVariant?family.upgradeCost:null,upgradeAvailableFromWave=nextVariant?Math.max(family.availableFromWave??1,family.variants[nextVariant].availableFromWave??1):null;return {...unit,model,kind:family.kind??'defence',box:unit.box?.slice()??null,deployed:Boolean(unit.box),stats:family.variants[unit.variant].stats,firing:family.variants[unit.variant].firing,label:(DEFENCE_NAMES[model]??model)+' '+String(i+1).padStart(2,'0'),nextVariant,upgradeCost,upgradeAvailableFromWave,canUpgrade:this.phase==='loadout'&&nextVariant!==null&&this.encounterNumber>=upgradeAvailableFromWave&&this.tokens>=upgradeCost};}),
+  units:this.units.map((unit,i)=>{const model=unit.model??'turret-study',family=this.config.defences[model],nextVariant=this.nextVariant(unit),upgradeCost=nextVariant?family.upgradeCost:null,upgradeAvailableFromWave=nextVariant?Math.max(family.availableFromWave??1,family.variants[nextVariant].availableFromWave??1):null;return {...unit,model,kind:family.kind??'defence',box:unit.box?.slice()??null,deployed:Boolean(unit.box),stats:family.variants[unit.variant].stats,firing:family.variants[unit.variant].firing,label:(DEFENCE_NAMES[model]??model)+' '+String(i+1).padStart(2,'0'),nextVariant,nextStats:nextVariant?family.variants[nextVariant].stats:null,nextFiring:nextVariant?family.variants[nextVariant].firing:null,upgradeCost,upgradeAvailableFromWave,canUpgrade:this.phase==='loadout'&&nextVariant!==null&&this.encounterNumber>=upgradeAvailableFromWave&&this.tokens>=upgradeCost};}),
   encounterNumber:this.encounterNumber,
   costs:{buy:this.config.defences['turret-study'].purchaseCost,upgrade:this.config.defences['turret-study'].upgradeCost}};}
 }

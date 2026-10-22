@@ -6,13 +6,13 @@ Established 21 October 2026. **Current policy: keep deployments simple.** The us
 
 **Repository policy (21 October): local commits are allowed; pushing changes to any remote repository is NOT allowed.** Do not push or publish through Git or an equivalent tool/API. This supersedes earlier statements that local commits require a separate request.
 
-Prepare the current game in the repository-root `docs/` directory so it can be served as a static GitHub Pages site. This authorises local packaging only. A commit, push, hosting configuration or online publication needs a separate request.
+Prepare the current game in the repository-root `docs/` directory so it can be served as a static GitHub Pages site. This authorises local packaging only. Under the standing user instruction of 22 October, commit any task changes after completion, including generated deployment output; do not create empty commits. Pushing, hosting configuration and online publication are not authorised.
 
 ## Default procedure
 
 1. Run `bun run deploy:local` to create or refresh the existing package. Reuse this packaging command; do not rebuild the deployment workflow on each request.
 2. Keep `docs/index.html` as the playable entry and `docs/site/` as its runtime directory. Include the required modules and assets, use relative URLs and static JSON loading, and strip development/debug code from delivery copies.
-3. Report the entry path and finish once packaging succeeds. A short confirmation is enough.
+3. Once packaging succeeds, commit any task changes locally under the standing user instruction, then report the entry path. A short confirmation is enough.
 
 `docs/` is exclusively generated hosting output. The packager clears it before writing a fresh deployment. Only runtime HTML, CSS, JavaScript and required assets belong there. Keep all project notes, Markdown/text documents, review evidence and debug files in `project-docs/`, and packaging manifests/logs in `build/deployment/`. Do not copy them into `docs/`.
 

@@ -25,6 +25,7 @@ export const TURRET_MUZZLES=Object.freeze({
 
 // One validated lightning pulse is one hitscan damage event, regardless of
 // visual segments or sparks. Cooldown begins after the last actual pulse.
+export const ARC_CHAIN_RANGE_SCALE=.5,ARC_CHAIN_STRENGTH=.25;
 export const ARC_SPIRE_FIRING=Object.freeze({
  base:Object.freeze({shotsPerBurst:1,shotIntervalSeconds:0,cooldownSeconds:1.4,delivery:'hitscan',projectile:null}),
  upgrade1:Object.freeze({shotsPerBurst:2,shotIntervalSeconds:.2,cooldownSeconds:1.4,delivery:'hitscan',projectile:null}),

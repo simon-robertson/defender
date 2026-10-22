@@ -17,6 +17,7 @@ import {MAX_DAMAGE_CUBES,MAX_BLASTS,MAX_DAMAGE_PARTICLES,MAX_DAMAGE_LIGHTS,DAMAG
 import {MAX_LOCAL_LIGHTS,MAX_SHOT_LIGHTS,MAX_SHOT_INSTANCES,SHOT_INSTANCE_FLOATS} from '../shared/shot-effects.js';
 import {arcParticles} from './arc-shaders.js';
 import {ARC_EMPTY_LIGHT_BYTES,ARC_LIGHT_BYTES,ARC_LIGHT_FLOATS,ARC_INSTANCE_FLOATS,MAX_ARC_INSTANCES} from '../shared/arc-effects.js';
+import {VolumeSmoke} from './volume-smoke.js';
 import {MAX_MISSILE_LIGHTS,MAX_MISSILE_THRUST_INSTANCES,MISSILE_THRUST_FLOATS} from '../shared/missile-flight.js';
 import {PLASMA_INSTANCE_BYTES,PLASMA_INSTANCE_FLOATS,COMBINED_TUBE_LIGHT_BYTES} from '../shared/plasma-links.js';
 import {MAX_MODEL_LIGHTS,MAX_SUPPORTED_MODEL_LIGHTS} from '../shared/model-lights.js';
@@ -244,6 +245,11 @@ export class WorldRenderer {
   if(!this.reflectionEffects){this.reflectionEffects=new ReflectionEffects(this,asyncCreate);this.effectBytes+=this.reflectionEffects.bytes;}
   return this.reflectionEffects.ready;
  }
+ async prepareVolumeSmoke(){
+  if(this.disposed)return false;
+  const smoke=this.volumeSmoke??=new VolumeSmoke(this);
+  try{return await smoke.init();}catch(error){smoke.dispose();throw error;}
+ }
  async prepareDeathEffects(){
   if(this.deathEffectsPreparation)return this.deathEffectsPreparation;
   if(this.disposed)return false;
@@ -437,7 +443,7 @@ export class WorldRenderer {
   if(cameraUpdated){c.update(w/h);f.set(c.vp);f.set(c.inverse,32);f.set(c.eye,48);
    const pitchCos=Math.cos(c.pitch);f[64]=w;f[65]=h;f[66]=1/w;f[67]=1/h;f[68]=Math.sin(c.yaw)*pitchCos;f[69]=Math.sin(c.pitch);f[70]=Math.cos(c.yaw)*pitchCos;f[71]=c.isPerspective?1:0;
   }
-  this.damageEffects?.prepare?.(c.vp);this.prepareDamage();this.prepareWaterRipples();this.mergeLocalLights();this.prepareArcs();this.preparePlasmaLinks();this.prepareMissileThrust();
+  this.volumeSmoke?.prepare(f);this.damageEffects?.prepare?.(c.vp);this.prepareDamage();this.prepareWaterRipples();this.mergeLocalLights();this.prepareArcs();this.preparePlasmaLinks();this.prepareMissileThrust();
   const reflections=this.reflectionsEnabled&&this.ssr;
   const wantsPlanar=this.waterReflections==='planar'&&this.waterDraw&&this.waterHeight!==null&&reflections&&c.eye[1]>this.waterHeight&&waterInView(this.waterBounds,c.vp);
   if(wantsPlanar){if(!this.planar)this.planar=new PlanarReflection(this,vertexBuffers);if(this.planar.resize(w,h))this.screenGroup=null;}
@@ -455,6 +461,7 @@ export class WorldRenderer {
   if(shadowUpdated){this.lastDrawCalls+=this.geometryPass(renderEncoder.beginRenderPass(this.shadowPass),this.shadowPipeline,this.damageShadowPipeline);this.shadowDirty=false;}
   if(!wantsPlanar&&this.planar&&(cameraUpdated||opaqueUpdated||shadowUpdated))this.planar.valid=false;
   this.planarDraws=wantsPlanar?this.planar.render(renderEncoder,this,this.waterHeight,cameraUpdated||opaqueUpdated||shadowUpdated):0;this.lastDrawCalls+=this.planarDraws;
+  if(this.planarDraws&&this.volumeSmoke?.active)this.lastDrawCalls+=this.volumeSmoke.reflect(renderEncoder,this);
   if(opaqueUpdated){
    const color=renderEncoder.beginRenderPass(this.opaquePass);color.setBindGroup(1,this.lightGroup);this.lastDrawCalls+=this.geometryPass(color,this.colorPipeline,this.damageColorPipeline);
    this.dirty=false;
@@ -478,6 +485,7 @@ export class WorldRenderer {
    if(translucent){display.setPipeline(this.damageSmokePipeline);display.draw(6,translucent);this.lastDrawCalls++;}
    if(damage.blastCount){display.setPipeline(this.damageBlastPipeline);display.draw(6,damage.blastCount,0,translucent);this.lastDrawCalls++;}
   }
+  if(this.volumeSmoke?.active)this.lastDrawCalls+=this.volumeSmoke.draw(display,this);
   if(effects?.instanceCount){display.setPipeline(this.shotPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setVertexBuffer(0,this.shotInstances);display.draw(6,effects.instanceCount);this.lastDrawCalls++;}
   if(this.missileThrust?.instanceCount){display.setPipeline(this.shotPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setVertexBuffer(0,this.missileThrustInstances);display.draw(6,this.missileThrust.instanceCount);this.lastDrawCalls++;}
   if(this.arcEffects?.instanceCount){display.setPipeline(this.arcPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setVertexBuffer(0,this.arcInstances);display.draw(6,this.arcEffects.instanceCount);this.lastDrawCalls++;}
@@ -487,12 +495,12 @@ export class WorldRenderer {
   this.submitBuffers[0]=encoder.finish();this.device.queue.submit(this.submitBuffers);this.submitBuffers[0]=null;this.gpuTimer?.submitted(timing);this.frames++;this.lastSubmitMs=performance.now()-start;
  }
 
- clearGeometry(){this.lastWaterRipples=null;this.lastWaterRippleRevision=null;this.gpuTimer?.reset();this.planar?.clearTargets();this.visibleEmitters=0;this.waterHeight=this.waterBounds=null;this.vista?.dispose();this.vista=null;this.screenGroup=null;this.clearMissileThrust();this.clearPlasmaLinks(false);this.clearArcResources();this.bloom?.clearTargets();this.modelLights?.dispose();this.modelLights=null;for(const buffer of this.sceneBuffers){buffer.destroy();this.destroyedSceneBuffers++;}this.sceneBuffers.clear();this.waterDraw=null;this.draws.length=0;this.drawMap.clear();this.bytes=0;this.transformBytes=0;this.visibilityBytes=0;this.lastTransformUploads=0;this.lastTransformUploadBytes=0;}
+ clearGeometry(){this.volumeSmoke?.reset();this.lastWaterRipples=null;this.lastWaterRippleRevision=null;this.gpuTimer?.reset();this.planar?.clearTargets();this.visibleEmitters=0;this.waterHeight=this.waterBounds=null;this.vista?.dispose();this.vista=null;this.screenGroup=null;this.clearMissileThrust();this.clearPlasmaLinks(false);this.clearArcResources();this.bloom?.clearTargets();this.modelLights?.dispose();this.modelLights=null;for(const buffer of this.sceneBuffers){buffer.destroy();this.destroyedSceneBuffers++;}this.sceneBuffers.clear();this.waterDraw=null;this.draws.length=0;this.drawMap.clear();this.bytes=0;this.transformBytes=0;this.visibilityBytes=0;this.lastTransformUploads=0;this.lastTransformUploadBytes=0;}
  clearWorld(){
   this.clearShockwaveTarget();this.shockwaveCount=0;
   this.clearGeometry();this.world=null;this.camera.clearLevel();this.shadowDirty=true;this.uniformDirty=true;this.requestDraw();this.hadTransientLights=false;this.localLightCount=0;this.damageCubeCount=this.damageParticleCount=0;this.lastDamageCubeRevision=-1;
   if(this.shotEffects)this.shotEffects.reset();this.localLightData.fill(0);this.localLightUploadBytes=0;if(this.shotUniform)this.device?.queue.writeBuffer(this.shotUniform,0,this.localLightData);
   if(this.ready&&!this.failed&&!this.disposed){const encoder=this.device.createCommandEncoder();this.clearPass.colorAttachments[0].view=this.context.getCurrentTexture().createView();encoder.beginRenderPass(this.clearPass).end();this.submitBuffers[0]=encoder.finish();this.device.queue.submit(this.submitBuffers);this.submitBuffers[0]=null;}
  }
- dispose(){if(this.disposed)return;this.gpuTimer?.dispose();this.bloom?.dispose();this.bloom=null;this.planar?.dispose();this.planar=null;this.reflectionEffects?.dispose();this.reflectionEffects=null;this.disposed=true;this.resizeObserver?.disconnect();this.clearGeometry();this.clearShockwaveTarget();this.world=null;this.shotEffects=this.damageEffects=this.arcEffects=null;this.camera.dispose();for(const t of this.targets||[])t.destroy();this.shadow?.destroy();this.uniform?.destroy();this.waterRippleUniform?.destroy();this.shotUniform?.destroy();this.emptyArcLights?.destroy();this.shotInstances?.destroy();this.damageCubeBuffer?.destroy();this.damageParticleBuffer?.destroy();this.shockwaveUniform?.destroy();this.device?.destroy();}
+ dispose(){if(this.disposed)return;this.volumeSmoke?.dispose();this.volumeSmoke=null;this.gpuTimer?.dispose();this.bloom?.dispose();this.bloom=null;this.planar?.dispose();this.planar=null;this.reflectionEffects?.dispose();this.reflectionEffects=null;this.disposed=true;this.resizeObserver?.disconnect();this.clearGeometry();this.clearShockwaveTarget();this.world=null;this.shotEffects=this.damageEffects=this.arcEffects=null;this.camera.dispose();for(const t of this.targets||[])t.destroy();this.shadow?.destroy();this.uniform?.destroy();this.waterRippleUniform?.destroy();this.shotUniform?.destroy();this.emptyArcLights?.destroy();this.shotInstances?.destroy();this.damageCubeBuffer?.destroy();this.damageParticleBuffer?.destroy();this.shockwaveUniform?.destroy();this.device?.destroy();}
 }

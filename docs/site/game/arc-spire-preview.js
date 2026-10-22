@@ -1,4 +1,4 @@
-import {ARC_SPIRE_FIRING,ARC_SPIRE_TERMINALS} from '../shared/arsenal.js';
+import {ARC_SPIRE_FIRING,ARC_SPIRE_TERMINALS,ARC_CHAIN_RANGE_SCALE,ARC_CHAIN_STRENGTH} from '../shared/arsenal.js';
 import {DEFENCE_STATS} from '../shared/defence.js';
 import {WeaponCycle} from '../engine/weapon.js';
 import {DefenceAim} from '../engine/targeting.js';
@@ -6,7 +6,7 @@ import {ArcImpactSampler} from '../engine/arc-impact.js';
 
 const NO_RECOIL=Object.freeze({sample:()=>0});
 const SURFACE_RETRY_SECONDS=.5;
-export const ARC_CHAIN_RANGE_SCALE=.5,ARC_CHAIN_STRENGTH=.25;
+export {ARC_CHAIN_RANGE_SCALE,ARC_CHAIN_STRENGTH} from '../shared/arsenal.js';
 // Fixed crown, no invented aiming joint. The shared DefencePreview planner owns
 // acquisition; each locked spire still validates its current target every frame.
 export class ArcSpirePreview {

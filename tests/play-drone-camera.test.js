@@ -17,6 +17,16 @@ test('a wave uses perspective immediately; pause, settling and preparation prese
  const f=basic(),d=f.drone,original=[...f.c.target,f.c.yaw,f.c.pitch,f.c.radius];
  try{d.setEnabled(true);d.sync('loadout',f.engine);expect(d.active).toBe(false);d.sync('wave',f.engine);expect(d.active).toBe(true);expect(f.c.mode).toBe('live');advance(f,.5);const before=d.stats();d.advance(30,{engine:f.engine,phase:'wave',paused:true});expect(d.stats()).toEqual(before);advance(f,.5,60,'settling');expect(d.time).toBeGreaterThan(before.time);d.setEnabled(false);expect([...f.c.target,f.c.yaw,f.c.pitch,f.c.radius]).toEqual(original);expect(f.c.mode).toBe('overview');}finally{d.dispose();}
 });
+test('a wave opens high and broad for three simulation seconds before normal lower shots resume',()=>{
+ const f=basic(),d=f.drone,gun={id:'gun',x:265,z:192,target:f.subject,lineOfSight:true,cycle:{time:0,lastShotAt:0}};f.engine.firing.states=[gun];
+ const tick=()=>{f.engine.time+=1/60;gun.cycle.time=gun.cycle.lastShotAt=f.engine.time;d.advance(1/60,{engine:f.engine,phase:'wave'});};
+ try{
+  d.setEnabled(true);d.sync('wave',f.engine);const floor=d.cruiseY;expect(d.position[1]).toBeGreaterThanOrEqual(floor);expect(d.fov).toBe(64);expect(d.currentFrame().board).toBeGreaterThan(.55);
+  for(let n=0;n<174;n++){tick();expect(d.position[1]).toBeGreaterThan(floor-3);expect(d.targetFov).toBe(64);}
+  const before=d.stats();d.advance(30,{engine:f.engine,phase:'wave',paused:true});expect(d.stats()).toEqual(before);
+  for(let n=0;n<42;n++)tick();expect(d.targetFov).toBe(56);expect(d.goal[1]).toBeLessThan(floor);expect(d.director.intent.subject).toBe(f.subject);
+ }finally{d.dispose();}
+});
 test('camera work leaves enemy/weapon state unchanged and has bounded translation, turn and lens rates',()=>{
  const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);const actor=JSON.stringify(f.subject);
  try{let previous=d.stats();for(let n=0;n<180;n++){f.engine.time+=1/60;d.advance(1/60,{engine:f.engine,phase:'wave'});const now=d.stats();expect(Math.hypot(...d.position.map((v,i)=>v-previous.position[i]))).toBeLessThanOrEqual(DRONE_CAMERA_SPEED/60+1e-6);expect(Math.abs(now.pitch-previous.pitch)).toBeLessThanOrEqual(1.4/60+1e-8);expect(Math.abs(now.fov-previous.fov)).toBeLessThanOrEqual(9/60+1e-8);previous=now;}expect(JSON.stringify(f.subject)).toBe(actor);const time=d.time;f.engine.time+=30;d.advance(30,{engine:f.engine,phase:'wave'});expect(d.time-time).toBeCloseTo(.25,6);expect(()=>d.advance(-1,{})).toThrow();}finally{d.dispose();}
@@ -24,8 +34,8 @@ test('camera work leaves enemy/weapon state unchanged and has bounded translatio
 test('a calm survey is wider than a dominant fight, and low dramatic shots are no longer forbidden',()=>{
  const f=basic(),d=f.drone;
  try{d.setEnabled(true);d.sync('wave',f.engine);expect(d.director.intent.style).toBe('survey');expect(d.targetFov).toBe(64);
- f.engine.firing.states=[{id:'gun',x:265,z:192,model:'turret-study',target:f.subject,lineOfSight:true,cycle:{time:1,lastShotAt:1}}];f.engine.time=1;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('battle');d.compose(f.engine);d.planShot();expect(d.targetFov).toBe(56);
- d.director.exposure=6.1;f.engine.time=1.4;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('dramatic');expect(d.planShot()).toBe(true);expect(d.goal[1]).toBeLessThanOrEqual(f.world.level.pathHeight+42);expect(d.staticClear(...d.goal,...d.goal)).toBe(true);expect(d.director.intent.subject).toBe(f.subject);
+ advance(f,3.2);const at=f.engine.time+1;f.engine.firing.states=[{id:'gun',x:265,z:192,model:'turret-study',target:f.subject,lineOfSight:true,cycle:{time:at,lastShotAt:at}}];f.engine.time=at;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('battle');d.compose(f.engine);d.planShot();expect(d.targetFov).toBe(56);
+ d.director.exposure=6.1;f.engine.time+=.4;d.chooseSubject(f.engine);expect(d.director.intent.style).toBe('dramatic');expect(d.planShot()).toBe(true);expect(d.goal[1]).toBeLessThanOrEqual(f.world.level.pathHeight+42);expect(d.staticClear(...d.goal,...d.goal)).toBe(true);expect(d.director.intent.subject).toBe(f.subject);
  }finally{d.dispose();}
 });
 test('equally useful openings vary across the board rather than jittering around one station',()=>{

@@ -37,14 +37,14 @@ export class ModelLights {
  constructor(entries,drawMap,{capacity=MAX_MODEL_LIGHTS,strict=false}={}){
   if(!Number.isInteger(capacity)||capacity<1||capacity>MAX_SUPPORTED_MODEL_LIGHTS)throw new Error('Unsupported model-light capacity.');
   this.capacity=capacity;
-  this.sources=[];this.keys=new Set();this.authoredCount=0;this.count=0;this.dirty=false;
+  this.sources=[];this.keys=new Set();this.dirtyKeys=new Set();this.authoredCount=0;this.count=0;this.dirty=false;
   for(const entry of entries){
    if(!entry.mesh.lightQuads?.length)continue;
    const draw=drawMap.get(entry.key);if(!draw)continue;
    const membership=entry.lightIndices??entry.activeIndices,panels=panelClusters(entry.mesh);this.authoredCount+=panels.length*(membership?.length??entry.transforms.length);
    for(const index of membership??entry.transforms.keys())for(const panel of panels){
     if(this.sources.length===capacity)break;
-    this.sources.push({draw,index,...panel});this.keys.add(entry.key);
+    this.sources.push({draw,index,key:entry.key,px:0,py:0,pz:0,...panel});this.keys.add(entry.key);this.dirtyKeys.add(entry.key);
    }
   }
   this.overflow=this.authoredCount-this.sources.length;
@@ -52,21 +52,27 @@ export class ModelLights {
   this.data=this.sources.length?new Float32Array(4+capacity*8):null;
   this.byteLength=this.data?.byteLength??0;this.dirty=!!this.sources.length;
  }
- invalidate(key){if(this.keys.has(key))this.dirty=true;}
+ invalidate(key){if(this.keys.has(key)){this.dirty=true;this.dirtyKeys.add(key);}}
  prepare(){
   if(!this.dirty)return false;
   this.dirty=false;let changed=false,count=0;const data=this.data;
   for(let i=0;i<this.sources.length;i++){
    const source=this.sources[i],draw=source.draw,index=source.index;
    if(draw.indexToSlot&&draw.indexToSlot[index]<0)continue;
-   const m=draw.transforms,p=index*16,k=4+count*8,x=source.x,y=source.y,z=source.z;
+   const k=4+count*8;
    // Match the GPU's float precision before comparing, avoiding spurious
    // uploads when an unchanged pose was submitted again by an animator.
-   const px=Math.fround(m[p]*x+m[p+4]*y+m[p+8]*z+m[p+12]),py=Math.fround(m[p+1]*x+m[p+5]*y+m[p+9]*z+m[p+13]),pz=Math.fround(m[p+2]*x+m[p+6]*y+m[p+10]*z+m[p+14]);
+   // A moving actor need not transform every static emitter in the scene.
+   // Cache source positions independently of their compacted output slots.
+   if(this.dirtyKeys.has(source.key)){
+    const m=draw.transforms,p=index*16,x=source.x,y=source.y,z=source.z;
+    source.px=Math.fround(m[p]*x+m[p+4]*y+m[p+8]*z+m[p+12]);source.py=Math.fround(m[p+1]*x+m[p+5]*y+m[p+9]*z+m[p+13]);source.pz=Math.fround(m[p+2]*x+m[p+6]*y+m[p+10]*z+m[p+14]);
+   }
+   const px=source.px,py=source.py,pz=source.pz;
    if(data[k]!==px||data[k+1]!==py||data[k+2]!==pz||data[k+3]!==MODEL_LIGHT_RADIUS||data[k+4]!==source.red||data[k+5]!==source.green||data[k+6]!==source.blue||data[k+7]!==Math.fround(source.strength))changed=true;
    data[k]=px;data[k+1]=py;data[k+2]=pz;data[k+3]=MODEL_LIGHT_RADIUS;data[k+4]=source.red;data[k+5]=source.green;data[k+6]=source.blue;data[k+7]=source.strength;count++;
   }
-  if(this.count!==count)changed=true;this.count=count;data[0]=count;return changed;
+  this.dirtyKeys.clear();if(this.count!==count)changed=true;this.count=count;data[0]=count;return changed;
  }
- dispose(){this.sources.length=0;this.keys.clear();this.data=null;this.count=this.authoredCount=this.overflow=this.byteLength=0;this.dirty=false;}
+ dispose(){this.sources.length=0;this.keys.clear();this.dirtyKeys.clear();this.data=null;this.count=this.authoredCount=this.overflow=this.byteLength=0;this.dirty=false;}
 }

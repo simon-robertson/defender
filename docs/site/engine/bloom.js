@@ -43,8 +43,9 @@ export class BloomPasses {
   const wasActive=this.active,resized=this.ensureTargets(width,height);this.active=true;
   const ratioX=width/this.width,ratioY=height/this.height;
   if(this.settingsData[0]!==Math.fround(ratioX)||this.settingsData[1]!==Math.fround(ratioY)){this.settingsData[0]=ratioX;this.settingsData[1]=ratioY;this.device.queue.writeBuffer(this.settings,0,this.settingsData);}
-  if(!resized&&wasActive&&!opaqueUpdated&&!waterUpdated&&!transient&&!this.wasTransient)return;
-  this.wasTransient=transient;
+  const moving=shot||blast||arc||burn,linkChanged=link&&(plasma.revision===undefined||plasma.revision!==this.plasmaRevision);
+  if(!resized&&wasActive&&!opaqueUpdated&&!waterUpdated&&!moving&&!this.wasTransient&&!linkChanged)return;
+  this.wasTransient=moving;this.plasmaRevision=plasma?.revision;
   const source=encoder.beginRenderPass(this.extractPass);source.setPipeline(this.extractPipeline);source.setBindGroup(0,renderer.cameraGroup);source.setBindGroup(1,renderer.screenGroup);source.draw(3);this.draws++;
   if(transient){source.setBindGroup(2,renderer.lightGroup);source.setBindGroup(3,this.settingsGroup);}
   if(shot){source.setPipeline(this.shotPipeline);source.setVertexBuffer(0,renderer.shotInstances);source.draw(6,shots.flashCount*2);this.draws++;}

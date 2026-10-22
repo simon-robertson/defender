@@ -43,7 +43,7 @@ export class DamageEffects {
   this.random=random;this.onWaterImpact=null;this.time=0;this.visibility=null;this.emitters=[];this.waterImpacts=null;this.waterParticleCount=0;this.emitWaterParticle=this.particle.bind(this);
   this.cubes=Array.from({length:MAX_DAMAGE_CUBES},()=>({active:false,waterEntered:false,resting:false,age:0,restAge:0,x:0,y:0,z:0,vx:0,vy:0,vz:0,rx:0,ry:0,rz:0,wx:0,wy:0,wz:0,size:0,r:0,g:0,b:0,config:null}));
   this.smoke=Array.from({length:MAX_SMOKE},()=>({active:false,launch:false,trail:false,impact:false,age:0,life:0,x:0,y:0,z:0,vx:0,vz:0,rise:0,radius:0,seed:0}));
-  this.blasts=Array.from({length:MAX_BLASTS},()=>({active:false,kind:null,age:0,x:0,y:0,z:0,seed:0,config:null}));
+  this.blasts=Array.from({length:MAX_BLASTS},()=>({active:false,kind:null,age:0,x:0,y:0,z:0,seed:0,config:null,lobes:new Float64Array(16)}));
   this.cubeData=new Float32Array(MAX_DAMAGE_CUBES*DAMAGE_CUBE_FLOATS);this.particleData=new Float32Array(MAX_DAMAGE_PARTICLES*DAMAGE_PARTICLE_FLOATS);this.lightData=new Float32Array(4+MAX_DAMAGE_LIGHTS*8);
   this.shockwaveData=new Float32Array(MAX_BLASTS*SHOCKWAVE_FLOATS);this.shockwaveCount=0;
   this.smokeOrder=new Uint16Array(MAX_SMOKE);this.smokeDepth=new Float64Array(MAX_SMOKE);this.contact=new Float64Array(6);
@@ -95,6 +95,8 @@ export class DamageEffects {
   const length=Math.hypot(nx,ny,nz),offset=MISSILE_IMPACT_EFFECT.surfaceOffset;
   if(length){nx/=length;ny/=length;nz/=length;}else{nx=0;ny=1;nz=0;}
   blast.age=0;blast.x=x+nx*offset;blast.y=y+ny*offset;blast.z=z+nz*offset;blast.seed=this.random()*6.28;blast.config=MISSILE_IMPACT_EFFECT;
+  // Lobe directions depend on this impact's seed, never on its animation age.
+  for(let i=0;i<8;i++){const angle=blast.seed+i*2.39996323;blast.lobes[i*2]=Math.cos(angle);blast.lobes[i*2+1]=Math.sin(angle);}
   this.burstSmoke(blast.x,blast.y,blast.z,MISSILE_IMPACT_SMOKE,true);
   // Borrowed pool entry: callers must copy its scalar event values immediately.
   return blast;
@@ -248,8 +250,8 @@ export class DamageEffects {
     if(b.kind==='missile'){
      // Eight rolling lobes surround the core, sharing its flash lifetime.
      for(let i=0;i<8;i++){
-      const angle=b.seed+i*2.39996323,speed=15+(i%3)*7,travel=speed*b.age;
-      this.particle(b.x+Math.cos(angle)*travel,b.y+2+b.age*(8+(i%3)*4),b.z+Math.sin(angle)*travel,config.size*(.3+.22*tail)*(1-u*.4),1,.35+.06*(i%3),.055,(1-u)**1.7*.9,1,b.seed+i,u);this.blastCount++;
+      const speed=15+(i%3)*7,travel=speed*b.age;
+      this.particle(b.x+b.lobes[i*2]*travel,b.y+2+b.age*(8+(i%3)*4),b.z+b.lobes[i*2+1]*travel,config.size*(.3+.22*tail)*(1-u*.4),1,.35+.06*(i%3),.055,(1-u)**1.7*.9,1,b.seed+i,u);this.blastCount++;
      }
     }
    }

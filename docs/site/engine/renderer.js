@@ -163,7 +163,7 @@ export class WorldRenderer {
   this.clearPlasmaLinks();this.plasmaLinks=links;this.dirty=true;
  }
  preparePlasmaLinks(){
-  const links=this.plasmaLinks;this.plasmaUploadBytes=0;
+  const links=this.plasmaLinks,changed=links?.revision===undefined||links.revision!==this.lastPlasmaRevision;this.plasmaUploadBytes=0;
   if(links?.instanceCount){
    if(!this.plasmaInstances){
     this.ensureArcPipeline();const d=this.device;
@@ -171,11 +171,11 @@ export class WorldRenderer {
     this.plasmaLightBuffer=d.createBuffer({label:'Combat arc and plasma tube lights',size:COMBINED_TUBE_LIGHT_BYTES,usage:GPUBufferUsage.STORAGE|GPUBufferUsage.COPY_DST});
     this.plasmaLightData=new Float32Array(COMBINED_TUBE_LIGHT_BYTES/4);this.plasmaBytes=PLASMA_INSTANCE_BYTES+COMBINED_TUBE_LIGHT_BYTES;this.bindLocalLights();
    }
-   const floats=links.instanceCount*PLASMA_INSTANCE_FLOATS;this.device.queue.writeBuffer(this.plasmaInstances,0,links.instanceData,0,floats);this.plasmaUploadBytes=floats*4;
+   if(changed){const floats=links.instanceCount*PLASMA_INSTANCE_FLOATS;this.device.queue.writeBuffer(this.plasmaInstances,0,links.instanceData,0,floats);this.plasmaUploadBytes=floats*4;}
   }
   this.plasmaLightCount=links?.lightCount??0;
   const count=this.arcLightCount+this.plasmaLightCount;
-  if(this.plasmaLightBuffer&&(count||this.plasmaMergedCount)){
+  if(this.plasmaLightBuffer&&(count||this.plasmaMergedCount)&&(changed||this.arcLightCount||this.plasmaMergedArcCount||count!==this.plasmaMergedCount)){
    // Arc retains its own six-slot pool/storage. Only the bound prefix is merged;
    // no subarray views or duplicate Arc light upload while this binding is live.
    const data=this.plasmaLightData,arcs=this.arcEffects;data[0]=count;
@@ -184,12 +184,12 @@ export class WorldRenderer {
    for(let i=4;i<4+this.plasmaLightCount*ARC_LIGHT_FLOATS;i++)data[end++]=links.lightData[i];
    this.device.queue.writeBuffer(this.plasmaLightBuffer,0,data,0,end);this.plasmaUploadBytes+=end*4;this.dirty=true;
   }
-  this.plasmaMergedCount=count;
+  this.lastPlasmaRevision=links?.revision;this.plasmaMergedCount=count;this.plasmaMergedArcCount=this.arcLightCount;
  }
  clearPlasmaLinks(restoreArcs=true){
   const hadResources=!!this.plasmaLightBuffer;
   this.plasmaInstances?.destroy();this.plasmaLightBuffer?.destroy();this.plasmaInstances=this.plasmaLightBuffer=this.plasmaLightData=this.plasmaLinks=null;
-  this.plasmaBytes=this.plasmaLightCount=this.plasmaUploadBytes=this.plasmaMergedCount=0;
+  this.lastPlasmaRevision=undefined;this.plasmaBytes=this.plasmaLightCount=this.plasmaUploadBytes=this.plasmaMergedCount=this.plasmaMergedArcCount=0;
   if(hadResources){
    // Arc's standalone buffer may have missed expiry while the merged binding
    // was active. Restore its current prefix before it becomes visible again.
@@ -495,7 +495,7 @@ export class WorldRenderer {
   const f=this.frameData,c=this.camera;
   const cameraUpdated=this.cameraDirty;
   if(cameraUpdated){c.update(w/h);f.set(c.vp);f.set(c.inverse,32);f.set(c.eye,48);
-   f[64]=w;f[65]=h;f[66]=1/w;f[67]=1/h;f[68]=Math.sin(c.yaw)*Math.cos(c.pitch);f[69]=Math.sin(c.pitch);f[70]=Math.cos(c.yaw)*Math.cos(c.pitch);f[71]=c.mode==='path'||c.mode==='live'?1:0;
+   const pitchCos=Math.cos(c.pitch);f[64]=w;f[65]=h;f[66]=1/w;f[67]=1/h;f[68]=Math.sin(c.yaw)*pitchCos;f[69]=Math.sin(c.pitch);f[70]=Math.cos(c.yaw)*pitchCos;f[71]=c.mode==='path'||c.mode==='live'?1:0;
   }
   this.damageEffects?.prepare?.(c.vp);this.prepareDamage();this.prepareWaterRipples();this.mergeLocalLights();this.prepareArcs();this.preparePlasmaLinks();this.prepareMissileThrust();
   const reflections=this.reflectionsEnabled&&this.ssr;
@@ -521,17 +521,15 @@ export class WorldRenderer {
   }
   if(waterUpdated&&this.waterDraw){
    const water=renderEncoder.beginRenderPass(this.waterPass);water.setPipeline(this.waterPipeline);water.setBindGroup(0,this.cameraGroup);
-   if(this.waterDraw){const g=this.waterDraw;water.setVertexBuffer(0,g.vertices);water.setVertexBuffer(1,g.instances);water.setIndexBuffer(g.indices,'uint32');water.drawIndexed(g.indexCount,g.count);this.lastDrawCalls++;}
+   const g=this.waterDraw;water.setVertexBuffer(0,g.vertices);water.setVertexBuffer(1,g.instances);water.setIndexBuffer(g.indices,'uint32');water.drawIndexed(g.indexCount,g.count);this.lastDrawCalls++;
    water.end();
   }
-  if(waterUpdated){this.waterDirty=false;
-  }
+  if(waterUpdated)this.waterDirty=false;
   if(this.bloomEnabled){
    if(!this.bloom&&(this.visibleEmitters||effects?.flashCount||this.damageEffects?.blastCount||this.arcEffects?.strikeCount||this.plasmaLinks?.instanceCount||this.missileThrust?.instanceCount))this.bloom=new BloomPasses(this.device,this.cameraLayout,this.screenLayout,this.lightingLayout,this.sampler,this.format,this.localLightCapacity);
    this.bloom?.render(renderEncoder,this,w,h,opaqueUpdated,waterUpdated);this.lastDrawCalls+=this.bloom?.draws??0;
   }
-  const presentationView=this.context.getCurrentTexture().createView();
-  const finalSceneView=presentationView;
+  const finalSceneView=this.context.getCurrentTexture().createView();
   this.displayPass.colorAttachments[0].view=this.shockwaveCount?this.shockwaveView:finalSceneView;
   const display=renderEncoder.beginRenderPass(this.displayPass);display.setPipeline(this.bloom?.active?this.bloom.compositePipeline:this.screenPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setBindGroup(2,this.lightGroup);if(this.bloom?.active)display.setBindGroup(3,this.bloom.firstGroup);display.draw(3);
   if(this.rain?.count){display.setPipeline(this.rainPipeline);display.setBindGroup(0,this.cameraGroup);display.setBindGroup(1,this.screenGroup);display.setBindGroup(2,this.lightGroup);display.setVertexBuffer(0,this.rainInstances);display.draw(6,this.rain.count);this.lastDrawCalls++;}

@@ -15,7 +15,7 @@ for(let node=0;node<PLASMA_NODES;node++){
 // or caller arrays are retained; waves only deform the interior of each link.
 export class PlasmaLinks {
  constructor(){
-  this.time=0;this.requestedCount=this.overflow=this.linkCount=this.instanceCount=this.lightCount=0;
+  this.time=0;this.preparedTime=NaN;this.revision=0;this.requestedCount=this.overflow=this.linkCount=this.instanceCount=this.lightCount=0;
   this.ends=new Float64Array(MAX_PLASMA_LINKS*6);
   this.geometry=new Float64Array(MAX_PLASMA_LINKS*10);
   this.points=new Float64Array(MAX_PLASMA_LINKS*PLASMA_NODES*3);
@@ -41,11 +41,15 @@ export class PlasmaLinks {
    g[k]=dx;g[k+1]=dy;g[k+2]=dz;g[k+3]=ux;g[k+4]=uy;g[k+5]=uz;
    g[k+6]=ty*uz-tz*uy;g[k+7]=tz*ux-tx*uz;g[k+8]=tx*uy-ty*ux;g[k+9]=Math.min(PLASMA_WAVE_AMPLITUDE,length*PLASMA_WAVE_LENGTH_RATIO);
   }
-  this.prepare();
+  this.preparedTime=NaN;this.prepare();
  }
  advance(deltaSeconds){if(!Number.isFinite(deltaSeconds)||deltaSeconds<0)throw new Error('Plasma delta must be finite and non-negative.');this.time+=deltaSeconds;}
  reset(){this.time=0;this.prepare();}
  prepare(){
+  // Endpoints change only in setLinks. A paused clock can reuse both geometry
+  // and lights, even if multiple views request preparation in the same frame.
+  if(this.preparedTime===this.time)return;
+  this.preparedTime=this.time;this.revision++;
   this.instanceCount=0;this.lightCount=this.linkCount;this.lightData[0]=this.linkCount;
   const p=this.points,l=this.lightData,data=this.instanceData;
   for(let slot=0;slot<this.linkCount;slot++){
@@ -76,5 +80,5 @@ export class PlasmaLinks {
    packTubeLightBounds(l,light);
   }
  }
- dispose(){this.time=0;this.requestedCount=this.overflow=this.linkCount=this.instanceCount=this.lightCount=0;this.ends.fill(0);this.geometry.fill(0);this.points.fill(0);this.instanceData.fill(0);this.lightData.fill(0);}
+ dispose(){this.time=0;this.preparedTime=NaN;this.revision++;this.requestedCount=this.overflow=this.linkCount=this.instanceCount=this.lightCount=0;this.ends.fill(0);this.geometry.fill(0);this.points.fill(0);this.instanceData.fill(0);this.lightData.fill(0);}
 }

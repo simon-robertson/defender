@@ -1,5 +1,13 @@
 # Defender development diary
 
+## 22 October 2026
+
+- User specifies mono/single-channel sound assets. Recorded the requirement and made authoring reject stereo; converted the diagnostic loop to mono. Runtime panning remains a separate future choice.
+
+- Installed user-authorised `opus-tools` using Homebrew outside the repository. Available binaries are `/opt/homebrew/bin/{opusenc,opusdec,opusinfo}`; encoder/decoder0.2 use libopus1.6.1. Homebrew managed its dependencies, including OpenSSL4 and a CA-certificate update. Recorded host-tool preference and commands in AGENTS/audio guide.
+- Began the authorised offline audio workbench: validated seeded synthesis recipes, 48kHz PCM24 WAV, external Ogg Opus encoding/inspection/float decoding, source/recipe/output hashes and peak/RMS/DC/loop/error measurements. Snapshot builds and waveform/audition pages stay in ignored `build/audio/`; read-only loopback preview is separate from the game. Diagnostic transient/periodic-loop recipes are not production sound approvals. Seven focused checks pass, including repeatable Ogg bytes, exact decoded shapes and confined HTTP. Initial sandboxed HTTP check could not bind; permission-enabled rerun passes. No game audio, deploy, push or player-tab reload. Built-in browser displays both mono diagnostic cards and waveform/audition controls; no listening or browser decode claim. Runtime performance remains unverified.
+- User separately requests a subagent to investigate increased GPU usage and optimise CPU/GPU/shader code. Delegated that authorised review to `engine_performance`; findings and completion will be recorded separately.
+
 ## 21 October 2026
 
 - Implemented the authorised combat-effect reflection extension: muzzle flashes/sparks, Arc/chain/plasma, missile thrust, fireballs and smoke join the existing planar capture, with mirrored depth, above-water clipping, linear colour/coverage and expiry refresh. Main effect buffers/shapes are reused; smoke has fixed mirrored-view sorting storage (18,432 GPU bytes, 23,040 CPU bytes). Four additional pipelines prepare asynchronously during player loading. No extra pass/texture or critter scheduling change. Rebuilt the static package and committed locally; no tests/browser/GPU checks, player reload or remote push. Appearance, GPU correctness and timing remain unverified under the standing scope. Reflected bloom and shockwave distortion remain separate.

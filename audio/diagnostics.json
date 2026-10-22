@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "recipes": [
+    {
+      "id": "diagnostic-transient",
+      "name": "Diagnostic transient",
+      "purpose": "Encoder and waveform check; not an approved game effect.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.4,
+      "seed": 12457,
+      "gain": 0.6,
+      "fadeIn": 0.001,
+      "fadeOut": 0.05,
+      "layers": [
+        {
+          "type": "sine",
+          "gain": 0.55,
+          "start": 0,
+          "duration": 0.3,
+          "frequency": 640,
+          "endFrequency": 120,
+          "attack": 0.002,
+          "release": 0.14,
+          "pan": 0
+        },
+        {
+          "type": "noise",
+          "gain": 0.24,
+          "start": 0,
+          "duration": 0.12,
+          "attack": 0.001,
+          "release": 0.06,
+          "cutoff": 4200,
+          "pan": 0
+        }
+      ]
+    },
+    {
+      "id": "diagnostic-loop",
+      "name": "Diagnostic periodic loop",
+      "purpose": "One-second mono loop for codec boundary checks; not game ambience.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 1,
+      "seed": 421,
+      "gain": 0.4,
+      "fadeIn": 0,
+      "fadeOut": 0,
+      "loop": {
+        "startFrame": 0,
+        "endFrame": 48000
+      },
+      "layers": [
+        {
+          "type": "sine",
+          "gain": 0.4,
+          "start": 0,
+          "duration": 1,
+          "frequency": 180,
+          "endFrequency": 180,
+          "attack": 0,
+          "release": 0,
+          "pan": 0
+        },
+        {
+          "type": "sine",
+          "gain": 0.25,
+          "start": 0,
+          "duration": 1,
+          "frequency": 240,
+          "endFrequency": 240,
+          "attack": 0,
+          "release": 0,
+          "pan": 0
+        }
+      ]
+    }
+  ]
+}

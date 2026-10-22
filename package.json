@@ -26,6 +26,9 @@
     "seed:previews": "bun scripts/current-preview-levels.js",
     "deploy:local": "bun scripts/deployment/build.js",
     "preview:deployment": "bun scripts/deployment/serve.js",
-    "check:deployment": "bun scripts/deployment/validate.js"
+    "check:deployment": "bun scripts/deployment/validate.js",
+    "audio:doctor": "bun scripts/audio/build.js doctor",
+    "audio:build": "bun scripts/audio/build.js build",
+    "audio:preview": "bun scripts/audio/build.js preview"
   }
 }

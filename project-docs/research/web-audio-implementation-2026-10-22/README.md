@@ -1,5 +1,7 @@
 # Web Audio implementation and Ogg production for Defender
 
+**Implementation follow-up, 22 October:** user subsequently authorised Homebrew `opus-tools` installation and starting authoring tooling. Installed encoder/decoder use libopus1.6.1; the initial Bun recipe/WAV/Ogg/inspection/audition pipeline is documented in [the audio tool guide](../../../audio/README.md). Seven focused checks include real encoding/decoding. The inventory and proposals below remain the original research record, not a current tool-availability claim. Game audio integration is still absent.
+
 Research · 22 October 2026 · source review, primary documentation and read-only tool/arithmetic audit. No audio implementation, sounds, installations, encoder run, browser playback, deployment or performance benchmark.
 
 ## Recommendation

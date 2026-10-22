@@ -1,5 +1,7 @@
 # Defender Workshop tools and asset format
 
+**Offline audio workbench, 22 October:** machine-installed Homebrew `opus-tools` plus dependency-free Bun recipes now support `audio:doctor`, `audio:build` and `audio:preview`. Diagnostic PCM24 masters/Ogg/decoded comparisons and an audition page stay under ignored `build/audio/`; no game integration or deployment assets. [Host-tool policy, commands and recipe format](../audio/README.md).
+
 **Planned player entry, 19 October:** `/play/` is proposed for the player-facing title and game loop; `/game/` stays the accepted development preview. The [first development plan](plans/first-playable-game-2026-10-19.md) awaits user sign-off. `/play/` is not implemented yet, and this planning update changes no server route or tool.
 
 Defender Workshop is a local model and level editor built with browser APIs, WebGPU, and Bun. It has no third-party dependencies. These tools author assets; they do not implement combat, enemy behaviour, token economies, audio, or the game's effects stack.

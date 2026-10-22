@@ -9,7 +9,7 @@ const roster=new RosterGroups(refs['unit-list']);
 let previewKey='';
 let previousPhase=null,previousModal=null,pendingFocus=null,currentActions=new Set(['play']);
 const waveActions=['title','pause'];
-const phaseActions={title:['play'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['retry','title'],complete:['retry','title']};
+const phaseActions={title:['play','continue'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['retry','title'],complete:['retry','title']};
 const setText=(node,value)=>{const text=String(value??'');if(node.textContent!==text)node.textContent=text;};
 const show=(node,visible)=>{if(node.hidden===visible)node.hidden=!visible;};
 const count=value=>Number.isFinite(value)?Math.max(0,value):0;
@@ -112,6 +112,11 @@ export function renderUI(snapshot={}){
   show(refs['pause-screen'],paused&&!screenshot&&!error);show(refs['result-screen'],result&&!error);show(refs['error-screen'],error);show(refs.loading,busy&&!error);
   const modal=error?refs['error-screen']:paused&&!screenshot?refs['pause-screen']:result?refs['result-screen']:null;
   currentActions=new Set(screenshot?[]:error?['retry-load','title']:busy?[]:paused?['resume','title']:(phaseActions[phase]??[]));
+  if(!snapshot.savedGame||snapshot.savingProgress)currentActions.delete('continue');
+  show($('continue-button'),Boolean(snapshot.savedGame));
+  setText($('continue-button'),`CONTINUE · ${snapshot.savedGame?.area??''}`);
+  $('new-game-button').classList.toggle('has-checkpoint',Boolean(snapshot.savedGame));
+  setText($('save-status'),snapshot.saveError||(snapshot.savingProgress?'Saving progress…':snapshot.savedGame?`Checkpoint: Area ${snapshot.savedGame.area} · ${snapshot.savedGame.completedWaves} waves cleared. New Game keeps this save until you clear a level.`:'Progress saves after each level on this device.'));
   for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||screenshot;
   $('scene').inert=Boolean(modal)||busy;
   for(const button of document.querySelectorAll('button[data-action]'))button.disabled=!currentActions.has(button.dataset.action);
@@ -140,7 +145,7 @@ export function renderUI(snapshot={}){
   setText(refs['placement-hint'],snapshot.placementHint??(snapshot.selectedId?'Choose clear ground to place this defence.':'Select a defence, then choose clear ground.'));
   show(refs['deployment-count'],deploying);setText(refs['deployment-count'],`${deployed} of ${units.length} defence${units.length===1?'':'s'} deployed`);
   show(refs['deploy-button'],!deploying);show(refs['start-wave-button'],deploying);show(refs['loadout-button'],deploying);setText(refs['start-wave-button'],`START WAVE ${wave} ▶`);
-  setText(refs['preparation-note'],deploying?'You can start with defences still in inventory.':'Unspent tokens carry forward.');
+  setText(refs['preparation-note'],snapshot.saveError|| (deploying?'You can start with defences still in inventory.':'Unspent tokens carry forward.'));
   for(const id of ['deploy-button','start-wave-button','loadout-button','cancel-button'])refs[id].disabled=locked||!currentActions.has(refs[id].dataset.action);
   show(refs['wave-status'],activeWave&&!paused);const remaining=count(snapshot.enemiesRemaining),spawned=count(snapshot.spawned),total=count(snapshot.totalEnemies);
   setText(refs['wave-status-text'],settling?'Wave complete · Clearing the field…':total?`${remaining} on the path · ${Math.min(spawned,total)} of ${total} arrived`:'Wave in progress');
@@ -167,7 +172,7 @@ export function renderUI(snapshot={}){
       if(identity.action)target=[...document.querySelectorAll('[data-action]')].find(node=>node.dataset.action===identity.action&&node.dataset.unit===identity.unit&&!node.disabled&&!node.closest('[hidden]'));
       if(!target&&identity.unit){const select=rows.get(identity.unit)?.select;if(select&&!select.disabled&&!select.closest('[hidden]'))target=select;}
     }
-    if(!target)target=phase==='title'?document.querySelector('[data-action="play"]'):deploying?refs['start-wave-button']:prep?(refs['buy-button'].disabled?refs['deploy-button']:refs['buy-button']):refs['pause-button'];
+    if(!target)target=phase==='title'?$(snapshot.savedGame&&!snapshot.savingProgress?'continue-button':'new-game-button'):deploying?refs['start-wave-button']:prep?(refs['buy-button'].disabled?refs['deploy-button']:refs['buy-button']):refs['pause-button'];
     if(target&&!target.disabled&&!target.closest('[hidden]'))target.focus({preventScroll:true});
     if(!busy)pendingFocus=null;
   }

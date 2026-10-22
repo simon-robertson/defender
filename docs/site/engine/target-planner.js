@@ -1,6 +1,6 @@
 // Cooperative, allocation-free runtime planning. Geometry is sampled once when
 // the scene loads; every real shot still requires live range/aim/visibility.
-export const TARGET_POLICY=Object.freeze({holdSeconds:.35,switchRatio:1.25,coverageMargin:1.25,acquireSeconds:.75,sampleUnits:1,edgeTrimUnits:1});
+export const TARGET_POLICY=Object.freeze({holdSeconds:.35,switchRatio:1.25,coverageMargin:1.25,acquireSeconds:.75,exitEmergencySeconds:3,sampleUnits:1,edgeTrimUnits:1});
 const NO_INCOMING_DAMAGE=()=>0;
 const ALL_COVERAGE=()=>true;
 
@@ -74,7 +74,12 @@ export class TargetPlanner {
   for(const state of this.states){state.target=null;state.reservation=null;state.reservationLap=0;state.targetLap=0;state.targetSince=-Infinity;state.targetShots=state.cycle.shots;state.thinkCount=0;state.predictedCoverage=0;state.groundInRange=false;}
   this.candidates.fill(null);this.covered.fill(0);this.urgency.fill(0);
  }
- targetAllowed(state,target){return !(state.groundFirst&&state.groundInRange&&airborne(target));}
+ timeToExit(target){
+  const path=target?.path??this.path,velocity=target&&speed(target);
+  return path&&Number.isFinite(target?.distance)&&velocity>0?Math.max(0,(path.length-target.distance)/velocity):Infinity;
+ }
+ exitEmergency(state,target){return state.groundFirst&&this.timeToExit(target)<=TARGET_POLICY.exitEmergencySeconds;}
+ targetAllowed(state,target){return !(state.groundFirst&&state.groundInRange&&airborne(target)&&!this.exitEmergency(state,target));}
  refreshGroundPriority(){
   // One cheap roster traversal supplies every gun's per-tick gate. Presence
   // uses living actor roots and inclusive horizontal range, regardless of LOS,
@@ -89,10 +94,10 @@ export class TargetPlanner {
    }
   }
   for(const state of this.groundFirstStates)if(state.groundInRange){
-   if(airborne(state.reservation))state.reservation=null;
+   if(state.reservation&&!this.targetAllowed(state,state.reservation))state.reservation=null;
    // All guns yield before any weapon fires, including the guns that do not
-   // own this tick's thinker. Burst/acquisition holds cannot retain an air lock.
-   if(airborne(state.target)){state.cycle.cancelBurst();state.target=null;state.targeting.point.fill(0);}
+   // own this tick's thinker. An imminent escape overrides the ground gate.
+   if(state.target&&!this.targetAllowed(state,state.target)){state.cycle.cancelBurst();state.target=null;state.targeting.point.fill(0);}
   }
  }
  capacity(index,target,requireFuture=false){
@@ -156,6 +161,9 @@ export class TargetPlanner {
  }
  better(a,b,state){
   if(b<0)return true;
+  const ea=this.exitEmergency(state,this.candidates[a]),eb=this.exitEmergency(state,this.candidates[b]);
+  if(ea!==eb)return ea;
+  if(ea){const ta=this.timeToExit(this.candidates[a]),tb=this.timeToExit(this.candidates[b]);if(Math.abs(ta-tb)>.1)return ta<tb;}
   if(this.covered[a]!==this.covered[b])return this.covered[a]<this.covered[b];
   const ua=this.urgency[a],ub=this.urgency[b];
   if(Math.abs(ua-ub)>.1*Math.max(ua,ub))return ua>ub;
@@ -203,7 +211,12 @@ export class TargetPlanner {
    best=-1;for(let i=0;i<count;i++)if(this.better(i,best,state))best=i;
   }
   let chosen=best;
-  if(state.reservation){
+  const emergency=best>=0&&this.exitEmergency(state,this.candidates[best])&&(state.reservation&&state.reservation!==this.candidates[best]||currentIndex<0||!this.exitEmergency(state,current)||this.timeToExit(this.candidates[best])<this.timeToExit(current)-.1);
+  if(emergency){
+   // The scheduled thinker already validated this target's real shot geometry.
+   // Future promises, bursts and acquisition grace cannot retain a lower lock.
+   state.reservation=null;
+  }else if(state.reservation){
    chosen=-1;for(let i=0;i<count;i++)if(this.candidates[i]===state.reservation){chosen=i;break;}
    // A future assignment must not park a usable weapon while an uncovered
    // enemy is hittable now. Revoke the promise before taking that work so

@@ -1,4 +1,6 @@
-export const SOUND_LEVEL_DEFAULT=0,SOUND_LEVEL_KEY='defender.sound-level.v1';
+// Reset the former audible preference once so returning players also start
+// silently. Future explicit choices use this new preference version.
+export const SOUND_LEVEL_DEFAULT=0,SOUND_LEVEL_KEY='defender.sound-level.v2';
 export function soundLevel(value){return typeof value==='number'&&Number.isFinite(value)?Math.max(0,Math.min(1,value)):SOUND_LEVEL_DEFAULT;}
 export function loadSoundLevel(scope=globalThis){
  try{const raw=scope.localStorage?.getItem(SOUND_LEVEL_KEY);return raw==null?SOUND_LEVEL_DEFAULT:soundLevel(JSON.parse(raw));}

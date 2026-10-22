@@ -2,8 +2,9 @@ import {test,expect} from 'bun:test';
 import {readFile} from 'node:fs/promises';
 import {runInNewContext} from 'node:vm';
 import {AudioPlayer} from '../play/audio.js';
+import {SOUND_LEVEL_KEY} from '../play/audio-options.js';
 // Playback tests explicitly opt in; new players remain silent.
-const playbackPreferences={getItem:()=>'0.8'};
+const playbackPreferences={getItem:key=>key===SOUND_LEVEL_KEY?'0.8':null};
 function fixture(){const events=[];class Context{constructor(options){events.push(['create',options]);this.state='suspended';}resume(){events.push(['resume']);this.state='running';return Promise.resolve();}close(){events.push(['close']);this.state='closed';return Promise.resolve();}}return {events,Context,audio:new AudioPlayer({localStorage:playbackPreferences,AudioContext:Context})};}
 test('player creates no context on title load and reuses one across game starts',()=>{
  const {events,audio}=fixture();expect(audio.state).toBe('uninitialised');expect(events).toEqual([]);audio.startFromGesture();const context=audio.context;expect(events.map(e=>e[0])).toEqual(['create','resume']);expect(events[0][1]).toEqual({latencyHint:'interactive'});audio.startFromGesture();expect(audio.context).toBe(context);expect(events.length).toBe(2);context.state='suspended';audio.startFromGesture();expect(events.at(-1)[0]).toBe('resume');audio.dispose();audio.dispose();audio.startFromGesture();expect(events.filter(e=>e[0]==='close')).toHaveLength(1);expect(audio.context).toBeNull();
@@ -18,8 +19,8 @@ test('another real gesture can retry while a previous resume remains pending',()
 });
 const app=await readFile(new URL('../play/app.js',import.meta.url),'utf8');
 const click=app.slice(app.indexOf("document.addEventListener('click',async event=>{"),app.indexOf('\n\nfunction project('));
-function handlerFixture(action,{saved=true,busy=false}={}){
- const records=[],audio=new AudioPlayer({localStorage:playbackPreferences,AudioContext:class{constructor(){records.push('context');this.state='suspended';}resume(){records.push('resume');return Promise.resolve();}}});let handler;
+function handlerFixture(action,{saved=true,busy=false,preferences=playbackPreferences}={}){
+ const records=[],audio=new AudioPlayer({localStorage:preferences,AudioContext:class{constructor(){records.push('context');this.state='suspended';}resume(){records.push('resume');return Promise.resolve();}}});let handler;
  const scope={document:{addEventListener:(_,fn)=>handler=fn},disposed:false,busy,error:'',session:{phase:'title'},savedGame:saved?{fork:()=>({})}:null,savingProgress:false,audio,optionsOpen:false,leaveOpen:false,cameraViews:{reset(){}},conditions:{reset(){}},selectedId:null,notice:'',config:{},PlaySession:class{reset(){}},createTitleSession:()=>({}),rebuild:()=>{records.push('load');return Promise.resolve();},fail:error=>{throw error;},paint(){},runLoop(){}};
  runInNewContext(click,scope);
  return {records,audio,call:()=>handler({target:{closest:()=>({disabled:false,dataset:{action}})}})};
@@ -93,4 +94,12 @@ test('the default zero volume starts no device, fetch, decode or sound even afte
  let contexts=0,fetches=0;const audio=new AudioPlayer({AudioContext:class{constructor(){contexts++;}},fetch(){fetches++;}});
  expect(audio.volume).toBe(0);expect(audio.state).toBe('closed');audio.startFromGesture();audio.setActive(true);audio.gunShot([],[],0);audio.enqueue(0,0,0,0);audio.advance(0,{});
  expect(contexts).toBe(0);expect(fetches).toBe(0);expect(audio.ready).toBe(false);expect(audio.loading).toBeNull();expect(audio.context).toBeNull();expect(audio.queued).toBe(0);audio.dispose();
+});
+
+test('legacy audible preferences cannot start audio from Done, New Game or Continue',async()=>{
+ for(const legacy of ['0.8','1','0.35']){
+  const stored=new Map([['defender.sound-level.v1',legacy]]),preferences={getItem:key=>stored.get(key)??null};
+  for(const action of ['close-options','play','continue']){const f=handlerFixture(action,{preferences});expect(f.audio.volume).toBe(0);await f.call();expect(f.records).not.toContain('context');expect(f.records).not.toContain('resume');expect(f.audio.context).toBeNull();expect(f.audio.ready).toBe(false);f.audio.dispose();}
+  expect(stored.get('defender.sound-level.v1')).toBe(legacy);
+ }
 });

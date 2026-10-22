@@ -1,0 +1,1554 @@
+{
+  "version": 1,
+  "review": {
+    "title": "Gun turret · sound review",
+    "description": "Choose a direction by character and repetition. All files are mono; each pulse represents both barrels firing together. Single shots cycle three takes. Burst buttons use the current game timings. Nothing is connected to gameplay yet.",
+    "groups": [
+      {
+        "name": "A · Dry autocannon · selected",
+        "description": "Short, dry crack with a firm body and a small breech clack. Least tail for crowded battles.",
+        "recipes": [
+          "gun-dry-1",
+          "gun-dry-2",
+          "gun-dry-3"
+        ]
+      },
+      {
+        "name": "B · Heavy punch",
+        "description": "Deeper pressure thump, broad muzzle body and a darker mechanical return. The weightiest option.",
+        "recipes": [
+          "gun-heavy-1",
+          "gun-heavy-2",
+          "gun-heavy-3"
+        ]
+      },
+      {
+        "name": "C · Industrial snap",
+        "description": "Sharper upper crack, textured midrange and a quick metallic action. More bite without a long ring.",
+        "recipes": [
+          "gun-industrial-1",
+          "gun-industrial-2",
+          "gun-industrial-3"
+        ]
+      }
+    ],
+    "patterns": [
+      {
+        "label": "Single shot",
+        "times": [
+          0
+        ]
+      },
+      {
+        "label": "Base cadence",
+        "times": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "label": "Upgrade I · 3 shots",
+        "times": [
+          0,
+          0.12,
+          0.24
+        ]
+      },
+      {
+        "label": "Upgrade II · 5 shots",
+        "times": [
+          0,
+          0.12,
+          0.24,
+          0.36,
+          0.48
+        ]
+      }
+    ]
+  },
+  "recipes": [
+    {
+      "id": "gun-dry-1",
+      "name": "A · Dry autocannon · take 1",
+      "purpose": "Short, dry crack with a firm body and a small breech clack. Least tail for crowded battles.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.38,
+      "seed": 90317,
+      "gain": 0.56694538,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.88,
+          "start": 0,
+          "duration": 0.035,
+          "attack": 0.0003,
+          "release": 0.011666666666666667,
+          "pan": 0,
+          "decay": 0.005,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 850,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 13000,
+              "q": 0.75,
+              "endCutoff": 6200
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.8,
+          "start": 0,
+          "duration": 0.13,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.025,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 120,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 4300,
+              "q": 0.8,
+              "endCutoff": 1700
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.4,
+          "start": 0,
+          "duration": 0.12,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.029,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 560,
+              "q": 0.9,
+              "endCutoff": 390
+            }
+          ]
+        },
+        {
+          "type": "sine",
+          "gain": 0.23,
+          "start": 0,
+          "duration": 0.14,
+          "frequency": 145,
+          "endFrequency": 68,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.028
+        },
+        {
+          "type": "sine",
+          "gain": 0.065,
+          "start": 0,
+          "duration": 0.1,
+          "frequency": 790,
+          "endFrequency": 755,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.018
+        },
+        {
+          "type": "sine",
+          "gain": 0.045,
+          "start": 0,
+          "duration": 0.075,
+          "frequency": 1397,
+          "endFrequency": 1370,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.024999999999999998,
+          "pan": 0,
+          "decay": 0.011
+        },
+        {
+          "type": "noise",
+          "gain": 0.32,
+          "start": 0.038,
+          "duration": 0.032,
+          "attack": 0.0002,
+          "release": 0.010666666666666666,
+          "pan": 0,
+          "decay": 0.009,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1900,
+              "q": 1.3
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.15,
+          "start": 0.115,
+          "duration": 0.045,
+          "attack": 0.0003,
+          "release": 0.015,
+          "pan": 0,
+          "decay": 0.014,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 700,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 3500,
+              "q": 0.707
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-dry-2",
+      "name": "A · Dry autocannon · take 2",
+      "purpose": "Short, dry crack with a firm body and a small breech clack. Least tail for crowded battles.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.38,
+      "seed": 90634,
+      "gain": 0.58069976,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.88,
+          "start": 0,
+          "duration": 0.035,
+          "attack": 0.0003,
+          "release": 0.011666666666666667,
+          "pan": 0,
+          "decay": 0.005,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 838.95,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 12831,
+              "q": 0.75,
+              "endCutoff": 6119.4
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.8,
+          "start": 0,
+          "duration": 0.13,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.025,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 118.44,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 4244.1,
+              "q": 0.8,
+              "endCutoff": 1677.9
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.4,
+          "start": 0,
+          "duration": 0.12,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.029,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 552.72,
+              "q": 0.9,
+              "endCutoff": 384.93
+            }
+          ]
+        },
+        {
+          "type": "sine",
+          "gain": 0.23,
+          "start": 0,
+          "duration": 0.14,
+          "frequency": 143.115,
+          "endFrequency": 67.116,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.028
+        },
+        {
+          "type": "sine",
+          "gain": 0.065,
+          "start": 0,
+          "duration": 0.1,
+          "frequency": 779.73,
+          "endFrequency": 745.185,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.018
+        },
+        {
+          "type": "sine",
+          "gain": 0.045,
+          "start": 0,
+          "duration": 0.075,
+          "frequency": 1378.839,
+          "endFrequency": 1352.19,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.024999999999999998,
+          "pan": 0,
+          "decay": 0.011
+        },
+        {
+          "type": "noise",
+          "gain": 0.32,
+          "start": 0.038684,
+          "duration": 0.032,
+          "attack": 0.0002,
+          "release": 0.010666666666666666,
+          "pan": 0,
+          "decay": 0.009,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1875.3,
+              "q": 1.3
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.15,
+          "start": 0.11707000000000001,
+          "duration": 0.045,
+          "attack": 0.0003,
+          "release": 0.015,
+          "pan": 0,
+          "decay": 0.014,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 690.9,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 3454.5,
+              "q": 0.707
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-dry-3",
+      "name": "A · Dry autocannon · take 3",
+      "purpose": "Short, dry crack with a firm body and a small breech clack. Least tail for crowded battles.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.38,
+      "seed": 90951,
+      "gain": 0.57766128,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.88,
+          "start": 0,
+          "duration": 0.035,
+          "attack": 0.0003,
+          "release": 0.011666666666666667,
+          "pan": 0,
+          "decay": 0.005,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 861.9,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 13182,
+              "q": 0.75,
+              "endCutoff": 6286.8
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.8,
+          "start": 0,
+          "duration": 0.13,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.025,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 121.68,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 4360.2,
+              "q": 0.8,
+              "endCutoff": 1723.8
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.4,
+          "start": 0,
+          "duration": 0.12,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.029,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 567.84,
+              "q": 0.9,
+              "endCutoff": 395.46
+            }
+          ]
+        },
+        {
+          "type": "sine",
+          "gain": 0.23,
+          "start": 0,
+          "duration": 0.14,
+          "frequency": 147.03,
+          "endFrequency": 68.952,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.028
+        },
+        {
+          "type": "sine",
+          "gain": 0.065,
+          "start": 0,
+          "duration": 0.1,
+          "frequency": 801.0600000000001,
+          "endFrequency": 765.57,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.018
+        },
+        {
+          "type": "sine",
+          "gain": 0.045,
+          "start": 0,
+          "duration": 0.075,
+          "frequency": 1416.558,
+          "endFrequency": 1389.18,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.024999999999999998,
+          "pan": 0,
+          "decay": 0.011
+        },
+        {
+          "type": "noise",
+          "gain": 0.32,
+          "start": 0.037392,
+          "duration": 0.032,
+          "attack": 0.0002,
+          "release": 0.010666666666666666,
+          "pan": 0,
+          "decay": 0.009,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1926.6000000000001,
+              "q": 1.3
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.15,
+          "start": 0.11316,
+          "duration": 0.045,
+          "attack": 0.0003,
+          "release": 0.015,
+          "pan": 0,
+          "decay": 0.014,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 709.8,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 3549,
+              "q": 0.707
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-heavy-1",
+      "name": "B · Heavy punch · take 1",
+      "purpose": "Deeper pressure thump, broad muzzle body and a darker mechanical return. The weightiest option.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.52,
+      "seed": 95418,
+      "gain": 0.38728363,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.7,
+          "start": 0,
+          "duration": 0.04,
+          "attack": 0.0003,
+          "release": 0.013333333333333334,
+          "pan": 0,
+          "decay": 0.006,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 650,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 9500,
+              "q": 0.75,
+              "endCutoff": 3600
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.9,
+          "start": 0,
+          "duration": 0.2,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.046,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 75,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 2400,
+              "q": 0.85,
+              "endCutoff": 700
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.65,
+          "start": 0,
+          "duration": 0.22,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.052,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 280,
+              "q": 0.85,
+              "endCutoff": 170
+            }
+          ]
+        },
+        {
+          "type": "sine",
+          "gain": 0.38,
+          "start": 0,
+          "duration": 0.2,
+          "frequency": 96,
+          "endFrequency": 41,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.043
+        },
+        {
+          "type": "sine",
+          "gain": 0.07,
+          "start": 0,
+          "duration": 0.1,
+          "frequency": 327,
+          "endFrequency": 290,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.018
+        },
+        {
+          "type": "noise",
+          "gain": 0.4,
+          "start": 0.065,
+          "duration": 0.042,
+          "attack": 0.0003,
+          "release": 0.014,
+          "pan": 0,
+          "decay": 0.011,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 950,
+              "q": 1.4
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.22,
+          "start": 0.025,
+          "duration": 0.25,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.065,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 160,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 1700,
+              "q": 0.8,
+              "endCutoff": 420
+            }
+          ],
+          "amplitudeMod": {
+            "rateHz": 37,
+            "depth": 0.25
+          }
+        },
+        {
+          "type": "noise",
+          "gain": 0.13,
+          "start": 0.16,
+          "duration": 0.04,
+          "attack": 0.0003,
+          "release": 0.013333333333333334,
+          "pan": 0,
+          "decay": 0.012,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1700,
+              "q": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-heavy-2",
+      "name": "B · Heavy punch · take 2",
+      "purpose": "Deeper pressure thump, broad muzzle body and a darker mechanical return. The weightiest option.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.52,
+      "seed": 95735,
+      "gain": 0.38893208,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.7,
+          "start": 0,
+          "duration": 0.04,
+          "attack": 0.0003,
+          "release": 0.013333333333333334,
+          "pan": 0,
+          "decay": 0.006,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 641.55,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 9376.5,
+              "q": 0.75,
+              "endCutoff": 3553.2
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.9,
+          "start": 0,
+          "duration": 0.2,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.046,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 74.025,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 2368.8,
+              "q": 0.85,
+              "endCutoff": 690.9
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.65,
+          "start": 0,
+          "duration": 0.22,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.052,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 276.36,
+              "q": 0.85,
+              "endCutoff": 167.79
+            }
+          ]
+        },
+        {
+          "type": "sine",
+          "gain": 0.38,
+          "start": 0,
+          "duration": 0.2,
+          "frequency": 94.752,
+          "endFrequency": 40.467,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.043
+        },
+        {
+          "type": "sine",
+          "gain": 0.07,
+          "start": 0,
+          "duration": 0.1,
+          "frequency": 322.749,
+          "endFrequency": 286.23,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.018
+        },
+        {
+          "type": "noise",
+          "gain": 0.4,
+          "start": 0.06617,
+          "duration": 0.042,
+          "attack": 0.0003,
+          "release": 0.014,
+          "pan": 0,
+          "decay": 0.011,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 937.65,
+              "q": 1.4
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.22,
+          "start": 0.02545,
+          "duration": 0.25,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.065,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 157.92,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 1677.9,
+              "q": 0.8,
+              "endCutoff": 414.54
+            }
+          ],
+          "amplitudeMod": {
+            "rateHz": 37,
+            "depth": 0.25
+          }
+        },
+        {
+          "type": "noise",
+          "gain": 0.13,
+          "start": 0.16288,
+          "duration": 0.04,
+          "attack": 0.0003,
+          "release": 0.013333333333333334,
+          "pan": 0,
+          "decay": 0.012,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1677.9,
+              "q": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-heavy-3",
+      "name": "B · Heavy punch · take 3",
+      "purpose": "Deeper pressure thump, broad muzzle body and a darker mechanical return. The weightiest option.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.52,
+      "seed": 96052,
+      "gain": 0.38251554,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.7,
+          "start": 0,
+          "duration": 0.04,
+          "attack": 0.0003,
+          "release": 0.013333333333333334,
+          "pan": 0,
+          "decay": 0.006,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 659.1,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 9633,
+              "q": 0.75,
+              "endCutoff": 3650.4
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.9,
+          "start": 0,
+          "duration": 0.2,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.046,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 76.05,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 2433.6,
+              "q": 0.85,
+              "endCutoff": 709.8
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.65,
+          "start": 0,
+          "duration": 0.22,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.052,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 283.92,
+              "q": 0.85,
+              "endCutoff": 172.38
+            }
+          ]
+        },
+        {
+          "type": "sine",
+          "gain": 0.38,
+          "start": 0,
+          "duration": 0.2,
+          "frequency": 97.344,
+          "endFrequency": 41.574,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.043
+        },
+        {
+          "type": "sine",
+          "gain": 0.07,
+          "start": 0,
+          "duration": 0.1,
+          "frequency": 331.57800000000003,
+          "endFrequency": 294.06,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.018
+        },
+        {
+          "type": "noise",
+          "gain": 0.4,
+          "start": 0.06396,
+          "duration": 0.042,
+          "attack": 0.0003,
+          "release": 0.014,
+          "pan": 0,
+          "decay": 0.011,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 963.3000000000001,
+              "q": 1.4
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.22,
+          "start": 0.0246,
+          "duration": 0.25,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.065,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 162.24,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 1723.8,
+              "q": 0.8,
+              "endCutoff": 425.88
+            }
+          ],
+          "amplitudeMod": {
+            "rateHz": 37,
+            "depth": 0.25
+          }
+        },
+        {
+          "type": "noise",
+          "gain": 0.13,
+          "start": 0.15744,
+          "duration": 0.04,
+          "attack": 0.0003,
+          "release": 0.013333333333333334,
+          "pan": 0,
+          "decay": 0.012,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1723.8,
+              "q": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-industrial-1",
+      "name": "C · Industrial snap · take 1",
+      "purpose": "Sharper upper crack, textured midrange and a quick metallic action. More bite without a long ring.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.36,
+      "seed": 100519,
+      "gain": 0.50895494,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.9,
+          "start": 0,
+          "duration": 0.028,
+          "attack": 0.0003,
+          "release": 0.009333333333333334,
+          "pan": 0,
+          "decay": 0.0038,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 1600,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 15500,
+              "q": 0.75,
+              "endCutoff": 8500
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.85,
+          "start": 0,
+          "duration": 0.105,
+          "attack": 0.0003,
+          "release": 0.034999999999999996,
+          "pan": 0,
+          "decay": 0.023,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 220,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 6200,
+              "q": 0.8,
+              "endCutoff": 2800
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.6,
+          "start": 0,
+          "duration": 0.12,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.03,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1220,
+              "q": 0.85,
+              "endCutoff": 680
+            }
+          ],
+          "amplitudeMod": {
+            "rateHz": 73,
+            "depth": 0.16
+          }
+        },
+        {
+          "type": "sine",
+          "gain": 0.2,
+          "start": 0,
+          "duration": 0.11,
+          "frequency": 184,
+          "endFrequency": 83,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.02
+        },
+        {
+          "type": "sine",
+          "gain": 0.06,
+          "start": 0,
+          "duration": 0.072,
+          "frequency": 1173,
+          "endFrequency": 1147,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.023999999999999997,
+          "pan": 0,
+          "decay": 0.009
+        },
+        {
+          "type": "sine",
+          "gain": 0.045,
+          "start": 0,
+          "duration": 0.065,
+          "frequency": 1867,
+          "endFrequency": 1839,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.021666666666666667,
+          "pan": 0,
+          "decay": 0.011
+        },
+        {
+          "type": "sine",
+          "gain": 0.028,
+          "start": 0,
+          "duration": 0.045,
+          "frequency": 3209,
+          "endFrequency": 3191,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.015,
+          "pan": 0,
+          "decay": 0.006
+        },
+        {
+          "type": "noise",
+          "gain": 0.38,
+          "start": 0.043,
+          "duration": 0.024,
+          "attack": 0.0002,
+          "release": 0.008,
+          "pan": 0,
+          "decay": 0.006,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 2400,
+              "q": 1.5
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.15,
+          "start": 0.102,
+          "duration": 0.035,
+          "attack": 0.0003,
+          "release": 0.011666666666666667,
+          "pan": 0,
+          "decay": 0.01,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 650,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 4800,
+              "q": 0.707
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-industrial-2",
+      "name": "C · Industrial snap · take 2",
+      "purpose": "Sharper upper crack, textured midrange and a quick metallic action. More bite without a long ring.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.36,
+      "seed": 100836,
+      "gain": 0.51656733,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.9,
+          "start": 0,
+          "duration": 0.028,
+          "attack": 0.0003,
+          "release": 0.009333333333333334,
+          "pan": 0,
+          "decay": 0.0038,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 1579.2,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 15298.5,
+              "q": 0.75,
+              "endCutoff": 8389.5
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.85,
+          "start": 0,
+          "duration": 0.105,
+          "attack": 0.0003,
+          "release": 0.034999999999999996,
+          "pan": 0,
+          "decay": 0.023,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 217.14,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 6119.4,
+              "q": 0.8,
+              "endCutoff": 2763.6
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.6,
+          "start": 0,
+          "duration": 0.12,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.03,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1204.1399999999999,
+              "q": 0.85,
+              "endCutoff": 671.16
+            }
+          ],
+          "amplitudeMod": {
+            "rateHz": 73,
+            "depth": 0.16
+          }
+        },
+        {
+          "type": "sine",
+          "gain": 0.2,
+          "start": 0,
+          "duration": 0.11,
+          "frequency": 181.608,
+          "endFrequency": 81.92099999999999,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.02
+        },
+        {
+          "type": "sine",
+          "gain": 0.06,
+          "start": 0,
+          "duration": 0.072,
+          "frequency": 1157.751,
+          "endFrequency": 1132.089,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.023999999999999997,
+          "pan": 0,
+          "decay": 0.009
+        },
+        {
+          "type": "sine",
+          "gain": 0.045,
+          "start": 0,
+          "duration": 0.065,
+          "frequency": 1842.729,
+          "endFrequency": 1815.093,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.021666666666666667,
+          "pan": 0,
+          "decay": 0.011
+        },
+        {
+          "type": "sine",
+          "gain": 0.028,
+          "start": 0,
+          "duration": 0.045,
+          "frequency": 3167.283,
+          "endFrequency": 3149.517,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.015,
+          "pan": 0,
+          "decay": 0.006
+        },
+        {
+          "type": "noise",
+          "gain": 0.38,
+          "start": 0.043774,
+          "duration": 0.024,
+          "attack": 0.0002,
+          "release": 0.008,
+          "pan": 0,
+          "decay": 0.006,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 2368.8,
+              "q": 1.5
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.15,
+          "start": 0.103836,
+          "duration": 0.035,
+          "attack": 0.0003,
+          "release": 0.011666666666666667,
+          "pan": 0,
+          "decay": 0.01,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 641.55,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 4737.6,
+              "q": 0.707
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gun-industrial-3",
+      "name": "C · Industrial snap · take 3",
+      "purpose": "Sharper upper crack, textured midrange and a quick metallic action. More bite without a long ring.",
+      "sampleRate": 48000,
+      "channels": 1,
+      "duration": 0.36,
+      "seed": 101153,
+      "gain": 0.52383007,
+      "fadeIn": 0.00015,
+      "fadeOut": 0.06,
+      "layers": [
+        {
+          "type": "noise",
+          "gain": 0.9,
+          "start": 0,
+          "duration": 0.028,
+          "attack": 0.0003,
+          "release": 0.009333333333333334,
+          "pan": 0,
+          "decay": 0.0038,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 1622.4,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 15717,
+              "q": 0.75,
+              "endCutoff": 8619
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.85,
+          "start": 0,
+          "duration": 0.105,
+          "attack": 0.0003,
+          "release": 0.034999999999999996,
+          "pan": 0,
+          "decay": 0.023,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 223.08,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 6286.8,
+              "q": 0.8,
+              "endCutoff": 2839.2
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.6,
+          "start": 0,
+          "duration": 0.12,
+          "attack": 0.0003,
+          "release": 0.035,
+          "pan": 0,
+          "decay": 0.03,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 1237.08,
+              "q": 0.85,
+              "endCutoff": 689.52
+            }
+          ],
+          "amplitudeMod": {
+            "rateHz": 73,
+            "depth": 0.16
+          }
+        },
+        {
+          "type": "sine",
+          "gain": 0.2,
+          "start": 0,
+          "duration": 0.11,
+          "frequency": 186.576,
+          "endFrequency": 84.162,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.025,
+          "pan": 0,
+          "decay": 0.02
+        },
+        {
+          "type": "sine",
+          "gain": 0.06,
+          "start": 0,
+          "duration": 0.072,
+          "frequency": 1189.422,
+          "endFrequency": 1163.058,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.023999999999999997,
+          "pan": 0,
+          "decay": 0.009
+        },
+        {
+          "type": "sine",
+          "gain": 0.045,
+          "start": 0,
+          "duration": 0.065,
+          "frequency": 1893.138,
+          "endFrequency": 1864.746,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.021666666666666667,
+          "pan": 0,
+          "decay": 0.011
+        },
+        {
+          "type": "sine",
+          "gain": 0.028,
+          "start": 0,
+          "duration": 0.045,
+          "frequency": 3253.926,
+          "endFrequency": 3235.674,
+          "pitchCurve": "exponential",
+          "attack": 0.0005,
+          "release": 0.015,
+          "pan": 0,
+          "decay": 0.006
+        },
+        {
+          "type": "noise",
+          "gain": 0.38,
+          "start": 0.042311999999999995,
+          "duration": 0.024,
+          "attack": 0.0002,
+          "release": 0.008,
+          "pan": 0,
+          "decay": 0.006,
+          "filters": [
+            {
+              "type": "bandpass",
+              "cutoff": 2433.6,
+              "q": 1.5
+            }
+          ]
+        },
+        {
+          "type": "noise",
+          "gain": 0.15,
+          "start": 0.100368,
+          "duration": 0.035,
+          "attack": 0.0003,
+          "release": 0.011666666666666667,
+          "pan": 0,
+          "decay": 0.01,
+          "filters": [
+            {
+              "type": "highpass",
+              "cutoff": 659.1,
+              "q": 0.707
+            },
+            {
+              "type": "lowpass",
+              "cutoff": 4867.2,
+              "q": 0.707
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

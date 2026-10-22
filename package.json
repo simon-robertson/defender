@@ -29,6 +29,7 @@
     "check:deployment": "bun scripts/deployment/validate.js",
     "audio:doctor": "bun scripts/audio/build.js doctor",
     "audio:build": "bun scripts/audio/build.js build",
-    "audio:preview": "bun scripts/audio/build.js preview"
+    "audio:preview": "bun scripts/audio/build.js preview",
+    "audio:turret": "bun scripts/audio/gun-turret.js"
   }
 }

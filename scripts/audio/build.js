@@ -3,7 +3,7 @@ import {resolve,relative,join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {renderRecipe,encodeWav,readWav,analyse} from './pcm.js';
-import {reviewPage} from './review.js';
+import {reviewPage,validateReview} from './review.js';
 const root=fileURLToPath(new URL('../../',import.meta.url)),outputRoot=join(root,'build/audio');
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 function run(command){
@@ -21,8 +21,9 @@ export function doctor(){
 }
 export async function buildAudio(recipePath=join(root,'audio/diagnostics.json'),{wavOnly=false,publishLatest=true}={}){
  const recipeBytes=await readFile(recipePath),bundle=JSON.parse(recipeBytes);
- if(bundle.version!==1||Object.keys(bundle).some(k=>!['version','recipes'].includes(k))||!Array.isArray(bundle.recipes)||!bundle.recipes.length||bundle.recipes.length>32)throw new Error('Expected version 1 bundle with 1..32 recipes');
+ if(bundle.version!==1||Object.keys(bundle).some(k=>!['version','recipes','review'].includes(k))||!Array.isArray(bundle.recipes)||!bundle.recipes.length||bundle.recipes.length>32)throw new Error('Expected version 1 bundle with 1..32 recipes');
  if(new Set(bundle.recipes.map(r=>r.id)).size!==bundle.recipes.length)throw new Error('Duplicate recipe ids');
+ validateReview(bundle.review,bundle.recipes);
  const tools=wavOnly?null:doctor();await mkdir(outputRoot,{recursive:true});
  const staging=await mkdtemp(join(outputRoot,'.staging-'));
  try{
@@ -51,9 +52,9 @@ export async function buildAudio(recipePath=join(root,'audio/diagnostics.json'),
    const waveform=new Array(512).fill(0);for(let i=0;i<samples.length;i++){const bin=Math.min(511,Math.floor(i/samples.length*512));waveform[bin]=Math.max(waveform[bin],Math.abs(samples[i]));}
    entries.push({...entry,waveform});
   }
-  const sources={};for(const file of ['pcm.js','dsp.js','build.js','review.js'])sources[file]=hash(await readFile(new URL(file,import.meta.url)));
-  const manifest={version:1,pipelineVersion:1,sources,createdAt:new Date().toISOString(),recipeFile:relative(root,resolve(recipePath)),recipeSha256:hash(recipeBytes),tools,entries};
-  await writeFile(join(staging,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');await writeFile(join(staging,'recipes.json'),recipeBytes);await writeFile(join(staging,'review.html'),reviewPage(entries));
+  const sources={};for(const file of ['pcm.js','dsp.js','build.js','review.js','review-player.js'])sources[file]=hash(await readFile(new URL(file,import.meta.url)));
+  const manifest={version:1,pipelineVersion:1,sources,review:bundle.review,createdAt:new Date().toISOString(),recipeFile:relative(root,resolve(recipePath)),recipeSha256:hash(recipeBytes),tools,entries};
+  await writeFile(join(staging,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');await writeFile(join(staging,'recipes.json'),recipeBytes);await writeFile(join(staging,'review.html'),reviewPage(entries,bundle.review));
   const name=new Date().toISOString().replace(/[:.]/g,'-')+'-'+staging.slice(-6),output=join(outputRoot,name);await rename(staging,output);
   if(publishLatest){const pointer=join(outputRoot,`.latest-${name}.tmp`);await writeFile(pointer,JSON.stringify({directory:name})+'\n');await rename(pointer,join(outputRoot,'latest.json'));}
   return {output,manifest};

@@ -1,0 +1,350 @@
+{
+  "recipeSha256": "6a091a70f5afec5d8027abc665596577930bd2189bcef423f6acfb6cb4a750eb",
+  "tools": {
+    "opusenc": {
+      "path": "/opt/homebrew/bin/opusenc",
+      "version": "opusenc opus-tools 0.2 (using libopus 1.6.1)\nCopyright (C) 2008-2018 Xiph.Org Foundation"
+    },
+    "opusdec": {
+      "path": "/opt/homebrew/bin/opusdec",
+      "version": "opusdec opus-tools 0.2 (using libopus 1.6.1)\nCopyright (C) 2008-2018 Xiph.Org Foundation"
+    },
+    "opusinfo": {
+      "path": "/opt/homebrew/bin/opusinfo",
+      "version": "opusinfo from opus-tools 0.2"
+    }
+  },
+  "sources": {
+    "pcm.js": "80720d84fac5c2cc24d348930462a4b52491394e0038b45e815caac3c2383630",
+    "dsp.js": "eb8507a2c9a1068887166eab9b2f2574cd6b306438b79f37e625a5512ebda38e",
+    "build.js": "75c6d9e029bb6f53e92a8d675c8dd950e95ec8e75a21beac180da4fcf3e08d4b",
+    "review.js": "270ff446d0c839c31be9df265dc1ac2fda810506affcda3fa8a965cafa30c027",
+    "review-player.js": "15269b033aacd4d66d6f934f8288e09462c3ab6a5fa4fd563d2783103be9b11e"
+  },
+  "entries": [
+    {
+      "id": "gun-dry-1",
+      "channels": 1,
+      "duration": 0.38,
+      "analysis": {
+        "peak": 0.5394911170005798,
+        "rms": 0.03156432740738963,
+        "dc": [
+          0.000435967659514694
+        ],
+        "frames": 18240
+      },
+      "decodedAnalysis": {
+        "peak": 0.5597921013832092,
+        "rms": 0.03135332088265363,
+        "dc": [
+          0.000010324748228029783
+        ],
+        "frames": 18240,
+        "errorRms": 0.0030696277024761065
+      },
+      "files": {
+        "master": {
+          "sha256": "9f03dccdb3c8a74a906c82e055ef8fb49d6f6c75d3c4559f7017139a7c8c2f9c",
+          "bytes": 54764
+        },
+        "ogg": {
+          "sha256": "f302359ee26102491206500545d9f4fcfce76499fddd150c3f0a6715b8dfe6d4",
+          "bytes": 7668
+        },
+        "decoded": {
+          "sha256": "2ef8a9bc783e4fdcc4eb555184b863b6287fc3c183342d6ace2ce30bc8d84b02",
+          "bytes": 73028
+        }
+      }
+    },
+    {
+      "id": "gun-dry-2",
+      "channels": 1,
+      "duration": 0.38,
+      "analysis": {
+        "peak": 0.5631783604621887,
+        "rms": 0.03156535550045096,
+        "dc": [
+          0.0003925066354438792
+        ],
+        "frames": 18240
+      },
+      "decodedAnalysis": {
+        "peak": 0.5583771467208862,
+        "rms": 0.03159301012194078,
+        "dc": [
+          -0.0001376540345382525
+        ],
+        "frames": 18240,
+        "errorRms": 0.003501767954938571
+      },
+      "files": {
+        "master": {
+          "sha256": "6f1fc424ca4d933fc8efad5d1d644663fbda329b6f9d15a7124423faea64397a",
+          "bytes": 54764
+        },
+        "ogg": {
+          "sha256": "1e32c3ab97ebe0fcc1c5ef6aa89ee2aa5858f56dadf7046bdffe83231a0f6561",
+          "bytes": 7618
+        },
+        "decoded": {
+          "sha256": "15b0a01e3d8ae6f7b162bd424a6366c9821f8a378a100afafd70dcd71b452285",
+          "bytes": 73028
+        }
+      }
+    },
+    {
+      "id": "gun-dry-3",
+      "channels": 1,
+      "duration": 0.38,
+      "analysis": {
+        "peak": 0.4724176824092865,
+        "rms": 0.03156454569256168,
+        "dc": [
+          0.00038323403982576696
+        ],
+        "frames": 18240
+      },
+      "decodedAnalysis": {
+        "peak": 0.46818041801452637,
+        "rms": 0.03179969368663228,
+        "dc": [
+          0.00015053163803219798
+        ],
+        "frames": 18240,
+        "errorRms": 0.0028374992547585257
+      },
+      "files": {
+        "master": {
+          "sha256": "80b7aab991a815787ef4c2ada9f671918b0892abfc3b3cbad76776c8e315efb6",
+          "bytes": 54764
+        },
+        "ogg": {
+          "sha256": "a577d395dd5455045211afc0fb75ec0f2086889fcf17614cc48a19ff471574f2",
+          "bytes": 7710
+        },
+        "decoded": {
+          "sha256": "7f88768b9877644c20a5ab322474c434dcb3562f7d083c3f305c39465b9755fa",
+          "bytes": 73028
+        }
+      }
+    },
+    {
+      "id": "gun-heavy-1",
+      "channels": 1,
+      "duration": 0.52,
+      "analysis": {
+        "peak": 0.4255591928958893,
+        "rms": 0.027016186816591858,
+        "dc": [
+          0.0004896197662480561
+        ],
+        "frames": 24960
+      },
+      "decodedAnalysis": {
+        "peak": 0.42742279171943665,
+        "rms": 0.026993530783941504,
+        "dc": [
+          -0.000002115960027041024
+        ],
+        "frames": 24960,
+        "errorRms": 0.0027764823544129476
+      },
+      "files": {
+        "master": {
+          "sha256": "946c8eee854989a234c787ee7a27c78237fa87b3ad9bebaca49691dbf84bf6fe",
+          "bytes": 74924
+        },
+        "ogg": {
+          "sha256": "6d0c5521b9315e2ef68d823c90bd3ac7b60f17cb9bfb150349b93a7585037ff1",
+          "bytes": 7936
+        },
+        "decoded": {
+          "sha256": "5b248db2ea19ea09ec315f85e8b1440de67a8d8d965e1b6f37038065d9a8fb6b",
+          "bytes": 99908
+        }
+      }
+    },
+    {
+      "id": "gun-heavy-2",
+      "channels": 1,
+      "duration": 0.52,
+      "analysis": {
+        "peak": 0.3063819110393524,
+        "rms": 0.027018593469151767,
+        "dc": [
+          0.0005036252613317292
+        ],
+        "frames": 24960
+      },
+      "decodedAnalysis": {
+        "peak": 0.31981906294822693,
+        "rms": 0.02711254256360674,
+        "dc": [
+          0.00015721456560064648
+        ],
+        "frames": 24960,
+        "errorRms": 0.0021638600303436235
+      },
+      "files": {
+        "master": {
+          "sha256": "b944b3430fa6b5a0bb7c39169bde7de00d0a24180581e1119726a36447334902",
+          "bytes": 74924
+        },
+        "ogg": {
+          "sha256": "24c75b6efd576defef0e591bd5ce5a89942ba8b2fda2107f7985e9ae1e886065",
+          "bytes": 8053
+        },
+        "decoded": {
+          "sha256": "917037faef23e30dedd7bcf571ad95a3c831078df67bef1725a295341bed07d1",
+          "bytes": 99908
+        }
+      }
+    },
+    {
+      "id": "gun-heavy-3",
+      "channels": 1,
+      "duration": 0.52,
+      "analysis": {
+        "peak": 0.4858839213848114,
+        "rms": 0.02701909930153543,
+        "dc": [
+          0.00045812637727946906
+        ],
+        "frames": 24960
+      },
+      "decodedAnalysis": {
+        "peak": 0.48829883337020874,
+        "rms": 0.026858934785055997,
+        "dc": [
+          0.00010675549931924206
+        ],
+        "frames": 24960,
+        "errorRms": 0.0023585812519044064
+      },
+      "files": {
+        "master": {
+          "sha256": "448ad8387d59912cc8212734552f76a53dbf27dcf02436cdefeaefbb5c034b6e",
+          "bytes": 74924
+        },
+        "ogg": {
+          "sha256": "45350151052dc03b3eb1fd5b9e6a16c41817e5ca2290f85388286236de726ced",
+          "bytes": 7936
+        },
+        "decoded": {
+          "sha256": "4eeb6153cc3c8323bb1b6026781881b3be43bff2be9f00d88f771fd0e15c1b74",
+          "bytes": 99908
+        }
+      }
+    },
+    {
+      "id": "gun-industrial-1",
+      "channels": 1,
+      "duration": 0.36,
+      "analysis": {
+        "peak": 0.5936402082443237,
+        "rms": 0.03242769741956287,
+        "dc": [
+          0.00025820769556113174
+        ],
+        "frames": 17280
+      },
+      "decodedAnalysis": {
+        "peak": 0.5847635269165039,
+        "rms": 0.03244816486582239,
+        "dc": [
+          0.000039104443794936696
+        ],
+        "frames": 17280,
+        "errorRms": 0.003695721508699384
+      },
+      "files": {
+        "master": {
+          "sha256": "7eb34273acae08ea9038ed9e7148b6972dd5c0dc5809e999759f44a53313624d",
+          "bytes": 51884
+        },
+        "ogg": {
+          "sha256": "a5f70d9c34e21c855be8f1713668cf301f22fffa3e3ee68ae58c38aeaac71a59",
+          "bytes": 7450
+        },
+        "decoded": {
+          "sha256": "a03d4e13b3d6a5e1ee2ffcf2eca20ffdab8202702bf79f60aea8d5c8a985f91a",
+          "bytes": 69188
+        }
+      }
+    },
+    {
+      "id": "gun-industrial-2",
+      "channels": 1,
+      "duration": 0.36,
+      "analysis": {
+        "peak": 0.5867995619773865,
+        "rms": 0.03242769748445255,
+        "dc": [
+          0.00021691036248885147
+        ],
+        "frames": 17280
+      },
+      "decodedAnalysis": {
+        "peak": 0.5723859071731567,
+        "rms": 0.03261052100988608,
+        "dc": [
+          -0.000049189106966596584
+        ],
+        "frames": 17280,
+        "errorRms": 0.003779666708239548
+      },
+      "files": {
+        "master": {
+          "sha256": "f7e4edc4da83c3c70d9b1bedf522d858c8adfb8ae8187f4084b362b53c903c91",
+          "bytes": 51884
+        },
+        "ogg": {
+          "sha256": "141badb2ae536123069d3e36afc90f17470cb303de3ca80f668fbdca056a3fff",
+          "bytes": 7420
+        },
+        "decoded": {
+          "sha256": "c6d62d068d24013a51ffcba01434626e695dfd09227deced3771766502527b60",
+          "bytes": 69188
+        }
+      }
+    },
+    {
+      "id": "gun-industrial-3",
+      "channels": 1,
+      "duration": 0.36,
+      "analysis": {
+        "peak": 0.6880865693092346,
+        "rms": 0.032427697542265925,
+        "dc": [
+          0.00023859193101294116
+        ],
+        "frames": 17280
+      },
+      "decodedAnalysis": {
+        "peak": 0.6826525926589966,
+        "rms": 0.032409396018979124,
+        "dc": [
+          -0.000047129736610686105
+        ],
+        "frames": 17280,
+        "errorRms": 0.0038794917050032026
+      },
+      "files": {
+        "master": {
+          "sha256": "5edcc1020e0c2e75f19a0c738b255a7ecb1cfe55143f3de6a91af854009424f3",
+          "bytes": 51884
+        },
+        "ogg": {
+          "sha256": "c201edd3886e4f0869fa2e492d1911b6124f6e111ddf1a0f29b6d20009db2954",
+          "bytes": 7389
+        },
+        "decoded": {
+          "sha256": "ab6a2cbfc75d0361d01f556ca028723280da7a08c98cbf68cdd4f9c31d84cf36",
+          "bytes": 69188
+        }
+      }
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Offline sound authoring
 
+**Gun-turret review:** `bun run audio:turret` builds three mono directions, each with three takes. The user selects **Dry autocannon** for now. Grouped preview includes single shots and actual base/upgrade firing patterns. [Cue files, regeneration and review](gun-turret/README.md). Future game spatialisation must match on-screen sources and camera distance; it is not implemented in this timbre comparison.
+
 **Runtime follow-up, 22 October:** title New Game/Continue now lazily initialise/resume the shared context inside their genuine click handlers. No game cues/bank are connected yet. When a sound is assigned to the game, put its mono delivery/fallback in `assets/audio/` and declare it in `shared/audio-assets.js`; deployment now gathers that manifest automatically, excluding these authoring outputs. [Policy research and verification](../project-docs/research/web-audio-implementation-2026-10-22/activation.md).
 
 The user authorised machine-installed Opus tools and development audio tooling on 22 October 2026. This pipeline is isolated from the game: no playback integration, runtime encoder, asset route or deployment change. All sound files must be **mono, single channel**, as instructed by the user on 22 October. The recipe validator rejects stereo. The bundled recipes are **diagnostics, not approved game sounds**.

@@ -25,7 +25,7 @@ test('authoring rejects ambiguous recipes, unsafe names, invalid loops, clipping
  const loud=copy(transient);loud.gain=1;loud.layers=Array(16).fill({...loud.layers[0],gain:1});expect(()=>renderRecipe(loud)).toThrow('clips');
 });
 test('review escapes recipe text and uses explicit loop times with owned audio cleanup',()=>{
- const recipe={...loop,name:'<script>"bad"</script>'},rendered=renderRecipe(recipe),html=reviewPage([{recipe,analysis:rendered.analysis,paths:{master:'masters/test.wav'},waveform:[.1,.2]}]);expect(html).toContain('&lt;script&gt;');expect(html).not.toContain('<script>"bad"');expect(html).toContain('data-end="1"');expect(html).toContain('source.loopStart=start');expect(html).toContain("document.addEventListener('visibilitychange'");
+ const recipe={...loop,name:'<script>"bad"</script>'},rendered=renderRecipe(recipe),html=reviewPage([{recipe,analysis:rendered.analysis,paths:{master:'masters/test.wav'},waveform:[.1,.2]}]);expect(html).toContain('&lt;script&gt;');expect(html).not.toContain('<script>"bad"');expect(html).toContain('data-end="1"');expect(html).toMatch(/source\.loopStart\s*=\s*start/);expect(html).toMatch(/document\.addEventListener\(['"]visibilitychange['"]/);
 });
 const encoderTest=['opusenc','opusdec','opusinfo'].every(name=>Bun.which(name))?test:test.skip;
 encoderTest('real external encoder round trip and read-only review stay outside game assets',async()=>{

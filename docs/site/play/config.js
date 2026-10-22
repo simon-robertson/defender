@@ -108,9 +108,9 @@ const DEFAULT_CONFIG={
    upgrade2:profile('arc-spire','upgrade2',65,108,{...ARC_SPIRE_FIRING.upgrade2,shotIntervalSeconds:.18,cooldownSeconds:1.4},9),
   }},
   'missile-launcher':{purchaseCost:3,upgradeCost:3,availableFromWave:9,enabledVariants:[...VARIANTS],variants:{
-   base:profile('missile-launcher','base',200,96,MISSILE_FIRING.base,9),
-   upgrade1:profile('missile-launcher','upgrade1',280,126,MISSILE_FIRING.upgrade1,9),
-   upgrade2:profile('missile-launcher','upgrade2',360,150,MISSILE_FIRING.upgrade2,13),
+   base:profile('missile-launcher','base',300,96,MISSILE_FIRING.base,9),
+   upgrade1:profile('missile-launcher','upgrade1',420,126,MISSILE_FIRING.upgrade1,9),
+   upgrade2:profile('missile-launcher','upgrade2',540,150,MISSILE_FIRING.upgrade2,13),
   }},
   'power-generator':{kind:'enhancer',purchaseCost:4,upgradeCost:null,availableFromWave:1,enabledVariants:['base'],variants:{
    base:{stats:clone(ENHANCER_STATS['power-generator'].base),firing:null},

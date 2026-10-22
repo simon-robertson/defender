@@ -171,13 +171,13 @@ function integrateFlight(slot,dt){
 // renderer. Every launch reuses the loaded actor; no projectile object is born.
 export class MissileFlightPool {
  constructor(world,targets,onPoseChange,onVisible,onHit,{onImpact=null,onLaunch=null,onTrail=null,random=null}={}){
-  let seed=7919;this.random=random??(()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;});this.targets=targets;this.visibility=world.visibility;this.width=world.width;this.length=world.length;this.onPoseChange=onPoseChange;this.onVisible=onVisible;this.onHit=onHit;this.onImpact=onImpact;this.onLaunch=onLaunch;this.onTrail=onTrail;this.forecast={};this.defenceContact=new Float64Array(7);this.futureSample=new Float64Array(5);this.futureTurn=new Float64Array(2);this.futureAim=new Float64Array(3);this.futureLocal=new Float64Array(6);this.localSurface=new Float64Array(2);this.forecastRecord={aimDX:0,aimDY:0,aimDZ:0,seconds:0};this.clearanceChecks=0;this.time=0;this.slots=[];this.records=new Map();this.recordList=[];this.updatedParts=0;
+  let seed=7919;this.random=random??(()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;});this.targets=targets;this.visibility=world.visibility;this.width=world.width;this.length=world.length;this.onPoseChange=onPoseChange;this.onVisible=onVisible;this.onHit=onHit;this.onImpact=onImpact;this.onLaunch=onLaunch;this.onTrail=onTrail;this.forecast={};this.defenceContact=new Float64Array(7);this.futureSample=new Float64Array(5);this.futureTurn=new Float64Array(2);this.futureAim=new Float64Array(3);this.futureLocal=new Float64Array(6);this.localSurface=new Float64Array(2);this.forecastRecord={aimDX:0,aimDY:0,aimDZ:0,seconds:0};this.clearanceChecks=0;this.time=0;this.deltaSeconds=0;this.trailSerial=0;this.slots=[];this.records=new Map();this.recordList=[];this.updatedParts=0;
   this.active=0;this.hits=0;this.collisions=0;this.expired=0;this.lostTargets=0;this.stallDiscards=0;this.orphaned=0;this.completedAtLastPosition=0;this.missed=0;
   this.offMap=0;this.contactX=this.contactY=this.contactZ=this.contactNX=this.contactNY=this.contactNZ=this.staticX=this.staticY=this.staticZ=this.staticNX=this.staticNY=this.staticNZ=0;
   this.thrust={instanceData:new Float32Array(MAX_MISSILE_THRUST_INSTANCES*MISSILE_THRUST_FLOATS),instanceCount:0,lightData:new Float32Array(4+MAX_MISSILE_LIGHTS*8),lightCount:0,time:0};
   for(const [id,data]of world.actors)if(data.model===GUIDED_MISSILE_MODEL.id){
    if(data.instances.length!==1||data.instances[0].part!==GUIDED_MISSILE_MODEL.part||this.slots.length>=MAX_MISSILES)throw new Error('Missile actor pool has incompatible geometry or capacity.');
-   const instance=data.instances[0];this.slots.push({id,data,instance,phase:PHASE.FREE,visible:true,owner:null,target:null,targetLap:0,orphaned:false,committed:false,passedAim:false,engineCutoff:false,aimDX:0,aimDY:0,aimDZ:0,aimX:0,aimY:0,aimZ:0,lastX:0,lastY:0,lastZ:0,strength:0,age:0,trailCarry:0,clearanceTarget:null,clearanceAt:-Infinity,x:0,y:0,z:0,dx:0,dy:1,dz:0,rx:1,ry:0,rz:0,vx:0,vy:0,vz:0});this.onVisible(id,false);this.slots[this.slots.length-1].visible=false;
+   const instance=data.instances[0];this.slots.push({id,data,instance,phase:PHASE.FREE,visible:true,owner:null,target:null,targetLap:0,orphaned:false,committed:false,passedAim:false,engineCutoff:false,aimDX:0,aimDY:0,aimDZ:0,aimX:0,aimY:0,aimZ:0,lastX:0,lastY:0,lastZ:0,strength:0,age:0,trailCarry:0,trailId:0,clearanceTarget:null,clearanceAt:-Infinity,x:0,y:0,z:0,dx:0,dy:1,dz:0,rx:1,ry:0,rz:0,vx:0,vy:0,vz:0});this.onVisible(id,false);this.slots[this.slots.length-1].visible=false;
   }
   if(this.slots.length!==MAX_MISSILES)throw new Error('Missile preview requires its complete fixed actor pool.');
   const entries=new Map(world.entries.map(entry=>[entry.key,entry.mesh.quads]));
@@ -245,7 +245,7 @@ export class MissileFlightPool {
  }
  launch(index,target,strength){
   const slot=this.slots[index];if(slot.phase!==PHASE.LOADED)return false;
-  slot.target=target;slot.targetLap=target.lap??0;slot.orphaned=slot.committed=slot.passedAim=slot.engineCutoff=false;slot.aimX=slot.lastX=targetX(target);slot.aimY=slot.lastY=target.aimY;slot.aimZ=slot.lastZ=targetZ(target);slot.strength=strength;slot.phase=PHASE.BOOST;slot.age=slot.trailCarry=0;slot.vx=0;slot.vy=FLIGHT.boostSpeed;slot.vz=0;this.active++;this.onLaunch?.(slot.x,slot.y-HALF+slot.owner.launchRise,slot.z);return true;
+  slot.target=target;slot.targetLap=target.lap??0;slot.orphaned=slot.committed=slot.passedAim=slot.engineCutoff=false;slot.aimX=slot.lastX=targetX(target);slot.aimY=slot.lastY=target.aimY;slot.aimZ=slot.lastZ=targetZ(target);slot.strength=strength;slot.trailId=++this.trailSerial;slot.phase=PHASE.BOOST;slot.age=slot.trailCarry=0;slot.vx=0;slot.vy=FLIGHT.boostSpeed;slot.vz=0;this.active++;this.onLaunch?.(slot.x,slot.y-HALF+slot.owner.launchRise,slot.z);return true;
  }
  routeAim(target,seconds){
   // The shared airborne route is immutable and time-parameterised. Forecast
@@ -311,10 +311,12 @@ export class MissileFlightPool {
   if(slot.phase===PHASE.HOMING&&!slot.engineCutoff&&terminalReady(slot))slot.engineCutoff=true;
   const hit=record?this.contact(record,nx,ny,nz,ex,ey,ez,fromFraction,toFraction):Infinity,obstacle=sceneryContact(this,ox,oy,oz,slot.x,slot.y,slot.z,slot.owner?.id);
   const passed=slot.committed&&slot.engineCutoff&&!slot.passedAim?aimPassed(slot,nx,ny,nz,ex,ey,ez):Infinity;
+  // Extra trail arguments identify this launch and the sample age relative
+  // to the end of this advance, independent of the caller's simulation clock.
   if(powered&&this.onTrail){
    const fraction=Math.min(1,hit,obstacle),duration=dt*fraction;slot.trailCarry+=duration;
    while(slot.trailCarry>=1/24){slot.trailCarry-=1/24;const t=dt?Math.max(0,fraction-slot.trailCarry/dt):0;
-    this.onTrail(tailX+(slot.x-slot.dx*HALF-tailX)*t,tailY+(slot.y-slot.dy*HALF-tailY)*t,tailZ+(slot.z-slot.dz*HALF-tailZ)*t);
+    this.onTrail(tailX+(slot.x-slot.dx*HALF-tailX)*t,tailY+(slot.y-slot.dy*HALF-tailY)*t,tailZ+(slot.z-slot.dz*HALF-tailZ)*t,slot.trailId,(1-toFraction)*this.deltaSeconds+dt*(1-fraction)+slot.trailCarry);
    }
   }
   if(passed<=1&&passed<hit&&passed<obstacle){slot.passedAim=true;if(slot.orphaned)this.completedAtLastPosition++;else this.missed++;}
@@ -330,7 +332,7 @@ export class MissileFlightPool {
  }
  advance(deltaSeconds){
   if(!Number.isFinite(deltaSeconds)||deltaSeconds<0)throw new Error('Invalid missile delta.');
-  this.time+=deltaSeconds;this.updatedParts=0;this.active=0;
+  this.time+=deltaSeconds;this.deltaSeconds=deltaSeconds;this.updatedParts=0;this.active=0;
   for(const record of this.recordList){const target=record.target,m=record.root;
    record.seconds=deltaSeconds;
    record.boundsDirty=true;

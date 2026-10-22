@@ -10,3 +10,11 @@ test('horizontal pools share one plane, mixed heights fall back safely, and wate
  expect(waterPlane({terrain:{boxes:[]}})).toBeNull();expect(waterPlane({terrain:{boxes:[{water:20},{water:0},{water:20}]}})).toBe(20);expect(waterPlane({terrain:{boxes:[{water:20},{water:22}]}})).toBeNull();
  const vp=identity();expect(waterInView([-2,-2,-1,2,2,2],vp)).toBe(true);expect(waterInView([2,0,0,3,1,1],vp)).toBe(false);expect(waterInView([0,0,-2,1,1,-1],vp)).toBe(false);expect(waterInView(null,vp)).toBe(false);
 });
+test('mirrored inverse reconstructs reflected world coordinates for volume rays',()=>{
+ const f=new Float32Array(92);for(let n=0;n<16;n++)f[32+n]=(n+1)*.25;const out=new Float32Array(92);reflectedFrame(out,f,17);
+ for(const p of [[.3,.7,.9,1],[-.2,.4,0,1]]){
+  const original=Array.from({length:4},(_,r)=>p.reduce((sum,v,c)=>sum+f[32+c*4+r]*v,0));
+  const mirrored=Array.from({length:4},(_,r)=>p.reduce((sum,v,c)=>sum+out[32+c*4+r]*v,0));
+  expect(mirrored[0]).toBeCloseTo(original[0]);expect(mirrored[1]).toBeCloseTo(34*original[3]-original[1]);expect(mirrored[2]).toBeCloseTo(original[2]);expect(mirrored[3]).toBeCloseTo(original[3]);
+ }
+});

@@ -117,12 +117,13 @@ test('128light boundary retains every source while preview shaders/capacity rema
  }finally{lights.dispose();disposeWorld(world);}
 });
 
-test('real session plus undefended landscape waves accumulates ten misses and suppresses the failing-wave reward',async()=>{
+test('real session with ineffective defence accumulates ten misses and suppresses the failing-wave reward',async()=>{
  const native=globalThis.fetch,cache=new Map();globalThis.fetch=async url=>{const [,kind,id]=/^\/api\/(levels|models)\/([a-z0-9-]+)$/.exec(url),key=kind+'/'+id;if(!cache.has(key))cache.set(key,await Bun.file(new URL(`../assets/${key}.json`,import.meta.url)).json());return {ok:true,json:async()=>({asset:structuredClone(cache.get(key))})};};
- const session=new PlaySession();session.reset();let clears=0,missEvents=0;
+ // Keep a real paid/deployed unit, with a test-only range too short to fight.
+ const session=new PlaySession(createPlayConfig({defences:{'turret-study':{variants:{base:{stats:{maxRange:.001}}}}}}));session.reset();const gun=session.buy();session.prepare('deploy');session.place(gun,[13,0,9]);let clears=0,missEvents=0;
  try{
   for(let attempt=0;attempt<3;attempt++){
-   const wave=session.wave,world=await loadPlayWorld(session.level.id,{wave,config:session.config});let engine;
+   const wave=session.wave,world=await loadPlayWorld(session.level.id,{wave,config:session.config,placements:session.placements});let engine;
    try{
     engine=new PlayEngine(world,{config:session.config,wave,onEscape:id=>{expect(session.resolve(id,'escaped')).toBe(true);missEvents++;if(session.phase==='defeat')engine.stopWave();},onDeath:id=>session.resolve(id,'killed'),onWaveComplete:()=>{expect(session.beginSettling(wave.id)).toBe(true);expect(session.advanceSettlement(session.config.waveSettleSeconds)).toBe(true);expect(session.finishWave(wave.id)).toBe(true);clears++;}});
     expect(session.prepare('deploy')).toBe(true);expect(session.startWave()).toBe(true);engine.startWave();
@@ -130,8 +131,8 @@ test('real session plus undefended landscape waves accumulates ten misses and su
     expect(session.phase).toBe(attempt<2?'loadout':'defeat');
    }finally{engine?.dispose();disposePlayWorld(world);}
   }
-  expect(session.misses).toBe(10);expect(missEvents).toBe(10);expect(clears).toBe(2);expect(session.completedWaves).toBe(2);expect(session.tokens).toBe(6);expect(session.units).toEqual([]);
-  expect(session.finishWave(session.wave.id)).toBe(false);expect(session.resolve(session.wave.spawns[3].id,'escaped')).toBe(false);expect(session.tokens).toBe(6);
+  expect(session.misses).toBe(10);expect(missEvents).toBe(10);expect(clears).toBe(2);expect(session.completedWaves).toBe(2);expect(session.tokens).toBe(5);expect(session.units).toHaveLength(1);expect(session.units[0].box).toEqual([13,0,9]);
+  expect(session.finishWave(session.wave.id)).toBe(false);expect(session.resolve(session.wave.spawns[3].id,'escaped')).toBe(false);expect(session.tokens).toBe(5);
  }finally{globalThis.fetch=native;}
 },30000);
 

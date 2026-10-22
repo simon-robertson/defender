@@ -6,6 +6,7 @@ import {missileLauncherModel,guidedMissileModel} from '../scripts/missile-launch
 import {dogModel} from '../scripts/dog.js';
 import {newLevel} from '../shared/level.js';
 import {buildWorld,disposeWorld} from '../engine/world.js';
+import {VolumeTrailField,VOLUME_FLOATS,VOLUME_TRAILS} from '../engine/volume-trail-field.js';
 import {Health} from '../engine/health.js';
 
 const models=new Map([missileLauncherModel(),guidedMissileModel(),dogModel()].map(m=>[m.id,m]));
@@ -483,7 +484,7 @@ test('flight smoke follows the real powered attack tail at fixed cadence and sto
    f.advance(.5);f.advance(.4);expect(puffs).toHaveLength(0);
    for(let i=0;i<4*hz&&!slot.engineCutoff&&slot.phase>=PHASE.BOOST;i++)f.advance(1/hz);
    expect(puffs.length).toBeGreaterThan(5);expect(puffs.every(p=>p.every(Number.isFinite))).toBe(true);
-   for(let i=1;i<puffs.length;i++)expect(Math.hypot(...puffs[i].map((v,j)=>v-puffs[i-1][j]))).toBeLessThan(FLIGHT.cruiseSpeed/24+1);
+   for(let i=1;i<puffs.length;i++)expect(Math.hypot(...puffs[i].slice(0,3).map((v,j)=>v-puffs[i-1][j]))).toBeLessThan(FLIGHT.cruiseSpeed/24+1);
    const before=puffs.length;f.advance(.1);expect(puffs).toHaveLength(before);counts.push(before);
    f.preview.resetTargets();expect(slot.trailCarry).toBe(0);
   }finally{f.dispose();}
@@ -579,4 +580,23 @@ test('a failed missile forecast always releases cached defence poses before late
   expect(()=>pool.launchClear(index,f.target)).toThrow('collision query failure');expect(visibility.defenceBatchDepth).toBe(0);
   visibility.sweepDefences=sweep;expect(pool.launchClear(index,f.target)).toBe(true);expect(visibility.defenceBatchDepth).toBe(0);
  }finally{f.dispose();}
+});
+
+test('native trail timestamps follow fixed emission time and reused slots have independent launches',()=>{
+ for(const hz of [30,60,120]){
+  const f=fixture(),field=new VolumeTrailField(),events=[];let now=0;
+  try{
+   f.preview.pool.onTrail=(x,y,z,id,lag)=>{events.push({id,at:now-lag,lag});field.sample(id,x,y,z,now-lag);};
+   const run=dt=>{now+=dt;field.expire(now);f.advance(dt);};
+   launch(f);for(let i=0;i<hz*2;i++)run(1/hz);
+   expect(events.length).toBeGreaterThan(5);const first=events[0].id;
+   for(let i=1;i<events.length;i++){expect(events[i].id).toBe(first);expect(events[i].at-events[i-1].at).toBeCloseTo(1/24,8);expect(events[i].lag).toBeGreaterThanOrEqual(0);expect(events[i].lag).toBeLessThanOrEqual(1/hz+1e-9);}
+   expect(events[0].at).toBeCloseTo(FLIGHT.boostSeconds+FLIGHT.coastSeconds+1/24,8);
+   // Keep the old tail alive while the same fixed missile actors are reseated.
+   f.preview.resetTargets();f.state.cycle.readyAt=f.state.cycle.time;f.advance(0);const slot=f.preview.pool.slots.find(s=>s.phase===PHASE.BOOST);expect(slot.trailId).toBeGreaterThan(first);
+   const before=events.length;for(let i=0;i<hz;i++)run(1/hz);
+   expect(events.length).toBeGreaterThan(before);expect(events.at(-1).id).not.toBe(first);
+   expect(field.pack(new Float32Array(VOLUME_TRAILS*VOLUME_FLOATS),[0,100,0])).toBe(2);expect(field.dropped).toBe(0);
+  }finally{f.dispose();}
+ }
 });

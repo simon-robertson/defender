@@ -55,7 +55,8 @@ export class PlaySession {
  }
  undeploy(id){const unit=this.units.find(unit=>unit.id===id);if(this.phase!=='deploy'||!unit?.box)return false;unit.box=null;return true;}
  prepare(phase){if(!this.preparing||!['loadout','deploy'].includes(phase))return false;this.phase=phase;return true;}
- startWave(){if(this.phase!=='deploy')return false;this.phase='wave';this.paused=false;this.resolved.clear();return true;}
+ get canStartWave(){return this.phase==='deploy'&&this.units.some(unit=>unit.box);}
+ startWave(){if(!this.canStartWave)return false;this.phase='wave';this.paused=false;this.resolved.clear();return true;}
  resolve(id,outcome){
   if(this.phase!=='wave'||this.paused||!['killed','escaped'].includes(outcome)||this.resolved.has(id)||!this.wave.spawns.some(spawn=>spawn.id===id))return false;
   this.resolved.set(id,outcome);
@@ -88,7 +89,7 @@ export class PlaySession {
   for(const spawn of this.wave.spawns){const key=spawn.model+':'+spawn.routeId;let group=groups.get(key);if(!group){const profile={...this.config.enemies[spawn.model],...this.wave.enemyOverrides?.[spawn.model]};group={model:spawn.model,name:ENEMY_NAMES[spawn.model]??spawn.model,routeId:spawn.routeId,count:0,maxHealth:profile.maxHealth,speed:profile.speed,altitude:profile.altitude,firstAt:spawn.at,lastAt:spawn.at};groups.set(key,group);}group.count++;group.lastAt=spawn.at;}
   return {splitApproaches:new Set(this.wave.spawns.map(spawn=>spawn.routeId)).size>1,name:this.wave.name??'Incoming wave',description:this.wave.description??'',groups:[...groups.values()],total:this.wave.spawns.length};
  }
- snapshot(){return {phase:this.phase,paused:this.paused,settleRemaining:this.settleRemaining,tokens:this.tokens,misses:this.misses,missLimit:this.config.missLimit,
+ snapshot(){return {phase:this.phase,canStartWave:this.canStartWave,paused:this.paused,settleRemaining:this.settleRemaining,tokens:this.tokens,misses:this.misses,missLimit:this.config.missLimit,
   zone:this.level.zone,zoneName:ZONES[this.level.zone].name,
   levelNumber:this.config.levels.slice(0,this.levelIndex+1).filter(level=>level.zone===this.level.zone).length,
   campaignLevelNumber:this.levelIndex+1,totalLevels:this.config.levels.length,

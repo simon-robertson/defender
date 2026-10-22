@@ -147,8 +147,9 @@ export function renderUI(snapshot={}){
   setText(refs['placement-hint'],snapshot.placementHint??(snapshot.selectedId?'Choose clear ground to place this defence.':'Select a defence, then choose clear ground.'));
   show(refs['deployment-count'],deploying);setText(refs['deployment-count'],`${deployed} of ${units.length} defence${units.length===1?'':'s'} deployed`);
   show(refs['deploy-button'],!deploying);show(refs['start-wave-button'],deploying);show(refs['loadout-button'],deploying);setText(refs['start-wave-button'],`START WAVE ${wave} ▶`);
-  setText(refs['preparation-note'],snapshot.saveError|| (deploying?'You can start with defences still in inventory.':'Unspent tokens carry forward.'));
+  setText(refs['preparation-note'],snapshot.saveError|| (deploying?(deployed?'You can keep other defences in inventory.':'Place at least one defence to start the wave.'):'Unspent tokens carry forward.'));
   for(const id of ['deploy-button','start-wave-button','loadout-button','cancel-button'])refs[id].disabled=locked||!currentActions.has(refs[id].dataset.action);
+  refs['start-wave-button'].disabled ||= deployed===0;
   show(refs['wave-status'],activeWave&&!paused);const remaining=count(snapshot.enemiesRemaining),spawned=count(snapshot.spawned),total=count(snapshot.totalEnemies);
   setText(refs['wave-status-text'],settling?'Wave complete · Clearing the field…':total?`${remaining} on the path · ${Math.min(spawned,total)} of ${total} arrived`:'Wave in progress');
   show(refs.notice,Boolean(snapshot.notice)&&!error&&!result);setText(refs.notice,snapshot.notice??'');
@@ -175,7 +176,7 @@ export function renderUI(snapshot={}){
       if(identity.action)target=[...document.querySelectorAll('[data-action]')].find(node=>node.dataset.action===identity.action&&node.dataset.unit===identity.unit&&!node.disabled&&!node.closest('[hidden]'));
       if(!target&&identity.unit){const select=rows.get(identity.unit)?.select;if(select&&!select.disabled&&!select.closest('[hidden]'))target=select;}
     }
-    if(!target)target=phase==='title'?$(snapshot.savedGame&&!snapshot.savingProgress?'continue-button':'new-game-button'):deploying?refs['start-wave-button']:prep?(refs['buy-button'].disabled?refs['deploy-button']:refs['buy-button']):refs['pause-button'];
+    if(!target)target=phase==='title'?$(snapshot.savedGame&&!snapshot.savingProgress?'continue-button':'new-game-button'):deploying?(refs['start-wave-button'].disabled?refs['loadout-button']:refs['start-wave-button']):prep?(refs['buy-button'].disabled?refs['deploy-button']:refs['buy-button']):refs['pause-button'];
     if(target&&!target.disabled&&!target.closest('[hidden]'))target.focus({preventScroll:true});
     if(!busy)pendingFocus=null;
   }

@@ -1,6 +1,6 @@
 # Development TODO
 
-21 October 2026: items 36–41 are implemented for review: gentler water ripples, refined enemy aesthetics, doubled bloom, visible upgraded Arc chaining, quarter-length night shadows and missile/defence obstruction. No unchecked TODOs remain. Earlier completed/withdrawn entries retain their historical status; GI/AO remain removed. [Latest delivery and verification](docs/todo-36-41-2026-10-21/README.md).
+22 October 2026: playthrough findings 44–48 are queued for later, as requested by the user. Prioritise 44–46; 47–48 are smaller follow-ups. No implementation is requested yet. Earlier completed/withdrawn entries retain their historical status; GI/AO and weather remain removed.
 
 1. [x] **Single-bounce indirect lighting experiment — retired.** Experiment and colour audit completed, then rejected by the user along with AO. All GI/AO code, tools and caches are removed; evidence remains historical only.
 
@@ -90,3 +90,13 @@
 
 
 43. [x] **Investigate and avoid first-destruction graphics setup.** Reported occasional first-kill staggering. Moved seven event-time rendering pipeline creations and existing effect pools/images into asynchronous loading-time preparation (fourteen death/decal/bloom pipelines total). Actual GPU runs show zero setup creations during first destruction; 59 affected tests pass. The larger intermittent pause was not reproduced, so complete hitch removal awaits player confirmation on next load. Active run remains untouched; visuals and combat unchanged. [Diagnosis, reservation cost and limits](docs/first-destruction-2026-10-21/README.md).
+
+44. [ ] **Clarify checkpoint recovery and leaving an area — higher priority.** Explain that returning to the title discards progress since the last completed level, and identify the retained checkpoint (or that none exists). Offer Resume checkpoint directly on defeat when available; clearly label the existing fresh-A1 action Restart campaign instead of the ambiguous Retry. Preserve end-of-level autosaving; no mid-level save change is implied.
+
+45. [ ] **Explain defence and upgrade benefits before spending — higher priority.** Show a compact current-to-next comparison and relevant firing behaviour when selecting an upgrade. Gun Upgrade I changes damage 10→12, range 48→66 and burst size 1→3 shots; the current UI omits that comparison and burst change. Explain Arc chaining and missile magazine differences where relevant. Use configured values and keep roster rows concise so players can judge upgrading versus buying another defence.
+
+46. [ ] **Add concise per-wave outcome feedback — higher priority.** Include No escapes or the number escaped alongside the existing wave-complete token reward during preparation. Currently clean and leaky waves receive the same completion message. Help players evaluate deployment choices without adding a blocking results screen; distinguish this wave's escapes from cumulative campaign misses.
+
+47. [x] **Require a defence before starting a wave — revised player direction, 22 October.** Start wave is disabled until at least one owned unit is placed. Recalling the last unit disables it again; the session also rejects empty-board starts. Reserves remain allowed once a unit is deployed. Supersedes the earlier proposed undefended-start label.
+
+48. [ ] **Improve board context in the Drone opening — lower priority.** Actual A1 player and A2 encounter samples start high and centrally but immediately aim at the edge spawn, leaving much of the shot occupied by distant scenery. Refine framing within the existing brief opening to establish more of the board before following the first action. Preserve the accepted central start, high altitude, board boundaries and subsequent activity-driven filming; this is a focused refinement, not another camera rebuild.

@@ -733,3 +733,35 @@ test('disposing during effect preparation prevents a late ready state and releas
   for(const finish of pending)finish();expect(await preparation).toBe(false);expect(r.deathEffectsPrepared).not.toBe(true);expect(f.allocated.length).toBe(buffers);expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
  }finally{f.cleanup();}
 });
+
+test('production volume smoke prepares once at 16 samples and resets across worlds without allocating again',async()=>{
+ const f=mockRenderer({waterReflections:'planar'}),r=f.r,w=smallWorld();
+ try{
+  const [smoke,again]=await Promise.all([r.prepareVolumeSmoke(),r.prepareVolumeSmoke()]);expect(smoke).toBe(again);expect(smoke).toBe(r.volumeSmoke);expect(smoke.steps).toBe(16);expect(smoke.ready).toBe(true);
+  r.setWorld(w);smoke.sample(1,24,30,24,0);smoke.sample(1,28,32,24,.1);smoke.expire(.2);r.render(0,.2);
+  expect(smoke.count).toBe(1);expect(labels(f)).toContain('Volume smoke in planar water');
+  const display=f.passes.find(p=>p.label===DISPLAY);expect(display.direct.some(call=>call.pipeline===smoke.pipeline&&call.args[1]===1)).toBe(true);
+  const buffers=f.allocated.length;f.reset();smoke.expire(2.2);r.render(0,2.2);expect(labels(f)).not.toContain('Volume smoke in planar water');expect(labels(f)).toContain('Planar water reflection');
+  f.reset();r.render(0,2.2);expect(labels(f)).not.toContain('Planar water reflection');
+  r.clearWorld();expect(smoke.count).toBe(0);expect(smoke.trails.every(t=>t.id===null)).toBe(true);expect(smoke.reflectedGroup).toBeNull();expect(smoke.lastDepth).toBeNull();expect(smoke.time).toBe(0);expect(f.allocated.length).toBe(buffers);
+ }finally{f.cleanup();disposeWorld(w);}
+ expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
+});
+test('disposing while volume pipelines compile releases fixed buffers and prevents later activation',async()=>{
+ const f=mockRenderer(),r=f.r,pending=[];
+ try{
+  r.device.createRenderPipelineAsync=()=>new Promise(resolve=>pending.push(resolve));
+  const ready=r.prepareVolumeSmoke(),smoke=r.volumeSmoke;await Promise.resolve();expect(pending).toHaveLength(2);
+  r.dispose();for(const resolve of pending)resolve({});expect(await ready).toBe(false);expect(smoke.active).toBe(false);expect(smoke.ready).toBe(false);expect(await r.prepareVolumeSmoke()).toBe(false);
+ }finally{f.cleanup();}
+ expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
+});
+
+test('volume compilation failure rejects loading and destroys its buffers',async()=>{
+ const f=mockRenderer(),r=f.r;
+ try{
+  r.device.createRenderPipelineAsync=async()=>{throw new Error('Volume pipeline failed');};
+  await expect(r.prepareVolumeSmoke()).rejects.toThrow('Volume pipeline failed');expect(r.volumeSmoke.ready).toBe(false);expect(r.volumeSmoke.disposed).toBe(true);expect(r.volumeSmoke.active).toBe(false);
+ }finally{f.cleanup();}
+ expect(f.allocated.every(b=>b.destroyCalls===1)).toBe(true);
+});

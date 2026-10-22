@@ -2,6 +2,7 @@ import {test,expect} from 'bun:test';
 import {PlaySession,nextEncounter,nextUnplaced} from '../play/session.js';
 import {createPlayConfig} from '../play/config.js';
 
+function deployAndStart(s){const gun=s.buy();s.prepare('deploy');s.place(gun,[2,0,6]);expect(s.startWave()).toBe(true);}
 function finish(session){const id=session.wave.id;for(const spawn of session.wave.spawns)session.resolve(spawn.id,'killed');expect(session.beginSettling(id)).toBe(true);session.advanceSettlement(session.config.waveSettleSeconds);expect(session.finishWave(id)).toBe(true);expect(session.finishWave(id)).toBe(false);}
 test('catalogue progression finishes four waves and all four levels before the next zone',()=>{
  const levels=['A','B'].flatMap(zone=>Array.from({length:4},(_,i)=>({zone,id:zone+(i+1),waves:[1,2,3,4]})));
@@ -48,31 +49,31 @@ test('64 finite waves reward once, retain positions and transfer ownership acros
  expect(s.phase).toBe('complete');expect(s.tokens).toBe(129);expect(s.completedWaves).toBe(64);expect(s.startWave()).toBe(false);
 });
 test('miss limit wins over wave completion, terminal events deduplicate and retry is fresh',()=>{
- const s=new PlaySession();s.reset();s.prepare('deploy');s.startWave();s.misses=9;
+ const s=new PlaySession();s.reset();deployAndStart(s);s.misses=9;
  const first=s.wave.spawns[0].id;expect(s.resolve('stale-enemy','escaped')).toBe(false);expect(s.resolve(first,'escaped')).toBe(true);
- expect(s.phase).toBe('defeat');expect(s.resolve(first,'escaped')).toBe(false);expect(s.finishWave(s.wave.id)).toBe(false);expect(s.tokens).toBe(2);
+ expect(s.phase).toBe('defeat');expect(s.resolve(first,'escaped')).toBe(false);expect(s.finishWave(s.wave.id)).toBe(false);expect(s.tokens).toBe(1);
  s.reset();expect(s.snapshot()).toMatchObject({phase:'loadout',tokens:2,misses:0,levelNumber:1,waveNumber:1,completedWaves:0,units:[]});
 });
 test('pause rejects combat events; killed actors cannot later escape',()=>{
- const s=new PlaySession();s.reset();s.prepare('deploy');s.startWave();const id=s.wave.spawns[0].id;
+ const s=new PlaySession();s.reset();deployAndStart(s);const id=s.wave.spawns[0].id;
  s.pause(true);expect(s.resolve(id,'escaped')).toBe(false);s.pause(false);expect(s.resolve(id,'killed')).toBe(true);expect(s.resolve(id,'escaped')).toBe(false);expect(s.misses).toBe(0);
 });
 test('successful waves settle for four seconds before reward or progression and pause freezes settlement',()=>{
- const s=new PlaySession();s.reset();s.prepare('deploy');s.startWave();const wave=s.wave;
+ const s=new PlaySession();s.reset();deployAndStart(s);const wave=s.wave;
  expect(s.beginSettling(wave.id)).toBe(false);
  for(const spawn of wave.spawns)s.resolve(spawn.id,'killed');
  expect(s.finishWave(wave.id)).toBe(false);expect(s.beginSettling('old-wave')).toBe(false);expect(s.beginSettling(wave.id)).toBe(true);
- expect(s.snapshot()).toMatchObject({phase:'settling',settleRemaining:4,tokens:2,completedWaves:0,waveNumber:1});
+ expect(s.snapshot()).toMatchObject({phase:'settling',settleRemaining:4,tokens:1,completedWaves:0,waveNumber:1});
  expect(s.beginSettling(wave.id)).toBe(false);expect(s.buy()).toBeNull();expect(s.prepare('deploy')).toBe(false);
  expect(s.advanceSettlement(3.75)).toBe(false);expect(s.finishWave(wave.id)).toBe(false);
  expect(s.pause(true)).toBe(true);expect(s.advanceSettlement(100)).toBe(false);expect(s.settleRemaining).toBe(.25);expect(s.finishWave(wave.id)).toBe(false);
  s.pause(false);expect(s.advanceSettlement(.25)).toBe(true);expect(s.finishWave(wave.id)).toBe(true);
- expect(s.snapshot()).toMatchObject({phase:'loadout',tokens:4,completedWaves:1,waveNumber:2});expect(s.finishWave(wave.id)).toBe(false);
+ expect(s.snapshot()).toMatchObject({phase:'loadout',tokens:3,completedWaves:1,waveNumber:2});expect(s.finishWave(wave.id)).toBe(false);
 });
 test('defeat cannot settle, invalid time is rejected and reset clears a pending settlement',()=>{
- const s=new PlaySession();s.reset();s.prepare('deploy');s.startWave();s.misses=9;s.resolve(s.wave.spawns[0].id,'escaped');
- expect(s.beginSettling(s.wave.id)).toBe(false);expect(s.advanceSettlement(5)).toBe(false);expect(s.tokens).toBe(2);
- s.reset();s.prepare('deploy');s.startWave();for(const spawn of s.wave.spawns)s.resolve(spawn.id,'killed');s.beginSettling(s.wave.id);
+ const s=new PlaySession();s.reset();deployAndStart(s);s.misses=9;s.resolve(s.wave.spawns[0].id,'escaped');
+ expect(s.beginSettling(s.wave.id)).toBe(false);expect(s.advanceSettlement(5)).toBe(false);expect(s.tokens).toBe(1);
+ s.reset();deployAndStart(s);for(const spawn of s.wave.spawns)s.resolve(spawn.id,'killed');s.beginSettling(s.wave.id);
  for(const dt of [NaN,Infinity,-1])expect(()=>s.advanceSettlement(dt)).toThrow();
  s.reset('title');expect(s.snapshot()).toMatchObject({phase:'title',settleRemaining:0,paused:false,tokens:2,completedWaves:0});expect(s.advanceSettlement(8)).toBe(false);
 });
@@ -101,7 +102,8 @@ test('Power generator purchase spends four tokens, remains base-only and survive
  const s=new PlaySession();s.reset();
  expect(s.snapshot().shop.find(item=>item.model==='power-generator')).toMatchObject({kind:'enhancer',name:'Power generator',cost:4,available:true,firing:null});
  expect(s.buy('power-generator')).toBeNull();expect(s.tokens).toBe(2);
- s.prepare('deploy');s.startWave();finish(s);expect(s.tokens).toBe(4);
+ // Start from the earned wallet after wave one; campaign rewards have separate coverage.
+ s.waveIndex=1;s.completedWaves=1;s.tokens=4;
  const candidate=s.fork(),id=candidate.buy('power-generator');expect(id).toBeTruthy();expect(candidate.tokens).toBe(0);expect(s.tokens).toBe(4);s.adopt(candidate);
  const unit=s.snapshot().units[0];expect(unit).toMatchObject({id,model:'power-generator',kind:'enhancer',variant:'base',nextVariant:null,upgradeCost:null,upgradeAvailableFromWave:null,canUpgrade:false,firing:null});
  expect(unit.label).toBe('Power generator 01');expect(s.upgrade(id)).toBe(false);expect(s.tokens).toBe(0);
@@ -109,4 +111,14 @@ test('Power generator purchase spends four tokens, remains base-only and survive
  for(let i=0;i<3;i++){s.prepare('deploy');s.startWave();finish(s);expect(s.upgrade(id)).toBe(false);}
  expect(s.levelIndex).toBe(1);expect(s.units[0]).toEqual({id,model:'power-generator',variant:'base',box:null});expect(s.tokens).toBe(6);
  s.prepare('deploy');expect(s.place(id,[5,0,5])).toBe(true);expect(s.placements[0]).toMatchObject({id,model:'power-generator',variant:'base',box:[5,0,5]});
+});
+
+test('starting a wave requires a placed owned defence and recalling the last one closes the gate',()=>{
+ const s=new PlaySession();s.reset();s.prepare('deploy');
+ expect(s.canStartWave).toBe(false);expect(s.snapshot().canStartWave).toBe(false);expect(s.startWave()).toBe(false);expect(s.phase).toBe('deploy');
+ s.prepare('loadout');const first=s.buy(),reserve=s.buy();s.prepare('deploy');
+ expect(s.startWave()).toBe(false);s.place(first,[2,0,6]);expect(s.canStartWave).toBe(true);expect(s.snapshot().canStartWave).toBe(true);
+ s.undeploy(first);expect(s.canStartWave).toBe(false);expect(s.startWave()).toBe(false);
+ s.place(first,[2,0,6]);s.place(reserve,[4,0,6]);s.undeploy(first);expect(s.canStartWave).toBe(true);
+ expect(s.startWave()).toBe(true);expect(s.canStartWave).toBe(false);expect(s.startWave()).toBe(false);
 });

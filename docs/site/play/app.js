@@ -99,6 +99,16 @@ async function commitArrangement(candidate,{selectNextAfter=null}={}){
 function onComplete(waveId){
  if(session.beginSettling(waveId)){selectedId=null;paint();}
 }
+async function clearProgressForNewGame(){
+ busy=true;paint();runLoop();
+ try{
+  // The store serialises this removal after pending checkpoint writes, so an
+  // older asynchronous save cannot restore progress after the new run starts.
+  await progress.clear();savedGame=null;saveError='';return !disposed;
+ }catch{
+  saveError='Saved progress could not be cleared. Please try New Game again.';notice=saveError;return false;
+ }finally{busy=false;}
+}
 async function saveCheckpoint(){
  savingProgress=true;
  try{
@@ -243,7 +253,11 @@ document.addEventListener('click',async event=>{
   if(action==='title'||action==='confirm-title'||action==='play'||action==='retry'){
    optionsOpen=false;
    const toTitle=action==='title'||action==='confirm-title';leaveOpen=false;
-   if(!toTitle){audio.startFromGesture();cameraViews?.reset();}
+   if(!toTitle){
+    audio.startFromGesture();
+    if(!await clearProgressForNewGame()){if(!disposed){paint();runLoop();}return;}
+    cameraViews?.reset();
+   }
    conditions.reset();const candidate=toTitle?createTitleSession(config,savedGame):new PlaySession(config);if(!toTitle)candidate.reset('loadout');selectedId=null;notice='';await rebuild(candidate);return;
   }
   if(error)return;

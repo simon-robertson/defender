@@ -21,12 +21,12 @@ const app=await readFile(new URL('../play/app.js',import.meta.url),'utf8');
 const click=app.slice(app.indexOf("document.addEventListener('click',async event=>{"),app.indexOf('\n\nfunction project('));
 function handlerFixture(action,{saved=true,busy=false,preferences=playbackPreferences}={}){
  const records=[],audio=new AudioPlayer({localStorage:preferences,AudioContext:class{constructor(){records.push('context');this.state='suspended';}resume(){records.push('resume');return Promise.resolve();}}});let handler;
- const scope={document:{addEventListener:(_,fn)=>handler=fn},disposed:false,busy,error:'',session:{phase:'title'},savedGame:saved?{fork:()=>({})}:null,savingProgress:false,audio,optionsOpen:false,leaveOpen:false,cameraViews:{reset(){}},conditions:{reset(){}},selectedId:null,notice:'',config:{},PlaySession:class{reset(){}},createTitleSession:()=>({}),rebuild:()=>{records.push('load');return Promise.resolve();},fail:error=>{throw error;},paint(){},runLoop(){}};
+ const scope={document:{addEventListener:(_,fn)=>handler=fn},disposed:false,busy,error:'',session:{phase:'title'},savedGame:saved?{fork:()=>({})}:null,savingProgress:false,audio,optionsOpen:false,leaveOpen:false,cameraViews:{reset(){}},conditions:{reset(){}},selectedId:null,notice:'',config:{},PlaySession:class{reset(){}},createTitleSession:()=>({}),clearProgressForNewGame:async()=>true,rebuild:()=>{records.push('load');return Promise.resolve();},fail:error=>{throw error;},paint(){},runLoop(){}};
  runInNewContext(click,scope);
  return {records,audio,call:()=>handler({target:{closest:()=>({disabled:false,dataset:{action}})}})};
 }
 test('actual New Game and Continue handlers call resume synchronously before loading',async()=>{
- for(const action of ['play','continue','retry']){const f=handlerFixture(action);const pending=f.call();expect(f.records).toEqual(['context','resume','load']);await pending;}
+ for(const action of ['play','continue','retry']){const f=handlerFixture(action);const pending=f.call();expect(f.records).toEqual(action==='continue'?['context','resume','load']:['context','resume']);await pending;expect(f.records).toEqual(['context','resume','load']);}
 });
 test('invalid Continue, busy controls and return to title do not open an audio device',async()=>{
  for(const [action,options]of [['continue',{saved:false}],['play',{busy:true}],['title',{}]]){const f=handlerFixture(action,options);await f.call();expect(f.records).not.toContain('context');}

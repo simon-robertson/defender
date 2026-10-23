@@ -144,7 +144,7 @@ export function renderUI(snapshot={}){
   show($('continue-button'),Boolean(snapshot.savedGame));
   setText($('continue-button'),`CONTINUE · ${snapshot.savedGame?.area??''}`);
   $('new-game-button').classList.toggle('has-checkpoint',Boolean(snapshot.savedGame));
-  setText($('save-status'),snapshot.saveError||(snapshot.savingProgress?'Saving progress…':snapshot.savedGame?`Checkpoint: Area ${snapshot.savedGame.area} · ${snapshot.savedGame.completedWaves} waves cleared. New Game keeps this save until you clear a level.`:'Progress saves after each level on this device.'));
+  setText($('save-status'),snapshot.saveError||(snapshot.savingProgress?'Saving progress…':snapshot.savedGame?`Checkpoint: Area ${snapshot.savedGame.area} · ${snapshot.savedGame.completedWaves} waves cleared. New Game clears this checkpoint.`:'Progress saves after each level on this device.'));
   for(const node of [refs['title-screen'],refs.hud,refs['prepare-panel'],refs['wave-preview']])node.inert=Boolean(modal)||busy||screenshot;
   $('scene').inert=Boolean(modal)||busy;
   for(const button of document.querySelectorAll('button[data-action]'))button.disabled=!currentActions.has(button.dataset.action);
@@ -188,7 +188,7 @@ export function renderUI(snapshot={}){
   setText(refs['board-caption'],filming?'Drag to rotate · Click the board to target.':prep&&droneEnabled?'Drone armed for the next wave.':activeWave?'Drag to rotate · Click the board to target.':result?(phase==='complete'?'Run complete.':'Run ended.'):deploying?'Select a defence, then click clear ground to place it.':'Build, upgrade, then deploy.');
 
   if(result){
-    show(refs['result-checkpoint'],phase==='defeat');setText(refs['result-checkpoint'],checkpointDescription(snapshot.savedGame,snapshot.savingProgress));
+    show(refs['result-checkpoint'],phase==='defeat'||Boolean(snapshot.saveError));setText(refs['result-checkpoint'],snapshot.saveError||checkpointDescription(snapshot.savedGame,snapshot.savingProgress));
     show(refs['resume-checkpoint-button'],phase==='defeat'&&Boolean(snapshot.savedGame));setText(refs['resume-checkpoint-button'],`RESUME CHECKPOINT · ${snapshot.savedGame?.area??''}`);
     const complete=phase==='complete',completed=snapshot.completedWaves??(complete?snapshot.totalWaves??64:Math.max(0,((snapshot.levelNumber??1)-1)*waves+wave-1));
     refs['result-screen'].querySelector('.result-dialog').dataset.result=phase;

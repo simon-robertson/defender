@@ -1,5 +1,6 @@
 import {TerrainField} from '../shared/terrain.js';
 import {DroneObstacles} from '../engine/drone-obstacles.js';
+import {DRONE_CAMERA_FOV} from './drone-lens.js';
 export const DRONE_CAMERA_RADIUS=2.5,DRONE_CAMERA_SPEED=68,DRONE_CAMERA_ACCELERATION=96;
 export const DRONE_CAMERA_MIN_ALTITUDE=200;
 const R=DRONE_CAMERA_RADIUS,EMPTY=Object.freeze([]),JERK=384;
@@ -21,7 +22,7 @@ export class DroneFlight {
   this.camera=camera;this.world=this.obstacles=this.obstacleEngine=null;this.enabled=this.active=false;this.surfaces=null;
   for(const name of ['position','focus','goal','velocity','acceleration','desiredVelocity'])this[name]=new Float64Array(3);
   this.saved=new Float64Array(6);this.scratch=new Float64Array(6);this.spawnBounds=new Float64Array(6);
-  this.waveClock=this.speed=this.travelled=this.blockedMoves=this.yaw=this.pitch=0;this.fov=64;
+  this.waveClock=this.speed=this.travelled=this.blockedMoves=this.yaw=this.pitch=0;this.fov=DRONE_CAMERA_FOV;
  }
  bind(world){
   this.leave();this.obstacles?.dispose();this.obstacles=this.obstacleEngine=null;this.world=world;this.surfaces=null;this.surfaceCeiling=0;

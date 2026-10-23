@@ -22,7 +22,7 @@ function centred(d){
 }
 test('waves start centrally, high, and aimed exactly at a spawn rather than the current fight',()=>{
  const f=basic(),d=f.drone;
- try{d.setEnabled(true);d.sync('wave',f.engine);expect([...d.position].filter((_,i)=>i!==1)).toEqual([240,192]);expect(d.position[1]).toBeGreaterThanOrEqual(24+DRONE_CAMERA_MIN_ALTITUDE);expect([...d.focus]).toEqual([12,24,204]);expect(d.fov).toBe(64);centred(d);
+ try{d.setEnabled(true);d.sync('wave',f.engine);expect([...d.position].filter((_,i)=>i!==1)).toEqual([240,192]);expect(d.position[1]).toBeGreaterThanOrEqual(24+DRONE_CAMERA_MIN_ALTITUDE);expect([...d.focus]).toEqual([12,24,204]);expect(d.fov).toBe(60);centred(d);
   const anchor=[...d.focus];advance(f,20);expect([...d.focus]).toEqual(anchor);expect(d.targeted).toBe(false);expect(d.position[1]).toBeGreaterThanOrEqual(d.cruiseY);centred(d);
  }finally{d.dispose();}
 });
@@ -137,6 +137,33 @@ test('flight has bounded speed, acceleration and jerk, and capped recovery after
 test('all seven native study scenes open centrally, high and aimed at a real entrance without changing combat',()=>assets(async()=>{
  for(const recipe of STUDY_SCENARIOS){const scene=await createStudyScene(recipe),d=new DroneCamera(camera());d.bind(scene.world);try{await advanceStudyScene(scene,recipe.seconds,{yieldControl:async()=>{}});const before=describeStudyScene(scene);d.setEnabled(true);d.sync('wave',scene.engine);expect(d.active).toBe(true);expect(d.position[0]).toBe(scene.world.width/2);expect(d.position[2]).toBe(scene.world.length/2);expect(d.position[1]).toBeGreaterThanOrEqual(scene.world.level.pathHeight+200);expect(d.staticClear(...d.position,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS)).toBe(true);centred(d);expect(describeStudyScene(scene)).toEqual(before);}finally{d.dispose();scene.dispose();}}
 }),30000);
+test('occasional close views preserve the exact anchor, pause, manual deferral and fresh-wave lens',()=>{
+ const f=basic(),d=f.drone;
+ try{d.setEnabled(true);d.sync('wave',f.engine);d.position.set([240,230,336]);d.targetAt(240,24,192);const anchor=[...d.focus];
+  advance(f,11);expect(d.lens.zoomCount).toBe(1);expect(d.fov).toBeLessThan(55);expect(f.c.fov).toBe(d.fov);expect([...d.focus]).toEqual(anchor);centred(d);
+  const paused=d.stats();d.advance(20,{engine:f.engine,phase:'wave',paused:true});expect(d.stats()).toEqual(paused);
+  const fov=d.fov,velocity=d.lens.velocity;d.rotate(1,0);expect(d.fov).toBe(fov);expect(d.lens.velocity).toBe(velocity);expect(d.lens.target).toBe(60);expect(d.lens.nextDecision).toBeCloseTo(d.time+8,8);
+  advance(f,5);expect(d.fov).toBeGreaterThan(59.8);expect(d.lens.zoomCount).toBe(1);
+  d.sync('loadout',f.engine);d.sync('wave',f.engine);expect(d.fov).toBe(60);expect(d.lens.zoomCount).toBe(0);expect(d.lens.nextDecision).toBe(8);
+ }finally{d.dispose();}
+});
+test('zoom fit protects subjects at the actual frame edge and ignores hidden or off-screen action',()=>{
+ const f=basic(),d=f.drone;
+ try{d.setEnabled(true);d.sync('wave',f.engine);d.position.set([240,230,336]);d.targetAt(240,24,192);
+  const depth=(206*188+144*144)/Math.hypot(206,144);f.subject.aimX=240+Math.tan(Math.PI/6)*1.5*depth*.95;
+  d.captureFrame(f.engine);expect(d.frameTargets).toHaveLength(0);d.fitZoom(f.engine);expect(d.lensVisible).toBe(1);expect(d.lensRequired).toBeGreaterThan(62);
+  d.lens.observe(8,d.lensRequired,d.lensVisible);expect(d.lens.target).toBe(62);expect(d.lens.zoomCount).toBe(0);
+  f.subject.aimX=1000;d.fitZoom(f.engine);expect(d.lensVisible).toBe(0);f.subject.aimX=240;f.world.visibility.clear=()=>false;d.fitZoom(f.engine);expect(d.lensVisible).toBe(0);
+ }finally{d.dispose();}
+});
+test('zoom fit includes recent participating weapons with missing height, excluding stale or remote fire',()=>{
+ const f=basic(),d=f.drone;
+ try{d.setEnabled(true);d.sync('wave',f.engine);d.position.set([240,230,336]);d.targetAt(240,24,192);f.engine.time=2;
+  const gun={id:'gun',x:290,z:210,target:f.subject,cycle:{time:2,lastShotAt:1.5}};f.engine.firing.states=[gun];d.fitZoom(f.engine);expect(d.lensVisible).toBe(2);expect(Number.isFinite(d.lensRequired)).toBe(true);
+  gun.cycle.lastShotAt=0;d.fitZoom(f.engine);expect(d.lensVisible).toBe(1);gun.cycle.lastShotAt=2;gun.target={...f.subject,aimX:1000};d.fitZoom(f.engine);expect(d.lensVisible).toBe(1);
+  gun.target=f.subject;gun.lineOfSight=false;d.fitZoom(f.engine);expect(d.lensVisible).toBe(1);
+ }finally{d.dispose();}
+});
 test('native A2/B4/D4 battles at 30/60/120 Hz preserve combat outcomes and swept clearance with manual edge retargeting',()=>assets(async()=>{
  for(const id of ['skirmish','split','late']){
   const recipe=STUDY_SCENARIOS.find(s=>s.id===id),baseline=await createStudyScene(recipe);let expected;try{await advanceStudyScene(baseline,100,{yieldControl:async()=>{}});expected=[baseline.engine.enemies.killed,baseline.engine.enemies.escaped,baseline.engine.firing.shots,baseline.engine.steps];}finally{baseline.dispose();}

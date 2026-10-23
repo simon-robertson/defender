@@ -1,5 +1,6 @@
 import {DroneFlight} from './drone-flight.js';
 import {routePath} from '../shared/routes.js';
+import {DroneLens,DRONE_CAMERA_MIN_FOV} from './drone-lens.js';
 export {DRONE_CAMERA_RADIUS,DRONE_CAMERA_SPEED,DRONE_CAMERA_ACCELERATION,DRONE_CAMERA_MIN_ALTITUDE} from './drone-flight.js';
 export const DRONE_CAMERA_ORBIT_RADIUS=144,DRONE_CAMERA_MIN_OFFSET=64;
 const TICK=1/120,ORBIT_RATE=.035,ORBIT_MOVE_RATE=.12,ORBIT_RESPONSE=1.4,BOB=6,EMPTY=Object.freeze([]);
@@ -9,16 +10,16 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 // choose the orbit direction, but never moves the player's viewing target.
 export class DroneCamera extends DroneFlight {
  constructor(camera,options={}){
-  super(camera,options);this.playerTarget=this.focus;this.minimumOffset=DRONE_CAMERA_MIN_OFFSET;
+  super(camera,options);this.lens=new DroneLens();this.lensVisible=0;this.lensRequired=this.lens.target;this.playerTarget=this.focus;this.minimumOffset=DRONE_CAMERA_MIN_OFFSET;
   this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.engineTime=null;this.phase=null;this.targeted=false;this.hasTargeted=false;this.orbitAngle=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.visibleEnemies=0;this.frameTargets=[];this.frameWeapons=[];this.projected=new Float64Array(32);this.orbitGoalAngle=null;this.frameSince=this.frameHoldUntil=0;this.frameImpact=false;this.activity=new Float64Array([0,0,0,-Infinity,0]);
  }
- bind(world){super.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.planIn=0;this.engineTime=null;this.targeted=false;this.activity?.fill(0);if(this.activity)this.activity[3]=-Infinity;this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;}
+ bind(world){super.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.planIn=0;this.engineTime=null;this.targeted=false;this.activity?.fill(0);if(this.activity)this.activity[3]=-Infinity;this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;this.lens.reset();this.fov=this.lens.fov;this.lensVisible=0;this.lensRequired=this.lens.target;}
  leave(){super.leave();this.targeted=false;if(this.frameTargets)this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;}
  refresh(){this.leave();this.obstacles?.dispose();this.obstacles=this.obstacleEngine=null;this.engineTime=null;}
  get aspect(){return Math.max(.2,(this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000));}
  surfaceY(x,z){const cols=this.world.level.size[0],rows=this.world.level.size[1],cell=clamp(Math.floor(z/24),0,rows-1)*cols+clamp(Math.floor(x/24),0,cols-1);return this.surfaces[cell];}
  lockTarget(x,y,z,manual=true){
-  this.focus.set([x,y,z]);this.targeted=manual;if(manual)this.hasTargeted=true;
+  this.focus.set([x,y,z]);this.targeted=manual;if(manual){this.hasTargeted=true;this.lens.defer(this.time);}
   this.orbitAngle=Math.atan2(this.position[0]-x,this.position[2]-z);this.orbitGoalAngle=null;this.frameImpact=false;this.frameHoldUntil=0;this.planIn=manual ? .25 : 0;this.aim();this.apply();
  }
  targetAt(x,y,z){
@@ -64,6 +65,25 @@ export class DroneCamera extends DroneFlight {
    const at=gun.lastShotAt??gun.cycle?.lastShotAt,age=(gun.cycle?.time??engine.time)-at;
    if(gun.target&&targets.includes(gun.target)&&gun.lineOfSight!==false&&age>=0&&age<1.5&&visible(gun.x,gun.y??this.world.level.pathHeight+12,gun.z,gun.id))weapons.push(gun);
   }
+ }
+ fitZoom(engine){
+  // Protect the actual frustum, including actors outside the tighter framing
+  // margins. World-size padding and headroom discourage clipping during zoom.
+  const p=this.position,f=this.focus,dx=p[0]-f[0],dy=p[1]-f[1],dz=p[2]-f[2],h=Math.hypot(dx,dz),length=Math.hypot(h,dy)||1,sy=h?dx/h:Math.sin(this.yaw),cy=h?dz/h:Math.cos(this.yaw),sp=dy/length,cp=h/length,tan=Math.tan(this.fov*Math.PI/360),aspect=this.aspect;
+  let required=DRONE_CAMERA_MIN_FOV,count=0;
+  for(let pass=0;pass<2;pass++)for(const s of (pass===0?engine.enemies?.activeTargets:engine.firing?.states)??EMPTY){
+   if(pass===0){if(s.health?.alive===false)continue;}
+   else{
+    const at=s.lastShotAt??s.cycle?.lastShotAt,age=(s.cycle?.time??engine.time)-at,target=s.target;
+    if(!target||target.health?.alive===false||s.lineOfSight===false||!(age>=0&&age<1.5))continue;
+    const tx=(target.aimX??target.x)-p[0],ty=(target.aimY??target.y)-p[1],tz=(target.aimZ??target.z)-p[2],depth=-tx*sy*cp-ty*sp-tz*cy*cp;
+    if(depth<=12||Math.abs((tx*cy-tz*sy)/(depth*tan*aspect))>1||Math.abs((-tx*sy*sp+ty*cp-tz*cy*sp)/(depth*tan))>1)continue;
+   }
+   const x=pass===0?s.aimX??s.x:s.x,y=pass===0?s.aimY??s.y:s.y??this.world.level.pathHeight+12,z=pass===0?s.aimZ??s.z:s.z,vx=x-p[0],vy=y-p[1],vz=z-p[2],depth=-vx*sy*cp-vy*sp-vz*cy*cp,right=vx*cy-vz*sy,up=-vx*sy*sp+vy*cp-vz*cy*sp;
+   if(depth<=12||Math.abs(right/(depth*tan*aspect))>1||Math.abs(up/(depth*tan))>1||!this.world.visibility.clear(...p,x,y,z,s.id))continue;
+   const padding=pass===0?Math.max(18,s.impact?.radius??0):16,fit=Math.max((Math.abs(right)+padding)/(depth*aspect*.82),(Math.abs(up)+padding)/(depth*.82));required=Math.max(required,2*Math.atan(fit)*180/Math.PI);count++;
+  }
+  this.lensRequired=required;this.lensVisible=count;
  }
  viewScore(angle,engine,targets=engine.enemies?.activeTargets??EMPTY,weapons=EMPTY){
   const f=this.focus,x=f[0]+Math.sin(angle)*DRONE_CAMERA_ORBIT_RADIUS,z=f[2]+Math.cos(angle)*DRONE_CAMERA_ORBIT_RADIUS,y=this.cruiseY+BOB,yaw=angle,pitch=Math.atan2(y-f[1],DRONE_CAMERA_ORBIT_RADIUS),sy=Math.sin(yaw),cy=Math.cos(yaw),sp=Math.sin(pitch),cp=Math.cos(pitch),tan=Math.tan(this.fov*Math.PI/360),anchorDepth=Math.hypot(DRONE_CAMERA_ORBIT_RADIUS,y-f[1]),aspect=this.aspect;
@@ -119,17 +139,17 @@ export class DroneCamera extends DroneFlight {
   let x=this.world.width/2,z=this.world.length/2;
   if(Math.hypot(x-tx,z-tz)<this.minimumOffset)z+=this.minimumOffset;
   let found=false;for(let lift=0;lift<=128;lift+=32){const y=this.cruiseY+BOB+lift;if(this.clear(x,y,z,x,y,z)){this.position.set([x,y,z]);this.cruiseY+=lift;found=true;break;}}if(!found)return false;
-  this.active=true;this.time=this.accumulator=0;this.engineTime=engine.time;this.velocity.fill(0);this.acceleration.fill(0);this.speed=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.activity[3]=-Infinity;
+  this.active=true;this.time=this.accumulator=0;this.engineTime=engine.time;this.velocity.fill(0);this.acceleration.fill(0);this.speed=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.activity[3]=-Infinity;this.lens.reset();this.fov=this.lens.fov;this.lensVisible=0;this.lensRequired=this.lens.target;
   this.lockTarget(tx,this.surfaceY(tx,tz),tz,false);this.goal.set(this.position);this.planOrbit(engine);c.setControlsEnabled(false);this.apply();return true;
  }
  sync(phase,engine){this.phase=phase;if(!this.enabled||!['wave','settling'].includes(phase)||!this.world){const preparing=this.active&&['loadout','deploy'].includes(phase);this.leave();if(preparing)this.camera.frame();return false;}if(!this.active&&engine)this.enter(engine);return this.active;}
  advance(dt,{engine,phase,paused=false}={}){
   if(!Number.isFinite(dt)||dt<0)throw new Error('Invalid drone-camera delta.');this.sync(phase,engine);if(!this.active||paused||!dt)return false;
   const elapsed=Math.max(0,engine.time-(this.engineTime??engine.time));this.engineTime=engine.time;if(!elapsed)return false;
-  this.accumulator+=Math.min(elapsed,.25);this.waveClock=engine.waveTime??0;this.obstacles.update(elapsed);
-  while(this.accumulator>1e-12){const step=Math.min(TICK,this.accumulator);this.accumulator-=step;this.time+=step;this.planIn-=step;if(this.planIn<=0)this.planOrbit(engine);this.steer(step);this.move(step);}
+  this.accumulator+=Math.min(elapsed,.25);this.waveClock=engine.waveTime??0;this.obstacles.update(elapsed);this.fitZoom(engine);
+  while(this.accumulator>1e-12){const step=Math.min(TICK,this.accumulator);this.accumulator-=step;this.time+=step;this.lens.observe(this.time,this.lensRequired,phase==='wave'?this.lensVisible:0,Math.abs(this.orbitRate)<.05&&this.speed<12);this.lens.advance(step);this.fov=this.lens.fov;this.planIn-=step;if(this.planIn<=0)this.planOrbit(engine);this.steer(step);this.move(step);}
   this.aim();this.apply();return true;
  }
- stats(){return {enabled:this.enabled,active:this.active,time:this.time,style:'orbit',position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),blockedMoves:this.blockedMoves,travelled:this.travelled,plans:this.plans,relocations:this.relocations,visibleEnemies:this.visibleEnemies,fov:this.fov,pitch:this.pitch,orbitRadius:DRONE_CAMERA_ORBIT_RADIUS,orbitDirection:this.orbitDirection,orbitRate:this.orbitRate,orbitGoalAngle:this.orbitGoalAngle,framingEnemies:this.frameTargets.length,framingWeapons:this.frameWeapons.length,cruiseY:this.cruiseY,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,planningBytes:(this.obstacles?.byteLength??0)+(this.surfaces?.byteLength??0)+this.activity.byteLength+this.projected.byteLength};}
+ stats(){return {enabled:this.enabled,active:this.active,time:this.time,style:'orbit',position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),blockedMoves:this.blockedMoves,travelled:this.travelled,plans:this.plans,relocations:this.relocations,visibleEnemies:this.visibleEnemies,fov:this.fov,targetFov:this.lens.target,fovVelocity:this.lens.velocity,zoomPhase:this.lens.phase,zoomCount:this.lens.zoomCount,lensRequired:this.lensRequired,lensVisible:this.lensVisible,pitch:this.pitch,orbitRadius:DRONE_CAMERA_ORBIT_RADIUS,orbitDirection:this.orbitDirection,orbitRate:this.orbitRate,orbitGoalAngle:this.orbitGoalAngle,framingEnemies:this.frameTargets.length,framingWeapons:this.frameWeapons.length,cruiseY:this.cruiseY,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,planningBytes:(this.obstacles?.byteLength??0)+(this.surfaces?.byteLength??0)+this.activity.byteLength+this.projected.byteLength};}
  dispose(){this.bind(null);this.camera=null;}
 }

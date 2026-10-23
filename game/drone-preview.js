@@ -19,19 +19,23 @@ function transform(m,x,y,z,out){out[0]=m[0]*x+m[4]*y+m[8]*z+m[12];out[1]=m[1]*x+
 // The pad's placement root never changes. A separate aircraft root carries all
 // flight/attitude, four always-powered rotors and independent fine gun servos.
 export class DronePreview {
- constructor(world,onPoseChange,targets=[],onHit=null,onShot=null){
-  this.world=world;this.targets=targets??[];this.onHit=onHit;this.onShot=onShot;this.states=[];this.navigation=null;this.planner=null;this.time=0;this.shots=this.active=this.turning=this.updatedParts=0;
+ constructor(world,onPoseChange,targets=[],onHit=null,onShot=null,options={}){
+  this.world=world;this.targets=targets??[];this.targetIndices=null;this.settling=false;this.onHit=onHit;this.onShot=onShot;this.states=[];this.navigation=null;this.planner=null;this.time=0;this.shots=this.active=this.turning=this.updatedParts=0;
   this.point=new Float64Array(3);this.sample=new Float64Array(5);this.fleetBounds=new Float64Array(6);this.brakeIntent=new Float64Array(60);this.disposed=false;this.obstacles=null;
   for(const placement of world.level.placements){
    if(placement.model!==M.id)continue;
-   if(placement.variant!=='base')throw new Error('Drone upgrade combat tuning is unassigned.');
+   const variant=placement.variant,stats=options.stats?.[variant],firing=options.firing?.[variant],flightSeconds=options.flightSeconds?.[variant]??(variant==='base'?BASE.flightSeconds:null),rechargeSeconds=options.rechargeSeconds?.[variant]??(variant==='base'?BASE.rechargeSeconds:null);
+   if(variant!=='base'&&(!stats||!firing)||!Number.isFinite(flightSeconds)||flightSeconds<=0||!Number.isFinite(rechargeSeconds)||rechargeSeconds<0)throw new Error('Drone upgrade combat tuning is unassigned.');
+   const weapon=firing?{...BASE.weapon,...firing}:BASE.weapon,maxRange=stats?.maxRange??T.maxRange,strength=stats?.strength??BASE.weapon.strength;
+   if(!Number.isFinite(maxRange)||maxRange<=0||!Number.isFinite(strength)||strength<=0||stats?.requiresLineOfSight===false)throw new Error('Invalid Drone attack profile.');
+   this.targetIndices??=new Map(this.targets.map((target,index)=>[target,index]));
    this.navigation??=new DroneNavigation(world);
    this.obstacles??=new DroneObstacles(world,this.targets);
    const rig=new PoseRig(world.rigs.get(placement.id),onPoseChange),root=rig.root;
    transform(root,12,9,12,this.point);
    const state={id:placement.id,model:M.id,variant:placement.variant,mobile:true,rig,x:this.point[0],y:this.point[1],z:this.point[2],homeX:this.point[0],homeZ:this.point[2],ground:root[13],padIndex:this.navigation.padIndices.get(placement.id),
-    phase:'pad-hover',flightElapsed:0,rechargeRemaining:0,expired:false,launches:0,returns:0,shotsAtExpiry:null,returnStartedAt:null,returnReason:null,avoidanceCause:null,avoidanceActorId:null,planningFailure:null,flightAction:'pad-hover',fleetYieldTo:null,yieldOwner:null,fleetWait:false,intent:new Float64Array(60),intentReady:false,
-    cycle:null,recoil:{sample:()=>0},targeting:new DefenceAim(BASE.weapon,T.maxRange),maxRange:T.maxRange,strength:BASE.weapon.strength,requiresLineOfSight:true,
+    flightSeconds,rechargeSeconds,phase:'pad-hover',flightElapsed:0,rechargeRemaining:0,expired:false,launches:0,returns:0,shotsAtExpiry:null,returnStartedAt:null,returnReason:null,avoidanceCause:null,avoidanceActorId:null,planningFailure:null,flightAction:'pad-hover',fleetYieldTo:null,yieldOwner:null,fleetWait:false,intent:new Float64Array(60),intentReady:false,
+    cycle:null,recoil:{sample:()=>0},targeting:new DefenceAim(weapon,maxRange),maxRange,strength,requiresLineOfSight:true,
     aim:new YawTracker(T.bodyTurn),gunYaw:new PitchTracker(T.fineYaw),pitch:new PitchTracker(T.pitch),bodyPitch:0,bodyRoll:0,rotorPhase:0,fanPitch:0,fanRoll:0,yawAcceleration:0,
     fans:DRONE_ROTORS.map(rotor=>({id:rotor.id,gimbal:rotor.gimbal,pitch:0,roll:0,targetPitch:0,targetRoll:0})),
     gunMatrix:rig.byId.get(M.gunPitch).instance.matrix,yawMatrix:rig.byId.get(M.gunYaw).instance.matrix,bodyMatrix:rig.byId.get(M.body).instance.matrix,
@@ -43,7 +47,7 @@ export class DronePreview {
    state.homeNode=this.navigation.home(state);
    if(state.homeNode<0)throw new Error('Drone pad has no safe neutral departure lane: '+state.id);
    this.navigation.position(state.homeNode,this.point);state.homeY=this.point[1];
-   state.cycle=new WeaponCycle(BASE.weapon,at=>{
+   state.cycle=new WeaponCycle(weapon,at=>{
     const target=state.target;state.lastShotAt=at;state.lastShotTargetId=target.id;state.lastShotDistance=state.targetDistance;state.lastShotVisible=state.lineOfSight;state.lastShotAimError=state.aimError;state.lastShotPitchError=state.pitchError;state.stationHasFired=true;
     state.lastShotDamage=this.onHit?.(target,state.strength)??0;
     this.onShot?.(state.variant,state.gunMatrix,at,M.muzzles);
@@ -139,16 +143,16 @@ export class DronePreview {
   }return false;
  }
  forecastWindow(state,target,node,arrival,out=state.window){
-  const p=this.point,q=this.sample;this.navigation.position(node,p);const x=p[0],y=p[1],z=p[2],start=Math.max(arrival,state.cycle.readyAt-state.cycle.time,0),left=BASE.flightSeconds-state.flightElapsed;
+  const p=this.point,q=this.sample;this.navigation.position(node,p);const x=p[0],y=p[1],z=p[2],start=Math.max(arrival,state.cycle.readyAt-state.cycle.time,0),left=state.flightSeconds-state.flightElapsed;
   out.fill(0);if(start>=left||!this.fleetClear(state,x,y,z,x,y,z)||this.stationReserved(state,x,y,z))return 0;
   let rounds=0,lastX=0,lastZ=0;
-  for(let i=0;i<BASE.weapon.shotsPerBurst;i++){
-   const at=start+i*BASE.weapon.shotIntervalSeconds;if(!this.prediction(target,at,q))break;
+  for(let i=0;i<state.cycle.rule.shotsPerBurst;i++){
+   const at=start+i*state.cycle.rule.shotIntervalSeconds;if(!this.prediction(target,at,q))break;
    const horizontal=Math.hypot(q[0]-x,q[1]-z),pitch=Math.atan2(q[3]-(y-4),Math.hypot(q[2]-x,q[4]-z)+3);
    if(horizontal>state.maxRange||horizontal<24||!state.pitch.reachable(pitch)||!this.targetHullClear(target,x,y,z,q[0],q[1],i?lastX:q[0],i?lastZ:q[1])||!this.stationSight(state,x,y,z,q[2],q[3],q[4],pitch))break;
    lastX=q[0];lastZ=q[1];rounds++;
   }
-  out[0]=arrival;out[1]=start;out[2]=start+rounds*BASE.weapon.shotIntervalSeconds;out[3]=rounds;out[4]=rounds*4-start*.6-Math.max(0,y-(state.ground+9+T.lift))*.025;
+  out[0]=arrival;out[1]=start;out[2]=start+rounds*state.cycle.rule.shotIntervalSeconds;out[3]=rounds;out[4]=rounds*4-start*.6-Math.max(0,y-(state.ground+9+T.lift))*.025;
   return rounds;
  }
  // Called only on this defence's shared round-robin thinking turn.
@@ -189,11 +193,11 @@ export class DronePreview {
   }
   if(state.cycle.remaining)return;
   if(!active(state)||state.expired){state.planReady=false;return;}
-  const current=state.plannedTarget,valid=state.stationCommitted&&living(current)&&state.plannedLap===(current?.lap??0),travelling=!state.motion.done&&!state.retargetPending||state.speed>.1;
+  const current=state.plannedTarget,valid=state.stationCommitted&&living(current)&&this.targets.includes(current)&&state.plannedLap===(current?.lap??0),travelling=!state.motion.done&&!state.retargetPending||state.speed>.1;
   let urgent=false;
   if(valid){const score=this.planner?.score(current,state)??1;for(const other of this.targets)if(other!==current&&living(other)&&(this.planner?.score(other,state)??1)>=score*T.urgentSwitchRatio){urgent=true;break;}}
   if(valid&&!state.blocked&&!urgent){
-   const index=this.targets.indexOf(current),minimum=Math.min(T.minimumUsefulPulses,Math.ceil((this.planner?.residualHealth(current)??current.health?.current??100)/state.strength));
+   const index=this.targetIndices.get(current)??-1,minimum=Math.min(T.minimumUsefulPulses,Math.ceil((this.planner?.residualHealth(current)??current.health?.current??100)/state.strength));
    const pitch=Math.atan2(current.aimY-(state.y-4),Math.hypot((current.aimX??current.x)-state.x,(current.aimZ??current.z)-state.z)+3),lostScope=!travelling&&(state.stationHasFired||this.time>=(state.stationFireAt??0))&&(Math.hypot(current.x-state.x,current.z-state.z)>state.maxRange||!state.pitch.reachable(pitch));
    if(lostScope){state.stationInvalidated=true;state.stationCommitted=false;}
    const usable=!lostScope&&(travelling?this.time<(state.stationWindowEnd??0):this.forecastWindow(state,current,state.goalNode,0)>=Math.max(1,minimum));
@@ -208,15 +212,15 @@ export class DronePreview {
   state.nextPlanAt=this.time+T.replanSeconds;state.replans++;state.planVersion++;state.planReady=this.navigation.search(state,this);state.candidateNodes.fill(-1);
   if(!state.planReady){state.planningFailure='no-route';return;}
   for(let i=0;i<this.targets.length;i++)if(living(this.targets[i])){
-   state.candidateNodes[i]=this.station(state,this.targets[i],i);state.candidateLap[i]=this.targets[i].lap??0;
+   const target=this.targets[i],index=this.targetIndices.get(target);state.candidateNodes[index]=this.station(state,target,index);state.candidateLap[index]=target.lap??0;
   }
-  const preferred=this.targets.indexOf(current);
-  if(preferred>=0&&living(current)&&state.plannedLap===(current.lap??0)&&!urgent&&state.candidateNodes[preferred]>=0)for(let i=0;i<this.targets.length;i++)if(i!==preferred)state.candidateNodes[i]=-1;
+  const preferred=this.targetIndices.get(current)??-1;
+  if(preferred>=0&&living(current)&&this.targets.includes(current)&&state.plannedLap===(current.lap??0)&&!urgent&&state.candidateNodes[preferred]>=0)for(let i=0;i<state.candidateNodes.length;i++)if(i!==preferred)state.candidateNodes[i]=-1;
   state.motion.clear();
   state.planningFailure='no-firing-station';for(let i=0;i<state.candidateNodes.length;i++)if(state.candidateNodes[i]>=0){state.planningFailure=null;break;}
  }
- station(state,target,index=this.targets.indexOf(target)){
-  const nav=this.navigation,p=this.point,q=this.sample,left=BASE.flightSeconds-state.flightElapsed;let count=0;
+ station(state,target,index=this.targetIndices.get(target)??-1){
+  const nav=this.navigation,p=this.point,q=this.sample,left=state.flightSeconds-state.flightElapsed;let count=0;
   state.shortScores.fill(-Infinity);state.shortNodes.fill(-1);
   for(let node=0;node<nav.count;node++){
    if(state.stationInvalidated&&state.plannedTarget===target&&node===state.goalNode)continue;
@@ -227,7 +231,7 @@ export class DronePreview {
    arrival=travel+.2+Math.abs(yawError(facing,approach))/T.bodyTurn.maxSpeed;
    const start=Math.max(arrival,state.cycle.readyAt-state.cycle.time,0);if(start>=left)continue;
    let samples=0,horizontal=0;
-   for(let sample=0;sample<3;sample++)if(this.prediction(target,start+sample*(BASE.weapon.shotsPerBurst-1)*BASE.weapon.shotIntervalSeconds/2,q)){
+   for(let sample=0;sample<3;sample++)if(this.prediction(target,start+sample*(state.cycle.rule.shotsPerBurst-1)*state.cycle.rule.shotIntervalSeconds/2,q)){
     const range=Math.hypot(q[0]-x,q[1]-z),pitch=Math.atan2(q[3]-(y-4),Math.hypot(q[2]-x,q[4]-z)+3);if(!sample)horizontal=range;
     if(range>=24&&range<=state.maxRange&&state.pitch.reachable(pitch)&&this.targetHullClear(target,x,y,z,q[0],q[1]))samples++;
    }
@@ -260,16 +264,16 @@ export class DronePreview {
  }
  eligible(state,target){
   if(state.wantEvade||state.evading)return false;
-  if(!active(state)||!living(target)||!Number.isFinite(target.aimY))return false;
+  if(!active(state)||!living(target)||!this.targets.includes(target)||!Number.isFinite(target.aimY))return false;
   if(state.cycle.remaining&&state.target===target)return this.liveTarget(state,target);
   if(state.expired)return false;
   if(this.planner?.residualHealth(target)===0)return false;
-  const index=this.targets.indexOf(target);return index>=0&&state.planReady&&state.candidateNodes[index]>=0&&state.candidateLap[index]===(target.lap??0);
+  const index=this.targetIndices.get(target)??-1;return index>=0&&state.planReady&&state.candidateNodes[index]>=0&&state.candidateLap[index]===(target.lap??0);
  }
  selected(state,target){
   if(!active(state)||state.cycle.remaining||state.wantEvade||state.evading)return;
   if(!target){state.stationCommitted=false;if(state.speed>.1)state.retargetPending=true;return;}
-  const index=this.targets.indexOf(target),goal=state.candidateNodes[index];
+  const index=this.targetIndices.get(target)??-1,goal=state.candidateNodes[index];
   if(goal<0)return;
   if(state.speed>.1||!state.motion.done&&!state.blocked&&!state.retargetPending){if(state.plannedTarget!==target)state.retargetPending=true;return;}
   if(!state.stationCommitted||state.goalNode!==goal||state.plannedTarget!==target||state.plannedLap!==(target.lap??0)||state.blocked){
@@ -296,7 +300,7 @@ export class DronePreview {
   if(!target.path||target.routeForecastEligible!==true||target.impact?.active||!Number.isFinite(target.distance)||!(target.movement?.speed>0))return 0;
   const first=Math.max(0,state.cycle.nextShotAt-state.cycle.time),exit=exitSeconds(target),p=this.sample;let rounds=0;
   for(let i=0;i<state.cycle.remaining;i++){
-   const at=first+i*BASE.weapon.shotIntervalSeconds;if(at>=exit)break;
+   const at=first+i*state.cycle.rule.shotIntervalSeconds;if(at>=exit)break;
    target.path.sample(target.distance+target.movement.speed*at,p);
    const horizontal=Math.hypot(p[0]-state.x,p[1]-state.z),pitch=Math.atan2(target.aimY-(state.y-4),horizontal+3);
    if(horizontal>state.maxRange||!state.pitch.reachable(pitch)||!this.stationSight(state,state.x,state.y,state.z,p[0],target.aimY,p[1],pitch))break;
@@ -400,7 +404,7 @@ export class DronePreview {
    state.velocityX=state.velocityZ=0;state.velocityY=Math.sign(destination-state.y)*state.verticalSpeed;state.speed=state.verticalSpeed;
    if(Math.abs(state.y-destination)<1e-7&&state.verticalSpeed===0){
     if(state.phase==='launch'){state.phase='intercept';state.nextPlanAt=0;}
-    else{state.phase=state.resumeRecharge===0?'pad-hover':'recharge';state.rechargeRemaining=state.resumeRecharge??BASE.rechargeSeconds;state.resumeRecharge=null;state.nav.pathLength=state.nav.pathIndex=0;}
+    else{state.phase=state.resumeRecharge===0?'pad-hover':'recharge';state.rechargeRemaining=state.resumeRecharge??state.rechargeSeconds;state.resumeRecharge=null;state.nav.pathLength=state.nav.pathIndex=0;}
    }
   }else if(active(state)||state.phase==='return'||state.evading){
    const motion=state.motion;
@@ -473,7 +477,7 @@ export class DronePreview {
    else if(!state.evading&&!state.wantEvade&&state.phase==='recharge'){const remaining=state.rechargeRemaining;state.rechargeRemaining=Math.max(0,remaining-dt);if(!state.rechargeRemaining){state.phase='pad-hover';motionDelta=Math.max(0,dt-remaining);if(this.hasLivingTargets())this.startLaunch(state);}}
    if(active(state)||state.phase==='launch'){
     state.flightElapsed+=motionDelta;
-    if(!state.expired&&state.flightElapsed>=BASE.flightSeconds){state.expired=true;state.shotsAtExpiry=state.cycle.shots;}
+    if(!state.expired&&state.flightElapsed>=state.flightSeconds){state.expired=true;state.shotsAtExpiry=state.cycle.shots;}
     if(state.expired&&!state.cycle.remaining&&state.phase!=='launch'&&!state.evading&&!state.wantEvade)this.beginReturn(state);
    }
    if(state.target&&(!living(state.target)||!this.targets.includes(state.target)||state.targetLap!==(state.target.lap??0))){state.cycle.cancelBurst();state.target=null;}
@@ -492,9 +496,15 @@ export class DronePreview {
    this.shots+=state.cycle.shots;
   }
  }
- hasLivingTargets(){for(let i=0;i<this.targets.length;i++)if(living(this.targets[i]))return true;return false;}
+ settle(dt){
+  this.settling=true;
+  for(const state of this.states)if(active(state)||state.phase==='launch'){this.beginReturn(state);state.returnReason='wave-complete';}
+  this.prepareCollisionFrame(dt);for(const state of this.states)this.prepare(state);this.advance(dt);
+ }
+ hasLivingTargets(){if(this.settling)return false;for(let i=0;i<this.targets.length;i++)if(living(this.targets[i]))return true;return false;}
  fansNeutral(state){for(const fan of state.fans)if(Math.hypot(fan.pitch,fan.roll)>.001)return false;return true;}
  reset(){
+  this.settling=false;
   for(const state of this.states){
    const c=state.cycle;c.time=this.time;c.readyAt=this.time;c.nextShotAt=Infinity;c.remaining=c.shots=0;c.lastShotAt=-Infinity;
    state.motion.clear();state.speed=state.verticalSpeed=state.accelerationX=state.accelerationY=state.accelerationZ=state.stationChanges=state.routeChanges=state.emergencyStops=0;state.returnPlanning=state.retargetPending=false;
@@ -506,6 +516,6 @@ export class DronePreview {
  dispose(){
   if(this.disposed)return;this.disposed=true;
   for(const s of this.states){s.target=s.reservation=s.plannedTarget=null;s.cycle.cancelBurst();s.motion.dispose();s.motion=null;s.fans.length=0;s.nav=s.rig=s.candidateNodes=s.candidateTimes=s.candidateLap=s.candidateWindows=s.shortNodes=s.shortScores=s.shortTimes=s.window=s.intent=null;s.stationCommitted=s.evading=s.wantEvade=false;s.fleetYieldTo=null;}
-  this.obstacles?.dispose();this.obstacles=null;this.navigation?.dispose();this.navigation=null;this.states.length=0;this.world=this.targets=this.onHit=this.onShot=this.planner=null;this.point=this.sample=this.fleetBounds=this.brakeIntent=null;this.shots=this.active=this.turning=this.updatedParts=0;
+  this.obstacles?.dispose();this.obstacles=null;this.navigation?.dispose();this.navigation=null;this.states.length=0;this.targetIndices?.clear();this.targetIndices=null;this.world=this.targets=this.onHit=this.onShot=this.planner=null;this.point=this.sample=this.fleetBounds=this.brakeIntent=null;this.shots=this.active=this.turning=this.updatedParts=0;
  }
 }

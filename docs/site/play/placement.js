@@ -12,6 +12,10 @@ import {ENEMY_EXPANSION_RIGS} from '../shared/enemy-expansion-rigs.js';
 import {FlightPathMotion} from '../engine/flight-path-motion.js';
 import {WALKER_WALK,SPIDER_WALK} from '../engine/articulated-gait.js';
 import {playCapacity} from './config.js';
+import {DRONE_MODEL,DRONE_HULL,DRONE_VARIANTS} from '../shared/drone-model.js';
+import {DRONE_PREVIEW} from '../shared/drone.js';
+import {DroneNavigation} from '../engine/drone-navigation.js';
+import {DroneObstacles} from '../engine/drone-obstacles.js';
 
 const SIZE=24,EPS=1e-6;
 // Existing upright Dog locomotion envelope. Continuous route capsules use the
@@ -60,8 +64,15 @@ export function defenceMovementShapes(model,variant){
  if(model.id==='turret-study')return gunMovementShapes(model,variant);
  const result=[];
  for(const part of model.variants[variant].parts){
+  if(model.id===DRONE_MODEL.id&&part.id!==DRONE_MODEL.pad)continue;
   const layers=new Map();for(const cell of part.voxels){let b=layers.get(cell[1]);if(!b){b=[Infinity,cell[1],Infinity,-Infinity,cell[1]+1,-Infinity];layers.set(cell[1],b);}b[0]=Math.min(b[0],cell[0]);b[2]=Math.min(b[2],cell[2]);b[3]=Math.max(b[3],cell[0]+1);b[5]=Math.max(b[5],cell[2]+1);}
   for(const bounds of layers.values())result.push({part:part.id,round:false,radius:0,bounds});
+ }
+ if(model.id===DRONE_MODEL.id){
+  // While docked, fans spin in their neutral plane and gun/body remain level.
+  // The wider yaw/fan/gun hull belongs at a flight station, never at ground.
+  const r=DRONE_HULL.neutralRadius,above=Math.max(DRONE_HULL.neutralAbove,DRONE_VARIANTS[variant].height-DRONE_MODEL.bodyPivot[1]);
+  result.push({part:DRONE_MODEL.body,round:false,radius:0,bounds:[12-r,DRONE_MODEL.restLowestY,12-r,12+r,DRONE_MODEL.bodyPivot[1]+above,12+r]});
  }
  return result;
 }
@@ -187,8 +198,53 @@ export function createPlacementRules(source,models,{config,critters=true}={}){
  const routes=levelRoutes(level),shapes=Object.fromEntries(families.flatMap(model=>enabled.get(model).map(v=>[model+':'+v,defenceMovementShapes(models.get(model),v)]))),segments=routes.flatMap(r=>r.path.slice(1).map((p,i)=>{const a=r.path[i];return [Math.min(a[0],p[0])*SIZE+12,Math.min(a[2],p[2])*SIZE+12,Math.max(a[0],p[0])*SIZE+12,Math.max(a[2],p[2])*SIZE+12];})),flightSegments=enemies.some(e=>e.airborne)?routes.flatMap(r=>new FlightPathMotion(r.path).clearanceSegments()):[];
  const camera=new Camera({clientWidth:960,clientHeight:768,addEventListener(){}},()=>{}),projections=[];camera.setLevel(level);const slopeX=Math.sin(camera.yaw)/Math.tan(camera.pitch),slopeZ=Math.cos(camera.yaw)/Math.tan(camera.pitch);
  for(let node=0;node<tree.nodeCount;node++)if(tree.escape[node]===node+1){const footprint=projectedFootprint(tree.bounds,node*6,level.pathHeight,slopeX,slopeZ);if(footprint)projections.push(footprint);}
- const staticCells=new Map(),worldShapes=new Map();let disposed=false,lastPreparedKey=null,lastPrepared=null;
+ const staticCells=new Map(),worldShapes=new Map(),droneDepartures=new Map(),droneObstacleShapes=new Map(),droneFixedShapes=new Map();let disposed=false,lastPreparedKey=null,lastPrepared=null;
  const geometryFor=(box,variant,model)=>{const key=`${model}:${variant}:${box[0]},${box[2]}`;if(!worldShapes.has(key))worldShapes.set(key,translated(shapes[model+':'+variant],box,level.pathHeight));return worldShapes.get(key);};
+ function droneObstacleFor(placement){
+  const {box,model,variant}=placement;
+  if(model===DRONE_MODEL.id)return geometryFor(box,variant,model).filter(shape=>shape.part===DRONE_MODEL.pad);
+  const key=model+':'+variant,worldKey=`drone-obstacle:${key}:${box[0]},${box[2]}`;
+  if(!droneObstacleShapes.has(key)){
+   // Flight intentionally predicts a more conservative articulated envelope
+   // than ordinary placement. Extract that same contract once per family/tier
+   // so a legal mixed deployment cannot leave its Drone permanently grounded.
+   const rigs=new Map([[key,rigData(models.get(model),variant,identity())]]);let obstacles;
+   try{obstacles=new DroneObstacles({rigs});droneObstacleShapes.set(key,obstacles.records.length?[{round:false,bounds:Array.from(obstacles.predicted)}]:[]);}
+   finally{obstacles?.dispose();rigs.clear();}
+  }
+  if(!worldShapes.has(worldKey))worldShapes.set(worldKey,translated(droneObstacleShapes.get(key),box,level.pathHeight));
+  return worldShapes.get(worldKey);
+ }
+ function droneFixedFor(placement){
+  const {box,model,variant}=placement,key=model+':'+variant,worldKey=`drone-fixed:${key}:${box[0]},${box[2]}`;
+  if(!droneFixedShapes.has(key)){
+   const bounds=[Infinity,Infinity,Infinity,-Infinity,-Infinity,-Infinity];
+   for(const part of models.get(model).variants[variant].parts)if(model!==DRONE_MODEL.id||part.id===DRONE_MODEL.pad)for(const cell of part.voxels)for(let axis=0;axis<3;axis++){bounds[axis]=Math.min(bounds[axis],cell[axis]);bounds[axis+3]=Math.max(bounds[axis+3],cell[axis]+1);}
+   droneFixedShapes.set(key,[{round:false,bounds}]);
+  }
+  if(!worldShapes.has(worldKey))worldShapes.set(worldKey,translated(droneFixedShapes.get(key),box,level.pathHeight));
+  return worldShapes.get(worldKey);
+ }
+ const outside=shape=>{const b=shape.bounds;return b[0]<-EPS||b[2]<-EPS||b[3]>width+EPS||b[5]>length+EPS;};
+ const enemyConflict=shape=>enemies.some(enemy=>(enemy.airborne?flightSegments:segments).some(s=>routeConflict(shape,s,enemy.radius,enemy.top-enemy.bottom,level.pathHeight+enemy.bottom)));
+ function departuresFor(box,variant){
+  const key=`${variant}:${box[0]},${box[2]}`;if(droneDepartures.has(key))return droneDepartures.get(key);
+  const x=(box[0]+.5)*SIZE,z=(box[2]+.5)*SIZE,r=DRONE_HULL.neutralRadius,above=Math.max(DRONE_HULL.neutralAbove,DRONE_VARIANTS[variant].height-DRONE_MODEL.bodyPivot[1]),choices=[];
+  for(const lift of DRONE_PREVIEW.transitLayers){
+   // Match DroneNavigation.home's exact tile-centre nodes and neutral column;
+   // preserve lower clear layers even when a higher lift crosses scenery.
+   const y=level.pathHeight+DRONE_MODEL.bodyPivot[1]+lift,h=DRONE_HULL.radius;
+   const column={round:false,bounds:[x-r,level.pathHeight+DRONE_MODEL.restLowestY,z-r,x+r,y+above,z+r]},station={round:false,bounds:[x-h,y-DRONE_HULL.below,z-h,x+h,y+DRONE_HULL.variantAbove[variant],z+h]};
+   if([column,station].every(shape=>!outside(shape)&&!blocked(shape,tree)))choices.push([column,station]);
+  }
+  droneDepartures.set(key,choices);return choices;
+ }
+ function departureClear(box,variant,others){
+  // Navigation commits the first fixed-clear layer. A higher clear alternative
+  // cannot excuse a predicted obstruction at that actual departure station.
+  for(const choice of departuresFor(box,variant))if(choice.every(shape=>others.every(p=>droneFixedFor(p).every(other=>!shapesConflict(shape,other)))))return choice.every(shape=>!enemyConflict(shape)&&others.every(p=>droneObstacleFor(p).every(other=>!shapesConflict(shape,other))));
+  return false;
+ }
  function staticCheck(box,variant,model){
   const key=`${model}:${variant}:${box[0]},${box[2]}`;if(staticCells.has(key))return staticCells.get(key);
   let result=OK;
@@ -207,6 +263,7 @@ export function createPlacementRules(source,models,{config,critters=true}={}){
     const x=box[0]*SIZE+socket[0],z=box[2]*SIZE+socket[2],r=GUIDED_MISSILE_MODEL.radius,shape={round:true,radius:r,bounds:[x-r,level.pathHeight+socket[1],z-r,x+r,level.pathHeight+socket[1]+32+GUIDED_MISSILE_MODEL.height,z+r]};
     if(blocked(shape,tree)){result=fail('launch-clearance','Leave clear space above the missile launcher.');break;}
    }
+   if(result.valid&&model===DRONE_MODEL.id&&!departuresFor(box,variant).length)result=fail('launch-clearance','Leave a clear departure lane above and around the Drone pad.');
   }
   staticCells.set(key,result);return result;
  }
@@ -224,6 +281,10 @@ export function createPlacementRules(source,models,{config,critters=true}={}){
    if(other[0]===box[0]&&other[2]===box[2])return fail('occupied','Another defence occupies this ground.');
    if(candidate.some(a=>geometryFor(other,placement.variant,placement.model).some(b=>shapesConflict(a,b))))return fail('unit-clearance','Leave more room between the defences.');
   }
+  if(model===DRONE_MODEL.id||existing.some(p=>p.model===DRONE_MODEL.id)){
+   const others=existing.filter(p=>p.id!==ownId).map(p=>({...p,box:boxOf(p.box)})),deployment=[...others,{model,variant,box}];
+   for(let i=0;i<deployment.length;i++){const p=deployment[i];if(p.model===DRONE_MODEL.id&&!departureClear(p.box,p.variant,deployment.filter((_,j)=>i!==j)))return fail('launch-clearance','Leave a clear departure lane above and around every Drone pad.');}
+  }
   return {...OK};
  }
  function eligibleCells(variant,existing=[],ownId=null,model='turret-study'){const cells=[];for(let z=0;z<level.size[1];z++)for(let x=0;x<level.size[0];x++){const box=[x,0,z];cells.push({box,...check(box,variant,existing,ownId,model)});}return cells;}
@@ -232,6 +293,16 @@ export function createPlacementRules(source,models,{config,critters=true}={}){
   if(!Array.isArray(existing)||existing.length>maxUnits)return fail('placement','The deployment exceeds the supported unit count.');
   const ids=new Set();for(const placement of existing){if(!placement||!families.includes(placement.model)||(placement.turn??0)!==0)return fail('placement','The current deployment contains an unsupported unit.');if(typeof placement.id!=='string'||!placement.id||ids.has(placement.id))return fail('placement','Every deployed unit needs a unique identity.');ids.add(placement.id);const result=check(placement.box,placement.variant,existing,placement.id,placement.model);if(!result.valid)return result;}
   const key=JSON.stringify(existing.map(p=>[p.id,p.model,p.variant,p.box]));if(key===lastPreparedKey)return structuredClone(lastPrepared);
+  if(existing.some(p=>p.model===DRONE_MODEL.id)){
+   // Use the actual runtime planner before committing a deployment. These
+   // preparation-only buffers are released before wildlife probing/rendering.
+   const rigs=new Map();let navigation;
+   try{
+    for(const p of existing){const root=placementMatrix(p.box,p.turn??0);root[13]=level.pathHeight;rigs.set(p.id,rigData(models.get(p.model),p.variant,root));}
+    navigation=new DroneNavigation({level,width,length,rigs,visibility:tree});
+    for(const p of existing)if(p.model===DRONE_MODEL.id&&navigation.home({homeX:(p.box[0]+.5)*SIZE,homeZ:(p.box[2]+.5)*SIZE,ground:level.pathHeight,rig:rigs.get(p.id),padIndex:navigation.padIndices.get(p.id)})<0)return fail('launch-clearance','Leave a clear departure lane above and around every Drone pad.');
+   }finally{navigation?.dispose();rigs.clear();}
+  }
   const actors=critters?wildlifeActorsForLevel(level):[];
   if(!actors.length){const result={...OK,wildlifePoints:[]};lastPreparedKey=key;lastPrepared=result;return structuredClone(result);}
   const probeLevel={...level,placements:[...level.placements,...existing]},rigs=new Map(),actorRigs=new Map();
@@ -264,6 +335,6 @@ export function createPlacementRules(source,models,{config,critters=true}={}){
   }catch(error){return fail('wildlife','This deployment leaves no safe wildlife habitat or supported bird perch.');}
   finally{life?.dispose();rigs.clear();actorRigs.clear();}
  }
- function dispose(){if(disposed)return;disposed=true;tree.dispose();staticCells.clear();worldShapes.clear();projections.length=0;segments.length=0;level.placements.length=0;lastPrepared=null;lastPreparedKey=null;}
+ function dispose(){if(disposed)return;disposed=true;tree.dispose();staticCells.clear();worldShapes.clear();droneDepartures.clear();droneObstacleShapes.clear();droneFixedShapes.clear();projections.length=0;segments.length=0;level.placements.length=0;lastPrepared=null;lastPreparedKey=null;}
  return {check,eligibleCells,prepare,dispose,width:level.size[0],length:level.size[1],pathHeight:level.pathHeight};
 }

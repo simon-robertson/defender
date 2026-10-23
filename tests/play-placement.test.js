@@ -102,7 +102,7 @@ test('committed player placements reseed blocked wildlife and actual controllers
   const {source,models}=await sourceFixture(id),rules=createPlacementRules(source,models),valid=rules.eligibleCells('base').filter(c=>c.valid),first=valid.find(c=>c.box[0]>1&&c.box[0]<18&&c.box[2]>1&&c.box[2]<14),placements=[placement('one',first.box)];
   const other=valid.find(c=>rules.check(c.box,'base',placements).valid);if(other)placements.push(placement('two',other.box));
   rules.dispose();source.previewWildlife.habitats[0]=[first.box[0],first.box[2]];source.previewWildlife.habitatPoints[0]=[(first.box[0]+.5)*24,24,(first.box[2]+.5)*24];
-  const before=JSON.stringify(source),committedRules=createPlacementRules(source,models),prepared=committedRules.prepare(placements);expect(prepared.valid).toBe(true);expect(prepared.wildlifePoints).toHaveLength(9);expect(prepared.wildlifePoints[0]).not.toEqual(source.previewWildlife.habitatPoints[0]);
+  const before=JSON.stringify(source),committedRules=createPlacementRules(source,models),prepared=committedRules.prepare(placements);expect(prepared.valid).toBe(true);expect(prepared.wildlifePoints).toHaveLength(wildlifeActorsForLevel(composePlayLevel(source)).filter(actor=>actor.kind==='ground').length);expect(prepared.wildlifePoints[0]).not.toEqual(source.previewWildlife.habitatPoints[0]);
   const again=committedRules.prepare(placements);again.wildlifePoints[0][0]=-100;expect(committedRules.prepare(placements).wildlifePoints[0][0]).toBeGreaterThan(0);
   const level=composePlayLevel(source,placements,{wildlifePoints:prepared.wildlifePoints,models}),actors=wildlifeActorsForLevel(level),world=buildWorld(level,models,{actors}),life=new WildlifePreview(world,()=>{});
   try{

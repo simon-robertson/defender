@@ -1,0 +1,517 @@
+{
+  "date": "2026-10-23",
+  "hashes": {
+    "shared/drone.js": "4c9f3c5af3e0ee8301ec78011e59f291c87e56602040667a9a4eda437b70ea62",
+    "game/drone-preview.js": "e9c23cb235aa55fb6d95c763ab7c6703cd2ed984ad9d05dfcef11d166ad6c151",
+    "play/config.js": "8de98ce2638ec0a88fbbf0d56d9c21d5fbcff8311677bf4e5236158455af6711",
+    "play/enemies.js": "b4b1aa4ed82c5d9a5dd5eecb6e59d97caf213257bc3410190477e1e054435137",
+    "play/placement.js": "55ddd0f154c0fd55b474c45d8e59de2f3df45700d6fd1b2597ee2342814c8ac9",
+    "game/defence-preview.js": "9baea7b8d3f1806f73ebbe2885e5c4743d9ef4bf7cea4e4eb48cd9539fc3b7fe"
+  },
+  "scope": "One legal exit-near base Drone against first authored wave; 120Hz finite campaign enemies, shared real planner/navigation/aim/LOS/damage; no wildlife, no wallet, no other weapons. Fourth case intentionally pre-wounds every spawn to100HP, with same unchanged body/routes/speed; it is a cleanup capability witness, not an ordinary campaign.",
+  "base": {
+    "flightSeconds": 20,
+    "flightStartsAt": "launch",
+    "returnConsumesFlightTime": false,
+    "finishBurstBeforeReturn": true,
+    "rechargeSeconds": 10,
+    "weapon": {
+      "strength": 10,
+      "shotsPerBurst": 10,
+      "roundsPerSecond": 4,
+      "shotIntervalSeconds": 0.25,
+      "cooldownSeconds": 5,
+      "delivery": "hitscan",
+      "projectile": null
+    }
+  },
+  "evidence": [
+    {
+      "id": "moss-02",
+      "padPolicy": "exit-near",
+      "mode": "authoredFullHP",
+      "wave": "a2-wave-1",
+      "pad": [
+        10,
+        0,
+        14
+      ],
+      "legalPadCount": 27,
+      "seconds": 79.29166666667584,
+      "killed": 0,
+      "escaped": 7,
+      "shots": 16,
+      "usefulHP": 160,
+      "modelsHit": [
+        "dog",
+        "moth"
+      ],
+      "launches": 2,
+      "returns": 2,
+      "emergencyStops": 0,
+      "firstHitAt": 5.441666666666727,
+      "lastHitAt": 52.04999999999769,
+      "hits": [
+        {
+          "at": 5.441666666666727,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 5.691666666666739,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 5.941666666666752,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 6.191666666666764,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 6.441666666666777,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 6.691666666666789,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 6.941666666666801,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 7.191666666666814,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 7.441666666666826,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 7.691666666666839,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 16.441666666666375,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        },
+        {
+          "at": 40.52499999999834,
+          "id": "a2-wave-1-moth-5",
+          "model": "moth",
+          "applied": 10
+        },
+        {
+          "at": 40.78333333333166,
+          "id": "a2-wave-1-moth-5",
+          "model": "moth",
+          "applied": 10
+        },
+        {
+          "at": 41.04166666666498,
+          "id": "a2-wave-1-moth-5",
+          "model": "moth",
+          "applied": 10
+        },
+        {
+          "at": 47.04166666666464,
+          "id": "a2-wave-1-moth-5",
+          "model": "moth",
+          "applied": 10
+        },
+        {
+          "at": 52.04999999999769,
+          "id": "a2-wave-1-moth-5",
+          "model": "moth",
+          "applied": 10
+        }
+      ]
+    },
+    {
+      "id": "moss-03",
+      "padPolicy": "exit-near",
+      "mode": "authoredFullHP",
+      "wave": "a3-wave-1",
+      "pad": [
+        12,
+        0,
+        13
+      ],
+      "legalPadCount": 37,
+      "seconds": 67.19999999999955,
+      "killed": 0,
+      "escaped": 10,
+      "shots": 0,
+      "usefulHP": 0,
+      "modelsHit": [],
+      "launches": 1,
+      "returns": 1,
+      "emergencyStops": 0,
+      "firstHitAt": null,
+      "lastHitAt": null,
+      "hits": []
+    },
+    {
+      "id": "moss-02",
+      "padPolicy": "entry-near",
+      "mode": "authoredFullHP",
+      "wave": "a2-wave-1",
+      "pad": [
+        1,
+        0,
+        6
+      ],
+      "legalPadCount": 27,
+      "seconds": 79.29166666667584,
+      "killed": 0,
+      "escaped": 7,
+      "shots": 3,
+      "usefulHP": 30,
+      "modelsHit": [
+        "moth",
+        "dog"
+      ],
+      "launches": 2,
+      "returns": 2,
+      "emergencyStops": 0,
+      "firstHitAt": 19.28333333333288,
+      "lastHitAt": 65.10833333333122,
+      "hits": [
+        {
+          "at": 19.28333333333288,
+          "id": "a2-wave-1-moth-5",
+          "model": "moth",
+          "applied": 10
+        },
+        {
+          "at": 31.63333333333218,
+          "id": "a2-wave-1-moth-5",
+          "model": "moth",
+          "applied": 10
+        },
+        {
+          "at": 65.10833333333122,
+          "id": "a2-wave-1-dog-1",
+          "model": "dog",
+          "applied": 10
+        }
+      ]
+    },
+    {
+      "id": "moss-03",
+      "padPolicy": "entry-near",
+      "mode": "authoredFullHP",
+      "wave": "a3-wave-1",
+      "pad": [
+        2,
+        0,
+        12
+      ],
+      "legalPadCount": 37,
+      "seconds": 67.19999999999955,
+      "killed": 0,
+      "escaped": 10,
+      "shots": 10,
+      "usefulHP": 100,
+      "modelsHit": [
+        "roller"
+      ],
+      "launches": 1,
+      "returns": 1,
+      "emergencyStops": 0,
+      "firstHitAt": 6.150000000000095,
+      "lastHitAt": 8.41666666666683,
+      "hits": [
+        {
+          "at": 6.150000000000095,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 6.400000000000108,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 6.65000000000012,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 6.900000000000133,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 7.150000000000145,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 7.400000000000158,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 7.65000000000017,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 7.900000000000182,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 8.15833333333351,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        },
+        {
+          "at": 8.41666666666683,
+          "id": "a3-wave-1-roller-1",
+          "model": "roller",
+          "applied": 10
+        }
+      ]
+    },
+    {
+      "id": "plum-04",
+      "padPolicy": "exit-near",
+      "mode": "authoredFullHP",
+      "wave": "d4-wave-1",
+      "pad": [
+        10,
+        0,
+        14
+      ],
+      "legalPadCount": 47,
+      "seconds": 134.4000000000421,
+      "killed": 0,
+      "escaped": 18,
+      "shots": 13,
+      "usefulHP": 130,
+      "modelsHit": [
+        "spider",
+        "lantern"
+      ],
+      "launches": 3,
+      "returns": 2,
+      "emergencyStops": 0,
+      "firstHitAt": 4.225,
+      "lastHitAt": 52.66666666666432,
+      "hits": [
+        {
+          "at": 4.225,
+          "id": "d4-wave-1-spider-1",
+          "model": "spider",
+          "applied": 10
+        },
+        {
+          "at": 4.475000000000012,
+          "id": "d4-wave-1-spider-1",
+          "model": "spider",
+          "applied": 10
+        },
+        {
+          "at": 45.3333333333314,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 50.34166666666445,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 50.59999999999777,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 50.85833333333109,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.11666666666441,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.374999999997726,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.633333333331045,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.891666666664364,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 52.14999999999768,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 52.408333333331,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 52.66666666666432,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        }
+      ]
+    },
+    {
+      "id": "plum-04",
+      "padPolicy": "exit-near",
+      "mode": "artificial100HPResidual",
+      "wave": "d4-wave-1",
+      "pad": [
+        10,
+        0,
+        14
+      ],
+      "legalPadCount": 47,
+      "seconds": 134.4000000000421,
+      "killed": 1,
+      "escaped": 17,
+      "shots": 12,
+      "usefulHP": 120,
+      "modelsHit": [
+        "spider",
+        "lantern"
+      ],
+      "launches": 3,
+      "returns": 2,
+      "emergencyStops": 0,
+      "firstHitAt": 4.225,
+      "lastHitAt": 52.408333333331,
+      "hits": [
+        {
+          "at": 4.225,
+          "id": "d4-wave-1-spider-1",
+          "model": "spider",
+          "applied": 10
+        },
+        {
+          "at": 4.475000000000012,
+          "id": "d4-wave-1-spider-1",
+          "model": "spider",
+          "applied": 10
+        },
+        {
+          "at": 45.3333333333314,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 50.34166666666445,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 50.59999999999777,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 50.85833333333109,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.11666666666441,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.374999999997726,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.633333333331045,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 51.891666666664364,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 52.14999999999768,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        },
+        {
+          "at": 52.408333333331,
+          "id": "d4-wave-1-lantern-11",
+          "model": "lantern",
+          "applied": 10
+        }
+      ]
+    }
+  ]
+}

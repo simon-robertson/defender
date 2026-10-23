@@ -4,9 +4,9 @@ import {partMatrices} from '../shared/math.js';
 const portraits={};
 const srgb=x=>Math.round(255*(x<=.0031308?12.92*x:1.055*x**(1/2.4)-.055));
 const enemies=['dog','roller','moth','walker','dune-tread','twin-fan','tripod','ray','spider','lantern'];
-for(const id of ['turret-study','arc-spire','missile-launcher','power-generator',...enemies]){
+for(const id of ['turret-study','arc-spire','missile-launcher','power-generator','drone-defence',...enemies]){
  const model=await Bun.file(new URL(`../assets/models/${id}.json`,import.meta.url)).json();
- for(const variant of (enemies.includes(id)||id==='power-generator'?['base']:['base','upgrade1','upgrade2'])){
+ for(const variant of (enemies.includes(id)||id==='power-generator'||id==='drone-defence'?['base']:['base','upgrade1','upgrade2'])){
   const parts=model.variants[variant].parts,matrices=partMatrices(parts),polygons=[],bounds=[Infinity,Infinity,-Infinity,-Infinity],eye=[.62,.65,-.8];
   for(const part of parts){const mesh=meshPart(model,part),m=matrices.get(part.id);
    for(let q=0;q<mesh.quads.length;q++){

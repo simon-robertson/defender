@@ -21,9 +21,10 @@ function restore(config,data){
  requireSave(data.completedWaves===completed&&integer(data.tokens,0,budget)&&integer(data.misses,0,config.missLimit-1));
  const maxUnits=Math.floor(budget/Math.min(...Object.values(config.defences).map(family=>family.purchaseCost)));
  requireSave(Array.isArray(data.units)&&data.units.length<=maxUnits&&data.nextUnit===data.units.length+1);
- let spent=0;
+ let spent=0;const familyCounts=new Map();
  const units=data.units.map((unit,index)=>{
   requireSave(unit&&typeof unit.model==='string'&&Object.hasOwn(config.defences,unit.model));
+  const count=(familyCounts.get(unit.model)??0)+1;familyCounts.set(unit.model,count);requireSave(count<=(config.defences[unit.model].maxOwned??Infinity));
   const family=config.defences[unit.model],variants=family.kind==='enhancer'?['base']:family.enabledVariants,tier=variants.indexOf(unit.variant);
   requireSave(tier>=0&&unit.id===`player-${unit.model==='turret-study'?'gun':unit.model}-${index+1}`);
   requireSave((family.availableFromWave??1)<=completed);

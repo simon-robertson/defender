@@ -43,7 +43,7 @@ function updateInventory(snapshot,locked){
     entry.row.classList.toggle('selected',selected);entry.row.classList.toggle('deployed',Boolean(unit.deployed));
     const portrait=PORTRAITS[(unit.model??'turret-study')+'-'+unit.variant];if(entry.portrait.getAttribute('src')!==portrait)entry.portrait.src=portrait;
     setText(entry.number,ordinal(index+1));setText(entry.name,unit.label||`Gun ${ordinal(index+1)}`);
-    const stats=enhancer?`+${Math.round(unit.stats.strengthIncrease*100)}% strength · 4 neighbours`:unit.stats?`DMG ${unit.stats.strength} / RNG ${unit.stats.maxRange}${unit.strengthIncrease?' · BOOSTED':''}`:'';
+    const stats=unit.flightSeconds?`DMG ${unit.stats.strength} / FLIGHT ${unit.flightSeconds}s / RECHARGE ${unit.rechargeSeconds}s`:enhancer?`+${Math.round(unit.stats.strengthIncrease*100)}% strength · 4 neighbours`:unit.stats?`DMG ${unit.stats.strength} / RNG ${unit.stats.maxRange}${unit.strengthIncrease?' · BOOSTED':''}`:'';
     setText(entry.detail,`${tier} / ${unit.deployed?'Deployed':'Reserve'}${stats?' · '+stats:''}`);
     entry.select.disabled=locked||(!loadout&&!deploy);entry.select.setAttribute('aria-pressed',String(selected));
     entry.select.setAttribute('aria-label',`${unit.label||`Gun ${index+1}`}, ${tier}, ${unit.deployed?'deployed':'in inventory'}. Select ${enhancer?'enhancer':'defence'}.`);
@@ -93,10 +93,11 @@ function updateShop(snapshot,locked){
    row.append(icon,info,button);refs.shop.append(row);entry={row,name,detail,button};shopRows.set(item.model,entry);
   }
   setText(entry.name,item.model==='turret-study'?'Twin-barrel gun':item.name);
-  setText(entry.detail,item.available?(item.kind==='enhancer'?`+${Math.round(item.stats.strengthIncrease*100)}% strength / 4 neighbours`:item.stats?`DMG ${item.stats.strength} / RNG ${item.stats.maxRange}`:'Base defence'):`UNLOCK / AREA ${Math.ceil(item.availableFromWave/4)}`);
-  entry.button.disabled=locked||snapshot.phase!=='loadout'||!item.available||snapshot.tokens<item.cost;
-  entry.button.setAttribute('aria-label',item.available?`Buy ${item.name} for ${priceLabel(item.cost)}`:`${item.name}, available at Level ${Math.ceil(item.availableFromWave/4)}`);
-  setText(entry.button,item.available?`BUILD · ${item.cost}`:'LOCKED');entry.row.classList.toggle('locked',!item.available);
+  const atCapacity=item.maxOwned!==undefined&&item.owned>=item.maxOwned;
+  setText(entry.detail,item.available?(item.flightSeconds?`DMG ${item.stats.strength} / FLIGHT ${item.flightSeconds}s / RECHARGE ${item.rechargeSeconds}s · Fleet ${item.owned}/${item.maxOwned}`:item.kind==='enhancer'?`+${Math.round(item.stats.strengthIncrease*100)}% strength / 4 neighbours`:item.stats?`DMG ${item.stats.strength} / RNG ${item.stats.maxRange}`:'Base defence'):`UNLOCK / AREA ${Math.ceil(item.availableFromWave/4)}`);
+  entry.button.disabled=locked||snapshot.phase!=='loadout'||!item.available||snapshot.tokens<item.cost||atCapacity;
+  entry.button.setAttribute('aria-label',atCapacity?`${item.name} fleet full, ${item.owned} of ${item.maxOwned} owned`:item.available?`Buy ${item.name} for ${priceLabel(item.cost)}`:`${item.name}, available at Level ${Math.ceil(item.availableFromWave/4)}`);
+  setText(entry.button,atCapacity?'FLEET FULL':item.available?`BUILD · ${item.cost}`:'LOCKED');entry.row.classList.toggle('locked',!item.available);
  }
  const label=document.querySelector('.catalogue-label');if(label)show(label,snapshot.phase==='loadout');
 }

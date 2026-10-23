@@ -178,7 +178,7 @@ async function initialize(){
     onPoseChange:(...args)=>renderer.updateInstance(...args),onVisible:(...args)=>renderer.setActorVisible(...args),
     onDeploymentsChanged:world=>{renderer.syncRuntimeInstances(world);syncCombatEffects();},
     onStep:dt=>{shots.advance(dt);damage.advance(dt);if(engine?.firing.arcs.states.length)arcs.advance(dt);},onAfterStep:(dt,combat)=>{if(combat)damage.emitSmoke(dt);},
-    onShot:(variant,matrix,at)=>{shots.emit(matrix,TURRET_MUZZLES[variant],at);audio.gunShot(matrix,TURRET_MUZZLES[variant],at);actionCamera.noteShot(matrix,at);},
+    onShot:(variant,matrix,at,muzzles=TURRET_MUZZLES[variant])=>{shots.emit(matrix,muzzles,at);audio.gunShot(matrix,muzzles,at);actionCamera.noteShot(matrix,at);},
     onBulletImpact:(point,normal,at)=>{shots.impact(point,normal,at);cameraViews.noteActivity(point[0],point[1],point[2],at,1);},
     onArcShot:(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint)=>{arcs.emit(source,point,normal,at,matrix,localPoint,isChain,sourceMatrix,sourceLocalPoint);actionCamera.note(source[0],source[1],source[2],0,at);cameraViews.noteActivity(point[0],point[1],point[2],at,2);},
     missileEffects:{onTrail:(x,y,z,lag)=>damage.missileTrail(x,y,z,lag),onLaunch:(x,y,z)=>{damage.launchSmoke(x,y,z);actionCamera.note(x,y,z,0,engine.time);},onImpact:(x,y,z,nx,ny,nz)=>{emitMissileImpact(damage,world.playCritters?engine.wildlife:null,x,y,z,nx,ny,nz);cameraViews.noteExplosion({x,y,z},engine.time);}},
@@ -290,6 +290,8 @@ function drawOverlay(){
   if(family.kind==='enhancer'){
    let neighbours=0;for(const placement of session.placements)if(config.defences[placement.model]?.kind!=='enhancer'&&Math.abs(placement.box[0]-hover[0])+Math.abs(placement.box[2]-hover[2])===1){polygon(placement.box,'#72ed88','.35');neighbours++;}
    hint.textContent=result.valid?`Click to place. ${neighbours?neighbours+' adjacent defence'+(neighbours===1?' gains':'s gain')+' +25% strength.':'No adjacent defence yet. Place a defence in an edge-sharing square to activate.'}`:result.reason;
+  }else if(unit.model==='drone-defence'){
+   hint.textContent=result.valid?'Click to place a Drone pad. Aircraft manoeuvre across the board; gun range follows the aircraft.':result.reason;
   }else{
    const range=family.variants[unit.variant].stats.maxRange,ring=document.createElementNS(svgNS,'polygon'),cx=(hover[0]+.5)*24,cz=(hover[2]+.5)*24;
    ring.setAttribute('points',Array.from({length:64},(_,i)=>project(cx+Math.cos(i*Math.PI/32)*range,height,cz+Math.sin(i*Math.PI/32)*range).join(',')).join(' '));ring.setAttribute('fill','none');ring.setAttribute('stroke',color);ring.setAttribute('stroke-opacity','.7');ring.setAttribute('stroke-dasharray','4 5');fragment.prepend(ring);

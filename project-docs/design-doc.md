@@ -509,6 +509,8 @@ The generator's approved connection is a continuous smooth green plasma tube wit
 
 ## Proposed drone defence
 
+**Campaign integration, 23 October (Tactician decision authorised by the player):** base Drone costs 1 token from A2.1, with an explicit four-owned limit including reserve pads. No endurance upgrades are offered: their limited gain does not justify another purchase; existing higher-tier models remain historical review assets. The approved base combat/flight/recharge values below are unchanged. Mobile Drones receive no fixed-pad generator bonus. Shop, purchase/save limits, safe deployment, shared finite-wave combat and settling return are implemented for review. This supersedes older “costs/upgrades open” and preview-only status. [Decision and evidence](drone-campaign-2026-10-23/README.md).
+
 **User acceptance, 18 October 2026:** the user says the corrected drones look great and also accepts the current path carving across A1–A4. Preserve this baseline for the next session. That session is complete. The 19 October task authorises Zone B carving and a separate game-readiness proposal; preserve the accepted drones.
 
 **Drone flight-control audit (18 October, latest):** corrected stale avoidance warnings, an attack flag that stalled return flight, inflated vertical collision bounds and impossible ground-critter forecasts inside protected pad space. Waiting for safe take-off does not consume the20-second flight allowance. Use time-matched actual flight intentions, retain live collision checks and verify productive sorties as well as physical clearance. Models, levels and approved weapon/endurance/recharge values are unchanged. The current audit record supersedes earlier collision-only acceptance.

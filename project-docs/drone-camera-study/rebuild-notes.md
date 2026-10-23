@@ -1,5 +1,7 @@
 # First director rebuild from the saved shots
 
+**23 October:** the player-approved reticle orbit replaces this autonomous director in production. Preserve the saved shot study and historical evidence below; current targeting, high flight and exterior orbit rules are recorded in [the reticle delivery](../drone-reticle-2026-10-23/README.md).
+
 Branch: `drone-cam-logic-rebuild`. The sixteen original PNG/JSON pairs in `shots/` are retained verbatim as the player's reference set: fifteen preferred shots and one rejected shot.
 
 The common direction is a readable battle in the foreground with arrivals and level context behind it. Quiet moments should survey approaching enemies and the board. Multiple active fronts need broader compositions. A dominant fight can sustain a closer, near-level dramatic shot; it should not be confined to permanent high stations. Enemies near an exit deserve attention because they create tension. Visible reflections are a useful compositional bonus when the action remains readable.

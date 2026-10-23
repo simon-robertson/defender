@@ -66,7 +66,7 @@ test('unassigned Drone upgrades remain rejected and campaign fleet overflow fail
 
 test('base aircraft highest flight/evasion envelope leaves the spectator camera a positive vertical gap',()=>{
  const mobileTop=DRONE_MODEL.bodyPivot[1]+Math.max(...DRONE_PREVIEW.transitLayers)+DRONE_HULL.above;
- expect(DRONE_CAMERA_MIN_ALTITUDE-DRONE_CAMERA_RADIUS-mobileTop).toBe(6.5);
+ expect(DRONE_CAMERA_MIN_ALTITUDE-DRONE_CAMERA_RADIUS-mobileTop).toBe(86.5);
 });
 
 test('four native A2 aircraft coexist with mixed defences, clear each other and finish their first return at 30/60/120 Hz',async()=>{

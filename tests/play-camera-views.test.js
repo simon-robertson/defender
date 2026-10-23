@@ -78,7 +78,7 @@ test('settling retains Drone, pause freezes its exact displayed pose and resumed
   v.sync('wave',engine);for(let i=0;i<60;i++){engine.time+=1/60;v.advance(1/60,{engine,phase:'wave'});}c.update(1.5);
   const position=[...d.position],time=d.time,matrix=[...c.vp];v.advance(4,{engine,phase:'wave',paused:true});c.update(1.5);expect([...c.vp]).toEqual(matrix);expect(d.time).toBe(time);
   v.sync('settling',engine);expect(d.active).toBe(true);expect([...d.position]).toEqual(position);
-  engine.time+=1/60;v.advance(1/60,{engine,phase:'settling'});expect(d.time).toBeGreaterThan(time);expect(Math.hypot(...d.position.map((x,i)=>x-position[i]))).toBeLessThan(34/60+.001);
+  engine.time+=1/60;v.advance(1/60,{engine,phase:'settling'});expect(d.time).toBeGreaterThan(time);expect(Math.hypot(...d.position.map((x,i)=>x-position[i]))).toBeLessThan(68/60+.001);
   v.sync('loadout',engine);expect(c.mode).toBe('overview');expect(d.active).toBe(false);
  }finally{f.dispose();}
 });

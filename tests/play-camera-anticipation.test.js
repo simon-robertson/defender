@@ -11,9 +11,9 @@ test('pre-combat approach framing follows arrivals without promoting idle defenc
  const snapshot=JSON.stringify(engine);d.expose(2,true);engine.time=2;d.update(engine,world);expect(d.intent.subject).toBe(target);engine.time=0;expect(JSON.stringify(engine)).toBe(snapshot);
  engine.time=3;gun.target=target;gun.lineOfSight=true;gun.cycle.time=gun.cycle.lastShotAt=3;d.update(engine,world);expect(d.intent.kind).toBe('combat');expect(d.intent.style).toBe('battle');expect(d.count).toBe(2);
 });
-test('drone keeps its gradual gimbal turn without restoring removed depth-of-field state',()=>{
- const c=camera(),d=new DroneCamera(c);d.position.set([100,120,100]);d.look.set([200,120,0]);d.focus.set([200,120,0]);d.yaw=0;d.pitch=0;
- const position=[...d.position],look=[...d.look];d.aim(1/120,{firing:{states:[]}});
- expect(d.yaw).toBeLessThan(0);expect(Math.abs(d.yaw)).toBeLessThan(.01);expect(d.pitch).toBe(0);expect([...d.position]).toEqual(position);expect([...d.look]).toEqual(look);
+test('drone derives its gimbal from the fixed anchor without depth-of-field state',()=>{
+ const c=camera(),d=new DroneCamera(c);d.position.set([100,224,100]);d.focus.set([200,24,0]);
+ const position=[...d.position],focus=[...d.focus];d.aim();
+ expect(d.yaw).toBeCloseTo(-Math.PI/4,10);expect(d.pitch).toBeCloseTo(Math.atan2(200,Math.sqrt(20000)),10);expect([...d.position]).toEqual(position);expect([...d.focus]).toEqual(focus);
  d.apply();expect(c.yaw).toBe(d.yaw);expect(c.pitch).toBe(d.pitch);expect(d.focusDistance).toBeUndefined();expect(c.focusDistance).toBeUndefined();
 });

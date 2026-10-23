@@ -8,11 +8,11 @@ const snapshotCode=app.slice(app.indexOf('function snapshot('),app.indexOf('func
 const loadingCall=ui.match(/show\(refs\.loading,[^;]+;/)[0];
 test('Drone view names the click-drag gesture in markup, runtime hints and accessible instructions',async()=>{
  const html=await readFile(new URL('../play/index.html',import.meta.url),'utf8');
- expect(html).toContain('id="drone-camera-format">Click and drag to target</span>');
+ expect(html).toContain('id="drone-camera-format">Click and drag to control the drone</span>');
  const scope={screenshot:false,droneActive:true,phase:'wave',filming:true,refs:{'drone-camera-format':'format','board-caption':'caption'},text:{},setText:(node,value)=>scope.text[node]=value};
  runInNewContext(ui.match(/const canvasLabel=[^;]+;/)[0]+';globalThis.label=canvasLabel;',scope);
  runInNewContext(ui.match(/setText\(refs\['drone-camera-format'\],[^;]+;/)[0]+ui.match(/setText\(refs\['board-caption'\],[^;]+;/)[0],scope);
- expect(scope.label).toContain('Hold either mouse button and drag');expect(scope.text.format).toBe('Click and drag to target');expect(scope.text.caption).toBe('Drone-cam active.');
+ expect(scope.label).toContain('Hold either mouse button and drag');expect(scope.text.format).toBe('Click and drag to control the drone');expect(scope.text.caption).toBe('Drone-cam active.');
 });
 test('centred Drone hint hides after targeting and while interaction is unavailable',()=>{
  const statement=ui.match(/show\(refs\['drone-camera-format'\],[^;]+;/)[0];

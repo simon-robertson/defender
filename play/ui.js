@@ -166,7 +166,7 @@ export function renderUI(snapshot={}){
   const fast=snapshot.targetTimeScale===2;refs['speed-button'].setAttribute('aria-pressed',String(fast));refs['speed-button'].title=fast?'Return to normal speed (T)':'Double game speed (T)';
   show(refs['pause-button'],activeWave);refs['pause-button'].disabled=locked||!activeWave;
   document.body.dataset.droneCamera=String(filming);document.body.dataset.cameraView=droneActive?'drone':'overview';
-  show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'Click and drag to target');
+  show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'Click and drag to control the drone');
   show(refs['drone-camera-format'],filming&&phase==='wave'&&!paused&&!busy&&!error&&!snapshot.leaveOpen&&!snapshot.droneCameraHintDismissed);
   const recorded=Math.floor(snapshot.droneCameraTime??0);setText(refs['drone-camera-time'],`${String(Math.floor(recorded/60)).padStart(2,'0')}:${String(recorded%60).padStart(2,'0')}`);
   setText(refs['pause-context'],settling?'Post-wave effects paused.':'Wave paused.');

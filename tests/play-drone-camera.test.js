@@ -81,7 +81,7 @@ test('equally visible action is preferred on the readable foreground side of the
 });
 test('a single visible enemy can guide the orbit toward the foreground without retargeting',()=>{
  const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);d.orbitAngle=0;f.subject.x=f.subject.aimX=180;
-  expect(d.viewScore(.3,f.engine)).toBeGreaterThan(0);expect(d.viewScore(-.3,f.engine)).toBeGreaterThan(0);d.planOrbit(f.engine);expect(d.orbitDirection).toBe(-1);expect([...d.focus]).toEqual([240,24,192]);
+  expect(d.viewScore(.3,f.engine)).toBeGreaterThan(0);expect(d.viewScore(-.3,f.engine)).toBeGreaterThan(0);d.planOrbit(f.engine);expect(d.orbitGoalAngle).toBeLessThan(-.3);expect([...d.focus]).toEqual([240,24,192]);
  }finally{d.dispose();}
 });
 test('orbit reversals ease continuously with bounded flight motion at 30/60/120 Hz',()=>{
@@ -94,8 +94,33 @@ test('orbit reversals ease continuously with bounded flight motion at 30/60/120 
  }
  expect(results[0]).toBeCloseTo(results[1],10);expect(results[1]).toBeCloseTo(results[2],10);
 });
-test('orbit direction favours visible enemies without moving the target, with a reversal hold',()=>{
- const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);const target=[...d.focus];d.viewScore=a=>a<d.orbitAngle?1:0;d.planOrbit(f.engine);expect(d.orbitDirection).toBe(-1);d.viewScore=a=>a>d.orbitAngle?1:0;d.planOrbit(f.engine);expect(d.orbitDirection).toBe(-1);d.time+=4.1;d.planOrbit(f.engine);expect(d.orbitDirection).toBe(1);expect([...d.focus]).toEqual(target);}finally{d.dispose();}
+test('a useful framing destination holds through brief changes and ignores off-screen action',()=>{
+ const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);d.position.set([240,230,336]);d.orbitAngle=0;d.aim();f.subject.x=f.subject.aimX=180;d.planOrbit(f.engine);const goal=d.orbitGoalAngle;expect(goal).not.toBeNull();
+  f.subject.x=f.subject.aimX=300;d.planOrbit(f.engine);expect(d.orbitGoalAngle).toBe(goal);d.time+=4.1;d.planOrbit(f.engine);expect(d.orbitGoalAngle).toBeGreaterThan(0);
+  f.subject.x=f.subject.aimX=2000;d.time+=4.1;d.planOrbit(f.engine);expect(d.orbitGoalAngle).toBeNull();expect(d.frameTargets).toHaveLength(0);expect([...d.focus]).toEqual([240,24,192]);
+ }finally{d.dispose();}
+});
+test('global orbit composition improves foreground action sooner and includes its participating defence',()=>{
+ const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);d.position.set([240,230,336]);d.orbitAngle=0;d.velocity.fill(0);d.acceleration.fill(0);d.aim();f.subject.x=f.subject.aimX=180;
+  const gun={id:'fighting-gun',x:200,y:36,z:210,target:f.subject,lineOfSight:true,cycle:{time:0,lastShotAt:0}},idle={id:'idle',x:280,z:200,target:null};f.engine.firing.states=[gun,idle];d.captureFrame(f.engine);expect(d.frameTargets).toEqual([f.subject]);expect(d.frameWeapons).toEqual([gun]);const initial=d.viewScore(0,f.engine,d.frameTargets,d.frameWeapons);d.planOrbit(f.engine);expect(d.orbitGoalAngle).not.toBeNull();expect(Math.abs(d.orbitGoalAngle)).toBeGreaterThan(.3);
+  expect(d.viewScore(d.orbitGoalAngle,f.engine,d.frameTargets,d.frameWeapons)).toBeGreaterThan(initial+.12);const anchor=[...d.focus];let maximumRate=0;
+  for(let n=0;n<12*60;n++){f.engine.time+=1/60;gun.cycle.time=gun.cycle.lastShotAt=f.engine.time;d.advance(1/60,{engine:f.engine,phase:'wave'});maximumRate=Math.max(maximumRate,Math.abs(d.orbitRate));centred(d);}
+  expect(maximumRate).toBeGreaterThan(.06);expect(maximumRate).toBeLessThanOrEqual(.12+1e-8);const bearing=Math.atan2(d.position[0]-240,d.position[2]-192);expect(d.viewScore(bearing,f.engine,[f.subject],[gun])).toBeGreaterThan(initial+.12);expect([...d.focus]).toEqual(anchor);expect(d.blockedMoves).toBe(0);
+ }finally{d.dispose();}
+});
+test('off-screen fights and stale firing cannot displace the visible exchange',()=>{
+ const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);d.position.set([240,230,336]);d.orbitAngle=0;d.yaw=-2;d.pitch=-.5;f.subject.x=f.subject.aimX=180;
+  const gun={id:'real-y-fallback',x:200,z:210,target:f.subject,lineOfSight:true,cycle:{time:0,lastShotAt:0}};f.engine.firing.states=[gun];d.planOrbit(f.engine);const goal=d.orbitGoalAngle;expect(goal).not.toBeNull();expect(d.frameWeapons).toEqual([gun]);
+  const remote={...f.subject,id:'remote',x:2000,aimX:2000},remoteGun={...gun,id:'remote-gun',x:2024,target:remote},stale={...gun,id:'stale-gun',cycle:{time:0,lastShotAt:-3}};f.engine.enemies.activeTargets.push(remote);f.engine.firing.states.push(remoteGun,stale);d.noteActivity(2000,24,192,f.engine.time,20);d.frameHoldUntil=0;d.planOrbit(f.engine);
+  expect(d.frameTargets).toEqual([f.subject]);expect(d.frameWeapons).toEqual([gun]);expect(d.frameImpact).toBe(false);expect(d.orbitGoalAngle).toBe(goal);expect([...d.focus]).toEqual([240,24,192]);
+ }finally{d.dispose();}
+});
+test('purposeful framing reversals preserve continuous angular and physical movement at every display rate',()=>{
+ const rates=[];for(const hz of [30,60,120]){const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);advance(f,8,hz);d.frameHoldUntil=d.time+100;d.orbitGoalAngle=d.orbitAngle+Math.PI/2;advance(f,3,hz);expect(d.orbitRate).toBeGreaterThan(.09);d.orbitGoalAngle=d.orbitAngle-Math.PI/2;const focus=[...d.focus];let rate=d.orbitRate,acceleration=[...d.acceleration];
+   for(let n=0;n<hz*3;n++){const angle=d.orbitAngle,p=[...d.position];f.engine.time+=1/hz;d.advance(1/hz,{engine:f.engine,phase:'wave'});expect(Math.abs(d.orbitRate-rate)).toBeLessThanOrEqual(.336/hz+1e-7);expect(Math.abs(d.orbitAngle-angle)).toBeLessThanOrEqual(.12/hz+1e-7);expect(Math.hypot(...d.position.map((v,i)=>v-p[i]))).toBeLessThanOrEqual(DRONE_CAMERA_SPEED/hz+1e-6);expect(Math.hypot(...d.acceleration.map((v,i)=>v-acceleration[i]))*hz).toBeLessThanOrEqual(384+1e-4);if(n===0)expect(d.orbitRate).toBeGreaterThan(0);rate=d.orbitRate;acceleration=[...d.acceleration];centred(d);}
+   expect(d.orbitRate).toBeLessThan(-.1);expect([...d.focus]).toEqual(focus);expect(d.blockedMoves).toBe(0);rates.push(d.orbitRate);
+  }finally{d.dispose();}}
+ expect(rates[0]).toBeCloseTo(rates[1],8);expect(rates[1]).toBeCloseTo(rates[2],8);
 });
 test('swept geometry retains solid terrain, water, scenery and imminent spawn reservations outside or inside the board',()=>{
  const f=basic(),d=f.drone;

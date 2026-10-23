@@ -19,6 +19,6 @@ Run the exact previous/current camera comparison with:
 bun project-docs/cleanup-2026-10-23/compare-camera.js
 ```
 
-The script imports the accepted `9b9a186` camera/flight directly from Git, using current unchanged dependencies, and compares against this pass on one shared real B4 battle without touching player progress. [Recorded comparison](camera-comparison.json).
+The script imports the accepted `9b9a186` camera/flight directly from Git, using unchanged dependencies, and compares against the saved cleanup commit `ef7677e` on one shared real B4 battle without touching player progress. [Recorded comparison](camera-comparison.json).
 
 The local game package is refreshed. Native A1 browser review on a separate port/session records eleven genuine gun shots, fifteen model lights, active Drone motion, zero blocked camera moves and no captured warnings/errors. [Runtime record](browser-review.json). Active player state remains untouched; local commit only, no push/publication. The subsequent request for clearer click-drag instructions and stronger action framing is separate from this behavior-preserving cleanup.

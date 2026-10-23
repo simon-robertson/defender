@@ -3,19 +3,19 @@
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {writeFile} from 'node:fs/promises';
-import {DroneCamera} from '../../play/drone-camera.js';
 import {Camera} from '../../engine/camera.js';
 import {STUDY_SCENARIOS} from '../../tools/camera-study-scenarios.js';
 import {createStudyScene} from '../../tools/camera-study-scene.js';
-const root=new URL('../../',import.meta.url),baseline='9b9a186';
-function oldModule(path,flight){
- let source=execFileSync('git',['show',baseline+':'+path],{cwd:root,encoding:'utf8'});
+const root=new URL('../../',import.meta.url),baseline='9b9a186',cleanup='ef7677e';
+function oldModule(ref,path,flight){
+ let source=execFileSync('git',['show',ref+':'+path],{cwd:root,encoding:'utf8'});
  source=source.replace(/from '([^']+)'/g,(_,specifier)=>"from '"+(specifier==='./drone-flight.js'?flight:new URL(specifier,new URL(path,root)).href)+"'");
  return 'data:text/javascript;base64,'+Buffer.from(source).toString('base64');
 }
-const flight=oldModule('play/drone-flight.js'),{DroneCamera:Before}=await import(oldModule('play/drone-camera.js',flight));
+const flight=oldModule(baseline,'play/drone-flight.js'),{DroneCamera:Before}=await import(oldModule(baseline,'play/drone-camera.js',flight));
+const currentFlight=oldModule(cleanup,'play/drone-flight.js'),{DroneCamera}=await import(oldModule(cleanup,'play/drone-camera.js',currentFlight));
 const makeCamera=()=>new Camera({clientWidth:1500,clientHeight:1000,addEventListener(){},focus(){}},()=>{});
-const report={baseline,cameraFrames:0,baselineAimCalls:0,currentAimCalls:0,scenarios:[]};
+const report={baseline,cleanup,cameraFrames:0,baselineAimCalls:0,currentAimCalls:0,scenarios:[]};
 const nativeFetch=globalThis.fetch;
 globalThis.fetch=async url=>{
  const match=/^\/api\/(levels|models)\/([a-z0-9-]+)$/.exec(url);assert.ok(match,'Unexpected asset request');

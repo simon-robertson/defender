@@ -6,6 +6,14 @@ import {PLAY_CONFIG} from '../play/config.js';
 const app=await readFile(new URL('../play/app.js',import.meta.url),'utf8'),ui=await readFile(new URL('../play/ui.js',import.meta.url),'utf8');
 const snapshotCode=app.slice(app.indexOf('function snapshot('),app.indexOf('function applyCameraPresentation('));
 const loadingCall=ui.match(/show\(refs\.loading,[^;]+;/)[0];
+test('Drone view names the click-drag gesture in markup, runtime hints and accessible instructions',async()=>{
+ const html=await readFile(new URL('../play/index.html',import.meta.url),'utf8');
+ expect(html).toContain('id="drone-camera-format">CLICK-DRAG TO TARGET</span>');
+ const scope={screenshot:false,droneActive:true,phase:'wave',filming:true,refs:{'drone-camera-format':'format','board-caption':'caption'},text:{},setText:(node,value)=>scope.text[node]=value};
+ runInNewContext(ui.match(/const canvasLabel=[^;]+;/)[0]+';globalThis.label=canvasLabel;',scope);
+ runInNewContext(ui.match(/setText\(refs\['drone-camera-format'\],[^;]+;/)[0]+ui.match(/setText\(refs\['board-caption'\],[^;]+;/)[0],scope);
+ expect(scope.label).toContain('Hold either mouse button and drag');expect(scope.text.format).toBe('CLICK-DRAG TO TARGET');expect(scope.text.caption).toBe('Click-drag to target the drone-cam.');
+});
 test('loading follows the requested scene: title backdrops stay clear, real starts and Continue retain the panel',()=>{
  for(const [phase,candidatePhase,busy,error,expected]of [['title',null,true,'',false],['title','title',true,'',false],['title','loadout',true,'',true],['wave','title',true,'',false],['wave','loadout',true,'',true],['loadout',null,false,'',false],['title','loadout',true,'Failed',false]]){
   const session=new PlaySession();session.phase=phase;const candidate=session.fork();candidate.phase=candidatePhase;

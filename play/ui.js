@@ -131,7 +131,7 @@ export function renderUI(snapshot={}){
   if(busy&&(oldAction||oldGraphics))pendingFocus={action:oldAction,unit:oldUnit,graphics:oldGraphics};
   document.body.dataset.phase=phase;document.body.dataset.paused=String(paused);document.body.dataset.screenshot=String(screenshot);$('play-shell').setAttribute('aria-busy',String(busy));
   const droneActive=Boolean(snapshot.droneCameraActive),droneEnabled=Boolean(snapshot.droneCameraEnabled),filming=droneActive&&!screenshot;
-  const canvasLabel=screenshot?'Paused screenshot camera. W/S move forward/backward, A/D strafe, drag to rotate. Backspace restores the paused view.':droneActive?'Flying drone action camera. Drag either mouse button to aim the centre reticle. The drone orbits the board position under it.':phase==='title'?'Fixed scenery view of woodland ruins, trees and limestone paths.':'Defence landscape. Camera framing is automatic.';
+  const canvasLabel=screenshot?'Paused screenshot camera. W/S move forward/backward, A/D strafe, drag to rotate. Backspace restores the paused view.':droneActive?'Flying drone action camera. Hold either mouse button and drag to target the centre reticle. The drone orbits the board position under it.':phase==='title'?'Fixed scenery view of woodland ruins, trees and limestone paths.':'Defence landscape. Camera framing is automatic.';
   if($('world').getAttribute('aria-label')!==canvasLabel)$('world').setAttribute('aria-label',canvasLabel);
   show(refs['title-screen'],phase==='title');show(refs.hud,phase!=='title');show(refs['prepare-panel'],prep);show(refs['wave-preview'],prep);show(refs['board-footer'],phase!=='title');
   show(refs['options-screen'],phase==='title'&&snapshot.optionsOpen&&!error);
@@ -166,7 +166,7 @@ export function renderUI(snapshot={}){
   const fast=snapshot.targetTimeScale===2;refs['speed-button'].setAttribute('aria-pressed',String(fast));refs['speed-button'].title=fast?'Return to normal speed (T)':'Double game speed (T)';
   show(refs['pause-button'],activeWave);refs['pause-button'].disabled=locked||!activeWave;
   document.body.dataset.droneCamera=String(filming);document.body.dataset.cameraView=droneActive?'drone':'overview';
-  show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'DRAG TO AIM');
+  show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'CLICK-DRAG TO TARGET');
   const recorded=Math.floor(snapshot.droneCameraTime??0);setText(refs['drone-camera-time'],`${String(Math.floor(recorded/60)).padStart(2,'0')}:${String(recorded%60).padStart(2,'0')}`);
   setText(refs['pause-context'],settling?'Post-wave effects paused.':'Wave paused.');
   updateShop(snapshot,locked);updateWavePreview(snapshot);
@@ -185,7 +185,7 @@ export function renderUI(snapshot={}){
   show(refs['wave-status'],activeWave&&!paused);const remaining=count(snapshot.enemiesRemaining),spawned=count(snapshot.spawned),total=count(snapshot.totalEnemies);
   setText(refs['wave-status-text'],settling?'Wave complete · Clearing the field…':total?`${remaining} on the path · ${Math.min(spawned,total)} of ${total} arrived`:'Wave in progress');
   show(refs.notice,Boolean(snapshot.notice)&&!error&&!result);setText(refs.notice,snapshot.notice??'');
-  setText(refs['board-caption'],filming?'Drag to aim · Drone orbits the reticle target.':prep&&droneEnabled?'Drone armed for the next wave.':activeWave?'Drag to aim · Drone orbits the reticle target.':result?(phase==='complete'?'Run complete.':'Run ended.'):deploying?'Select a defence, then click clear ground to place it.':'Build, upgrade, then deploy.');
+  setText(refs['board-caption'],filming?'Click-drag to target the drone-cam.':prep&&droneEnabled?'Drone armed for the next wave.':activeWave?'Click-drag to target the drone-cam.':result?(phase==='complete'?'Run complete.':'Run ended.'):deploying?'Select a defence, then click clear ground to place it.':'Build, upgrade, then deploy.');
 
   if(result){
     show(refs['result-checkpoint'],phase==='defeat'||Boolean(snapshot.saveError));setText(refs['result-checkpoint'],snapshot.saveError||checkpointDescription(snapshot.savedGame,snapshot.savingProgress));

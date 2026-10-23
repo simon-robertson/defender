@@ -2,6 +2,8 @@
 
 ## 23 October 2026
 
+- **Simultaneous entrances, 23 October (implemented):** all sixteen A3/B3/B4/C3 split-route waves open ground fronts together at wave time zero; matching airborne trains share introduction times. Enemy counts/IDs/profiles and intra-route gaps remain; the other forty-eight encounters are unchanged. Thirty-eight focused config/session/engine/campaign checks pass, including native startup of both entrances in the same call for every affected wave. Earlier merge-compensating delays are superseded. Surviving enemies can overlap at A3/B4/C3 merges because existing independent movement has no merge-spacing response; this consequence is recorded rather than changing movement or restoring stagger. Balance awaits player review; no active-session reload or push.
+
 - **Player-directed Drone, 23 October (implemented):** drag either mouse button to rotate the gimbal; left-click the board to select a persistent wave-local target. Safe bounded flight chooses a nearby offset station, with small local action reframes and altitude alternatives. Retains altitude/board/terrain/water/actor clearance, eased movement, pause and automatic filming until targeted. Perspective picking rejects sky/outside clicks; raised terrain and obscured anchors remain usable. Forty-three distinct targeted checks pass across input/camera/ownership/UI/presentation, including native manual clearance at 30/60/120 Hz and unchanged automatic combat outcomes. Isolated native A1 click/drag review reports no game error. Appearance awaits player feedback; active player and saves untouched, no push.
 
 ## 22 October 2026

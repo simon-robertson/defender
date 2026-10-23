@@ -44,12 +44,12 @@ const B=[
 const C=[2200,2800,3400,3900].map((health,index)=>({tripod:{maxHealth:health*1.5,speed:14},ray:{maxHealth:(1200+index*150)*1.5,speed:22}}));
 const D=[4000,4500,5000,5500].map((health,index)=>({spider:{maxHealth:health*1.5,speed:12},lantern:{maxHealth:(1600+index*200)*1.5,speed:16}}));
 const later=(zone,level,index,name,description,groups)=>encounter(level,index,name,description,(zone==='b'?B:zone==='c'?C:D)[level-1],groups,zone);
-// Lake approach is 240 units longer before the merge. Four-second alternating
-// ground entries and the air offset keep both incoming streams interleaved.
+// Both entrances open together. Each branch retains its eight-second ground
+// spacing; airborne groups share their authored introduction time.
 function basinGroups(ground,airCount,airStart){
  const groups=[];let ordinal=0;
- for(const [model,count]of ground)for(let i=0;i<count;i++,ordinal++)groups.push([model,1,ordinal*4,0,ordinal%2?'lake':'main']);
- groups.push(['twin-fan',Math.ceil(airCount/2),airStart,6],['twin-fan',Math.floor(airCount/2),airStart+5/3,6,'lake']);
+ for(const [model,count]of ground)for(let i=0;i<count;i++,ordinal++)groups.push([model,1,Math.floor(ordinal/2)*8,0,ordinal%2?'lake':'main']);
+ groups.push(['twin-fan',Math.ceil(airCount/2),airStart,6],['twin-fan',Math.floor(airCount/2),airStart,6,'lake']);
  return groups;
 }
 const laterLevels=[
@@ -66,12 +66,12 @@ const laterLevels=[
   later('b',2,4,'Riverfold crossing','A sustained combined column rewards repeat exposure and late coverage.',[['dune-tread',7,0,3.6],['walker',6,29,3.6],['twin-fan',7,7,3]]),
  ]},
  {id:'ochre-03',zone:'B',waves:[
-  // Eastern ground reaches the shared tail33.6 seconds earlier. The delayed
-  // eastern releases interleave at five-second shared-tail intervals.
-  later('b',3,1,'Mesa approaches','Walkers take the west; delayed treads arrive from the east.',[['walker',5,0,10],['dune-tread',5,38.6,10,'eastern'],['twin-fan',4,3,6]]),
-  later('b',3,2,'Exchange the fronts','Heavy treads move west while Walkers use the shorter approach.',[['dune-tread',6,0,10],['walker',6,38.6,10,'eastern'],['twin-fan',5,6,6,'eastern']]),
-  later('b',3,3,'Fans at confluence','Separated flight groups share the southern approach.',[['walker',6,0,10],['dune-tread',6,38.6,10,'eastern'],['twin-fan',4,2,6],['twin-fan',4,23.667,6,'eastern']]),
-  later('b',3,4,'Three mesa confluence','Both branches sustain the heavy shared-tail test.',[['dune-tread',6,0,10],['walker',6,38.6,10,'eastern'],['twin-fan',4,2,6],['twin-fan',4,23.667,6,'eastern']]),
+  // Both ground fronts open together; matching airborne groups also start
+  // together instead of compensating for their different approach lengths.
+  later('b',3,1,'Mesa approaches','Walkers take the west while treads arrive from the east.',[['walker',5,0,10],['dune-tread',5,0,10,'eastern'],['twin-fan',4,3,6]]),
+  later('b',3,2,'Exchange the fronts','Heavy treads move west while Walkers use the shorter approach.',[['dune-tread',6,0,10],['walker',6,0,10,'eastern'],['twin-fan',5,6,6,'eastern']]),
+  later('b',3,3,'Fans at confluence','Separated flight groups share the southern approach.',[['walker',6,0,10],['dune-tread',6,0,10,'eastern'],['twin-fan',4,2,6],['twin-fan',4,2,6,'eastern']]),
+  later('b',3,4,'Three mesa confluence','Both branches sustain the heavy shared-tail test.',[['dune-tread',6,0,10],['walker',6,0,10,'eastern'],['twin-fan',4,2,6],['twin-fan',4,2,6,'eastern']]),
  ]},
  {id:'ochre-04',zone:'B',waves:[
   later('b',4,1,'Basin interception','Two approaches cross the basin and circle the aqueduct before merging.',basinGroups([['walker',6],['dune-tread',5]],5,5)),
@@ -80,10 +80,10 @@ const laterLevels=[
   later('b',4,4,'Aqueduct and shore','The combined finale tests bank courts, aqueduct and shared shore.',basinGroups([['dune-tread',7],['walker',6]],7,5)),
  ]},
  ...[1,2,3,4].map(level=>({id:'ice-0'+level,zone:'C',waves:[
-  later('c',level,1,['Floe patrol','Ember crossing','White ridge fronts','Ice garden patrol'][level-1],'Tripods and Rays test the retained arsenal on this new landscape.',level===3?[['tripod',4,0,8],['tripod',4,28,8,'northern'],['ray',3,2,6],['ray',3,20.273,6,'northern']]:[['tripod',8,0,3.5],['ray',6,3,3]]),
-  later('c',level,2,'Three leg procession','A longer Tripod column tests sustained exposure.',level===3?[['tripod',5,0,8],['tripod',5,28,8,'northern'],['ray',4,2,6],['ray',3,20.273,6,'northern']]:[['tripod',10,0,3.5],['ray',7,5,3]]),
-  later('c',level,3,'Wings over ice','A larger Ray group needs useful flight interception.',level===3?[['tripod',5,0,8],['tripod',4,28,8,'northern'],['ray',5,2,6],['ray',5,20.273,6,'northern']]:[['tripod',9,0,3.5],['ray',10,2,3]]),
-  later('c',level,4,['Floe and ember','Across the meltwater','White ridge confluence','The ice and ember tour'][level-1],'The combined finale uses early contact, returns and a late catch.',level===3?[['tripod',6,0,8],['tripod',5,28,8,'northern'],['ray',6,2,6],['ray',5,20.273,6,'northern']]:[['tripod',11,0,3.5],['ray',11,3,3]]),
+  later('c',level,1,['Floe patrol','Ember crossing','White ridge fronts','Ice garden patrol'][level-1],'Tripods and Rays test the retained arsenal on this new landscape.',level===3?[['tripod',4,0,8],['tripod',4,0,8,'northern'],['ray',3,2,6],['ray',3,2,6,'northern']]:[['tripod',8,0,3.5],['ray',6,3,3]]),
+  later('c',level,2,'Three leg procession','A longer Tripod column tests sustained exposure.',level===3?[['tripod',5,0,8],['tripod',5,0,8,'northern'],['ray',4,2,6],['ray',3,2,6,'northern']]:[['tripod',10,0,3.5],['ray',7,5,3]]),
+  later('c',level,3,'Wings over ice','A larger Ray group needs useful flight interception.',level===3?[['tripod',5,0,8],['tripod',4,0,8,'northern'],['ray',5,2,6],['ray',5,2,6,'northern']]:[['tripod',9,0,3.5],['ray',10,2,3]]),
+  later('c',level,4,['Floe and ember','Across the meltwater','White ridge confluence','The ice and ember tour'][level-1],'The combined finale uses early contact, returns and a late catch.',level===3?[['tripod',6,0,8],['tripod',5,0,8,'northern'],['ray',6,2,6],['ray',5,2,6,'northern']]:[['tripod',11,0,3.5],['ray',11,3,3]]),
  ]})),
  ...[1,2,3,4].map(level=>({id:'plum-0'+level,zone:'D',waves:[
   later('d',level,1,['Violet arrivals','Orchard patrol','Dusk approach','Final garden'][level-1],'Spiders and Lanterns open the final zone with retained ownership.',[['spider',10,0,3.6],['lantern',8,4,3]]),
@@ -131,12 +131,12 @@ const DEFAULT_CONFIG={
    encounter(2,4,'Garden crossing','Two combined groups use the bridge and the return.',A2,[['dog',3,0,2.8],['roller',2,9,2.8],['moth',2,5,3.5],['dog',3,20,2.8],['roller',2,29,2.8],['moth',2,24,3.5]]),
   ]},
   {id:'moss-03',zone:'A',waves:[
-   // The eastern approach reaches the common tail eight seconds sooner at15u/s.
-   // Eight-second branch intervals and a four-second offset interleave arrivals.
-   encounter(3,1,'Two approaches','Dogs from the west; Rollers from the east. Both share the southern exit.',A3,[['roller',3,0,8,'eastern'],['dog',3,4,8],['moth',2,2,5,'eastern'],['moth',2,6,5]]),
-   encounter(3,2,'Changing weight','The heavier convoy switches to the western approach.',A3,[['dog',4,0,8,'eastern'],['roller',4,4,8],['moth',4,5,4,'eastern']]),
-   encounter(3,3,'At the confluence','Longer air groups compete with interleaved ground arrivals.',A3,[['roller',4,0,8,'eastern'],['dog',4,4,8],['moth',3,3,4],['moth',3,6.714,4,'eastern']]),
-   encounter(3,4,'Both fronts','Unequal approaches need early damage and a shared-tail defence.',A3,[['roller',3,0,8,'eastern'],['dog',2,24,8,'eastern'],['dog',2,4,8],['roller',3,20,8],['moth',2,2,5],['moth',2,10.214,5,'eastern']]),
+   // Ground fronts open together. Later groups retain their branch sequence
+   // and spacing; matching Moth groups share their introduction time.
+   encounter(3,1,'Two approaches','Dogs from the west; Rollers from the east. Both share the southern exit.',A3,[['roller',3,0,8,'eastern'],['dog',3,0,8],['moth',2,2,5,'eastern'],['moth',2,2,5]]),
+   encounter(3,2,'Changing weight','The heavier convoy switches to the western approach.',A3,[['dog',4,0,8,'eastern'],['roller',4,0,8],['moth',4,5,4,'eastern']]),
+   encounter(3,3,'At the confluence','Longer air groups compete with both ground approaches.',A3,[['roller',4,0,8,'eastern'],['dog',4,0,8],['moth',3,3,4],['moth',3,3,4,'eastern']]),
+   encounter(3,4,'Both fronts','Unequal approaches need early damage and a shared-tail defence.',A3,[['roller',3,0,8,'eastern'],['dog',2,24,8,'eastern'],['dog',2,0,8],['roller',3,16,8],['moth',2,2,5],['moth',2,2,5,'eastern']]),
   ]},
   {id:'moss-04',zone:'A',waves:[
    encounter(4,1,'Ruin and mere','A stronger mixed patrol on the long tour. Retained purchases matter.',A4,[['dog',4,0,2.8],['roller',4,12,2.8],['moth',4,5,3.5]]),

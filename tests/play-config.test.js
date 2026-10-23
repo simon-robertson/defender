@@ -21,6 +21,28 @@ test('The campaign retains Zone A and adds forty-eight finite later encounters',
  expect(PLAY_CONFIG.levels[2].waves.every(wave=>new Set(wave.spawns.map(spawn=>spawn.routeId)).size===2)).toBe(true);
  for(const level of PLAY_CONFIG.levels)for(const wave of level.waves)expect(wave.spawns.map(spawn=>spawn.at)).toEqual(wave.spawns.map(spawn=>spawn.at).toSorted((a,b)=>a-b));
 });
+test('all sixteen multi-entrance encounters open both ground fronts together and align matching flight groups',()=>{
+ const airborne=new Set(['moth','twin-fan','ray','lantern']),multi=PLAY_CONFIG.levels.filter(level=>new Set(level.waves[0].spawns.map(spawn=>spawn.routeId)).size>1);
+ expect(multi.map(level=>level.id)).toEqual(['moss-03','ochre-03','ochre-04','ice-03']);
+ const schedules={
+  'moss-03':{branch:'eastern',groundGap:8,ground:[[3,3],[4,4],[4,4],[5,5]],air:[[2,2,2,5],[0,4,5,4],[3,3,3,4],[2,2,2,5]]},
+  'ochre-03':{branch:'eastern',groundGap:10,ground:[[5,5],[6,6],[6,6],[6,6]],air:[[4,0,3,6],[0,5,6,6],[4,4,2,6],[4,4,2,6]]},
+  'ochre-04':{branch:'lake',groundGap:8,ground:[[6,5],[6,6],[6,6],[7,6]],air:[[3,2,5,6],[3,3,6,6],[4,4,3,6],[4,3,5,6]]},
+  'ice-03':{branch:'northern',groundGap:8,ground:[[4,4],[5,5],[5,4],[6,5]],air:[[3,3,2,6],[4,3,2,6],[5,5,2,6],[6,5,2,6]]},
+ };
+ for(const level of multi){
+  const schedule=schedules[level.id];
+  for(const [index,wave]of level.waves.entries()){
+   const [mainAir,branchAir,airStart,airGap]=schedule.air[index];
+   for(const [routeIndex,routeId]of ['main',schedule.branch].entries()){
+    const ground=wave.spawns.filter(spawn=>spawn.routeId===routeId&&!airborne.has(spawn.model)),air=wave.spawns.filter(spawn=>spawn.routeId===routeId&&airborne.has(spawn.model));
+    expect(ground.map(spawn=>spawn.at)).toEqual(Array.from({length:schedule.ground[index][routeIndex]},(_,i)=>i*schedule.groundGap));
+    expect(air.map(spawn=>spawn.at)).toEqual(Array.from({length:routeIndex?branchAir:mainAir},(_,i)=>airStart+i*airGap));
+   }
+   expect(wave.spawns).toEqual([...wave.spawns].sort((a,b)=>a.at-b.at||a.id.localeCompare(b.id)));
+  }
+ }
+});
 test('family and tier introductions are bounded global encounter numbers',()=>{
  const gun=PLAY_CONFIG.defences['turret-study'],arc=PLAY_CONFIG.defences['arc-spire'],missile=PLAY_CONFIG.defences['missile-launcher'];
  expect([gun.purchaseCost,gun.upgradeCost,arc.purchaseCost,arc.upgradeCost,missile.purchaseCost,missile.upgradeCost]).toEqual([1,1,2,2,3,3]);

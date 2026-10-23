@@ -1,10 +1,11 @@
-import {DRONE_PREVIEW} from '../shared/drone.js';
 import {TURRET_RECOIL} from '../shared/arsenal.js';
 import {GUIDED_MISSILE_MODEL,MISSILE_LAUNCHER_SOCKETS} from '../shared/missile-model.js';
 import {ENEMY_IMPACT,ENEMY_BALANCE} from './enemy-impact.js';
 
 export const DRONE_OBSTACLE_PREDICTION_SECONDS=1;
-const EPS=1e-6,EMPTY=Object.freeze([]),MAX_PREDICTED_SPEED=96;
+// Camera flight supplies its own radius; standalone queries use the same
+// compact camera-sized envelope without depending on a combat aircraft hull.
+const EPS=1e-6,EMPTY=Object.freeze([]),MAX_PREDICTED_SPEED=96,DEFAULT_QUERY_RADIUS=2.5;
 const overlap=(a,b,k)=>a[0]<b[k+3]-EPS&&a[3]>b[k]+EPS&&a[1]<b[k+4]-EPS&&a[4]>b[k+1]+EPS&&a[2]<b[k+5]-EPS&&a[5]>b[k+2]+EPS;
 function empty(b,k=0){b[k]=b[k+1]=b[k+2]=Infinity;b[k+3]=b[k+4]=b[k+5]=-Infinity;}
 function include(b,k,x,y,z){b[k]=Math.min(b[k],x);b[k+1]=Math.min(b[k+1],y);b[k+2]=Math.min(b[k+2],z);b[k+3]=Math.max(b[k+3],x);b[k+4]=Math.max(b[k+4],y);b[k+5]=Math.max(b[k+5],z);}
@@ -84,8 +85,8 @@ export class DroneObstacles {
    if(first===this.matrices.length)return;
    envelopes.push(...env);this.records.push({id,kind,state,root:data.root,first,count:this.matrices.length-first,lap:state?.lap??0,seen:false,dogY:dogYBounds(data,state,locals,cache)});
   };
-  for(const [id,data]of world.rigs)if(data.role==='defence'&&data.model!=='drone-defence')add(id,data,null,'defence');
-  for(const [id,data]of world.actors??EMPTY){if(data.model==='drone-defence'||data.model===GUIDED_MISSILE_MODEL.id)continue;const state=enemies.find(s=>s.id===id)??null;add(id,data,state,state||data.role==='enemy'?'enemy':'wildlife');}
+  for(const [id,data]of world.rigs)if(data.role==='defence')add(id,data,null,'defence');
+  for(const [id,data]of world.actors??EMPTY){if(data.model===GUIDED_MISSILE_MODEL.id)continue;const state=enemies.find(s=>s.id===id)??null;add(id,data,state,state||data.role==='enemy'?'enemy':'wildlife');}
   this.localBounds=new Float64Array(locals);this.localIndices=new Uint32Array(indices);this.poseEnvelope=new Float64Array(envelopes);
   const actors=this.records.length,parts=this.matrices.length;
   this.current=new Float64Array(parts*6);this.actorCurrent=new Float64Array(actors*6);this.predicted=new Float64Array(actors*6);this.baseEnvelope=new Float64Array(actors*6);this.entrancePredicted=new Float64Array(actors*6);this.entranceActive=new Uint8Array(actors);this.previous=new Float64Array(actors*3);this.observedVelocity=new Float64Array(actors*3);this.active=new Uint8Array(actors);
@@ -221,7 +222,7 @@ export class DroneObstacles {
   }else if(record.kind!=='defence')for(let axis=0;axis<3;axis++){const v=this.observedVelocity[index*3+axis];d[axis]=Math.min(v*start,v*end);d[axis+3]=Math.max(v*start,v*end);}
   return this.timedOverlap(index);
  }
- clearTimedSegment(ax,ay,az,bx,by,bz,radius=DRONE_PREVIEW.hullRadius,startSeconds=0,endSeconds=0,halfHeight=radius,above=halfHeight){
+ clearTimedSegment(ax,ay,az,bx,by,bz,radius=DEFAULT_QUERY_RADIUS,startSeconds=0,endSeconds=0,halfHeight=radius,above=halfHeight){
   this.queries++;this.lastBlockedId=null;if(this.disposed)return true;
   const start=Math.max(0,Math.min(this.predictionSeconds,startSeconds)),end=Math.max(start,Math.min(this.predictionSeconds,endSeconds)),b=this.bounds;
   b[0]=Math.min(ax,bx)-radius;b[1]=Math.min(ay,by)-halfHeight;b[2]=Math.min(az,bz)-radius;b[3]=Math.max(ax,bx)+radius;b[4]=Math.max(ay,by)+above;b[5]=Math.max(az,bz)+radius;
@@ -242,11 +243,11 @@ export class DroneObstacles {
   }
   return true;
  }
- clearSegment(ax,ay,az,bx,by,bz,radius=DRONE_PREVIEW.hullRadius,predictSeconds=0,below=radius,above=below){
+ clearSegment(ax,ay,az,bx,by,bz,radius=DEFAULT_QUERY_RADIUS,predictSeconds=0,below=radius,above=below){
   if(this.disposed)return true;const b=this.bounds;b[0]=Math.min(ax,bx)-radius;b[1]=Math.min(ay,by)-below;b[2]=Math.min(az,bz)-radius;b[3]=Math.max(ax,bx)+radius;b[4]=Math.max(ay,by)+above;b[5]=Math.max(az,bz)+radius;return this.clearBox(b,predictSeconds);
  }
- segmentClear(ax,ay,az,bx,by,bz,radius=DRONE_PREVIEW.hullRadius,predictSeconds=0,below=radius,above=below){return this.clearSegment(ax,ay,az,bx,by,bz,radius,predictSeconds,below,above);}
- pointClear(x,y,z,radius=DRONE_PREVIEW.hullRadius,predictSeconds=0,below=radius,above=below){return this.clearSegment(x,y,z,x,y,z,radius,predictSeconds,below,above);}
+ segmentClear(ax,ay,az,bx,by,bz,radius=DEFAULT_QUERY_RADIUS,predictSeconds=0,below=radius,above=below){return this.clearSegment(ax,ay,az,bx,by,bz,radius,predictSeconds,below,above);}
+ pointClear(x,y,z,radius=DEFAULT_QUERY_RADIUS,predictSeconds=0,below=radius,above=below){return this.clearSegment(x,y,z,x,y,z,radius,predictSeconds,below,above);}
  reset(){if(this.disposed)return;for(const r of this.records)r.seen=false;this.previous.fill(0);this.update(0);this.lastBlockedId=null;}
  dispose(){
   if(this.disposed)return;this.disposed=true;this.records.length=0;this.matrices.length=0;

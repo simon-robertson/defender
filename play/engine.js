@@ -7,7 +7,6 @@ import {TurretPreview,holdGunAcquisition} from '../game/turret-preview.js';
 import {ArcSpirePreview} from '../game/arc-spire-preview.js';
 import {MissilePreview,createMissileActors} from '../game/missile-preview.js';
 import {EnhancerPreview} from '../game/enhancer-preview.js';
-import {DronePreview} from '../game/drone-preview.js';
 import {TargetPlanner} from '../engine/target-planner.js';
 import {TURRET_RECOIL} from '../shared/arsenal.js';
 import {WildlifePreview,wildlifeActorsForLevel} from '../game/wildlife-preview.js';
@@ -33,8 +32,8 @@ export function composePlayLevel(source,placements=[],{wildlifePoints,models,con
  const level=structuredClone(source);
  if(Number.isFinite(conditions?.timeOfDay))level.environment={...level.environment,timeOfDay:conditions.timeOfDay};
  delete level.previewMode;delete level.previewActors;delete level.actorRoutes;
- // Current A1's approved drone test remains an immutable preview source.
- level.placements=level.placements.filter(p=>models?models.get(p.model)?.role==='scenery':!['turret-study','arc-spire','missile-launcher','power-generator','drone-defence'].includes(p.model));
+ // Preview scenery is retained; campaign deployments own all defence units.
+ level.placements=level.placements.filter(p=>models?models.get(p.model)?.role==='scenery':!['turret-study','arc-spire','missile-launcher','power-generator'].includes(p.model));
  level.placements.push(...structuredClone(placements));
  if(wildlifePoints){level.previewWildlife.habitatPoints=structuredClone(wildlifePoints);level.previewWildlife.habitats=wildlifePoints.map(([x,,z])=>[Math.floor(x/24),Math.floor(z/24)]);}
  return level;
@@ -74,7 +73,6 @@ function assignWave(world,wave){
 }
 function validateDeployments(placements,config){
  if(!Array.isArray(placements)||placements.length>playCapacity(config).maxOwnedUnits||placements.some(p=>!p||!config.defences[p.model]?.enabledVariants.includes(p.variant)))throw new Error('Unsupported player deployment.');
- for(const [model,family]of Object.entries(config.defences))if(Number.isInteger(family.maxOwned)&&placements.filter(p=>p.model===model).length>family.maxOwned)throw new Error('Player defence family capacity exceeded.');
 }
 // Retain only this zone's enemy geometry. Defence pools cover every affordable
 // loadout through the zone's finale, so earlier scenes do not allocate the
@@ -121,47 +119,41 @@ class PlayCombat {
  constructor(world,enemies,config,{onPoseChange,onVisible,onShot,onArcShot,onBulletImpact,missileEffects,onHit}){
   const profiles=model=>{
    const variants=config.defences[model]?.variants??{};
-   return Object.fromEntries(['stats','firing','flightSeconds','rechargeSeconds'].map(key=>[key,Object.fromEntries(Object.entries(variants).map(([variant,p])=>[variant,p[key]]))]));
+   return Object.fromEntries(['stats','firing'].map(key=>[key,Object.fromEntries(Object.entries(variants).map(([variant,p])=>[variant,p[key]]))]));
   };
   const gun=profiles('turret-study');let seed=1234567;
   const random=()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return (seed>>>0)/4294967296;};
   this.turrets=new TurretPreview(world,onPoseChange,()=>.5,onShot,enemies.states,onHit,{sharedPlanner:true,stats:{'turret-study':gun.stats},firing:gun.firing,onImpact:onBulletImpact});
   this.arcs=new ArcSpirePreview(world,enemies.states,random,onArcShot,onHit,profiles('arc-spire'));
   this.missiles=new MissilePreview(world,onPoseChange,onVisible,enemies.states,onHit,missileEffects,{...profiles('missile-launcher'),deferMagazines:true});
-  this.drones=new DronePreview(world,onPoseChange,enemies.states,onHit,onShot,profiles('drone-defence'));
-  this.states=[...this.turrets.states,...this.arcs.states,...this.missiles.states,...this.drones.states];for(const state of this.turrets.states)state.model='turret-study';
+  this.states=[...this.turrets.states,...this.arcs.states,...this.missiles.states];for(const state of this.turrets.states)state.model='turret-study';
   this.targets=enemies.activeTargets;this.shots=this.active=this.turning=this.updatedParts=0;
   this.planner=null;
   // Resolve cardinal neighbours only at deployment/controller creation. Combat
   // and forecasts share these effective strengths; missiles capture at launch.
-  this.enhancers=new EnhancerPreview(world,this.states.filter(state=>!state.mobile),()=>this.planner?.reset());
+  this.enhancers=new EnhancerPreview(world,this.states,()=>this.planner?.reset());
   this.planner=new TargetPlanner(this.states,enemies.states,{
    incomingDamage:target=>this.missiles.incomingDamage(target),
    eligible:(state,target,recoil)=>this.eligible(state,target,recoil),
    coverageEnabled:state=>state.model==='turret-study',
    coverageVisible:(state,target)=>this.turrets.eligible(state,target,0)&&this.turrets.eligible(state,target,TURRET_RECOIL.distance),
    holdTarget:state=>state.model==='turret-study'&&holdGunAcquisition(state),
-   prepareState:state=>{if(state.mobile)this.drones.prepare(state);},
-   onSelected:(state,target)=>{if(state.mobile)this.drones.selected(state,target);},
-   scoreTarget:(state,target,score)=>state.mobile?this.drones.priority(state,target,score):score,
-   priorityTarget:(state,target)=>state.mobile?this.drones.escapeRank(state,target):0,
-   committedDamage:(state,target)=>state.mobile?this.drones.commitment(state,target):0,
   });
   this.planner.targets=this.targets;
-  for(const controller of [this.turrets,this.arcs,this.missiles,this.drones]){controller.targets=this.targets;controller.planner=this.planner;}
+  for(const controller of [this.turrets,this.arcs,this.missiles]){controller.targets=this.targets;controller.planner=this.planner;}
   if(this.missiles.pool)this.missiles.pool.targets=this.targets;
   for(const state of this.turrets.states){state.rig.invalidateRoot();state.rig.update();}
  }
- eligible(state,target,recoil=0){return state.mobile?this.drones.eligible(state,target):state.model==='arc-spire'?this.arcs.eligible(state,target):state.model==='missile-launcher'?this.missiles.eligible(state,target):this.turrets.eligible(state,target,recoil);}
+ eligible(state,target,recoil=0){return state.model==='arc-spire'?this.arcs.eligible(state,target):state.model==='missile-launcher'?this.missiles.eligible(state,target):this.turrets.eligible(state,target,recoil);}
  targetYaw(state){return this.turrets.targetYaw(state);}
  targetPitch(state,target,yaw){return this.turrets.targetPitch(state,target,yaw);}
  advance(dt){
-  this.drones.prepareCollisionFrame(dt);this.planner.advance(dt);this.turrets.advance(dt);this.arcs.advance(dt);this.missiles.advance(dt);this.drones.advance(dt);
-  this.shots=this.turrets.shots+this.arcs.shots+this.missiles.shots+this.drones.shots;this.active=this.turrets.active+this.arcs.active+this.missiles.active+this.drones.active;this.turning=this.turrets.turning+this.drones.turning;this.updatedParts=this.turrets.updatedParts+this.missiles.updatedParts+this.drones.updatedParts;
+  this.planner.advance(dt);this.turrets.advance(dt);this.arcs.advance(dt);this.missiles.advance(dt);
+  this.shots=this.turrets.shots+this.arcs.shots+this.missiles.shots;this.active=this.turrets.active+this.arcs.active+this.missiles.active;this.turning=this.turrets.turning;this.updatedParts=this.turrets.updatedParts+this.missiles.updatedParts;
  }
- settle(dt){this.drones.settle(dt);const pool=this.missiles.pool;if(pool){pool.advance(dt);pool.prepare();}}
- resetTargets(){this.enhancers.reset();this.planner.reset();this.turrets.resetTargets();this.arcs.resetTargets();this.missiles.resetTargets();this.drones.reset();}
- dispose(){this.planner?.dispose();this.planner=null;this.enhancers.dispose();this.turrets.dispose();this.arcs.dispose();this.missiles.dispose();this.drones.dispose();this.states.length=0;this.targets=null;}
+ settle(dt){const pool=this.missiles.pool;if(pool){pool.advance(dt);pool.prepare();}}
+ resetTargets(){this.enhancers.reset();this.planner.reset();this.turrets.resetTargets();this.arcs.resetTargets();this.missiles.resetTargets();}
+ dispose(){this.planner?.dispose();this.planner=null;this.enhancers.dispose();this.turrets.dispose();this.arcs.dispose();this.missiles.dispose();this.states.length=0;this.targets=null;}
 }
 
 export class PlayEngine {
@@ -173,7 +165,7 @@ export class PlayEngine {
   this.makeGuns();this.capacity=playCapacity(config);
  }
  makeGuns(){
-  this.firing?.dispose();this.firing=new PlayCombat(this.world,this.enemies,this.config,this.combatCallbacks);this.firing.drones.setWildlife(this.wildlife.states,this.wildlife.defences);
+  this.firing?.dispose();this.firing=new PlayCombat(this.world,this.enemies,this.config,this.combatCallbacks);
  }
  updateDeployments(placements){
   if(this.disposed||this.running)return {valid:false,code:'phase',reason:'Defences can only change during preparation.'};
@@ -213,6 +205,6 @@ export class PlayEngine {
   this.accumulator+=dt;
   while(this.accumulator+1e-12>=PLAY_TICK&&this.lastSteps<PLAY_MAX_STEPS&&this.running){this.accumulator=Math.max(0,this.accumulator-PLAY_TICK);this.tick(PLAY_TICK);this.lastSteps++;this.steps++;}
  }
- stats(){return {time:this.time,waveTime:this.waveTime,running:this.running,completed:this.completed,spawned:this.enemies.spawned,pending:this.enemies.pending,active:this.enemies.alive,killed:this.enemies.killed,escaped:this.enemies.escaped,resolved:this.enemies.resolved,total:this.enemies.states.length,shots:this.firing.shots,gunShots:this.firing.turrets.shots,arcShots:this.firing.arcs.shots,missileShots:this.firing.missiles.shots,droneShots:this.firing.drones.shots,activeMissiles:this.firing.missiles.pool?.active??0,steps:this.steps,lastSteps:this.lastSteps,backlogSeconds:this.accumulator,modelLightCapacity:this.capacity.modelLights};}
+ stats(){return {time:this.time,waveTime:this.waveTime,running:this.running,completed:this.completed,spawned:this.enemies.spawned,pending:this.enemies.pending,active:this.enemies.alive,killed:this.enemies.killed,escaped:this.enemies.escaped,resolved:this.enemies.resolved,total:this.enemies.states.length,shots:this.firing.shots,gunShots:this.firing.turrets.shots,arcShots:this.firing.arcs.shots,missileShots:this.firing.missiles.shots,activeMissiles:this.firing.missiles.pool?.active??0,steps:this.steps,lastSteps:this.lastSteps,backlogSeconds:this.accumulator,modelLightCapacity:this.capacity.modelLights};}
  dispose(){if(this.disposed)return;this.stopWave();this.disposed=true;this.firing.dispose();this.enemies.dispose();this.wildlife.dispose();this.world=this.config=this.wave=null;this.onPoseChange=this.onShot=this.onWaveComplete=this.onStep=this.onAfterStep=this.continuing=this.onDeploymentsChanged=this.enemyCallbacks=this.combatCallbacks=null;}
 }

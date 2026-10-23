@@ -2,7 +2,7 @@ import {test,expect} from 'bun:test';
 import {newLevel,validateLevel} from '../shared/level.js';
 import {previewActorsForLevel} from '../shared/enemy-roster.js';
 import {actorsForPreview} from '../game/preview-actors.js';
-import {a1DroneTest} from '../scripts/a1-drone-test.js';
+import {a1CombatPreview} from '../scripts/a1-combat-preview.js';
 import {buildWorld,disposeWorld} from '../engine/world.js';
 import {auditWildlifeRoaming} from '../scripts/wildlife-roaming-audit.js';
 
@@ -18,7 +18,7 @@ test('explicit combat roster validates identity, supported model, complete route
   l=>l.previewActors[0].routeId='missing',l=>delete l.previewActors[0].routeId,
   l=>l.previewActors[0].startDistance=-1,l=>l.previewActors[0].startDistance=48,
   l=>l.previewActors[0].startDistance=NaN,l=>l.previewMode='layout',l=>l.previewMode='landscape',
-  l=>delete l.previewMode,l=>l.placements.push({id:'test-dog',model:'drone-defence',variant:'base',box:[0,0,0],turn:0}),
+  l=>delete l.previewMode,l=>l.placements.push({id:'test-dog',model:'turret-study',variant:'base',box:[0,0,0],turn:0}),
  ]){const bad=structuredClone(level);change(bad);expect(()=>validateLevel(bad)).toThrow();}
  level.previewActors[0].startDistance=47.99;expect(validateLevel(level)).toBe(level);
  level.previewActors=[];expect(validateLevel(level)).toBe(level);expect(previewActorsForLevel(level)).toEqual([]);
@@ -34,20 +34,20 @@ test('explicit roster owns runtime actors without mutating source or reviving th
 });
 
 test('A1 combat preserves approved geometry, corrects the trapped hare seed and loads only its bounded roster',async()=>{
- const level=await a1DroneTest(),approved=await Bun.file(new URL('../docs/a1-drone-test-2026-10-18/baseline.level.json',import.meta.url)).json();
+ const level=await a1CombatPreview(),approved=await Bun.file(new URL('../project-docs/a1-drone-test-2026-10-18/baseline.level.json',import.meta.url)).json();
  const restored=structuredClone(level);restored.previewMode='layout';delete restored.previewActors;
  expect(restored.previewWildlife.perches).toEqual(approved.previewWildlife.perches);
  expect(restored.previewWildlife.habitatPoints[0]).toEqual(approved.previewWildlife.habitatPoints[0]);
  expect(restored.previewWildlife.habitatPoints[2]).toEqual(approved.previewWildlife.habitatPoints[2]);
  restored.previewWildlife=approved.previewWildlife;
- restored.placements=restored.placements.filter(p=>p.model!=='drone-defence');expect(restored).toEqual(approved);
- expect(level.placements.filter(p=>p.model==='drone-defence').map(p=>p.box)).toEqual([[4,0,9],[15,0,9]]);
+ expect(restored).toEqual(approved);
+ expect(level.placements.every(p=>p.model!=='drone-defence')).toBe(true);
  const actors=actorsForPreview(level);expect(actors).toHaveLength(9);expect(actors.filter(a=>a.model==='dog')).toHaveLength(2);expect(actors.filter(a=>a.model==='moth')).toHaveLength(1);
  const models=new Map();for(const id of new Set([...level.placements.map(p=>p.model),...actors.map(a=>a.model)]))models.set(id,await Bun.file(new URL(`../assets/models/${id}.json`,import.meta.url)).json());
  expect(auditWildlifeRoaming(level,models).passed).toBe(true);
  const trapped=structuredClone(level);trapped.previewWildlife=approved.previewWildlife;
  const before=auditWildlifeRoaming(trapped,models);expect(before.passed).toBe(false);expect(before.rows[1].reachableNodes).toBe(8);
  expect(validateLevel(level,models)).toBe(level);const world=buildWorld(level,models,{actors});
- try{expect(world.actors.size).toBe(9);expect(world.rigs.has('drone-1')).toBe(true);expect(world.rigs.has('drone-2')).toBe(true);expect(world.assetIds).not.toContain('guided-missile');}
+ try{expect(world.actors.size).toBe(9);expect(world.rigs.has('drone-1')).toBe(false);expect(world.rigs.has('drone-2')).toBe(false);expect(world.assetIds).not.toContain('guided-missile');}
  finally{disposeWorld(world);}expect(world.actors.size).toBe(0);expect(world.rigs.size).toBe(0);
 });

@@ -35,6 +35,18 @@ test('fixed pools replace the oldest strike and drop excess sparks without chang
  expect(effects.instanceCount).toBeLessThanOrEqual(MAX_ARC_INSTANCES);expect(effects.lightData.byteLength).toBe(ARC_LIGHT_BYTES);
  expect(effects.instanceData).toBe(instances);expect(effects.lightData).toBe(lights);expect(effects.birth).toBe(birth);
 });
+
+test('dense Arc spark admissions scan the pool once while preserving first-free slots and random consumption',()=>{
+ let draws=0;const next=random(),e=new ArcEffects(()=>{draws++;return next();}),birth=e.sparkBirth;
+ birth.fill(0);birth[MAX_ARC_SPARKS-3]=birth[MAX_ARC_SPARKS-2]=birth[MAX_ARC_SPARKS-1]=-Infinity;
+ let reads=0;e.sparkBirth=new Proxy(birth,{get(target,key){if(typeof key==='string'&&/^\d+$/.test(key))reads++;return Reflect.get(target,key,target);}});
+ expect(e.emit(source,impact,normal,0)).toBe(true);
+ expect(reads).toBe(MAX_ARC_SPARKS+3);expect(e.droppedSparks).toBe(3);expect(draws).toBe((ARC_TRUNK_SEGMENTS+1)*2+3*6);
+ expect([...birth.slice(-3)]).toEqual([0,0,0]);
+ reads=0;const before=draws;expect(e.emit(source,impact,normal,0)).toBe(true);
+ expect(reads).toBe(MAX_ARC_SPARKS);expect(e.droppedSparks).toBe(9);expect(draws-before).toBe((ARC_TRUNK_SEGMENTS+1)*2);
+ e.sparkBirth=birth;e.advance(4);expect(birth.every(value=>value===-Infinity)).toBe(true);
+});
 test('expiry and reset remove lights, particles and attachment references without replay after stalls',()=>{
  const effects=new ArcEffects(random()),matrix=identity();effects.emit(source,impact,normal,0,matrix,impact);effects.prepare();
  effects.advance(2);effects.prepare();expect(effects.instanceCount).toBe(0);expect(effects.lightData[0]).toBe(0);expect(effects.needsCleanup).toBe(false);expect(effects.attachments.every(value=>value===null)).toBe(true);

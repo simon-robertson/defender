@@ -22,7 +22,7 @@ function flat(){const source=newLevel('play-placement-fixture');source.size=[12,
 function rig(parts){return new PoseRig({root:identity(),parts,instances:parts.map(p=>({part:p.id,key:p.id,index:0,matrix:identity()}))},()=>{});}
 function vertices(part){const unique=new Map();for(const c of part.voxels)for(const x of [c[0],c[0]+1])for(const y of [c[1],c[1]+1])for(const z of [c[2],c[2]+1])unique.set(`${x},${y},${z}`,[x,y,z]);return [...unique.values()];}
 
-test('all clear grid cells are considered while accepted source assets and A1 preview drones stay independent',async()=>{
+test('all clear grid cells are considered while accepted scenery remains independent of deployments',async()=>{
  for(const id of ['moss-01','moss-02']){
   const {source,models}=await sourceFixture(id),before=JSON.stringify(source),rules=createPlacementRules(source,models),field=new TerrainField(source);
   try{

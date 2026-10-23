@@ -29,11 +29,11 @@ export function forecastPulses(cycle,startSeconds,endSeconds,continuing=false){
 }
 
 export class TargetPlanner {
- constructor(states,targets,{path=null,eligible,coverageVisible=eligible,coverageEnabled=ALL_COVERAGE,incomingDamage=NO_INCOMING_DAMAGE,prepareState=null,onSelected=null,scoreTarget=null,priorityTarget=null,committedDamage=null,holdTarget=null}={}){
+ constructor(states,targets,{path=null,eligible,coverageVisible=eligible,coverageEnabled=ALL_COVERAGE,incomingDamage=NO_INCOMING_DAMAGE,holdTarget=null}={}){
   this.states=states;this.targets=targets;this.path=path;this.eligible=eligible;this.incomingDamage=incomingDamage;this.next=0;this.thinks=0;this.lastThinkId=null;
-  this.prepareState=prepareState;this.onSelected=onSelected;this.scoreTarget=scoreTarget;this.priorityTarget=priorityTarget;this.committedDamage=committedDamage;this.holdTarget=holdTarget;
+  this.holdTarget=holdTarget;
   this.groundFirstStates=states.filter(state=>state.groundFirst);
-  this.coverage=states.map(()=>new Map());this.candidates=new Array(Math.max(32,targets.length));this.covered=new Uint8Array(this.candidates.length);this.ranks=new Uint8Array(this.candidates.length);this.urgency=new Float64Array(this.candidates.length);
+  this.coverage=states.map(()=>new Map());this.candidates=new Array(Math.max(32,targets.length));this.covered=new Uint8Array(this.candidates.length);this.urgency=new Float64Array(this.candidates.length);
   this.reset();
   if(path||targets.some(target=>target.path)){
    const point=new Float64Array(5),probe={id:'coverage-probe',x:0,z:0,aimY:0,velocityX:0,velocityZ:0};
@@ -72,7 +72,7 @@ export class TargetPlanner {
  reset(){
   this.next=0;this.thinks=0;this.lastThinkId=null;
   for(const state of this.states){state.target=null;state.reservation=null;state.reservationLap=0;state.targetLap=0;state.targetSince=-Infinity;state.targetShots=state.cycle.shots;state.thinkCount=0;state.predictedCoverage=0;state.groundInRange=false;}
-  this.candidates.fill(null);this.covered.fill(0);this.ranks.fill(0);this.urgency.fill(0);
+  this.candidates.fill(null);this.covered.fill(0);this.urgency.fill(0);
  }
  timeToExit(target){
   const path=target?.path??this.path,velocity=target&&speed(target);
@@ -103,9 +103,6 @@ export class TargetPlanner {
  capacity(index,target,requireFuture=false){
   const state=this.states[index],profile=this.coverage[index].get(target),travel=speed(target),distance=target.distance,route=target.path??this.path;
   if(!this.targetAllowed(state,target))return 0;
-  // A moving weapon has no stationary route profile. Its owner may certify
-  // only an already active burst, never pursuit or future flight coverage.
-  if(state.mobile)return requireFuture?0:(this.committedDamage?.(state,target)??0);
   // Coverage intervals were sampled on the route centre. A displaced actor is
   // still eligible for real shots, but cannot support a route-based promise.
   if(!alive(target)||target.routeForecastEligible===false||target.impact?.active||!(state.strength>0)||state.targeting.speed>0||!profile||!route||profile.routeKey!==(target.routeId??route)||profile.path.length!==route.length||profile.height!==target.aimY||!(travel>0)||!Number.isFinite(distance)||distance<0||distance>=route.length)return 0;
@@ -124,7 +121,6 @@ export class TargetPlanner {
  commitment(index,target){
   const state=this.states[index];
   if(!this.targetAllowed(state,target))return false;
-  if(state.mobile)return (this.committedDamage?.(state,target)??0)>0;
   if(state.reservation)return state.reservation===target&&state.reservationLap===(target.lap??0);
   if(state.target!==target||state.targetLap!==(target.lap??0)||state.lineOfSight!==true)return false;
   // A stale pointer after a wrap/range exit is not a future promise. Only an
@@ -154,7 +150,6 @@ export class TargetPlanner {
  score(target,state){
   const velocity=speed(target),distance=target.distance,path=target.path??this.path;
   const score=path&&Number.isFinite(distance)&&velocity>0?threat(target)/Math.max(1,(path.length-distance)/velocity):threat(target);
-  if(this.scoreTarget)return this.scoreTarget(state,target,score);
   // Unknown routes can still prioritize explicit threat. Distance breaks ties;
   // downstream confidence stays disabled without route/health information.
   return score;
@@ -164,7 +159,6 @@ export class TargetPlanner {
   const ea=this.exitEmergency(state,this.candidates[a]),eb=this.exitEmergency(state,this.candidates[b]);
   if(ea!==eb)return ea;
   if(ea){const ta=this.timeToExit(this.candidates[a]),tb=this.timeToExit(this.candidates[b]);if(Math.abs(ta-tb)>.1)return ta<tb;}
-  if(this.ranks[a]!==this.ranks[b])return this.ranks[a]>this.ranks[b];
   if(this.covered[a]!==this.covered[b])return this.covered[a]<this.covered[b];
   const ua=this.urgency[a],ub=this.urgency[b];
   if(Math.abs(ua-ub)>.1*Math.max(ua,ub))return ua>ub;
@@ -189,13 +183,12 @@ export class TargetPlanner {
  choose(state,index,recoil){
   // A larger roster is a lifecycle change, not a per-frame allocation. Existing
   // slots are reused; newly spawned actors without profiles get no forecasts.
-  if(this.targets.length>this.candidates.length){const size=2**Math.ceil(Math.log2(this.targets.length));this.candidates.length=size;this.covered=new Uint8Array(size);this.ranks=new Uint8Array(size);this.urgency=new Float64Array(size);}
+  if(this.targets.length>this.candidates.length){const size=2**Math.ceil(Math.log2(this.targets.length));this.candidates.length=size;this.covered=new Uint8Array(size);this.urgency=new Float64Array(size);}
   this.refreshGroundPriority();this.releaseInvalidReservations();state.occludedTargets=0;
   const current=state.target;let currentIndex=-1,count=0,best=-1;
   for(let i=0;i<this.targets.length;i++){
    const target=this.targets[i];if(!this.targetAllowed(state,target)||!this.eligible(state,target,recoil))continue;
    this.candidates[count]=target;this.urgency[count]=this.score(target,state);
-   this.ranks[count]=this.priorityTarget?.(state,target)??0;
    const residual=this.residualHealth(target);
    this.covered[count]=residual===0||this.coverageDamage(target,index)>=residual*TARGET_POLICY.coverageMargin?1:0;
    if(target===current)currentIndex=count;
@@ -226,8 +219,7 @@ export class TargetPlanner {
    if(chosen<0&&best>=0&&!this.covered[best]){state.reservation=null;chosen=best;}
   }else if(currentIndex>=0&&best!==currentIndex){
    const currentCovered=this.covered[currentIndex],challengerUncovered=best>=0&&!this.covered[best];
-   const upgrade=best>=0&&this.ranks[best]>this.ranks[currentIndex],sameRank=best>=0&&this.ranks[best]===this.ranks[currentIndex];
-   if(state.cycle.remaining||this.holdTarget?.(state)||!upgrade&&state.cycle.time-state.targetSince<TARGET_POLICY.holdSeconds||!(upgrade||sameRank&&(currentCovered&&challengerUncovered||this.urgency[best]>=this.urgency[currentIndex]*TARGET_POLICY.switchRatio)))chosen=currentIndex;
+   if(state.cycle.remaining||this.holdTarget?.(state)||state.cycle.time-state.targetSince<TARGET_POLICY.holdSeconds||!(currentCovered&&challengerUncovered||best>=0&&this.urgency[best]>=this.urgency[currentIndex]*TARGET_POLICY.switchRatio))chosen=currentIndex;
   }
   const result=chosen<0?null:this.candidates[chosen];
   if(result){
@@ -243,10 +235,8 @@ export class TargetPlanner {
  advance(deltaSeconds){
   if(!this.states.length)return;
   const index=this.next,state=this.states[index];this.next=(index+1)%this.states.length;this.thinks++;this.lastThinkId=state.id;state.thinkCount++;
-  this.prepareState?.(state);
   const target=this.choose(state,index,state.recoil.sample(state.cycle.time+deltaSeconds));
   if(target!==state.target||state.targetLap!==(target?.lap??0)){state.cycle.cancelBurst();state.targetSince=state.cycle.time;state.targetShots=state.cycle.shots;}state.target=target;state.targetLap=target?.lap??0;
-  this.onSelected?.(state,target);
  }
- dispose(){for(const state of this.states)state.reservation=null;this.coverage.length=0;this.candidates.length=0;this.groundFirstStates.length=0;this.states=[];this.targets=[];this.path=null;this.eligible=this.incomingDamage=this.prepareState=this.onSelected=this.scoreTarget=this.priorityTarget=this.committedDamage=this.holdTarget=null;}
+ dispose(){for(const state of this.states)state.reservation=null;this.coverage.length=0;this.candidates.length=0;this.groundFirstStates.length=0;this.states=[];this.targets=[];this.path=null;this.eligible=this.incomingDamage=this.holdTarget=null;}
 }

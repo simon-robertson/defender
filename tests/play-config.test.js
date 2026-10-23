@@ -60,8 +60,8 @@ test('play profiles are immutable and leave all shared preview tuning untouched'
 });
 test('capacity budgets every affordable family and species without adding disjoint wave peaks',()=>{
  const capacity=playCapacity(PLAY_CONFIG);expect(capacity.maxOwnedUnits).toBe(128);expect(capacity.maxWaveEnemies).toBe(26);
- expect(capacity.maxOwnedByFamily).toEqual({'turret-study':128,'arc-spire':64,'missile-launcher':42,'power-generator':32,'drone-defence':4});expect(capacity.maxWaveEnemiesBySpecies).toEqual({dog:6,roller:6,moth:6,walker:6,'dune-tread':7,'twin-fan':8,tripod:11,ray:11,spider:14,lantern:12});expect(capacity.pooledEnemyCount).toBe(87);expect(capacity.modelLights).toBe(434);
- const final=PLAY_CONFIG.levels[15].waves[3];expect(final.spawns.reduce((sum,spawn)=>sum+PLAY_MODEL_LIGHTS[spawn.model],0)+124*3+4*9).toBe(434);
+ expect(capacity.maxOwnedByFamily).toEqual({'turret-study':128,'arc-spire':64,'missile-launcher':42,'power-generator':32});expect(capacity.maxWaveEnemiesBySpecies).toEqual({dog:6,roller:6,moth:6,walker:6,'dune-tread':7,'twin-fan':8,tripod:11,ray:11,spider:14,lantern:12});expect(capacity.pooledEnemyCount).toBe(87);expect(capacity.modelLights).toBe(410);
+ const final=PLAY_CONFIG.levels[15].waves[3];expect(final.spawns.reduce((sum,spawn)=>sum+PLAY_MODEL_LIGHTS[spawn.model],0)+128*3).toBe(410);
  expect(()=>createPlayConfig({startTokens:3})).toThrow('capacity');expect(()=>createPlayConfig({waveReward:3})).toThrow('capacity');expect(()=>createPlayConfig({startTokens:1000})).toThrow('capacity');
  expect(playCapacity(createPlayConfig({waveReward:1})).maxOwnedUnits).toBe(65);
 });
@@ -90,8 +90,8 @@ test('later encounters use only their existing zone species, real branches and s
  expect(PLAY_CONFIG.levels[6].waves.every(w=>w.spawns.some(s=>s.routeId==='eastern'))).toBe(true);
  expect(PLAY_CONFIG.levels[10].waves.every(w=>w.spawns.some(s=>s.routeId==='northern'))).toBe(true);
  for(const model of ['moth','twin-fan','ray','lantern'])expect(PLAY_CONFIG.enemies[model].altitude).toBe(44);
- // Current A-only configuration includes four affordable Drone pads.
- const prefix=createPlayConfig({levels:PLAY_CONFIG.levels.slice(0,4)});expect(playCapacity(prefix).maxOwnedUnits).toBe(32);expect(playCapacity(prefix).modelLights).toBe(152);
+ // The A-only prefix budgets the four remaining defence families.
+ const prefix=createPlayConfig({levels:PLAY_CONFIG.levels.slice(0,4)});expect(playCapacity(prefix).maxOwnedUnits).toBe(32);expect(playCapacity(prefix).modelLights).toBe(128);
 });
 
 

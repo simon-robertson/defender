@@ -1,0 +1,27 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-performance.test.js:
+(pass) performance separates wall frame interval from full app CPU time and renderer diagnostic and limits DOM updates [0.68ms]
+(pass) pause/loading/hidden resets measurements and first resumed zero frame cannot count idle time [0.16ms]
+(pass) app callback CPU includes simulation and UI while GPU is a separate sampled asynchronous average [0.12ms]
+
+tests/play-ui-follow-up.test.js:
+(pass) Drone view names the click-drag gesture in markup, runtime hints and accessible instructions [0.55ms]
+(pass) centred Drone hint hides after targeting and while interaction is unavailable [2.17ms]
+(pass) loading follows the requested scene: title backdrops stay clear, real starts and Continue retain the panel [12.37ms]
+(pass) comparison sits left of the row and clamps within the viewport [0.49ms]
+(pass) comparisons disappear when locked, unsupported, scrolled away or covered by a modal [0.40ms]
+(pass) upgrade comparisons follow actual affordability, unlock and tier eligibility [1.14ms]
+(pass) selection alone does not open or retain the comparison; only upgrade hover/focus does [0.20ms]
+(pass) the temporary sound control lock survives UI updates and rejects slider events [0.22ms]
+
+tests/play-speed.test.js:
+(pass) the shared speed action toggles both ways smoothly and rejects unavailable phases and frozen input [0.61ms]
+(pass) T and the button share the action; repeats, editing and browser modifiers do not trigger it [0.56ms]
+(pass) speed button reports its target state and locks when play is unavailable [0.46ms]
+(pass) real playable movement and effects receive the same accelerated fixed ticks at 30/60/120 Hz [1682.35ms]
+
+ 15 pass
+ 0 fail
+ 155 expect() calls
+Ran 15 tests across 3 files. [1.73s]

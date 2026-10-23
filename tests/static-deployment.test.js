@@ -3,9 +3,15 @@ import {mkdtemp,mkdir,writeFile,readFile,symlink,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {preflight,productionSource} from '../scripts/deployment/build.js';
+import {preflight,productionSource,gather} from '../scripts/deployment/build.js';
 const digest=s=>createHash('sha256').update(s).digest('hex');
 const manifest=files=>({owner:'defender-static-deployer',version:1,files});
+test('packaged game retires defence aircraft while retaining the spectator camera and collision cache',async()=>{
+ const {outputs}=await gather(),files=[...outputs.keys()];
+ for(const file of ['game/drone-preview.js','engine/drone-navigation.js','engine/drone-motion.js','engine/drone-clearance.js','shared/drone.js','shared/drone-model.js','assets/models/drone-defence.json'])expect(files).not.toContain('docs/site/'+file);
+ for(const file of ['play/drone-camera.js','play/drone-flight.js','play/drone-input.js','play/drone-lens.js','engine/drone-obstacles.js'])expect(files).toContain('docs/site/'+file);
+ for(const [file,output]of outputs)if(file.startsWith('docs/site/assets/levels/'))expect(JSON.parse(new TextDecoder().decode(output.data)).placements.some(p=>p.model==='drone-defence')).toBe(false);
+});
 async function fixture(run){const root=await mkdtemp(path.join(tmpdir(),'defender-deployment-'));try{await mkdir(root+'/docs/site',{recursive:true});return await run(root);}finally{await rm(root,{recursive:true,force:true});}}
 test('preflight protects existing documentation before first deployment',()=>fixture(async root=>{
  await writeFile(root+'/docs/index.html','existing documentation');

@@ -1,0 +1,179 @@
+bun test v1.4.2 (744846f84)
+
+tests/renderer-light-copy-cache.test.js:
+(pass) model blocks survive changing transient payloads without repeated CPU copies [18.18ms]
+(pass) prefix changes, model edits, compaction and source replacement preserve reference packets [0.39ms]
+(pass) world release and runtime membership rebuild release the cached model owner [0.29ms]
+
+tests/play-roster.test.js:
+(pass) roster groups all upgrade tiers by defence family while retaining ownership order and identity [0.11ms]
+(pass) group updates preserve row controls/focus and avoid moving unchanged DOM; empty families are removed [0.23ms]
+(pass) deployment advances through the visible grouped rows instead of interleaved purchase order [0.21ms]
+
+tests/generator-lights.test.js:
+(pass) generator lights copy static midpoints and preserve the former green colour, strength and radius [0.16ms]
+(pass) fixed generator storage covers the conservative campaign economy and reports overflow [0.27ms]
+(pass) invalid topology is rejected before changing an existing light bank [0.08ms]
+
+tests/play-session.test.js:
+(pass) catalogue progression finishes four waves and all four levels before the next zone [0.05ms]
+(pass) wallet actions are phase gated, affordable and forks only spend on commit [1.83ms]
+(pass) consecutive preparation upgrades spend each step and the top tier survives the level boundary [2.98ms]
+(pass) upgrade availability follows progression, enabled tiers, phase and wallet [2.46ms]
+(pass) next undeployed selection advances in visible order, wraps and returns null only when none remain [1.60ms]
+(pass) 64 finite waves reward once, retain positions and transfer ownership across every level and zone boundary [4.64ms]
+(pass) miss limit wins over wave completion, terminal events deduplicate and retry is fresh [0.78ms]
+(pass) pause rejects combat events; killed actors cannot later escape [0.53ms]
+(pass) successful waves settle for four seconds before reward or progression and pause freezes settlement [0.56ms]
+(pass) defeat cannot settle, invalid time is rejected and reset clears a pending settlement [0.56ms]
+(pass) family unlocks and upgrades retain correct model and family prices across levels [0.63ms]
+(pass) wave briefing reports effective species profiles and per-approach counts [0.67ms]
+(pass) Power generator purchase spends four tokens, remains base-only and survives redeployment and level transfer [1.17ms]
+(pass) starting a wave requires a placed owned defence and recalling the last one closes the gate [0.54ms]
+
+tests/audio-deployment.test.js:
+(pass) audio manifest accepts delivery files and rejects traversal, masters and duplicates [0.26ms]
+(pass) packaging gathers exact mono delivery bytes and fails on missing/stereo files [0.93ms]
+(pass) development serves only declared delivery audio with MIME and GET/HEAD confinement [2.13ms]
+(pass) production gather includes player audio modules and only manifest-listed audio [85.46ms]
+
+tests/arc-effects.test.js:
+(pass) strike joins exact endpoints with one thicker unbranched channel, stronger light and six outward flecks [1.84ms]
+(pass) endpoint attachment follows the live bone without retaining caller point scratch or moving its source [0.29ms]
+(pass) fixed pools replace the oldest strike and drop excess sparks without changing their backing storage [0.77ms]
+(pass) dense Arc spark admissions scan the pool once while preserving first-free slots and random consumption [0.24ms]
+(pass) expiry and reset remove lights, particles and attachment references without replay after stalls [0.15ms]
+(pass) spark tail may remain after the channel but neither light nor attachments persist [0.04ms]
+(pass) manual enemy reset can clear effects while preserving the shared firing clock [0.04ms]
+(pass) shape is deterministic at equal elapsed time, with finite vertical and coincident inputs [0.35ms]
+(pass) repeated hits in the same slot get distinct broad contours and pulse phases without frame randomness [0.60ms]
+(pass) coarse tube segment endpoints follow the same visible trunk and do not encode endpoint point lights [0.11ms]
+(pass) the connected terminal escape rises before the descending main channel [0.05ms]
+(pass) hot metal flecks fall onto actual support, remain still with finite nonzero geometry, then fade away [0.63ms]
+(pass) swept flecks cannot tunnel through elevated ground after fast travel or a frame stall [0.15ms]
+(pass) reset preserves the collider only for the in-place reset and releases every scene reference on unload [0.07ms]
+(pass) reserved secondary bank remains visible under primary saturation and follows both enemies [0.41ms]
+
+tests/model-lights.test.js:
+(pass) flagged exposed face clusters preserve all zone colours and only the authored turret panels [122.26ms]
+(pass) edge-connected matching faces share an emitter; gaps, point contacts and different materials do not [0.27ms]
+(pass) logical transforms, compacted visibility and unchanged invalidations reuse storage correctly [0.08ms]
+(pass) model light overflow is explicit, bounded and does not allocate one light per quad [0.10ms]
+(pass) moving one light group reuses static positions even when visibility compacts their output slots [0.08ms]
+(pass) unchanged packed light groups avoid data reads and stores until their compacted slot changes [0.17ms]
+(pass) cached light blocks preserve signed zeros and the existing NaN dirty signal [0.08ms]
+
+tests/play-config.test.js:
+(pass) The campaign retains Zone A and adds forty-eight finite later encounters [0.95ms]
+(pass) all sixteen multi-entrance encounters open both ground fronts together and align matching flight groups [0.31ms]
+(pass) family and tier introductions are bounded global encounter numbers [2.19ms]
+(pass) play profiles are immutable and leave all shared preview tuning untouched [1.21ms]
+(pass) capacity budgets every affordable family and species without adding disjoint wave peaks [4.84ms]
+(pass) resolved firing profiles preserve actual family delivery and finite cadence [7.35ms]
+(pass) bad schedules, unknown routes and invalid species override fields fail before scene creation [17.02ms]
+(pass) settling time stays tunable independently of combat tuning [5.83ms]
+(pass) later encounters use only their existing zone species, real branches and stable level profiles [1.12ms]
+(pass) Power generator is a costly single-version enhancer with no weapon or upgrade profile [5.61ms]
+
+tests/play-unit-highlight.test.js:
+(pass) outline encloses actual articulated base/upgrade meshes, follows camera and preserves source/matrices [40.61ms]
+(pass) projection reuses unchanged work, follows in-place upgrades/moves and rejects absent or offscreen rigs [16.45ms]
+(pass) whole-row hover including upgrade outranks keyboard focus; leave restores only live focus [16.66ms]
+(pass) camera/pose updates repaint persistent nodes and phase/scene/ownership changes clear without stale worlds [16.66ms]
+(pass) ranges use each family and the session override, with no next tier for disabled/max variants [2.92ms]
+(pass) range circle projects actual horizontal distance and centre, follows moves/camera/tiers and reuses its buffers [14.74ms]
+(pass) row and Upgrade previews switch without selection, buying or world mutation and clear at lifecycle boundaries [17.63ms]
+
+tests/static-deployment.test.js:
+(pass) packaged game retires defence aircraft while retaining the spectator camera and collision cache [80.05ms]
+(pass) preflight protects existing documentation before first deployment [1.45ms]
+(pass) refresh accepts unchanged owned files but preserves intervening edits including stale files [0.94ms]
+(pass) manifest cannot claim arbitrary documentation or traverse out of the generated directory [0.41ms]
+(pass) output symlinks are refused before reading or overwriting their targets [0.64ms]
+(pass) source changes that invalidate stripping boundaries fail closed [0.35ms]
+
+tests/play-briefing.test.js:
+(pass) checkpoint recovery distinguishes a saved area, missing save and pending write [0.03ms]
+(pass) upgrade briefings use real configured damage, range, burst, chain and magazine values [1.00ms]
+(pass) upgrade descriptions retain generator bonuses and follow configuration changes [2.01ms]
+(pass) wave feedback counts this wave rather than cumulative misses and resets with a new campaign [2.43ms]
+
+tests/play-defence-retirement.test.js:
+(pass) the campaign and arsenal expose only the remaining four defence families [1.68ms]
+(pass) legacy Drone retirement refunds each valid purchase and preserves progress and surviving identities [4.76ms]
+(pass) all-Drone checkpoints retain the boundary and refund without requiring a surviving unit [2.36ms]
+(pass) retirement validates the old unit contract and wallet before issuing any refund [0.98ms]
+(pass) ordinary v1 checkpoints and current v2 saves retain their exact arsenal and wallet [2.28ms]
+
+tests/renderer.test.js:
+(pass) graphics options default on, validate atomically and leave geometry caches intact [6.81ms]
+(pass) reflection switches gate planar and SSR while preserving water refraction and refreshing disabled captures [5.71ms]
+(pass) bloom off skips lazy setup, extraction, blur and composite without suppressing source effects or light [3.02ms]
+(pass) disabled bloom retains asynchronous death preparation but allocates no bloom images at load or resize [2.84ms]
+(pass) enemy debris uses the shared opaque/depth/shadow passes and retires without new images [2.03ms]
+(pass) render invalidation refreshes only dependent passes for lights, camera, poses and resize [2.16ms]
+(pass) pass descriptor trees and submission storage are reused while resized views and commands are fresh [2.70ms]
+(pass) instance updates batch the latest matrices into one contiguous range and never survive scene release [2.37ms]
+(pass) three live dogs share thirteen instance uploads rather than uploading every part separately [336.50ms]
+(pass) actor visibility compacts instance slots without geometry allocation and preserves latest hidden poses [1.94ms]
+(pass) hiding a complete dog removes all thirteen parts from camera and shadow draws with fixed resources [269.12ms]
+(pass) Walker and Spider instance uploads and whole-actor removal reuse GPU geometry [448.73ms]
+(pass) damage pools allocate lazily, share lit cube passes, merge every local light and retire cleanly [1.90ms]
+(pass) smoke packs against the current camera before uploading, including rotation and an unchanged camera [1.78ms]
+(pass) shockwave refraction lazily snapshots the full display, reuses bounded storage and adds no inactive pass [1.62ms]
+(pass) authored model lights follow lit rig parts, preserve idle passes and merge with all transient slots [29.57ms]
+(pass) hidden lit actors lose their lights and restore their latest logical pose without resources [14.63ms]
+(pass) enemy eye emitters follow real poses, vanish on death, return on reset and release every scene reference [1435.88ms]
+(pass) selective bloom caches steady emission, invalidates visibility and releases reduced targets on resize/unload [20.14ms]
+(pass) transient bloom excludes sparks/smoke, clears on reset, preserves panels and precedes refraction [18.66ms]
+(pass) arc rendering allocates lazily, lights only colour passes, expires once and releases scene resources [2.17ms]
+(pass) missile thrust allocates only on a burn, reuses shot rendering and bloom, and disposes its scene buffer [1.77ms]
+(pass) missile coast clears its bloom contribution while ordinary flashes and steady model lights remain independent [16.10ms]
+(pass) generator midpoint lights allocate one static bank without Arc geometry, draws or bloom [1.80ms]
+(pass) full generator bank leaves primary/secondary Arc pools independent and expiry clears them [1.99ms]
+(pass) empty or same-time generator replacements update once; camera changes reuse static storage [1.58ms]
+(pass) inspection sampling skips JSON only while rendering and simulation still advance [1.57ms]
+(pass) a separately sized player renderer retains72 authored lights, specializes lit effects and uploads every reserved slot [111.10ms]
+(pass) Drone perspective renders sharply to the display without a lens pass or extra viewport image [1.73ms]
+(pass) bloom shares the player light capacity and excludes smoke and water from blast emission [1.58ms]
+(pass) Zone A vista is isolated, cached, resized, relit and released across zone changes [281.09ms]
+(pass) production GPU timing surrounds every submitted pass including vista, bloom, display and shockwaves [52.44ms]
+(pass) hidden emission disables bloom while visible material emission without a model light still enables it [13.75ms]
+(pass) planar capture shares scene buffers and shadows, caches static frames and retires on scene release [1.79ms]
+(pass) dry scenes use tiny inactive water bindings and skip the empty water pass, including wet/dry reloads [2.15ms]
+(pass) play effect preparation awaits asynchronous pipelines once and leaves first destruction allocation-free [1.82ms]
+(pass) failed asynchronous effect compilation rejects loading instead of declaring combat effects ready [0.20ms]
+(pass) disposing during effect preparation prevents a late ready state and releases every allocated pool [0.23ms]
+(pass) dense particle trails reuse main and mirrored smoke draws without a volume pass [2.29ms]
+
+tests/play-new-game.test.js:
+(pass) New Game deletes the real checkpoint before loading a fresh A1 run and only clears progress [2.98ms]
+(pass) pending older writes finish before clearing; repeated New Game input cannot race the reset [2.37ms]
+(pass) clear failure retains progress and permits retry without starting a new game [2.78ms]
+(pass) New Game from results clears progress, while Continue and return-to-title retain it [5.17ms]
+(pass) title copy explains reset and result screens expose deletion failures [0.23ms]
+(pass) leaving during an asynchronous clear cannot restart a disposed player [0.58ms]
+
+tests/play-ui-follow-up.test.js:
+(pass) Drone view names the click-drag gesture in markup, runtime hints and accessible instructions [0.36ms]
+(pass) centred Drone hint hides after targeting and while interaction is unavailable [0.61ms]
+(pass) loading follows the requested scene: title backdrops stay clear, real starts and Continue retain the panel [8.45ms]
+(pass) comparison sits left of the row and clamps within the viewport [0.27ms]
+(pass) comparisons disappear when locked, unsupported, scrolled away or covered by a modal [0.34ms]
+(pass) upgrade comparisons follow actual affordability, unlock and tier eligibility [0.92ms]
+(pass) selection alone does not open or retain the comparison; only upgrade hover/focus does [0.16ms]
+(pass) the temporary sound control lock survives UI updates and rejects slider events [0.20ms]
+
+tests/scene-loader.test.js:
+(pass) explicit same-level rebuild releases and activates once; ordinary repeat remains a no-op [0.21ms]
+(pass) scene replacement releases old resources and waits for submitted work before fetching [0.08ms]
+(pass) a stale fetch cannot activate after a newer request, even when it ignores abort [0.09ms]
+(pass) rapid requests during unload coalesce before starting replacement network loads [0.06ms]
+(pass) failed downloads and partial activation release resources and permit retry [0.13ms]
+(pass) disposal cancels a pending load and prevents scene resurrection [0.05ms]
+(pass) scene teardown clears every GPU buffer, camera/CPU reference and live shot without reallocating pools [0.30ms]
+
+ 141 pass
+ 0 fail
+ 300977 expect() calls
+Ran 141 tests across 16 files. [3.71s]

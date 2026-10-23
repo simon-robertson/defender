@@ -11,7 +11,7 @@ export async function currentPreviewFor(zone,number){
  const profile=PREVIEW_LEVELS.find(p=>p.zone===zone&&p.number===number);
  if(!profile)throw new Error('Unknown production preview.');
  const level=zone==='A'&&number===1
-  ?await (await import('./a1-drone-test.js')).a1DroneTest()
+  ?await (await import('./a1-combat-preview.js')).a1CombatPreview()
   :zone==='A'&&number===2
   ?(await (await import('./a2-path-carving.js')).carveMoss02()).level
   :zone==='A'&&number===3

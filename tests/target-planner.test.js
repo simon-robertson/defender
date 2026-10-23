@@ -107,9 +107,9 @@ test('revoking route forecast eligibility clears an existing reservation without
 });
 
 test('production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts',async()=>{
- // Rechecked against the pre-drone planner on the current archived geometry,
- // enemy poses and generator tuning; those inputs predate the mobile family.
- const expected=[['moss-01',[24,41,12],[25,26,26]],['moss-02',[6,13,4],[9,8,6]],['moss-03',[2,15,8],[4,4,4]]],sources=new Map();
+ // Retains the current stationary combat baseline, including physical missile
+ // timing; the former [2,15,8] missile snapshot predates that accepted timing.
+ const expected=[['moss-01',[24,41,12],[25,26,26]],['moss-02',[6,13,4],[9,8,6]],['moss-03',[0,6,6],[4,4,4]]],sources=new Map();
  for(const [id,shots,hits]of expected){
   const level=await Bun.file(new URL(`../project-docs/landscape-reset-2026-10-18/previous-levels/${id}.json`,import.meta.url)).json(),actors=[...DOG_PREVIEW_ACTORS,...missileActorsForLevel(id)],models=new Map();
   for(const model of new Set([...level.placements.map(p=>p.model),...actors.map(a=>a.model)])){

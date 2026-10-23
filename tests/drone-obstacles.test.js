@@ -31,6 +31,15 @@ test('current articulated parts obstruct aircraft sweeps while a low ground anim
  expect(obstacles.inspect().activeActors).toBe(1);obstacles.dispose();
 });
 
+test('standalone obstacle queries use a compact camera radius and retain exact face clearance',()=>{
+ const source=data([part('body',[[11,0,11]])],{role:'defence',model:'power-generator'}),obstacles=new DroneObstacles(world([],[['generator',source]]));
+ try{
+  expect(obstacles.pointClear(62.49,40.5,59.5)).toBe(false);expect(obstacles.pointClear(62.5,40.5,59.5)).toBe(true);
+  expect(obstacles.clearSegment(62.49,40.5,58,62.49,40.5,61)).toBe(false);expect(obstacles.segmentClear(62.5,40.5,58,62.5,40.5,61)).toBe(true);
+  expect(obstacles.clearTimedSegment(62.49,40.5,58,62.49,40.5,61)).toBe(false);expect(obstacles.clearTimedSegment(62.5,40.5,58,62.5,40.5,61)).toBe(true);
+ }finally{obstacles.dispose();}
+});
+
 test('a living airborne crossing is anticipated before contact and death removes it immediately',()=>{
  const source=data([part('body',[[11,0,11],[12,2,12]])]),enemy=state('flyer',source),obstacles=new DroneObstacles(world([['flyer',source]]),[enemy]);
  move(source,enemy,60,40,62);obstacles.update(.1);
@@ -143,7 +152,7 @@ test('explicit asymmetric queries reject real above/below contact while preservi
 });
 
 test('ground prediction respects supplied fixed-defence exclusions without hiding protruding or current contact',()=>{
- const source=data([part('body',[[11,0,11]])],{role:'scenery',x:20,y:24,z:60}),hare=state('hare',source,{kind:'ground',radius:1,height:3,hop:0,phase:'hop',speed:30,fleeSpeed:30,frightened:false}),pad=data([part('pad',[[1,0,1],[22,13,22]])],{role:'defence',model:'drone-defence',x:50,y:24,z:60}),obstacles=new DroneObstacles(world([['hare',source]],[['pad',pad]])),exclusions=new Float64Array([40,24,50,60,38,70]),inside=new Float64Array([43,25,58,47,27,62]),protruding=new Float64Array([35,25,58,45,27,62]);
+ const source=data([part('body',[[11,0,11]])],{role:'scenery',x:20,y:24,z:60}),hare=state('hare',source,{kind:'ground',radius:1,height:3,hop:0,phase:'hop',speed:30,fleeSpeed:30,frightened:false}),generator=data([part('base',[[1,0,1],[22,0,22]])],{role:'defence',model:'power-generator',x:50,y:24,z:60}),obstacles=new DroneObstacles(world([['hare',source]],[['generator',generator]])),exclusions=new Float64Array([40,24,50,60,38,70]),inside=new Float64Array([43,25,58,47,27,62]),protruding=new Float64Array([35,25,58,45,27,62]);
  obstacles.setWildlife([hare]);expect(obstacles.clearBox(inside,1)).toBe(false);
  obstacles.setWildlife([hare],exclusions);expect(obstacles.groundExclusions).toBe(exclusions);expect(obstacles.clearBox(inside,1)).toBe(true);expect(obstacles.clearBox(protruding,1)).toBe(false);
  expect(obstacles.clearTimedSegment(45,28,60,45,50,60,2,0,1,2)).toBe(true);
@@ -181,9 +190,9 @@ test('source-derived Dog Y envelope contains legal extreme impact, brace, gait a
  }finally{obstacles.dispose();preview.dispose();disposeWorld(scene);}
 });
 
-test('articulated defence prediction covers later yaw/pitch/recoil and excludes every drone part and pad',()=>{
- const turret=data([part('base',[[11,0,11]]),part('head',[[11,10,11]],[12,10,12],'base'),part('guns',[[11,10,2],[12,10,2]],[12,10,9],'head')],{role:'defence',model:'turret-study'}),drone=data([part('pad',[[11,0,11]]),part('drone',[[11,20,11]])],{role:'defence',model:'drone-defence',x:150});
- const obstacles=new DroneObstacles(world([],[['turret',turret],['drone',drone]])),point=new Float64Array(3);
+test('articulated defence prediction covers later yaw/pitch/recoil',()=>{
+ const turret=data([part('base',[[11,0,11]]),part('head',[[11,10,11]],[12,10,12],'base'),part('guns',[[11,10,2],[12,10,2]],[12,10,9],'head')],{role:'defence',model:'turret-study'});
+ const obstacles=new DroneObstacles(world([],[['turret',turret]])),point=new Float64Array(3);
  for(let i=0;i<20;i++){
   turret.pose.setRotation('head',0,i*Math.PI/10,0);turret.pose.setRotation('guns',Math.sin(i)*.6,0,0);turret.pose.setTranslation('guns',0,0,1.25);turret.pose.update();
   // Prediction remains conservative even before the next snapshot, covering
@@ -191,7 +200,7 @@ test('articulated defence prediction covers later yaw/pitch/recoil and excludes 
   const m=turret.instances[2].matrix;point[0]=m[0]*11.5+m[4]*10.5+m[8]*2.5+m[12];point[1]=m[1]*11.5+m[5]*10.5+m[9]*2.5+m[13];point[2]=m[2]*11.5+m[6]*10.5+m[10]*2.5+m[14];
   expect(obstacles.pointClear(point[0],point[1],point[2],.1,.8)).toBe(false);expect(obstacles.pointClear(point[0],point[1],point[2],.1)).toBe(false);obstacles.update(1/60);expect(obstacles.pointClear(point[0],point[1],point[2],.1)).toBe(false);
  }
- expect(obstacles.pointClear(150,40.5,60,1)).toBe(true);expect(obstacles.inspect().actors).toBe(1);obstacles.dispose();
+ expect(obstacles.inspect().actors).toBe(1);obstacles.dispose();
 });
 
 test('launcher wells reserve seated round tips while launched missile actor matrices are excluded',()=>{

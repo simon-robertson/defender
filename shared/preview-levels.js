@@ -4,7 +4,7 @@ import {ZONE_PREVIEWS} from './zone-style.js';
 const levelIds={A:['moss-01','moss-02','moss-03','moss-04'],B:['ochre-01','ochre-02','ochre-03','ochre-04'],C:['ice-01','ice-02','ice-03','ice-04'],D:['plum-01','plum-02','plum-03','plum-04']};
 export const PREVIEW_LEVELS=Object.freeze(ZONE_PREVIEWS.flatMap(profile=>levelIds[profile.zone].map((level,index)=>Object.freeze({
  ...profile,level,number:index+1,
- description:(profile.zone==='A'&&index===0?'Drone combat preview':'Path layout preview')+' · '+profile.name+' · 480 × 384 units.',
+ description:(profile.zone==='A'&&index===0?'Combat preview':'Path layout preview')+' · '+profile.name+' · 480 × 384 units.',
  previewMode:profile.zone==='A'&&index===0?'combat':'layout',
  missiles:index>=2,
 }))));

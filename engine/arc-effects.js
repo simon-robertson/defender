@@ -62,9 +62,10 @@ export class ArcEffects {
   let nx=normal[0],ny=normal[1],nz=normal[2],nl=Math.hypot(nx,ny,nz);if(nl<1e-8){nx=-dx;ny=-dy;nz=-dz;nl=Math.hypot(nx,ny,nz);}nx/=nl;ny/=nl;nz/=nl;
   let ux=ny,uy=-nx,uz=0;if(Math.abs(nz)>.9){ux=0;uy=nz;uz=-ny;}const ul=Math.hypot(ux,uy,uz);ux/=ul;uy/=ul;uz/=ul;
   const vx=ny*uz-nz*uy,vy=nz*ux-nx*uz,vz=nx*uy-ny*ux;
+  let search=0;
   for(let particle=0;particle<ARC_SPARKS_PER_HIT;particle++){
-   let spark=-1;for(let i=0;i<MAX_ARC_SPARKS;i++)if(this.sparkBirth[i]===-Infinity){spark=i;break;}
-   if(spark<0){this.droppedSparks++;continue;}
+   let spark=-1;for(;search<MAX_ARC_SPARKS;search++)if(this.sparkBirth[search]===-Infinity){spark=search;break;}
+   if(spark<0){this.droppedSparks+=ARC_SPARKS_PER_HIT-particle;break;}
    const k=spark*8,angle=this.random()*TAU,speed=12+this.random()*12,spread=3+this.random()*8,a=Math.cos(angle)*spread,b=Math.sin(angle)*spread;
    this.sparkBirth[spark]=at;this.sparkRest[spark]=-Infinity;this.sparks[k]=impact[0]+nx*.12;this.sparks[k+1]=impact[1]+ny*.12;this.sparks[k+2]=impact[2]+nz*.12;
    this.sparks[k+3]=nx*speed+ux*a+vx*b;this.sparks[k+4]=ny*speed+uy*a+vy*b+6+this.random()*8;this.sparks[k+5]=nz*speed+uz*a+vz*b;
@@ -72,6 +73,9 @@ export class ArcEffects {
    const radius=this.sparks[k+6]*.35,ground=this.visibility?debrisSupport(this.visibility,this.sparks[k],this.sparks[k+2],radius,this.sparks[k+1]+radius):0;
    if(Number.isFinite(ground)&&this.sparks[k+1]<ground+radius)this.sparks[k+1]=ground+radius+.002;
    if(age>0)this.stepSpark(spark,age,at);
+   // Earlier slots remain occupied throughout this synchronous emission. A
+   // backdated particle that expires immediately leaves its slot reusable.
+   if(this.sparkBirth[spark]!==-Infinity)search=spark+1;
   }
   this.needsCleanup=true;return true;
  }

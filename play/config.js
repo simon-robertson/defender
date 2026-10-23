@@ -1,4 +1,3 @@
-import {DRONE_TUNING,DRONE_PREVIEW} from '../shared/drone.js';
 import {ENHANCER_STATS} from '../shared/enhancer.js';
 import {DEFENCE_STATS} from '../shared/defence.js';
 import {TURRET_FIRING,ARC_SPIRE_FIRING} from '../shared/arsenal.js';
@@ -11,9 +10,9 @@ import {VARIANTS} from '../shared/model.js';
 export const PLAY_CONFIG_VERSION=1;
 export const MAX_PLAY_MODEL_LIGHTS=MAX_SUPPORTED_MODEL_LIGHTS;
 export const PLAY_TIME_RESOLUTION=1/120;
-export const DEFENCE_LABELS=Object.freeze({'turret-study':'Gun','arc-spire':'Arc Spire','drone-defence':'Drone','missile-launcher':'Missile launcher','power-generator':'Power generator'});
+export const DEFENCE_LABELS=Object.freeze({'turret-study':'Gun','arc-spire':'Arc Spire','missile-launcher':'Missile launcher','power-generator':'Power generator'});
 export const ENEMY_LABELS=Object.freeze({dog:'Dog',roller:'Roller',moth:'Moth',walker:'Walker','dune-tread':'Dune Tread','twin-fan':'Twin Fan',tripod:'Tripod',ray:'Ray',spider:'Spider',lantern:'Lantern'});
-export const PLAY_MODEL_LIGHTS=Object.freeze({'turret-study':3,'arc-spire':4,'missile-launcher':4,'power-generator':4,'drone-defence':9,dog:4,roller:2,moth:2,walker:2,'dune-tread':1,'twin-fan':1,tripod:1,ray:1,spider:1,lantern:1});
+export const PLAY_MODEL_LIGHTS=Object.freeze({'turret-study':3,'arc-spire':4,'missile-launcher':4,'power-generator':4,dog:4,roller:2,moth:2,walker:2,'dune-tread':1,'twin-fan':1,tripod:1,ray:1,spider:1,lantern:1});
 export const PLAY_LEVEL_IDS=Object.freeze(['moss','ochre','ice','plum'].flatMap(prefix=>[1,2,3,4].map(index=>prefix+'-0'+index)));
 export const PLAY_ROUTE_IDS=Object.freeze(Object.fromEntries(PLAY_LEVEL_IDS.map(id=>[id,Object.freeze(['main',...(['moss-03','ochre-03'].includes(id)?['eastern']:id==='ice-03'?['northern']:id==='ochre-04'?['lake']:[])])])));
 const SPEED_LIMITS={dog:15,roller:16,moth:24,walker:18,'dune-tread':10,'twin-fan':18,tripod:14,ray:22,spider:12,lantern:16};
@@ -108,9 +107,6 @@ const DEFAULT_CONFIG={
    upgrade1:profile('arc-spire','upgrade1',48,84,{...ARC_SPIRE_FIRING.upgrade1,shotIntervalSeconds:.16,cooldownSeconds:1.3},5),
    upgrade2:profile('arc-spire','upgrade2',65,108,{...ARC_SPIRE_FIRING.upgrade2,shotIntervalSeconds:.18,cooldownSeconds:1.4},9),
   }},
-  'drone-defence':{purchaseCost:1,upgradeCost:null,availableFromWave:5,maxOwned:4,enabledVariants:['base'],variants:{
-   base:{stats:{strength:DRONE_TUNING.base.weapon.strength,maxRange:DRONE_PREVIEW.maxRange,requiresLineOfSight:true},firing:clone(DRONE_TUNING.base.weapon),flightSeconds:DRONE_TUNING.base.flightSeconds,rechargeSeconds:DRONE_TUNING.base.rechargeSeconds},
-  }},
   'missile-launcher':{purchaseCost:3,upgradeCost:3,availableFromWave:9,enabledVariants:[...VARIANTS],variants:{
    base:profile('missile-launcher','base',300,96,MISSILE_FIRING.base,9),
    upgrade1:profile('missile-launcher','upgrade1',420,126,MISSILE_FIRING.upgrade1,9),
@@ -154,15 +150,14 @@ const DEFAULT_CONFIG={
 
 export function playCapacity(config){
  const waves=config.levels.flatMap(level=>level.waves),budget=config.startTokens+config.waveReward*Math.max(0,waves.length-1),families=Object.keys(config.defences),species=Object.keys(config.enemies);
- const maxOwnedByFamily=Object.fromEntries(families.map(model=>[model,Math.min(config.defences[model].maxOwned??Infinity,Math.floor(budget/config.defences[model].purchaseCost))]));
+ const maxOwnedByFamily=Object.fromEntries(families.map(model=>[model,Math.floor(budget/config.defences[model].purchaseCost)]));
  const maxWaveEnemiesBySpecies=Object.fromEntries(species.map(model=>[model,Math.max(...waves.map(wave=>wave.spawns.filter(spawn=>spawn.model===model).length))]));
  let modelLights=0;
  for(let wi=0;wi<waves.length;wi++){
   const tokens=config.startTokens+config.waveReward*wi,best=new Uint32Array(tokens+1);
   for(const model of families){
    const family=config.defences[model],cost=family.purchaseCost,lights=PLAY_MODEL_LIGHTS[model];if((family.availableFromWave??1)>wi+1)continue;
-   if(family.maxOwned===undefined){for(let amount=cost;amount<=tokens;amount++)best[amount]=Math.max(best[amount],best[amount-cost]+lights);}
-   else for(let copy=0;copy<Math.min(family.maxOwned,Math.floor(tokens/cost));copy++)for(let amount=tokens;amount>=cost;amount--)best[amount]=Math.max(best[amount],best[amount-cost]+lights);
+   for(let amount=cost;amount<=tokens;amount++)best[amount]=Math.max(best[amount],best[amount-cost]+lights);
   }
   const enemyLights=waves[wi].spawns.reduce((sum,spawn)=>sum+PLAY_MODEL_LIGHTS[spawn.model],0);modelLights=Math.max(modelLights,best[tokens]+enemyLights);
  }
@@ -177,9 +172,8 @@ export function validatePlayConfig(config){
  const availability=(entry,label)=>check(entry.availableFromWave===undefined||integer(entry.availableFromWave,1,64),label+' availability must be a global wave number1–64.');
  check(config.defences&&Object.keys(config.defences).length>0&&config.defences['turret-study']&&Object.keys(config.defences).every(model=>Object.hasOwn(DEFENCE_LABELS,model)),'only existing campaign defence families are supported.');
  for(const [model,family] of Object.entries(config.defences)){
-  const enhancer=model==='power-generator',drone=model==='drone-defence';
-  check(family.maxOwned===undefined||integer(family.maxOwned,1,128),model+' ownership limit must be a positive whole count.');
-  check(integer(family.purchaseCost,1,10000)&&(enhancer||drone?family.upgradeCost===null:integer(family.upgradeCost,1,10000)),model+' costs need positive whole purchase tokens and supported upgrade pricing.');availability(family,model);
+  const enhancer=model==='power-generator';
+  check(integer(family.purchaseCost,1,10000)&&(enhancer?family.upgradeCost===null:integer(family.upgradeCost,1,10000)),model+' costs need positive whole purchase tokens and supported upgrade pricing.');availability(family,model);
   check(enhancer?family.kind==='enhancer':family.kind===undefined||family.kind==='defence',model+' needs its actual family kind.');
   if(enhancer){
    check(Array.isArray(family.enabledVariants)&&family.enabledVariants.length===1&&family.enabledVariants[0]==='base'&&family.variants&&Object.keys(family.variants).length===1&&Object.hasOwn(family.variants,'base'),'Power generator has one non-upgradable base version.');
@@ -190,16 +184,13 @@ export function validatePlayConfig(config){
   }
   check(Array.isArray(family.enabledVariants)&&family.enabledVariants.length>0&&family.enabledVariants.length<=VARIANTS.length&&family.enabledVariants.every((variant,i)=>variant===VARIANTS[i]),'enabled tiers must follow base, upgrade1, upgrade2 in order.');
   check(family.variants&&Object.keys(family.variants).every(variant=>VARIANTS.includes(variant)),'tiers must use supported model variants.');
-  if(drone)check(family.maxOwned===4&&family.enabledVariants.length===1&&family.enabledVariants[0]==='base'&&Object.keys(family.variants).length===1,'Drone fleet has four base-only pads and no upgrades.');
   let availableAt=family.availableFromWave??1;
   for(const variant of family.enabledVariants){
    const resolved=family.variants[variant],stats=resolved?.stats,firing=resolved?.firing;check(resolved,model+'/'+variant+' needs a resolved profile.');availability(resolved,model+'/'+variant);
    check((resolved.availableFromWave??availableAt)>=availableAt,'upgrade availability must follow its family and previous tier.');availableAt=resolved.availableFromWave??availableAt;
    check(stats&&positive(stats.maxRange)&&positive(stats.strength)&&stats.requiresLineOfSight===(model!=='missile-launcher'),model+'/'+variant+' needs positive range/strength and the actual family LOS policy.');
-   if(drone)check(resolved.flightSeconds===DRONE_TUNING.base.flightSeconds&&resolved.rechargeSeconds===DRONE_TUNING.base.rechargeSeconds&&stats.strength===DRONE_TUNING.base.weapon.strength&&stats.maxRange===DRONE_PREVIEW.maxRange,'Drone base retains approved weapon/endurance/recharge and tested range.');
    const cycle=model==='missile-launcher'?firing?.cycle:firing;
    check(cycle&&integer(cycle.shotsPerBurst,1,32)&&Number.isFinite(cycle.shotIntervalSeconds)&&cycle.shotIntervalSeconds>=0&&Number.isFinite(cycle.cooldownSeconds)&&cycle.cooldownSeconds>=PLAY_TIME_RESOLUTION,model+'/'+variant+' needs a finite firing cycle.');
-   if(drone)check(Object.keys(DRONE_TUNING.base.weapon).every(key=>cycle[key]===DRONE_TUNING.base.weapon[key]),'Drone base retains its approved firing cycle.');
    check(cycle.shotsPerBurst===1||cycle.shotIntervalSeconds>=PLAY_TIME_RESOLUTION,'burst rounds must be at least one120Hz tick apart.');
    if(model==='missile-launcher')check(integer(firing.magazine,1,2*(VARIANTS.indexOf(variant)+1))&&Number.isFinite(firing.gap)&&firing.gap>=1&&positive(firing.reload)&&cycle.delivery==='projectile'&&positive(cycle.projectile?.speedUnitsPerSecond)&&cycle.cooldownSeconds===firing.gap,'missiles need bounded magazines, a minimum one-second launch gap, separate reload and a physical projectile.');
    else check(cycle.delivery==='hitscan'&&cycle.projectile===null,'guns and Arc use actual hitscan pulses.');

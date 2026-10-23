@@ -56,3 +56,27 @@ test('moving one light group reuses static positions even when visibility compac
  a.draw.indexToSlot=new Int32Array([-1,0]);lights.invalidate('panel');lights.prepare();expect(reads).toBe(0);expect(lights.count).toBe(2);expect(lights.data[12]).toBe(40.5);
  transforms[12]=80;lights.invalidate('static');lights.prepare();expect(reads).toBe(1);expect(lights.data[12]).toBe(80.5);lights.dispose();expect(lights.dirtyKeys.size).toBe(0);
 });
+
+test('unchanged packed light groups avoid data reads and stores until their compacted slot changes',()=>{
+ const mesh=meshQuads([quad(0,0)],palette),moving=fixture(mesh),stable=fixture(mesh,3),entries=[moving.entries[0],{...stable.entries[0],key:'static'}],draws=new Map([['panel',moving.draw],['static',stable.draw]]),lights=new ModelLights(entries,draws);
+ stable.draw.transforms[12]=10;stable.draw.transforms[28]=20;stable.draw.transforms[44]=30;lights.prepare();
+ const data=lights.data,packet=data.slice(),reads=[],writes=[];
+ lights.data=new Proxy(data,{get(target,key){if(typeof key==='string'&&/^\d+$/.test(key))reads.push(Number(key));return Reflect.get(target,key,target);},set(target,key,value){if(typeof key==='string'&&/^\d+$/.test(key))writes.push(Number(key));return Reflect.set(target,key,value,target);}});
+ moving.draw.transforms[12]=5;lights.invalidate('panel');expect(lights.prepare()).toBe(true);
+ expect(reads.every(index=>index<12)).toBe(true);expect(writes.every(index=>index<12)).toBe(true);expect(data.slice(12,36)).toEqual(packet.slice(12,36));
+ reads.length=writes.length=0;lights.invalidate('panel');expect(lights.prepare()).toBe(false);expect(reads.every(index=>index<12)).toBe(true);expect(writes.every(index=>index<12)).toBe(true);
+ moving.draw.indexToSlot=new Int32Array([-1]);lights.invalidate('panel');expect(lights.prepare()).toBe(true);expect(lights.count).toBe(3);
+ expect([...data.slice(4,28)]).toEqual([...packet.slice(12,36)]);expect(writes.some(index=>index>=12)).toBe(true);
+ moving.draw.indexToSlot[0]=0;lights.invalidate('panel');expect(lights.prepare()).toBe(true);expect(lights.count).toBe(4);expect(data.slice(12,36)).toEqual(packet.slice(12,36));
+ lights.data=data;lights.dispose();expect(lights.sources).toHaveLength(0);
+});
+
+test('cached light blocks preserve signed zeros and the existing NaN dirty signal',()=>{
+ const mesh=meshQuads([quad(0,0)],palette),moving=fixture(mesh),stable=fixture(mesh),lights=new ModelLights([moving.entries[0],{...stable.entries[0],key:'static'}],new Map([['panel',moving.draw],['static',stable.draw]]));
+ const source=lights.sources[1];source.x=source.y=source.z=0;stable.draw.transforms.fill(-0);stable.draw.transforms[15]=1;
+ expect(lights.prepare()).toBe(true);expect(Object.is(lights.data[12],-0)).toBe(true);expect(Object.is(lights.data[13],-0)).toBe(true);expect(Object.is(lights.data[14],-0)).toBe(true);
+ lights.invalidate('panel');expect(lights.prepare()).toBe(false);expect(Object.is(lights.data[12],-0)).toBe(true);
+ stable.draw.transforms[12]=NaN;lights.invalidate('static');expect(lights.prepare()).toBe(true);expect(Number.isNaN(lights.data[12])).toBe(true);
+ lights.invalidate('panel');expect(lights.prepare()).toBe(true);expect(Number.isNaN(lights.data[12])).toBe(true);
+ stable.draw.transforms[12]=-0;lights.invalidate('static');expect(lights.prepare()).toBe(true);lights.invalidate('panel');expect(lights.prepare()).toBe(false);expect(Object.is(lights.data[12],-0)).toBe(true);
+});

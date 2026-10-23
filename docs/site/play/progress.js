@@ -4,37 +4,51 @@ const STORAGE_KEY='defender.progress.v1',PREFIX='D1.',MAX_SAVE_LENGTH=65536;
 const CONTEXT=new TextEncoder().encode('defender/level-checkpoint/v1');
 const integer=(value,min,max)=>Number.isSafeInteger(value)&&value>=min&&value<=max;
 const requireSave=valid=>{if(!valid)throw new Error('Saved progress is incompatible or damaged.');};
+const unitPrefix=model=>`player-${model==='turret-study'?'gun':model}-`;
 
 // Only a completed-level boundary is persisted. Runtime actors, placements,
 // combat reservations and partially completed waves never enter the save.
 function checkpoint(session){
  requireSave(session.phase==='loadout'&&session.waveIndex===0&&session.levelIndex>0);
- return {version:1,configVersion:session.config.version,levelId:session.level.id,completedWaves:session.completedWaves,tokens:session.tokens,misses:session.misses,nextUnit:session.nextUnit,
+ return {version:2,configVersion:session.config.version,levelId:session.level.id,completedWaves:session.completedWaves,tokens:session.tokens,misses:session.misses,nextUnit:session.nextUnit,
   units:session.units.map(unit=>({id:unit.id,model:unit.model??'turret-study',variant:unit.variant}))};
 }
 
 function restore(config,data){
- requireSave(data?.version===1&&data.configVersion===config.version);
+ requireSave((data?.version===1||data?.version===2)&&data.configVersion===config.version);
  const levelIndex=config.levels.findIndex(level=>level.id===data.levelId);
  requireSave(levelIndex>0);
  const completed=config.levels.slice(0,levelIndex).reduce((sum,level)=>sum+level.waves.length,0),budget=config.startTokens+completed*config.waveReward;
  requireSave(data.completedWaves===completed&&integer(data.tokens,0,budget)&&integer(data.misses,0,config.missLimit-1));
  const maxUnits=Math.floor(budget/Math.min(...Object.values(config.defences).map(family=>family.purchaseCost)));
- requireSave(Array.isArray(data.units)&&data.units.length<=maxUnits&&data.nextUnit===data.units.length+1);
- let spent=0;const familyCounts=new Map();
- const units=data.units.map((unit,index)=>{
-  requireSave(unit&&typeof unit.model==='string'&&Object.hasOwn(config.defences,unit.model));
-  const count=(familyCounts.get(unit.model)??0)+1;familyCounts.set(unit.model,count);requireSave(count<=(config.defences[unit.model].maxOwned??Infinity));
+ // Purchase serials retain the identities of surviving units. The only legal
+ // gaps are the up-to-four retired Drone purchases, including after a refund
+ // is spent on replacements in a later checkpoint.
+ requireSave(Array.isArray(data.units)&&data.units.length<=maxUnits&&integer(data.nextUnit,data.units.length+1,data.units.length+5));
+ if(data.version===1)requireSave(data.nextUnit===data.units.length+1);
+ let spent=0,refund=0,previousSerial=0;const units=[];
+ for(const [index,unit]of data.units.entries()){
+  requireSave(unit&&typeof unit.model==='string'&&typeof unit.id==='string');
+  const prefix=unitPrefix(unit.model),serial=Number(unit.id.slice(prefix.length));
+  requireSave(unit.id===prefix+serial&&integer(serial,previousSerial+1,data.nextUnit-1));previousSerial=serial;
+  if(data.version===1)requireSave(serial===index+1);
+  // Retired combat Drones existed only as one-token, base-only purchases
+  // from wave 5, with at most four owned pads. Validate that old contract
+  // before refunding; loading never modifies the stored checkpoint.
+  if(data.version===1&&unit.model==='drone-defence'){
+   requireSave(unit.variant==='base'&&completed>=5&&refund<4);spent++;refund++;continue;
+  }
+  requireSave(Object.hasOwn(config.defences,unit.model));
   const family=config.defences[unit.model],variants=family.kind==='enhancer'?['base']:family.enabledVariants,tier=variants.indexOf(unit.variant);
-  requireSave(tier>=0&&unit.id===`player-${unit.model==='turret-study'?'gun':unit.model}-${index+1}`);
+  requireSave(tier>=0);
   requireSave((family.availableFromWave??1)<=completed);
   for(let rank=0;rank<=tier;rank++)requireSave((family.variants[variants[rank]].availableFromWave??family.availableFromWave??1)<=completed);
   spent+=family.purchaseCost+tier*(family.upgradeCost??0);
-  return {id:unit.id,model:unit.model,variant:unit.variant,box:null};
- });
+  units.push({id:unit.id,model:unit.model,variant:unit.variant,box:null});
+ }
  requireSave(data.tokens+spent===budget);
  const session=new PlaySession(config);session.reset('loadout');
- Object.assign(session,{levelIndex,completedWaves:completed,tokens:data.tokens,misses:data.misses,nextUnit:data.nextUnit,units});
+ Object.assign(session,{levelIndex,completedWaves:completed,tokens:data.tokens+refund,misses:data.misses,nextUnit:data.nextUnit,units});
  return session;
 }
 

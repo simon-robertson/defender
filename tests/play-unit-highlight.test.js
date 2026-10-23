@@ -100,7 +100,7 @@ test('ranges use each family and the session override, with no next tier for dis
  const config=createPlayConfig({defences:{'turret-study':{variants:{base:{stats:{maxRange:53}},upgrade1:{stats:{maxRange:79}}}}}}),before=JSON.stringify(config);
  for(const[model,family]of Object.entries(config.defences))for(let index=0;index<family.enabledVariants.length;index++){
   const variant=family.enabledVariants[index],unit={model,variant};
-  if(family.kind==='enhancer'||model==='drone-defence'){expect(unitRangePreview(unit,config.defences)).toBeNull();expect(unitRangePreview(unit,config.defences,true)).toBeNull();continue;}
+  if(family.kind==='enhancer'){expect(unitRangePreview(unit,config.defences)).toBeNull();expect(unitRangePreview(unit,config.defences,true)).toBeNull();continue;}
   expect(unitRangePreview(unit,config.defences)).toEqual({variant,range:family.variants[variant].stats.maxRange,upgrade:false});
   const next=family.enabledVariants[index+1],preview=unitRangePreview(unit,config.defences,true);
   expect(preview).toEqual(next?{variant:next,range:family.variants[next].stats.maxRange,upgrade:true}:null);

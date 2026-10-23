@@ -5,7 +5,7 @@ const CIRCLE=Array.from({length:SEGMENTS},(_,index)=>{const angle=index*Math.PI*
 export function unitRangePreview(unit,defences,upgrade=false){
  if(!unit)return null;
  const family=defences?.[unit.model??'turret-study'],variants=family?.enabledVariants??[],index=variants.indexOf(unit.variant);
- if(family?.kind==='enhancer'||unit.kind==='enhancer'||unit.model==='drone-defence')return null;
+ if(family?.kind==='enhancer'||unit.kind==='enhancer')return null;
  const variant=upgrade?(index>=0?variants[index+1]:unit.nextVariant):unit.variant;
  if(!variant)return null;
  const stats=family?.variants[variant]?.stats??(upgrade?unit.nextStats:unit.stats),range=stats?.maxRange;

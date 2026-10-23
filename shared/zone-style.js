@@ -27,7 +27,7 @@ const turretColors={
 export function modelForZone(model,zone){
  if(zone==='A'||model.colorMode==='authored')return model;
  const enhancer=model.id==='power-generator';
- const colors=(enhancer||['turret-study','arc-spire','missile-launcher','guided-missile','drone-defence'].includes(model.id))?turretColors[zone]:ZONES[zone]?.colors;
+ const colors=(enhancer||['turret-study','arc-spire','missile-launcher','guided-missile'].includes(model.id))?turretColors[zone]:ZONES[zone]?.colors;
  if(!colors)throw new Error('Unknown zone palette.');
  // Enhancers retain their green identity lights across every zone. Ordinary
  // armour and cooling panels still use the shared arsenal palette.

@@ -71,7 +71,7 @@ test('Arc surface retries stay with their enemy after active deaths, escapes and
 test('finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds',()=>{
  let launchCount=0;const f=fixture({model:'missile-launcher',spawns:[{model:'dog'}],overrides:{dog:{maxHealth:80,speed:12}},callbacks:{missileEffects:{onLaunch:()=>launchCount++}}});
  try{
-  const e=f.engine;e.startWave();e.advance(1/120);const target=e.enemies.states[0];expect(launchCount).toBe(1);expect(target.health.current).toBe(80);expect(e.firing.missiles.pool.incomingDamage(target)).toBe(200);
+  const e=f.engine;e.startWave();e.advance(1/120);const target=e.enemies.states[0];expect(launchCount).toBe(1);expect(target.health.current).toBe(80);expect(e.firing.missiles.pool.incomingDamage(target)).toBe(f.config.defences['missile-launcher'].variants.base.stats.strength);
   finish(e);expect(e.enemies.killed).toBe(1);expect(e.firing.missiles.pool.hits).toBe(1);expect(e.firing.missiles.states[0].lastHitDamage).toBe(80);
   const launches=launchCount,shots=e.firing.shots;e.advance(4,{combat:false});expect(launchCount).toBe(launches);expect(e.firing.shots).toBe(shots);expect(e.firing.missiles.pool.active).toBe(0);
   e.stopWave();e.startWave();expect(e.firing.missiles.pool.hits).toBe(0);expect(e.enemies.states[0].health.current).toBe(80);expect(e.firing.missiles.pool.slots).toHaveLength(36);

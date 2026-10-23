@@ -1,0 +1,96 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [113.29ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [66.21ms]
+(pass) Arc surface retries stay with their enemy after active deaths, escapes and later spawns [107.03ms]
+(pass) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [38.83ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [180.97ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [119.39ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1218.66ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [929.35ms]
+(pass) real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage [81.39ms]
+
+tests/static-deployment.test.js:
+(pass) packaged game retires defence aircraft while retaining the spectator camera and collision cache [78.50ms]
+(pass) preflight protects existing documentation before first deployment [1.29ms]
+(pass) refresh accepts unchanged owned files but preserves intervening edits including stale files [1.09ms]
+(pass) manifest cannot claim arbitrary documentation or traverse out of the generated directory [0.46ms]
+(pass) output symlinks are refused before reading or overwriting their targets [0.64ms]
+(pass) source changes that invalidate stripping boundaries fail closed [0.12ms]
+
+tests/play-defence-retirement.test.js:
+(pass) the campaign and arsenal expose only the remaining four defence families [1.81ms]
+(pass) legacy Drone retirement refunds each valid purchase and preserves progress and surviving identities [4.65ms]
+(pass) all-Drone checkpoints retain the boundary and refund without requiring a surviving unit [2.07ms]
+(pass) retirement validates the old unit contract and wallet before issuing any refund [1.06ms]
+(pass) ordinary v1 checkpoints and current v2 saves retain their exact arsenal and wallet [2.42ms]
+
+tests/play-placement.test.js:
+(pass) all clear grid cells are considered while accepted source assets and A1 preview drones stay independent [957.70ms]
+(pass) placement rejects unsupported ground/units and independently legal guns need simultaneous movement clearance [1111.45ms]
+(pass) continuous gun envelopes contain real hierarchical yaw/pitch/recoil transforms including interval interiors [999.40ms]
+(pass) current Dog gait stays inside the continuous route capsule throughout both playable journeys and tuning range [784.97ms]
+(pass) wildlife seed selection rejects scenery cages and separates three seeds in genuinely connected roaming ground [0.23ms]
+(pass) committed player placements reseed blocked wildlife and actual controllers complete connected journeys [2407.77ms]
+
+tests/target-planner.test.js:
+(pass) equal threat follows time to exit, explicit threat can outweigh progress, and health breaks close urgency ties [0.36ms]
+(pass) unknown route metadata still ranks threat but never invents downstream capacity [0.11ms]
+(pass) explicitly disabled forecasts skip all route probes while default coverage and live eligibility remain intact [0.32ms]
+(pass) uncertified route aim offsets and banking skip probes and credit without excluding live gun hits [0.55ms]
+(pass) revoking route forecast eligibility clears an existing reservation without rejecting its live target [0.16ms]
+(pass) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [1083.10ms]
+(pass) future projectile aiming does not borrow the hitscan damage forecast [0.12ms]
+(pass) impact recovery suspends route promises while keeping actual live shots eligible [0.12ms]
+(pass) an idle downstream owner accepts one explicit assignment when the upstream gun switches [0.07ms]
+(pass) a future reservation yields to a hittable uncovered flyer and revokes its promised damage [0.08ms]
+(pass) future reservations still wait when current alternatives are already covered and hold a hittable assignment [0.10ms]
+(pass) delegation requires the full margin and respects cooldown, visibility and weapon strength [0.26ms]
+(pass) incoming missile damage is credited once and only residual health needs the gun forecast margin [0.18ms]
+(pass) fully claimed missile damage releases old gun reservations and never recruits unnecessary owners [0.08ms]
+(pass) unknown health and invalid incoming values cannot manufacture a lethal damage claim [0.29ms]
+(pass) mixed families share actual incoming credit while only one thinker forecasts gun damage [0.24ms]
+(pass) capacity uses only the next continuous window and never counts a later preview lap [0.05ms]
+(pass) one downstream promise cannot be reused to delegate a different actor [0.10ms]
+(pass) an owner cannot abandon its reserved actor for a more urgent challenger [0.05ms]
+(pass) covered targets remain fireable when there is no uncovered alternative [0.05ms]
+(pass) near-equal urgency and a short hold preserve locks; a valid burst finishes before a discretionary switch [0.05ms]
+(pass) forecast counts single attack pulses, partial bursts and real cooldowns [0.02ms]
+(pass) one roster scan per frame rotates fairly and releases all planner references on disposal [0.10ms]
+(pass) death, departure and lap changes invalidate reservations instead of preserving spent promises [0.17ms]
+(pass) a stale current-target lock cannot recreate downstream confidence after its reservation lapses [0.05ms]
+(pass) an unreserved lock in a coverage gap cannot promise a disconnected later window [0.03ms]
+(pass) current turret capacity never covers itself and spent weapon time reduces a promise [0.04ms]
+(pass) roster growth reuses spare slots and gives unprofiled actors no speculative capacity [0.10ms]
+(pass) continuing burst forecasts require pitch alignment as well as yaw [0.05ms]
+(pass) non-thinking turrets still reject invalid shots and cancel bursts every frame [0.28ms]
+(pass) gun acquisition survives priority changes through cooldown and its first valid burst [0.07ms]
+(pass) gun acquisition hold is bounded and cannot retain dead, blocked, removed or out-of-range targets [0.14ms]
+(pass) ground-first guns override air urgency, covered health, reservations and acquisition or burst holds [0.24ms]
+(pass) ground presence uses inclusive horizontal actor-root range and excludes dead or departed actors [0.09ms]
+(pass) ground-priority cache is local to each gun and leaves Arc and missile ranking unchanged [0.10ms]
+(pass) a newly present ground enemy cancels non-thinking live gun air bursts before the next pulse [0.07ms]
+(pass) blocked or pitch-unreachable ground suppresses live air shots until it dies, leaves or is removed [0.67ms]
+
+tests/preview-combat-source.test.js:
+(pass) explicit combat roster validates identity, supported model, complete route and start bounds [0.43ms]
+(pass) explicit roster owns runtime actors without mutating source or reviving the historical mixed roster [0.05ms]
+(pass) A1 combat preserves approved geometry, corrects the trapped hare seed and loads only its bounded roster [1062.48ms]
+
+tests/play-engine.test.js:
+(pass) finite lifecycle excludes positive-HP future and escaped actors, accounts spawn-relative movement and resolves once [32.36ms]
+(pass) real gun tier models, configured health/movement/strength/cadence and active target profiles drive physical hits [103.39ms]
+(pass) a killing hit at the exit instant wins over escape and stopping at the miss threshold suppresses clear [60.29ms]
+(pass) fixed bounded ticks agree at 30/60/120Hz, retain long-frame work and reset gun clocks uniformly [129.17ms]
+(pass) all scheduled actors retain death-effect emitters but inactive lifecycle cannot produce smoke or targeting [22.15ms]
+(pass) play load composes immutable A source, requests only player assets, carries safe wildlife and releases extras [947.91ms]
+(pass) 128light boundary retains every source while preview shaders/capacity remain unchanged [117.03ms]
+(pass) real session with ineffective defence accumulates ten misses and suppresses the failing-wave reward [3309.09ms]
+(pass) historical eight-wave profile preserves paid ownership and transfers48kills into the next landscape [14423.48ms]
+(pass) simultaneous finite spawns keep source callback order, share one pose batch and restart after exhaustion [23.97ms]
+
+ 76 pass
+ 0 fail
+ 1832 expect() calls
+Ran 76 tests across 7 files. [30.59s]

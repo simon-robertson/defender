@@ -136,8 +136,11 @@ export class DroneCamera extends DroneFlight {
   if(!this.world)return false;this.prepareObstacles(engine);
   const c=this.camera;this.saved.set(c.target);this.saved[3]=c.yaw;this.saved[4]=c.pitch;this.saved[5]=c.radius;
   const path=routePath(this.world.level,engine.wave?.spawns?.[0]?.routeId)??this.world.level.path,spawn=path?.[0],tx=spawn?(spawn[0]+.5)*24:this.world.width/2,tz=spawn?(spawn[2]+.5)*24:this.world.length/2;
-  let x=this.world.width/2,z=this.world.length/2;
-  if(Math.hypot(x-tx,z-tz)<this.minimumOffset)z+=this.minimumOffset;
+  // Start across the entrance from board centre: the fixed reticle stays on
+  // the spawn, but the view looks inward over the board rather than away.
+  let dx=tx-this.world.width/2,dz=tz-this.world.length/2;
+  if(Math.hypot(dx,dz)<1e-6){const next=path?.[1];dx=spawn&&next?spawn[0]-next[0]:0;dz=spawn&&next?spawn[2]-next[2]:1;}
+  const bearing=Math.atan2(dx,dz),x=tx+Math.sin(bearing)*DRONE_CAMERA_ORBIT_RADIUS,z=tz+Math.cos(bearing)*DRONE_CAMERA_ORBIT_RADIUS;
   let found=false;for(let lift=0;lift<=128;lift+=32){const y=this.cruiseY+BOB+lift;if(this.clear(x,y,z,x,y,z)){this.position.set([x,y,z]);this.cruiseY+=lift;found=true;break;}}if(!found)return false;
   this.active=true;this.time=this.accumulator=0;this.engineTime=engine.time;this.velocity.fill(0);this.acceleration.fill(0);this.speed=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.activity[3]=-Infinity;this.lens.reset();this.fov=this.lens.fov;this.lensVisible=0;this.lensRequired=this.lens.target;
   this.lockTarget(tx,this.surfaceY(tx,tz),tz,false);this.goal.set(this.position);this.planOrbit(engine);c.setControlsEnabled(false);this.apply();return true;

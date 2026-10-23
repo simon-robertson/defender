@@ -20,15 +20,29 @@ function centred(d){
  expect(dy/length).toBeCloseTo(-Math.sin(d.pitch),10);
  expect(dz/length).toBeCloseTo(-Math.cos(d.yaw)*Math.cos(d.pitch),10);
 }
-test('waves start centrally, high, and aimed exactly at a spawn rather than the current fight',()=>{
+function inwardOpening(d,world){
+ const dx=d.position[0]-d.focus[0],dz=d.position[2]-d.focus[2],cx=world.width/2-d.focus[0],cz=world.length/2-d.focus[2];
+ expect(Math.hypot(dx,dz)).toBeCloseTo(DRONE_CAMERA_ORBIT_RADIUS,8);
+ if(Math.hypot(cx,cz)>1e-6){expect(dx*cx+dz*cz).toBeLessThan(0);expect(dx*cz-dz*cx).toBeCloseTo(0,7);}
+ centred(d);
+}
+test('waves start high on the opposite entrance orbit, facing into the board with a fixed spawn reticle',()=>{
  const f=basic(),d=f.drone;
- try{d.setEnabled(true);d.sync('wave',f.engine);expect([...d.position].filter((_,i)=>i!==1)).toEqual([240,192]);expect(d.position[1]).toBeGreaterThanOrEqual(24+DRONE_CAMERA_MIN_ALTITUDE);expect([...d.focus]).toEqual([12,24,204]);expect(d.fov).toBe(60);centred(d);
+ try{d.setEnabled(true);d.sync('wave',f.engine);inwardOpening(d,f.world);expect(d.position[1]).toBeGreaterThanOrEqual(24+DRONE_CAMERA_MIN_ALTITUDE);expect([...d.focus]).toEqual([12,24,204]);expect(d.fov).toBe(60);centred(d);
   const anchor=[...d.focus];advance(f,20);expect([...d.focus]).toEqual(anchor);expect(d.targeted).toBe(false);expect(d.position[1]).toBeGreaterThanOrEqual(d.cruiseY);centred(d);
  }finally{d.dispose();}
 });
 test('the selected wave route determines the opening entrance and each wave resets manual targeting',()=>{
  const f=basic(),d=f.drone;f.world.level.routes=[{id:'other',path:[[19,0,3],[18,0,3]]}];f.engine.wave={spawns:[{routeId:'other'}]};
- try{d.setEnabled(true);d.sync('wave',f.engine);expect([...d.focus]).toEqual([468,24,84]);d.targetAt(100,24,200);d.sync('loadout',f.engine);expect(d.targeted).toBe(false);d.sync('wave',f.engine);expect([...d.focus]).toEqual([468,24,84]);centred(d);}finally{d.dispose();}
+ try{d.setEnabled(true);d.sync('wave',f.engine);expect([...d.focus]).toEqual([468,24,84]);inwardOpening(d,f.world);d.targetAt(100,24,200);d.sync('loadout',f.engine);expect(d.targeted).toBe(false);d.sync('wave',f.engine);expect([...d.focus]).toEqual([468,24,84]);inwardOpening(d,f.world);centred(d);}finally{d.dispose();}
+});
+test('entrances on every edge face inward and central or missing paths retain a finite offset',()=>{
+ for(const path of [[[0,0,8],[1,0,8]],[[20,0,8],[19,0,8]],[[10,0,0],[10,0,1]],[[10,0,16],[10,0,15]],[[10,0,8],[11,0,8]],[]]){
+  const f=basic(),d=f.drone;f.world.level.size=[21,17];f.world.width=504;f.world.length=408;f.world.level.path=path;f.world.visibility=new SceneryVisibility(f.world.level,new Map());d.bind(f.world);
+  try{d.setEnabled(true);d.sync('wave',f.engine);expect(d.active).toBe(true);inwardOpening(d,f.world);expect([...d.position,d.yaw,d.pitch].every(Number.isFinite)).toBe(true);
+   if(path[0]?.[0]===10&&path[0]?.[2]===8){expect(d.position[0]).toBeLessThan(d.focus[0]);expect(d.position[2]).toBeCloseTo(d.focus[2],8);}
+  }finally{d.dispose();}
+ }
 });
 test('pause, settling, disabling and rebinding preserve camera ownership and release caches',()=>{
  const f=basic(),d=f.drone,original=[...f.c.target,f.c.yaw,f.c.pitch,f.c.radius];
@@ -36,7 +50,7 @@ test('pause, settling, disabling and rebinding preserve camera ownership and rel
 });
 test('drag rotation changes the exact world target and subsequent movement keeps it under the reticle',()=>{
  const f=basic(),d=f.drone;
- try{d.setEnabled(true);d.sync('wave',f.engine);const old=[...d.focus],yaw=d.yaw;expect(d.rotate(45,25)).toBe(true);expect(d.yaw).toBeCloseTo(yaw-.18,6);expect([...d.focus]).not.toEqual(old);const anchor=[...d.focus];centred(d);
+ try{d.setEnabled(true);d.sync('wave',f.engine);const old=[...d.focus],yaw=d.yaw;expect(d.rotate(45,-25)).toBe(true);expect(d.yaw).toBeCloseTo(yaw-.18,6);expect([...d.focus]).not.toEqual(old);const anchor=[...d.focus];centred(d);
   f.subject.x=f.subject.aimX=470;f.subject.z=f.subject.aimZ=370;
   for(let n=0;n<600;n++){f.engine.time+=1/60;d.advance(1/60,{engine:f.engine,phase:'wave'});expect([...d.focus]).toEqual(anchor);centred(d);}expect(d.targeted).toBe(true);expect(d.travelled).toBeGreaterThan(60);
  }finally{d.dispose();}
@@ -54,7 +68,7 @@ test('rotation hits raised terrain surfaces rather than a hidden point beneath t
 });
 test('reticle targets actual lower water and bridge tops',()=>{
  const f=basic(),d=f.drone;f.world.level.terrain.boxes.push({box:[9,5],ground:0,water:8},{box:[10,5],ground:0,water:8});f.world.level.bridges=[{boxes:[[10,5]]}];d.bind(f.world);
- try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(228,24,132);expect(d.focus[1]).toBe(8);d.rotate(0,0);expect(d.focus[1]).toBeCloseTo(8,8);centred(d);d.targetAt(252,0,132);expect(d.focus[1]).toBe(24);d.rotate(0,0);expect(d.focus[1]).toBeCloseTo(24,8);centred(d);}finally{d.dispose();}
+ try{d.setEnabled(true);d.sync('wave',f.engine);d.position.set([240,230,192]);d.targetAt(228,24,132);expect(d.focus[1]).toBe(8);d.rotate(0,0);expect(d.focus[1]).toBeCloseTo(8,8);centred(d);d.targetAt(252,0,132);expect(d.focus[1]).toBe(24);d.rotate(0,0);expect(d.focus[1]).toBeCloseTo(24,8);centred(d);}finally{d.dispose();}
 });
 test('a distant target approaches a persistent offset orbit with only high gentle altitude changes',()=>{
  const f=basic(),d=f.drone;
@@ -80,7 +94,7 @@ test('equally visible action is preferred on the readable foreground side of the
  }finally{d.dispose();}
 });
 test('a single visible enemy can guide the orbit toward the foreground without retargeting',()=>{
- const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);d.orbitAngle=0;f.subject.x=f.subject.aimX=180;
+ const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.position.set([240,230,336]);d.targetAt(240,24,192);d.orbitAngle=0;f.subject.x=f.subject.aimX=180;
   expect(d.viewScore(.3,f.engine)).toBeGreaterThan(0);expect(d.viewScore(-.3,f.engine)).toBeGreaterThan(0);d.planOrbit(f.engine);expect(d.orbitGoalAngle).toBeLessThan(-.3);expect([...d.focus]).toEqual([240,24,192]);
  }finally{d.dispose();}
 });
@@ -129,13 +143,13 @@ test('swept geometry retains solid terrain, water, scenery and imminent spawn re
  }finally{d.dispose();}
 });
 test('near-overhead retargeting moves outward without crossing the target column or dropping altitude',()=>{
- const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(241,24,192);let previous=1;for(let n=0;n<2*120;n++){f.engine.time+=1/120;d.advance(1/120,{engine:f.engine,phase:'wave'});const r=Math.hypot(d.position[0]-241,d.position[2]-192);if(r<64)expect(r).toBeGreaterThanOrEqual(previous-1e-6);previous=r;expect(d.position[1]).toBeGreaterThanOrEqual(d.minimumY);}expect(previous).toBeGreaterThan(64);}finally{d.dispose();}
+ const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.position.set([240,230,192]);d.targetAt(241,24,192);let previous=1;for(let n=0;n<2*120;n++){f.engine.time+=1/120;d.advance(1/120,{engine:f.engine,phase:'wave'});const r=Math.hypot(d.position[0]-241,d.position[2]-192);if(r<64)expect(r).toBeGreaterThanOrEqual(previous-1e-6);previous=r;expect(d.position[1]).toBeGreaterThanOrEqual(d.minimumY);}expect(previous).toBeGreaterThan(64);}finally{d.dispose();}
 });
 test('flight has bounded speed, acceleration and jerk, and capped recovery after long frames',()=>{
  const f=basic(),d=f.drone,acceleration=[0,0,0];try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(480,24,384);for(let n=0;n<6*120;n++){const p=[...d.position];f.engine.time+=1/120;d.advance(1/120,{engine:f.engine,phase:'wave'});expect(Math.hypot(...d.position.map((v,i)=>v-p[i]))).toBeLessThanOrEqual(DRONE_CAMERA_SPEED/120+1e-6);expect(Math.hypot(...d.acceleration)).toBeLessThanOrEqual(96+1e-6);expect(Math.hypot(...d.acceleration.map((v,i)=>v-acceleration[i]))*120).toBeLessThanOrEqual(384+1e-4);acceleration.splice(0,3,...d.acceleration);}const time=d.time;f.engine.time+=30;d.advance(30,{engine:f.engine,phase:'wave'});expect(d.time-time).toBeCloseTo(.25,6);expect(()=>d.advance(-1,{})).toThrow();}finally{d.dispose();}
 });
-test('all seven native study scenes open centrally, high and aimed at a real entrance without changing combat',()=>assets(async()=>{
- for(const recipe of STUDY_SCENARIOS){const scene=await createStudyScene(recipe),d=new DroneCamera(camera());d.bind(scene.world);try{await advanceStudyScene(scene,recipe.seconds,{yieldControl:async()=>{}});const before=describeStudyScene(scene);d.setEnabled(true);d.sync('wave',scene.engine);expect(d.active).toBe(true);expect(d.position[0]).toBe(scene.world.width/2);expect(d.position[2]).toBe(scene.world.length/2);expect(d.position[1]).toBeGreaterThanOrEqual(scene.world.level.pathHeight+200);expect(d.staticClear(...d.position,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS)).toBe(true);centred(d);expect(describeStudyScene(scene)).toEqual(before);}finally{d.dispose();scene.dispose();}}
+test('all seven native study scenes open inward across the entrance, high and clear without changing combat',()=>assets(async()=>{
+ for(const recipe of STUDY_SCENARIOS){const scene=await createStudyScene(recipe),d=new DroneCamera(camera());d.bind(scene.world);try{await advanceStudyScene(scene,recipe.seconds,{yieldControl:async()=>{}});const before=describeStudyScene(scene);d.setEnabled(true);d.sync('wave',scene.engine);expect(d.active).toBe(true);inwardOpening(d,scene.world);expect(d.position[1]).toBeGreaterThanOrEqual(scene.world.level.pathHeight+200);expect(d.staticClear(...d.position,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS)).toBe(true);centred(d);expect(describeStudyScene(scene)).toEqual(before);}finally{d.dispose();scene.dispose();}}
 }),30000);
 test('occasional close views preserve the exact anchor, pause, manual deferral and fresh-wave lens',()=>{
  const f=basic(),d=f.drone;

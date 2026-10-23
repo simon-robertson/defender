@@ -41,3 +41,9 @@ test('the arsenal exposes the owned Drone fleet and disables the fifth purchase 
  const s=new PlaySession();s.reset();s.levelIndex=1;s.tokens=8;for(let i=0;i<4;i++)s.buy('drone-defence');const state=s.snapshot();state.shop=state.shop.filter(item=>item.model==='drone-defence');scope.update(state,false);
  expect(entry.detail.textContent).toContain('Fleet 4/4');expect(button.disabled).toBe(true);expect(button.textContent).toBe('FLEET FULL');expect(attrs['aria-label']).toContain('fleet full');
 });
+
+test('arsenal and grouped roster place the A2 Drone before the A3 missile launcher',()=>{
+ const session=new PlaySession();const order=session.snapshot().shop.map(item=>item.model);
+ expect(order).toEqual(['turret-study','arc-spire','drone-defence','missile-launcher','power-generator']);
+ expect(order.indexOf('drone-defence')).toBeLessThan(order.indexOf('missile-launcher'));
+});

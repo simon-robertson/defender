@@ -11,7 +11,7 @@ import {VARIANTS} from '../shared/model.js';
 export const PLAY_CONFIG_VERSION=1;
 export const MAX_PLAY_MODEL_LIGHTS=MAX_SUPPORTED_MODEL_LIGHTS;
 export const PLAY_TIME_RESOLUTION=1/120;
-export const DEFENCE_LABELS=Object.freeze({'turret-study':'Gun','arc-spire':'Arc Spire','missile-launcher':'Missile launcher','power-generator':'Power generator','drone-defence':'Drone'});
+export const DEFENCE_LABELS=Object.freeze({'turret-study':'Gun','arc-spire':'Arc Spire','drone-defence':'Drone','missile-launcher':'Missile launcher','power-generator':'Power generator'});
 export const ENEMY_LABELS=Object.freeze({dog:'Dog',roller:'Roller',moth:'Moth',walker:'Walker','dune-tread':'Dune Tread','twin-fan':'Twin Fan',tripod:'Tripod',ray:'Ray',spider:'Spider',lantern:'Lantern'});
 export const PLAY_MODEL_LIGHTS=Object.freeze({'turret-study':3,'arc-spire':4,'missile-launcher':4,'power-generator':4,'drone-defence':9,dog:4,roller:2,moth:2,walker:2,'dune-tread':1,'twin-fan':1,tripod:1,ray:1,spider:1,lantern:1});
 export const PLAY_LEVEL_IDS=Object.freeze(['moss','ochre','ice','plum'].flatMap(prefix=>[1,2,3,4].map(index=>prefix+'-0'+index)));
@@ -108,13 +108,13 @@ const DEFAULT_CONFIG={
    upgrade1:profile('arc-spire','upgrade1',48,84,{...ARC_SPIRE_FIRING.upgrade1,shotIntervalSeconds:.16,cooldownSeconds:1.3},5),
    upgrade2:profile('arc-spire','upgrade2',65,108,{...ARC_SPIRE_FIRING.upgrade2,shotIntervalSeconds:.18,cooldownSeconds:1.4},9),
   }},
+  'drone-defence':{purchaseCost:1,upgradeCost:null,availableFromWave:5,maxOwned:4,enabledVariants:['base'],variants:{
+   base:{stats:{strength:DRONE_TUNING.base.weapon.strength,maxRange:DRONE_PREVIEW.maxRange,requiresLineOfSight:true},firing:clone(DRONE_TUNING.base.weapon),flightSeconds:DRONE_TUNING.base.flightSeconds,rechargeSeconds:DRONE_TUNING.base.rechargeSeconds},
+  }},
   'missile-launcher':{purchaseCost:3,upgradeCost:3,availableFromWave:9,enabledVariants:[...VARIANTS],variants:{
    base:profile('missile-launcher','base',300,96,MISSILE_FIRING.base,9),
    upgrade1:profile('missile-launcher','upgrade1',420,126,MISSILE_FIRING.upgrade1,9),
    upgrade2:profile('missile-launcher','upgrade2',540,150,MISSILE_FIRING.upgrade2,13),
-  }},
-  'drone-defence':{purchaseCost:1,upgradeCost:null,availableFromWave:5,maxOwned:4,enabledVariants:['base'],variants:{
-   base:{stats:{strength:DRONE_TUNING.base.weapon.strength,maxRange:DRONE_PREVIEW.maxRange,requiresLineOfSight:true},firing:clone(DRONE_TUNING.base.weapon),flightSeconds:DRONE_TUNING.base.flightSeconds,rechargeSeconds:DRONE_TUNING.base.rechargeSeconds},
   }},
   'power-generator':{kind:'enhancer',purchaseCost:4,upgradeCost:null,availableFromWave:1,enabledVariants:['base'],variants:{
    base:{stats:clone(ENHANCER_STATS['power-generator'].base),firing:null},

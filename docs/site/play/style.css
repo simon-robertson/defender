@@ -209,3 +209,5 @@ kbd{background:var(--recess);border-color:var(--line);color:var(--muted)}
 .options-dialog .graphics-state{min-width:40px;background:var(--raised);color:var(--muted)}.options-dialog input:checked+.graphics-state{background:var(--amber);color:var(--deep)}
 .options-dialog .options-note{margin:20px 0 0;color:var(--muted);font-size:10px}.options-dialog>.primary{margin-top:16px;justify-content:center}
 @media(max-width:480px),(max-height:620px){.options-dialog{padding:20px}.options-header{margin-bottom:18px}.options-header h2{font-size:36px}.options-dialog .graphics-options{margin-top:18px}.options-dialog .graphics-options label{padding:9px 10px}}
+
+#speed-button[aria-pressed="true"]{background:var(--selected);color:var(--amber);border-color:var(--amber)}

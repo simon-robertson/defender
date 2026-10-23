@@ -42,3 +42,24 @@ test('all frame consumers receive the same scaled delta and shader time across l
  loop.clock.setTimeScale(1);fire(61000);expect(motion.position).toBeCloseTo(13.2);expect(effect.age).toBeCloseTo(1.1);expect(shaderTime).toBeCloseTo(1.1);
  loop.stop();expect(pending.size).toBe(0);
 });
+
+test('smooth double speed integrates equally at every frame rate and reaches both endpoints',()=>{
+ for(const hz of [30,60,120,144]){
+  const c=new FrameClock();c.tick(0);c.setTimeScale(2,{transitionSeconds:.6});let last=1;
+  for(let n=1;n<=hz;n++){c.tick(n*1000/hz);expect(c.timeScale).toBeGreaterThanOrEqual(last);expect(c.timeScale).toBeLessThanOrEqual(2);last=c.timeScale;}
+  expect(c.timeScale).toBe(2);expect(c.elapsedSeconds).toBeCloseTo(1.7,10);
+  c.setTimeScale(1,{transitionSeconds:.6});last=2;
+  for(let n=hz+1;n<=hz*2;n++){c.tick(n*1000/hz);expect(c.timeScale).toBeLessThanOrEqual(last);expect(c.timeScale).toBeGreaterThanOrEqual(1);last=c.timeScale;}
+  expect(c.timeScale).toBe(1);expect(c.elapsedSeconds).toBeCloseTo(3,10);
+ }
+});
+test('reversing a ramp is continuous and pause/hidden time never advances it',()=>{
+ const c=new FrameClock();c.tick(0);c.setTimeScale(2,{transitionSeconds:.6});c.tick(300);expect(c.timeScale).toBeCloseTo(1.5);
+ c.setTimeScale(1,{transitionSeconds:.6});expect(c.timeScale).toBeCloseTo(1.5);c.tick(400);expect(c.timeScale).toBeLessThan(1.5);expect(c.timeScale).toBeGreaterThan(1);
+ const scale=c.timeScale,elapsed=c.elapsedSeconds;c.resetDelta();expect(c.tick(900000)).toBe(0);expect(c.timeScale).toBe(scale);expect(c.elapsedSeconds).toBe(elapsed);c.tick(900500);expect(c.timeScale).toBe(1);
+ for(const transitionSeconds of [-1,NaN,Infinity])expect(()=>c.setTimeScale(2,{transitionSeconds})).toThrow();
+});
+test('a long frame integrates the ramp and remaining time without truncation',()=>{
+ const c=new FrameClock();c.tick(0);c.setTimeScale(2,{transitionSeconds:.6});expect(c.tick(3000)).toBeCloseTo(5.7,10);expect(c.timeScale).toBe(2);expect(c.unscaledDeltaSeconds).toBe(3);
+ c.setTimeScale(1);expect(c.tick(4000)).toBe(1);expect(c.targetTimeScale).toBe(1);
+});

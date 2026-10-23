@@ -1,19 +1,29 @@
 // The rAF timestamp is the engine's only time source. Values exposed to systems
 // are seconds; the first frame after start/resume has zero delta.
+const smoothstepIntegral=u=>u*u*u-.5*u*u*u*u;
 export class FrameClock {
- constructor(){this.previous=null;this.unscaledDeltaSeconds=0;this.deltaSeconds=0;this.elapsedSeconds=0;this.timeScale=1;}
+ constructor(){this.previous=null;this.unscaledDeltaSeconds=0;this.deltaSeconds=0;this.elapsedSeconds=0;this.timeScale=this.targetTimeScale=this.scaleFrom=1;this.scaleDuration=this.scaleElapsed=0;}
  tick(timestampMilliseconds){
   if(!Number.isFinite(timestampMilliseconds))throw new Error('Frame timestamp must be finite.');
   this.unscaledDeltaSeconds=this.previous===null?0:Math.max(0,(timestampMilliseconds-this.previous)*.001);
   // Scale once, before either simulation delta or shader elapsed time leaves
   // the shared clock. Changing speed never rescales already elapsed time.
-  this.deltaSeconds=this.unscaledDeltaSeconds*this.timeScale;
+  const real=this.unscaledDeltaSeconds;
+  if(this.scaleElapsed<this.scaleDuration){
+   const duration=this.scaleDuration,used=Math.min(real,duration-this.scaleElapsed),a=this.scaleElapsed/duration,b=(this.scaleElapsed+used)/duration;
+   // Integrate smoothstep exactly: consistent simulation time at any display
+   // rate, including frames crossing the end of a transition.
+   this.deltaSeconds=this.scaleFrom*used+(this.targetTimeScale-this.scaleFrom)*duration*(smoothstepIntegral(b)-smoothstepIntegral(a))+(real-used)*this.targetTimeScale;
+   this.scaleElapsed+=used;this.timeScale=this.scaleFrom+(this.targetTimeScale-this.scaleFrom)*b*b*(3-2*b);
+  }else this.deltaSeconds=real*this.timeScale;
   this.previous=this.previous===null?timestampMilliseconds:Math.max(this.previous,timestampMilliseconds);
   this.elapsedSeconds+=this.deltaSeconds;return this.deltaSeconds;
  }
- setTimeScale(scale){
+ setTimeScale(scale,{transitionSeconds=0}={}){
   if(!Number.isFinite(scale)||scale<=0)throw new Error('Frame time scale must be finite and positive.');
-  this.timeScale=scale;
+  if(!Number.isFinite(transitionSeconds)||transitionSeconds<0)throw new Error('Frame scale transition must be finite and nonnegative.');
+  this.scaleFrom=this.timeScale;this.targetTimeScale=scale;this.scaleElapsed=0;this.scaleDuration=transitionSeconds;
+  if(!transitionSeconds)this.timeScale=scale;
  }
  resetDelta(){this.previous=null;this.unscaledDeltaSeconds=this.deltaSeconds=0;}
 }

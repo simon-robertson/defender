@@ -9,7 +9,7 @@ const loadingCall=ui.match(/show\(refs\.loading,[^;]+;/)[0];
 test('loading follows the requested scene: title backdrops stay clear, real starts and Continue retain the panel',()=>{
  for(const [phase,candidatePhase,busy,error,expected]of [['title',null,true,'',false],['title','title',true,'',false],['title','loadout',true,'',true],['wave','title',true,'',false],['wave','loadout',true,'',true],['loadout',null,false,'',false],['title','loadout',true,'Failed',false]]){
   const session=new PlaySession();session.phase=phase;const candidate=session.fork();candidate.phase=candidatePhase;
-  const scope={session,audio:{volume:.8},pendingSpec:candidatePhase?{candidate}:null,engine:null,config:PLAY_CONFIG,graphics:{},optionsOpen:false,leaveOpen:false,savedGame:null,savingProgress:false,saveError:'',screenshotCamera:null,busy,error,notice:'',selectedId:null,actionCamera:null,droneCamera:null,loader:null,hover:null};
+  const scope={loop:null,session,audio:{volume:.8},pendingSpec:candidatePhase?{candidate}:null,engine:null,config:PLAY_CONFIG,graphics:{},optionsOpen:false,leaveOpen:false,savedGame:null,savingProgress:false,saveError:'',screenshotCamera:null,busy,error,notice:'',selectedId:null,actionCamera:null,droneCamera:null,loader:null,hover:null};
   runInNewContext(snapshotCode+';globalThis.result=snapshot();',scope);
   let visible;runInNewContext(loadingCall,{refs:{loading:{}},busy,error,phase,snapshot:scope.result,show:(_,value)=>visible=value});expect(visible).toBe(expected);
  }

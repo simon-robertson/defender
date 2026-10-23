@@ -5,12 +5,12 @@ import {SOUND_LEVEL_DEFAULT} from './audio-options.js';
 // Presentation only: the play session owns state, prices and all actions.
 // Buttons expose data-action and optional data-unit for app-level delegation.
 const $=id=>document.getElementById(id);
-const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','last-wave-summary','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','resume-checkpoint-button','result-checkpoint','leave-screen','leave-checkpoint','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
+const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','last-wave-summary','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','speed-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','resume-checkpoint-button','result-checkpoint','leave-screen','leave-checkpoint','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
 const rows=new Map(),shopRows=new Map();
 const roster=new RosterGroups(refs['unit-list']);
 let previewKey='',briefingHover=null,briefingFocus=null,briefingEnabled=false;
 let previousPhase=null,previousModal=null,pendingFocus=null,currentActions=new Set(['play']);
-const waveActions=['title','pause'];
+const waveActions=['title','pause','speed'];
 const phaseActions={title:['play','continue','options'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['continue','retry','title'],complete:['retry','title']};
 const setText=(node,value)=>{const text=String(value??'');if(node.textContent!==text)node.textContent=text;};
 const show=(node,visible)=>{if(node.hidden===visible)node.hidden=!visible;};
@@ -130,7 +130,7 @@ export function renderUI(snapshot={}){
   if(busy&&(oldAction||oldGraphics))pendingFocus={action:oldAction,unit:oldUnit,graphics:oldGraphics};
   document.body.dataset.phase=phase;document.body.dataset.paused=String(paused);document.body.dataset.screenshot=String(screenshot);$('play-shell').setAttribute('aria-busy',String(busy));
   const droneActive=Boolean(snapshot.droneCameraActive),droneEnabled=Boolean(snapshot.droneCameraEnabled),filming=droneActive&&!screenshot;
-  const canvasLabel=screenshot?'Paused screenshot camera. W/S move forward/backward, A/D strafe, drag to rotate. Backspace restores the paused view.':droneActive?'Flying drone action camera. The drone follows the battle from low and high viewpoints.':phase==='title'?'Fixed scenery view of woodland ruins, trees and limestone paths.':'Defence landscape. Camera framing is automatic.';
+  const canvasLabel=screenshot?'Paused screenshot camera. W/S move forward/backward, A/D strafe, drag to rotate. Backspace restores the paused view.':droneActive?'Flying drone action camera. Drag to rotate; click the board to target a nearby offset view.':phase==='title'?'Fixed scenery view of woodland ruins, trees and limestone paths.':'Defence landscape. Camera framing is automatic.';
   if($('world').getAttribute('aria-label')!==canvasLabel)$('world').setAttribute('aria-label',canvasLabel);
   show(refs['title-screen'],phase==='title');show(refs.hud,phase!=='title');show(refs['prepare-panel'],prep);show(refs['wave-preview'],prep);show(refs['board-footer'],phase!=='title');
   show(refs['options-screen'],phase==='title'&&snapshot.optionsOpen&&!error);
@@ -161,9 +161,11 @@ export function renderUI(snapshot={}){
   while(refs['wave-pips'].children.length<waves)refs['wave-pips'].append(document.createElement('i'));
   while(refs['wave-pips'].children.length>waves)refs['wave-pips'].lastElementChild.remove();
   for(let index=0;index<waves;index++){const pip=refs['wave-pips'].children[index];pip.classList.toggle('current',index===wave-1);pip.classList.toggle('done',index<wave-1);}
+  show(refs['speed-button'],activeWave);refs['speed-button'].disabled=locked||!activeWave;
+  const fast=snapshot.targetTimeScale===2;refs['speed-button'].setAttribute('aria-pressed',String(fast));refs['speed-button'].title=fast?'Return to normal speed (T)':'Double game speed (T)';
   show(refs['pause-button'],activeWave);refs['pause-button'].disabled=locked||!activeWave;
   document.body.dataset.droneCamera=String(filming);document.body.dataset.cameraView=droneActive?'drone':'overview';
-  show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'AERIAL / AUTO GIMBAL');
+  show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'DRAG TO ROTATE / CLICK TO TARGET');
   const recorded=Math.floor(snapshot.droneCameraTime??0);setText(refs['drone-camera-time'],`${String(Math.floor(recorded/60)).padStart(2,'0')}:${String(recorded%60).padStart(2,'0')}`);
   setText(refs['pause-context'],settling?'Post-wave effects paused.':'Wave paused.');
   updateShop(snapshot,locked);updateWavePreview(snapshot);
@@ -182,7 +184,7 @@ export function renderUI(snapshot={}){
   show(refs['wave-status'],activeWave&&!paused);const remaining=count(snapshot.enemiesRemaining),spawned=count(snapshot.spawned),total=count(snapshot.totalEnemies);
   setText(refs['wave-status-text'],settling?'Wave complete · Clearing the field…':total?`${remaining} on the path · ${Math.min(spawned,total)} of ${total} arrived`:'Wave in progress');
   show(refs.notice,Boolean(snapshot.notice)&&!error&&!result);setText(refs.notice,snapshot.notice??'');
-  setText(refs['board-caption'],filming?'Drone follows the action.':prep&&droneEnabled?'Drone armed for the next wave.':activeWave?'Drone follows the action.':result?(phase==='complete'?'Run complete.':'Run ended.'):deploying?'Select a defence, then click clear ground to place it.':'Build, upgrade, then deploy.');
+  setText(refs['board-caption'],filming?'Drag to rotate · Click the board to target.':prep&&droneEnabled?'Drone armed for the next wave.':activeWave?'Drag to rotate · Click the board to target.':result?(phase==='complete'?'Run complete.':'Run ended.'):deploying?'Select a defence, then click clear ground to place it.':'Build, upgrade, then deploy.');
 
   if(result){
     show(refs['result-checkpoint'],phase==='defeat');setText(refs['result-checkpoint'],checkpointDescription(snapshot.savedGame,snapshot.savingProgress));

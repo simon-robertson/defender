@@ -5,12 +5,12 @@ import {SOUND_LEVEL_DEFAULT} from './audio-options.js';
 // Presentation only: the play session owns state, prices and all actions.
 // Buttons expose data-action and optional data-unit for app-level delegation.
 const $=id=>document.getElementById(id);
-const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','last-wave-summary','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','resume-checkpoint-button','result-checkpoint','leave-screen','leave-checkpoint','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
+const refs=Object.fromEntries(['hud','title-screen','options-screen','prepare-panel','prepare-heading','prepare-description','shop','wave-preview','unit-list','unit-count','empty-inventory','placement-help','placement-hint','cancel-button','deployment-count','deploy-button','start-wave-button','loadout-button','preparation-note','last-wave-summary','step-loadout','step-deploy','level-label','level-name','tokens','misses','miss-limit','miss-pips','wave-label','wave-pips','pause-button','speed-button','drone-camera-viewfinder','drone-camera-time','drone-camera-label','drone-camera-format','wave-status','wave-status-text','notice','loading','loading-area','board-footer','board-caption','pause-screen','pause-context','result-screen','result-eyebrow','result-heading','result-description','result-waves','result-misses','result-emblem','retry-button','resume-checkpoint-button','result-checkpoint','leave-screen','leave-checkpoint','error-screen','error-description','buy-button'].map(id=>[id,$(id)]));
 const rows=new Map(),shopRows=new Map();
 const roster=new RosterGroups(refs['unit-list']);
 let previewKey='',briefingHover=null,briefingFocus=null,briefingEnabled=false;
 let previousPhase=null,previousModal=null,pendingFocus=null,currentActions=new Set(['play']);
-const waveActions=['title','pause'];
+const waveActions=['title','pause','speed'];
 const phaseActions={title:['play','continue','options'],loadout:['title','buy','upgrade','select','deploy'],deploy:['title','select','undeploy','cancel','loadout','start-wave'],wave:waveActions,settling:waveActions,defeat:['continue','retry','title'],complete:['retry','title']};
 const setText=(node,value)=>{const text=String(value??'');if(node.textContent!==text)node.textContent=text;};
 const show=(node,visible)=>{if(node.hidden===visible)node.hidden=!visible;};
@@ -161,6 +161,8 @@ export function renderUI(snapshot={}){
   while(refs['wave-pips'].children.length<waves)refs['wave-pips'].append(document.createElement('i'));
   while(refs['wave-pips'].children.length>waves)refs['wave-pips'].lastElementChild.remove();
   for(let index=0;index<waves;index++){const pip=refs['wave-pips'].children[index];pip.classList.toggle('current',index===wave-1);pip.classList.toggle('done',index<wave-1);}
+  show(refs['speed-button'],activeWave);refs['speed-button'].disabled=locked||!activeWave;
+  const fast=snapshot.targetTimeScale===2;refs['speed-button'].setAttribute('aria-pressed',String(fast));refs['speed-button'].title=fast?'Return to normal speed (T)':'Double game speed (T)';
   show(refs['pause-button'],activeWave);refs['pause-button'].disabled=locked||!activeWave;
   document.body.dataset.droneCamera=String(filming);document.body.dataset.cameraView=droneActive?'drone':'overview';
   show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'DRAG TO ROTATE / CLICK TO TARGET');

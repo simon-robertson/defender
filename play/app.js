@@ -39,10 +39,14 @@ const highlight=new UnitHighlight({canvas,list:document.getElementById('unit-lis
 const combatStep={combat:true},preparationStep={combat:false};
 let renderer,loader,loop,engine,rules,actionCamera,droneCamera,cameraViews,screenshotCamera,droneInput,generatorLights=null,generatorOwner=null,generatorConnections=[],sceneResize,pendingSpec,safeSeeds,lastCameraPhase='title',titleView=null,selectedId=null,hover=null,eligible=[],busy=true,error='',notice='',lastUI=-Infinity,lastDiagnostics=-Infinity,diagnosticsPending=false,disposed=false;
 const frozen=()=>leaveOpen||session.paused||['defeat','complete'].includes(session.phase);
+function toggleSpeed(){
+ if(disposed||busy||error||document.hidden||frozen()||!loop||!['wave','settling'].includes(session.phase))return false;
+ loop.clock.setTimeScale(loop.clock.targetTimeScale===2?1:2,{transitionSeconds:.6});paint();return true;
+}
 function snapshot(stats=engine?.stats()){
  const state=session.snapshot(),loadingSession=pendingSpec?.candidate??session;
  for(const unit of state.units){const weapon=unit.deployed&&engine?.firing.states.find(weapon=>weapon.id===unit.id);if(weapon){unit.stats={...unit.stats,strength:weapon.strength};unit.strengthIncrease=weapon.strengthIncrease??0;}}
- return {...state,soundLevel:audio.volume,loadingTitle:busy&&loadingSession.phase==='title',loadingArea:busy?loadingSession.level.zone+config.levels.slice(0,loadingSession.levelIndex+1).filter(level=>level.zone===loadingSession.level.zone).length:undefined,graphics,optionsOpen,leaveOpen,savedGame:savedGame?{area:savedGame.level.zone+config.levels.slice(0,savedGame.levelIndex+1).filter(level=>level.zone===savedGame.level.zone).length,completedWaves:savedGame.completedWaves}:null,savingProgress,saveError,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
+ return {...state,timeScale:loop?.clock.timeScale??1,targetTimeScale:loop?.clock.targetTimeScale??1,soundLevel:audio.volume,loadingTitle:busy&&loadingSession.phase==='title',loadingArea:busy?loadingSession.level.zone+config.levels.slice(0,loadingSession.levelIndex+1).filter(level=>level.zone===loadingSession.level.zone).length:undefined,graphics,optionsOpen,leaveOpen,savedGame:savedGame?{area:savedGame.level.zone+config.levels.slice(0,savedGame.levelIndex+1).filter(level=>level.zone===savedGame.level.zone).length,completedWaves:savedGame.completedWaves}:null,savingProgress,saveError,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
  levelName:loader?.world?.level?.name??(session.levelIndex?'The Broadwater Garden':'The Limestone Orchard'),
  enemiesRemaining:stats?.active??0,spawned:stats?.spawned??0,totalEnemies:session.wave.spawns.length,
  placementHint:hover&&session.phase==='deploy'?hint.textContent:config.defences[session.units.find(unit=>unit.id===selectedId)?.model]?.kind==='enhancer'?'Place beside a defence: edge-sharing squares gain 25% strength. Diagonals do not.':undefined};}
@@ -64,7 +68,7 @@ function syncCombatEffects(){
  }
 }
 function updateHighlight(){highlight.update({world:loader?.world,camera:renderer?.camera,units:session.units,preparing:session.preparing,busy:busy||Boolean(error),paused:session.paused});}
-function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();diagnostics(state,stats);}
+function paint(){if(loop&&!['wave','settling'].includes(session.phase))loop.clock.setTimeScale(1);if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();diagnostics(state,stats);}
 // Keep the review dataset available by default. Cosmetic-only frame updates
 // share the normal five-Hz cadence; actions and lifecycle changes publish now.
 function diagnostics(state,stats,force=true){const now=performance.now();if(!force&&now-lastDiagnostics<200){diagnosticsPending=true;return;}lastDiagnostics=now;diagnosticsPending=false;stats??=engine?.stats();state??=snapshot(stats);canvas.dataset.play=JSON.stringify({wildlife:{enabled:loader?.world?.playCritters!==false,actors:engine?.wildlife.states.length??0,planningBytes:engine?.wildlife.planningBytes??0},fish:engine?.wildlife.fish.stats()??null,...state,levelId:session.level.id,engine:stats??null,placements:session.placements,audio:{state:audio.state,ready:audio.ready,volume:audio.volume,voices:audio.active,played:audio.played,dropped:audio.dropped,error:audio.lastError},
@@ -146,7 +150,7 @@ async function initialize(){
   try{
    if(!engine)return;
    if(screenshotCamera.active&&session.paused){
-    screenshotCamera.advance(dt);if(renderer.cameraDirty||renderer.dirty){renderer.render(0,engine.time);diagnostics(undefined,undefined,false);}else if(diagnosticsPending)diagnostics(undefined,undefined,false);return;
+    screenshotCamera.advance(loop.clock.unscaledDeltaSeconds);if(renderer.cameraDirty||renderer.dirty){renderer.render(0,engine.time);diagnostics(undefined,undefined,false);}else if(diagnosticsPending)diagnostics(undefined,undefined,false);return;
    }
    if(busy||frozen())return;
    const frameStarted=performance.now();
@@ -248,6 +252,7 @@ document.addEventListener('click',async event=>{
    conditions.reset();const candidate=toTitle?createTitleSession(config,savedGame):new PlaySession(config);if(!toTitle)candidate.reset('loadout');selectedId=null;notice='';await rebuild(candidate);return;
   }
   if(error)return;
+  if(action==='speed'){toggleSpeed();return;}
   if(action==='pause'||action==='resume'){if(action==='resume')audio.startFromGesture();session.pause(action==='pause');paint();runLoop();return;}
   if(session.paused)return;
   if(action==='buy'){const bought=session.buy(button.dataset.model??'turret-study');if(bought){selectedId=bought;notice='';paint();}return;}
@@ -308,6 +313,9 @@ document.addEventListener('keydown',event=>{
  if(optionsOpen&&event.key==='Escape'){event.preventDefault();optionsOpen=false;paint();return;}
  if(event.key==='Backspace'&&session.paused&&!busy&&!error&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target?.isContentEditable&&!/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName)){
   event.preventDefault();if(event.repeat)return;screenshotCamera.toggle(true);paint();if(screenshotCamera.active)canvas.focus();renderer.render(0,engine?.time??0);runLoop();return;
+ }
+ if(event.key.toLowerCase()==='t'&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target?.isContentEditable&&!/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName)){
+  if(toggleSpeed())event.preventDefault();return;
  }
  if(event.key.toLowerCase()==='p'&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target?.isContentEditable&&!/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName)){
   if(['wave','settling'].includes(session.phase)&&!busy&&!error){event.preventDefault();screenshotCamera?.leave();if(session.paused)audio.startFromGesture();session.pause(!session.paused);renderer?.camera.keys.clear();paint();runLoop();}return;

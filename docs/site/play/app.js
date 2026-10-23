@@ -18,6 +18,7 @@ import {renderUI} from './ui.js';
 import {frameTitle,createTitleSession} from './presentation.js';
 import {ActionCamera} from './action-camera.js';
 import {DroneCamera} from './drone-camera.js';
+import {DroneInput} from './drone-input.js';
 import {CameraViews} from './camera-views.js';
 import {UnitHighlight} from './unit-highlight.js';
 import {LevelConditions,applyPlayLighting} from './conditions.js';
@@ -36,12 +37,16 @@ const progress=new ProgressStore(config),audio=new AudioPlayer();
 let savedGame=null,progressLoaded=false,savingProgress=false,saveError='';
 const highlight=new UnitHighlight({canvas,list:document.getElementById('unit-list'),overlay:document.getElementById('unit-highlight-overlay'),defences:config.defences});
 const combatStep={combat:true},preparationStep={combat:false};
-let renderer,loader,loop,engine,rules,actionCamera,droneCamera,cameraViews,screenshotCamera,generatorLights=null,generatorOwner=null,generatorConnections=[],sceneResize,pendingSpec,safeSeeds,lastCameraPhase='title',titleView=null,selectedId=null,hover=null,eligible=[],busy=true,error='',notice='',lastUI=-Infinity,disposed=false;
+let renderer,loader,loop,engine,rules,actionCamera,droneCamera,cameraViews,screenshotCamera,droneInput,generatorLights=null,generatorOwner=null,generatorConnections=[],sceneResize,pendingSpec,safeSeeds,lastCameraPhase='title',titleView=null,selectedId=null,hover=null,eligible=[],busy=true,error='',notice='',lastUI=-Infinity,disposed=false;
 const frozen=()=>leaveOpen||session.paused||['defeat','complete'].includes(session.phase);
+function toggleSpeed(){
+ if(disposed||busy||error||document.hidden||frozen()||!loop||!['wave','settling'].includes(session.phase))return false;
+ loop.clock.setTimeScale(loop.clock.targetTimeScale===2?1:2,{transitionSeconds:.6});paint();return true;
+}
 function snapshot(stats=engine?.stats()){
  const state=session.snapshot(),loadingSession=pendingSpec?.candidate??session;
  for(const unit of state.units){const weapon=unit.deployed&&engine?.firing.states.find(weapon=>weapon.id===unit.id);if(weapon){unit.stats={...unit.stats,strength:weapon.strength};unit.strengthIncrease=weapon.strengthIncrease??0;}}
- return {...state,soundLevel:audio.volume,loadingTitle:busy&&loadingSession.phase==='title',loadingArea:busy?loadingSession.level.zone+config.levels.slice(0,loadingSession.levelIndex+1).filter(level=>level.zone===loadingSession.level.zone).length:undefined,graphics,optionsOpen,leaveOpen,savedGame:savedGame?{area:savedGame.level.zone+config.levels.slice(0,savedGame.levelIndex+1).filter(level=>level.zone===savedGame.level.zone).length,completedWaves:savedGame.completedWaves}:null,savingProgress,saveError,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
+ return {...state,timeScale:loop?.clock.timeScale??1,targetTimeScale:loop?.clock.targetTimeScale??1,soundLevel:audio.volume,loadingTitle:busy&&loadingSession.phase==='title',loadingArea:busy?loadingSession.level.zone+config.levels.slice(0,loadingSession.levelIndex+1).filter(level=>level.zone===loadingSession.level.zone).length:undefined,graphics,optionsOpen,leaveOpen,savedGame:savedGame?{area:savedGame.level.zone+config.levels.slice(0,savedGame.levelIndex+1).filter(level=>level.zone===savedGame.level.zone).length,completedWaves:savedGame.completedWaves}:null,savingProgress,saveError,screenshotMode:screenshotCamera?.active??false,busy,error,notice,selectedId,cameraAutoEnabled:actionCamera?.enabled??true,droneCameraEnabled:droneCamera?.enabled??false,droneCameraActive:droneCamera?.active??false,droneCameraTime:droneCamera?.time??0,
  levelName:loader?.world?.level?.name??(session.levelIndex?'The Broadwater Garden':'The Limestone Orchard'),
  enemiesRemaining:stats?.active??0,spawned:stats?.spawned??0,totalEnemies:session.wave.spawns.length,
  placementHint:hover&&session.phase==='deploy'?hint.textContent:config.defences[session.units.find(unit=>unit.id===selectedId)?.model]?.kind==='enhancer'?'Place beside a defence: edge-sharing squares gain 25% strength. Diagonals do not.':undefined};}
@@ -63,11 +68,12 @@ function syncCombatEffects(){
  }
 }
 function updateHighlight(){highlight.update({world:loader?.world,camera:renderer?.camera,units:session.units,preparing:session.preparing,busy:busy||Boolean(error),paused:session.paused});}
-function paint(){if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();}
+function paint(){if(loop&&!['wave','settling'].includes(session.phase))loop.clock.setTimeScale(1);if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();}
 function fail(cause){audio.setActive(false);error=cause?.message??String(cause);busy=false;performanceReadout.setRunning(false,'Error');renderer?.setTimingActive(false);loop?.stop();paint();}
 function cameraState(){const c=renderer?.camera,active=cameraViews?.active;if(active){const v=active.saved;return {id:loader.world.level.id,target:Array.from(v.subarray(0,3)),yaw:v[3],pitch:v[4],radius:v[5]};}return c&&loader?.world?{id:loader.world.level.id,target:[...c.target],yaw:c.yaw,pitch:c.pitch,radius:c.radius}:null;}
 function refreshPlacement(){overlayKey='';hover=null;const unit=session.units.find(unit=>unit.id===selectedId);eligible=unit&&rules&&session.phase==='deploy'?rules.eligibleCells(unit.variant,session.placements,unit.id,unit.model):[];drawOverlay();}
-function runLoop(){audio.setActive(!disposed&&!error&&!document.hidden&&!busy&&!frozen()&&['wave','settling'].includes(session.phase));const photo=screenshotCamera?.active,running=!disposed&&!error&&!document.hidden&&((photo&&session.paused)||(!busy&&!frozen()));performanceReadout.setRunning(running&&!photo,session.paused?'Paused':'Idle');renderer?.setTimingActive(running&&!photo);if(running)loop?.start();else loop?.stop();}
+function runLoop(){
+ droneInput?.clear();audio.setActive(!disposed&&!error&&!document.hidden&&!busy&&!frozen()&&['wave','settling'].includes(session.phase));const photo=screenshotCamera?.active,running=!disposed&&!error&&!document.hidden&&((photo&&session.paused)||(!busy&&!frozen()));performanceReadout.setRunning(running&&!photo,session.paused?'Paused':'Idle');renderer?.setTimingActive(running&&!photo);if(running)loop?.start();else loop?.stop();}
 async function rebuild(candidate=session.fork(),points){
  if(disposed)return false;
  const placementKey=JSON.stringify(candidate.placements);
@@ -134,11 +140,12 @@ async function initialize(){
  renderer.setGraphicsOptions(graphics);
  const effectsPrepared=await renderer.prepareDeathEffects();if(!effectsPrepared||disposed)return;renderer.camera.pathModeEnabled=false;
  actionCamera=new ActionCamera(renderer.camera);droneCamera=new DroneCamera(renderer.camera);cameraViews=new CameraViews(actionCamera,droneCamera);screenshotCamera=new ScreenshotCamera(renderer.camera);
+ droneInput?.dispose();droneInput=new DroneInput(canvas,droneCamera,()=>!busy&&!error&&!frozen()&&session.phase==='wave');
  loop=new FrameLoop(dt=>{
   try{
    if(!engine)return;
    if(screenshotCamera.active&&session.paused){
-    screenshotCamera.advance(dt);if(renderer.cameraDirty||renderer.dirty){renderer.render(0,engine.time);}return;
+    screenshotCamera.advance(loop.clock.unscaledDeltaSeconds);if(renderer.cameraDirty||renderer.dirty){renderer.render(0,engine.time);}return;
    }
    if(busy||frozen())return;
    const frameStarted=performance.now();
@@ -240,6 +247,7 @@ document.addEventListener('click',async event=>{
    conditions.reset();const candidate=toTitle?createTitleSession(config,savedGame):new PlaySession(config);if(!toTitle)candidate.reset('loadout');selectedId=null;notice='';await rebuild(candidate);return;
   }
   if(error)return;
+  if(action==='speed'){toggleSpeed();return;}
   if(action==='pause'||action==='resume'){if(action==='resume')audio.startFromGesture();session.pause(action==='pause');paint();runLoop();return;}
   if(session.paused)return;
   if(action==='buy'){const bought=session.buy(button.dataset.model??'turret-study');if(bought){selectedId=bought;notice='';paint();}return;}
@@ -301,6 +309,9 @@ document.addEventListener('keydown',event=>{
  if(event.key==='Backspace'&&session.paused&&!busy&&!error&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target?.isContentEditable&&!/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName)){
   event.preventDefault();if(event.repeat)return;screenshotCamera.toggle(true);paint();if(screenshotCamera.active)canvas.focus();renderer.render(0,engine?.time??0);runLoop();return;
  }
+ if(event.key.toLowerCase()==='t'&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target?.isContentEditable&&!/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName)){
+  if(toggleSpeed())event.preventDefault();return;
+ }
  if(event.key.toLowerCase()==='p'&&!event.repeat&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target?.isContentEditable&&!/^(INPUT|TEXTAREA|SELECT)$/.test(event.target?.tagName)){
   if(['wave','settling'].includes(session.phase)&&!busy&&!error){event.preventDefault();screenshotCamera?.leave();if(session.paused)audio.startFromGesture();session.pause(!session.paused);renderer?.camera.keys.clear();paint();runLoop();}return;
  }
@@ -310,7 +321,7 @@ document.addEventListener('keydown',event=>{
  const directions={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]},direction=directions[event.key];
  if(direction){event.preventDefault();event.stopImmediatePropagation();hover??=eligible.find(cell=>cell.valid)?.box.slice()??[0,0,0];hover=[Math.max(0,Math.min(loader.world.level.size[0]-1,hover[0]+direction[0])),0,Math.max(0,Math.min(loader.world.level.size[1]-1,hover[2]+direction[1]))];drawOverlay();}
 },true);
-document.addEventListener('visibilitychange',()=>{screenshotCamera?.clearInput();renderer?.camera.keys.clear();runLoop();});
-window.addEventListener('blur',()=>screenshotCamera?.clearInput());
-window.addEventListener('pagehide',()=>{disposed=true;audio.dispose();screenshotCamera?.dispose();loop?.stop();sceneResize?.disconnect();highlight.dispose();entrances.dispose();droneCamera?.dispose();actionCamera?.bind(null);loader?.dispose();renderer?.dispose();});
+document.addEventListener('visibilitychange',()=>{droneInput?.clear();screenshotCamera?.clearInput();renderer?.camera.keys.clear();runLoop();});
+window.addEventListener('blur',()=>{droneInput?.clear();screenshotCamera?.clearInput();});
+window.addEventListener('pagehide',()=>{disposed=true;droneInput?.dispose();audio.dispose();screenshotCamera?.dispose();loop?.stop();sceneResize?.disconnect();highlight.dispose();entrances.dispose();droneCamera?.dispose();actionCamera?.bind(null);loader?.dispose();renderer?.dispose();});
 paint();initialize().catch(fail);

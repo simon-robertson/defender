@@ -2,7 +2,7 @@ import {DroneFlight} from './drone-flight.js';
 import {routePath} from '../shared/routes.js';
 export {DRONE_CAMERA_RADIUS,DRONE_CAMERA_SPEED,DRONE_CAMERA_ACCELERATION,DRONE_CAMERA_MIN_ALTITUDE} from './drone-flight.js';
 export const DRONE_CAMERA_ORBIT_RADIUS=144,DRONE_CAMERA_MIN_OFFSET=64;
-const TICK=1/120,ORBIT_RATE=.035,BOB=6,EMPTY=Object.freeze([]);
+const TICK=1/120,ORBIT_RATE=.035,ORBIT_RESPONSE=1.4,BOB=6,EMPTY=Object.freeze([]);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 // One world anchor owns both the reticle and the orbit. Enemy activity may
@@ -10,7 +10,7 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export class DroneCamera extends DroneFlight {
  constructor(camera,options={}){
   super(camera,options);this.playerTarget=this.focus;this.minimumOffset=DRONE_CAMERA_MIN_OFFSET;
-  this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.engineTime=null;this.phase=null;this.targeted=false;this.orbitAngle=0;this.orbitDirection=1;this.reverseAfter=0;this.visibleEnemies=0;this.activity=new Float64Array([0,0,0,-Infinity,0]);
+  this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.engineTime=null;this.phase=null;this.targeted=false;this.orbitAngle=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.reverseAfter=0;this.visibleEnemies=0;this.activity=new Float64Array([0,0,0,-Infinity,0]);
  }
  bind(world){super.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.planIn=0;this.engineTime=null;this.targeted=false;this.activity?.fill(0);if(this.activity)this.activity[3]=-Infinity;}
  leave(){super.leave();this.targeted=false;}
@@ -55,30 +55,38 @@ export class DroneCamera extends DroneFlight {
  // Project live participants with the exact lens/anchor, and test real scenery
  // occlusion. Compare nearby orbital arcs; no combat state is changed.
  viewScore(angle,engine){
-  const f=this.focus,x=f[0]+Math.sin(angle)*DRONE_CAMERA_ORBIT_RADIUS,z=f[2]+Math.cos(angle)*DRONE_CAMERA_ORBIT_RADIUS,y=this.cruiseY+BOB,yaw=angle,pitch=Math.atan2(y-f[1],DRONE_CAMERA_ORBIT_RADIUS),sy=Math.sin(yaw),cy=Math.cos(yaw),sp=Math.sin(pitch),cp=Math.cos(pitch),tan=Math.tan(this.fov*Math.PI/360);
+  const f=this.focus,x=f[0]+Math.sin(angle)*DRONE_CAMERA_ORBIT_RADIUS,z=f[2]+Math.cos(angle)*DRONE_CAMERA_ORBIT_RADIUS,y=this.cruiseY+BOB,yaw=angle,pitch=Math.atan2(y-f[1],DRONE_CAMERA_ORBIT_RADIUS),sy=Math.sin(yaw),cy=Math.cos(yaw),sp=Math.sin(pitch),cp=Math.cos(pitch),tan=Math.tan(this.fov*Math.PI/360),anchorDepth=Math.hypot(DRONE_CAMERA_ORBIT_RADIUS,y-f[1]),aspect=this.aspect;
   let score=0,visible=0;
   const measure=(px,py,pz,weight,id)=>{
-   const dx=px-x,dy=py-y,dz=pz-z,depth=-dx*sy*cp-dy*sp-dz*cy*cp,sx=(dx*cy-dz*sy)/(depth*tan*this.aspect),up=(-dx*sy*sp+dy*cp-dz*cy*sp)/(depth*tan);
-   if(depth>12&&Math.abs(sx)<.9&&Math.abs(up)<.86&&this.world.visibility.clear(x,y,z,px,py,pz,id)){score+=weight*(1-.2*Math.abs(sx));visible++;}
+   const dx=px-x,dy=py-y,dz=pz-z,depth=-dx*sy*cp-dy*sp-dz*cy*cp,sx=(dx*cy-dz*sy)/(depth*tan*aspect),up=(-dx*sy*sp+dy*cp-dz*cy*sp)/(depth*tan);
+   if(depth>12&&Math.abs(sx)<.9&&Math.abs(up)<.86&&this.world.visibility.clear(x,y,z,px,py,pz,id)){
+    // Keep coverage valuable, then prefer a readable near-side subject below
+    // the reticle. Fade the bonus near frame edges instead of chasing clipping.
+    const edge=clamp((.9-Math.abs(sx))/.2,0,1)*clamp((.86-Math.abs(up))/.2,0,1),lower=clamp(1-Math.abs(up+.3)/.65,0,1),near=clamp((anchorDepth-depth)/80,0,1);
+    score+=weight*(1-.2*Math.abs(sx)+edge*(lower*.7+near*.35));if(id!==undefined)visible++;
+   }
   };
   for(const s of engine.enemies?.activeTargets??EMPTY)if(s.health?.alive!==false)measure(s.aimX??s.x,s.aimY??s.y,s.aimZ??s.z,1,s.id);
-  const a=this.activity;if(engine.time-a[3]<2)measure(a[0],a[1],a[2],a[4]*.3);
+  const a=this.activity,age=engine.time-a[3];if(age>=0&&age<2)measure(a[0],a[1],a[2],a[4]*.3*(1-age/2));
   this.visibleEnemies=visible;return score;
  }
  planOrbit(engine){
   this.plans++;const a=this.orbitAngle,forward=this.viewScore(a+this.orbitDirection*.3,engine),backward=this.viewScore(a-this.orbitDirection*.3,engine);
   // A material visibility gain can reverse the slow orbit after a short hold.
   // Hysteresis avoids alternating direction as an enemy crosses a view edge.
-  if(this.time>=this.reverseAfter&&backward>forward+.35){this.orbitDirection*=-1;this.reverseAfter=this.time+4;this.relocations++;}
+  if(this.time>=this.reverseAfter&&backward>forward+.18){this.orbitDirection*=-1;this.reverseAfter=this.time+4;this.relocations++;}
   this.viewScore(a,engine);this.planIn=.8;
  }
  steer(dt){
-  this.orbitAngle+=this.orbitDirection*ORBIT_RATE*dt;
+  // Integrate an eased angular velocity exactly, including reversals. The
+  // orbital station and its tangent velocity change continuously together.
+  const targetRate=this.orbitDirection*ORBIT_RATE,decay=Math.exp(-ORBIT_RESPONSE*dt),difference=this.orbitRate-targetRate;
+  this.orbitAngle+=targetRate*dt+difference*(1-decay)/ORBIT_RESPONSE;this.orbitRate=targetRate+difference*decay;
   const a=this.orbitAngle,r=DRONE_CAMERA_ORBIT_RADIUS,f=this.focus,p=this.position,g=this.goal,want=this.desiredVelocity;
   g[0]=f[0]+Math.sin(a)*r;g[1]=this.cruiseY+BOB+Math.sin(this.time*.35)*BOB;g[2]=f[2]+Math.cos(a)*r;
   // Follow the moving orbital station with tangent feed-forward. There is no
   // board clamp on the aircraft: only its world target is board constrained.
-  want[0]=(g[0]-p[0])*1.4+Math.cos(a)*r*ORBIT_RATE*this.orbitDirection;want[1]=(g[1]-p[1])*1.4+Math.cos(this.time*.35)*BOB*.35;want[2]=(g[2]-p[2])*1.4-Math.sin(a)*r*ORBIT_RATE*this.orbitDirection;
+  want[0]=(g[0]-p[0])*1.4+Math.cos(a)*r*this.orbitRate;want[1]=(g[1]-p[1])*1.4+Math.cos(this.time*.35)*BOB*.35;want[2]=(g[2]-p[2])*1.4-Math.sin(a)*r*this.orbitRate;
  }
  enter(engine){
   if(!this.world)return false;this.prepareObstacles(engine);
@@ -87,7 +95,7 @@ export class DroneCamera extends DroneFlight {
   let x=this.world.width/2,z=this.world.length/2;
   if(Math.hypot(x-tx,z-tz)<this.minimumOffset)z+=this.minimumOffset;
   let found=false;for(let lift=0;lift<=128;lift+=32){const y=this.cruiseY+BOB+lift;if(this.clear(x,y,z,x,y,z)){this.position.set([x,y,z]);this.cruiseY+=lift;found=true;break;}}if(!found)return false;
-  this.active=true;this.time=this.accumulator=0;this.engineTime=engine.time;this.velocity.fill(0);this.acceleration.fill(0);this.speed=0;this.orbitDirection=1;this.reverseAfter=0;this.activity[3]=-Infinity;
+  this.active=true;this.time=this.accumulator=0;this.engineTime=engine.time;this.velocity.fill(0);this.acceleration.fill(0);this.speed=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.reverseAfter=0;this.activity[3]=-Infinity;
   this.lockTarget(tx,this.surfaceY(tx,tz),tz,false);this.goal.set(this.position);this.planOrbit(engine);c.setControlsEnabled(false);this.apply();return true;
  }
  sync(phase,engine){this.phase=phase;if(!this.enabled||!['wave','settling'].includes(phase)||!this.world){const preparing=this.active&&['loadout','deploy'].includes(phase);this.leave();if(preparing)this.camera.frame();return false;}if(!this.active&&engine)this.enter(engine);return this.active;}
@@ -98,6 +106,6 @@ export class DroneCamera extends DroneFlight {
   while(this.accumulator>1e-12){const step=Math.min(TICK,this.accumulator);this.accumulator-=step;this.time+=step;this.planIn-=step;if(this.planIn<=0)this.planOrbit(engine);this.steer(step);this.move(step);this.aim();}
   this.apply();return true;
  }
- stats(){return {enabled:this.enabled,active:this.active,time:this.time,style:'orbit',position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),blockedMoves:this.blockedMoves,travelled:this.travelled,plans:this.plans,relocations:this.relocations,visibleEnemies:this.visibleEnemies,fov:this.fov,pitch:this.pitch,orbitRadius:DRONE_CAMERA_ORBIT_RADIUS,orbitDirection:this.orbitDirection,cruiseY:this.cruiseY,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,planningBytes:(this.obstacles?.byteLength??0)+(this.surfaces?.byteLength??0)+this.activity.byteLength};}
+ stats(){return {enabled:this.enabled,active:this.active,time:this.time,style:'orbit',position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),blockedMoves:this.blockedMoves,travelled:this.travelled,plans:this.plans,relocations:this.relocations,visibleEnemies:this.visibleEnemies,fov:this.fov,pitch:this.pitch,orbitRadius:DRONE_CAMERA_ORBIT_RADIUS,orbitDirection:this.orbitDirection,orbitRate:this.orbitRate,cruiseY:this.cruiseY,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,planningBytes:(this.obstacles?.byteLength??0)+(this.surfaces?.byteLength??0)+this.activity.byteLength};}
  dispose(){this.bind(null);this.camera=null;}
 }

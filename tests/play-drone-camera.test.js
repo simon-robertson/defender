@@ -73,6 +73,27 @@ test('orbit scoring uses actual enemy projection and scenery visibility',()=>{
   expect(d.viewScore(-Math.PI/2,f.engine)).toBeGreaterThan(.8);expect(d.viewScore(Math.PI/2,f.engine)).toBe(0);f.world.visibility.clear=()=>false;expect(d.viewScore(-Math.PI/2,f.engine)).toBe(0);expect([...d.focus]).toEqual([240,24,192]);
  }finally{d.dispose();}
 });
+test('equally visible action is preferred on the readable foreground side of the anchor',()=>{
+ const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);f.subject.x=f.subject.aimX=300;
+  const foreground=d.viewScore(Math.PI/2,f.engine),foregroundCount=d.visibleEnemies,background=d.viewScore(-Math.PI/2,f.engine);expect(foregroundCount).toBe(1);expect(d.visibleEnemies).toBe(1);expect(foreground).toBeGreaterThan(background+.35);expect([...d.focus]).toEqual([240,24,192]);
+  f.subject.health.alive=false;expect(d.viewScore(Math.PI/2,f.engine)).toBe(0);
+ }finally{d.dispose();}
+});
+test('a single visible enemy can guide the orbit toward the foreground without retargeting',()=>{
+ const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);d.orbitAngle=0;f.subject.x=f.subject.aimX=180;
+  expect(d.viewScore(.3,f.engine)).toBeGreaterThan(0);expect(d.viewScore(-.3,f.engine)).toBeGreaterThan(0);d.planOrbit(f.engine);expect(d.orbitDirection).toBe(-1);expect([...d.focus]).toEqual([240,24,192]);
+ }finally{d.dispose();}
+});
+test('orbit reversals ease continuously with bounded flight motion at 30/60/120 Hz',()=>{
+ const results=[];
+ for(const hz of [30,60,120]){const f=basic(),d=f.drone;
+  try{d.setEnabled(true);d.sync('wave',f.engine);d.targetAt(240,24,192);advance(f,10,hz);d.viewScore=()=>0;d.orbitDirection=-1;const anchor=[...d.focus],rate=d.orbitRate;let previousRate=rate,acceleration=[...d.acceleration];
+   for(let n=0;n<hz*4;n++){const position=[...d.position];f.engine.time+=1/hz;d.advance(1/hz,{engine:f.engine,phase:'wave'});expect(d.orbitRate).toBeLessThan(previousRate);expect(Math.abs(d.orbitRate-previousRate)).toBeLessThanOrEqual(.098/hz+1e-8);expect(Math.hypot(...d.position.map((v,i)=>v-position[i]))).toBeLessThanOrEqual(DRONE_CAMERA_SPEED/hz+1e-6);expect(Math.hypot(...d.acceleration.map((v,i)=>v-acceleration[i]))*hz).toBeLessThanOrEqual(384+1e-4);if(n===0)expect(d.orbitRate).toBeGreaterThan(0);previousRate=d.orbitRate;acceleration=[...d.acceleration];centred(d);}
+   expect(d.orbitRate).toBeLessThan(-.034);expect([...d.focus]).toEqual(anchor);const snapshot=d.stats();d.advance(10,{engine:f.engine,phase:'wave',paused:true});expect(d.stats()).toEqual(snapshot);results.push(d.orbitRate);
+  }finally{d.dispose();}
+ }
+ expect(results[0]).toBeCloseTo(results[1],10);expect(results[1]).toBeCloseTo(results[2],10);
+});
 test('orbit direction favours visible enemies without moving the target, with a reversal hold',()=>{
  const f=basic(),d=f.drone;try{d.setEnabled(true);d.sync('wave',f.engine);const target=[...d.focus];d.viewScore=a=>a<d.orbitAngle?1:0;d.planOrbit(f.engine);expect(d.orbitDirection).toBe(-1);d.viewScore=a=>a>d.orbitAngle?1:0;d.planOrbit(f.engine);expect(d.orbitDirection).toBe(-1);d.time+=4.1;d.planOrbit(f.engine);expect(d.orbitDirection).toBe(1);expect([...d.focus]).toEqual(target);}finally{d.dispose();}
 });

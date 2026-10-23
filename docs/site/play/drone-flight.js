@@ -24,11 +24,11 @@ export class DroneFlight {
   this.waveClock=this.speed=this.travelled=this.blockedMoves=this.yaw=this.pitch=0;this.fov=64;
  }
  bind(world){
-  this.leave();this.obstacles?.dispose();this.obstacles=this.obstacleEngine=null;this.world=world;this.surfaces=null;
+  this.leave();this.obstacles?.dispose();this.obstacles=this.obstacleEngine=null;this.world=world;this.surfaces=null;this.surfaceCeiling=0;
   this.travelled=this.blockedMoves=this.speed=0;this.velocity.fill(0);this.acceleration.fill(0);
   if(!world)return;
   const field=new TerrainField(world.level);this.surfaces=new Float32Array(world.level.size[0]*world.level.size[1]);
-  for(let z=0;z<world.level.size[1];z++)for(let x=0;x<world.level.size[0];x++)this.surfaces[z*world.level.size[0]+x]=Math.max(field.height(x*24,z*24),field.height(x*24,z*24,true),field.bridgeBox(x,z)?world.level.pathHeight:0);
+  for(let z=0;z<world.level.size[1];z++)for(let x=0;x<world.level.size[0];x++){const height=Math.max(field.height(x*24,z*24),field.height(x*24,z*24,true),field.bridgeBox(x,z)?world.level.pathHeight:0);this.surfaces[z*world.level.size[0]+x]=height;this.surfaceCeiling=Math.max(this.surfaceCeiling,height);}
   this.cruiseY=Math.max(world.level.pathHeight+DRONE_CAMERA_MIN_ALTITUDE,(world.visibility?.bounds?.[4]??0)+32);
  }
  prepareObstacles(engine){
@@ -44,6 +44,9 @@ export class DroneFlight {
  staticClear(ax,ay,az,bx,by,bz){
   const w=this.world;if(!w)return false;
   const tree=w.visibility;if(!tree?.bounds)return false;
+  // The whole swept body is above every solid and cached surface. Inspect
+  // the current BVH root so geometry replacement cannot stale this shortcut.
+  if(Math.min(ay,by)>Math.max(tree.bounds[4]??-Infinity,this.surfaceCeiling)+R)return true;
   for(let node=0;node<tree.nodeCount;){
    if(hits(tree.bounds,node*6,ax,ay,az,bx,by,bz)){if(tree.escape[node]===node+1)return false;node++;}else node=tree.escape[node];
   }
@@ -61,7 +64,12 @@ export class DroneFlight {
   // their imminent entrance envelope early enough to leave without a snap.
   for(let i=0;i<o.records.length;i++){
    const record=o.records[i],s=record.state,wait=(s?.spawnAt??Infinity)-this.waveClock;if(s?.phase!=='scheduled'||wait>3||wait<0)continue;
-   b[0]=b[1]=b[2]=Infinity;b[3]=b[4]=b[5]=-Infinity;const k=i*6,m=record.root,e=o.poseEnvelope;
+   const k=i*6,m=record.root,e=o.poseEnvelope;
+   // Exact vertical range of the transformed envelope. High flight can reject
+   // it without transforming all eight corners in X/Y/Z on every substep.
+   const y0=m[1]*e[k],y1=m[1]*e[k+3],y2=m[5]*e[k+1],y3=m[5]*e[k+4],y4=m[9]*e[k+2],y5=m[9]*e[k+5],low=Math.min(y0,y1)+Math.min(y2,y3)+Math.min(y4,y5)+m[13],high=Math.max(y0,y1)+Math.max(y2,y3)+Math.max(y4,y5)+m[13];
+   if(Math.min(ay,by)>high+R||Math.max(ay,by)<low-R)continue;
+   b[0]=b[1]=b[2]=Infinity;b[3]=b[4]=b[5]=-Infinity;
    for(let corner=0;corner<8;corner++){const x=e[k+(corner&1?3:0)],y=e[k+1+(corner&2?3:0)],z=e[k+2+(corner&4?3:0)];for(let axis=0;axis<3;axis++){const v=m[axis]*x+m[axis+4]*y+m[axis+8]*z+m[axis+12];b[axis]=Math.min(b[axis],v);b[axis+3]=Math.max(b[axis+3],v);}}
    const travel=(s.movement?.speed??0)*(3-wait);b[0]-=travel;b[2]-=travel;b[3]+=travel;b[5]+=travel;
    if(hits(b,0,ax,ay,az,bx,by,bz))return false;

@@ -35,7 +35,7 @@ export class WorldRenderer {
   this.modelLightCapacity=modelLightCapacity;this.localLightCapacity=MAX_LOCAL_LIGHTS+modelLightCapacity-MAX_MODEL_LIGHTS;this.strictModelLights=strictModelLights;this.gpuTiming=gpuTiming;this.reflectionEffects=null;
   this.waterReflections=waterReflections;this.reflectionsEnabled=true;this.bloomEnabled=true;this.planar=null;this.visibleEmitters=0;this.waterHeight=null;this.waterBounds=null;this.deathEffectsPrepared=false;this.deathEffectsPreparation=null;
   this.canvas=canvas;this.onError=onError;this.draws=[];this.drawMap=new Map();this.frameData=new Float32Array(92);this.localLightData=new Float32Array(4+this.localLightCapacity*8);
-  this.localLightCount=this.localLightUploadBytes=this.missileLightCount=0;this.hadTransientLights=false;this.modelLights=null;this.bloom=null;
+  this.localLightCount=this.localLightUploadBytes=this.missileLightCount=0;this.hadTransientLights=false;this.modelLights=null;this.bloom=null;this.clearModelLightCopyCache();
   this.arcEffects=null;this.arcInstances=null;this.arcLightBuffer=null;this.arcBytes=0;this.arcLightCount=0;this.arcUploads=0;this.arcUploadBytes=0;
   this.generatorLights=null;this.generatorLightBuffer=null;this.generatorLightCount=this.generatorUploadBytes=this.generatorBytes=0;this.lastGeneratorRevision=undefined;
   this.missileThrust=null;this.missileThrustInstances=null;this.missileThrustBytes=this.missileThrustUploadBytes=0;
@@ -286,12 +286,19 @@ export class WorldRenderer {
    const data=this.localLightData;data[0]=count;
    for(let i=0;i<shotCount*8;i++)data[4+i]=shots.lightData[4+i];
    for(let i=0;i<damageCount*8;i++)data[4+shotCount*8+i]=damage.lightData[4+i];
-   for(let i=0;i<modelCount*8;i++)data[4+(shotCount+damageCount)*8+i]=models.data[4+i];
+   const modelOffset=4+(shotCount+damageCount)*8;
+   // Transient lights animate every frame, but the model block remains valid
+   // until its contents, source or packed position changes.
+   if(modelChanged||models!==this.lastPackedModelLights||modelOffset!==this.lastPackedModelOffset||modelCount!==this.lastPackedModelCount){
+    for(let i=0;i<modelCount*8;i++)data[modelOffset+i]=models.data[4+i];
+   }
+   this.lastPackedModelLights=models;this.lastPackedModelOffset=modelOffset;this.lastPackedModelCount=modelCount;
    for(let i=0;i<missileCount*8;i++)data[4+priorCount*8+i]=missiles.lightData[4+i];
    this.device.queue.writeBuffer(this.shotUniform,0,data,0,4+count*8);this.localLightUploadBytes=(4+count*8)*4;this.dirty=true;
   }
   this.localLightCount=count;this.missileLightCount=missileCount;this.hadTransientLights=transientCount>0;
  }
+ clearModelLightCopyCache(){this.lastPackedModelLights=null;this.lastPackedModelOffset=-1;this.lastPackedModelCount=0;}
  setLighting(sky){
   const dir=sky.direction,len=Math.hypot(...dir),target=[this.world.width/2,20,this.world.length/2],eye=target.map((v,i)=>v+dir[i]/len*650);
   lookAt(this.lightView,eye,target);const radius=Math.hypot(this.world.width,this.world.length)*.56;
@@ -359,7 +366,7 @@ export class WorldRenderer {
   const next=new ModelLights(world.entries,this.drawMap,{capacity:this.modelLightCapacity,strict:this.strictModelLights});
   // Keep the lighting upload storage stable; only its bounded CPU sources change.
   if(this.modelLights?.data&&next.data){next.data=this.modelLights.data;next.data.fill(0);}
-  this.modelLights?.sources.splice(0);this.modelLights=next;this.requestDraw();
+  this.modelLights?.sources.splice(0);this.clearModelLightCopyCache();this.modelLights=next;this.requestDraw();
  }
  flushInstances(){
   this.lastTransformUploads=0;this.lastTransformUploadBytes=0;
@@ -468,7 +475,7 @@ export class WorldRenderer {
   if(this.inspect&&inspectFrame){canvas.dataset.inspection=JSON.stringify({frames:this.frames,deltaSeconds:this.deltaSeconds,elapsedSeconds:this.elapsedSeconds,waterPhase:f[78],drawGroups:this.draws.length+(this.waterDraw?1:0),drawCalls:this.lastDrawCalls,geometryBytes:this.bytes,transformBytes:this.transformBytes,visibilityBytes:this.visibilityBytes,transformUploads:this.lastTransformUploads,transformUploadBytes:this.lastTransformUploadBytes,sceneBuffers:this.sceneBuffers.size,createdSceneBuffers:this.createdSceneBuffers,destroyedSceneBuffers:this.destroyedSceneBuffers,targetBytes:this.targetBytes,visibleEmitters:this.visibleEmitters,reflectionsEnabled:this.reflectionsEnabled,bloomEnabled:this.bloomEnabled,waterReflections:this.waterReflections,planarActive:!!wantsPlanar,planarDraws:this.planarDraws,planarBytes:this.planar?.bytes??0,vistaActive:!!this.vista,vistaGeometryBytes:this.vista?.geometryBytes??0,vistaTargetBytes:this.vista?.targetBytes??0,effectBytes:this.effectBytes,missileThrustBytes:this.missileThrustBytes,missileThrustInstances:this.missileThrust?.instanceCount??0,missileThrustUploadBytes:this.missileThrustUploadBytes,missileLights:this.missileLightCount,missileLightCPUBytes:this.missileThrust?.lightData?.byteLength??0,localLightUploadBytes:this.localLightUploadBytes,generatorBytes:this.generatorBytes,generatorLights:this.generatorLightCount,generatorUploadBytes:this.generatorUploadBytes,generatorCPUBytes:this.generatorLights?.byteLength??0,arcBytes:this.arcBytes,arcLightBytes:this.arcLightBuffer?.size??0,arcBindingBytes:this.emptyArcLights?.size??0,arcStrikes:this.arcEffects?.strikeCount??0,arcSparks:this.arcEffects?.sparkCount??0,arcGrounded:this.arcEffects?.groundedCount??0,arcInstances:this.arcEffects?.instanceCount??0,arcLights:this.arcLightCount,arcUploads:this.arcUploads,arcUploadBytes:this.arcUploadBytes,shotLights:effects?.lightCount??0,localLights:this.localLightCount??0,bloomActive:this.bloom?.active??false,bloomPasses:this.bloom?.passes??0,bloomDraws:this.bloom?.draws??0,bloomBytes:this.bloom?.bytes??0,bloomSettingsBytes:this.bloom?.settings.size??0,modelLights:this.modelLights?.count??0,authoredModelLights:this.modelLights?.authoredCount??0,modelLightOverflow:this.modelLights?.overflow??0,modelLightBytes:this.modelLights?.byteLength??0,localLightUniformBytes:this.localLightData.byteLength,deathEffectsPrepared:this.deathEffectsPrepared,damageCubes:this.damageCubeCount,damageParticles:this.damageParticleCount,damageBytes:this.damageBytes,shockwaveCount:this.shockwaveCount,shockwaveBytes:this.shockwaveBytes,shockwaveTargetBytes:this.shockwaveTargetBytes,shotInstances:effects?.instanceCount??0,droppedSparks:effects?.droppedSparks??0,replacedFlashes:effects?.replacedFlashes??0,cpuSubmitMs:this.lastSubmitMs,gpuFrameTiming:this.gpuTimer?.read()??null,cameraUpdated,depthUpdated,shadowUpdated,opaqueUpdated,waterUpdated,mode:c.mode,yaw:c.yaw,pitch:c.pitch,radius:c.radius,target:Array.from(c.target),eye:Array.from(c.eye),fov:c.fieldOfView,groundHeight:c.mode==='path'?c.groundHeight(c.eye[0],c.eye[2]):null});}
  }
 
- clearGeometry(){this.lastWaterRipples=null;this.lastWaterRippleRevision=null;this.gpuTimer?.reset();this.planar?.clearTargets();this.visibleEmitters=0;this.waterHeight=this.waterBounds=null;this.vista?.dispose();this.vista=null;this.screenGroup=null;this.clearMissileThrust();this.clearGeneratorLights();this.clearArcResources();this.bloom?.clearTargets();this.modelLights?.dispose();this.modelLights=null;for(const buffer of this.sceneBuffers){buffer.destroy();this.destroyedSceneBuffers++;}this.sceneBuffers.clear();this.waterDraw=null;this.draws.length=0;this.drawMap.clear();this.bytes=0;this.transformBytes=0;this.visibilityBytes=0;this.lastTransformUploads=0;this.lastTransformUploadBytes=0;}
+ clearGeometry(){this.lastWaterRipples=null;this.lastWaterRippleRevision=null;this.gpuTimer?.reset();this.planar?.clearTargets();this.visibleEmitters=0;this.waterHeight=this.waterBounds=null;this.vista?.dispose();this.vista=null;this.screenGroup=null;this.clearMissileThrust();this.clearGeneratorLights();this.clearArcResources();this.bloom?.clearTargets();this.clearModelLightCopyCache();this.modelLights?.dispose();this.modelLights=null;for(const buffer of this.sceneBuffers){buffer.destroy();this.destroyedSceneBuffers++;}this.sceneBuffers.clear();this.waterDraw=null;this.draws.length=0;this.drawMap.clear();this.bytes=0;this.transformBytes=0;this.visibilityBytes=0;this.lastTransformUploads=0;this.lastTransformUploadBytes=0;}
  clearWorld(){
   this.clearShockwaveTarget();this.shockwaveCount=0;
   this.clearGeometry();this.world=null;this.camera.clearLevel();this.shadowDirty=true;this.uniformDirty=true;this.requestDraw();this.hadTransientLights=false;this.localLightCount=0;this.damageCubeCount=this.damageParticleCount=0;this.lastDamageCubeRevision=-1;

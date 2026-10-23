@@ -10,10 +10,17 @@ export class DroneCamera extends DroneFlight {
  constructor(camera,options={}){
   super(camera,options);this.director=new BattleDirector();this.framing=new BattleFraming();this.candidates=Array.from({length:144},()=>({x:0,y:0,z:0,score:-Infinity,adjustment:0,certified:false,action:0,global:0,board:0}));
   this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.plannedVersion=-1;this.quality=this.levelInView=0;this.visible=this.holding=false;this.engineTime=null;this.subject=null;this.focusKind='none';this.phase=null;
-  this.openingUntil=0;this.plannedOpening=false;this.openingFocus=new Float64Array(3);
+  this.openingUntil=0;this.plannedOpening=false;this.openingFocus=new Float64Array(3);this.playerTarget=new Float64Array(3);this.targeted=false;this.lookYawOffset=this.lookPitchOffset=0;this.targetVersion=0;this.plannedTarget=-1;
  }
  bind(world){super.bind(world);this.director?.reset();this.framing?.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.plannedVersion=-1;this.planIn=0;this.engineTime=null;this.subject=null;this.focusKind='none';this.openingUntil=0;this.plannedOpening=false;}
+ leave(){super.leave();this.targeted=false;this.lookYawOffset=this.lookPitchOffset=0;}
  refresh(){this.leave();this.director.reset();this.obstacles?.dispose();this.obstacles=this.obstacleEngine=null;this.engineTime=null;this.plannedVersion=-1;}
+ rotate(dx,dy){if(!this.active||!Number.isFinite(dx+dy))return false;this.lookYawOffset-=dx*.004;this.lookYawOffset=Math.atan2(Math.sin(this.lookYawOffset),Math.cos(this.lookYawOffset));this.lookPitchOffset=clamp(this.lookPitchOffset+dy*.004,-1.2,1.2);return true;}
+ targetAt(x,y,z){
+  if(!this.active||!Number.isFinite(x+y+z)||x<0||z<0||x>this.world.width||z>this.world.length)return false;
+  const cols=this.world.level.size[0],cell=Math.min(this.world.level.size[1]-1,Math.floor(z/24))*cols+Math.min(cols-1,Math.floor(x/24));
+  this.playerTarget.set([x,Math.max(this.world.level.pathHeight,this.water[cell]),z]);this.targeted=true;this.targetVersion++;this.lookYawOffset=this.lookPitchOffset=0;this.openingUntil=0;this.planIn=0;this.routeLength=this.routeIndex=0;return true;
+ }
  noteActivity(x,y,z,at,weight=1){if(this.world)this.director.note(x,y,z,at,weight);}
  noteExplosion(state,at=this.engineTime??0){
   if(!state)return;const x=state.aimX??state.x,y=state.aimY??state.y,z=state.aimZ??state.z;this.noteActivity(x,y,z,at,3);
@@ -21,6 +28,10 @@ export class DroneCamera extends DroneFlight {
  }
  chooseSubject(engine){const changed=this.director.update(engine,this.world);this.subject=this.director.intent.subject;this.focusKind=this.director.intent.kind;if(changed)this.planIn=0;return changed;}
  compose(_engine,dt=0){let f=this.director.intent.focus;
+  if(this.targeted){
+   const t=this.playerTarget,o=this.openingFocus,near=Math.hypot(f[0]-t[0],f[2]-t[2])<80;
+   for(let i=0;i<3;i++)o[i]=t[i]+(near?(f[i]-t[i])*.25:0);f=o;
+  }
   if(this.world&&this.time<this.openingUntil){
    const t=clamp(1-(this.openingUntil-this.time)/OPENING_SECONDS,0,1),o=this.openingFocus;
    let blend=.15+.85*t*t*(3-2*t);
@@ -45,6 +56,7 @@ export class DroneCamera extends DroneFlight {
  sceneInView(){const p=this.framing.pose;p.x=this.position[0];p.y=this.position[1];p.z=this.position[2];p.yaw=this.yaw;p.pitch=this.pitch;p.fov=this.fov;const q=projectBattlePoint(p,...this.director.intent.anchor,this.aspect,this.framing.point);return q[2]>20&&Math.abs(q[0])<.88&&Math.abs(q[1])<.85;}
  orientShot(x,y,z,focus,fov){const pose=this.framing.orient(x,y,z,focus,fov);pose.pitch=Math.min(pose.pitch,DRONE_CAMERA_MAX_FILM_PITCH);return pose;}
  planShot(){
+  if(this.targeted)return this.planTarget();
   const d=this.director,intent=d.intent,opening=this.time<this.openingUntil,style=opening?'survey':intent.style,profile=BATTLE_SHOTS[style],focus=intent.focus,p=this.position,changed=intent.version!==this.plannedVersion||opening!==this.plannedOpening;
   this.plans++;this.targetFov=profile.fov;let currentScore=0,currentBoard=0,currentGlobal=0,readable=false;
   {
@@ -84,6 +96,31 @@ export class DroneCamera extends DroneFlight {
    best.score=-Infinity;if(!this.routeTo(x,y,z))continue;
    this.goal.set([x,y,z]);this.goalSince=this.time;this.goalDuration=Math.max(10,Math.hypot(x-p[0],y-p[1],z-p[2])/DRONE_CAMERA_SPEED*1.8+6);this.plannedVersion=intent.version;this.plannedOpening=opening;this.holding=false;
    this.relocations++;return true;
+  }
+  return false;
+ }
+ planTarget(){
+  const p=this.position,t=this.playerTarget,changed=this.plannedTarget!==this.targetVersion;
+  this.plans++;this.targetFov=56;
+  // Hold the selected neighbourhood; remote fights cannot move its anchor.
+  if(!changed&&this.clear(...this.goal,...this.goal)&&(this.routeIndex<this.routeLength||this.time-this.goalSince<5))return true;
+  let count=0;const bearing=Math.atan2(p[0]-t[0],p[2]-t[2]);
+  for(let height=0;height<3;height++)for(let range=0;range<3;range++)for(let n=0;n<16;n++){
+   const a=bearing+n*Math.PI/8,r=72+range*32,inset=DRONE_CAMERA_RADIUS+8,x=clamp(t[0]+Math.sin(a)*r,inset,this.world.width-inset),z=clamp(t[2]+Math.cos(a)*r,inset,this.world.length-inset),y=Math.max(this.minimumY+height*24,height===2?this.cruiseY:0),c=this.candidates[count++];
+   c.x=x;c.y=y;c.z=z;c.score=-Infinity;c.certified=false;
+   if(Math.hypot(x-t[0],z-t[2])<64)continue;
+   const pose=this.orientShot(x,y,z,t,56),q=projectBattlePoint(pose,...t,this.aspect,this.framing.point);
+   if(q[2]<=20||Math.abs(q[0])>.8||Math.abs(q[1])>.8)continue;
+   let action=0;for(let i=0;i<this.director.count;i++){const s=this.director.subjects[i];if(Math.hypot(s.x-t[0],s.z-t[2])>80)continue;const v=projectBattlePoint(pose,s.x,s.y,s.z,this.aspect,this.framing.point);if(v[2]>20&&Math.abs(v[0])<.8&&Math.abs(v[1])<.8)action+=s.weight;}
+   c.score=Math.min(1,action*.08)-Math.hypot(x-p[0],y-p[1],z-p[2])*.001-Math.abs(Math.hypot(x-t[0],z-t[2])-96)*.002;
+  }
+  let inspected=0;
+  for(let attempt=0;attempt<48;attempt++){
+   let best=null;for(let i=0;i<count;i++)if((inspected<24||this.candidates[i].certified)&&this.candidates[i].score>(best?.score??-Infinity))best=this.candidates[i];if(!best)break;
+   const {x,y,z}=best;
+   if(!best.certified){best.certified=true;inspected++;if(!this.columnClear(x,y,z)){best.score=-Infinity;continue;}if(!this.world.visibility.clear(x,y,z,t[0],t[1]+2,t[2]))best.score-=.4;continue;}
+   best.score=-Infinity;if(!this.routeTo(x,y,z))continue;
+   this.goal.set([x,y,z]);this.goalSince=this.time;this.plannedTarget=this.targetVersion;this.holding=true;this.relocations++;return true;
   }
   return false;
  }

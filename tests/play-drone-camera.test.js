@@ -133,3 +133,50 @@ test('edge arrivals open with more board context while retaining the real action
   }finally{d.dispose();}
  }
 });
+
+test('a player target overrides the opening and retains a close offset while remote action changes',()=>{
+ const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);
+ try{
+  const target=[100,24,90],before=Math.hypot(d.position[0]-target[0],d.position[2]-target[2]);
+  expect(d.targetAt(...target)).toBe(true);advance(f,12);
+  expect(d.targeted).toBe(true);expect([...d.playerTarget]).toEqual(target);
+  expect(Math.hypot(d.position[0]-100,d.position[2]-90)).toBeLessThan(before);
+  expect(Math.hypot(d.goal[0]-100,d.goal[2]-90)).toBeGreaterThanOrEqual(64);
+  expect(Math.hypot(d.goal[0]-100,d.goal[2]-90)).toBeLessThanOrEqual(137);
+  expect(d.goal[1]).toBeGreaterThanOrEqual(d.minimumY);expect(d.staticClear(...d.position,...d.position)).toBe(true);
+  f.subject.x=f.subject.aimX=450;f.subject.z=f.subject.aimZ=350;advance(f,8);
+  expect(Math.hypot(d.focus[0]-100,d.focus[2]-90)).toBeLessThan(1);
+  const pose=[...d.position,d.yaw,d.pitch];d.advance(10,{engine:f.engine,phase:'wave',paused:true});expect([...d.position,d.yaw,d.pitch]).toEqual(pose);
+  expect(d.targetAt(-1,24,40)).toBe(false);expect([...d.playerTarget]).toEqual(target);
+  d.sync('deploy',f.engine);expect(d.targeted).toBe(false);expect(d.lookYawOffset).toBe(0);
+ }finally{d.dispose();}
+});
+test('manual gimbal offsets ease without moving the flight goal; a new target recentres the gimbal',()=>{
+ const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);
+ try{
+  d.targetAt(120,24,100);advance(f,4);const yaw=d.yaw,goal=[...d.goal];
+  expect(d.rotate(100,-35)).toBe(true);advance(f,.5);
+  expect(Math.abs(d.yaw-yaw)).toBeGreaterThan(.05);expect([...d.goal]).toEqual(goal);expect(d.lookYawOffset).toBeCloseTo(-.4);
+  expect(d.targetAt(350,24,270)).toBe(true);expect(d.lookYawOffset).toBe(0);expect(d.lookPitchOffset).toBe(0);advance(f,1);expect(d.goal[0]).toBeGreaterThan(200);
+ }finally{d.dispose();}
+});
+
+test('obscured board targets still choose a safe destination instead of retaining the opening',()=>{
+ const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);
+ try{f.world.visibility.clear=()=>false;d.targetAt(60,24,60);advance(f,4);expect(d.plannedTarget).toBe(d.targetVersion);expect(d.relocations).toBeGreaterThan(0);expect(d.goal[0]).toBeLessThan(200);}finally{d.dispose();}
+});
+test('native manual targets retain swept clearance at 30/60/120 Hz, including raised ground',()=>assets(async()=>{
+ for(const id of ['patrol','split','late'])for(const hz of [30,60,120]){
+  const scene=await createStudyScene(STUDY_SCENARIOS.find(s=>s.id===id)),d=new DroneCamera(camera(),{random:()=>.35});d.bind(scene.world);d.setEnabled(true);d.sync('wave',scene.engine);
+  try{
+   expect(d.targetAt(60,24,60)).toBe(true);expect(d.playerTarget[1]).toBeGreaterThanOrEqual(scene.world.level.pathHeight);
+   for(let n=0;n<hz*12;n++){const old=[...d.position];scene.engine.advance(1/hz);d.advance(1/hz,{engine:scene.engine,phase:'wave'});expect(d.staticClear(...old,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS,0)).toBe(true);expect(d.position[1]).toBeGreaterThanOrEqual(d.minimumY);}
+   expect(d.plannedTarget).toBe(d.targetVersion);expect(Math.hypot(d.goal[0]-60,d.goal[2]-60)).toBeGreaterThanOrEqual(64);expect(d.relocations).toBeGreaterThan(0);
+  }finally{d.dispose();scene.dispose();}
+ }
+}),30000);
+
+test('a far-board click plans immediately while the displayed gimbal eases toward it',()=>{
+ const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);
+ try{d.focus.set([10,24,192]);d.look.set(d.focus);d.targetAt(470,24,192);expect(d.planShot()).toBe(true);expect(d.plannedTarget).toBe(d.targetVersion);expect(d.focus[0]).toBe(10);}finally{d.dispose();}
+});

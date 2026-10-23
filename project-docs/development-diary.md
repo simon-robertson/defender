@@ -1,5 +1,9 @@
 # Defender development diary
 
+## 23 October 2026
+
+- **Player-directed Drone, 23 October (implemented):** drag either mouse button to rotate the gimbal; left-click the board to select a persistent wave-local target. Safe bounded flight chooses a nearby offset station, with small local action reframes and altitude alternatives. Retains altitude/board/terrain/water/actor clearance, eased movement, pause and automatic filming until targeted. Perspective picking rejects sky/outside clicks; raised terrain and obscured anchors remain usable. Forty-three distinct targeted checks pass across input/camera/ownership/UI/presentation, including native manual clearance at 30/60/120 Hz and unchanged automatic combat outcomes. Isolated native A1 click/drag review reports no game error. Appearance awaits player feedback; active player and saves untouched, no push.
+
 ## 22 October 2026
 
 - **Returning-player silent default, 22 October (latest user correction; implemented):** 0% is the permanent default, not a development-only mute. The prior fix still restored positive v1 preferences, allowing sound despite the disabled slider. Sound preferences now use v2, resetting those older audible settings once; absent/corrupt storage remains 0%, while future explicit choices can still persist. Done/New Game/Continue with legacy 35%/80%/100% settings construct no context and leave the player closed. Twenty-four focused audio/UI/packaging checks pass. Local package refreshed and committed; no push. The new startup policy applies on the next page load; active player runs are not interrupted.

@@ -143,7 +143,7 @@ export class DroneFlight {
  }
  aim(dt,engine){
   const smoothing=1-Math.exp(-3*DRONE_CAMERA_MOTION_RATE*dt);for(let i=0;i<3;i++)this.look[i]+=(this.focus[i]-this.look[i])*smoothing;
-  const dx=this.position[0]-this.look[0],dy=this.position[1]-this.look[1],dz=this.position[2]-this.look[2],yaw=Math.atan2(dx,dz),pitch=clamp(Math.atan2(dy,Math.hypot(dx,dz)),-1.35,DRONE_CAMERA_MAX_FILM_PITCH);
+  const dx=this.position[0]-this.look[0],dy=this.position[1]-this.look[1],dz=this.position[2]-this.look[2],yaw=Math.atan2(dx,dz)+(this.lookYawOffset??0),pitch=clamp(Math.atan2(dy,Math.hypot(dx,dz))+(this.lookPitchOffset??0),-1.35,DRONE_CAMERA_MAX_FILM_PITCH);
   const yawRate=clamp(angle(yaw,this.yaw)*2.4*DRONE_CAMERA_MOTION_RATE,-YAW_SPEED,YAW_SPEED),pitchRate=clamp((pitch-this.pitch)*1.2*DRONE_CAMERA_MOTION_RATE,-PITCH_SPEED,PITCH_SPEED);
   this.yawVelocity+=clamp((yawRate-this.yawVelocity)*(1-Math.exp(-5*DRONE_CAMERA_MOTION_RATE*dt)),-YAW_ACCELERATION*dt,YAW_ACCELERATION*dt);this.pitchVelocity+=clamp((pitchRate-this.pitchVelocity)*(1-Math.exp(-5*DRONE_CAMERA_MOTION_RATE*dt)),-PITCH_ACCELERATION*dt,PITCH_ACCELERATION*dt);
   this.pitchVelocity=clamp(this.pitchVelocity,-Math.sqrt(2*PITCH_ACCELERATION*Math.max(0,this.pitch+1.35)),Math.sqrt(2*PITCH_ACCELERATION*Math.max(0,1.35-this.pitch)));

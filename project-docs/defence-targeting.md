@@ -175,6 +175,8 @@ For projectile leading, Engineer supplied the allocation-free intercept helper a
 
 ## Drone priority requirements
 
+**23 October revision:** defence Drones now use escape-risk classes and intercept-aware urgency; the old weakened-enemy finish bonus below is superseded. Likely escapees precede potential escapees, then enemies already covered by validated commitments. [Policy, overflight behavior, tests and limits](drone-intelligence-2026-10-23/README.md).
+
 18 October: the user requests intelligent prioritisation for the approved drone concept. Prefer urgent enemies nearing their level exit and opportunities to finish nearly destroyed enemies outside other defences' range. The A1 controller now implements this intent through the shared planner and bounded navigation. [Runtime and evidence](a1-drone-test-2026-10-18/README.md).
 
 Use each enemy's actual complete route and remaining travel time for urgency, especially across unequal merging approaches. The provisional A1 finish threshold is 100 residual HP, with a bonus rising toward 2× as health falls, only outside other active weapons’ ranges. Threat and time to the actual exit remain shared planner inputs. One defence ranks per frame; all aircraft move and validate aim/shots every frame. Only a valid active burst may reserve certified contiguous future shots with range, pitch and static LOS checks. Pursuit, loaded magazines and uncertain airborne/impact poses reserve no speculative damage.

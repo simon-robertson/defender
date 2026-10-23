@@ -218,7 +218,9 @@ test('a settled firing aircraft actively evades approaching birds and living fly
     if(s.evasions&&firstEvade===null)firstEvade=frame/60;
     if(!f.controller.dynamicPointClear(s,s.x,s.y,s.z))overlaps++;
    }
-   expect(heldBefore).toBeGreaterThan(60);expect(firstEvade).not.toBeNull();expect(firstEvade).toBeLessThan(5);expect(s.evasions).toBeGreaterThan(0);expect(overlaps).toBe(0);expect(s.emergencyStops).toBe(0);expect(s.bodyPitch).toBe(0);expect(s.bodyRoll).toBe(0);
+   // Escape-aware targeting may choose a different station before the flyer
+   // reaches it; require a real safe evasion during this nine-second encounter.
+   expect(heldBefore).toBeGreaterThan(60);expect(firstEvade).not.toBeNull();expect(firstEvade).toBeLessThan(9);expect(s.evasions).toBeGreaterThan(0);expect(overlaps).toBe(0);expect(s.emergencyStops).toBe(0);expect(s.bodyPitch).toBe(0);expect(s.bodyRoll).toBe(0);
    const current=o.current;f.firing.resetTargets();expect(o.current).toBe(current);expect(s.evading).toBe(false);expect(s.wantEvade).toBe(false);expect(s.stationCommitted).toBe(false);expect(s.evasions).toBe(0);
   }finally{f.dispose();}
  }

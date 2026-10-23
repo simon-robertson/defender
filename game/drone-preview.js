@@ -8,6 +8,7 @@ import {DefenceAim} from '../engine/targeting.js';
 import {DroneNavigation,droneBoxesOverlap} from '../engine/drone-navigation.js';
 import {DroneMotion} from '../engine/drone-motion.js';
 import {DroneObstacles} from '../engine/drone-obstacles.js';
+import {TARGET_POLICY} from '../engine/target-planner.js';
 
 const TAU=2*Math.PI,BASE=DRONE_TUNING.base;
 const active=s=>s.phase==='intercept'||s.phase==='attack';
@@ -195,7 +196,11 @@ export class DronePreview {
   if(!active(state)||state.expired){state.planReady=false;return;}
   const current=state.plannedTarget,valid=state.stationCommitted&&living(current)&&this.targets.includes(current)&&state.plannedLap===(current?.lap??0),travelling=!state.motion.done&&!state.retargetPending||state.speed>.1;
   let urgent=false;
-  if(valid){const score=this.planner?.score(current,state)??1;for(const other of this.targets)if(other!==current&&living(other)&&(this.planner?.score(other,state)??1)>=score*T.urgentSwitchRatio){urgent=true;break;}}
+  if(valid){const rank=this.escapeRank(state,current),score=this.planner?.score(current,state)??1;for(const other of this.targets)if(other!==current&&living(other)&&Number.isFinite(other.aimY)&&this.planner?.residualHealth(other)>0){
+   const earliest=Math.max(state.cycle.readyAt-state.cycle.time,this.travelSeconds(Math.max(0,Math.hypot(other.x-state.x,other.z-state.z)-state.maxRange))+.35);
+   if(earliest>=exitSeconds(other))continue;
+   const otherRank=this.escapeRank(state,other);if(otherRank>rank||otherRank===rank&&(this.planner?.score(other,state)??1)>=score*T.urgentSwitchRatio){urgent=true;break;}
+  }}
   if(valid&&!state.blocked&&!urgent){
    const index=this.targetIndices.get(current)??-1,minimum=Math.min(T.minimumUsefulPulses,Math.ceil((this.planner?.residualHealth(current)??current.health?.current??100)/state.strength));
    const pitch=Math.atan2(current.aimY-(state.y-4),Math.hypot((current.aimX??current.x)-state.x,(current.aimZ??current.z)-state.z)+3),lostScope=!travelling&&(state.stationHasFired||this.time>=(state.stationFireAt??0))&&(Math.hypot(current.x-state.x,current.z-state.z)>state.maxRange||!state.pitch.reachable(pitch));
@@ -208,7 +213,7 @@ export class DronePreview {
   // A changed/dead target never splices a new route into moving momentum.
   // Finish braking, then search from the actual settled position.
   if(travelling){state.planReady=false;state.retargetPending=true;return;}
-  if(this.time<state.nextPlanAt&&state.planReady)return;
+  if(this.time<state.nextPlanAt&&state.planReady&&!urgent)return;
   state.nextPlanAt=this.time+T.replanSeconds;state.replans++;state.planVersion++;state.planReady=this.navigation.search(state,this);state.candidateNodes.fill(-1);
   if(!state.planReady){state.planningFailure='no-route';return;}
   for(let i=0;i<this.targets.length;i++)if(living(this.targets[i])){
@@ -284,13 +289,29 @@ export class DronePreview {
   }
  }
  route(state,goal){if(!this.navigation.route(state,goal)||!this.navigation.smooth(state,this))return false;state.routeChanges++;return true;}
- priority(state,target,score){
-  const hp=this.planner.residualHealth(target);if(!(hp>0&&hp<=T.finishHealth))return score;
-  for(const other of this.planner.states){
-   if(other===state||!(other.strength>0)||other.mobile&&!active(other))continue;
-   if((target.x-other.x)**2+(target.z-other.z)**2<=other.maxRange**2)return score;
+ escapeRank(state,target){
+  const planner=this.planner;if(!planner)return 1;
+  const hp=planner.residualHealth(target);if(!(hp>0))return 0;
+  let committed=0,potential=0;
+  for(let i=0;i<planner.states.length;i++){
+   const other=planner.states[i];if(other===state)continue;
+   const damage=planner.capacity(i,target);
+   if(planner.commitment(i,target))committed+=damage;
+   if(!other.mobile)potential+=damage;
   }
-  return score*(1+(T.finishPriority-1)*(1-hp/T.finishHealth));
+  if(committed>=hp*TARGET_POLICY.coverageMargin)return 0;
+  // Unassigned gun windows are an optimistic escape-risk estimate, never a
+  // damage promise. Unknown/banking routes remain potential escapees until
+  // their real exit becomes imminent; they are never assumed safely covered.
+  const exit=planner.timeToExit(target),known=target.routeForecastEligible!==false&&!target.impact?.active;
+  return Number.isFinite(exit)&&(known||exit<=T.escapeEmergencySeconds)&&potential<hp*TARGET_POLICY.coverageMargin?2:1;
+ }
+ priority(state,target,score){
+  const exit=this.planner.timeToExit(target);if(!Number.isFinite(exit))return score;
+  const index=this.targetIndices.get(target)??-1,arrival=state.stationCommitted&&state.plannedTarget===target?(state.stationFireAt??this.time)-this.time:index>=0&&state.candidateNodes[index]>=0?state.candidateWindows[index*5+1]:0,wait=Math.max(0,arrival,state.cycle.readyAt-state.cycle.time);
+  // Rank urgency by the firing time actually left after travel, turning and
+  // weapon cooldown, rather than treating a distant enemy as an instant shot.
+  return score*Math.max(1,exit)/Math.max(1,exit-wait);
  }
  commitment(state,target){
   if(state.target!==target||state.targetLap!==(target.lap??0)||!active(state)||!state.cycle.remaining||!this.canFire(state,target))return 0;
@@ -352,17 +373,21 @@ export class DronePreview {
   return true;
  }
  planEvasion(state){
-  const nav=this.navigation,neutral=neutralPhase(state),top=state.ground+M.bodyPivot[1]+T.transitLayers[T.transitLayers.length-1];let x=0,y=0,z=0,bestX=0,bestY=0,bestZ=0,best=Infinity;
+  const nav=this.navigation,neutral=neutralPhase(state),top=nav.ceiling;let x=0,y=0,z=0,bestX=0,bestY=0,bestZ=0,best=Infinity;
   // Choose the shortest certified escape, retaining useful gun height where
   // possible. Neutral pad departures remain vertical and unturned.
-  for(let direction=0;direction<6;direction++)for(let distance=12;distance<=72;distance+=12){
-   if(neutral&&direction!==4)continue;
-   x=state.x+(direction===0?distance:direction===1?-distance:0);y=state.y+(direction===4?distance:direction===5?-distance:0);z=state.z+(direction===2?distance:direction===3?-distance:0);
-   if(y>top||y<state.ground+M.bodyPivot[1]+T.lift)continue;
-   if(!this.outsideYieldCorridor(state,x,y,z)||this.stationReserved(state,x,y,z)||!(neutral?nav.neutralVertical(state,y):nav.clearSegment(state.x,state.y,state.z,x,y,z))||!this.fleetClear(state,state.x,state.y,state.z,x,y,z,neutral)||!nav.clearSegment(x,y,z,x,y,z)||!this.fleetClear(state,x,y,z,x,y,z))continue;
+  for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)for(let dz=-1;dz<=1;dz++)for(let distance=12;distance<=72;distance+=12){
+   if(!dx&&!dy&&!dz||neutral&&(dx||dz||dy!==1))continue;
+   const scale=distance/Math.hypot(dx,dy,dz);
+   x=state.x+dx*scale;y=Math.min(top,state.y+dy*scale);z=state.z+dz*scale;
+   if(y<state.ground+M.bodyPivot[1]+T.lift||Math.hypot(x-state.x,y-state.y,z-state.z)<1)continue;
+   if(!this.outsideYieldCorridor(state,x,y,z)||this.stationReserved(state,x,y,z)||!(neutral?nav.neutralVertical(state,y):nav.clearSegment(state.x,state.y,state.z,x,y,z))||!this.fleetClear(state,state.x,state.y,state.z,x,y,z,neutral)||!nav.clearSegment(x,y,z,x,y,z)||!this.fleetClear(state,x,y,z,x,y,z)||!this.dynamicPointClear(state,x,y,z,1,false))continue;
    state.motion.clear();state.motion.add(state.x,state.y,state.z,0,0,0,x,y,z,false,0);if(!this.evasionClear(state,neutral))continue;
-   let score=distance+Math.abs(y-state.y)*2;const target=state.plannedTarget;
-   if(living(target)){const pitch=Math.atan2(target.aimY-(y-4),Math.hypot((target.aimX??target.x)-x,(target.aimZ??target.z)-z)+3);if(!state.pitch.reachable(pitch))score+=100;}
+   // Get out of the approaching hull's entire forecast before settling. Gun
+   // pitch must never keep an aircraft in a collision lane; ordinary station
+   // selection restores a useful operating height after the danger passes.
+   let score=Math.hypot(x-state.x,y-state.y,z-state.z)+Math.abs(y-state.y)*.25;
+   if(y>state.y)score-=4;
    if(score<best){best=score;bestX=x;bestY=y;bestZ=z;}
   }
   if(!Number.isFinite(best)){state.motion.clear();state.blocked=true;state.planningFailure='no-local-escape';state.holds++;return false;}

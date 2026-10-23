@@ -6,13 +6,14 @@ const EPS=1e-6;
 export function droneBoxesOverlap(a,b,k=0){return a[0]<b[k+3]-EPS&&a[3]>b[k]+EPS&&a[1]<b[k+4]-EPS&&a[4]>b[k+1]+EPS&&a[2]<b[k+5]-EPS&&a[5]>b[k+2]+EPS;}
 
 // Static, four-neighbour horizontal lanes joined by explicitly clear vertical
-// lanes. Runtime searches reuse one queue/parent/distance set per aircraft.
+// lanes. A single extra overflight lane clears scenery taller than the normal
+// operating bands. Runtime searches reuse a bounded heap/parent/distance set.
 // Bounds enclose the complete swept hull, so turns cannot cut scenery corners.
 export class DroneNavigation {
  constructor(world){
   this.world=world;this.visibility=world.visibility;this.width=world.width;this.length=world.length;this.ground=world.level.pathHeight;
-  this.cols=Math.floor(this.width/T.step)+1;this.rows=Math.floor(this.length/T.step)+1;this.plane=this.cols*this.rows;this.count=this.plane*T.transitLayers.length;
-  this.free=new Uint8Array(this.count);this.edges=new Uint8Array(this.count);this.bounds=new Float64Array(6);this.point=new Float64Array(3);this.knots=new Float64Array((this.count+1)*3);this.queries=0;this.nodeVisits=0;
+  this.cols=Math.floor(this.width/T.step)+1;this.rows=Math.floor(this.length/T.step)+1;this.plane=this.cols*this.rows;
+  this.bounds=new Float64Array(6);this.point=new Float64Array(3);this.queries=0;this.nodeVisits=0;
   const boxes=[];this.padIndices=new Map();
   for(const [id,data]of world.rigs)if(data.role==='defence'){
    // Only the fixed pad obstructs flight: the aircraft is handled by the fleet
@@ -26,20 +27,26 @@ export class DroneNavigation {
    this.padIndices.set(id,boxes.length);boxes.push(...b);
   }
   this.defences=new Float64Array(boxes);
+  const base=this.ground+DRONE_MODEL.bodyPivot[1],normal=base+T.transitLayers[T.transitLayers.length-1];let top=this.visibility?.nodeCount?this.visibility.bounds[4]:this.ground;
+  for(let i=4;i<this.defences.length;i+=6)top=Math.max(top,this.defences[i]);
+  this.ceiling=Math.max(normal,top+T.hullBelow+4);const extra=this.ceiling>normal+EPS?1:0;
+  this.layers=new Float64Array(T.transitLayers.length+extra);this.layers.set(T.transitLayers);if(extra)this.layers[this.layers.length-1]=this.ceiling-base;
+  this.entries=new Int32Array(this.layers.length);this.entryCosts=new Float64Array(this.layers.length);this.count=this.plane*this.layers.length;
+  this.free=new Uint8Array(this.count);this.edges=new Uint8Array(this.count);this.knots=new Float64Array((this.count+1)*3);
   for(let node=0;node<this.count;node++){this.position(node,this.point);this.free[node]=this.clearSegment(this.point[0],this.point[1],this.point[2],this.point[0],this.point[1],this.point[2])?1:0;}
   for(let node=0;node<this.count;node++)if(this.free[node]){
    const x=node%this.cols,z=Math.floor(node/this.cols)%this.rows,layer=Math.floor(node/this.plane);
    for(let dir=0;dir<3;dir++){
-    if(dir===0&&x+1>=this.cols||dir===1&&z+1>=this.rows||dir===2&&layer+1>=T.transitLayers.length)continue;
+    if(dir===0&&x+1>=this.cols||dir===1&&z+1>=this.rows||dir===2&&layer+1>=this.layers.length)continue;
     const next=node+(dir===0?1:dir===1?this.cols:this.plane);if(!this.free[next])continue;
     this.position(node,this.point);const ax=this.point[0],ay=this.point[1],az=this.point[2];this.position(next,this.point);
     if(this.clearSegment(ax,ay,az,this.point[0],this.point[1],this.point[2])){this.edges[node]|=1<<dir;this.edges[next]|=1<<(dir+3);}
    }
   }
   this.offsets=new Int32Array([1,this.cols,this.plane,-1,-this.cols,-this.plane]);
-  this.byteLength=this.free.byteLength+this.edges.byteLength+this.defences.byteLength+this.offsets.byteLength+this.bounds.byteLength+this.point.byteLength+this.knots.byteLength;
+  this.byteLength=this.free.byteLength+this.edges.byteLength+this.defences.byteLength+this.offsets.byteLength+this.bounds.byteLength+this.point.byteLength+this.knots.byteLength+this.layers.byteLength+this.entries.byteLength+this.entryCosts.byteLength;
  }
- position(node,out){out[0]=(node%this.cols)*T.step;out[1]=this.ground+DRONE_MODEL.bodyPivot[1]+T.transitLayers[Math.floor(node/this.plane)];out[2]=(Math.floor(node/this.cols)%this.rows)*T.step;return out;}
+ position(node,out){out[0]=(node%this.cols)*T.step;out[1]=this.ground+DRONE_MODEL.bodyPivot[1]+this.layers[Math.floor(node/this.plane)];out[2]=(Math.floor(node/this.cols)%this.rows)*T.step;return out;}
  clearBox(b,ignorePad=-1){
   this.queries++;
   if(b[0]<0||b[2]<0||b[3]>this.width||b[5]>this.length)return false;
@@ -69,27 +76,42 @@ export class DroneNavigation {
  }
  home(state){
   const x=Math.round(state.homeX/T.step),z=Math.round(state.homeZ/T.step);
+  // Deployment validates these original bands. An exceptional transit ceiling
+  // cannot turn an otherwise invalid pad departure into an accepted home.
   for(let layer=0;layer<T.transitLayers.length;layer++){
    const node=layer*this.plane+z*this.cols+x;this.position(node,this.point);
    if(this.free[node]&&this.neutralVertical(state,this.point[1]))return node;
   }
   return -1;
  }
- createSearch(){return {queue:new Uint32Array(this.count),parents:new Int32Array(this.count),distance:new Float64Array(this.count),path:new Uint32Array(this.count),pathLength:0,pathIndex:0,start:-1,visited:0};}
+ createSearch(){return {queue:new Uint32Array(this.count),heapPositions:new Int32Array(this.count),parents:new Int32Array(this.count),distance:new Float64Array(this.count),path:new Uint32Array(this.count),pathLength:0,pathIndex:0,start:-1,visited:0};}
+ heapSet(s,node,size){
+  const heap=s.queue,positions=s.heapPositions,distances=s.distance;let slot=positions[node];if(slot<0)slot=size++;
+  while(slot>0){const parent=(slot-1)>>1,other=heap[parent];if(distances[other]<=distances[node])break;heap[slot]=other;positions[other]=slot;slot=parent;}
+  heap[slot]=node;positions[node]=slot;return size;
+ }
+ heapTake(s,size){
+  const heap=s.queue,positions=s.heapPositions,distances=s.distance,node=heap[0],last=heap[size-1];positions[node]=-2;size--;if(!size)return node;
+  let slot=0;while(slot*2+1<size){let child=slot*2+1;if(child+1<size&&distances[heap[child+1]]<distances[heap[child]])child++;const other=heap[child];if(distances[last]<=distances[other])break;heap[slot]=other;positions[other]=slot;slot=child;}
+  heap[slot]=last;positions[last]=slot;return node;
+ }
  search(state,fleet=null){
-  const s=state.nav,p=this.point;s.parents.fill(-2);s.distance.fill(Infinity);let start=-1,best=Infinity;
+  const s=state.nav,p=this.point,entries=this.entries,costs=this.entryCosts;s.parents.fill(-2);s.distance.fill(Infinity);s.heapPositions.fill(-1);entries.fill(-1);costs.fill(Infinity);let start=-1,best=Infinity;
+  // The nearest low entry may be isolated by a canopy or a live actor. Keep a
+  // certified entry into each height band so a clear climb remains available.
   for(let node=0;node<this.count;node++)if(this.free[node]){
-   this.position(node,p);const d=Math.abs(p[0]-state.x)+Math.abs(p[1]-state.y)+Math.abs(p[2]-state.z);
-   if(d<best&&this.clearSegment(state.x,state.y,state.z,p[0],p[1],p[2])&&(!fleet||fleet.fleetClear(state,state.x,state.y,state.z,p[0],p[1],p[2]))){best=d;start=node;if(d<1e-8)break;}
+   this.position(node,p);const layer=Math.floor(node/this.plane),d=Math.hypot(p[0]-state.x,p[1]-state.y,p[2]-state.z);
+   if(d<costs[layer]&&this.clearSegment(state.x,state.y,state.z,p[0],p[1],p[2])&&(!fleet||fleet.fleetClear(state,state.x,state.y,state.z,p[0],p[1],p[2]))){costs[layer]=d;entries[layer]=node;if(d<best){best=d;start=node;}}
   }
   s.start=start;s.visited=0;if(start<0)return false;
-  let head=0,tail=1;s.queue[0]=start;s.parents[start]=-1;s.distance[start]=best;
-  while(head<tail){const node=s.queue[head++];for(let d=0;d<6;d++)if(this.edges[node]&(1<<d)){
-   const next=node+this.offsets[d];if(s.parents[next]!==-2)continue;
+  let size=0;for(let layer=0;layer<entries.length;layer++){const node=entries[layer];if(node<0)continue;s.parents[node]=-1;s.distance[node]=costs[layer];size=this.heapSet(s,node,size);}
+  while(size){const node=this.heapTake(s,size--),layer=Math.floor(node/this.plane);s.visited++;for(let d=0;d<6;d++)if(this.edges[node]&(1<<d)){
+   const next=node+this.offsets[d];if(s.heapPositions[next]===-2)continue;
+   const distance=s.distance[node]+(d%3===2?Math.abs(this.layers[Math.floor(next/this.plane)]-this.layers[layer]):T.step);if(distance>=s.distance[next]-EPS)continue;
    if(fleet){this.position(node,p);const x=p[0],y=p[1],z=p[2];this.position(next,p);if(!fleet.fleetClear(state,x,y,z,p[0],p[1],p[2]))continue;}
-   s.parents[next]=node;s.distance[next]=s.distance[node]+(d%3===2?24:T.step);s.queue[tail++]=next;
+   s.parents[next]=node;s.distance[next]=distance;size=this.heapSet(s,next,size);
   }}
-  s.visited=tail;return true;
+  return true;
  }
  route(state,goal){
   const s=state.nav;if(goal<0||s.parents[goal]===-2)return false;
@@ -117,5 +139,5 @@ export class DroneNavigation {
   }
   const last=(count-1)*3;return motion.add(x,y,z,0,0,0,knots[last],knots[last+1],knots[last+2],false,0);
  }
- dispose(){this.world=this.visibility=null;this.padIndices.clear();this.free=this.edges=this.defences=this.offsets=this.bounds=this.point=this.knots=null;this.count=this.byteLength=0;}
+ dispose(){this.world=this.visibility=null;this.padIndices.clear();this.free=this.edges=this.defences=this.offsets=this.bounds=this.point=this.knots=this.layers=this.entries=this.entryCosts=null;this.count=this.byteLength=0;}
 }

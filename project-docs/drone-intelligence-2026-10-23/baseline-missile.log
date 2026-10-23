@@ -1,0 +1,23 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-mixed-combat.test.js:
+69 | });
+70 | 
+71 | test('finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds',()=>{
+72 |  let launchCount=0;const f=fixture({model:'missile-launcher',spawns:[{model:'dog'}],overrides:{dog:{maxHealth:80,speed:12}},callbacks:{missileEffects:{onLaunch:()=>launchCount++}}});
+73 |  try{
+74 |   const e=f.engine;e.startWave();e.advance(1/120);const target=e.enemies.states[0];expect(launchCount).toBe(1);expect(target.health.current).toBe(80);expect(e.firing.missiles.pool.incomingDamage(target)).toBe(200);
+                                                                                                                                                                                                                 ^
+error: expect(received).toBe(expected)
+
+Expected: 200
+Received: 300
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/play-mixed-combat.test.js:74:205)
+(fail) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [95.92ms]
+
+ 0 pass
+ 8 filtered out
+ 1 fail
+ 3 expect() calls
+Ran 1 test across 1 file. [147.00ms]

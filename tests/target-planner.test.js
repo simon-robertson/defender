@@ -111,7 +111,7 @@ test('production gun, Arc and missile scenes retain deterministic combat after o
  // enemy poses and generator tuning; those inputs predate the mobile family.
  const expected=[['moss-01',[24,41,12],[25,26,26]],['moss-02',[6,13,4],[9,8,6]],['moss-03',[2,15,8],[4,4,4]]],sources=new Map();
  for(const [id,shots,hits]of expected){
-  const level=await Bun.file(new URL(`../docs/landscape-reset-2026-10-18/previous-levels/${id}.json`,import.meta.url)).json(),actors=[...DOG_PREVIEW_ACTORS,...missileActorsForLevel(id)],models=new Map();
+  const level=await Bun.file(new URL(`../project-docs/landscape-reset-2026-10-18/previous-levels/${id}.json`,import.meta.url)).json(),actors=[...DOG_PREVIEW_ACTORS,...missileActorsForLevel(id)],models=new Map();
   for(const model of new Set([...level.placements.map(p=>p.model),...actors.map(a=>a.model)])){
    if(!sources.has(model))sources.set(model,await Bun.file(new URL(`../assets/models/${model}.json`,import.meta.url)).json());models.set(model,sources.get(model));
   }

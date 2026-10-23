@@ -1,0 +1,198 @@
+bun test v1.4.2 (744846f84)
+
+tests/drone-hull.test.js:
+(pass) level drone vertical hull follows continuous fan/gun limits and authored family heights [0.62ms]
+(pass) source part boxes stay inside asymmetric hull over compound fan, rotor and fine gun poses [17.75ms]
+(pass) neutral base departure retains its existing 11 by 5 box without airborne aiming allowance [1.80ms]
+
+tests/play-drone-placement.test.js:
+(pass) Drone placement bounds preserve pad geometry and enclose the complete spinning neutral aircraft [56.69ms]
+(pass) Drone pads use ordinary flat dry ground and route gates while retaining only the supported base tier [1225.17ms]
+(pass) safe neutral departure rejects a narrow overhead obstacle but retains a lower clear transit layer [1150.68ms]
+(pass) adjacent Drone pads and compact generators retain accepted room without a ground-level airborne hull [418.23ms]
+(pass) new ordinary units cannot obstruct an existing Drone departure and placement order gives the same result [491.99ms]
+(pass) native mixed A2 deployment rejects the runtime turret prediction corner before committing either placement order [844.59ms]
+(pass) airborne route clearance protects the neutral column rather than only docked voxels [706.51ms]
+(pass) enabling Drones leaves every previously approved ordinary placement unchanged [715.90ms]
+(pass) native A2 Drone pads retain wildlife relocation and every approved single pad has a real navigation home [5508.77ms]
+
+tests/drone-combat.test.js:
+(pass) station sight checks exclude the requesting drone and retain obstruction rejection [36.00ms]
+(pass) base timing is independent and a settled twin-gun burst applies ten single 10HP rounds with five-second cooldown [39.86ms]
+(pass) expiry finishes the current valid burst then begins returning immediately without waiting for weapon cooldown [31.53ms]
+(pass) expiry in cooldown returns without starting a new burst; obstruction or death cancels remaining rounds safely [81.70ms]
+(pass) return, neutral pad hover and ten-second recharge preserve clocks and reset reuses every fleet slot [30.47ms]
+(pass) long frames emit at most one current round and unreachable/occluded targets receive no hits [26.87ms]
+(pass) mobile burst commitments stop before range exit and never promise unknown or banking future poses [26.96ms]
+(pass) head-on returning aircraft hold safely, replan around each other and both reach their own pads [39.97ms]
+(pass) an empty held return plan cannot align, descend or snap the aircraft to a distant home goal [25.49ms]
+(pass) return releases stale attack braking flags and completes after target invalidation [26.72ms]
+(pass) retained head-on intents and a neutral launch share right of way and make useful return progress at30/60/120Hz [262.18ms]
+(pass) a level fuselage uses collective fan tilt for acceleration and differential tilt for yaw and yaw braking [25.25ms]
+(pass) a complete-route intercept remains committed through a target corner and holds a useful firing station [31.43ms]
+(pass) committed firing stations reserve space independently of current aircraft positions [30.63ms]
+(pass) a settled firing aircraft actively evades approaching birds and living flyers without current solid overlap [72.42ms]
+(pass) a target dying during travel releases its station and brakes without splicing a new path into momentum [26.86ms]
+(pass) range exit and a target passing underneath invalidate the station, reposition and resume the same enemy after the real cooldown [61.15ms]
+(pass) actual A1 first sorties launch safely, attack productively and finish returns at30/60/120Hz, including a live-wildlife reset [2913.87ms]
+(pass) the actual A1 fleet navigates, attacks ground and air, returns/recharges and releases without changing the landscape [1157.73ms]
+
+tests/drone-intelligence.test.js:
+(pass) likely escapees outrank a nearly dead enemy with enough downstream gun time [38.18ms]
+(pass) potential escapees remain a usable fallback when the priority enemy cannot be intercepted [37.26ms]
+(pass) unknown and banking routes get no invented safety forecast, and imminent exits raise their priority [35.95ms]
+(pass) validated incoming lethal damage excludes a target and active gun commitments lower escape priority [36.13ms]
+(pass) a higher escape class releases a held firing station after the current burst [37.68ms]
+(pass) urgency accounts for real travel and cooldown time and keeps equal-risk locks stable [36.82ms]
+
+tests/play-mixed-combat.test.js:
+(pass) finite mixed species preserve movement, routes, health, lifecycle and active-only contacts [54.38ms]
+(pass) play Arc effects use absolute presentation time after preparation and preserve surface attachment [38.28ms]
+(pass) Arc surface retries stay with their enemy after active deaths, escapes and later spawns [74.31ms]
+69 | });
+70 | 
+71 | test('finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds',()=>{
+72 |  let launchCount=0;const f=fixture({model:'missile-launcher',spawns:[{model:'dog'}],overrides:{dog:{maxHealth:80,speed:12}},callbacks:{missileEffects:{onLaunch:()=>launchCount++}}});
+73 |  try{
+74 |   const e=f.engine;e.startWave();e.advance(1/120);const target=e.enemies.states[0];expect(launchCount).toBe(1);expect(target.health.current).toBe(80);expect(e.firing.missiles.pool.incomingDamage(target)).toBe(200);
+                                                                                                                                                                                                                 ^
+error: expect(received).toBe(expected)
+
+Expected: 200
+Received: 300
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/play-mixed-combat.test.js:74:205)
+(fail) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [37.28ms]
+(pass) real swept voxel envelopes are finite, retain radial-height coupling and contain actual Roller/Moth poses [212.16ms]
+(pass) deferred play magazines share36physical actors fairly and keep default preview exhaustion explicit [71.00ms]
+(pass) same-map mixed pools retain all rig geometry and wildlife through first species appearances [1224.33ms]
+(pass) 32gun capacity plus actual finale uses only wave members and updates lights without stale pooled indices [975.33ms]
+(pass) real turret hits report actual animated enemy surface contacts for bullet sparks before resolving damage [42.94ms]
+
+tests/play-target-commitment.test.js:
+(pass) A1 wave 3 at the reported gun positions finishes acquired targets without unfired reconsideration [5424.37ms]
+
+tests/static-deployment.test.js:
+(pass) preflight protects existing documentation before first deployment [3.81ms]
+(pass) refresh accepts unchanged owned files but preserves intervening edits including stale files [0.86ms]
+(pass) manifest cannot claim arbitrary documentation or traverse out of the generated directory [0.43ms]
+(pass) output symlinks are refused before reading or overwriting their targets [0.60ms]
+(pass) source changes that invalidate stripping boundaries fail closed [0.61ms]
+
+tests/play-drone-defence.test.js:
+(pass) finite Drone targets use stable slots through spawn, death compaction and escape [85.94ms]
+(pass) campaign Drone applies real hits, forwards aircraft muzzle sockets, returns during settling and does not relaunch [94.79ms]
+(pass) fixed campaign ticks retain pause, flight clearance and identical Drone outcomes at 30/60/120 Hz [188.23ms]
+(pass) a stopped wave returns its aircraft despite living enemies and restarting resets the same world rigs [64.98ms]
+(pass) unassigned Drone upgrades remain rejected and campaign fleet overflow fails before fetching [27.63ms]
+(pass) base aircraft highest flight/evasion envelope leaves the spectator camera a positive vertical gap [0.03ms]
+(pass) four native A2 aircraft coexist with mixed defences, clear each other and finish their first return at 30/60/120 Hz [4372.51ms]
+
+tests/drone-clearance.test.js:
+(pass) diagonal aircraft sweep clears unused bounding-rectangle corners but catches intermediate contact [0.07ms]
+(pass) asymmetric Y admits safe overhead/underneath travel and rejects actual volume contact [0.02ms]
+(pass) vertical launch sweep can use unchanged neutral footprint independently of airborne hull [0.02ms]
+(pass) stationary aircraft, packed offsets, face contact and tiny positive penetration agree [0.02ms]
+(pass) a thin mid-flight obstacle cannot be skipped by a long segment or reversed segment [0.01ms]
+
+tests/drone-obstacles.test.js:
+(pass) current articulated parts obstruct aircraft sweeps while a low ground animal permits overhead flight [0.32ms]
+(pass) a living airborne crossing is anticipated before contact and death removes it immediately [0.20ms]
+(pass) posed wings and leg chains enclose every transformed occupied cell, including root rotation [0.32ms]
+(pass) route prediction includes an intervening corner and stops at exit instead of wrapping across the board [0.10ms]
+(pass) preview wrap predicts a separate entrance region without a false teleport corridor [0.08ms]
+(pass) flying bird prediction covers its full wing envelope and the cubic flight peak [0.07ms]
+(pass) time-matched bird sweeps catch ascent crossings and allow escape after the bird has vacated the origin [0.12ms]
+(pass) time-matched route sweeps retain separate wrap regions and include intervening corners [0.09ms]
+(pass) time-matched queries preserve neutral half-height and discard observed velocity on reset [0.06ms]
+(pass) explicit asymmetric queries reject real above/below contact while preserving cube defaults [0.03ms]
+(pass) ground prediction respects supplied fixed-defence exclusions without hiding protruding or current contact [0.14ms]
+(pass) source-derived Dog Y envelope contains legal extreme impact, brace, gait and recovery poses [118.39ms]
+(pass) articulated defence prediction covers later yaw/pitch/recoil and excludes every drone part and pad [0.18ms]
+(pass) launcher wells reserve seated round tips while launched missile actor matrices are excluded [0.05ms]
+(pass) reset and lap discontinuity discard old velocity, storage is reused, and teardown releases source references [0.27ms]
+(pass) curved route predictions include the intervening extremum between opposing bends [0.06ms]
+(pass) actual A1 enemy and wildlife poses remain enclosed throughout moving flight, turns and hops [325.31ms]
+
+tests/target-planner.test.js:
+(pass) equal threat follows time to exit, explicit threat can outweigh progress, and health breaks close urgency ties [0.38ms]
+(pass) unknown route metadata still ranks threat but never invents downstream capacity [0.06ms]
+(pass) explicitly disabled forecasts skip all route probes while default coverage and live eligibility remain intact [0.30ms]
+(pass) uncertified route aim offsets and banking skip probes and credit without excluding live gun hits [0.61ms]
+(pass) revoking route forecast eligibility clears an existing reservation without rejecting its live target [0.15ms]
+119 |   const random=()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return(seed>>>0)/4294967296;};
+120 |   const preview=new DefencePreview(world,()=>{},random,null,enemies.states,(target,strength,vx,vy,vz)=>enemies.takeHit(target,strength,vx,vy,vz),null,()=>{});
+121 |   try{
+122 |    expect(preview.planner.coverage.map(profile=>profile.size)).toEqual(id==='moss-01'?[3,3,3]:[0,0,0]);
+123 |    for(let frame=0;frame<2400;frame++){enemies.advance(1/60);preview.advance(1/60);}
+124 |    expect(preview.states.map(state=>state.cycle.shots)).toEqual(shots);expect(enemies.states.map(state=>state.health.hits)).toEqual(hits);
+                                                              ^
+error: expect(received).toEqual(expected)
+
+  [
+-   2,
+-   15,
+-   8,
++   0,
++   6,
++   6,
+  ]
+
+- Expected  - 3
++ Received  + 3
+
+      at <anonymous> (/Users/simon/Development/codex/defender/tests/target-planner.test.js:124:57)
+(fail) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [859.94ms]
+(pass) future projectile aiming does not borrow the hitscan damage forecast [0.14ms]
+(pass) impact recovery suspends route promises while keeping actual live shots eligible [0.12ms]
+(pass) an idle downstream owner accepts one explicit assignment when the upstream gun switches [0.08ms]
+(pass) a future reservation yields to a hittable uncovered flyer and revokes its promised damage [0.09ms]
+(pass) future reservations still wait when current alternatives are already covered and hold a hittable assignment [0.17ms]
+(pass) delegation requires the full margin and respects cooldown, visibility and weapon strength [0.41ms]
+(pass) incoming missile damage is credited once and only residual health needs the gun forecast margin [0.55ms]
+(pass) fully claimed missile damage releases old gun reservations and never recruits unnecessary owners [0.11ms]
+(pass) unknown health and invalid incoming values cannot manufacture a lethal damage claim [0.32ms]
+(pass) mixed families share actual incoming credit while only one thinker forecasts gun damage [0.25ms]
+(pass) capacity uses only the next continuous window and never counts a later preview lap [0.04ms]
+(pass) one downstream promise cannot be reused to delegate a different actor [0.10ms]
+(pass) an owner cannot abandon its reserved actor for a more urgent challenger [0.07ms]
+(pass) covered targets remain fireable when there is no uncovered alternative [0.06ms]
+(pass) near-equal urgency and a short hold preserve locks; a valid burst finishes before a discretionary switch [0.05ms]
+(pass) forecast counts single attack pulses, partial bursts and real cooldowns [0.03ms]
+(pass) one roster scan per frame rotates fairly and releases all planner references on disposal [0.15ms]
+(pass) death, departure and lap changes invalidate reservations instead of preserving spent promises [0.19ms]
+(pass) a stale current-target lock cannot recreate downstream confidence after its reservation lapses [0.05ms]
+(pass) an unreserved lock in a coverage gap cannot promise a disconnected later window [0.04ms]
+(pass) current turret capacity never covers itself and spent weapon time reduces a promise [0.04ms]
+(pass) roster growth reuses spare slots and gives unprofiled actors no speculative capacity [0.10ms]
+(pass) continuing burst forecasts require pitch alignment as well as yaw [0.05ms]
+(pass) non-thinking turrets still reject invalid shots and cancel bursts every frame [0.37ms]
+(pass) gun acquisition survives priority changes through cooldown and its first valid burst [0.08ms]
+(pass) gun acquisition hold is bounded and cannot retain dead, blocked, removed or out-of-range targets [0.13ms]
+(pass) ground-first guns override air urgency, covered health, reservations and acquisition or burst holds [0.18ms]
+(pass) ground presence uses inclusive horizontal actor-root range and excludes dead or departed actors [0.09ms]
+(pass) ground-priority cache is local to each gun and leaves Arc and missile ranking unchanged [0.10ms]
+(pass) a newly present ground enemy cancels non-thinking live gun air bursts before the next pulse [0.10ms]
+(pass) blocked or pitch-unreachable ground suppresses live air shots until it dies, leaves or is removed [1.06ms]
+
+tests/drone-navigation.test.js:
+(pass) ordinary scenery retains the four standard bands and first fixed-clear pad home [1.04ms]
+(pass) a tall continuous scenery wall gets one hull-clear overflight lane and a smooth return to standard height [2.41ms]
+(pass) overflight covers tall deployed solids without approving a home available only at the extra ceiling [0.44ms]
+(pass) a disconnected nearest low entry does not hide a certified route through an upper band [0.51ms]
+(pass) weighted navigation chooses a shorter low detour over fewer, more expensive climbing edges [0.36ms]
+(pass) every alternate entry and route edge retains live fleet clearance and bounded reused storage [1.08ms]
+
+tests/drone-motion.test.js:
+(pass) a zero-speed join advances to the next segment at an exact native-frame distance [0.04ms]
+(pass) rounded paths have continuous position/tangent, bounded speed and acceleration and exact resting endpoints [0.27ms]
+(pass) station arrival estimates use the actual rounded route controller without mutating retained motion [0.08ms]
+
+2 tests failed:
+(fail) finite physical missiles seat real actors, delay damage until contact and settle without launching new rounds [37.28ms]
+(fail) production gun, Arc and missile scenes retain deterministic combat after omitting unused forecasts [859.94ms]
+
+ 125 pass
+ 2 fail
+ 1441598 expect() calls
+Ran 127 tests across 13 files. [30.75s]

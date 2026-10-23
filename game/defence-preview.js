@@ -33,6 +33,7 @@ export class DefencePreview {
    prepareState:state=>{if(state.mobile)this.drones.prepare(state);},
    onSelected:(state,target)=>{if(state.mobile)this.drones.selected(state,target);},
    scoreTarget:(state,target,score)=>state.mobile?this.drones.priority(state,target,score):score,
+   priorityTarget:(state,target)=>state.mobile?this.drones.escapeRank(state,target):0,
    committedDamage:(state,target)=>state.mobile?this.drones.commitment(state,target):0,
    holdTarget:state=>!state.mobile&&state.model!=='arc-spire'&&state.model!=='missile-launcher'&&holdGunAcquisition(state),
   });

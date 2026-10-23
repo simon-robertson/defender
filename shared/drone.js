@@ -32,9 +32,9 @@ export const DRONE_PREVIEW=Object.freeze({
  rotorSpeed:28,replanSeconds:.4,
  acceleration:96,braking:120,turnAcceleration:84,cornerRadius:18,
  stationGain:24,stationMargin:4,fanResponse:10.5,fanYawShare:.3,
- stationShortlist:12,minimumUsefulPulses:3,urgentSwitchRatio:2,
+ stationShortlist:12,minimumUsefulPulses:3,urgentSwitchRatio:2,escapeEmergencySeconds:6,
  bodyTurn:Object.freeze({maxSpeed:.825*Math.PI,acceleration:2.25*Math.PI}),
  fineYaw:Object.freeze({min:-15*Math.PI/180,max:15*Math.PI/180,maxSpeed:2*Math.PI,acceleration:12*Math.PI}),
  pitch:Object.freeze({min:-35*Math.PI/180,max:10*Math.PI/180,maxSpeed:Math.PI,acceleration:8*Math.PI}),
- aimTolerance:2*Math.PI/180,finishHealth:100,finishPriority:2,
+ aimTolerance:2*Math.PI/180,
 });

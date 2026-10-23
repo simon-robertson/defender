@@ -1,5 +1,5 @@
 export class DroneInput {
- constructor(canvas,drone,allowed){
+ constructor(canvas,drone,allowed,onTarget=()=>{}){
   this.canvas=canvas;this.drone=drone;this.allowed=allowed;this.pointer=null;this.listeners=[];
   const listen=(type,fn)=>{canvas.addEventListener(type,fn,true);this.listeners.push([type,fn]);};
   listen('pointerdown',e=>{
@@ -10,7 +10,9 @@ export class DroneInput {
    if(this.pointer!==e.pointerId)return;if(!allowed()||!drone.active){this.clear();return;}
    const dx=e.clientX-this.x,dy=e.clientY-this.y;this.x=e.clientX;this.y=e.clientY;
    if(!this.dragged&&Math.hypot(e.clientX-this.startX,e.clientY-this.startY)<4)return;
+   const hadTargeted=drone.hasTargeted;
    if(!this.dragged){this.dragged=true;drone.rotate(e.clientX-this.startX,e.clientY-this.startY);}else drone.rotate(dx,dy);
+   if(!hadTargeted&&drone.hasTargeted)onTarget();
    e.preventDefault();e.stopImmediatePropagation();
   });
   listen('pointerup',e=>{

@@ -2,18 +2,18 @@ import {test,expect} from 'bun:test';
 import {DroneInput} from '../play/drone-input.js';
 function fixture(){
  const handlers=new Map(),captures=new Set(),canvas={addEventListener(type,fn,capture){handlers.set(type,{fn,capture});},removeEventListener(type,fn,capture){const listener=handlers.get(type);if(listener?.fn===fn&&listener.capture===capture)handlers.delete(type);},focus(){},setPointerCapture(id){captures.add(id);},hasPointerCapture:id=>captures.has(id),releasePointerCapture:id=>captures.delete(id)};
- let allowed=true;const calls=[],drone={active:true,rotate:(...v)=>calls.push(['rotate',...v]),targetAt:()=>{throw Error('Clicks must not retarget the drone.');}},input=new DroneInput(canvas,drone,()=>allowed);
+ let allowed=true,updates=0;const calls=[],drone={active:true,hasTargeted:false,rotate:(...v)=>{calls.push(['rotate',...v]);drone.hasTargeted=true;return true;},targetAt:()=>{throw Error('Clicks must not retarget the drone.');}},input=new DroneInput(canvas,drone,()=>allowed,()=>updates++);
  const send=(type,x=600,y=400,button=0,pointerId=1)=>handlers.get(type)?.fn({clientX:x,clientY:y,button,pointerId,preventDefault(){},stopImmediatePropagation(){}});
- return {drone,input,send,calls,handlers,captures,setAllowed:v=>allowed=v};
+ return {drone,input,send,calls,handlers,captures,get updates(){return updates;},setAllowed:v=>allowed=v};
 }
 test('clicking either mouse button leaves the centre target unchanged',()=>{
- const f=fixture();for(const button of [0,2]){f.send('pointerdown',600,400,button);expect(f.captures.has(1)).toBe(true);f.send('pointerup',600,400,button);expect(f.captures.size).toBe(0);}expect(f.calls).toEqual([]);f.input.dispose();
+ const f=fixture();for(const button of [0,2]){f.send('pointerdown',600,400,button);expect(f.captures.has(1)).toBe(true);f.send('pointerup',600,400,button);expect(f.captures.size).toBe(0);}expect(f.calls).toEqual([]);expect(f.updates).toBe(0);f.input.dispose();
 });
 test('left and right drag aim with incremental pointer deltas',()=>{
- for(const button of [0,2]){const f=fixture();f.send('pointerdown',600,400,button);f.send('pointermove',620,410,button);f.send('pointermove',625,407,button);f.send('pointerup',625,407,button);expect(f.calls).toEqual([['rotate',20,10],['rotate',5,-3]]);expect(f.captures.size).toBe(0);f.input.dispose();}
+ for(const button of [0,2]){const f=fixture();f.send('pointerdown',600,400,button);f.send('pointermove',620,410,button);f.send('pointermove',625,407,button);f.send('pointerup',625,407,button);expect(f.calls).toEqual([['rotate',20,10],['rotate',5,-3]]);expect(f.updates).toBe(1);expect(f.captures.size).toBe(0);f.input.dispose();}
 });
 test('click tolerance avoids accidental aim but preserves the full first drag',()=>{
- const f=fixture();f.send('pointerdown');f.send('pointermove',602,400);f.send('pointermove',603,400);expect(f.calls).toEqual([]);f.send('pointermove',605,400);expect(f.calls).toEqual([['rotate',5,0]]);f.send('pointerup',605,400);f.input.dispose();
+ const f=fixture();f.send('pointerdown');f.send('pointermove',602,400);f.send('pointermove',603,400);expect(f.calls).toEqual([]);expect(f.updates).toBe(0);f.send('pointermove',605,400);expect(f.calls).toEqual([['rotate',5,0]]);expect(f.updates).toBe(1);f.send('pointerup',605,400);f.send('pointerdown');f.send('pointermove',610,410);f.send('pointerup',610,410);expect(f.updates).toBe(1);f.input.dispose();
 });
 test('inactive or locked input rejects new gestures and cancels an existing drag',()=>{
  for(const disable of [f=>f.setAllowed(false),f=>f.drone.active=false]){

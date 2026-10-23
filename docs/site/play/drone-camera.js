@@ -10,7 +10,7 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 export class DroneCamera extends DroneFlight {
  constructor(camera,options={}){
   super(camera,options);this.playerTarget=this.focus;this.minimumOffset=DRONE_CAMERA_MIN_OFFSET;
-  this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.engineTime=null;this.phase=null;this.targeted=false;this.orbitAngle=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.visibleEnemies=0;this.frameTargets=[];this.frameWeapons=[];this.projected=new Float64Array(32);this.orbitGoalAngle=null;this.frameSince=this.frameHoldUntil=0;this.frameImpact=false;this.activity=new Float64Array([0,0,0,-Infinity,0]);
+  this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.engineTime=null;this.phase=null;this.targeted=false;this.hasTargeted=false;this.orbitAngle=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.visibleEnemies=0;this.frameTargets=[];this.frameWeapons=[];this.projected=new Float64Array(32);this.orbitGoalAngle=null;this.frameSince=this.frameHoldUntil=0;this.frameImpact=false;this.activity=new Float64Array([0,0,0,-Infinity,0]);
  }
  bind(world){super.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.planIn=0;this.engineTime=null;this.targeted=false;this.activity?.fill(0);if(this.activity)this.activity[3]=-Infinity;this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;}
  leave(){super.leave();this.targeted=false;if(this.frameTargets)this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;}
@@ -18,7 +18,7 @@ export class DroneCamera extends DroneFlight {
  get aspect(){return Math.max(.2,(this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000));}
  surfaceY(x,z){const cols=this.world.level.size[0],rows=this.world.level.size[1],cell=clamp(Math.floor(z/24),0,rows-1)*cols+clamp(Math.floor(x/24),0,cols-1);return this.surfaces[cell];}
  lockTarget(x,y,z,manual=true){
-  this.focus.set([x,y,z]);this.targeted=manual;
+  this.focus.set([x,y,z]);this.targeted=manual;if(manual)this.hasTargeted=true;
   this.orbitAngle=Math.atan2(this.position[0]-x,this.position[2]-z);this.orbitGoalAngle=null;this.frameImpact=false;this.frameHoldUntil=0;this.planIn=manual ? .25 : 0;this.aim();this.apply();
  }
  targetAt(x,y,z){

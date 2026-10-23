@@ -1,5 +1,11 @@
 # Reticle-driven Drone camera, 23 October 2026
 
+**Centred hint follow-up:** “Click and drag to target” now sits 12 pixels beneath the reticle, centred in the view, with fully opaque light text and a solid dark backing. The first successful drag dismisses it synchronously, before the normal HUD refresh; clicking alone or moving less than four pixels retains it. Dismissal lasts for the page session across wave/level changes, without adding a persisted preference. The hint also hides while input is unavailable, including settling and screenshot mode. Neutral footer status replaces the duplicate instruction. Camera framing/flight/targeting are unchanged.
+
+Thirty focused input/UI/camera-ownership/presentation/packaging checks pass. Native A1 confirms centre alignment (hint centre X640, reticle centre X640), a 12-pixel gap, opacity1, click/retain and drag/hide, with no captured warnings/errors. Local package refreshed; active player untouched, no push.
+
+![Centred instruction before the first drag](centred-hint.png)
+
 **Latest player clarification and action-framing follow-up:** the reticle's world point always stays fixed until the next manual click-drag. Action outside the field of view may be ignored; automatic target following is expressly rejected. The viewfinder now says **CLICK-DRAG TO TARGET**, with matching footer and accessible instructions.
 
 The earlier two-neighbour direction comparison could take roughly ninety seconds to reach the opposite side and kept drifting away from a useful view. The new planner captures only currently visible living enemies and recently firing defences participating in those exchanges. Every 0.8 seconds it can score 24 positions around the same orbit, using weighted fighting coverage, foreground depth/placement and projected actor separation. Off-screen enemies, idle/stale weapons and remote impact events are excluded. A useful destination holds for four seconds; angular velocity eases up to 0.12 rad/s during purposeful reframing and settles into a small ±0.035-radian living arc. Empty views retain the accepted gentle survey. Dragging delays composition search for 0.25 seconds so it does not compete with ongoing input.

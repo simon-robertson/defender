@@ -188,6 +188,13 @@ kbd{background:var(--recess);border-color:var(--line);color:var(--muted)}
 .upgrade-briefing{position:fixed;z-index:9;width:280px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;pointer-events:none;padding:12px 14px;background:var(--recess);border-left:2px solid var(--amber);color:var(--ink);font-size:11px;line-height:1.5}
 
 .upgrade-briefing h4{margin:0 0 6px;color:var(--amber);font-size:10px}.upgrade-briefing dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 10px;margin:0}.upgrade-briefing dt{color:var(--muted)}.upgrade-briefing dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}.upgrade-briefing p{margin:6px 0 0;color:var(--muted)}
+/* Placement feedback stays beside the heading, outside the scrolling roster. */
+.prepare-top #placement-help{display:flex;align-items:center;gap:8px;margin-top:8px;padding:8px}
+.placement-copy{flex:1;min-width:0}
+.prepare-top #placement-hint{font-size:11px}
+#placement-controls{display:block;margin-top:4px;font:9px/1.4 ui-monospace,Menlo,monospace;color:var(--muted)}
+.prepare-top #cancel-button{flex:none;margin:0;padding:5px 7px;font-size:10px}
+@media(max-width:620px){body[data-phase="deploy"] #play-shell{grid-template-rows:auto auto minmax(0,1fr) 360px 30px}.prepare-top #placement-help{margin-top:6px;padding:5px 6px}.prepare-top #placement-hint{font-size:10px}.prepare-top #cancel-button{font-size:9px}}
 #result-checkpoint,#leave-checkpoint{color:var(--amber)}
 
 .wave-outcome{margin:0 0 8px;font-size:11px;color:var(--amber);line-height:1.4}

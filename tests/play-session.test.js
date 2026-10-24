@@ -1,9 +1,32 @@
 import {test,expect} from 'bun:test';
-import {PlaySession,nextEncounter,nextUnplaced} from '../play/session.js';
+import {PlaySession,nextEncounter,nextUnplaced,encounterLocation} from '../play/session.js';
 import {createPlayConfig} from '../play/config.js';
 
 function deployAndStart(s){const gun=s.buy();s.prepare('deploy');s.place(gun,[2,0,6]);expect(s.startWave()).toBe(true);}
 function finish(session){const id=session.wave.id;for(const spawn of session.wave.spawns)session.resolve(spawn.id,'killed');expect(session.beginSettling(id)).toBe(true);session.advanceSettlement(session.config.waveSettleSeconds);expect(session.finishWave(id)).toBe(true);expect(session.finishWave(id)).toBe(false);}
+test('unlock locations follow actual zone-local areas and wave positions across the campaign',()=>{
+ const session=new PlaySession();let encounter=0;
+ for(const [index,level]of session.config.levels.entries())for(let wave=1;wave<=level.waves.length;wave++){
+  const number=session.config.levels.slice(0,index+1).filter(other=>other.zone===level.zone).length;
+  expect(encounterLocation(session.config.levels,++encounter)).toEqual({area:level.zone+number,wave});
+ }
+ for(const invalid of [0,-1,1.5,NaN,null,65])expect(encounterLocation(session.config.levels,invalid)).toBeNull();
+ const levels=[{zone:'A',waves:[1,2]},{zone:'A',waves:[1,2,3]},{zone:'B',waves:[1]}];
+ expect(encounterLocation(levels,4)).toEqual({area:'A2',wave:2});expect(encounterLocation(levels,6)).toEqual({area:'B1',wave:1});
+});
+test('shop and upgrade unlock snapshots expose exact future areas and intra-area waves without changing eligibility',()=>{
+ const config=createPlayConfig({defences:{
+  'power-generator':{availableFromWave:17,variants:{base:{availableFromWave:19}}},
+  'turret-study':{variants:{upgrade1:{availableFromWave:18},upgrade2:{availableFromWave:21}}},
+ }}),s=new PlaySession(config);s.reset();const gun=s.buy();
+ expect(s.snapshot().shop.find(item=>item.model==='power-generator')).toMatchObject({available:false,availableFromWave:19,availableArea:'B1',availableWave:3});
+ expect(s.snapshot().units[0]).toMatchObject({canUpgrade:false,upgradeAvailableFromWave:18,upgradeAvailableArea:'B1',upgradeAvailableWave:2});expect(s.upgrade(gun)).toBe(false);
+ s.levelIndex=4;s.waveIndex=1;expect(s.snapshot().units[0]).toMatchObject({canUpgrade:true,upgradeAvailableArea:null,upgradeAvailableWave:null});expect(s.upgrade(gun)).toBe(true);
+ expect(s.snapshot().units[0]).toMatchObject({canUpgrade:false,upgradeAvailableFromWave:21,upgradeAvailableArea:'B2',upgradeAvailableWave:1});
+ s.waveIndex=2;expect(s.snapshot().shop.find(item=>item.model==='power-generator')).toMatchObject({available:true,availableArea:null,availableWave:null});
+ s.levelIndex=5;s.waveIndex=0;s.tokens=1;expect(s.upgrade(gun)).toBe(true);
+ expect(s.snapshot().units[0]).toMatchObject({canUpgrade:false,upgradeAvailableFromWave:null,upgradeAvailableArea:null,upgradeAvailableWave:null});
+});
 test('catalogue progression finishes four waves and all four levels before the next zone',()=>{
  const levels=['A','B'].flatMap(zone=>Array.from({length:4},(_,i)=>({zone,id:zone+(i+1),waves:[1,2,3,4]})));
  expect(nextEncounter(levels,3,2)).toEqual({levelIndex:3,waveIndex:3});

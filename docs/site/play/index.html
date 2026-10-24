@@ -54,14 +54,13 @@
     </header>
     <section id="wave-preview" class="wave-preview field-intel" aria-label="Upcoming wave" hidden></section>
     <aside id="prepare-panel" class="panel" aria-labelledby="prepare-heading" hidden>
-      <div class="prepare-top"><div class="steps" aria-label="Preparation steps"><span id="step-loadout" class="current"><b>1</b> ARSENAL</span><span id="step-deploy"><b>2</b> DEPLOY</span></div><div class="panel-heading"><h2 id="prepare-heading">ARSENAL</h2><span class="panel-signal" aria-hidden="true"></span></div><p class="muted" id="prepare-description">Buy defences. Upgrade your firepower.</p></div>
+      <div class="prepare-top"><div class="steps" aria-label="Preparation steps"><span id="step-loadout" class="current"><b>1</b> ARSENAL</span><span id="step-deploy"><b>2</b> DEPLOY</span></div><div class="panel-heading"><h2 id="prepare-heading">ARSENAL</h2><span class="panel-signal" aria-hidden="true"></span></div><p class="muted" id="prepare-description">Buy defences. Upgrade your firepower.</p><div id="placement-help" hidden><div class="placement-copy"><p id="placement-hint" role="status" aria-live="polite">Select a defence, then choose clear ground.</p><small id="placement-controls">Click to place · Arrows + Enter · Esc cancels</small></div><button type="button" class="text-button" data-action="cancel" id="cancel-button" hidden>Cancel placement</button></div></div>
       <div class="prepare-scroll">
         <div class="section-label catalogue-label"><h3>BUILD</h3><span>NEW DEFENCES</span></div>
         <div class="shop-list" id="shop"></div>
         <div class="inventory-label section-label"><h3>ROSTER</h3><span id="unit-count">00</span></div>
         <div id="unit-list" class="unit-list" aria-label="Owned defences"></div>
         <div id="empty-inventory" class="empty-inventory"><svg aria-hidden="true"><use href="#mark-path"/></svg><p>No defences owned</p><small>Build a gun to begin.</small></div>
-        <div id="placement-help" hidden><p id="placement-hint" role="status" aria-live="polite">Select a defence, then choose clear ground.</p><button type="button" class="text-button" data-action="cancel" id="cancel-button" hidden>Cancel placement</button></div>
       </div>
       <div class="prepare-bottom"><p id="last-wave-summary" class="wave-outcome" role="status" hidden></p><p class="deployment-count" id="deployment-count" hidden></p><button type="button" class="primary wide" id="deploy-button" data-action="deploy">DEPLOY DEFENCES <span aria-hidden="true">▶</span></button><button type="button" class="primary wide" id="start-wave-button" data-action="start-wave" disabled hidden>START WAVE <span aria-hidden="true">▶</span></button><button type="button" class="text-button wide" id="loadout-button" data-action="loadout" hidden>BACK TO ARSENAL</button><p class="preparation-note" id="preparation-note">Unspent tokens carry forward.</p></div>
     </aside>

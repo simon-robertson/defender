@@ -13,6 +13,18 @@ export function nextEncounter(levels,levelIndex,waveIndex){
  return null;
 }
 
+// Translate global unlock numbers through the actual campaign catalogue.
+export function encounterLocation(levels,encounterNumber){
+ if(!Number.isInteger(encounterNumber)||encounterNumber<1)return null;
+ let remaining=encounterNumber;
+ for(let i=0;i<levels.length;i++){
+  const level=levels[i];
+  if(remaining<=level.waves.length){let levelNumber=0;for(let j=0;j<=i;j++)if(levels[j].zone===level.zone)levelNumber++;return {area:level.zone+levelNumber,wave:remaining};}
+  remaining-=level.waves.length;
+ }
+ return null;
+}
+
 // Continue in the visible roster order after the unit just placed, skipping
 // deployed units and wrapping once. Purchase order can interleave families.
 export function nextUnplaced(units,afterId=null){
@@ -97,8 +109,8 @@ export class PlaySession {
   campaignLevelNumber:this.levelIndex+1,totalLevels:this.config.levels.length,
   waveNumber:this.waveIndex+1,wavesPerLevel:this.level.waves.length,completedWaves:this.completedWaves,
   totalWaves:this.config.levels.reduce((sum,level)=>sum+level.waves.length,0),wavePreview:this.wavePreview(),
-  shop:Object.entries(this.config.defences).map(([model,family])=>({model,kind:family.kind??'defence',name:DEFENCE_NAMES[model]??model,cost:family.purchaseCost,available:available(family,this.encounterNumber)&&available(family.variants.base,this.encounterNumber),availableFromWave:Math.max(family.availableFromWave??1,family.variants.base.availableFromWave??1),stats:family.variants.base.stats,firing:family.variants.base.firing})),
-  units:this.units.map((unit,i)=>{const model=unit.model??'turret-study',family=this.config.defences[model],nextVariant=this.nextVariant(unit),upgradeCost=nextVariant?family.upgradeCost:null,upgradeAvailableFromWave=nextVariant?Math.max(family.availableFromWave??1,family.variants[nextVariant].availableFromWave??1):null;return {...unit,model,kind:family.kind??'defence',box:unit.box?.slice()??null,deployed:Boolean(unit.box),stats:family.variants[unit.variant].stats,firing:family.variants[unit.variant].firing,label:(DEFENCE_NAMES[model]??model)+' '+String(i+1).padStart(2,'0'),nextVariant,nextStats:nextVariant?family.variants[nextVariant].stats:null,nextFiring:nextVariant?family.variants[nextVariant].firing:null,upgradeCost,upgradeAvailableFromWave,canUpgrade:this.phase==='loadout'&&nextVariant!==null&&this.encounterNumber>=upgradeAvailableFromWave&&this.tokens>=upgradeCost};}),
+  shop:Object.entries(this.config.defences).map(([model,family])=>{const availableFromWave=Math.max(family.availableFromWave??1,family.variants.base.availableFromWave??1),location=availableFromWave>this.encounterNumber?encounterLocation(this.config.levels,availableFromWave):null;return {model,kind:family.kind??'defence',name:DEFENCE_NAMES[model]??model,cost:family.purchaseCost,available:available(family,this.encounterNumber)&&available(family.variants.base,this.encounterNumber),availableFromWave,availableArea:location?.area??null,availableWave:location?.wave??null,stats:family.variants.base.stats,firing:family.variants.base.firing};}),
+  units:this.units.map((unit,i)=>{const model=unit.model??'turret-study',family=this.config.defences[model],nextVariant=this.nextVariant(unit),upgradeCost=nextVariant?family.upgradeCost:null,upgradeAvailableFromWave=nextVariant?Math.max(family.availableFromWave??1,family.variants[nextVariant].availableFromWave??1):null,location=upgradeAvailableFromWave>this.encounterNumber?encounterLocation(this.config.levels,upgradeAvailableFromWave):null;return {...unit,model,kind:family.kind??'defence',box:unit.box?.slice()??null,deployed:Boolean(unit.box),stats:family.variants[unit.variant].stats,firing:family.variants[unit.variant].firing,label:(DEFENCE_NAMES[model]??model)+' '+String(i+1).padStart(2,'0'),nextVariant,nextStats:nextVariant?family.variants[nextVariant].stats:null,nextFiring:nextVariant?family.variants[nextVariant].firing:null,upgradeCost,upgradeAvailableFromWave,upgradeAvailableArea:location?.area??null,upgradeAvailableWave:location?.wave??null,canUpgrade:this.phase==='loadout'&&nextVariant!==null&&this.encounterNumber>=upgradeAvailableFromWave&&this.tokens>=upgradeCost};}),
   encounterNumber:this.encounterNumber,
   costs:{buy:this.config.defences['turret-study'].purchaseCost,upgrade:this.config.defences['turret-study'].upgradeCost}};}
 }

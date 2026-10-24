@@ -190,8 +190,6 @@ export function createPlacementRules(source,models,{config,critters=true}={}){
  for(let node=0;node<tree.nodeCount;node++)if(tree.escape[node]===node+1){const footprint=projectedFootprint(tree.bounds,node*6,level.pathHeight,slopeX,slopeZ);if(footprint)projections.push(footprint);}
  const staticCells=new Map(),worldShapes=new Map();let disposed=false,lastPreparedKey=null,lastPrepared=null;
  const geometryFor=(box,variant,model)=>{const key=`${model}:${variant}:${box[0]},${box[2]}`;if(!worldShapes.has(key))worldShapes.set(key,translated(shapes[model+':'+variant],box,level.pathHeight));return worldShapes.get(key);};
- const outside=shape=>{const b=shape.bounds;return b[0]<-EPS||b[2]<-EPS||b[3]>width+EPS||b[5]>length+EPS;};
- const enemyConflict=shape=>enemies.some(enemy=>(enemy.airborne?flightSegments:segments).some(s=>routeConflict(shape,s,enemy.radius,enemy.top-enemy.bottom,level.pathHeight+enemy.bottom)));
  function staticCheck(box,variant,model){
   const key=`${model}:${variant}:${box[0]},${box[2]}`;if(staticCells.has(key))return staticCells.get(key);
   let result=OK;

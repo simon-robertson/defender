@@ -353,6 +353,8 @@ Sources: [cost data](../shared/defence.js), [token decisions](project-brief.md#w
 
 ## Game GUI (20 October)
 
+**Team review, 24 October (implemented under the user's improvement authorisation):** placement feedback and Cancel sit above the scrolling roster. Choosing a defence during deployment, including the automatically chosen reserve on entering deployment, focuses the board; existing arrow keys/Enter/Escape now have visible and accessible instructions. Loadout focus remains on its controls. Narrow deployment allocates 360 pixels to the console so guidance and roster can coexist. Future shop/upgrade unlocks derive actual zone-local area and wave from the configured catalogue (A2, or B1 · WAVE 3); already unlocked items skip that presentation lookup. The speed button's accessible name changes with its target action. Established art, mechanics and balance remain; [review and limitations](team-review-2026-10-24/README.md).
+
 **Deployment selection, 21 October (implemented):** after placing a defence, select the next undeployed unit in the visible grouped roster order (guns, Arcs, silos, generators), continuing through groups and wrapping when needed. Ownership identity and purchase order remain intact. [Delivery](combat-camera-follow-up-2026-10-21/README.md).
 
 **Queued range preview:** hovering a roster unit shows its current range in the battlefield; hovering its UPGRADE button previews the next tier's range. Read actual family/tier settings, clear transient previews on leave and retain keyboard-focus behaviour. [TODO item 11](../TODO.md).
@@ -1128,6 +1130,7 @@ A second `BACKSPACE` restores the saved camera position, orientation, projection
 
 | Date | Change |
 | --- | --- |
+| 24 October 2026 | Team review improves persistent placement guidance, keyboard access and unlock/speed labels; retains accepted art and original engine culling after measured alternative regression. Removes unused placement closures and repairs migrated model-test fixture. [Evidence](team-review-2026-10-24/README.md). |
 | 23 October 2026 | Rotated the opening Drone orbit bearing by 180° to face inward across the entrance, at the existing 144-unit standoff. Spawn reticle and subsequent flight/zoom remain. 50 focused checks and native A1 review pass. |
 | 23 October 2026 | Renamed the centred hint to “Click and drag to control the drone” and set its black backing to 70% opacity, retaining opaque text and first-drag dismissal. |
 | 23 October 2026 | Narrowed Drone default FOV to 60° and added occasional smooth 54–62° zooms using padded visible-action fit; fixed reticle, pause and high flight remain. 62 focused checks and native A1 review pass. [Delivery](drone-reticle-2026-10-23/README.md). |

@@ -17,6 +17,7 @@ const show=(node,visible)=>{if(node.hidden===visible)node.hidden=!visible;};
 const count=value=>Number.isFinite(value)?Math.max(0,value):0;
 const priceLabel=value=>`${value} token${value===1?'':'s'}`;
 const ordinal=value=>String(value).padStart(2,'0');
+const unlockLocation=(area,wave,encounter)=>area?`${area}${wave>1?` · WAVE ${wave}`:''}`:`WAVE ${encounter}`;
 
 function createUnitRow(unit){
   const row=document.createElement('div');row.className='unit-row';row.dataset.unit=unit.id;
@@ -47,7 +48,7 @@ function updateInventory(snapshot,locked){
     setText(entry.detail,`${tier} / ${unit.deployed?'Deployed':'Reserve'}${stats?' · '+stats:''}`);
     entry.select.disabled=locked||(!loadout&&!deploy);entry.select.setAttribute('aria-pressed',String(selected));
     entry.select.setAttribute('aria-label',`${unit.label||`Gun ${index+1}`}, ${tier}, ${unit.deployed?'deployed':'in inventory'}. Select ${enhancer?'enhancer':'defence'}.`);
-    show(entry.upgrade,loadout&&hasUpgrade);entry.upgrade.disabled=locked||!loadout||!unit.canUpgrade;setText(entry.upgrade,unit.upgradeAvailableFromWave>(snapshot.encounterNumber??1)?`Upgrade ${unit.nextVariant==='upgrade2'?'II':'I'} · Level ${Math.ceil(unit.upgradeAvailableFromWave/4)}`:`UPGRADE ${unit.nextVariant==='upgrade2'?'II':'I'} · ${priceLabel(unit.upgradeCost??snapshot.costs?.upgrade??1)}`);
+    show(entry.upgrade,loadout&&hasUpgrade);entry.upgrade.disabled=locked||!loadout||!unit.canUpgrade;setText(entry.upgrade,unit.upgradeAvailableFromWave>(snapshot.encounterNumber??1)?`Upgrade ${unit.nextVariant==='upgrade2'?'II':'I'} · ${unlockLocation(unit.upgradeAvailableArea,unit.upgradeAvailableWave,unit.upgradeAvailableFromWave)}`:`UPGRADE ${unit.nextVariant==='upgrade2'?'II':'I'} · ${priceLabel(unit.upgradeCost??snapshot.costs?.upgrade??1)}`);
     show(entry.undeploy,deploy&&Boolean(unit.deployed));entry.undeploy.disabled=locked||!deploy||!unit.deployed;
     show(entry.operations,(loadout&&hasUpgrade)||(deploy&&Boolean(unit.deployed)));
     const comparison=hasUpgrade&&!entry.upgrade.disabled?upgradeComparison(unit):null,key=JSON.stringify(comparison);
@@ -93,9 +94,10 @@ function updateShop(snapshot,locked){
    row.append(icon,info,button);refs.shop.append(row);entry={row,name,detail,button};shopRows.set(item.model,entry);
   }
   setText(entry.name,item.model==='turret-study'?'Twin-barrel gun':item.name);
-  setText(entry.detail,item.available?(item.kind==='enhancer'?`+${Math.round(item.stats.strengthIncrease*100)}% strength / 4 neighbours`:item.stats?`DMG ${item.stats.strength} / RNG ${item.stats.maxRange}`:'Base defence'):`UNLOCK / AREA ${Math.ceil(item.availableFromWave/4)}`);
+  const unlock=unlockLocation(item.availableArea,item.availableWave,item.availableFromWave);
+  setText(entry.detail,item.available?(item.kind==='enhancer'?`+${Math.round(item.stats.strengthIncrease*100)}% strength / 4 neighbours`:item.stats?`DMG ${item.stats.strength} / RNG ${item.stats.maxRange}`:'Base defence'):`UNLOCK / ${unlock}`);
   entry.button.disabled=locked||snapshot.phase!=='loadout'||!item.available||snapshot.tokens<item.cost;
-  entry.button.setAttribute('aria-label',item.available?`Buy ${item.name} for ${priceLabel(item.cost)}`:`${item.name}, available at Level ${Math.ceil(item.availableFromWave/4)}`);
+  entry.button.setAttribute('aria-label',item.available?`Buy ${item.name} for ${priceLabel(item.cost)}`:`${item.name}, available at ${item.availableArea?'Area ':''}${unlock}`);
   setText(entry.button,item.available?`BUILD · ${item.cost}`:'LOCKED');entry.row.classList.toggle('locked',!item.available);
  }
  const label=document.querySelector('.catalogue-label');if(label)show(label,snapshot.phase==='loadout');
@@ -130,7 +132,7 @@ export function renderUI(snapshot={}){
   if(busy&&(oldAction||oldGraphics))pendingFocus={action:oldAction,unit:oldUnit,graphics:oldGraphics};
   document.body.dataset.phase=phase;document.body.dataset.paused=String(paused);document.body.dataset.screenshot=String(screenshot);$('play-shell').setAttribute('aria-busy',String(busy));
   const droneActive=Boolean(snapshot.droneCameraActive),droneEnabled=Boolean(snapshot.droneCameraEnabled),filming=droneActive&&!screenshot;
-  const canvasLabel=screenshot?'Paused screenshot camera. W/S move forward/backward, A/D strafe, drag to rotate. Backspace restores the paused view.':droneActive?'Flying drone action camera. Hold either mouse button and drag to target the centre reticle. The drone orbits the board position under it.':phase==='title'?'Fixed scenery view of woodland ruins, trees and limestone paths.':'Defence landscape. Camera framing is automatic.';
+  const canvasLabel=screenshot?'Paused screenshot camera. W/S move forward/backward, A/D strafe, drag to rotate. Backspace restores the paused view.':droneActive?'Flying drone action camera. Hold either mouse button and drag to target the centre reticle. The drone orbits the board position under it.':phase==='title'?'Fixed scenery view of woodland ruins, trees and limestone paths.':phase==='deploy'?'Defence placement board. Select a defence, then click clear ground or use arrow keys to choose a square and Enter to place. Escape cancels placement.':'Defence landscape. Camera framing is automatic.';
   if($('world').getAttribute('aria-label')!==canvasLabel)$('world').setAttribute('aria-label',canvasLabel);
   show(refs['title-screen'],phase==='title');show(refs.hud,phase!=='title');show(refs['prepare-panel'],prep);show(refs['wave-preview'],prep);show(refs['board-footer'],phase!=='title');
   show(refs['options-screen'],phase==='title'&&snapshot.optionsOpen&&!error);
@@ -162,7 +164,7 @@ export function renderUI(snapshot={}){
   while(refs['wave-pips'].children.length>waves)refs['wave-pips'].lastElementChild.remove();
   for(let index=0;index<waves;index++){const pip=refs['wave-pips'].children[index];pip.classList.toggle('current',index===wave-1);pip.classList.toggle('done',index<wave-1);}
   show(refs['speed-button'],activeWave);refs['speed-button'].disabled=locked||!activeWave;
-  const fast=snapshot.targetTimeScale===2;refs['speed-button'].setAttribute('aria-pressed',String(fast));refs['speed-button'].title=fast?'Return to normal speed (T)':'Double game speed (T)';
+  const fast=snapshot.targetTimeScale===2,speedAction=fast?'Return to normal speed':'Double game speed';refs['speed-button'].setAttribute('aria-pressed',String(fast));refs['speed-button'].title=speedAction+' (T)';refs['speed-button'].setAttribute('aria-label',speedAction);
   show(refs['pause-button'],activeWave);refs['pause-button'].disabled=locked||!activeWave;
   document.body.dataset.droneCamera=String(filming);document.body.dataset.cameraView=droneActive?'drone':'overview';
   show(refs['drone-camera-viewfinder'],filming);setText(refs['drone-camera-label'],'DRONE CAM');setText(refs['drone-camera-format'],'Click and drag to control the drone');

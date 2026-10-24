@@ -3,7 +3,7 @@ import {meshPart} from '../shared/mesher.js';
 const ids=['dog','roller','moth','walker','dune-tread','twin-fan','tripod','ray','spider','lantern'];
 test('enemy refinement preserves rig contracts, footprints and accepted geometry except removing fan guard clutter',async()=>{
  for(const id of ids){
-  const before=await Bun.file(`docs/todo-36-41-2026-10-21/before-models/${id}.json`).json(),after=await Bun.file(`assets/models/${id}.json`).json();
+  const before=await Bun.file(`project-docs/todo-36-41-2026-10-21/before-models/${id}.json`).json(),after=await Bun.file(`assets/models/${id}.json`).json();
   expect(after.size).toEqual(before.size);expect(after.materials).toEqual(before.materials);
   const parts=after.variants.base.parts,old=before.variants.base.parts;expect(parts.map(p=>[p.id,p.parent,p.pivot])).toEqual(old.map(p=>[p.id,p.parent,p.pivot]));
   for(let i=0;i<parts.length;i++){

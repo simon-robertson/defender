@@ -1,5 +1,7 @@
 # Artist
 
+**Team review, 24 October:** All 67 model sources validate/compile with finite vertices and matte materials. Fresh A3/B2/C3/D4 captures retain readable routes/courts and distinct biome palettes; no asset change justified. Corrected the migrated fixture root in enemy-aesthetics.test.js; 37 focused model checks pass. [Delivery](../team-review-2026-10-24/README.md).
+
 **Deep-pool fish, 20 October (implemented for review):** the user authorises fish critters that scatter from nearby enemy-debris water impacts. Small articulated fish now inhabit connected deep pools in A2/A4/B4/C1/C4/D3 in play and wildlife previews. They flee from actual same-water-body splashes, then resume swimming; bridge/dry impacts and explosions alone do not trigger them. One new cosmetic fish model and bounded navigation/events reuse existing rendering and the shared critter thinker. Pause, scene cleanup and gameplay isolation are verified. Appearance/density remain provisional. [Implementation and evidence](../fish-critters-2026-10-20/README.md).
 
 Before every project task, read the shared [design doc](../design-doc.md). Current decisions there and later user instructions supersede historical notes below; report any required design-doc amendments in your handoff.

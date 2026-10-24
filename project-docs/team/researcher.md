@@ -1,5 +1,7 @@
 # Researcher
 
+**Team review, 24 October:** Local screenshot/source review supports persistent deployment guidance outside the roster, explicit existing keyboard controls with board focus, actual area/wave unlock labels and speed names matching the current action. Seven focused GUI checks pass; no redesign justified. [Delivery](../team-review-2026-10-24/README.md).
+
 **Latest, running deferred, 20 October:** the user rejects the gallop study and requests rollback of all running work. The production additions and isolated prototype are removed; the research brief below is retained as historical, withdrawn work. No continued gait research or implementation is active.
 
 **Latest, 20 October:** completed [canine gallop and rigging research](../research/canine-gallop-rigging-2026-10-20.md) after the user finds the first run insufficiently canine and too level. Primary biomechanics, the supplied extended-suspension photo and current controller/rig limitations inform staged proposals; no animation/model implementation. Preserve the roughly 2× straight cap and distinguish possible rig segmentation from approved asset changes. Visual acceptance remains open.

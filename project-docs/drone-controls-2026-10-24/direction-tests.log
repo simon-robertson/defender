@@ -1,0 +1,84 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-drone-input.test.js:
+(pass) clicking either mouse button leaves the centre target unchanged [0.39ms]
+(pass) left and right drag aim with incremental pointer deltas [0.16ms]
+(pass) click tolerance avoids accidental aim but preserves the full first drag [0.03ms]
+(pass) inactive or locked input rejects new gestures and cancels an existing drag [0.08ms]
+(pass) only the captured supported pointer can aim or end the drag [0.06ms]
+(pass) cancel, capture loss, explicit cleanup and disposal end stale input [0.06ms]
+(pass) keyboard combines axes, cancels opposing keys and releases even after input locks [0.20ms]
+(pass) keyboard rejects inactive, paused, modified and editable events and clears held keys [0.13ms]
+(pass) pointer release preserves held keys; blur, lifecycle cleanup and disposal release them [0.09ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.15ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.04ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.10ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+(pass) real camera switches immediately in both directions at every display rate and restores preparation framing [7.19ms]
+(pass) settling retains Drone, pause freezes its exact displayed pose and resumed flight stays smooth [0.82ms]
+(pass) real Frame, Auto, reset and landscape binding transfer ownership immediately without stale projection state [0.40ms]
+
+tests/play-drone-camera.test.js:
+(pass) waves start high on the opposite entrance orbit, facing into the board with a fixed spawn reticle [6.24ms]
+(pass) the selected wave route determines the opening entrance and each wave resets manual targeting [0.59ms]
+(pass) entrances on every edge face inward and central or missing paths retain a finite offset [2.73ms]
+(pass) pause, settling, disabling and rebinding preserve camera ownership and release caches [0.47ms]
+(pass) drag rotation changes the exact world target and subsequent movement keeps it under the reticle [1.48ms]
+(pass) large drags and skyward input clamp the reticle to board edges without losing the target [1.63ms]
+(pass) rotation hits raised terrain surfaces rather than a hidden point beneath them [0.40ms]
+(pass) reticle targets actual lower water and bridge tops [0.32ms]
+(pass) a distant target approaches a persistent offset orbit with only high gentle altitude changes [4.43ms]
+(pass) edge targets allow exterior camera orbits while the reticle remains on the board [13.49ms]
+(pass) orbit scoring uses actual enemy projection and scenery visibility [0.38ms]
+(pass) equally visible action is preferred on the readable foreground side of the anchor [0.21ms]
+(pass) a single visible enemy can guide the orbit toward the foreground without retargeting [0.18ms]
+(pass) orbit reversals ease continuously with bounded flight motion at 30/60/120 Hz [8.91ms]
+(pass) a useful framing destination holds through brief changes and ignores off-screen action [0.34ms]
+(pass) global orbit composition improves foreground action sooner and includes its participating defence [2.09ms]
+(pass) off-screen fights and stale firing cannot displace the visible exchange [0.28ms]
+(pass) purposeful framing reversals preserve continuous angular and physical movement at every display rate [6.01ms]
+(pass) swept geometry retains solid terrain, water, scenery and imminent spawn reservations outside or inside the board [0.36ms]
+(pass) near-overhead retargeting moves outward without crossing the target column or dropping altitude [0.47ms]
+(pass) flight has bounded speed, acceleration and jerk, and capped recovery after long frames [1.80ms]
+(pass) all seven native study scenes open inward across the entrance, high and clear without changing combat [5797.36ms]
+(pass) occasional close views preserve the exact anchor, pause, manual deferral and fresh-wave lens [2.18ms]
+(pass) zoom fit protects subjects at the actual frame edge and ignores hidden or off-screen action [0.48ms]
+(pass) zoom fit includes recent participating weapons with missing height, excluding stale or remote fire [0.26ms]
+(pass) native A2/B4/D4 battles at 30/60/120 Hz preserve combat outcomes and swept clearance with edge targeting and WASD [32654.02ms]
+(pass) W/S translate the target in the current view and ease to a fixed anchor after release [4.95ms]
+(pass) A is clockwise and D counter-clockwise, with eased reversal and automatic resumption [0.80ms]
+(pass) combined keyboard movement preserves smooth physical limits, board bounds and display-rate agreement [17.37ms]
+(pass) keyboard pause is exact and wave changes clear all keyboard motion [0.39ms]
+(pass) orbit-only keys preserve a manually selected raised terrain wall anchor [0.37ms]
+(pass) the last A/D choice survives release, opposing framing, translation and retargeting at every display rate [10.50ms]
+(pass) a quick rotation tap is remembered before a frame and automatic framing searches only the chosen direction [0.85ms]
+
+tests/static-deployment.test.js:
+(pass) packaged game retires defence aircraft while retaining the spectator camera and collision cache [79.41ms]
+(pass) preflight protects existing documentation before first deployment [1.67ms]
+(pass) refresh accepts unchanged owned files but preserves intervening edits including stale files [0.89ms]
+(pass) manifest cannot claim arbitrary documentation or traverse out of the generated directory [0.44ms]
+(pass) output symlinks are refused before reading or overwriting their targets [0.64ms]
+(pass) source changes that invalidate stripping boundaries fail closed [0.12ms]
+
+tests/drone-lens.test.js:
+(pass) the lens begins slightly tighter and alternates occasional close shots with normal holds [0.07ms]
+(pass) edge pressure cancels a close shot once, widens safely and leaves its cooldown stable [0.04ms]
+(pass) small fit fluctuations do not thrash a wider target or interrupt a safe close shot [0.02ms]
+(pass) quiet scenes ease to normal and moving compositions defer a due close decision [0.03ms]
+(pass) mid-ramp reversal preserves value and velocity with bounded rate and acceleration [0.74ms]
+(pass) analytical lens transitions agree at 30, 60 and 120 Hz and zero delta freezes motion [0.09ms]
+(pass) manual deferral carries lens motion, while reset restores fresh-wave state [0.02ms]
+(pass) invalid clock or composition inputs reject atomically [0.07ms]
+
+tests/screenshot-camera.test.js:
+(pass) screenshot camera restores the exact paused projection/pose after free flight and dragging [0.44ms]
+(pass) free flight follows pitch, strafes, normalizes diagonal speed and is independent of frame rate [0.44ms]
+
+ 66 pass
+ 0 fail
+ 562733 expect() calls
+Ran 66 tests across 6 files. [38.68s]

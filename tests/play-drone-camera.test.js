@@ -222,3 +222,24 @@ test('orbit-only keys preserve a manually selected raised terrain wall anchor',(
  const f=basic(),d=f.drone;f.world.level.terrain.boxes=[{box:[9,5],ground:100,water:0}];d.bind(f.world);d.setEnabled(true);d.sync('wave',f.engine);d.position.set([228,230,300]);d.focus.set([228,50,144]);d.aim();d.rotate(0,0);const anchor=[...d.focus];expect(anchor[1]).toBeGreaterThan(24);expect(anchor[1]).toBeLessThan(100);
  d.setKeyboard(0,-1);advance(f,1);expect([...d.focus]).toEqual(anchor);centred(d);d.dispose();
 });
+
+
+test('the last A/D choice survives release, opposing framing, translation and retargeting at every display rate',()=>{
+ for(const hz of [30,60,120])for(const direction of [-1,1]){
+  const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);d.setKeyboard(0,direction);advance(f,2,hz);d.setKeyboard(0,0,false);const anchor=[...d.focus],angle=d.orbitAngle;
+  // A destination behind the selected direction must not reverse the orbit,
+  // including after passing a previously useful composition.
+  for(let n=0;n<6*hz;n++){d.orbitGoalAngle=d.orbitAngle-direction*.4;d.frameHoldUntil=d.time+10;advance(f,1/hz,hz);expect(d.orbitRate*direction).toBeGreaterThan(0);}
+  expect((d.orbitAngle-angle)*direction).toBeGreaterThan(.2);expect([...d.focus]).toEqual(anchor);
+  d.setKeyboard(1,0);advance(f,.5,hz);d.setKeyboard(0,0,false);d.targetAt(240,24,192);advance(f,2,hz);expect(d.playerOrbitDirection).toBe(direction);expect(d.orbitRate*direction).toBeGreaterThan(0);centred(d);
+  d.setKeyboard(0,-direction);advance(f,3,hz);d.setKeyboard(0,0,false);advance(f,2,hz);expect(d.playerOrbitDirection).toBe(-direction);expect(d.orbitRate*-direction).toBeGreaterThan(0);expect(d.blockedMoves).toBe(0);d.dispose();
+ }
+});
+test('a quick rotation tap is remembered before a frame and automatic framing searches only the chosen direction',()=>{
+ for(const direction of [-1,1]){
+  const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);d.setKeyboard(0,direction);d.setKeyboard(0,0,false);expect(d.playerOrbitDirection).toBe(direction);advance(f,1);expect(d.orbitRate*direction).toBeGreaterThan(0);
+  const bearing=Math.atan2(d.position[0]-d.focus[0],d.position[2]-d.focus[2]),sampled=[];d.captureFrame=()=>{d.frameTargets=[f.subject];};d.viewScore=angle=>{const delta=angle-bearing;sampled.push(delta);return Math.abs(delta)<.01?0:1;};d.frameHoldUntil=0;d.planOrbit(f.engine);
+  expect(d.orbitGoalAngle).not.toBeNull();expect((d.orbitGoalAngle-bearing)*direction).toBeGreaterThan(0);for(const delta of sampled)expect(delta*direction).toBeGreaterThanOrEqual(-1e-10);
+  d.sync('loadout',f.engine);expect(d.playerOrbitDirection).toBe(0);d.sync('wave',f.engine);expect(d.playerOrbitDirection).toBe(0);d.dispose();
+ }
+});

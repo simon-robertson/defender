@@ -21,3 +21,13 @@ Engineer (`gpt-6.1-sol`, high effort) performed an independent read-only integra
 Local changes and package are committed together under standing delivery instructions. No audio changes or remote push. Appearance and control feel await player review.
 
 ![Three-quarter reticle at 80% opacity with the new controls hint](reticle-80-percent.png)
+
+## Persistent direction follow-up
+
+The player requests that a chosen A/D orbit direction continue after release. The latest command records the clockwise/counter-clockwise choice immediately, including a tap shorter than one frame. Automatic framing then samples only positions ahead in that direction, and its eased automatic rate stays in that direction (normal 0.035 rad/s up to the existing 0.12 rad/s framing rate). It cannot reverse or start the previous small back-and-forth framing arc against the player's choice. Holding A/D still requests the faster 0.28 rad/s manual rate and reversals retain the existing easing.
+
+The choice survives W/S movement, mouse retargeting, pause and input cleanup during the current wave. Pressing the opposite orbit key replaces it. Preparation/new-wave entry resets the wave-local choice, restoring ordinary autonomous direction selection before any A/D command. The reticle remains at 80% opacity and its actual-bearing animation and controls hint are unchanged.
+
+**66 affected checks pass** across camera, input, ownership, lens, screenshot compatibility and packaging. New regressions cover both directions at 30/60/120 Hz, destinations behind the selected direction, later movement/retargeting, opposite-key replacement, quick taps and wave reset. Native A2/B4/D4 keyboard runs retain combat identity and swept clearance at all three rates; seven native openings also pass. [Fresh log](direction-tests.log).
+
+Local package refreshed:206files /116modules /20,714,392bytes. All64 packaged wave starts and HTTP/hash/MIME/runtime boundaries pass again. [Fresh deployment validation](direction-deployment-validation.json). No browser or active-player reload for this follow-up. Changes and regenerated package are committed locally; no remote push.

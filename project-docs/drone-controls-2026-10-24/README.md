@@ -1,5 +1,7 @@
 # Drone reticle and keyboard control — 24 October 2026
 
+**Drone controls accepted and deployed locally, 24 October:** the player accepts the 80% three-quarter orbit reticle, smooth WASD controls, expanded hint and persistent A/D direction, then requests commit and deployment. Runtime and generated package are already committed in `97aacb3` and `956dfe2`. Fresh `bun run deploy:local` output is identical to the committed 206-file / 20,714,392-byte package. Records acceptance only; no runtime change, repeated tests, active-player reload or remote push.
+
 The player requests a clearer rotating three-quarter circular reticle, smooth W/S forward/backward target movement relative to the current orbit view, A clockwise and D counter-clockwise orbit control, and automatic behaviour when keys are released. The follow-up adds the new controls to the existing drag hint and sets the reticle to **80% opacity**. Implemented for player review.
 
 The 48px SVG reticle uses an outlined 270° arc and a centre dot. Its angle follows the actual physical aircraft bearing every displayed frame, rather than a separate animation clock or the desired flight station. It therefore follows easing, reversals and pause. The four-line centred hint explains W/S, each orbit direction and automatic resumption. Either the first drag or a keyboard command dismisses it for the page session. Accessible canvas instructions agree.

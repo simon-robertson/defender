@@ -1,0 +1,142 @@
+$ bun scripts/deployment/validate.js
+{
+  "at": "2026-10-24T10:57:21.187Z",
+  "checks": [
+    "All output hashes match manifest and freshly gathered source transformations",
+    "Every runtime resource, correct MIME, exact bytes and directory redirect passed at /; APIs unavailable",
+    "Every runtime resource, correct MIME, exact bytes and directory redirect passed at /defender/; APIs unavailable",
+    "Portrait resources are embedded SVGs; all campaign enemies and available defence tiers covered",
+    "Actual packaged loader/engine loads all sixteen levels through static HTTP; all 64 wave rosters start; no-critters world excludes fish/land/birds"
+  ],
+  "levels": [
+    {
+      "id": "moss-01",
+      "models": 21,
+      "requests": 22,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "moss-02",
+      "models": 22,
+      "requests": 23,
+      "waves": 4,
+      "critters": 9,
+      "fish": 2
+    },
+    {
+      "id": "moss-03",
+      "models": 22,
+      "requests": 23,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "moss-04",
+      "models": 23,
+      "requests": 24,
+      "waves": 4,
+      "critters": 9,
+      "fish": 2
+    },
+    {
+      "id": "ochre-01",
+      "models": 20,
+      "requests": 21,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "ochre-02",
+      "models": 21,
+      "requests": 22,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "ochre-03",
+      "models": 20,
+      "requests": 21,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "ochre-04",
+      "models": 21,
+      "requests": 22,
+      "waves": 4,
+      "critters": 9,
+      "fish": 2
+    },
+    {
+      "id": "ice-01",
+      "models": 17,
+      "requests": 18,
+      "waves": 4,
+      "critters": 9,
+      "fish": 2
+    },
+    {
+      "id": "ice-02",
+      "models": 17,
+      "requests": 18,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "ice-03",
+      "models": 17,
+      "requests": 18,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "ice-04",
+      "models": 17,
+      "requests": 18,
+      "waves": 4,
+      "critters": 9,
+      "fish": 2
+    },
+    {
+      "id": "plum-01",
+      "models": 17,
+      "requests": 18,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "plum-02",
+      "models": 18,
+      "requests": 19,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    },
+    {
+      "id": "plum-03",
+      "models": 18,
+      "requests": 19,
+      "waves": 4,
+      "critters": 9,
+      "fish": 2
+    },
+    {
+      "id": "plum-04",
+      "models": 19,
+      "requests": 20,
+      "waves": 4,
+      "critters": 9,
+      "fish": 0
+    }
+  ],
+  "result": "passed"
+}

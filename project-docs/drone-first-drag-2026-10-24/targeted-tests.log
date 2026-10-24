@@ -1,0 +1,51 @@
+bun test v1.4.2 (744846f84)
+
+tests/play-drone-input.test.js:
+(pass) clicking either mouse button leaves the centre target unchanged [0.31ms]
+(pass) left and right drag aim with incremental pointer deltas [0.13ms]
+(pass) click tolerance avoids accidental aim but preserves the full first drag [0.05ms]
+(pass) inactive or locked input rejects new gestures and cancels an existing drag [0.64ms]
+(pass) only the captured supported pointer can aim or end the drag [0.09ms]
+(pass) cancel, capture loss, explicit cleanup and disposal end stale input [0.14ms]
+(pass) keyboard combines axes, cancels opposing keys and releases even after input locks [0.52ms]
+(pass) keyboard rejects inactive, paused, modified and editable events and clears held keys [0.20ms]
+(pass) pointer release preserves held keys; blur, lifecycle cleanup and disposal release them [0.08ms]
+(pass) the first drag survives focus moving from a HUD button to the canvas with either mouse button [0.36ms]
+(pass) actual window focus loss still releases the drag and held keyboard controls [0.10ms]
+
+tests/play-camera-views.test.js:
+(pass) Drone restores the saved overview when toggled off and rejects removed camera modes [0.12ms]
+(pass) arming in preparation survives landscape binding while Frame cancels an inactive armed choice [0.04ms]
+(pass) Auto can exit Drone and retains the existing toggle for automatic overview framing [0.03ms]
+(pass) only the owning camera advances the shared overview and paused state is passed unchanged [0.07ms]
+(pass) fresh runs default to Drone, preparation stays overview, and manual choice survives waves and levels [0.03ms]
+(pass) real camera switches immediately in both directions at every display rate and restores preparation framing [6.05ms]
+(pass) settling retains Drone, pause freezes its exact displayed pose and resumed flight stays smooth [0.71ms]
+(pass) real Frame, Auto, reset and landscape binding transfer ownership immediately without stale projection state [0.34ms]
+
+tests/static-deployment.test.js:
+(pass) packaged game retires defence aircraft while retaining the spectator camera and collision cache [89.35ms]
+(pass) preflight protects existing documentation before first deployment [1.72ms]
+(pass) refresh accepts unchanged owned files but preserves intervening edits including stale files [1.03ms]
+(pass) manifest cannot claim arbitrary documentation or traverse out of the generated directory [0.46ms]
+(pass) output symlinks are refused before reading or overwriting their targets [0.64ms]
+(pass) source changes that invalidate stripping boundaries fail closed [0.22ms]
+
+tests/screenshot-camera.test.js:
+(pass) screenshot camera restores the exact paused projection/pose after free flight and dragging [0.46ms]
+(pass) free flight follows pitch, strafes, normalizes diagonal speed and is independent of frame rate [0.37ms]
+
+tests/play-ui-follow-up.test.js:
+(pass) Drone view names the click-drag gesture in markup, runtime hints and accessible instructions [0.43ms]
+(pass) centred Drone hint hides after targeting and while interaction is unavailable [0.54ms]
+(pass) loading follows the requested scene: title backdrops stay clear, real starts and Continue retain the panel [10.54ms]
+(pass) comparison sits left of the row and clamps within the viewport [0.32ms]
+(pass) comparisons disappear when locked, unsupported, scrolled away or covered by a modal [0.39ms]
+(pass) upgrade comparisons follow actual affordability, unlock and tier eligibility [1.14ms]
+(pass) selection alone does not open or retain the comparison; only upgrade hover/focus does [0.17ms]
+(pass) the temporary sound control lock survives UI updates and rejects slider events [0.20ms]
+
+ 35 pass
+ 0 fail
+ 3231 expect() calls
+Ran 35 tests across 5 files. [147.00ms]

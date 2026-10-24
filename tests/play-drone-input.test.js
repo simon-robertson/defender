@@ -47,3 +47,26 @@ test('pointer release preserves held keys; blur, lifecycle cleanup and disposal 
  const f=fixture();key(f,'keydown','w');f.send('pointerdown');f.send('pointermove',610,410);f.send('pointerup');expect(f.input.keys.has('w')).toBe(true);f.input.dispose();expect(f.calls.at(-1)).toEqual(['keyboard',0,0,false]);expect(f.handlers.size).toBe(0);
  for(const end of [f=>f.handlers.get('blur').fn(),f=>f.input.clear()]){const g=fixture();key(g,'keydown','d');end(g);expect(g.calls.at(-1)).toEqual(['keyboard',0,0,false]);expect(g.input.keys.size).toBe(0);g.input.dispose();}
 });
+
+// Model DOM blur propagation: element blur is captured by ancestors but does
+// not bubble; an actual window blur is delivered at the window itself.
+function focusFixture(){
+ const makeTarget=()=>({listeners:[],addEventListener(type,fn,capture){this.listeners.push({type,fn,capture});},removeEventListener(type,fn,capture){this.listeners=this.listeners.filter(l=>l.type!==type||l.fn!==fn||l.capture!==capture);}});
+ const view=makeTarget(),document=makeTarget(),canvas=makeTarget(),hud=makeTarget(),captures=new Set(),calls=[];let focused=hud;
+ document.defaultView=view;canvas.ownerDocument=document;
+ const emit=(target,type,fields={})=>{const event={target,preventDefault(){},stopImmediatePropagation(){},...fields};if(type==='blur'&&target!==view)for(const ancestor of [view,document])for(const l of [...ancestor.listeners])if(l.type===type&&l.capture)l.fn(event);for(const l of [...target.listeners])if(l.type===type)l.fn(event);};
+ Object.assign(canvas,{focus(){if(focused!==canvas){emit(focused,'blur');focused=canvas;}},setPointerCapture:id=>captures.add(id),hasPointerCapture:id=>captures.has(id),releasePointerCapture:id=>captures.delete(id)});
+ const drone={active:true,hasTargeted:false,rotate:(...delta)=>{calls.push(delta);drone.hasTargeted=true;},setKeyboard:(forward,turn,active)=>{drone.keyboardActive=active;}},input=new DroneInput(canvas,drone,()=>true);
+ const send=(type,fields={})=>emit(canvas,type,{pointerId:1,button:0,clientX:600,clientY:400,...fields});
+ return {input,calls,captures,view,document,canvas,drone,send,emit};
+}
+test('the first drag survives focus moving from a HUD button to the canvas with either mouse button',()=>{
+ for(const button of [0,2]){
+  const f=focusFixture();f.send('pointerdown',{button});expect(f.captures.has(1)).toBe(true);f.send('pointermove',{clientX:620,clientY:410,button});f.send('pointermove',{clientX:625,clientY:407,button});expect(f.calls).toEqual([[20,10],[5,-3]]);f.send('pointerup',{button});expect(f.captures.size).toBe(0);f.input.dispose();
+  expect(f.view.listeners.length+f.document.listeners.length+f.canvas.listeners.length).toBe(0);
+ }
+});
+test('actual window focus loss still releases the drag and held keyboard controls',()=>{
+ const f=focusFixture();f.canvas.focus();f.emit(f.document,'keydown',{key:'w'});f.send('pointerdown');expect(f.captures.has(1)).toBe(true);expect(f.drone.keyboardActive).toBe(true);f.emit(f.view,'blur');expect(f.captures.size).toBe(0);expect(f.drone.keyboardActive).toBe(false);f.send('pointermove',{clientX:620,clientY:410});expect(f.calls).toEqual([]);f.input.dispose();
+ expect(f.view.listeners.length+f.document.listeners.length+f.canvas.listeners.length).toBe(0);
+});

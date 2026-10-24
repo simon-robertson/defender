@@ -1,7 +1,7 @@
 export class DroneInput {
  constructor(canvas,drone,allowed,onTarget=()=>{}){
   this.canvas=canvas;this.drone=drone;this.allowed=allowed;this.pointer=null;this.listeners=[];this.keys=new Set();
-  const listen=(type,fn,target=canvas)=>{target.addEventListener(type,fn,true);this.listeners.push([target,type,fn]);};
+  const listen=(type,fn,target=canvas,capture=true)=>{target.addEventListener(type,fn,capture);this.listeners.push([target,type,fn,capture]);};
   const keyboard=canvas.ownerDocument??canvas;
   listen('keydown',e=>{
    if(e.ctrlKey||e.metaKey||e.altKey||e.target?.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target?.tagName)){this.clearKeys();return;}
@@ -11,7 +11,9 @@ export class DroneInput {
    const hadTargeted=drone.hasTargeted;this.updateKeys();if(!hadTargeted&&drone.hasTargeted)onTarget();
   },keyboard);
   listen('keyup',e=>{if(this.keys.delete(e.key.toLowerCase())){this.updateKeys();e.preventDefault();}},keyboard);
-  listen('blur',()=>this.clear(),canvas.ownerDocument?.defaultView??canvas);
+  // Element blur reaches window capture listeners when pointerdown focuses
+  // the board. Only actual window blur should cancel the player's gesture.
+  listen('blur',()=>this.clear(),canvas.ownerDocument?.defaultView??canvas,false);
   listen('pointerdown',e=>{
    if(!allowed()||!drone.active||![0,2].includes(e.button)||this.pointer!==null)return;
    e.preventDefault();e.stopImmediatePropagation();this.pointer=e.pointerId;this.x=this.startX=e.clientX;this.y=this.startY=e.clientY;this.dragged=false;canvas.setPointerCapture(e.pointerId);canvas.focus();
@@ -35,5 +37,5 @@ export class DroneInput {
  clearKeys(){if(this.keys.size){this.keys.clear();this.updateKeys();}}
  clearPointer(){const id=this.pointer;this.pointer=null;if(id!==null&&this.canvas.hasPointerCapture?.(id))this.canvas.releasePointerCapture(id);}
  clear(){this.clearPointer();this.clearKeys();}
- dispose(){this.clear();for(const [target,type,fn]of this.listeners)target.removeEventListener(type,fn,true);this.listeners.length=0;}
+ dispose(){this.clear();for(const [target,type,fn,capture]of this.listeners)target.removeEventListener(type,fn,capture);this.listeners.length=0;}
 }

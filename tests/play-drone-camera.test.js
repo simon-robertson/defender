@@ -178,12 +178,47 @@ test('zoom fit includes recent participating weapons with missing height, exclud
   gun.target=f.subject;gun.lineOfSight=false;d.fitZoom(f.engine);expect(d.lensVisible).toBe(1);
  }finally{d.dispose();}
 });
-test('native A2/B4/D4 battles at 30/60/120 Hz preserve combat outcomes and swept clearance with manual edge retargeting',()=>assets(async()=>{
+test('native A2/B4/D4 battles at 30/60/120 Hz preserve combat outcomes and swept clearance with edge targeting and WASD',()=>assets(async()=>{
  for(const id of ['skirmish','split','late']){
   const recipe=STUDY_SCENARIOS.find(s=>s.id===id),baseline=await createStudyScene(recipe);let expected;try{await advanceStudyScene(baseline,100,{yieldControl:async()=>{}});expected=[baseline.engine.enemies.killed,baseline.engine.enemies.escaped,baseline.engine.firing.shots,baseline.engine.steps];}finally{baseline.dispose();}
   const outcomes=[];
-  for(const hz of [30,60,120]){const scene=await createStudyScene(recipe),d=new DroneCamera(camera());d.bind(scene.world);d.setEnabled(true);d.sync('wave',scene.engine);let retargeted=false;
-   try{while(scene.engine.running&&scene.engine.time<100){if(!retargeted&&scene.engine.time>3){d.targetAt(0,24,0);retargeted=true;}const old=[...d.position];scene.engine.advance(1/hz);d.advance(1/hz,{engine:scene.engine,phase:'wave'});expect(d.position[1]).toBeGreaterThanOrEqual(d.minimumY);expect(d.staticClear(...old,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS,0)).toBe(true);expect([...d.position,...d.focus,d.yaw,d.pitch,d.fov].every(Number.isFinite)).toBe(true);centred(d);}outcomes.push([scene.engine.enemies.killed,scene.engine.enemies.escaped,scene.engine.firing.shots,scene.engine.steps]);expect(d.blockedMoves).toBe(0);}finally{d.dispose();scene.dispose();}
+  for(const hz of [30,60,120]){const scene=await createStudyScene(recipe),d=new DroneCamera(camera());d.bind(scene.world);d.setEnabled(true);d.sync('wave',scene.engine);let retargeted=false,keyboardStage=-1;
+   try{while(scene.engine.running&&scene.engine.time<100){if(!retargeted&&scene.engine.time>3){d.targetAt(0,24,0);retargeted=true;}const stage=scene.engine.time<4?0:scene.engine.time<7?1:scene.engine.time<10?2:3;if(stage!==keyboardStage){keyboardStage=stage;if(stage===1)d.setKeyboard(1,-1);else if(stage===2)d.setKeyboard(-1,1);else d.setKeyboard(0,0,false);}const old=[...d.position];scene.engine.advance(1/hz);d.advance(1/hz,{engine:scene.engine,phase:'wave'});expect(d.position[1]).toBeGreaterThanOrEqual(d.minimumY);expect(d.staticClear(...old,...d.position)).toBe(true);expect(d.obstacles.pointClear(...d.position,DRONE_CAMERA_RADIUS,0)).toBe(true);expect([...d.position,...d.focus,d.yaw,d.pitch,d.fov].every(Number.isFinite)).toBe(true);centred(d);}outcomes.push([scene.engine.enemies.killed,scene.engine.enemies.escaped,scene.engine.firing.shots,scene.engine.steps]);expect(d.blockedMoves).toBe(0);}finally{d.dispose();scene.dispose();}
   }expect(outcomes[0]).toEqual(expected);expect(outcomes[1]).toEqual(expected);expect(outcomes[2]).toEqual(expected);
  }
 }),90000);
+
+// Keyboard translations and turns share the production smooth flight path.
+test('W/S translate the target in the current view and ease to a fixed anchor after release',()=>{
+ for(const forward of [1,-1])for(const bearing of [0,Math.PI/2,Math.PI,-Math.PI/2]){
+  const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);f.engine.enemies.activeTargets=[];d.focus.set([240,24,192]);d.position.set([240+Math.sin(bearing)*144,d.cruiseY+6,192+Math.cos(bearing)*144]);d.orbitAngle=bearing;d.orbitRate=0;d.aim();
+  const start=[...d.focus];d.setKeyboard(forward,0);advance(f,1);const dx=d.focus[0]-start[0],dz=d.focus[2]-start[2];expect((-dx*Math.sin(bearing)-dz*Math.cos(bearing))*forward).toBeGreaterThan(30);expect(Math.abs(dx*Math.cos(bearing)-dz*Math.sin(bearing))).toBeLessThan(.001);centred(d);
+  const speed=d.targetSpeed;d.setKeyboard(0,0,false);expect(d.targetSpeed).toBe(speed);advance(f,3);expect(d.targetSpeed).toBe(0);const anchor=[...d.focus],angle=d.orbitAngle;advance(f,2);expect([...d.focus]).toEqual(anchor);expect(Math.abs(d.orbitAngle-angle)).toBeGreaterThan(.01);expect(d.blockedMoves).toBe(0);d.dispose();
+ }
+});
+test('A is clockwise and D counter-clockwise, with eased reversal and automatic resumption',()=>{
+ const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);f.engine.enemies.activeTargets=[];const anchor=[...d.focus],start=d.orbitAngle;
+ d.setKeyboard(0,-1);advance(f,2);expect(d.orbitAngle).toBeLessThan(start-.3);expect(d.orbitRate).toBeLessThan(-.2);const rate=d.orbitRate;d.setKeyboard(0,1);advance(f,1/60);expect(Math.abs(d.orbitRate-rate)).toBeLessThan(.02);advance(f,3);expect(d.orbitRate).toBeGreaterThan(.25);expect([...d.focus]).toEqual(anchor);
+ d.setKeyboard(0,0,false);advance(f,4);expect(d.orbitRate).toBeCloseTo(.035,2);expect([...d.focus]).toEqual(anchor);centred(d);d.dispose();
+});
+test('combined keyboard movement preserves smooth physical limits, board bounds and display-rate agreement',()=>{
+ const results=[];
+ for(const hz of [30,60,120]){
+  const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);f.engine.enemies.activeTargets=[];let velocity=[...d.velocity],acceleration=[...d.acceleration];
+  for(const [forward,turn,seconds] of [[1,-1,3],[-1,1,3],[0,0,3],[1,0,12],[-1,0,12]]){
+   d.setKeyboard(forward,turn);
+   for(let n=0;n<seconds*hz;n++){advance(f,1/hz,hz);expect(d.speed).toBeLessThanOrEqual(DRONE_CAMERA_SPEED+1e-8);expect(Math.hypot(...d.acceleration)).toBeLessThanOrEqual(96+1e-7);expect(Math.hypot(...d.acceleration.map((a,i)=>a-acceleration[i]))*hz).toBeLessThanOrEqual(384+1e-6);expect(Math.hypot(...d.velocity.map((v,i)=>v-velocity[i]))*hz).toBeLessThanOrEqual(96+1e-6);expect(d.focus[0]).toBeGreaterThanOrEqual(0);expect(d.focus[0]).toBeLessThanOrEqual(480);expect(d.focus[2]).toBeGreaterThanOrEqual(0);expect(d.focus[2]).toBeLessThanOrEqual(384);expect(d.position[1]).toBeGreaterThanOrEqual(d.cruiseY);velocity=[...d.velocity];acceleration=[...d.acceleration];centred(d);}
+  }
+  expect(d.blockedMoves).toBe(0);results.push([...d.position,...d.focus,d.orbitAngle]);d.dispose();
+ }
+ for(const result of results.slice(1))for(let i=0;i<result.length;i++)expect(result[i]).toBeCloseTo(results[0][i],6);
+});
+test('keyboard pause is exact and wave changes clear all keyboard motion',()=>{
+ const f=basic(),d=f.drone;d.setEnabled(true);d.sync('wave',f.engine);d.setKeyboard(1,-1);advance(f,.5);const before=d.stats();d.advance(1,{engine:f.engine,phase:'wave',paused:true});expect(d.stats()).toEqual(before);
+ d.sync('loadout',f.engine);expect(d.keyboardActive).toBe(false);expect(d.targetSpeed).toBe(0);d.sync('wave',f.engine);expect([...d.focus]).toEqual([12,24,204]);expect(d.keyboardForward).toBe(0);expect(d.keyboardTurn).toBe(0);d.dispose();
+});
+
+test('orbit-only keys preserve a manually selected raised terrain wall anchor',()=>{
+ const f=basic(),d=f.drone;f.world.level.terrain.boxes=[{box:[9,5],ground:100,water:0}];d.bind(f.world);d.setEnabled(true);d.sync('wave',f.engine);d.position.set([228,230,300]);d.focus.set([228,50,144]);d.aim();d.rotate(0,0);const anchor=[...d.focus];expect(anchor[1]).toBeGreaterThan(24);expect(anchor[1]).toBeLessThan(100);
+ d.setKeyboard(0,-1);advance(f,1);expect([...d.focus]).toEqual(anchor);centred(d);d.dispose();
+});

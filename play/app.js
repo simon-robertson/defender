@@ -28,6 +28,7 @@ import {ScreenshotCamera} from './screenshot-camera.js';
 import {loadGraphicsOptions,saveGraphicsOptions,GRAPHICS_DEFAULTS} from './graphics-options.js';
 
 const canvas=document.getElementById('world'),overlay=document.getElementById('placement-overlay'),hint=document.getElementById('placement-hint');
+const droneReticle=document.querySelector('.drone-camera-reticle');
 const conditions=new LevelConditions();
 let graphics=loadGraphicsOptions(),optionsOpen=false,leaveOpen=false;
 const performanceReadout=new FramePerformance(document.getElementById('performance-readout'));
@@ -50,6 +51,7 @@ function snapshot(stats=engine?.stats()){
  levelName:loader?.world?.level?.name??(session.levelIndex?'The Broadwater Garden':'The Limestone Orchard'),
  enemiesRemaining:stats?.active??0,spawned:stats?.spawned??0,totalEnemies:session.wave.spawns.length,
  placementHint:hover&&session.phase==='deploy'?hint.textContent:config.defences[session.units.find(unit=>unit.id===selectedId)?.model]?.kind==='enhancer'?'Place beside a defence: edge-sharing squares gain 25% strength. Diagonals do not.':undefined};}
+function updateDroneReticle(){if(droneCamera?.active)droneReticle.style.setProperty('--drone-bearing',(-droneCamera.yaw)+'rad');}
 function applyCameraPresentation(force=false){
  if(!renderer?.world||screenshotCamera?.active)return;
  const title=session.phase==='title',camera=renderer.camera;cameraViews?.sync(session.phase,engine);camera.setControlsEnabled(false);
@@ -68,7 +70,7 @@ function syncCombatEffects(){
  }
 }
 function updateHighlight(){highlight.update({world:loader?.world,camera:renderer?.camera,units:session.units,preparing:session.preparing,busy:busy||Boolean(error),paused:session.paused});}
-function paint(){if(loop&&!['wave','settling'].includes(session.phase))loop.clock.setTimeScale(1);if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();diagnostics(state,stats);}
+function paint(){if(loop&&!['wave','settling'].includes(session.phase))loop.clock.setTimeScale(1);if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateDroneReticle();updateHighlight();diagnostics(state,stats);}
 // Keep the review dataset available by default. Cosmetic-only frame updates
 // share the normal five-Hz cadence; actions and lifecycle changes publish now.
 function diagnostics(state,stats,force=true){const now=performance.now();if(!force&&now-lastDiagnostics<200){diagnosticsPending=true;return;}lastDiagnostics=now;diagnosticsPending=false;stats??=engine?.stats();state??=snapshot(stats);canvas.dataset.play=JSON.stringify({wildlife:{enabled:loader?.world?.playCritters!==false,actors:engine?.wildlife.states.length??0,planningBytes:engine?.wildlife.planningBytes??0},fish:engine?.wildlife.fish.stats()??null,...state,levelId:session.level.id,engine:stats??null,placements:session.placements,audio:{state:audio.state,ready:audio.ready,volume:audio.volume,voices:audio.active,played:audio.played,dropped:audio.dropped,error:audio.lastError},
@@ -155,7 +157,7 @@ async function initialize(){
  renderer.setGraphicsOptions(graphics);
  const effectsPrepared=await renderer.prepareDeathEffects();if(!effectsPrepared||disposed)return;renderer.camera.pathModeEnabled=false;
  actionCamera=new ActionCamera(renderer.camera);droneCamera=new DroneCamera(renderer.camera);cameraViews=new CameraViews(actionCamera,droneCamera);screenshotCamera=new ScreenshotCamera(renderer.camera);
- droneInput?.dispose();droneInput=new DroneInput(canvas,droneCamera,()=>!busy&&!error&&!frozen()&&session.phase==='wave',paint);
+ droneInput?.dispose();droneInput=new DroneInput(canvas,droneCamera,()=>!busy&&!error&&!document.hidden&&!frozen()&&['wave','settling'].includes(session.phase),paint);
  loop=new FrameLoop(dt=>{
   try{
    if(!engine)return;
@@ -167,7 +169,7 @@ async function initialize(){
    const wasSettling=session.phase==='settling';
    engine.advance(dt,session.phase==='wave'?combatStep:preparationStep);shots.prepare();if(engine.firing.arcs.states.length)arcs.prepare();
    if(renderer.camera.dragging||renderer.camera.keys.size)takeCameraControl();
-   cameraViews.advance(dt,{engine,phase:session.phase,paused:session.paused});
+   cameraViews.advance(dt,{engine,phase:session.phase,paused:session.paused});updateDroneReticle();
    
    lastCameraPhase=session.phase;
    const renderStarted=performance.now();renderer.render(dt,engine.time);const cpuRenderMs=performance.now()-renderStarted;audio.advance(engine.time,renderer.camera);

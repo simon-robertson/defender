@@ -28,6 +28,7 @@ import {ScreenshotCamera} from './screenshot-camera.js';
 import {loadGraphicsOptions,saveGraphicsOptions,GRAPHICS_DEFAULTS} from './graphics-options.js';
 
 const canvas=document.getElementById('world'),overlay=document.getElementById('placement-overlay'),hint=document.getElementById('placement-hint');
+const droneReticle=document.querySelector('.drone-camera-reticle');
 const conditions=new LevelConditions();
 let graphics=loadGraphicsOptions(),optionsOpen=false,leaveOpen=false;
 const performanceReadout=new FramePerformance(document.getElementById('performance-readout'));
@@ -50,6 +51,7 @@ function snapshot(stats=engine?.stats()){
  levelName:loader?.world?.level?.name??(session.levelIndex?'The Broadwater Garden':'The Limestone Orchard'),
  enemiesRemaining:stats?.active??0,spawned:stats?.spawned??0,totalEnemies:session.wave.spawns.length,
  placementHint:hover&&session.phase==='deploy'?hint.textContent:config.defences[session.units.find(unit=>unit.id===selectedId)?.model]?.kind==='enhancer'?'Place beside a defence: edge-sharing squares gain 25% strength. Diagonals do not.':undefined};}
+function updateDroneReticle(){if(droneCamera?.active)droneReticle.style.setProperty('--drone-bearing',(-droneCamera.yaw)+'rad');}
 function applyCameraPresentation(force=false){
  if(!renderer?.world||screenshotCamera?.active)return;
  const title=session.phase==='title',camera=renderer.camera;cameraViews?.sync(session.phase,engine);camera.setControlsEnabled(false);
@@ -68,7 +70,7 @@ function syncCombatEffects(){
  }
 }
 function updateHighlight(){highlight.update({world:loader?.world,camera:renderer?.camera,units:session.units,preparing:session.preparing,busy:busy||Boolean(error),paused:session.paused});}
-function paint(){if(loop&&!['wave','settling'].includes(session.phase))loop.clock.setTimeScale(1);if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateHighlight();}
+function paint(){if(loop&&!['wave','settling'].includes(session.phase))loop.clock.setTimeScale(1);if(screenshotCamera?.active&&(!session.paused||busy||error||leaveOpen))screenshotCamera.leave();cameraViews?.sync(session.phase,engine);const stats=engine?.stats(),state=snapshot(stats);renderUI(state);applyCameraPresentation();updateDroneReticle();updateHighlight();}
 function fail(cause){audio.setActive(false);error=cause?.message??String(cause);busy=false;performanceReadout.setRunning(false,'Error');renderer?.setTimingActive(false);loop?.stop();paint();}
 function cameraState(){const c=renderer?.camera,active=cameraViews?.active;if(active){const v=active.saved;return {id:loader.world.level.id,target:Array.from(v.subarray(0,3)),yaw:v[3],pitch:v[4],radius:v[5]};}return c&&loader?.world?{id:loader.world.level.id,target:[...c.target],yaw:c.yaw,pitch:c.pitch,radius:c.radius}:null;}
 function refreshPlacement(){overlayKey='';hover=null;const unit=session.units.find(unit=>unit.id===selectedId);eligible=unit&&rules&&session.phase==='deploy'?rules.eligibleCells(unit.variant,session.placements,unit.id,unit.model):[];drawOverlay();}
@@ -150,7 +152,7 @@ async function initialize(){
  renderer.setGraphicsOptions(graphics);
  const effectsPrepared=await renderer.prepareDeathEffects();if(!effectsPrepared||disposed)return;renderer.camera.pathModeEnabled=false;
  actionCamera=new ActionCamera(renderer.camera);droneCamera=new DroneCamera(renderer.camera);cameraViews=new CameraViews(actionCamera,droneCamera);screenshotCamera=new ScreenshotCamera(renderer.camera);
- droneInput?.dispose();droneInput=new DroneInput(canvas,droneCamera,()=>!busy&&!error&&!frozen()&&session.phase==='wave',paint);
+ droneInput?.dispose();droneInput=new DroneInput(canvas,droneCamera,()=>!busy&&!error&&!document.hidden&&!frozen()&&['wave','settling'].includes(session.phase),paint);
  loop=new FrameLoop(dt=>{
   try{
    if(!engine)return;
@@ -162,7 +164,7 @@ async function initialize(){
    const wasSettling=session.phase==='settling';
    engine.advance(dt,session.phase==='wave'?combatStep:preparationStep);shots.prepare();if(engine.firing.arcs.states.length)arcs.prepare();
    if(renderer.camera.dragging||renderer.camera.keys.size)takeCameraControl();
-   cameraViews.advance(dt,{engine,phase:session.phase,paused:session.paused});
+   cameraViews.advance(dt,{engine,phase:session.phase,paused:session.paused});updateDroneReticle();
    
    lastCameraPhase=session.phase;
    const renderStarted=performance.now();renderer.render(dt,engine.time);const cpuRenderMs=performance.now()-renderStarted;audio.advance(engine.time,renderer.camera);

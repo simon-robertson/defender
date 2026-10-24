@@ -2,7 +2,7 @@ import {test,expect} from 'bun:test';
 import {DroneInput} from '../play/drone-input.js';
 function fixture(){
  const handlers=new Map(),captures=new Set(),canvas={addEventListener(type,fn,capture){handlers.set(type,{fn,capture});},removeEventListener(type,fn,capture){const listener=handlers.get(type);if(listener?.fn===fn&&listener.capture===capture)handlers.delete(type);},focus(){},setPointerCapture(id){captures.add(id);},hasPointerCapture:id=>captures.has(id),releasePointerCapture:id=>captures.delete(id)};
- let allowed=true,updates=0;const calls=[],drone={active:true,hasTargeted:false,rotate:(...v)=>{calls.push(['rotate',...v]);drone.hasTargeted=true;return true;},targetAt:()=>{throw Error('Clicks must not retarget the drone.');}},input=new DroneInput(canvas,drone,()=>allowed,()=>updates++);
+ let allowed=true,updates=0;const calls=[],drone={active:true,hasTargeted:false,rotate:(...v)=>{calls.push(['rotate',...v]);drone.hasTargeted=true;return true;},setKeyboard:(...v)=>{calls.push(['keyboard',...v]);if(v[2])drone.hasTargeted=true;},targetAt:()=>{throw Error('Clicks must not retarget the drone.');}},input=new DroneInput(canvas,drone,()=>allowed,()=>updates++);
  const send=(type,x=600,y=400,button=0,pointerId=1)=>handlers.get(type)?.fn({clientX:x,clientY:y,button,pointerId,preventDefault(){},stopImmediatePropagation(){}});
  return {drone,input,send,calls,handlers,captures,get updates(){return updates;},setAllowed:v=>allowed=v};
 }
@@ -29,4 +29,21 @@ test('cancel, capture loss, explicit cleanup and disposal end stale input',()=>{
   const f=fixture();f.send('pointerdown');cancel(f);f.send('pointermove',620,410);f.send('pointerup',620,410);expect(f.calls).toEqual([]);expect(f.captures.size).toBe(0);f.input.dispose();expect(f.handlers.size).toBe(0);
  }
  const f=fixture();f.send('pointerdown');f.input.dispose();expect(f.captures.size).toBe(0);expect(f.handlers.size).toBe(0);
+});
+
+function key(f,type,key,extra={}){let prevented=false;f.handlers.get(type)?.fn({key,preventDefault(){prevented=true;},stopImmediatePropagation(){},...extra});return prevented;}
+test('keyboard combines axes, cancels opposing keys and releases even after input locks',()=>{
+ const f=fixture();expect(key(f,'keydown','W')).toBe(true);key(f,'keydown','a');expect(f.calls.at(-1)).toEqual(['keyboard',1,-1,true]);expect(f.updates).toBe(1);
+ key(f,'keydown','s');key(f,'keydown','d');expect(f.calls.at(-1)).toEqual(['keyboard',0,0,true]);key(f,'keyup','w');expect(f.calls.at(-1)).toEqual(['keyboard',-1,0,true]);
+ f.setAllowed(false);for(const k of ['a','s','d'])key(f,'keyup',k,{target:{tagName:'INPUT'},metaKey:true});expect(f.calls.at(-1)).toEqual(['keyboard',0,0,false]);f.input.dispose();
+});
+test('keyboard rejects inactive, paused, modified and editable events and clears held keys',()=>{
+ for(const extra of [{ctrlKey:true},{metaKey:true},{altKey:true},{target:{tagName:'INPUT'}},{target:{tagName:'TEXTAREA'}},{target:{tagName:'SELECT'}},{target:{isContentEditable:true}}]){
+  const f=fixture();expect(key(f,'keydown','w',extra)).toBe(false);expect(f.calls).toEqual([]);key(f,'keydown','w');key(f,'keydown','a',extra);expect(f.calls.at(-1)).toEqual(['keyboard',0,0,false]);f.input.dispose();
+ }
+ for(const disable of [f=>f.setAllowed(false),f=>f.drone.active=false]){const f=fixture();disable(f);expect(key(f,'keydown','w')).toBe(false);expect(f.calls).toEqual([]);f.input.dispose();}
+});
+test('pointer release preserves held keys; blur, lifecycle cleanup and disposal release them',()=>{
+ const f=fixture();key(f,'keydown','w');f.send('pointerdown');f.send('pointermove',610,410);f.send('pointerup');expect(f.input.keys.has('w')).toBe(true);f.input.dispose();expect(f.calls.at(-1)).toEqual(['keyboard',0,0,false]);expect(f.handlers.size).toBe(0);
+ for(const end of [f=>f.handlers.get('blur').fn(),f=>f.input.clear()]){const g=fixture();key(g,'keydown','d');end(g);expect(g.calls.at(-1)).toEqual(['keyboard',0,0,false]);expect(g.input.keys.size).toBe(0);g.input.dispose();}
 });

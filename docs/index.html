@@ -10,7 +10,10 @@
   </defs></svg>
   <main id="play-shell">
     <div id="scene"><canvas id="world" tabindex="0" aria-label="Defence landscape. Camera framing is automatic."></canvas>
-      <div id="drone-camera-viewfinder" hidden aria-hidden="true"><div class="drone-camera-readout"><span class="camera-record-dot"></span> <span id="drone-camera-label">DRONE CAM</span> <span id="drone-camera-time">00:00</span></div><span class="camera-format" id="drone-camera-format">Click and drag to control the drone</span><span class="drone-camera-reticle"></span><i></i><i></i><i></i><i></i></div>
+      <div id="drone-camera-viewfinder" hidden aria-hidden="true"><div class="drone-camera-readout"><span class="camera-record-dot"></span> <span id="drone-camera-label">DRONE CAM</span> <span id="drone-camera-time">00:00</span></div><span class="camera-format" id="drone-camera-format">Click and drag to control the drone.
+W/S: forward/backward
+A: clockwise · D: counter-clockwise
+Release keys for automatic orbit.</span><svg class="drone-camera-reticle" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke-linecap="round" transform="rotate(-135 24 24)"><circle cx="24" cy="24" r="18" pathLength="100" stroke="#14181e" stroke-width="7" stroke-dasharray="75 25"/><circle cx="24" cy="24" r="18" pathLength="100" stroke="#fff7df" stroke-width="3" stroke-dasharray="75 25"/></g><circle cx="24" cy="24" r="2.5" fill="#fff7df" stroke="#14181e" stroke-width="1.5"/></svg><i></i><i></i><i></i><i></i></div>
       <svg id="entrance-overlay" hidden style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></svg><svg id="placement-overlay" aria-hidden="true"></svg><svg id="unit-highlight-overlay" aria-hidden="true" hidden></svg>
     </div>
     <section id="title-screen" aria-labelledby="title-heading">

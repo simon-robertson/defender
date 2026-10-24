@@ -3,7 +3,7 @@ import {routePath} from '../shared/routes.js';
 import {DroneLens,DRONE_CAMERA_MIN_FOV} from './drone-lens.js';
 export {DRONE_CAMERA_RADIUS,DRONE_CAMERA_SPEED,DRONE_CAMERA_ACCELERATION,DRONE_CAMERA_MIN_ALTITUDE} from './drone-flight.js';
 export const DRONE_CAMERA_ORBIT_RADIUS=144,DRONE_CAMERA_MIN_OFFSET=64;
-const TICK=1/120,ORBIT_RATE=.035,ORBIT_MOVE_RATE=.12,ORBIT_RESPONSE=1.4,BOB=6,EMPTY=Object.freeze([]);
+const TICK=1/120,ORBIT_RATE=.035,ORBIT_MOVE_RATE=.12,ORBIT_RESPONSE=1.4,KEYBOARD_ORBIT_RATE=.28,TARGET_SPEED=40,TARGET_RESPONSE=5,BOB=6,EMPTY=Object.freeze([]);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 // One world anchor owns both the reticle and the orbit. Enemy activity may
@@ -12,9 +12,10 @@ export class DroneCamera extends DroneFlight {
  constructor(camera,options={}){
   super(camera,options);this.lens=new DroneLens();this.lensVisible=0;this.lensRequired=this.lens.target;this.playerTarget=this.focus;this.minimumOffset=DRONE_CAMERA_MIN_OFFSET;
   this.time=this.accumulator=this.plans=this.relocations=this.explosions=0;this.planIn=0;this.engineTime=null;this.phase=null;this.targeted=false;this.hasTargeted=false;this.orbitAngle=0;this.orbitDirection=1;this.orbitRate=ORBIT_RATE;this.visibleEnemies=0;this.frameTargets=[];this.frameWeapons=[];this.projected=new Float64Array(32);this.orbitGoalAngle=null;this.frameSince=this.frameHoldUntil=0;this.frameImpact=false;this.activity=new Float64Array([0,0,0,-Infinity,0]);
+  this.clearKeyboard();
  }
  bind(world){super.bind(world);this.time=this.accumulator=this.plans=this.relocations=0;this.planIn=0;this.engineTime=null;this.targeted=false;this.activity?.fill(0);if(this.activity)this.activity[3]=-Infinity;this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;this.lens.reset();this.fov=this.lens.fov;this.lensVisible=0;this.lensRequired=this.lens.target;}
- leave(){super.leave();this.targeted=false;if(this.frameTargets)this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;}
+ leave(){super.leave();this.clearKeyboard();this.targeted=false;if(this.frameTargets)this.frameTargets.length=this.frameWeapons.length=0;this.orbitGoalAngle=null;}
  refresh(){this.leave();this.obstacles?.dispose();this.obstacles=this.obstacleEngine=null;this.engineTime=null;}
  get aspect(){return Math.max(.2,(this.camera.canvas?.clientWidth??1500)/Math.max(1,this.camera.canvas?.clientHeight??1000));}
  surfaceY(x,z){const cols=this.world.level.size[0],rows=this.world.level.size[1],cell=clamp(Math.floor(z/24),0,rows-1)*cols+clamp(Math.floor(x/24),0,cols-1);return this.surfaces[cell];}
@@ -25,6 +26,27 @@ export class DroneCamera extends DroneFlight {
  targetAt(x,y,z){
   if(!this.active||!Number.isFinite(x+y+z)||x<0||z<0||x>this.world.width||z>this.world.length)return false;
   this.lockTarget(x,this.surfaceY(x,z),z);return true;
+ }
+ clearKeyboard(){this.keyboardForward=this.keyboardTurn=this.targetSpeed=this.targetVelocityX=this.targetVelocityZ=0;this.keyboardActive=false;}
+ setKeyboard(forward,turn,active=Boolean(forward||turn)){
+  if(!this.active)return false;
+  this.keyboardForward=clamp(forward,-1,1);this.keyboardTurn=clamp(turn,-1,1);this.keyboardActive=active;
+  if(active){this.targeted=this.hasTargeted=true;this.orbitGoalAngle=null;this.frameHoldUntil=0;this.lens.defer(this.time);}
+  this.planIn=.25;return true;
+ }
+ moveTarget(dt){
+  // Integrate eased forward speed in the physical camera's current bearing.
+  // Keep the same orbit station while translating; lockTarget would reset it
+  // on every tick and fight simultaneous keyboard orbit steering.
+  this.targetVelocityX=this.targetVelocityZ=0;
+  if(!this.keyboardActive&&this.targetSpeed===0)return;
+  const wanted=this.keyboardForward*TARGET_SPEED,decay=Math.exp(-TARGET_RESPONSE*dt),difference=this.targetSpeed-wanted,distance=wanted*dt+difference*(1-decay)/TARGET_RESPONSE;
+  this.targetSpeed=wanted+difference*decay;
+  if(!this.keyboardActive&&Math.abs(this.targetSpeed)<.001){this.targetSpeed=0;return;}
+  if(this.keyboardActive){this.planIn=.25;this.lens.defer(this.time);}
+  const f=this.focus,p=this.position,bearing=Math.atan2(p[0]-f[0],p[2]-f[2]),x=f[0],z=f[2];
+  f[0]=clamp(x-Math.sin(bearing)*distance,0,this.world.width);f[2]=clamp(z-Math.cos(bearing)*distance,0,this.world.length);if(f[0]!==x||f[2]!==z)f[1]=this.surfaceY(f[0],f[2]);
+  this.targetVelocityX=(f[0]-x)/dt;this.targetVelocityZ=(f[2]-z)/dt;
  }
  rotate(dx,dy){
   if(!this.active||!Number.isFinite(dx+dy))return false;
@@ -124,13 +146,14 @@ export class DroneCamera extends DroneFlight {
  steer(dt){
   // Integrate an eased angular velocity exactly, including reversals. The
   // orbital station and its tangent velocity change continuously together.
-  const drift=this.orbitGoalAngle===null?null:this.orbitGoalAngle+Math.sin((this.time-this.frameSince)*.35)*.035,error=drift===null?0:Math.atan2(Math.sin(drift-this.orbitAngle),Math.cos(drift-this.orbitAngle)),targetRate=drift===null?this.orbitDirection*ORBIT_RATE:clamp(error*.9,-ORBIT_MOVE_RATE,ORBIT_MOVE_RATE),decay=Math.exp(-ORBIT_RESPONSE*dt),difference=this.orbitRate-targetRate;
+  this.moveTarget(dt);
+  const drift=this.orbitGoalAngle===null?null:this.orbitGoalAngle+Math.sin((this.time-this.frameSince)*.35)*.035,error=drift===null?0:Math.atan2(Math.sin(drift-this.orbitAngle),Math.cos(drift-this.orbitAngle)),targetRate=this.keyboardActive?this.keyboardTurn*KEYBOARD_ORBIT_RATE:drift===null?this.orbitDirection*ORBIT_RATE:clamp(error*.9,-ORBIT_MOVE_RATE,ORBIT_MOVE_RATE),decay=Math.exp(-ORBIT_RESPONSE*dt),difference=this.orbitRate-targetRate;
   this.orbitAngle+=targetRate*dt+difference*(1-decay)/ORBIT_RESPONSE;this.orbitRate=targetRate+difference*decay;if(targetRate)this.orbitDirection=Math.sign(targetRate);
   const a=this.orbitAngle,r=DRONE_CAMERA_ORBIT_RADIUS,f=this.focus,p=this.position,g=this.goal,want=this.desiredVelocity;
   g[0]=f[0]+Math.sin(a)*r;g[1]=this.cruiseY+BOB+Math.sin(this.time*.35)*BOB;g[2]=f[2]+Math.cos(a)*r;
   // Follow the moving orbital station with tangent feed-forward. There is no
   // board clamp on the aircraft: only its world target is board constrained.
-  want[0]=(g[0]-p[0])*1.4+Math.cos(a)*r*this.orbitRate;want[1]=(g[1]-p[1])*1.4+Math.cos(this.time*.35)*BOB*.35;want[2]=(g[2]-p[2])*1.4-Math.sin(a)*r*this.orbitRate;
+  want[0]=(g[0]-p[0])*1.4+Math.cos(a)*r*this.orbitRate+this.targetVelocityX;want[1]=(g[1]-p[1])*1.4+Math.cos(this.time*.35)*BOB*.35;want[2]=(g[2]-p[2])*1.4-Math.sin(a)*r*this.orbitRate+this.targetVelocityZ;
  }
  enter(engine){
   if(!this.world)return false;this.prepareObstacles(engine);
@@ -153,6 +176,6 @@ export class DroneCamera extends DroneFlight {
   while(this.accumulator>1e-12){const step=Math.min(TICK,this.accumulator);this.accumulator-=step;this.time+=step;this.lens.observe(this.time,this.lensRequired,phase==='wave'?this.lensVisible:0,Math.abs(this.orbitRate)<.05&&this.speed<12);this.lens.advance(step);this.fov=this.lens.fov;this.planIn-=step;if(this.planIn<=0)this.planOrbit(engine);this.steer(step);this.move(step);}
   this.aim();this.apply();return true;
  }
- stats(){return {enabled:this.enabled,active:this.active,time:this.time,style:'orbit',position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),blockedMoves:this.blockedMoves,travelled:this.travelled,plans:this.plans,relocations:this.relocations,visibleEnemies:this.visibleEnemies,fov:this.fov,targetFov:this.lens.target,fovVelocity:this.lens.velocity,zoomPhase:this.lens.phase,zoomCount:this.lens.zoomCount,lensRequired:this.lensRequired,lensVisible:this.lensVisible,pitch:this.pitch,orbitRadius:DRONE_CAMERA_ORBIT_RADIUS,orbitDirection:this.orbitDirection,orbitRate:this.orbitRate,orbitGoalAngle:this.orbitGoalAngle,framingEnemies:this.frameTargets.length,framingWeapons:this.frameWeapons.length,cruiseY:this.cruiseY,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,planningBytes:(this.obstacles?.byteLength??0)+(this.surfaces?.byteLength??0)+this.activity.byteLength+this.projected.byteLength};}
+ stats(){return {enabled:this.enabled,active:this.active,time:this.time,style:'orbit',position:Array.from(this.position),focus:Array.from(this.focus),speed:this.speed,velocity:Array.from(this.velocity),acceleration:Array.from(this.acceleration),blockedMoves:this.blockedMoves,travelled:this.travelled,plans:this.plans,relocations:this.relocations,visibleEnemies:this.visibleEnemies,fov:this.fov,targetFov:this.lens.target,fovVelocity:this.lens.velocity,zoomPhase:this.lens.phase,zoomCount:this.lens.zoomCount,lensRequired:this.lensRequired,lensVisible:this.lensVisible,pitch:this.pitch,orbitRadius:DRONE_CAMERA_ORBIT_RADIUS,orbitDirection:this.orbitDirection,orbitRate:this.orbitRate,orbitBearing:this.yaw,keyboardActive:this.keyboardActive,keyboardForward:this.keyboardForward,keyboardTurn:this.keyboardTurn,targetSpeed:this.targetSpeed,orbitGoalAngle:this.orbitGoalAngle,framingEnemies:this.frameTargets.length,framingWeapons:this.frameWeapons.length,cruiseY:this.cruiseY,actorPredictionSeconds:this.obstacles?.predictionSeconds??null,planningBytes:(this.obstacles?.byteLength??0)+(this.surfaces?.byteLength??0)+this.activity.byteLength+this.projected.byteLength};}
  dispose(){this.bind(null);this.camera=null;}
 }
